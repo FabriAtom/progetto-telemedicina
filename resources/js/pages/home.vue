@@ -1,22 +1,27 @@
 <template>
     <div>
         <section>
-            <div class="container">
-                <h1>{{ title }}</h1>
-            </div>
+           <SerdCard/>
         </section>
-
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                title: 'Home page',
-            }
-        }
-    }
+import SerdCard from '../components/serdCard.vue';
+
+export default {
+    name: 'Home',
+
+    components: { 
+        SerdCard,
+    },
+
+    data(){
+      return{
+        title: 'Home Page',
+      }
+   }
+}
 </script>
 
 <style lang="scss" scoped>

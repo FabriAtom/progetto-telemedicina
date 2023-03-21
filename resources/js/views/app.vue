@@ -2,29 +2,32 @@
   <div>
     <!-- il router view monta il componente Home.vue -->
     <!-- rotta percorso e path sono in routes -->
-    <router-view></router-view>
-    <!-- <section>
 
-      <h1>questo è il titolo {{ title }}</h1>
-    </section> -->
+    <router-view></router-view>
+
+    <div>
+      <serdCard/>
+    </div>
+    
   </div>
 </template>
 
 <script>
-  // import PostCard from '../components/PostCard.vue'
-  export default {
-    // components: {
-    // },
-    data() {
-      return {
-        title : 'ciao',
-      }
-    },
-    methods: {
-    }
+import Home from '../pages/Home.vue';
+import serdCard from '../components/serdCard.vue';
+
+export default {
+  components: { 
+    serdCard, 
+    Home,
   }
+}
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 </style>

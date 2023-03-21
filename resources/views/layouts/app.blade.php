@@ -73,7 +73,8 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            @yield('content') 
+            @yield('vuecontent')
         </main>
     </div>
 </body>

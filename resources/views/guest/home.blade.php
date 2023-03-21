@@ -11,8 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <script>
    
   </script>
@@ -20,10 +20,12 @@
 <body>
 
   <div id="app">
-    ciao
+   
+
   </div>
 
   <!-- Scripts -->
   <script src="{{ asset('js/front.js') }}" defer></script>
+
 </body>
 </html>
