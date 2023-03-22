@@ -79,7 +79,6 @@ class SerdCardsController extends Controller
                 $query=SerdToxicologyReport::where('serd_card_id', '=', $serdCard->id)->orderBy('tsa_date', 'desc');
                 $SerdToxicologyReport=$query->first();
                 $allSerdToxicologyReports=SerdToxicologyReport::where('serd_card_id', '=', $serdCard->id)->orderBy('tsa_date', 'desc')->get();
-
             }
             if (SerdPsychologicalAnamnesis::where('serd_card_id', '=', $serdCard->id)->exists()) {
                 $query=SerdPsychologicalAnamnesis::where('serd_card_id', '=', $serdCard->id)->orderBy('psa_date', 'desc');

@@ -43,7 +43,7 @@
                                         <div class="row" style="margin-top:20px;">
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="item form-group" >
-                                                    <label for="priSubce" class="col-form-label col-md-2 col-sm-2 label-align">Sostanzia Primaria:</label>
+                                                    <label for="priSubce" class="col-form-label col-md-2 col-sm-2 label-align">Sostanza Primaria:</label>
                                                     <div class="col-md-10 col-sm-10 ">
                                                         <input type="text" id="priSubce"  v-model="serdCardTsc.priSubce" /> 
                                                     </div>
@@ -1215,9 +1215,9 @@
                     throw error
                 }
             }, 
-            // i2hFormatDate(date){
-            //     // return moment(date,"YYYY-MM-DD hh:mm").format('DD/MM/YYYY');
-            // },
+            i2hFormatDate(date){
+                // return moment(date,"YYYY-MM-DD hh:mm").format('DD/MM/YYYY');
+            },
             i2hFormatDate2(date){
                 const detentionStartDate = new Date(date);
                 // return moment(detentionStartDate,"YYYY-MM-DD hh:mm").format('DD/MM/YYYY');

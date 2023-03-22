@@ -1899,6 +1899,19 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyCard.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/psyCard.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/serdCard.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/serdCard.vue?vue&type=script&lang=js& ***!
@@ -2404,9 +2417,9 @@ __webpack_require__.r(__webpack_exports__);
         throw error;
       }
     },
-    // i2hFormatDate(date){
-    //     // return moment(date,"YYYY-MM-DD hh:mm").format('DD/MM/YYYY');
-    // },
+    i2hFormatDate: function i2hFormatDate(date) {
+      // return moment(date,"YYYY-MM-DD hh:mm").format('DD/MM/YYYY');
+    },
     i2hFormatDate2: function i2hFormatDate2(date) {
       var detentionStartDate = new Date(date);
       // return moment(detentionStartDate,"YYYY-MM-DD hh:mm").format('DD/MM/YYYY');
@@ -2471,15 +2484,61 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/Home.vue */ "./resources/js/pages/Home.vue");
-/* harmony import */ var _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/serdCard.vue */ "./resources/js/components/serdCard.vue");
+/* harmony import */ var _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/psyCard.vue */ "./resources/js/components/psyCard.vue");
+/* harmony import */ var _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/serdCard.vue */ "./resources/js/components/serdCard.vue");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    serdCard: _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Home: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    serdCard: _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Home: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    psyCard: _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyCard.vue?vue&type=template&id=6cd4d58b&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/psyCard.vue?vue&type=template&id=6cd4d58b&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _vm._m(0);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", [_vm._v("\n    ciao\n    "), _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "page-content"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "x_panel"
+  }, [_c("div", {
+    staticClass: "x_content"
+  }, [_c("div", {
+    staticClass: "tab-content",
+    attrs: {
+      id: "myTabContent"
+    }
+  })])])])])])])]);
+}];
+render._withStripped = true;
+
 
 /***/ }),
 
@@ -2553,7 +2612,7 @@ var render = function render() {
     attrs: {
       "for": "priSubce"
     }
-  }, [_vm._v("Sostanzia Primaria:")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Sostanza Primaria:")]), _vm._v(" "), _c("div", {
     staticClass: "col-md-10 col-sm-10"
   }, [_c("input", {
     directives: [{
@@ -5356,7 +5415,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("serdCard")], 1)], 1);
+  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("serdCard")], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -5377,6 +5436,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "*[data-v-91ac6b5c] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.labelWidth[data-v-6cd4d58b] {\r\n    min-width: 190px;\n}\n.dbTitle[data-v-6cd4d58b] {\r\n  background: #184140;\r\n  color: white;\r\n  padding: 10px;\r\n  font-weight: bold !important;\n}\n.item input[data-v-6cd4d58b], .item textarea[data-v-6cd4d58b] {\r\n  margin-left: 10px;\n}\n.treatment[data-v-6cd4d58b]{\r\n    border:1px double #f1f1f1;\r\n    margin: 1.5rem 0;\r\n    padding: 20px 15px;\r\n    font-style: italic; \r\n    box-shadow: 1px 1px 3px 1px #ccc; \r\n    border-radius: 5px;\r\n    color: #333;\n}\r\n", ""]);
 
 // exports
 
@@ -27618,6 +27696,36 @@ process.umask = function() { return 0; };
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=style&index=0&id=91ac6b5c&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/App.vue?vue&type=style&index=0&id=91ac6b5c&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -52273,6 +52381,93 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/components/psyCard.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/psyCard.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _psyCard_vue_vue_type_template_id_6cd4d58b_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./psyCard.vue?vue&type=template&id=6cd4d58b&scoped=true& */ "./resources/js/components/psyCard.vue?vue&type=template&id=6cd4d58b&scoped=true&");
+/* harmony import */ var _psyCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./psyCard.vue?vue&type=script&lang=js& */ "./resources/js/components/psyCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _psyCard_vue_vue_type_style_index_0_id_6cd4d58b_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css& */ "./resources/js/components/psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _psyCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _psyCard_vue_vue_type_template_id_6cd4d58b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _psyCard_vue_vue_type_template_id_6cd4d58b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "6cd4d58b",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/psyCard.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/psyCard.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/psyCard.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_psyCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./psyCard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_psyCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css& ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_psyCard_vue_vue_type_style_index_0_id_6cd4d58b_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyCard.vue?vue&type=style&index=0&id=6cd4d58b&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_psyCard_vue_vue_type_style_index_0_id_6cd4d58b_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_psyCard_vue_vue_type_style_index_0_id_6cd4d58b_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_psyCard_vue_vue_type_style_index_0_id_6cd4d58b_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_psyCard_vue_vue_type_style_index_0_id_6cd4d58b_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/psyCard.vue?vue&type=template&id=6cd4d58b&scoped=true&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/psyCard.vue?vue&type=template&id=6cd4d58b&scoped=true& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_psyCard_vue_vue_type_template_id_6cd4d58b_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./psyCard.vue?vue&type=template&id=6cd4d58b&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyCard.vue?vue&type=template&id=6cd4d58b&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_psyCard_vue_vue_type_template_id_6cd4d58b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_psyCard_vue_vue_type_template_id_6cd4d58b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/serdCard.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/serdCard.vue ***!
@@ -52551,6 +52746,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/Home.vue */ "./resources/js/pages/Home.vue");
 /* harmony import */ var _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/serdCard.vue */ "./resources/js/components/serdCard.vue");
+/* harmony import */ var _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/psyCard.vue */ "./resources/js/components/psyCard.vue");
+
 
 
 var routes = [{
@@ -52561,6 +52758,10 @@ var routes = [{
   path: "/test",
   name: "serdCard",
   component: _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+}, {
+  path: "/test2",
+  name: "psyCard",
+  component: _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 

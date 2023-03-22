@@ -49,4 +49,9 @@ class UserInstance extends Model
     {
         return $this->hasMany(DocumentFile::class);
     }
+
+    public function PsyCard()
+    {
+        return $this->hasMany(PsyCard::class,'user_instance_id');
+    }
 }

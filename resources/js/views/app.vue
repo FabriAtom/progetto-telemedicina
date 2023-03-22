@@ -6,6 +6,7 @@
     <router-view></router-view>
 
     <div>
+      <psyCard/>
       <serdCard/>
     </div>
     
@@ -14,12 +15,14 @@
 
 <script>
 import Home from '../pages/Home.vue';
+import psyCard from '../components/psyCard.vue';
 import serdCard from '../components/serdCard.vue';
 
 export default {
   components: { 
     serdCard, 
     Home,
+    psyCard
   }
 }
 </script>
