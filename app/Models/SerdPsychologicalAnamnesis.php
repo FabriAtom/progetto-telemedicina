@@ -27,6 +27,6 @@ class SerdPsychologicalAnamnesis extends Model
     protected $primaryKey = 'id';
     public function SerdCard()
     {
-        return $this->belongsTo(SerdCard::class);
+        return $this->belongsTo(psyCard::class);
     }
 }

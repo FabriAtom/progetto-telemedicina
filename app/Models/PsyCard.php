@@ -17,7 +17,12 @@ class PsyCard extends Model
 
 
     public function UserInstance()
-{
-    return $this->belongsTo(UserInstance::class);
-}
+    {
+        return $this->belongsTo(UserInstance::class);
+    }
+
+    public function PsySuicideAssessments()
+    {
+        return $this->hasMany(PsySuicideAssessment::class);
+    }
 }

@@ -1908,7 +1908,221 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony import */ var _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/ApiUrl */ "./resources/js/config/ApiUrl.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'psyCard',
+  data: function data() {
+    return {
+      userName: 'Andrea',
+      userLastName: 'Giovanni',
+      userFullName: '',
+      userInstance: 1,
+      userId: 0,
+      selectedOption: null,
+      sum: 0,
+      accessData: [function (id) {
+        return 14;
+      }, function (name) {
+        return 'Alessio';
+      }, function (lastname) {
+        return 'Ortu';
+      }],
+      psySaDoctorId: 0,
+      psySaDoctorName: '',
+      psySaDoctorLastname: '',
+      psySaDate: null,
+      psyCardId: null,
+      date: new Date(),
+      psyCardTsc: {},
+      psyriskFactor: {},
+      mainTitle: "psy",
+      firstSave: true,
+      sASaved: false,
+      btnSaSend: "Salva",
+      total: 0,
+      allPsySuicideAssessments: null
+    };
+  },
+  created: function created() {
+    // this.getPermissions();
+    this.getPsyCardsByUserInstanceId(1);
+  },
+  methods: {
+    calculateSum: function calculateSum() {
+      // Calcola la somma delle opzioni selezionate
+      //this.sum = parseInt(this.selectedOption) || 0;
+
+      var i = 0;
+      for (var property in this.psyriskFactor) {
+        i += parseInt(this.psyriskFactor[property]);
+      }
+      console.log(i);
+      this.sum = i;
+    },
+    addPsyCard: function addPsyCard(panel) {
+      var _this = this;
+      var _wm = this;
+      var _panel = panel;
+      var _errors = 0;
+      var _errorTitle = "Scheda";
+      var _errorDescription = "Non aggiornata";
+      var form = new FormData();
+      form.append('userName', this.userName);
+      form.append('userLastName', this.userLastName);
+      form.append('userFullName', this.userFullName);
+      form.append('userInstance', this.userInstance);
+      form.append('userId', this.userId);
+      form.append('doctorId', this.accessData.id);
+      form.append('doctorName', this.accessData.name);
+      form.append('doctorUserName', this.accessData.lastname);
+      if (_panel == 'sa') {
+        if (!this.sASaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+          if (this.psyCardId) {
+            form.append('psyId', this.psyCardId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+        }
+        form.append('section', 'sa');
+        if (!this.isObjEmpty(this.psyCardTsc)) {
+          var _psyCard = JSON.stringify(this.psyCardTsc);
+          form.append('psyCard', _psyCard);
+        }
+      }
+      if (_errors == 0) {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_PSY_CARD"], form).then(function (response) {
+            var error = response.data.errorNumber;
+            var _attempts = response.data.attempts;
+            _wm.errNum = error;
+            if (error == 0) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
+              _this.getPsyCardsByUserInstanceId(_this.userInstance);
+            } else {
+              // eventBus.$emit('errorEvent', error, _attempts);
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
+            }
+          });
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
+      }
+    },
+    getPsyCards: function getPsyCards() {
+      //GET ALL SERCARDS
+      var _wm = this;
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS"]).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getPsyCardById: function getPsyCardById(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARD_BY_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getPsyCardsByUserInstanceId: function getPsyCardsByUserInstanceId(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS_BY_USER_INSTANCE_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          alert(JSON.stringify(response.data));
+          if (error == 0) {
+            _wm.mainTitle = "Aggiornamento Cartella psy";
+            if (response.data.PsySuicideAssessment) {
+              _wm.sASaved = true;
+              _wm.btnSaSend = "Aggiorna";
+              var _SuicideRep = response.data.PsySuicideAssessment;
+              _wm.psyCardId = response.data.psyCard.id;
+              _wm.psySaDoctorId = _SuicideRep.id_doctor;
+              _wm.psySaDoctorName = _SuicideRep.doctor_name;
+              _wm.psySaDoctorLastname = _SuicideRep.doctor_lastname;
+              // _wm.psySaDate = _wm.i2hFormatDate(_SuicideRep.sa_date);
+
+              _wm.psyriskFactor.maritalStatus = _SuicideRep.marital_status;
+              _wm.psyriskFactor.drugAndAlcoholAbuse = _SuicideRep.drug_and_alcohol_abuse;
+              _wm.psyriskFactor.psychiatricAspect = _SuicideRep.psychiatric_aspect;
+              _wm.psyriskFactor.suicideAttempt = _SuicideRep.suicide_attempt;
+              _wm.psyriskFactor.suicideAttemptInInstitution = _SuicideRep.suicide_attempt_in_institution;
+              _wm.psyriskFactor.familySuicide = _SuicideRep.family_suicide;
+              _wm.psyriskFactor.arrestStory = _SuicideRep.arrest_story;
+              _wm.psyriskFactor.compulsiveBehavior = _SuicideRep.compulsive_behavior;
+              _wm.psyriskFactor.highCrimeProfile = _SuicideRep.high_crime_profile;
+              _wm.psyriskFactor.currentIntoxication = _SuicideRep.current_intoxication;
+              _wm.psyriskFactor.worryAboutLifeProblem = _SuicideRep.worry_about_life_problem;
+              _wm.psyriskFactor.feelingOfHopelessness = _SuicideRep.feeling_of_hopelessness;
+              _wm.psyriskFactor.psychoticSymptom = _SuicideRep.psychotic_symptom;
+              _wm.psyriskFactor.depressiveSymptom = _SuicideRep.depressive_symptom;
+              _wm.psyriskFactor.stressAndCoping = _SuicideRep.stress_and_coping;
+              _wm.psyriskFactor.socialSupport = _SuicideRep.social_support;
+              _wm.psyriskFactor.recentMajorLosse = _SuicideRep.recent_major_losse;
+              _wm.psyriskFactor.suicidalIdeation = _SuicideRep.suicidal_ideation;
+              _wm.psyriskFactor.suicidalIntent = _SuicideRep.suicidal_intent;
+              _wm.psyriskFactor.suicidePlan = _SuicideRep.suicide_plan;
+              _wm.psyCardTsc.psySuicideNote = _SuicideRep.psy_suicide_note;
+              _wm.psyCardTsc.imminentRiskOfSuicide = _SuicideRep.imminent_risk_of_suicide;
+              _wm.psyCardTsc.monitoringRecommendation = _SuicideRep.monitoring_recommendation;
+              _wm.psyCardTsc.frequency = _SuicideRep.frequency;
+              _wm.psyCardTsc.referralMentalHealthService = _SuicideRep.referral_mental_health_service;
+              _wm.psyCardTsc.comment = _SuicideRep.comment;
+              _wm.allPsySuicideAssessments = response.data.allPsySuicideAssessments;
+            } else {
+              _wm.btnSaSend = "Salva";
+            }
+            _wm.firstSave = false;
+          } else if (error == 7) {
+            _wm.btnSaSend = "Salva";
+            _wm.firstSave = true;
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    }
+  }
+});
 
 /***/ }),
 
@@ -2449,31 +2663,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Home.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Home.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/serdCard.vue */ "./resources/js/components/serdCard.vue");
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Home',
-  components: {
-    SerdCard: _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  data: function data() {
-    return {
-      title: 'Home Page'
-    };
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/App.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/App.vue?vue&type=script&lang=js& ***!
@@ -2513,12 +2702,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", [_vm._v("\n    ciao\n    "), _c("div", {
+  return _c("div", {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "page-content"
@@ -2528,14 +2712,1935 @@ var staticRenderFns = [function () {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "x_panel"
-  }, [_c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "x_content"
-  }, [_c("div", {
-    staticClass: "tab-content",
+  }, [_c("form", {
+    staticClass: "form-horizontal form-label-left align-items-center",
     attrs: {
-      id: "myTabContent"
+      id: "demo-form2",
+      "data-parsley-validate": ""
     }
-  })])])])])])])]);
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "marital_status"
+    }
+  }, [_vm._v("1. Stato civile")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.maritalStatus,
+      expression: "psyriskFactor.maritalStatus"
+    }],
+    attrs: {
+      type: "radio",
+      name: "marital_status",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.maritalStatus, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "maritalStatus", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.maritalStatus,
+      expression: "psyriskFactor.maritalStatus"
+    }],
+    attrs: {
+      type: "radio",
+      name: "marital_status",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.maritalStatus, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "maritalStatus", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.maritalStatus,
+      expression: "psyriskFactor.maritalStatus"
+    }],
+    attrs: {
+      type: "radio",
+      name: "marital_status",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.maritalStatus, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "maritalStatus", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("p", [_vm._v("Somma: " + _vm._s(_vm.sum))])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "drug_and_alcohol_abuse"
+    }
+  }, [_vm._v("2. Abuso di droga o alcol")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.drugAndAlcoholAbuse,
+      expression: "psyriskFactor.drugAndAlcoholAbuse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "drug_and_alcohol_abuse",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.drugAndAlcoholAbuse, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "drugAndAlcoholAbuse", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.drugAndAlcoholAbuse,
+      expression: "psyriskFactor.drugAndAlcoholAbuse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "drug_and_alcohol_abuse",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.drugAndAlcoholAbuse, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "drugAndAlcoholAbuse", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.drugAndAlcoholAbuse,
+      expression: "psyriskFactor.drugAndAlcoholAbuse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "drug_and_alcohol_abuse",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.drugAndAlcoholAbuse, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "drugAndAlcoholAbuse", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "psychiatric_aspect"
+    }
+  }, [_vm._v("3. Aspetti psichiatrici")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychiatricAspect,
+      expression: "psyriskFactor.psychiatricAspect"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychiatric_aspect",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychiatricAspect, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychiatricAspect", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychiatricAspect,
+      expression: "psyriskFactor.psychiatricAspect"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychiatric_aspect",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychiatricAspect, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychiatricAspect", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychiatricAspect,
+      expression: "psyriskFactor.psychiatricAspect"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychiatric_aspect",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychiatricAspect, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychiatricAspect", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "suicide_attempt"
+    }
+  }, [_vm._v("4. Tentativi di suicidio")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttempt,
+      expression: "psyriskFactor.suicideAttempt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttempt, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttempt", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttempt,
+      expression: "psyriskFactor.suicideAttempt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttempt, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttempt", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttempt,
+      expression: "psyriskFactor.suicideAttempt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttempt, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttempt", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "suicide_attempt_in_institution"
+    }
+  }, [_vm._v("5. Tentativi di suicidio nelle istituzioni")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttemptInInstitution,
+      expression: "psyriskFactor.suicideAttemptInInstitution"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt_in_institution",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttemptInInstitution, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttemptInInstitution", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttemptInInstitution,
+      expression: "psyriskFactor.suicideAttemptInInstitution"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt_in_institution",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttemptInInstitution, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttemptInInstitution", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttemptInInstitution,
+      expression: "psyriskFactor.suicideAttemptInInstitution"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt_in_institution",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttemptInInstitution, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttemptInInstitution", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "family_suicide"
+    }
+  }, [_vm._v("6. Suicidi in famiglia")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.familySuicide,
+      expression: "psyriskFactor.familySuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "family_suicide",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.familySuicide, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "familySuicide", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.familySuicide,
+      expression: "psyriskFactor.familySuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "family_suicide",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.familySuicide, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "familySuicide", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.familySuicide,
+      expression: "psyriskFactor.familySuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "family_suicide",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.familySuicide, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "familySuicide", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "arrest_story"
+    }
+  }, [_vm._v("7. Storia dell'arresto")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.arrestStory,
+      expression: "psyriskFactor.arrestStory"
+    }],
+    attrs: {
+      type: "radio",
+      name: "arrest_story",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.arrestStory, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "arrestStory", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.arrestStory,
+      expression: "psyriskFactor.arrestStory"
+    }],
+    attrs: {
+      type: "radio",
+      name: "arrest_story",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.arrestStory, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "arrestStory", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.arrestStory,
+      expression: "psyriskFactor.arrestStory"
+    }],
+    attrs: {
+      type: "radio",
+      name: "arrest_story",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.arrestStory, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "arrestStory", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "compulsive_behavior"
+    }
+  }, [_vm._v("8. Comportamento impulsivo")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.compulsiveBehavior,
+      expression: "psyriskFactor.compulsiveBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "compulsive_behavior",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.compulsiveBehavior, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "compulsiveBehavior", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.compulsiveBehavior,
+      expression: "psyriskFactor.compulsiveBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "compulsive_behavior",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.compulsiveBehavior, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "compulsiveBehavior", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.compulsiveBehavior,
+      expression: "psyriskFactor.compulsiveBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "compulsive_behavior",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.compulsiveBehavior, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "compulsiveBehavior", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "high_crime_profile"
+    }
+  }, [_vm._v("9. Alto profilo del delitto o posizione di prestigio")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.highCrimeProfile,
+      expression: "psyriskFactor.highCrimeProfile"
+    }],
+    attrs: {
+      type: "radio",
+      name: "high_crime_profile",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.highCrimeProfile, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "highCrimeProfile", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.highCrimeProfile,
+      expression: "psyriskFactor.highCrimeProfile"
+    }],
+    attrs: {
+      type: "radio",
+      name: "high_crime_profile",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.highCrimeProfile, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "highCrimeProfile", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.highCrimeProfile,
+      expression: "psyriskFactor.highCrimeProfile"
+    }],
+    attrs: {
+      type: "radio",
+      name: "high_crime_profile",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.highCrimeProfile, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "highCrimeProfile", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "current_intoxication"
+    }
+  }, [_vm._v("10. Intossicazione attuale")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.currentIntoxication,
+      expression: "psyriskFactor.currentIntoxication"
+    }],
+    attrs: {
+      type: "radio",
+      name: "current_intoxication",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.currentIntoxication, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "currentIntoxication", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.currentIntoxication,
+      expression: "psyriskFactor.currentIntoxication"
+    }],
+    attrs: {
+      type: "radio",
+      name: "current_intoxication",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.currentIntoxication, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "currentIntoxication", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.currentIntoxication,
+      expression: "psyriskFactor.currentIntoxication"
+    }],
+    attrs: {
+      type: "radio",
+      name: "current_intoxication",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.currentIntoxication, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "currentIntoxication", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align-end",
+    attrs: {
+      "for": "worry_about_life_problem"
+    }
+  }, [_vm._v("11. Preoccupazione per i problemi della vita")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.worryAboutLifeProblem,
+      expression: "psyriskFactor.worryAboutLifeProblem"
+    }],
+    attrs: {
+      type: "radio",
+      name: "worry_about_life_problem",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.worryAboutLifeProblem, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "worryAboutLifeProblem", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.worryAboutLifeProblem,
+      expression: "psyriskFactor.worryAboutLifeProblem"
+    }],
+    attrs: {
+      type: "radio",
+      name: "worry_about_life_problem",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.worryAboutLifeProblem, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "worryAboutLifeProblem", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.worryAboutLifeProblem,
+      expression: "psyriskFactor.worryAboutLifeProblem"
+    }],
+    attrs: {
+      type: "radio",
+      name: "worry_about_life_problem",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.worryAboutLifeProblem, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "worryAboutLifeProblem", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "feeling_of_hopelessness"
+    }
+  }, [_vm._v("12. Sentimenti di disperazione o di eccessivi sensi di colpa")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.feelingOfHopelessness,
+      expression: "psyriskFactor.feelingOfHopelessness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_hopelessness",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.feelingOfHopelessness, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "feelingOfHopelessness", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.feelingOfHopelessness,
+      expression: "psyriskFactor.feelingOfHopelessness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_hopelessness",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.feelingOfHopelessness, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "feelingOfHopelessness", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.feelingOfHopelessness,
+      expression: "psyriskFactor.feelingOfHopelessness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_hopelessness",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.feelingOfHopelessness, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "feelingOfHopelessness", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "psychotic_symptom"
+    }
+  }, [_vm._v("13. Sintomi psicotici o disturbi del pensiero")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychoticSymptomdepressiveSymptom,
+      expression: "psyriskFactor.psychoticSymptomdepressiveSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychotic_symptom",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychoticSymptomdepressiveSymptom, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychoticSymptomdepressiveSymptom", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychoticSymptomdepressiveSymptom,
+      expression: "psyriskFactor.psychoticSymptomdepressiveSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychotic_symptom",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychoticSymptomdepressiveSymptom, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychoticSymptomdepressiveSymptom", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychoticSymptomdepressiveSymptom,
+      expression: "psyriskFactor.psychoticSymptomdepressiveSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychotic_symptom",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychoticSymptomdepressiveSymptom, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychoticSymptomdepressiveSymptom", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "depressive_symptom"
+    }
+  }, [_vm._v("14. Sintomatologia depressiva")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.depressiveSymptom,
+      expression: "psyriskFactor.depressiveSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depressive_symptom",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.depressiveSymptom, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "depressiveSymptom", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.depressiveSymptom,
+      expression: "psyriskFactor.depressiveSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depressive_symptom",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.depressiveSymptom, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "depressiveSymptom", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.depressiveSymptom,
+      expression: "psyriskFactor.depressiveSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depressive_symptom",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.depressiveSymptom, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "depressiveSymptom", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "stress_and_coping"
+    }
+  }, [_vm._v("15. Stress e coping")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.stressAndCoping,
+      expression: "psyriskFactor.stressAndCoping"
+    }],
+    attrs: {
+      type: "radio",
+      name: "stress_and_coping",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.stressAndCoping,
+      expression: "psyriskFactor.stressAndCoping"
+    }],
+    attrs: {
+      type: "radio",
+      name: "stress_and_coping",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.stressAndCoping,
+      expression: "psyriskFactor.stressAndCoping"
+    }],
+    attrs: {
+      type: "radio",
+      name: "stress_and_coping",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "social_support"
+    }
+  }, [_vm._v("16. Sostegno sociale")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.stressAndCoping,
+      expression: "psyriskFactor.stressAndCoping"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_support",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.stressAndCoping,
+      expression: "psyriskFactor.stressAndCoping"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_support",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.stressAndCoping,
+      expression: "psyriskFactor.stressAndCoping"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_support",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "recent_major_losse"
+    }
+  }, [_vm._v("17. Recenti perdite importanti")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.recentMajorLosse,
+      expression: "psyriskFactor.recentMajorLosse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "recent_major_losse",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.recentMajorLosse, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "recentMajorLosse", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.recentMajorLosse,
+      expression: "psyriskFactor.recentMajorLosse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "recent_major_losse",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.recentMajorLosse, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "recentMajorLosse", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.recentMajorLosse,
+      expression: "psyriskFactor.recentMajorLosse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "recent_major_losse",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.recentMajorLosse, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "recentMajorLosse", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "suicidal_ideation"
+    }
+  }, [_vm._v("18. Ideazione suicidaria")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIdeation,
+      expression: "psyriskFactor.suicidalIdeation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_ideation",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIdeation, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIdeation", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIdeation,
+      expression: "psyriskFactor.suicidalIdeation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_ideation",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIdeation, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIdeation", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIdeation,
+      expression: "psyriskFactor.suicidalIdeation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_ideation",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIdeation, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIdeation", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "suicidal_intent"
+    }
+  }, [_vm._v("19. Intento suicidario")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIntent,
+      expression: "psyriskFactor.suicidalIntent"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_intent",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIntent, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIntent", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIntent,
+      expression: "psyriskFactor.suicidalIntent"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_intent",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIntent, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIntent", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIntent,
+      expression: "psyriskFactor.suicidalIntent"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_intent",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIntent, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIntent", "2");
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "suicide_plan"
+    }
+  }, [_vm._v("20. Piano di suicidio")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidePlan,
+      expression: "psyriskFactor.suicidePlan"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_plan",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidePlan, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidePlan", "0");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidePlan,
+      expression: "psyriskFactor.suicidePlan"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_plan",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidePlan, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidePlan", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidePlan,
+      expression: "psyriskFactor.suicidePlan"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_plan",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidePlan, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidePlan", "2");
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.sum,
+      expression: "sum"
+    }],
+    attrs: {
+      type: "text",
+      name: "punteggio"
+    },
+    domProps: {
+      value: _vm.sum
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.sum = $event.target.value;
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "psy_suicide_note"
+    }
+  }, [_vm._v("Note/altre considerazioni:")]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardTsc.psySuicideNote,
+      expression: "psyCardTsc.psySuicideNote"
+    }],
+    attrs: {
+      name: "psy_suicide_note",
+      cols: "25",
+      rows: "5"
+    },
+    domProps: {
+      value: _vm.psyCardTsc.psySuicideNote
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardTsc, "psySuicideNote", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group",
+    staticStyle: {
+      "padding-top": "2rem"
+    }
+  }, [_vm._m(2), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Alto")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardTsc.imminentRiskOfSuicide,
+      expression: "psyCardTsc.imminentRiskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "imminent_risk_of_suicide",
+      value: "alto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardTsc.imminentRiskOfSuicide, "alto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardTsc, "imminentRiskOfSuicide", "alto");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Medio")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardTsc.imminentRiskOfSuicide,
+      expression: "psyCardTsc.imminentRiskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "imminent_risk_of_suicide",
+      value: "medio"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardTsc.imminentRiskOfSuicide, "medio")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardTsc, "imminentRiskOfSuicide", "medio");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Basso")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardTsc.imminentRiskOfSuicide,
+      expression: "psyCardTsc.imminentRiskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "imminent_risk_of_suicide",
+      value: "basso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardTsc.imminentRiskOfSuicide, "basso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardTsc, "imminentRiskOfSuicide", "basso");
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("h1", {
+    staticStyle: {
+      "text-align": "center",
+      "margin-top": "70px",
+      "margin-bottom": "10px"
+    }
+  }, [_vm._v("Azioni da avviare")]), _vm._v(" "), _c("div", {
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px"
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(3), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Si")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardTsc.monitoringRecommendation,
+      expression: "psyCardTsc.monitoringRecommendation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "monitoring_recommendation",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardTsc.monitoringRecommendation, "1")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardTsc, "monitoringRecommendation", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("No")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardTsc.monitoringRecommendation,
+      expression: "psyCardTsc.monitoringRecommendation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "monitoring_recommendation",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardTsc.monitoringRecommendation, "0")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardTsc, "monitoringRecommendation", "0");
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(4), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("24 ore")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardTsc.frequency,
+      expression: "psyCardTsc.frequency"
+    }],
+    attrs: {
+      type: "radio",
+      name: "frequency",
+      value: "24 ore"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardTsc.frequency, "24 ore")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardTsc, "frequency", "24 ore");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("15 min.")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardTsc.frequency,
+      expression: "psyCardTsc.frequency"
+    }],
+    attrs: {
+      type: "radio",
+      name: "frequency",
+      value: "15 min"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardTsc.frequency, "15 min")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardTsc, "frequency", "15 min");
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px"
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(5), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Si")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardTsc.referralMentalHealthService,
+      expression: "psyCardTsc.referralMentalHealthService"
+    }],
+    attrs: {
+      type: "radio",
+      name: "referral_mental_health_service",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardTsc.referralMentalHealthService, "1")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardTsc, "referralMentalHealthService", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("No")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardTsc.referralMentalHealthService,
+      expression: "psyCardTsc.referralMentalHealthService"
+    }],
+    attrs: {
+      type: "radio",
+      name: "referral_mental_health_service",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardTsc.referralMentalHealthService, "0")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardTsc, "referralMentalHealthService", "0");
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "comment"
+    }
+  }, [_vm._v("Commenti/altre raccomandazioni:")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardTsc.comment,
+      expression: "psyCardTsc.comment"
+    }],
+    attrs: {
+      name: "comment",
+      cols: "25",
+      rows: "5"
+    },
+    domProps: {
+      value: _vm.psyCardTsc.comment
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardTsc, "comment", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" \n\n                                " + _vm._s(_vm.psyCardTsc) + "\n                                "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("span", {
+    staticClass: "btn btn-success i2hBtn",
+    on: {
+      click: function click($event) {
+        return _vm.addPsyCard("sa");
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.btnSaSend))])])])])])])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px"
+    }
+  }, [_c("span", {
+    staticStyle: {
+      "margin-left": "10px"
+    }
+  }, [_c("strong", [_vm._v("Fattori di rischio")])]), _vm._v(" "), _c("span", {
+    staticStyle: {
+      "margin-left": "510px"
+    }
+  }, [_c("strong", [_vm._v("Scala (0, 1, 2)")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "total_score"
+    }
+  }, [_c("strong", [_c("h2", [_vm._v("Punteggio totale:")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "imminent_risk_of_suicide"
+    }
+  }, [_c("strong", [_vm._v("Rischio imminente di suicidio:")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "monitoring_recommendation"
+    }
+  }, [_c("strong", [_vm._v("Raccomandazione di monitoraggio:")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "frequency"
+    }
+  }, [_c("strong", [_vm._v("Frequenza:")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "referral_mental_health_service"
+    }
+  }, [_c("strong", [_vm._v("Invio al servizio di Salute mentale:")])]);
 }];
 render._withStripped = true;
 
@@ -5374,28 +7479,6 @@ var staticRenderFns = [function () {
     staticClass: "card-title"
   }, [_vm._v("Archivio")])]);
 }];
-render._withStripped = true;
-
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Home.vue?vue&type=template&id=b3c5cf30&scoped=true&":
-/*!********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Home.vue?vue&type=template&id=b3c5cf30&scoped=true& ***!
-  \********************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", [_c("section", [_c("SerdCard")], 1)]);
-};
-var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -52559,7 +54642,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************!*\
   !*** ./resources/js/config/ApiUrl.js ***!
   \***************************************/
-/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD */
+/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_PSY_CARD, ADD_SUICIDE_ASSESSMENT */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52579,6 +54662,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_PSICHOLOGICAL_ANAMNESIS", function() { return ADD_PSICHOLOGICAL_ANAMNESIS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_SOCIAL_FOLDER", function() { return ADD_SOCIAL_FOLDER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_SERD_CARD", function() { return DELETE_SERD_CARD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_PSY_CARDS", function() { return GET_PSY_CARDS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_PSY_CARD_BY_ID", function() { return GET_PSY_CARD_BY_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_PSY_CARDS_BY_USER_INSTANCE_ID", function() { return GET_PSY_CARDS_BY_USER_INSTANCE_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_SUICIDE_ASSESSMENT_BY_PSY_ID", function() { return GET_SUICIDE_ASSESSMENT_BY_PSY_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_PSY_CARD", function() { return ADD_PSY_CARD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_SUICIDE_ASSESSMENT", function() { return ADD_SUICIDE_ASSESSMENT; });
 var GET_PERMISSIONS = '/serd/getpermissions';
 var GET_SERD_CARDS = '/serd/getSerdCards';
 var GET_SERD_CARD_BY_ID = '/serd/getSerdCardById';
@@ -52594,6 +54683,12 @@ var ADD_TOXICOLOGY_REPORT = '/serd/addToxicologyReport';
 var ADD_PSICHOLOGICAL_ANAMNESIS = '/serd/addPsychologicalAnamnesis';
 var ADD_SOCIAL_FOLDER = '/serd/addSocialFolder';
 var DELETE_SERD_CARD = '/serd/destroy';
+var GET_PSY_CARDS = '/psy/getPsyCards';
+var GET_PSY_CARD_BY_ID = '/psy/getPsyCardById';
+var GET_PSY_CARDS_BY_USER_INSTANCE_ID = '/psy/getPsyCardsByUserIstanceId';
+var GET_SUICIDE_ASSESSMENT_BY_PSY_ID = '/psy/getSuicideAssessmentsByPsyId';
+var ADD_PSY_CARD = '/psy/store';
+var ADD_SUICIDE_ASSESSMENT = '/psy/addSuicideAssessment';
 
 /***/ }),
 
@@ -52650,63 +54745,26 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Home_vue_vue_type_template_id_b3c5cf30_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=b3c5cf30&scoped=true& */ "./resources/js/pages/Home.vue?vue&type=template&id=b3c5cf30&scoped=true&");
-/* harmony import */ var _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home.vue?vue&type=script&lang=js& */ "./resources/js/pages/Home.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Home_vue_vue_type_template_id_b3c5cf30_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Home_vue_vue_type_template_id_b3c5cf30_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
   false,
   null,
-  "b3c5cf30",
+  null,
   null
   
 )
 
-/* hot reload */
-if (false) { var api; }
 component.options.__file = "resources/js/pages/Home.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/pages/Home.vue?vue&type=script&lang=js&":
-/*!**************************************************************!*\
-  !*** ./resources/js/pages/Home.vue?vue&type=script&lang=js& ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Home.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/pages/Home.vue?vue&type=template&id=b3c5cf30&scoped=true&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/pages/Home.vue?vue&type=template&id=b3c5cf30&scoped=true& ***!
-  \********************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_b3c5cf30_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=template&id=b3c5cf30&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Home.vue?vue&type=template&id=b3c5cf30&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_b3c5cf30_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_b3c5cf30_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
 
 /***/ }),
 

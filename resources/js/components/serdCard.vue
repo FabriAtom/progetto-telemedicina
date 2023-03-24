@@ -738,12 +738,15 @@
                 serdSfDoctorName:'',
                 serdSfDoctorLastname:'',
                 serdSfDate:null,
+                
                 serdCardId:null,
                 date:new Date(),
                 serdCardTsc:{},
+
                 serdCardPsy:{},
                 serdCardSf:{},
                 cows:{},
+
                 asssessmentReason:'',
                 restingPulseRate:0,
                 degreeOfAbstinence:0,
@@ -779,7 +782,6 @@
                     this.abstinenceDegreeScore = "grave"
                 }
             },
-            
         },
 
         created: function () {

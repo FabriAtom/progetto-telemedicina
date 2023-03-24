@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
         <section>
            <SerdCard/>
@@ -26,4 +26,4 @@ export default {
 
 <style lang="scss" scoped>
 
-</style>
+</style> -->

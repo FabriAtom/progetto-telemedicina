@@ -219,7 +219,7 @@ class SerdCardsController extends Controller
         $userId=$request->input("userId");
         $_toxicologyAnamnesis = new SerdToxicologyReport;
         $now=date("Y-m-d H:i:s");  
-        $_toxicologyAnamnesis->serd_card_id=$serdId;
+        $_toxicologyAnamnesis->serd_card_id=$serdId; 
         if($request->has('doctorId')){
             $_toxicologyAnamnesis->id_doctor=$request->input('doctorId');
         }
@@ -335,7 +335,7 @@ class SerdCardsController extends Controller
                 $_toxicologyAnamnesis->venipuncture_marks=$serdCardArr['venipunctureMarks'];
             }
         }
-        if($request->has('asssessmentReason')){
+        if($request->has('assessmentReason')){
             $_toxicologyAnamnesis->assessment_reason=$request->input('asssessmentReason');    
         }
         if($request->has('restingPulseRate')){   

@@ -17,3 +17,15 @@ export const ADD_TOXICOLOGY_REPORT= '/serd/addToxicologyReport';
 export const ADD_PSICHOLOGICAL_ANAMNESIS= '/serd/addPsychologicalAnamnesis';
 export const ADD_SOCIAL_FOLDER= '/serd/addSocialFolder';
 export const DELETE_SERD_CARD= '/serd/destroy';
+
+
+
+export const GET_PSY_CARDS = '/psy/getPsyCards';
+export const GET_PSY_CARD_BY_ID = '/psy/getPsyCardById';
+export const GET_PSY_CARDS_BY_USER_INSTANCE_ID = '/psy/getPsyCardsByUserIstanceId';
+export const GET_SUICIDE_ASSESSMENT_BY_PSY_ID= '/psy/getSuicideAssessmentsByPsyId';
+
+export const ADD_PSY_CARD= '/psy/store';
+export const ADD_SUICIDE_ASSESSMENT= '/psy/addSuicideAssessment';
+
+

@@ -33,7 +33,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/serd/getSerdCards', [App\Http\Controllers\SerdCardsController::class,'index'])->name('getSerdCards');
 Route::get('/serd/getSerdCardById/{id}', [App\Http\Controllers\SerdCardsController::class,'getSerdCardById'])->name('getSerdCardById');
 Route::get('/serd/getSerdCardsByUserIstanceId/{id}', [App\Http\Controllers\SerdCardsController::class,'getSerdCardsByUserIstanceId'])->name('getSerdCardsByUserIstanceId');
-Route::get('/serd/getToxicologyReportsBySerdId/{id}', [App\Http\Controllers\SerdCardsController::class,'getToxicologyReportsBySerdId'])->name('getToxicologyReporstBySerdId');
+Route::get('/serd/getToxicologyReportsBySerdId/{id}', [App\Http\Controllers\SerdCardsController::class,'getToxicologyReportsBySerdId'])->name('getToxicologyReportsBySerdId');
 Route::get('/serd/getPsychologicalAnamnesesBySerdId/{id}', [App\Http\Controllers\SerdCardsController::class,'getPsychologicalAnamnesesBySerdId'])->name('getPsychologicalAnamnesesBySerdId');
 Route::get('/serd/getSocialFoldersBySerdId/{id}', [App\Http\Controllers\SerdCardsController::class,'getSocialFoldersBySerdId'])->name('getSocialFoldersBySerdId');
 Route::get('/serd/getCurrentToxicologyReportBySerdId/{id}', [App\Http\Controllers\SerdCardsController::class,'getCurrentToxicologyReportBySerdId'])->name('getCurrentToxicologyReportBySerdId');
@@ -51,6 +51,21 @@ Route::get('/test', function () {
     return view('guest.home');
 });
 
+// Route::get('/test2', function () {
+//     return view('guest.');
+// });
+
 Route::get('/serd/getpermissions', [App\Http\Controllers\SerdCardsController::class,'getPermissions'])->name('getUserPermissions');
+
+
+
+
+
+Route::get('/psy/getPsyCards', [App\Http\Controllers\PsyCardsController::class,'index'])->name('getPsyCards');
+Route::get('/psy/getPsyCardById/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsyCardById'])->name('getPsyCardById');
+Route::get('/psy/getPsyCardsByUserIstanceId/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsyCardsByUserIstanceId'])->name('getPsyCardsByUserIstanceId');
+Route::get('/psy/getSuicideAssessmentsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getSuicideAssessmentsByPsyId'])->name('getSuicideAssessmentsByPsyId');
+
+Route::get('/psy/getpermissions', [App\Http\Controllers\PsyCardsController::class,'getPermissions'])->name('getUserPermissions');
 
 
