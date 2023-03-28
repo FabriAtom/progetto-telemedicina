@@ -2,7 +2,6 @@
 
 @section('vuecontent')
 
-    
 
 @endsection 
 

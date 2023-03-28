@@ -7,22 +7,26 @@
 
     <div>
       <psyCard/>
-      <serdCard/>
+      <!-- <serdCard/> -->
+      <!-- <psyMentalHealthDepartment/> -->
     </div>
     
   </div>
 </template>
 
 <script>
-import Home from '../pages/Home.vue';
+// import Home from '../pages/Home.vue';
 import psyCard from '../components/psyCard.vue';
 import serdCard from '../components/serdCard.vue';
+import psyMentalHealthDepartment from '../components/psyMentalHealthDepartment.vue';
+
 
 export default {
   components: { 
-    serdCard, 
-    Home,
-    psyCard
+    // serdCard, 
+    // Home,
+    psyCard,
+    // psyMentalHealthDepartment
   }
 }
 </script>

@@ -13,7 +13,7 @@ require('moment');
 Vue.use(VueMoment,{moment});
 
 
-Vue.component('serdCard-cmp', require('./components/serdCard.vue').default);
+//Vue.component('serdCard-cmp', require('./components/serdCard.vue').default);
 
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

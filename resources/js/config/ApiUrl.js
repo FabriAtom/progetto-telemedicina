@@ -23,9 +23,14 @@ export const DELETE_SERD_CARD= '/serd/destroy';
 export const GET_PSY_CARDS = '/psy/getPsyCards';
 export const GET_PSY_CARD_BY_ID = '/psy/getPsyCardById';
 export const GET_PSY_CARDS_BY_USER_INSTANCE_ID = '/psy/getPsyCardsByUserIstanceId';
-export const GET_SUICIDE_ASSESSMENT_BY_PSY_ID= '/psy/getSuicideAssessmentsByPsyId';
-
 export const ADD_PSY_CARD= '/psy/store';
+
+
+export const GET_SUICIDE_ASSESSMENT_BY_PSY_ID= '/psy/getSuicideAssessmentsByPsyId';
 export const ADD_SUICIDE_ASSESSMENT= '/psy/addSuicideAssessment';
+
+// Metal Health
+export const GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID= '/psy/getMentalHealthDepartmentsByPsyId';
+export const ADD_MENTAL_HEALTH_DEPARTMENT= '/psy/addMentalHealthDepartment';
 
 

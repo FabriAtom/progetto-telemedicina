@@ -8,6 +8,9 @@ class PsySuicideAssessment extends Model
 {
     protected $fillable = [
         'psy_card_id',
+        'id_doctor',
+        'doctor_name',
+        'doctor_lastname',
         'sa_date',
         'marital_status',
         'drug_and_alcohol_abuse',

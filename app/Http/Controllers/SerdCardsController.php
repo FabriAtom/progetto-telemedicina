@@ -148,9 +148,9 @@ class SerdCardsController extends Controller
             return [ "errorNumber"=>0,"message"=>"OK","SerdSocialFolder" => $SerdSocialFolder,"SerdId" => $request['id']];
         }else{
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
-        }  
-              
+        }          
     }
+    
     public function store(Request $request){
         if ($request->has(['userId', 'userInstance'])) {
             if ($request->has('action')) {
@@ -408,6 +408,7 @@ class SerdCardsController extends Controller
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
         }
     }
+    
     public function addPsychologicalAnamnesis(Request $request,$serdId){
         $_psycologyAnamnesis = new SerdPsychologicalAnamnesis;
         $now=date("Y-m-d H:i:s");  

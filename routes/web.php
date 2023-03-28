@@ -45,7 +45,7 @@ Route::post('/serd/addToxicologyReport', [App\Http\Controllers\SerdCardsControll
 Route::post('/serd/addPsychologicalAnamnesis', [App\Http\Controllers\SerdCardsController::class,'addPsychologicalAnamnesis'])->name('addPsychologicalAnamnesis');
 Route::post('/serd/addSocialFolder', [App\Http\Controllers\SerdCardsController::class,'addSocialFolder'])->name('addSocialFolder');
 Route::post('/serd/destroy', [App\Http\Controllers\SerdCardsController::class,'destroy'])->name('destroy');
-
+Route::post('/psy/store', [App\Http\Controllers\PsyCardsController::class,'store'])->name('store');
 
 Route::get('/test', function () {
     return view('guest.home');

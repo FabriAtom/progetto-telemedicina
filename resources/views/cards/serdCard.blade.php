@@ -2,7 +2,7 @@
 
 @section('vuecontent')
 
-    ciao
+    
 
 @endsection 
 

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 class SerdPsychologicalAnamnesis extends Model
@@ -25,6 +24,7 @@ class SerdPsychologicalAnamnesis extends Model
 
     protected $table = 'serd_psychological_anamneses';
     protected $primaryKey = 'id';
+    
     public function SerdCard()
     {
         return $this->belongsTo(psyCard::class);

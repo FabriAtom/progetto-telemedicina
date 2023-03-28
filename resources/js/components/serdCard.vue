@@ -786,7 +786,7 @@
 
         created: function () {
             // this.getPermissions();
-            alert(JSON.stringify(this.getSerdCardsByUserInstanceId(1)));
+            //alert(JSON.stringify(this.getSerdCardsByUserInstanceId(1)));
             
         },
         mounted() {
@@ -1084,7 +1084,8 @@
                                 _wm.serdTxDoctorId = _toxicologyRep.id_doctor;
                                 _wm.serdTxDoctorName = _toxicologyRep.doctor_name;
                                 _wm.serdTxDoctorLastname = _toxicologyRep.doctor_lastname;
-                                _wm.serdTxDate = _wm.i2hFormatDate(_toxicologyRep.tsa_date);	
+                                _wm.serdTxDate = _wm.i2hFormatDate(_toxicologyRep.tsa_date);
+                                	
                                 _wm.restingPulseRate =_toxicologyRep.resting_pulse_rate;
                                 _wm.serdCardTsc.priSubce = _toxicologyRep.pri_subce 	
                                 _wm.serdCardTsc.ageFirstTakePriSubce = _toxicologyRep.age_first_take_pri_subce 
