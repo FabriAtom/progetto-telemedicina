@@ -59,12 +59,13 @@
                                     </div>
                                 </div>
 
+                                {{ psyCardMh }}
                                 <div class="ln_solid"></div>
-                                    <div class="item form-group" >
-                                        <div class="pull-right">
-                                            <span  class="btn btn-success i2hBtn" @click="addPsyMentalHealthDepartment('mh')">{{btnMhSend}}</span>
-                                        </div>
+                                <div class="item form-group" >
+                                    <div class="pull-right">
+                                        <span class="btn btn-success i2hBtn" @click="addPsyMentalHealthDepartment('mh')">{{btnMhSend}}</span>
                                     </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -157,7 +158,6 @@
         },
 
         created: function () {
- 
             // this.getPermissions();
             //alert(JSON.stringify(this.getPsyMentalHealthDepartmentsByUserInstanceId(1)));
             this.getPsyMentalHealthDepartmentsByUserInstanceId(1)
@@ -185,6 +185,7 @@
                 form.append('doctorId', 14);
                 form.append('doctorName', 'mario');
                 form.append('doctorUserName', 'bross');
+
                 if(_panel=='mh'){
 
                     if(!this.mHSaved){
@@ -204,15 +205,14 @@
                         let _psyCard=JSON.stringify(this.psyCardMh);
                         form.append('psyMentalHealthDepartment', _psyCard);
                     }
-                }
-                else if(_panel=='sa'){
+                }else if(_panel=='sa'){
                     if(!this.sASaved){
                         form.append('action', 'store');
                     }else{
                         form.append('action', 'update');
                     }
 
-                    if (this.mHSaved) {
+                    if (this.sASaved) {
                         if(this.psyCardId){
                             form.append('psyId',this.psyCardId);
                         }else{
@@ -312,8 +312,7 @@
 
                         if(error == 0){
                         
-                            
-                             _wm.mainTitle="Aggiornamento Cartella psy";
+                            _wm.mainTitle="Aggiornamento Cartella psy";
                             if(response.data.PsyMentalHealthDepartment){
                             _wm.mHSaved=true;
                             //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
@@ -323,23 +322,19 @@
                             //     // _wm.psyCardId=response.data.psyCard.id;
                             _wm.psyCardId=_MentalInterview.id;
                             _wm.psyMhDoctorId = _MentalInterview.id_doctor;
-
                             _wm.psyMhDoctorName = _MentalInterview.doctor_name;
                             _wm.psyMhDoctorLastname = _MentalInterview.doctor_lastname;
-
 
                             _wm.psyCardMh.psychologicalInterview =_MentalInterview.psychological_interview;
                             _wm.psyCardMh.hypothesisPsychopathologicalClassification = _MentalInterview.hypothesis_psychopathological_classification 	
                             _wm.psyCardMh.planningTypeOfIntervention = _MentalInterview.planning_type_of_intervention
                             _wm.psyCardMh.test = _MentalInterview.test 
         
-
                             _wm.allPsyMentalHealthDepartments=response.data.allPsyMentalHealthDepartments;
                             }else{
                                 _wm.btnMhSend="Salva";
                             }
                             
-
                             _wm.firstSave=false;
                         }else if(error == 7){
                             _wm.btnMhSend="Salva";
@@ -351,17 +346,11 @@
                     });
                 } catch (error) {
                     throw error
-                }
-                
+                }   
             },
-
-
             isObjEmpty (obj) {
                 return Object.keys(obj).length === 0;
             },
-
-
-        }
-        
+        }    
     }
 </script>

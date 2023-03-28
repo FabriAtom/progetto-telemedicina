@@ -30,4 +30,9 @@ class PsyCard extends Model
     {
         return $this->hasMany(PsyMentalHealthDepartment::class);
     }
+
+    public function PsyRehabilitationPsychiatricCards()
+    {
+        return $this->hasMany(PsyRehabilitationPsychiatricCard::class);
+    }
 }

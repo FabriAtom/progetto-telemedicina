@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\PsyCard;
 use App\Models\PsySuicideAssessment;
 use App\Models\PsyMentalHealthDepartment;
+use App\Models\PsyRehabilitationPsychiatricCard;
+
 
 use Carbon\Carbon;
 use GuzzleHttp\Exception\GuzzleException;
@@ -49,26 +51,38 @@ class PsyCardsController extends Controller
             $PsyMentalHealthDepartment=null;
             $allPsyMentalHealthDepartments=null;
 
-       
-            // if (PsySuicideAssessment::where('psy_card_id', '=', $psyCard->id)->exists()) {
-            //     $query=PsySuicideAssessment::where('psy_card_id', '=', $psyCard->id)->orderBy('sa_date', 'desc');
-            //     $PsySuicideAssessment=$query->first();
-            //     $allPsySuicideAssessments=PsySuicideAssessment::where('psy_card_id', '=', $psyCard->id)->orderBy('sa_date', 'desc')->get();
-            // }
-            if (PsyMentalHealthDepartment::where('psy_card_id', '=', $psyCard->id)->exists()) {
-                $query=PsyMentalHealthDepartment::where('psy_card_id', '=', $psyCard->id)->orderBy('mh_date', 'desc');
-                $PsyMentalHealthDepartment=$query->first();
-                $allPsyMentalHealthDepartment=PsyMentalHealthDepartment::where('psy_card_id', '=', $psyCard->id)->orderBy('mh_date', 'desc')->get();
-            }
-            //return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'],"PsySuicideAssessment"=>$PsySuicideAssessment,"allPsySuicideAssessments" => $allPsySuicideAssessments, "PsyMentalHealthDepartment"=>$PsyMentalHealthDepartment,"allPsyMentalHealthDepartments" => $allPsyMentalHealthDepartment];
-            return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsyMentalHealthDepartment"=>$PsyMentalHealthDepartment,"allPsyMentalHealthDepartments" => $allPsyMentalHealthDepartment];
+            // $PsyRehabilitationPsychiatricCard=null;
+            // $allPsyRehabilitationPsychiatricCards=null;
 
-        
+       
+            if (PsySuicideAssessment::where('psy_card_id', '=', $psyCard->id)->exists()) {
+                $query=PsySuicideAssessment::where('psy_card_id', '=', $psyCard->id)->orderBy('sa_date', 'desc');
+                $PsySuicideAssessment=$query->first();
+                $allPsySuicideAssessments=PsySuicideAssessment::where('psy_card_id', '=', $psyCard->id)->orderBy('sa_date', 'desc')->get();
+            }
+            // if (PsyMentalHealthDepartment::where('psy_card_id', '=', $psyCard->id)->exists()) {
+            //     $query=PsyMentalHealthDepartment::where('psy_card_id', '=', $psyCard->id)->orderBy('mh_date', 'desc');
+            //     $PsyMentalHealthDepartment=$query->first();
+            //     $allPsyMentalHealthDepartments=PsyMentalHealthDepartment::where('psy_card_id', '=', $psyCard->id)->orderBy('mh_date', 'desc')->get();
+            // }
+            // return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsyMentalHealthDepartment"=>$PsyMentalHealthDepartment,"allPsyMentalHealthDepartments" => $allPsyMentalHealthDepartments];
+
+            if (PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $psyCard->id)->exists()) {
+                $query=PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $psyCard->id)->orderBy('rp_date', 'desc');
+                $PsyRehabilitationPsychiatricCard=$query->first();
+                $allPsyRehabilitationPsychiatricCards=PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $psyCard->id)->orderBy('rp_date', 'desc')->get();
+            }
+            return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsyRehabilitationPsychiatricCard"=>$PsyRehabilitationPsychiatricCard,"allPsyRehabilitationPsychiatricCards" => $allPsyRehabilitationPsychiatricCards];
+
+
+            //return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'],"PsySuicideAssessment"=>$PsySuicideAssessment,"allPsySuicideAssessments" => $allPsySuicideAssessments, "PsyMentalHealthDepartment"=>$PsyMentalHealthDepartment,"allPsyMentalHealthDepartments" => $allPsyMentalHealthDepartments, "PsyRehabilitationPsychiatricCard"=>$PsyRehabilitationPsychiatricCard,"allPsyRehabilitationPsychiatricCards" => $allPsyRehabilitationPsychiatricCards];
+            return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsySuicideAssessment"=>$PsySuicideAssessment,"allPsySuicideAssessments" => $allPsySuicideAssessments];
         }else{
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
         }
     }
 
+    // PsySuicideAssessment
     public function getCurrentSuicideAssessmentByPsyId(Request $request){
         if (PsySuicideAssessment::where('psy_card_id', '=', $request['id'])->exists()) {
             $query=PsySuicideAssessment::where('psy_card_id', '=', $request['id'])->orderBy('tsa_date', 'desc');
@@ -90,6 +104,18 @@ class PsyCardsController extends Controller
         }  
     }
 
+    // // PsyRehabilitationPsychiatricCard
+    // public function getCurrentRehabilitationPsychiatricCardByPsyId(Request $request){
+    //     if (PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id'])->exists()) {
+    //         $query=PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id'])->orderBy('tsa_date', 'desc');
+    //         $PsyRehabilitationPsychiatricCard=$query->first();
+    //         return [ "errorNumber"=>0,"message"=>"OK","CurrentRehabilitationPsychiatricCard" => $PsyRehabilitationPsychiatricCard,"PsyId" => $request['id']];
+    //     }else{
+    //         return ['errorNumber'=>7,'descrizione'=>'no records found'];
+    //     }  
+    // }
+
+
 
     public function getSuicideAssessmentsByPsyId(Request $request){
         if (PsySuicideAssessment::where('psy_card_id', '=', $request['id'])->exists()) {
@@ -110,6 +136,16 @@ class PsyCardsController extends Controller
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
         }      
     }
+    // // PsyRehabilitationPsychiatricCard
+    // public function getPsyRehabilitationPsychiatricCardsByPsyId(Request $request){
+    //     if (PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id'])->exists()) {
+    //         $query=PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id']);
+    //         $PsyRehabilitationPsychiatricCard=$query->get();
+    //         return [ "errorNumber"=>0,"message"=>"OK","PsyRehabilitationPsychiatricCard" => $PsyRehabilitationPsychiatricCard,"PsyId" => $request['id']];
+    //     }else{
+    //         return ['errorNumber'=>7,'descrizione'=>'no records found'];
+    //     }      
+    // }
 
 
     public function store(Request $request){
@@ -118,7 +154,7 @@ class PsyCardsController extends Controller
                 if($request->input('action')=='store'){
                     if($request->has('section')){
                         switch ($request->input('section')) {
-                            case 'txc':
+                            case 'sa':
                                 $_psy = $this->addPsyCard($request);
                                 if($_psy){
                                     $_psyId=$_psy->id;
@@ -154,7 +190,6 @@ class PsyCardsController extends Controller
                         // mentalHealth
                     case 'mh':
                         return $this->addMentalHealthDepartment($request,$_psyId);
-    
                         break;
                 }
             }else{
@@ -194,8 +229,8 @@ class PsyCardsController extends Controller
         }
         $_suicideValutation->sa_date=$now;
 
-        if($request->has('psyCard')){
-            $psyCardArr = json_decode($request->input('psyCard'), true);
+        if($request->has('psyriskFactor')){
+            $psyCardArr = json_decode($request->input('psyriskFactor'), true);
             if(array_key_exists('marital_status',$psyCardArr)){
                 $_suicideValutation->marital_status=$psyCardArr['marital_status'];
             }
@@ -275,6 +310,14 @@ class PsyCardsController extends Controller
                 $_suicideValutation->sa_date_last=$psyCardArr['sa_date_last'];
             }
         }
+        $_suicideValutation->save();
+
+        if($_suicideValutation){
+            return ["errorNumber"=>0,"message"=>"ok","sa"=>$_suicideValutation];
+
+        }else{
+            return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
+        }
     }
 
     public function addMentalHealthDepartment(Request $request,$psyId){
@@ -316,16 +359,11 @@ class PsyCardsController extends Controller
         }
         $_psychologicalInterview->save();
 
-
-
         if($_psychologicalInterview){
             return ["errorNumber"=>0,"message"=>"ok","psyInterview"=>$_psychologicalInterview];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
         }
-
-
-
     }
 }

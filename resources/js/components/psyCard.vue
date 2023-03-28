@@ -187,11 +187,11 @@
                                                 <label for="psychotic_symptom" class="col-form-label col-md-6 col-sm-2 label-align">13. Sintomi psicotici o disturbi del pensiero</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="psychotic_symptom" value="0" v-model="psyriskFactor.psychoticSymptomdepressiveSymptom"/>
+                                                    <input type="radio"  @click="calculateSum" name="psychotic_symptom" value="0" v-model="psyriskFactor.psychoticSymptom"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="psychotic_symptom" value="1" v-model="psyriskFactor.psychoticSymptomdepressiveSymptom"/>
+                                                    <input type="radio"  @click="calculateSum" name="psychotic_symptom" value="1" v-model="psyriskFactor.psychoticSymptom"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="psychotic_symptom" value="2" v-model="psyriskFactor.psychoticSymptomdepressiveSymptom"/> 
+                                                    <input type="radio"  @click="calculateSum" name="psychotic_symptom" value="2" v-model="psyriskFactor.psychoticSymptom"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -482,6 +482,7 @@ export default {
             psySaDate:null,
             psyCardId:null,
             date:new Date(),
+
             psyCardSa:{},
             psyriskFactor:{},
 
@@ -489,13 +490,6 @@ export default {
             panel:'mh',
 
             psyCardMh:{},
-
-
-
-            psyMhDoctorId:0,
-            psyMhDoctorName:'',
-            psyMhDoctorLastname:'',
-
 
 
             mainTitle:"psy",
@@ -518,7 +512,6 @@ export default {
         calculateSum() {
             // Calcola la somma delle opzioni selezionate
             //this.sum = parseInt(this.selectedOption) || 0;
-
             let i=0;
             for (const property in this.psyriskFactor) {
                 i += parseInt(this.psyriskFactor[property]);  
@@ -540,10 +533,15 @@ export default {
             form.append('userFullName', this.userFullName);
             form.append('userInstance', this.userInstance);
             form.append('userId', this.userId);
-            form.append('doctorId', this.accessData.id);
-            form.append('doctorName', this.accessData.name);
-            form.append('doctorUserName', this.accessData.lastname);
+            // form.append('doctorId', this.accessData.id);
+            // form.append('doctorName', this.accessData.name);
+            // form.append('doctorUserName', this.accessData.lastname);
+            form.append('doctorId', 14);
+            form.append('doctorName', 'mario');
+            form.append('doctorUserName', 'bross');
+            
             if(_panel=='sa'){
+
                 if(!this.sASaved){
                     form.append('action', 'store');
                 }else{
@@ -557,17 +555,22 @@ export default {
                     }
                 }
                 form.append('section', 'sa');
+                if(!this.isObjEmpty(this.psyriskFactor)){
+                    let _psyriskFactor=JSON.stringify(this.psyriskFactor);
+                    alert(JSON.stringify(this.psyriskFactor))
+                    form.append('psyriskFactor', _psyriskFactor);
+                }
                 if(!this.isObjEmpty(this.psyCardSa)){
                     let _psyCard=JSON.stringify(this.psyCardSa);
                     form.append('psyCard', _psyCard);
                 }
             }else if(_panel=='mh'){
+
                 if(!this.mHSaved){
                     form.append('action', 'store');
                 }else{
                     form.append('action', 'update');
                 }
-
                 if (this.sASaved) {
                     if(this.psyCardId){
                         form.append('psyId',this.psyCardId);
@@ -579,24 +582,26 @@ export default {
                     form.append('section', 'mh');
                     if(!this.isObjEmpty(this.psyCardMh)){
                         let _psyCardMh=JSON.stringify(this.psyCardMh);
-                        form.append('psyCardMh', _psyCardMh);
-                    }else{
-                        _errors++;
-                        _errorTitle="Attenzione";
-                        _errorDescription="Compilare il modulo prima di inviarlo"
-                    }    
-                }else{
-                    _errors++;
-                    _errorTitle="Attenzione";
-                    _errorDescription="Compilare prima l\'anamnesi tossicologica"
+                        form.append('psyMentalHealthDepartment', _psyCardMh);
+                    }
+                    // else{
+                    //     _errors++;
+                    //     _errorTitle="Attenzione";
+                    //     _errorDescription="Compilare il modulo prima di inviarlo"
+                    // }    
                 }
+                // else{
+                //     _errors++;
+                //     _errorTitle="Attenzione";
+                //     _errorDescription="Compilare prima l\'anamnesi tossicologica"
+                // }
             }
             
             if(_errors==0){
                 try {
                     axios.post(actions.ADD_PSY_CARD,form).then(response => {
                         let error=response.data.errorNumber;
-                        // let _attempts=response.data.attempts;
+                        let _attempts=response.data.attempts;
                         _wm.errNum=error;
                         if(error == 0){
 
@@ -628,12 +633,12 @@ export default {
         },
 
         getPsyCards(){
-            //GET ALL SERCARDS
+            //GET ALL CARDS
             let _wm = this;
             try {
                 axios.get(actions.GET_PSY_CARDS).then(response => {
                     let error=response.data.errorNumber;
-                    // let _attempts=response.data.attempts;
+                    let _attempts=response.data.attempts;
                     _wm.errNum=error;
                     if(error == 0){
                         //alert(JSON.stringify(response))
@@ -651,7 +656,7 @@ export default {
                 let url=actions.GET_PSY_CARD_BY_ID+'/'+id;
                 axios.get(url).then(response => {
                     let error=response.data.errorNumber;
-                    // let _attempts=response.data.attempts;
+                    let _attempts=response.data.attempts;
                     _wm.errNum=error;
                     if(error == 0){
                         //alert(JSON.stringify(response))
@@ -665,7 +670,7 @@ export default {
         }, 
         getPsyCardsByUserInstanceId(id){
             let _wm = this;
-            alert('yy');
+            // alert('yy');
 
             try {
                 let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
@@ -682,12 +687,15 @@ export default {
                             _wm.btnSaSend="Aggiorna";
 
                             let _SuicideRep=response.data.PsySuicideAssessment;
+                            // _wm.psyCardId=response.data.psyCard.id;
+    
                             _wm.psyCardId=response.data.psyCard.id;
                             _wm.psySaDoctorId = _SuicideRep.id_doctor;
+
                             _wm.psySaDoctorName = _SuicideRep.doctor_name;
                             _wm.psySaDoctorLastname = _SuicideRep.doctor_lastname;
-                            // _wm.psySaDate = _wm.i2hFormatDate(_SuicideRep.sa_date);
 
+                            
                             _wm.psyriskFactor.maritalStatus =_SuicideRep.marital_status;
                             _wm.psyriskFactor.drugAndAlcoholAbuse = _SuicideRep.drug_and_alcohol_abuse 	
                             _wm.psyriskFactor.psychiatricAspect = _SuicideRep.psychiatric_aspect 
@@ -721,31 +729,7 @@ export default {
                         }else{
                             _wm.btnSaSend="Salva";
                         }
-
-                        if(response.data.PsyMentalHealthDepartment){
-                            _wm.mHSaved=true;
-                            _wm.btnMhSend="Aggiorna";
-                            let _MentalInterview=response.data.PsyMentalHealthDepartment;
-                            // _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyCardId=response.data.psyMentalHealthDepartment.id;
-
-                            _wm.psyMhDoctorId = _MentalInterview.id_doctor;
-                            _wm.psyMhDoctorName = _MentalInterview.doctor_name;
-                            _wm.psyMhDoctorLastname = _MentalInterview.doctor_lastname;
-
-
-                            _wm.psyCardMh.psychologicalInterview =_MentalInterview.psychological_interview;
-                            _wm.psyCardMh.hypothesisPsychopathologicalClassification = _MentalInterview.hypothesis_psychopathological_classification 	
-                            _wm.psyCardMh.planningTypeOfIntervention = _MentalInterview.planning_type_of_intervention
-                            _wm.psyCardMh.test = _MentalInterview.test 
-    
-
-                            _wm.allPsyMentalHealthDepartments=response.data.allPsyMentalHealthDepartments;
-                        }else{
-                            _wm.btnMhSend="Salva";
-                        }
                         
-
                         _wm.firstSave=false;
                     }else if(error == 7){
                         _wm.btnSaSend="Salva";
@@ -758,7 +742,10 @@ export default {
             } catch (error) {
                 throw error
             }
-        }
+        },
+        isObjEmpty (obj) {
+            return Object.keys(obj).length === 0;
+        },
     }  
 }
 

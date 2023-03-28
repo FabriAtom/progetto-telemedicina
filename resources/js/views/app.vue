@@ -7,8 +7,9 @@
 
     <div>
       <psyCard/>
+      <PsyRehabilitationPsychiatricCard/>
       <!-- <serdCard/> -->
-      <!-- <psyMentalHealthDepartment/> -->
+      <psyMentalHealthDepartment/>
     </div>
     
   </div>
@@ -17,16 +18,17 @@
 <script>
 // import Home from '../pages/Home.vue';
 import psyCard from '../components/psyCard.vue';
-import serdCard from '../components/serdCard.vue';
+// import serdCard from '../components/serdCard.vue';
 import psyMentalHealthDepartment from '../components/psyMentalHealthDepartment.vue';
-
+import PsyRehabilitationPsychiatricCard from '../components/PsyRehabilitationPsychiatricCard.vue';
 
 export default {
   components: { 
     // serdCard, 
     // Home,
     psyCard,
-    // psyMentalHealthDepartment
+    psyMentalHealthDepartment,
+    PsyRehabilitationPsychiatricCard
   }
 }
 </script>
