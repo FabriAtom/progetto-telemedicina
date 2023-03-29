@@ -5,7 +5,7 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="x_panel">
                         <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:5px;">
-                            <h1>PARTE PSICOLOGICA PER CARTELLA CLINICA</h1>
+                            <h1>AREA RIABILTAZIONE PSICHIATRICA <strong>(TRP)</strong></h1>
                         </div>
 
                         <div class="x_content">
@@ -16,9 +16,9 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="psychological_interview" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Colloquio Psicologico</h2></strong></label>
+                                            <label for="project_description" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Breve Descrizione Progetto</h2></strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <textarea name="psychological_interview" cols="100" rows="7" v-model="psyCardMh.psychologicalInterview"></textarea>
+                                                <textarea name="project_description" cols="100" rows="4" v-model="psyCardRh.projectDescription"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -27,43 +27,75 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="hypothesis_psychopathological_classification" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Ipotesi/Inquadramento Psicopatologico</h2></strong></label>
+                                            <label for="treatment_area_objective" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Obiettivi In Cui Viene Specificata Area Trattamento:</h2></strong></label>
+                                            <p>-Descrizione:</p>
                                             <div class="col-md-12 col-sm-12">
-                                                <textarea name="hypothesis_psychopathological_classification" cols="100" rows="4" v-model="psyCardMh.hypothesisPsychopathologicalClassification"></textarea>
+                                                <textarea name="treatment_area_objective" cols="100" rows="7" v-model="psyCardRh.treatmentAreaObjective"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="planning_type_of_intervention" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Progettualità/Tipologia di Intervento</h2></strong></label>
+                                            <label for="psychiatric_intervention" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Interventi:</h2></strong></label>                                    
+                                                <p>
+                                                    <select name="trattamenti">
+                                                        <option value="trattamento1">Trattamento 1</option>
+                                                        <option value="trattamento2">Trattamento 2</option>
+                                                        <option value="trattamento3">Trattamento 3</option>
+                                                    </select>
+    
+                                                    <label for="dataInizio">Data di inizio:</label>
+                                                    <input type="date" id="dataInizio" name="dataInizio">
+    
+                                                    <label for="dataFine">Data di fine:</label>
+                                                    <input type="date" id="dataFine" name="dataFine">
+                                                </p>
+                                                <span>-Setting: 1. Individuale e/o 2. Gruppale
+                                                    <form action="">
+                                                        <input type="checkbox" id="" name="" value="">
+                                                        <label for=""></label>
+                                                        <input type="checkbox" id="" name="" value="">
+                                                        <label for=""></label><br>
+                                                        <input type="submit" value="Submit">
+                                                    </form>
+                                                </span> 
+
                                             <div class="col-md-12 col-sm-12">
-                                                <textarea name="planning_type_of_intervention" cols="100" rows="4" v-model="psyCardMh.planningTypeOfIntervention"></textarea>
+                                                <!-- <textarea name="psychiatric_intervention" cols="100" rows="7" v-model="psyCardRh.psychiatricIntervention"></textarea> -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="test" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Test</h2></strong></label>
+                                            <label for="project_menager" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Responsabile Progetto:</h2></strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <textarea name="test" cols="100" rows="5" v-model="psyCardMh.test"></textarea>
+                                                <textarea name="project_menager" cols="40" rows="2" v-model="psyCardRh.projectManager"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                {{ psyCardMh }}
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="psychiatric_attachment" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Allegati:</h2></strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{ psyCardRh }}
                                 <div class="ln_solid"></div>
                                 <div class="item form-group" >
                                     <div class="pull-right">
-                                        <span class="btn btn-success i2hBtn" @click="addPsyMentalHealthDepartment('mh')">{{btnMhSend}}</span>
+                                        <span  class="btn btn-success i2hBtn" @click="addPsyRehabilitationPsychiatricCard('rh')">{{btnRhSend}}</span>
                                     </div>
                                 </div>
                             </form>
@@ -73,14 +105,10 @@
             </div>
         </div>
     </div>
+
 </template>
 
 
-
-
-
-
- 
 <style lang="scss" scoped>
 .labelWidth {
     min-width: 190px;
@@ -104,18 +132,20 @@
     border-radius: 5px;
     color: #333; 
 }
-        
+*p{
+    margin-left: 15px;
+}
+
 </style>
 
 
 <script>
-
     import * as actions from "../config/ApiUrl";
     import axios from 'axios';
     import Swal from 'sweetalert2';
 
     export default {
-        name: 'psyMentalHealthDepartment',
+        name: 'PsyRehabilitationPsychiatricCard',
 
 
         data() {
@@ -131,42 +161,42 @@
                 accessData:[
                    
                     id => 14,
-                    name => 'Alessio',
-                    lastname => 'Ortu',
+                    name => 'dott.',
+                    lastname => 'Sbardella',
                     
                 ],
-                psyMhDoctorId:0,
-                psyMhDoctorName:'',
-                psyMhDoctorLastname:'',
-                psyMhDate:null,
+                psyRhDoctorId:0,
+                psyRhDoctorName:'',
+                psyRhDoctorLastname:'',
+                psyRhDate:null,
                 psyCardId:null,
                 date:new Date(),
 
-                psyCardMh:{},
+                psyCardRh:{},
                 psyCardSa:{},
-                // psyCardTsc
+              
+                panel:'rh',
 
                 mainTitle:"psy",
                 firstSave:true,
-                mHSaved:false,
+                rHSaved:false,
 
                 
-                btnMhSend:"Salva",
+                btnRhSend:"Salva",
                 total:0,               
-                allPsyMentalHealthDepartments:null,
+                allPsyRehabilitationPsychiatricCards:null,
             }
         },
 
         created: function () {
             // this.getPermissions();
             //alert(JSON.stringify(this.getPsyMentalHealthDepartmentsByUserInstanceId(1)));
-            this.getPsyMentalHealthDepartmentsByUserInstanceId(1)
+            this.getPsyRehabilitationPsychiatricCardsByUserInstanceId(1)
         },
-
 
         methods: {
             
-            addPsyMentalHealthDepartment(panel){
+            addPsyRehabilitationPsychiatricCard(panel){
                 let _wm = this;
           
                 let _panel=panel;
@@ -183,12 +213,12 @@
                 // form.append('doctorName', this.accessData.name);
                 // form.append('doctorUserName', this.accessData.lastname);
                 form.append('doctorId', 14);
-                form.append('doctorName', 'mario');
-                form.append('doctorUserName', 'bross');
+                form.append('doctorName', 'dott.');
+                form.append('doctorUserName', 'Sbardella');
 
-                if(_panel=='mh'){
+                if(_panel=='rh'){
 
-                    if(!this.mHSaved){
+                    if(!this.rHSaved){
                         form.append('action', 'store');
                     }else{
                         form.append('action', 'update');
@@ -200,10 +230,10 @@
                             _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
                         }
                     }
-                    form.append('section', 'mh');
-                    if(!this.isObjEmpty(this.psyCardMh)){
-                        let _psyCard=JSON.stringify(this.psyCardMh);
-                        form.append('psyMentalHealthDepartment', _psyCard);
+                    form.append('section', 'rh');
+                    if(!this.isObjEmpty(this.psyCardRh)){
+                        let _psyCard=JSON.stringify(this.psyCardRh);
+                        form.append('PsyRehabilitationPsychiatricCard', _psyCard);
                     }
                 }else if(_panel=='sa'){
                     if(!this.sASaved){
@@ -226,8 +256,29 @@
                             form.append('psyCard', _psyCard);
                         }
                     }
+                }else if(_panel=='mh'){
+                    if(!this.mHSaved){
+                        form.append('action', 'store');
+                    }else{
+                        form.append('action', 'update');
+                    }
+
+                    if (this.mHSaved) {
+                        if(this.psyCardId){
+                            form.append('psyId',this.psyCardId);
+                        }else{
+                            _errors++;
+                            _errorTitle="Attenzione";
+                            _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
+                        }
+                        form.append('section', 'mh');
+                        if(!this.isObjEmpty(this.psyCardMh)){
+                            let _psyCard=JSON.stringify(this.psyCardMh);
+                            form.append('psyMentalHealthDepartment', _psyCard);
+                        }
+                    }
                 }
-                
+
                 if(_errors==0){
                     try {
                         axios.post(actions.ADD_PSY_CARD,form).then(response => {
@@ -241,7 +292,7 @@
                                     'Aggiornata correttamente',
                                     'success'
                                 )
-                                this.getPsyMentalHealthDepartmentsByUserInstanceId(this.userInstance);
+                                this.getPsyRehabilitationPsychiatricCardsByUserInstanceId(this.userInstance);
                             }else{
                                 // eventBus.$emit('errorEvent', error, _attempts);
                                 Swal.fire(
@@ -262,8 +313,7 @@
                     )
                 }
             },
-
-            getPsyMentalHealthDepartments(){
+            getPsyRehabilitationPsychiatricCards(){
                 let _wm = this;
                 try {
                     axios.get(actions.GET_PSY_CARDS).then(response => {
@@ -280,7 +330,7 @@
                     throw error
                 }
             },
-            getPsyMentalHealthDepartmentById(id){
+            getPsyRehabilitationPsychiatricCardById(id){
                 let _wm = this;
                 try {
                     let url=actions.GET_PSY_CARD_BY_ID+'/'+id;
@@ -297,9 +347,9 @@
                 } catch (error) {
                     throw error
                 }
-            }, 
+            },
 
-            getPsyMentalHealthDepartmentsByUserInstanceId(id){
+            getPsyRehabilitationPsychiatricCardsByUserInstanceId(id){
                 let _wm = this;
         
                 
@@ -314,30 +364,33 @@
                         
                             _wm.mainTitle="Aggiornamento Cartella psy";
                             if(response.data.PsyMentalHealthDepartment){
-                            _wm.mHSaved=true;
+                            _wm.rHSaved=true;
                             //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
-                            _wm.btnMhSend="Aggiorna";
+                            _wm.btnRhSend="Aggiorna";
                                 
-                            let _MentalInterview=response.data.PsyMentalHealthDepartment;
+                            let _RehabPsyc=response.data.PsyMentalHealthDepartment;
                             //     // _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyCardId=_MentalInterview.id;
-                            _wm.psyMhDoctorId = _MentalInterview.id_doctor;
-                            _wm.psyMhDoctorName = _MentalInterview.doctor_name;
-                            _wm.psyMhDoctorLastname = _MentalInterview.doctor_lastname;
+                            _wm.psyCardId=_RehabPsyc.id;
+                            _wm.psyRhDoctorId = _RehabPsyc.id_doctor;
+                            _wm.psyRhDoctorName = _RehabPsyc.doctor_name;
+                            _wm.psyRhDoctorLastname = _RehabPsyc.doctor_lastname;
 
-                            _wm.psyCardMh.psychologicalInterview =_MentalInterview.psychological_interview;
-                            _wm.psyCardMh.hypothesisPsychopathologicalClassification = _MentalInterview.hypothesis_psychopathological_classification 	
-                            _wm.psyCardMh.planningTypeOfIntervention = _MentalInterview.planning_type_of_intervention
-                            _wm.psyCardMh.test = _MentalInterview.test 
+
+                            _wm.psyCardRh.projectDescription =_RehabPsyc.project_description;
+                            _wm.psyCardRh.treatmentAreaObjective = _RehabPsyc.treatment_area_objective 	
+                            _wm.psyCardRh.psychiatricIntervention = _RehabPsyc.psychiatric_intervention
+                            _wm.psyCardRh.projectManager = _RehabPsyc.project_manager
+                            _wm.psyCardRh.psychiatricAttachment = _RehabPsyc.psychiatric_attachment 
+ 
         
-                            _wm.allPsyMentalHealthDepartments=response.data.allPsyMentalHealthDepartments;
+                            _wm.allPsyRehabilitationPsychiatricCards=response.data.allPsyRehabilitationPsychiatricCards;
                             }else{
-                                _wm.btnMhSend="Salva";
+                                _wm.btnRhSend="Salva";
                             }
                             
                             _wm.firstSave=false;
                         }else if(error == 7){
-                            _wm.btnMhSend="Salva";
+                            _wm.btnRhSend="Salva";
                             _wm.firstSave=true;
                         }
                         else{
@@ -348,9 +401,6 @@
                     throw error
                 }   
             },
-            isObjEmpty (obj) {
-                return Object.keys(obj).length === 0;
-            },
-        }    
+        }
     }
 </script>

@@ -1,3 +1,5 @@
+<!-- 2° PAGINA SCHEDA PSICHIATRICA -->
+<!-- BRIEF PSYCHIATRIC RATING SCALE BPRS CON TABLE -->
 <template>
     <div class="container">
             <div class="page-content">
@@ -17,301 +19,685 @@
                                             <th>Descrizioni</th>
                                         </tr>
                                         <tr>
-                                        <div class="row" style="margin-top:20px;">
-                                            <div class="col-md-12 col-sm-12">
-                                                <div class="item form-group">
-                                                    <label for="marital_status" class="col-form-label col-md-6 col-sm-2 label-align">1. Stato civile</label>
-                                                    <span class="col-md-12 col-sm-12">
-                                                        <td>Preoccupazioni somatiche</td>
-                                                        <tr>
-                                                            <td>
-                                                                NV
-                                                            </td>
-                                                            <td>1</td>
-                                                            <td>2</td>
-                                                            <td>3</td>
-                                                            <td>4</td>
-                                                            <td>5</td>
-                                                            <td>6</td>
-                                                            <td>7</td>
-                                                        </tr>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <td>Preoccupazioni somatiche</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>Preoccupazioni somatiche</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                            </td>
+                                        </tr> 
+                                        <tr>
+                                            <td>Ansia</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="anxiety" value="0" v-model="psyCardPr.anxiety">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="anxiety" value="1" v-model="psyCardPr.anxiety">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="anxiety" value="2" v-model="psyCardPr.anxiety">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="anxiety" value="3" v-model="psyCardPr.anxiety">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="anxiety" value="4" v-model="psyCardPr.anxiety">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="anxiety" value="5" v-model="psyCardPr.anxiety">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="anxiety" value="6" v-model="psyCardPr.anxiety">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="anxiety" value="7" v-model="psyCardPr.anxiety">
+                                            </td>
                                         </tr>
                                         <tr>
-                                        <td>Ansia</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>Depressione</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="depression" value="0" v-model="psyCardPr.depression">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="depression" value="1" v-model="psyCardPr.depression">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="depression" value="2" v-model="psyCardPr.depression">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="depression" value="3" v-model="psyCardPr.depression">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="depression" value="4" v-model="psyCardPr.depression">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="depression" value="5" v-model="psyCardPr.depression">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="depression" value="6" v-model="psyCardPr.depression">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="depression" value="7" v-model="psyCardPr.depression">
+                                            </td>
                                         </tr>
                                         <tr>
-                                        <td>Depressione</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>Rischio di suicidio</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="risk_of_suicide" value="0" v-model="psyCardPr.riskOfSuicide">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="risk_of_suicide" value="1" v-model="psyCardPr.riskOfSuicide">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="risk_of_suicide" value="2" v-model="psyCardPr.riskOfSuicide">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="risk_of_suicide" value="3" v-model="psyCardPr.riskOfSuicide">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="risk_of_suicide" value="4" v-model="psyCardPr.riskOfSuicide">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="risk_of_suicide" value="5" v-model="psyCardPr.riskOfSuicide">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="risk_of_suicide" value="6" v-model="psyCardPr.riskOfSuicide">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="risk_of_suicide" value="7" v-model="psyCardPr.riskOfSuicide">
+                                            </td>
                                         </tr>
                                         <tr>
-                                        <td>Rischio di suicidio</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>Sentimenti di colpa</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="feeling_of_guilt" value="0" v-model="psyCardPr.feelingOfGuilt">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="feeling_of_guilt" value="1" v-model="psyCardPr.feelingOfGuilt">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="feeling_of_guilt" value="2" v-model="psyCardPr.feelingOfGuilt">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="feeling_of_guilt" value="3" v-model="psyCardPr.feelingOfGuilt">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="feeling_of_guilt" value="4" v-model="psyCardPr.feelingOfGuilt">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="feeling_of_guilt" value="5" v-model="psyCardPr.feelingOfGuilt">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="feeling_of_guilt" value="6" v-model="psyCardPr.feelingOfGuilt">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="feeling_of_guilt" value="7" v-model="psyCardPr.feelingOfGuilt">
+                                            </td>
                                         </tr>
                                         <tr>
-                                        <td>Sentimenti di colpa</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>Ostilità</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="hostility" value="0" v-model="psyCardPr.hostility">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="hostility" value="1" v-model="psyCardPr.hostility">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="hostility" value="2" v-model="psyCardPr.hostility">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="hostility" value="3" v-model="psyCardPr.hostility">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="hostility" value="4" v-model="psyCardPr.hostility">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="hostility" value="5" v-model="psyCardPr.hostility">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="hostility" value="6" v-model="psyCardPr.hostility">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="hostility" value="7" v-model="psyCardPr.hostility">
+                                            </td>
+                                        </tr> 
+                                        
+                                        <tr>
+                                            <td>Elevazione del tono dell'umore</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="mood_elevation" value="0" v-model="psyCardPr.moodElevation">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="mood_elevation" value="1" v-model="psyCardPr.moodElevation">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="mood_elevation" value="2" v-model="psyCardPr.moodElevation">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="mood_elevation" value="3" v-model="psyCardPr.moodElevation">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="mood_elevation" value="4" v-model="psyCardPr.moodElevation">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="mood_elevation" value="5" v-model="psyCardPr.moodElevation">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="mood_elevation" value="6" v-model="psyCardPr.moodElevation">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="mood_elevation" value="7" v-model="psyCardPr.moodElevation">
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>Grandiosità</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="grandeur" value="0" v-model="psyCardPr.grandeur">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="grandeur" value="1" v-model="psyCardPr.grandeur">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="grandeur" value="2" v-model="psyCardPr.grandeur">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="grandeur" value="3" v-model="psyCardPr.grandeur">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="grandeur" value="4" v-model="psyCardPr.grandeur">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="grandeur" value="5" v-model="psyCardPr.grandeur">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="grandeur" value="6" v-model="psyCardPr.grandeur">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="grandeur" value="7" v-model="psyCardPr.grandeur">
+                                            </td>
                                         </tr>
                                         <tr>
-                                        <td>Ostilità</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>Sospettosità</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="suspiciousness" value="0" v-model="psyCardPr.suspiciousness">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="suspiciousness" value="1" v-model="psyCardPr.suspiciousness">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="suspiciousness" value="2" v-model="psyCardPr.suspiciousness">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="suspiciousness" value="3" v-model="psyCardPr.suspiciousness">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="suspiciousness" value="4" v-model="psyCardPr.suspiciousness">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="suspiciousness" value="5" v-model="psyCardPr.suspiciousness">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="suspiciousness" value="6" v-model="psyCardPr.suspiciousness">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="suspiciousness" value="7" v-model="psyCardPr.suspiciousness">
+                                            </td>
                                         </tr>
                                         <tr>
-                                        <td>Elevazione del tono dell'umore</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>Allucinazioni</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="hallucination" value="0" v-model="psyCardPr.hallucination">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="hallucination" value="1" v-model="psyCardPr.hallucination">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="hallucination" value="2" v-model="psyCardPr.hallucination">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="hallucination" value="3" v-model="psyCardPr.hallucination">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="hallucination" value="4" v-model="psyCardPr.hallucination">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="hallucination" value="5" v-model="psyCardPr.hallucination">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="hallucination" value="6" v-model="psyCardPr.hallucination">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="hallucination" value="7" v-model="psyCardPr.hallucination">
+                                            </td>
                                         </tr>
                                         <tr>
-                                        <td>Grandiosità</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>Contenuto insolito del pensiero</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="unusual_content_of_thought" value="0" v-model="psyCardPr.unusualContentOfThought">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="unusual_content_of_thought" value="1" v-model="psyCardPr.unusualContentOfThought">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="unusual_content_of_thought" value="2" v-model="psyCardPr.unusualContentOfThought">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="unusual_content_of_thought" value="3" v-model="psyCardPr.unusualContentOfThought">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="unusual_content_of_thought" value="4" v-model="psyCardPr.unusualContentOfThought">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="unusual_content_of_thought" value="5" v-model="psyCardPr.unusualContentOfThought">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="unusual_content_of_thought" value="6" v-model="psyCardPr.unusualContentOfThought">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="unusual_content_of_thought" value="7" v-model="psyCardPr.unusualContentOfThought">
+                                            </td>
                                         </tr>
                                         <tr>
-                                        <td>Sospettosità</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
-                                        </tr>
-                                        <tr>
-                                        <td>Allucinazioni</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
-                                        </tr>
-                                        <tr>
-                                        <td>Contenuto insolito del pensiero</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
-                                        </tr>
-                                        <tr>
-                                        <td>Comportamento bizzarro</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>Comportamento bizzarro</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="bizarre_behavior" value="0" v-model="psyCardPr.bizarreBehavior">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="bizarre_behavior" value="1" v-model="psyCardPr.bizarreBehavior">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="bizarre_behavior" value="2" v-model="psyCardPr.bizarreBehavior">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="bizarre_behavior" value="3" v-model="psyCardPr.bizarreBehavior">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="bizarre_behavior" value="4" v-model="psyCardPr.bizarreBehavior">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="bizarre_behavior" value="5" v-model="psyCardPr.bizarreBehavior">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="bizarre_behavior" value="6" v-model="psyCardPr.bizarreBehavior">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="bizarre_behavior" value="7" v-model="psyCardPr.bizarreBehavior">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Trascuratezza della cura di sé</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="neglect_of_self_care" value="0" v-model="psyCardPr.neglectOfSelfCare">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="neglect_of_self_care" value="1" v-model="psyCardPr.neglectOfSelfCare">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="neglect_of_self_care" value="2" v-model="psyCardPr.neglectOfSelfCare">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="neglect_of_self_care" value="3" v-model="psyCardPr.neglectOfSelfCare">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="neglect_of_self_care" value="4" v-model="psyCardPr.neglectOfSelfCare">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="neglect_of_self_care" value="5" v-model="psyCardPr.neglectOfSelfCare">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="neglect_of_self_care" value="6" v-model="psyCardPr.neglectOfSelfCare">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="neglect_of_self_care" value="7" v-model="psyCardPr.neglectOfSelfCare">
+                                            </td>
                                         </tr>
+
                                         <tr>
                                             <td>Disorientamento</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="disorientation" value="0" v-model="psyCardPr.disorientation">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="disorientation" value="1" v-model="psyCardPr.disorientation">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="disorientation" value="2" v-model="psyCardPr.disorientation">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="disorientation" value="3" v-model="psyCardPr.disorientation">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="disorientation" value="4" v-model="psyCardPr.disorientation">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="disorientation" value="5" v-model="psyCardPr.disorientation">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="disorientation" value="6" v-model="psyCardPr.disorientation">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="disorientation" value="7" v-model="psyCardPr.disorientation">
+                                            </td>
                                         </tr>
                                     </table>
 
                                     <div>
                                         <h2>
-                                            Valutare i seguenti item da 15 a 24 in base all'eloquio del paziente a al suo comportamento                 durante l'intervista 
+                                            Valutare i seguenti item da 15 a 24 in base all'eloquio del paziente a al suo comportamento durante l'intervista 
                                         </h2>
                                     </div>
-                                    
+
                                     <table>
                                         <tr>
                                             <td>Disorganizzazione Concettuale</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="conceptual_disorganization" value="0" v-model="psyCardPr.conceptualDisorganization">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="conceptual_disorganization" value="1" v-model="psyCardPr.conceptualDisorganization">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="conceptual_disorganization" value="2" v-model="psyCardPr.conceptualDisorganization">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="conceptual_disorganization" value="3" v-model="psyCardPr.conceptualDisorganization">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="conceptual_disorganization" value="4" v-model="psyCardPr.conceptualDisorganization">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="conceptual_disorganization" value="5" v-model="psyCardPr.conceptualDisorganization">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="conceptual_disorganization" value="6" v-model="psyCardPr.conceptualDisorganization">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="conceptual_disorganization" value="7" v-model="psyCardPr.conceptualDisorganization">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Appiattimento affettivo</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="emotional_flattening" value="0" v-model="psyCardPr.emotionalFlattening">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="emotional_flattening" value="1" v-model="psyCardPr.emotionalFlattening">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="emotional_flattening" value="2" v-model="psyCardPr.emotionalFlattening">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="emotional_flattening" value="3" v-model="psyCardPr.emotionalFlattening">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="emotional_flattening" value="4" v-model="psyCardPr.emotionalFlattening">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="emotional_flattening" value="5" v-model="psyCardPr.emotionalFlattening">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="emotional_flattening" value="6" v-model="psyCardPr.emotionalFlattening">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="emotional_flattening" value="7" v-model="psyCardPr.emotionalFlattening">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Isolamento emotivo</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="emotional_isolation" value="0" v-model="psyCardPr.emotionalIsolation">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="emotional_isolation" value="1" v-model="psyCardPr.emotionalIsolation">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="emotional_isolation" value="2" v-model="psyCardPr.emotionalIsolation">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="emotional_isolation" value="3" v-model="psyCardPr.emotionalIsolation">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="emotional_isolation" value="4" v-model="psyCardPr.emotionalIsolation">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="emotional_isolation" value="5" v-model="psyCardPr.emotionalIsolation">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="emotional_isolation" value="6" v-model="psyCardPr.emotionalIsolation">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="emotional_isolation" value="7" v-model="psyCardPr.emotionalIsolation">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Rallentamento motorio</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="motor_slowdown" value="0" v-model="psyCardPr.motorSlowdown">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="motor_slowdown" value="1" v-model="psyCardPr.motorSlowdown">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="motor_slowdown" value="2" v-model="psyCardPr.motorSlowdown">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="motor_slowdown" value="3" v-model="psyCardPr.motorSlowdown">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="motor_slowdown" value="4" v-model="psyCardPr.motorSlowdown">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="motor_slowdown" value="5" v-model="psyCardPr.motorSlowdown">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="motor_slowdown" value="6" v-model="psyCardPr.motorSlowdown">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="motor_slowdown" value="7" v-model="psyCardPr.motorSlowdown">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Tensione motoria</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="motor_tension" value="0" v-model="psyCardPr.motorTension">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="motor_tension" value="1" v-model="psyCardPr.motorTension">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="motor_tension" value="2" v-model="psyCardPr.motorTension">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="motor_tension" value="3" v-model="psyCardPr.motorTension">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="motor_tension" value="4" v-model="psyCardPr.motorTension">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="motor_tension" value="5" v-model="psyCardPr.motorTension">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="motor_tension" value="6" v-model="psyCardPr.motorTension">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="motor_tension" value="7" v-model="psyCardPr.motorTension">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Mancanza di cooperazione</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="lack_of_cooperation" value="0" v-model="psyCardPr.lackOfCooperation">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="lack_of_cooperation" value="1" v-model="psyCardPr.lackOfCooperation">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="lack_of_cooperation" value="2" v-model="psyCardPr.lackOfCooperation">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="lack_of_cooperation" value="3" v-model="psyCardPr.lackOfCooperation">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="lack_of_cooperation" value="4" v-model="psyCardPr.lackOfCooperation">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="lack_of_cooperation" value="5" v-model="psyCardPr.lackOfCooperation">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="lack_of_cooperation" value="6" v-model="psyCardPr.lackOfCooperation">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="lack_of_cooperation" value="7" v-model="psyCardPr.lackOfCooperation">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Eccitamento</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="excitement" value="0" v-model="psyCardPr.excitement">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="excitement" value="1" v-model="psyCardPr.excitement">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="excitement" value="2" v-model="psyCardPr.excitement">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="excitement" value="3" v-model="psyCardPr.excitement">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="excitement" value="4" v-model="psyCardPr.excitement">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="excitement" value="5" v-model="psyCardPr.excitement">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="excitement" value="6" v-model="psyCardPr.excitement">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="excitement" value="7" v-model="psyCardPr.excitement">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Distraibilità</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="distractibility" value="0" v-model="psyCardPr.distractibility">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="distractibility" value="1" v-model="psyCardPr.distractibility">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="distractibility" value="2" v-model="psyCardPr.distractibility">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="distractibility" value="3" v-model="psyCardPr.distractibility">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="distractibility" value="4" v-model="psyCardPr.distractibility">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="distractibility" value="5" v-model="psyCardPr.distractibility">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="distractibility" value="6" v-model="psyCardPr.distractibility">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="distractibility" value="7" v-model="psyCardPr.distractibility">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Iperattività motoria</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="motor_hyperactivity" value="0" v-model="psyCardPr.motorHyperactivity">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="motor_hyperactivity" value="1" v-model="psyCardPr.motorHyperactivity">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="motor_hyperactivity" value="2" v-model="psyCardPr.motorHyperactivity">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="motor_hyperactivity" value="3" v-model="psyCardPr.motorHyperactivity">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="motor_hyperactivity" value="4" v-model="psyCardPr.motorHyperactivity">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="motor_hyperactivity" value="5" v-model="psyCardPr.motorHyperactivity">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="motor_hyperactivity" value="6" v-model="psyCardPr.motorHyperactivity">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="motor_hyperactivity" value="7" v-model="psyCardPr.motorHyperactivity">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Manierismi e posture</td>
-                                            <td>NV</td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
+                                            <td>NV
+                                                <input type="radio" @click="calculateSum" name="mannerism_and_posture" value="0" v-model="psyCardPr.mannerismAndPosture">
+                                            </td>
+                                            <td>1
+                                                <input type="radio" @click="calculateSum" name="mannerism_and_posture" value="1" v-model="psyCardPr.mannerismAndPosture">
+                                            </td>
+                                            <td>2
+                                                <input type="radio" @click="calculateSum" name="mannerism_and_posture" value="2" v-model="psyCardPr.mannerismAndPosture">
+                                            </td>
+                                            <td>3
+                                                <input type="radio" @click="calculateSum" name="mannerism_and_posture" value="3" v-model="psyCardPr.mannerismAndPosture">
+                                            </td>
+                                            <td>4
+                                                <input type="radio" @click="calculateSum" name="mannerism_and_posture" value="4" v-model="psyCardPr.mannerismAndPosture">
+                                            </td>
+                                            <td>5
+                                                <input type="radio" @click="calculateSum" name="mannerism_and_posture" value="5" v-model="psyCardPr.mannerismAndPosture">
+                                            </td>
+                                            <td>6
+                                                <input type="radio" @click="calculateSum" name="mannerism_and_posture" value="6" v-model="psyCardPr.mannerismAndPosture">
+                                            </td>
+                                            <td>7
+                                                <input type="radio" @click="calculateSum" name="mannerism_and_posture" value="7" v-model="psyCardPr.mannerismAndPosture">
+                                            </td>
                                         </tr>
+                                        
+
+                                        <div class="row" style="margin-top:20px;">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="item form-group" >
+                                                <label for="total_score_rating" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Punteggio totale:</h2></strong></label>
+                                                <div class="col-md-12 col-sm-12">
+                                                    <input type="text" name="punteggio" v-model="sum"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
                                     </table>
+                                    {{ psyCardPr }}
+                                    <div class="ln_solid"></div>
+                                    <div class="item form-group" >
+                                        <div class="pull-right">
+                                            <span  class="btn btn-success i2hBtn" @click="addPsyRating('pr')">{{btnPrSend}}</span>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -347,6 +733,23 @@ font-style: italic;
 box-shadow: 1px 1px 3px 1px #ccc; 
 border-radius: 5px;
 color: #333; 
+}
+
+*p{
+    margin-left: 15px;
+}
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 2px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
 
 </style>
@@ -581,7 +984,7 @@ export default {
                             _wm.pRSaved=true;
                             _wm.btnPrSend="Aggiorna";
 
-                            let _PsychiatricScal=response.data.PsySuicideAssessment;
+                            let _PsychiatricScal=response.data.PsyRating;
                             // _wm.psyCardId=response.data.psyCard.id;
     
                             _wm.psyCardId=response.data.psyCard.id;
@@ -639,9 +1042,6 @@ export default {
         isObjEmpty (obj) {
             return Object.keys(obj).length === 0;
         },
-
-
-
     }
 }   
 </script>

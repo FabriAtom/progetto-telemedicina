@@ -69,6 +69,12 @@ Route::get('/psy/getMentalHealthDepartmentsByPsyId/{id}', [App\Http\Controllers\
 Route::post('/psy/addRehabilitationPsychiatricCard', [App\Http\Controllers\PsyCardsController::class,'addRehabilitationPsychiatricCard'])->name('addRehabilitationPsychiatricCard');
 Route::get('/psy/getRehabilitationPsychiatricCardsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getRehabilitationPsychiatricCardsByPsyId'])->name('getRehabilitationPsychiatricCardsByPsyId');
 
+Route::post('/psy/addRating', [App\Http\Controllers\PsyCardsController::class,'addRating'])->name('addRating');
+Route::get('/psy/getRatingsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getRatingsByPsyId'])->name('geRatingsByPsyId');
+
+Route::post('/psy/addUocDepartment', [App\Http\Controllers\PsyCardsController::class,'addUocDepartment'])->name('addUocDepartment');
+Route::get('/psy/getUocDepartmentsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getUocDepartmentsByPsyId'])->name('getUocDepartmentsByPsyId');
+
 Route::get('/psy/getpermissions', [App\Http\Controllers\PsyCardsController::class,'getPermissions'])->name('getUserPermissions');
 
 

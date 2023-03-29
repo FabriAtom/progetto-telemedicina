@@ -9,8 +9,7 @@ use App\Models\PsySuicideAssessment;
 use App\Models\PsyMentalHealthDepartment;
 use App\Models\PsyRehabilitationPsychiatricCard;
 use App\Models\PsyRating;
-
-
+use App\Models\PsyUocDepartment;
 
 use Carbon\Carbon;
 use GuzzleHttp\Exception\GuzzleException;
@@ -60,6 +59,9 @@ class PsyCardsController extends Controller
             $PsyRating=null;
             $allPsyRatings=null;
 
+            $PsyUocDepartment=null;
+            $allPsyUocDepartment=null;
+
        
             // if (PsySuicideAssessment::where('psy_card_id', '=', $psyCard->id)->exists()) {
             //     $query=PsySuicideAssessment::where('psy_card_id', '=', $psyCard->id)->orderBy('sa_date', 'desc');
@@ -92,6 +94,15 @@ class PsyCardsController extends Controller
             }
             return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsyRating"=>$PsyRating,"allPsyRatings" => $allPsyRatings];
 
+
+            // PSY_UOC_DEPARTMENT
+
+            if (PsyUocDepartment::where('psy_card_id', '=', $psyCard->id)->exists()) {
+                $query=PsyUocDepartment::where('psy_card_id', '=', $psyCard->id)->orderBy('pr_date', 'desc');
+                $PsyUocDepartment=$query->first();
+                $allPsyUocDepartments=PsyUocDepartment::where('psy_card_id', '=', $psyCard->id)->orderBy('pr_date', 'desc')->get();
+            }
+            return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsyUocDepartment"=>$PsyUocDepartment,"allPsyUocDepartments" => $allPsyUocDepartments];
 
             //return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'],"PsySuicideAssessment"=>$PsySuicideAssessment,"allPsySuicideAssessments" => $allPsySuicideAssessments, "PsyMentalHealthDepartment"=>$PsyMentalHealthDepartment,"allPsyMentalHealthDepartments" => $allPsyMentalHealthDepartments, "PsyRehabilitationPsychiatricCard"=>$PsyRehabilitationPsychiatricCard,"allPsyRehabilitationPsychiatricCards" => $allPsyRehabilitationPsychiatricCards];
             // return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsySuicideAssessment"=>$PsySuicideAssessment,"allPsySuicideAssessments" => $allPsySuicideAssessments];
@@ -142,6 +153,19 @@ class PsyCardsController extends Controller
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
         }  
     }
+    
+
+    public function getCurrentUocDepartmentByPsyId(Request $request){
+        if (PsyUocDepartment::where('psy_card_id', '=', $request['id'])->exists()) {
+            $query=PsyUocDepartment::where('psy_card_id', '=', $request['id'])->orderBy('pr_date', 'desc');
+            $PsyUocDepartment=$query->first();
+            return [ "errorNumber"=>0,"message"=>"OK","CurrentPsyUocDepartment" => $PsyUocDepartment,"PsyId" => $request['id']];
+        }else{
+            return ['errorNumber'=>7,'descrizione'=>'no records found'];
+        }  
+    }
+
+    
 
 
 
@@ -189,6 +213,16 @@ class PsyCardsController extends Controller
         }      
     }
 
+    public function getUocDepartmentsByPsyId(Request $request){
+        if (PsyUocDepartment::where('psy_card_id', '=', $request['id'])->exists()) {
+            $query=PsyUocDepartment::where('psy_card_id', '=', $request['id']);
+            $PsyUocDepartment=$query->get();
+            return [ "errorNumber"=>0,"message"=>"OK","PsyUocDepartment" => $PsyUocDepartment,"PsyId" => $request['id']];
+        }else{
+            return ['errorNumber'=>7,'descrizione'=>'no records found'];
+        }      
+    }
+
 
 
 
@@ -209,6 +243,15 @@ class PsyCardsController extends Controller
                                 }
                                 break;
                             case 'pr':
+                                $_psy = $this->addPsyCard($request);
+                                if($_psy){
+                                    $_psyId=$_psy->id;
+                                }
+                                else{
+                                    return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
+                                }
+                                break;
+                            case 'ud':
                                 $_psy = $this->addPsyCard($request);
                                 if($_psy){
                                     $_psyId=$_psy->id;
@@ -247,6 +290,9 @@ class PsyCardsController extends Controller
                         break;
                     case 'pr':
                         return $this->addRating($request,$_psyId);
+                        break;
+                    case 'ud':
+                        return $this->addUocDepartment($request,$_psyId);
                         break;
                 }
             }else{
@@ -528,6 +574,92 @@ class PsyCardsController extends Controller
 
         if($_psychiatricScale){
             return ["errorNumber"=>0,"message"=>"ok","sa"=>$_psychiatricScale];
+
+        }else{
+            return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
+        }
+    }
+
+
+
+
+    public function addUocDepartment(Request $request,$psyId){
+        $userId=$request->input("userId");
+        $_psyUoc = new PsyUocDepartment;
+        $now=date("Y-m-d H:i:s");
+        $_psyUoc->psy_card_id=$psyId;
+        if($request->has('doctorId')){
+            $_psyUoc->id_doctor=$request->input('doctorId');
+        }
+        if($request->has('doctorName')){
+            $_psyUoc->doctor_name=$request->input('doctorName');
+        }
+        if($request->has('doctorUserName')){
+            $_psyUoc->doctor_lastname=$request->input('doctorUserName');
+        }
+        $_psyUoc->ud_date=$now;
+
+        if($request->has('psyCardUd')){
+            $psyCardArr = json_decode($request->input('psyCardUd'), true);
+            if(array_key_exists('psychiatric_treatment',$psyCardArr)){
+                $_psyUoc->psychiatric_treatment=$psyCardArr['psychiatric_treatment'];
+            }
+            if(array_key_exists('csm',$psyCardArr)){
+                $_psyUoc->csm=$psyCardArr['csm'];
+            }
+            if(array_key_exists('spdc',$psyCardArr)){
+                $_psyUoc->spdc=$psyCardArr['spdc'];
+            }
+            if(array_key_exists('rems',$psyCardArr)){
+                $_psyUoc->rems=$psyCardArr['rems'];
+            }
+            if(array_key_exists('prison',$psyCardArr)){
+                $_psyUoc->prison=$psyCardArr['prison'];
+            }
+            if(array_key_exists('psychiatric_familiarity',$psyCardArr)){
+                $_psyUoc->psychiatric_familiarity=$psyCardArr['psychiatric_familiarity'];
+            }
+            if(array_key_exists('on_set_of_psychiatric_symptom',$psyCardArr)){
+                $_psyUoc->on_set_of_psychiatric_symptom=$psyCardArr['on_set_of_psychiatric_symptom'];
+            }
+            if(array_key_exists('substance_use',$psyCardArr)){
+                $_psyUoc->substance_use=$psyCardArr['substance_use'];
+            }
+            if(array_key_exists('in_charge_at_serd_territorial',$psyCardArr)){
+                $_psyUoc->in_charge_at_serd_territorial=$psyCardArr['in_charge_at_serd_territorial'];
+            }
+            if(array_key_exists('psychotic_symptom',$psyCardArr)){
+                $_psyUoc->psychotic_symptom=$psyCardArr['psychotic_symptom'];
+            }
+            if(array_key_exists('anxious_affective_symptom',$psyCardArr)){
+                $_psyUoc->anxious_affective_symptom=$psyCardArr['anxious_affective_symptom'];
+            }
+            if(array_key_exists('impulsive_symptom',$psyCardArr)){
+                $_psyUoc->impulsive_symptom=$psyCardArr['impulsive_symptom'];
+            }
+            if(array_key_exists('psychotic_diagnostic_orientation',$psyCardArr)){
+                $_psyUoc->psychotic_diagnostic_orientation=$psyCardArr['psychotic_diagnostic_orientation'];
+            }
+            if(array_key_exists('anxious_affective_orientation',$psyCardArr)){
+                $_psyUoc->anxious_affective_orientation=$psyCardArr['anxious_affective_orientation'];
+            }
+            if(array_key_exists('conceptual_disorganization',$psyCardArr)){
+                $_psyUoc->conceptual_disorganization=$psyCardArr['conceptual_disorganization'];
+            }
+            if(array_key_exists('personality_orientation',$psyCardArr)){
+                $_psyUoc->personality_orientation=$psyCardArr['personality_orientation'];
+            }
+            if(array_key_exists('taking_charge_pdta',$psyCardArr)){
+                $_psyUoc->taking_charge_pdta=$psyCardArr['taking_charge_pdta'];
+            }
+            if(array_key_exists('consultancy_pdta',$psyCardArr)){
+                $_psyUoc->consultancy_pdta=$psyCardArr['consultancy_pdta'];
+            }
+        }
+        $_psyUoc->save();
+
+        if($_psyUoc){
+            return ["errorNumber"=>0,"message"=>"ok","sa"=>$_psyUoc];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];

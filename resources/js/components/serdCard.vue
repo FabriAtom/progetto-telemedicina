@@ -17,7 +17,6 @@
                         <!-- <div class="pull-right" v-else >Roma: {{moment(date).format('DD/MM/YYYY')}}</div> -->
                         <div class="clearfix"></div>
 
-
                         <div class="x_content">
                             <ul class="nav nav-tabs justify-content-end bar_tabs" id="myTab" role="tablist">
 
