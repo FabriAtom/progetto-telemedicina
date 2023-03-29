@@ -1917,7 +1917,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'PsyRehabilitationPsychiatricCard',
+  name: 'psyRating',
   data: function data() {
     return {
       userName: 'Andrea',
@@ -1925,38 +1925,48 @@ __webpack_require__.r(__webpack_exports__);
       userFullName: '',
       userInstance: 1,
       userId: 0,
-      // selectedOption: null,
-
+      selectedOption: null,
+      sum: 0,
       accessData: [function (id) {
         return 14;
       }, function (name) {
-        return 'dott.';
+        return 'Alessio';
       }, function (lastname) {
-        return 'Sbardella';
+        return 'Ortu';
       }],
-      psyRhDoctorId: 0,
-      psyRhDoctorName: '',
-      psyRhDoctorLastname: '',
-      psyRhDate: null,
+      psyPrDoctorId: 0,
+      psyPrDoctorName: '',
+      psyPrDoctorLastname: '',
+      psyPrDate: null,
       psyCardId: null,
       date: new Date(),
-      psyCardRh: {},
-      psyCardSa: {},
+      psyCardPr: {},
+      panel: 'pr',
+      psyCardMh: {},
       mainTitle: "psy",
       firstSave: true,
-      rHSaved: false,
-      btnRhSend: "Salva",
+      pRSaved: false,
+      btnPrSend: "Salva",
       total: 0,
-      allPsyRehabilitationPsychiatricCards: null
+      allPsyRatings: null
     };
   },
   created: function created() {
     // this.getPermissions();
-    //alert(JSON.stringify(this.getPsyMentalHealthDepartmentsByUserInstanceId(1)));
-    this.getPsyRehabilitationPsychiatricCardsByUserInstanceId(1);
+    this.getPsyRatingsByUserInstanceId(1);
   },
   methods: {
-    addPsyRehabilitationPsychiatricCard: function addPsyRehabilitationPsychiatricCard(panel) {
+    calculateSum: function calculateSum() {
+      // Calcola la somma delle opzioni selezionate
+      //this.sum = parseInt(this.selectedOption) || 0;
+      var i = 0;
+      for (var property in this.psyCardPr) {
+        i += parseInt(this.psyCardPr[property]);
+      }
+      console.log(i);
+      this.sum = i;
+    },
+    addPsyRating: function addPsyRating(panel) {
       var _this = this;
       var _wm = this;
       var _panel = panel;
@@ -1973,10 +1983,10 @@ __webpack_require__.r(__webpack_exports__);
       // form.append('doctorName', this.accessData.name);
       // form.append('doctorUserName', this.accessData.lastname);
       form.append('doctorId', 14);
-      form.append('doctorName', 'dott.');
-      form.append('doctorUserName', 'Sbardella');
-      if (_panel == 'rh') {
-        if (!this.rHSaved) {
+      form.append('doctorName', 'mario');
+      form.append('doctorUserName', 'bross');
+      if (_panel == 'pr') {
+        if (!this.pRSaved) {
           form.append('action', 'store');
         } else {
           form.append('action', 'update');
@@ -1988,30 +1998,15 @@ __webpack_require__.r(__webpack_exports__);
             _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
           }
         }
-        form.append('section', 'rh');
-        if (!this.isObjEmpty(this.psyCardRh)) {
-          var _psyCard = JSON.stringify(this.psyCardRh);
-          form.append('PsyRehabilitationPsychiatricCard', _psyCard);
+        form.append('section', 'pr');
+        if (!this.isObjEmpty(this.psyCardMh)) {
+          var _psyCardMh = JSON.stringify(this.psyCardMh);
+          alert(JSON.stringify(this.psyCardMh));
+          form.append('psyCardMh', _psyCardMh);
         }
-      } else if (_panel == 'sa') {
-        if (!this.sASaved) {
-          form.append('action', 'store');
-        } else {
-          form.append('action', 'update');
-        }
-        if (this.sASaved) {
-          if (this.psyCardId) {
-            form.append('psyId', this.psyCardId);
-          } else {
-            _errors++;
-            _errorTitle = "Attenzione";
-            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
-          }
-          form.append('section', 'sa');
-          if (!this.isObjEmpty(this.psyCardSa)) {
-            var _psyCard2 = JSON.stringify(this.psyCardSa);
-            form.append('psyCard', _psyCard2);
-          }
+        if (!this.isObjEmpty(this.psyCardPr)) {
+          var _psyCard = JSON.stringify(this.psyCardPr);
+          form.append('psyCard', _psyCard);
         }
       } else if (_panel == 'mh') {
         if (!this.mHSaved) {
@@ -2029,8 +2024,8 @@ __webpack_require__.r(__webpack_exports__);
           }
           form.append('section', 'mh');
           if (!this.isObjEmpty(this.psyCardMh)) {
-            var _psyCard3 = JSON.stringify(this.psyCardMh);
-            form.append('psyMentalHealthDepartment', _psyCard3);
+            var _psyCardMh2 = JSON.stringify(this.psyCardMh);
+            form.append('psyMentalHealthDepartment', _psyCardMh2);
           }
         }
       }
@@ -2042,7 +2037,7 @@ __webpack_require__.r(__webpack_exports__);
             _wm.errNum = error;
             if (error == 0) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
-              _this.getPsyRehabilitationPsychiatricCardsByUserInstanceId(_this.userInstance);
+              _this.getPsyRatingsByUserInstanceId(_this.userInstance);
             } else {
               // eventBus.$emit('errorEvent', error, _attempts);
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
@@ -2055,7 +2050,8 @@ __webpack_require__.r(__webpack_exports__);
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
       }
     },
-    getPsyRehabilitationPsychiatricCards: function getPsyRehabilitationPsychiatricCards() {
+    getPsyRatings: function getPsyRatings() {
+      //GET ALL CARDS
       var _wm = this;
       try {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS"]).then(function (response) {
@@ -2072,7 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
         throw error;
       }
     },
-    getPsyRehabilitationPsychiatricCardById: function getPsyRehabilitationPsychiatricCardById(id) {
+    getPsyRatingById: function getPsyRatingById(id) {
       var _wm = this;
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARD_BY_ID"] + '/' + id;
@@ -2090,38 +2086,60 @@ __webpack_require__.r(__webpack_exports__);
         throw error;
       }
     },
-    getPsyRehabilitationPsychiatricCardsByUserInstanceId: function getPsyRehabilitationPsychiatricCardsByUserInstanceId(id) {
+    getPsyRatingsByUserInstanceId: function getPsyRatingsByUserInstanceId(id) {
       var _wm = this;
+      // alert('yy');
+
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS_BY_USER_INSTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
           _wm.errNum = error;
+          //alert(JSON.stringify(response.data));
           if (error == 0) {
             _wm.mainTitle = "Aggiornamento Cartella psy";
-            if (response.data.PsyMentalHealthDepartment) {
-              _wm.rHSaved = true;
-              //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
-              _wm.btnRhSend = "Aggiorna";
-              var _RehabPsyc = response.data.PsyMentalHealthDepartment;
-              //     // _wm.psyCardId=response.data.psyCard.id;
-              _wm.psyCardId = _RehabPsyc.id;
-              _wm.psyRhDoctorId = _RehabPsyc.id_doctor;
-              _wm.psyRhDoctorName = _RehabPsyc.doctor_name;
-              _wm.psyRhDoctorLastname = _RehabPsyc.doctor_lastname;
-              _wm.psyCardRh.projectDescription = _RehabPsyc.project_description;
-              _wm.psyCardRh.treatmentAreaObjective = _RehabPsyc.treatment_area_objective;
-              _wm.psyCardRh.psychiatricIntervention = _RehabPsyc.psychiatric_intervention;
-              _wm.psyCardRh.projectManager = _RehabPsyc.project_manager;
-              _wm.psyCardRh.psychiatricAttachment = _RehabPsyc.psychiatric_attachment;
-              _wm.allPsyRehabilitationPsychiatricCards = response.data.allPsyRehabilitationPsychiatricCards;
+            if (response.data.PsyRating) {
+              _wm.pRSaved = true;
+              _wm.btnPrSend = "Aggiorna";
+              var _PsychiatricScal = response.data.PsyRating;
+              // _wm.psyCardId=response.data.psyCard.id;
+
+              _wm.psyCardId = response.data.psyCard.id;
+              _wm.psyPrDoctorId = _PsychiatricScal.id_doctor;
+              _wm.psyPrDoctorName = _PsychiatricScal.doctor_name;
+              _wm.psyPrDoctorLastname = _PsychiatricScal.doctor_lastname;
+              _wm.psyCardPr.somaticConcern = _PsychiatricScal.somatic_concern;
+              _wm.psyCardPr.anxiety = _PsychiatricScal.anxiety;
+              _wm.psyCardPr.depression = _PsychiatricScal.depression;
+              _wm.psyCardPr.riskOfSuicide = _PsychiatricScal.risk_of_suicide;
+              _wm.psyCardPr.feelingOfGuilt = _PsychiatricScal.feeling_of_guilt;
+              _wm.psyCardPr.hostility = _PsychiatricScal.hostility;
+              _wm.psyCardPr.moodElevation = _PsychiatricScal.mood_elevation;
+              _wm.psyCardPr.grandeur = _PsychiatricScal.grandeur;
+              _wm.psyCardPr.suspiciousness = _PsychiatricScal.suspiciousness;
+              _wm.psyCardPr.hallucination = _PsychiatricScal.hallucination;
+              _wm.psyCardPr.unusualContentOfThought = _PsychiatricScal.unusual_content_of_thought;
+              _wm.psyCardPr.bizarreBehavior = _PsychiatricScal.bizarre_behavior;
+              _wm.psyCardPr.neglectOfSelfCare = _PsychiatricScal.neglect_of_self_care;
+              _wm.psyCardPr.disorientation = _PsychiatricScal.disorientation;
+              _wm.psyCardPr.conceptualDisorganization = _PsychiatricScal.conceptual_disorganization;
+              _wm.psyCardPr.emotionalFlattening = _PsychiatricScal.emotional_flattening;
+              _wm.psyCardPr.emotionalIsolation = _PsychiatricScal.emotional_isolation;
+              _wm.psyCardPr.motorSlowdown = _PsychiatricScal.motor_slowdown;
+              _wm.psyCardPr.lackOfCooperation = _PsychiatricScal.lack_of_cooperation;
+              _wm.psyCardPr.excitement = _PsychiatricScal.excitement;
+              _wm.psyCardPr.distractibility = _PsychiatricScal.distractibility;
+              _wm.psyCardPr.motorHyperactivity = _PsychiatricScal.motor_hyperactivity;
+              _wm.psyCardPr.mannerismAndPosture = _PsychiatricScal.mannerism_and_posture;
+              _wm.psyCardPr.totalScotrRating = _PsychiatricScal.total_score_rating;
+              _wm.allPsyRatings = response.data.allPsyRatings;
             } else {
-              _wm.btnRhSend = "Salva";
+              _wm.btnPrSend = "Salva";
             }
             _wm.firstSave = false;
           } else if (error == 7) {
-            _wm.btnRhSend = "Salva";
+            _wm.btnPrSend = "Salva";
             _wm.firstSave = true;
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
@@ -2130,6 +2148,9 @@ __webpack_require__.r(__webpack_exports__);
       } catch (error) {
         throw error;
       }
+    },
+    isObjEmpty: function isObjEmpty(obj) {
+      return Object.keys(obj).length === 0;
     }
   }
 });
@@ -2595,6 +2616,8 @@ __webpack_require__.r(__webpack_exports__);
               _wm.mHSaved = true;
               //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
               _wm.btnMhSend = "Aggiorna";
+              // _wm.psyCardId=response.data.psyMentalHealthDepartment.id;
+
               var _MentalInterview = response.data.PsyMentalHealthDepartment;
               //     // _wm.psyCardId=response.data.psyCard.id;
               _wm.psyCardId = _MentalInterview.id;
@@ -3206,8 +3229,4136 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function render() {};
-var staticRenderFns = [];
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "page-content"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "x_panel"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "x_content"
+  }, [_c("form", {
+    staticClass: "form-horizontal form-label-left align-items-center",
+    attrs: {
+      id: "demo-form2",
+      "data-parsley-validate": ""
+    }
+  }, [_c("table", [_vm._m(1), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Preoccupazioni somatiche")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.somaticConcern,
+      expression: "psyCardPr.somaticConcern"
+    }],
+    attrs: {
+      type: "radio",
+      name: "somatic_concern",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.somaticConcern,
+      expression: "psyCardPr.somaticConcern"
+    }],
+    attrs: {
+      type: "radio",
+      name: "somatic_concern",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.somaticConcern,
+      expression: "psyCardPr.somaticConcern"
+    }],
+    attrs: {
+      type: "radio",
+      name: "somatic_concern",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.somaticConcern,
+      expression: "psyCardPr.somaticConcern"
+    }],
+    attrs: {
+      type: "radio",
+      name: "somatic_concern",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.somaticConcern,
+      expression: "psyCardPr.somaticConcern"
+    }],
+    attrs: {
+      type: "radio",
+      name: "somatic_concern",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.somaticConcern,
+      expression: "psyCardPr.somaticConcern"
+    }],
+    attrs: {
+      type: "radio",
+      name: "somatic_concern",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.somaticConcern,
+      expression: "psyCardPr.somaticConcern"
+    }],
+    attrs: {
+      type: "radio",
+      name: "somatic_concern",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.somaticConcern,
+      expression: "psyCardPr.somaticConcern"
+    }],
+    attrs: {
+      type: "radio",
+      name: "somatic_concern",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Ansia")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.anxiety,
+      expression: "psyCardPr.anxiety"
+    }],
+    attrs: {
+      type: "radio",
+      name: "anxiety",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.anxiety, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "anxiety", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.anxiety,
+      expression: "psyCardPr.anxiety"
+    }],
+    attrs: {
+      type: "radio",
+      name: "anxiety",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.anxiety, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "anxiety", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.anxiety,
+      expression: "psyCardPr.anxiety"
+    }],
+    attrs: {
+      type: "radio",
+      name: "anxiety",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.anxiety, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "anxiety", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.anxiety,
+      expression: "psyCardPr.anxiety"
+    }],
+    attrs: {
+      type: "radio",
+      name: "anxiety",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.anxiety, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "anxiety", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.anxiety,
+      expression: "psyCardPr.anxiety"
+    }],
+    attrs: {
+      type: "radio",
+      name: "anxiety",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.anxiety, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "anxiety", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.anxiety,
+      expression: "psyCardPr.anxiety"
+    }],
+    attrs: {
+      type: "radio",
+      name: "anxiety",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.anxiety, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "anxiety", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.anxiety,
+      expression: "psyCardPr.anxiety"
+    }],
+    attrs: {
+      type: "radio",
+      name: "anxiety",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.anxiety, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "anxiety", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.anxiety,
+      expression: "psyCardPr.anxiety"
+    }],
+    attrs: {
+      type: "radio",
+      name: "anxiety",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.anxiety, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "anxiety", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Depressione")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.depression,
+      expression: "psyCardPr.depression"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depression",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.depression, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "depression", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.depression,
+      expression: "psyCardPr.depression"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depression",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.depression, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "depression", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.depression,
+      expression: "psyCardPr.depression"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depression",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.depression, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "depression", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.depression,
+      expression: "psyCardPr.depression"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depression",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.depression, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "depression", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.depression,
+      expression: "psyCardPr.depression"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depression",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.depression, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "depression", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.depression,
+      expression: "psyCardPr.depression"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depression",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.depression, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "depression", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.depression,
+      expression: "psyCardPr.depression"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depression",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.depression, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "depression", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.depression,
+      expression: "psyCardPr.depression"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depression",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.depression, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "depression", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Rischio di suicidio")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.riskOfSuicide,
+      expression: "psyCardPr.riskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "risk_of_suicide",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.riskOfSuicide, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "riskOfSuicide", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.riskOfSuicide,
+      expression: "psyCardPr.riskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "risk_of_suicide",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.riskOfSuicide, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "riskOfSuicide", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.riskOfSuicide,
+      expression: "psyCardPr.riskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "risk_of_suicide",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.riskOfSuicide, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "riskOfSuicide", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.riskOfSuicide,
+      expression: "psyCardPr.riskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "risk_of_suicide",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.riskOfSuicide, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "riskOfSuicide", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.riskOfSuicide,
+      expression: "psyCardPr.riskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "risk_of_suicide",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.riskOfSuicide, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "riskOfSuicide", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.riskOfSuicide,
+      expression: "psyCardPr.riskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "risk_of_suicide",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.riskOfSuicide, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "riskOfSuicide", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.riskOfSuicide,
+      expression: "psyCardPr.riskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "risk_of_suicide",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.riskOfSuicide, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "riskOfSuicide", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.riskOfSuicide,
+      expression: "psyCardPr.riskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "risk_of_suicide",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.riskOfSuicide, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "riskOfSuicide", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Sentimenti di colpa")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.feelingOfGuilt,
+      expression: "psyCardPr.feelingOfGuilt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_guilt",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.feelingOfGuilt, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "feelingOfGuilt", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.feelingOfGuilt,
+      expression: "psyCardPr.feelingOfGuilt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_guilt",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.feelingOfGuilt, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "feelingOfGuilt", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.feelingOfGuilt,
+      expression: "psyCardPr.feelingOfGuilt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_guilt",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.feelingOfGuilt, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "feelingOfGuilt", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.feelingOfGuilt,
+      expression: "psyCardPr.feelingOfGuilt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_guilt",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.feelingOfGuilt, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "feelingOfGuilt", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.feelingOfGuilt,
+      expression: "psyCardPr.feelingOfGuilt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_guilt",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.feelingOfGuilt, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "feelingOfGuilt", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.feelingOfGuilt,
+      expression: "psyCardPr.feelingOfGuilt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_guilt",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.feelingOfGuilt, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "feelingOfGuilt", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.feelingOfGuilt,
+      expression: "psyCardPr.feelingOfGuilt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_guilt",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.feelingOfGuilt, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "feelingOfGuilt", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.feelingOfGuilt,
+      expression: "psyCardPr.feelingOfGuilt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_guilt",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.feelingOfGuilt, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "feelingOfGuilt", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Ostilità")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hostility,
+      expression: "psyCardPr.hostility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hostility",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hostility, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hostility", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hostility,
+      expression: "psyCardPr.hostility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hostility",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hostility, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hostility", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hostility,
+      expression: "psyCardPr.hostility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hostility",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hostility, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hostility", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hostility,
+      expression: "psyCardPr.hostility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hostility",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hostility, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hostility", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hostility,
+      expression: "psyCardPr.hostility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hostility",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hostility, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hostility", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hostility,
+      expression: "psyCardPr.hostility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hostility",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hostility, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hostility", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hostility,
+      expression: "psyCardPr.hostility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hostility",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hostility, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hostility", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hostility,
+      expression: "psyCardPr.hostility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hostility",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hostility, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hostility", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Elevazione del tono dell'umore")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.moodElevation,
+      expression: "psyCardPr.moodElevation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mood_elevation",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.moodElevation, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "moodElevation", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.moodElevation,
+      expression: "psyCardPr.moodElevation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mood_elevation",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.moodElevation, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "moodElevation", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.moodElevation,
+      expression: "psyCardPr.moodElevation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mood_elevation",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.moodElevation, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "moodElevation", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.moodElevation,
+      expression: "psyCardPr.moodElevation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mood_elevation",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.moodElevation, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "moodElevation", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.moodElevation,
+      expression: "psyCardPr.moodElevation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mood_elevation",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.moodElevation, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "moodElevation", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.moodElevation,
+      expression: "psyCardPr.moodElevation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mood_elevation",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.moodElevation, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "moodElevation", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.moodElevation,
+      expression: "psyCardPr.moodElevation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mood_elevation",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.moodElevation, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "moodElevation", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.moodElevation,
+      expression: "psyCardPr.moodElevation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mood_elevation",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.moodElevation, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "moodElevation", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Grandiosità")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.grandeur,
+      expression: "psyCardPr.grandeur"
+    }],
+    attrs: {
+      type: "radio",
+      name: "grandeur",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.grandeur, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "grandeur", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.grandeur,
+      expression: "psyCardPr.grandeur"
+    }],
+    attrs: {
+      type: "radio",
+      name: "grandeur",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.grandeur, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "grandeur", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.grandeur,
+      expression: "psyCardPr.grandeur"
+    }],
+    attrs: {
+      type: "radio",
+      name: "grandeur",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.grandeur, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "grandeur", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.grandeur,
+      expression: "psyCardPr.grandeur"
+    }],
+    attrs: {
+      type: "radio",
+      name: "grandeur",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.grandeur, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "grandeur", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.grandeur,
+      expression: "psyCardPr.grandeur"
+    }],
+    attrs: {
+      type: "radio",
+      name: "grandeur",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.grandeur, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "grandeur", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.grandeur,
+      expression: "psyCardPr.grandeur"
+    }],
+    attrs: {
+      type: "radio",
+      name: "grandeur",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.grandeur, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "grandeur", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.grandeur,
+      expression: "psyCardPr.grandeur"
+    }],
+    attrs: {
+      type: "radio",
+      name: "grandeur",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.grandeur, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "grandeur", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.grandeur,
+      expression: "psyCardPr.grandeur"
+    }],
+    attrs: {
+      type: "radio",
+      name: "grandeur",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.grandeur, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "grandeur", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Sospettosità")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.suspiciousness,
+      expression: "psyCardPr.suspiciousness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suspiciousness",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.suspiciousness, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "suspiciousness", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.suspiciousness,
+      expression: "psyCardPr.suspiciousness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suspiciousness",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.suspiciousness, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "suspiciousness", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.suspiciousness,
+      expression: "psyCardPr.suspiciousness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suspiciousness",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.suspiciousness, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "suspiciousness", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.suspiciousness,
+      expression: "psyCardPr.suspiciousness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suspiciousness",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.suspiciousness, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "suspiciousness", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.suspiciousness,
+      expression: "psyCardPr.suspiciousness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suspiciousness",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.suspiciousness, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "suspiciousness", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.suspiciousness,
+      expression: "psyCardPr.suspiciousness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suspiciousness",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.suspiciousness, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "suspiciousness", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.suspiciousness,
+      expression: "psyCardPr.suspiciousness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suspiciousness",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.suspiciousness, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "suspiciousness", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.suspiciousness,
+      expression: "psyCardPr.suspiciousness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suspiciousness",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.suspiciousness, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "suspiciousness", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Allucinazioni")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hallucination,
+      expression: "psyCardPr.hallucination"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hallucination",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hallucination, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hallucination", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hallucination,
+      expression: "psyCardPr.hallucination"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hallucination",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hallucination, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hallucination", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hallucination,
+      expression: "psyCardPr.hallucination"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hallucination",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hallucination, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hallucination", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hallucination,
+      expression: "psyCardPr.hallucination"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hallucination",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hallucination, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hallucination", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hallucination,
+      expression: "psyCardPr.hallucination"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hallucination",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hallucination, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hallucination", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hallucination,
+      expression: "psyCardPr.hallucination"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hallucination",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hallucination, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hallucination", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hallucination,
+      expression: "psyCardPr.hallucination"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hallucination",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hallucination, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hallucination", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.hallucination,
+      expression: "psyCardPr.hallucination"
+    }],
+    attrs: {
+      type: "radio",
+      name: "hallucination",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.hallucination, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "hallucination", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Contenuto insolito del pensiero")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.unusualContentOfThought,
+      expression: "psyCardPr.unusualContentOfThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "unusual_content_of_thought",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.unusualContentOfThought, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "unusualContentOfThought", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.unusualContentOfThought,
+      expression: "psyCardPr.unusualContentOfThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "unusual_content_of_thought",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.unusualContentOfThought, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "unusualContentOfThought", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.unusualContentOfThought,
+      expression: "psyCardPr.unusualContentOfThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "unusual_content_of_thought",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.unusualContentOfThought, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "unusualContentOfThought", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.unusualContentOfThought,
+      expression: "psyCardPr.unusualContentOfThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "unusual_content_of_thought",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.unusualContentOfThought, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "unusualContentOfThought", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.unusualContentOfThought,
+      expression: "psyCardPr.unusualContentOfThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "unusual_content_of_thought",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.unusualContentOfThought, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "unusualContentOfThought", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.unusualContentOfThought,
+      expression: "psyCardPr.unusualContentOfThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "unusual_content_of_thought",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.unusualContentOfThought, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "unusualContentOfThought", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.unusualContentOfThought,
+      expression: "psyCardPr.unusualContentOfThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "unusual_content_of_thought",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.unusualContentOfThought, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "unusualContentOfThought", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.unusualContentOfThought,
+      expression: "psyCardPr.unusualContentOfThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "unusual_content_of_thought",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.unusualContentOfThought, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "unusualContentOfThought", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Comportamento bizzarro")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.bizarreBehavior,
+      expression: "psyCardPr.bizarreBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "bizarre_behavior",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.bizarreBehavior, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "bizarreBehavior", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.bizarreBehavior,
+      expression: "psyCardPr.bizarreBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "bizarre_behavior",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.bizarreBehavior, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "bizarreBehavior", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.bizarreBehavior,
+      expression: "psyCardPr.bizarreBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "bizarre_behavior",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.bizarreBehavior, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "bizarreBehavior", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.bizarreBehavior,
+      expression: "psyCardPr.bizarreBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "bizarre_behavior",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.bizarreBehavior, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "bizarreBehavior", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.bizarreBehavior,
+      expression: "psyCardPr.bizarreBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "bizarre_behavior",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.bizarreBehavior, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "bizarreBehavior", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.bizarreBehavior,
+      expression: "psyCardPr.bizarreBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "bizarre_behavior",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.bizarreBehavior, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "bizarreBehavior", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.bizarreBehavior,
+      expression: "psyCardPr.bizarreBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "bizarre_behavior",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.bizarreBehavior, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "bizarreBehavior", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.bizarreBehavior,
+      expression: "psyCardPr.bizarreBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "bizarre_behavior",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.bizarreBehavior, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "bizarreBehavior", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Trascuratezza della cura di sé")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.neglectOfSelfCare,
+      expression: "psyCardPr.neglectOfSelfCare"
+    }],
+    attrs: {
+      type: "radio",
+      name: "neglect_of_self_care",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.neglectOfSelfCare, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "neglectOfSelfCare", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.neglectOfSelfCare,
+      expression: "psyCardPr.neglectOfSelfCare"
+    }],
+    attrs: {
+      type: "radio",
+      name: "neglect_of_self_care",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.neglectOfSelfCare, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "neglectOfSelfCare", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.neglectOfSelfCare,
+      expression: "psyCardPr.neglectOfSelfCare"
+    }],
+    attrs: {
+      type: "radio",
+      name: "neglect_of_self_care",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.neglectOfSelfCare, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "neglectOfSelfCare", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.neglectOfSelfCare,
+      expression: "psyCardPr.neglectOfSelfCare"
+    }],
+    attrs: {
+      type: "radio",
+      name: "neglect_of_self_care",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.neglectOfSelfCare, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "neglectOfSelfCare", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.neglectOfSelfCare,
+      expression: "psyCardPr.neglectOfSelfCare"
+    }],
+    attrs: {
+      type: "radio",
+      name: "neglect_of_self_care",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.neglectOfSelfCare, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "neglectOfSelfCare", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.neglectOfSelfCare,
+      expression: "psyCardPr.neglectOfSelfCare"
+    }],
+    attrs: {
+      type: "radio",
+      name: "neglect_of_self_care",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.neglectOfSelfCare, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "neglectOfSelfCare", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.neglectOfSelfCare,
+      expression: "psyCardPr.neglectOfSelfCare"
+    }],
+    attrs: {
+      type: "radio",
+      name: "neglect_of_self_care",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.neglectOfSelfCare, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "neglectOfSelfCare", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.neglectOfSelfCare,
+      expression: "psyCardPr.neglectOfSelfCare"
+    }],
+    attrs: {
+      type: "radio",
+      name: "neglect_of_self_care",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.neglectOfSelfCare, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "neglectOfSelfCare", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Disorientamento")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.disorientation,
+      expression: "psyCardPr.disorientation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "disorientation",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.disorientation, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "disorientation", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.disorientation,
+      expression: "psyCardPr.disorientation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "disorientation",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.disorientation, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "disorientation", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.disorientation,
+      expression: "psyCardPr.disorientation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "disorientation",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.disorientation, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "disorientation", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.disorientation,
+      expression: "psyCardPr.disorientation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "disorientation",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.disorientation, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "disorientation", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.disorientation,
+      expression: "psyCardPr.disorientation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "disorientation",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.disorientation, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "disorientation", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.disorientation,
+      expression: "psyCardPr.disorientation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "disorientation",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.disorientation, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "disorientation", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.disorientation,
+      expression: "psyCardPr.disorientation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "disorientation",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.disorientation, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "disorientation", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.disorientation,
+      expression: "psyCardPr.disorientation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "disorientation",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.disorientation, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "disorientation", "7");
+      }
+    }
+  })])])]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("table", [_c("tr", [_c("td", [_vm._v("Disorganizzazione Concettuale")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.conceptualDisorganization,
+      expression: "psyCardPr.conceptualDisorganization"
+    }],
+    attrs: {
+      type: "radio",
+      name: "conceptual_disorganization",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.conceptualDisorganization, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "conceptualDisorganization", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.conceptualDisorganization,
+      expression: "psyCardPr.conceptualDisorganization"
+    }],
+    attrs: {
+      type: "radio",
+      name: "conceptual_disorganization",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.conceptualDisorganization, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "conceptualDisorganization", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.conceptualDisorganization,
+      expression: "psyCardPr.conceptualDisorganization"
+    }],
+    attrs: {
+      type: "radio",
+      name: "conceptual_disorganization",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.conceptualDisorganization, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "conceptualDisorganization", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.conceptualDisorganization,
+      expression: "psyCardPr.conceptualDisorganization"
+    }],
+    attrs: {
+      type: "radio",
+      name: "conceptual_disorganization",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.conceptualDisorganization, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "conceptualDisorganization", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.conceptualDisorganization,
+      expression: "psyCardPr.conceptualDisorganization"
+    }],
+    attrs: {
+      type: "radio",
+      name: "conceptual_disorganization",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.conceptualDisorganization, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "conceptualDisorganization", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.conceptualDisorganization,
+      expression: "psyCardPr.conceptualDisorganization"
+    }],
+    attrs: {
+      type: "radio",
+      name: "conceptual_disorganization",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.conceptualDisorganization, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "conceptualDisorganization", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.conceptualDisorganization,
+      expression: "psyCardPr.conceptualDisorganization"
+    }],
+    attrs: {
+      type: "radio",
+      name: "conceptual_disorganization",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.conceptualDisorganization, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "conceptualDisorganization", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.conceptualDisorganization,
+      expression: "psyCardPr.conceptualDisorganization"
+    }],
+    attrs: {
+      type: "radio",
+      name: "conceptual_disorganization",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.conceptualDisorganization, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "conceptualDisorganization", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Appiattimento affettivo")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalFlattening,
+      expression: "psyCardPr.emotionalFlattening"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_flattening",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalFlattening, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalFlattening", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalFlattening,
+      expression: "psyCardPr.emotionalFlattening"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_flattening",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalFlattening, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalFlattening", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalFlattening,
+      expression: "psyCardPr.emotionalFlattening"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_flattening",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalFlattening, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalFlattening", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalFlattening,
+      expression: "psyCardPr.emotionalFlattening"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_flattening",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalFlattening, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalFlattening", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalFlattening,
+      expression: "psyCardPr.emotionalFlattening"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_flattening",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalFlattening, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalFlattening", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalFlattening,
+      expression: "psyCardPr.emotionalFlattening"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_flattening",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalFlattening, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalFlattening", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalFlattening,
+      expression: "psyCardPr.emotionalFlattening"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_flattening",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalFlattening, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalFlattening", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalFlattening,
+      expression: "psyCardPr.emotionalFlattening"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_flattening",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalFlattening, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalFlattening", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Isolamento emotivo")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalIsolation,
+      expression: "psyCardPr.emotionalIsolation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_isolation",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalIsolation, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalIsolation", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalIsolation,
+      expression: "psyCardPr.emotionalIsolation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_isolation",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalIsolation, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalIsolation", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalIsolation,
+      expression: "psyCardPr.emotionalIsolation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_isolation",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalIsolation, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalIsolation", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalIsolation,
+      expression: "psyCardPr.emotionalIsolation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_isolation",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalIsolation, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalIsolation", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalIsolation,
+      expression: "psyCardPr.emotionalIsolation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_isolation",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalIsolation, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalIsolation", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalIsolation,
+      expression: "psyCardPr.emotionalIsolation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_isolation",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalIsolation, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalIsolation", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalIsolation,
+      expression: "psyCardPr.emotionalIsolation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_isolation",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalIsolation, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalIsolation", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.emotionalIsolation,
+      expression: "psyCardPr.emotionalIsolation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "emotional_isolation",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.emotionalIsolation, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "emotionalIsolation", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Rallentamento motorio")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorSlowdown,
+      expression: "psyCardPr.motorSlowdown"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_slowdown",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorSlowdown, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorSlowdown", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorSlowdown,
+      expression: "psyCardPr.motorSlowdown"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_slowdown",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorSlowdown, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorSlowdown", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorSlowdown,
+      expression: "psyCardPr.motorSlowdown"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_slowdown",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorSlowdown, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorSlowdown", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorSlowdown,
+      expression: "psyCardPr.motorSlowdown"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_slowdown",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorSlowdown, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorSlowdown", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorSlowdown,
+      expression: "psyCardPr.motorSlowdown"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_slowdown",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorSlowdown, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorSlowdown", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorSlowdown,
+      expression: "psyCardPr.motorSlowdown"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_slowdown",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorSlowdown, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorSlowdown", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorSlowdown,
+      expression: "psyCardPr.motorSlowdown"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_slowdown",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorSlowdown, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorSlowdown", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorSlowdown,
+      expression: "psyCardPr.motorSlowdown"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_slowdown",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorSlowdown, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorSlowdown", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Tensione motoria")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorTension,
+      expression: "psyCardPr.motorTension"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_tension",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorTension, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorTension", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorTension,
+      expression: "psyCardPr.motorTension"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_tension",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorTension, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorTension", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorTension,
+      expression: "psyCardPr.motorTension"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_tension",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorTension, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorTension", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorTension,
+      expression: "psyCardPr.motorTension"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_tension",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorTension, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorTension", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorTension,
+      expression: "psyCardPr.motorTension"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_tension",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorTension, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorTension", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorTension,
+      expression: "psyCardPr.motorTension"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_tension",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorTension, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorTension", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorTension,
+      expression: "psyCardPr.motorTension"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_tension",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorTension, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorTension", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorTension,
+      expression: "psyCardPr.motorTension"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_tension",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorTension, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorTension", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Mancanza di cooperazione")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.lackOfCooperation,
+      expression: "psyCardPr.lackOfCooperation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "lack_of_cooperation",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.lackOfCooperation, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "lackOfCooperation", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.lackOfCooperation,
+      expression: "psyCardPr.lackOfCooperation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "lack_of_cooperation",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.lackOfCooperation, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "lackOfCooperation", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.lackOfCooperation,
+      expression: "psyCardPr.lackOfCooperation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "lack_of_cooperation",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.lackOfCooperation, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "lackOfCooperation", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.lackOfCooperation,
+      expression: "psyCardPr.lackOfCooperation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "lack_of_cooperation",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.lackOfCooperation, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "lackOfCooperation", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.lackOfCooperation,
+      expression: "psyCardPr.lackOfCooperation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "lack_of_cooperation",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.lackOfCooperation, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "lackOfCooperation", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.lackOfCooperation,
+      expression: "psyCardPr.lackOfCooperation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "lack_of_cooperation",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.lackOfCooperation, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "lackOfCooperation", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.lackOfCooperation,
+      expression: "psyCardPr.lackOfCooperation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "lack_of_cooperation",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.lackOfCooperation, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "lackOfCooperation", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.lackOfCooperation,
+      expression: "psyCardPr.lackOfCooperation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "lack_of_cooperation",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.lackOfCooperation, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "lackOfCooperation", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Eccitamento")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.excitement,
+      expression: "psyCardPr.excitement"
+    }],
+    attrs: {
+      type: "radio",
+      name: "excitement",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.excitement, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "excitement", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.excitement,
+      expression: "psyCardPr.excitement"
+    }],
+    attrs: {
+      type: "radio",
+      name: "excitement",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.excitement, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "excitement", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.excitement,
+      expression: "psyCardPr.excitement"
+    }],
+    attrs: {
+      type: "radio",
+      name: "excitement",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.excitement, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "excitement", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.excitement,
+      expression: "psyCardPr.excitement"
+    }],
+    attrs: {
+      type: "radio",
+      name: "excitement",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.excitement, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "excitement", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.excitement,
+      expression: "psyCardPr.excitement"
+    }],
+    attrs: {
+      type: "radio",
+      name: "excitement",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.excitement, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "excitement", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.excitement,
+      expression: "psyCardPr.excitement"
+    }],
+    attrs: {
+      type: "radio",
+      name: "excitement",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.excitement, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "excitement", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.excitement,
+      expression: "psyCardPr.excitement"
+    }],
+    attrs: {
+      type: "radio",
+      name: "excitement",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.excitement, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "excitement", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.excitement,
+      expression: "psyCardPr.excitement"
+    }],
+    attrs: {
+      type: "radio",
+      name: "excitement",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.excitement, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "excitement", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Distraibilità")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.distractibility,
+      expression: "psyCardPr.distractibility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "distractibility",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.distractibility, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "distractibility", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.distractibility,
+      expression: "psyCardPr.distractibility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "distractibility",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.distractibility, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "distractibility", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.distractibility,
+      expression: "psyCardPr.distractibility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "distractibility",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.distractibility, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "distractibility", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.distractibility,
+      expression: "psyCardPr.distractibility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "distractibility",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.distractibility, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "distractibility", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.distractibility,
+      expression: "psyCardPr.distractibility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "distractibility",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.distractibility, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "distractibility", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.distractibility,
+      expression: "psyCardPr.distractibility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "distractibility",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.distractibility, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "distractibility", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.distractibility,
+      expression: "psyCardPr.distractibility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "distractibility",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.distractibility, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "distractibility", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.distractibility,
+      expression: "psyCardPr.distractibility"
+    }],
+    attrs: {
+      type: "radio",
+      name: "distractibility",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.distractibility, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "distractibility", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Iperattività motoria")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorHyperactivity,
+      expression: "psyCardPr.motorHyperactivity"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_hyperactivity",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorHyperactivity, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorHyperactivity", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorHyperactivity,
+      expression: "psyCardPr.motorHyperactivity"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_hyperactivity",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorHyperactivity, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorHyperactivity", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorHyperactivity,
+      expression: "psyCardPr.motorHyperactivity"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_hyperactivity",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorHyperactivity, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorHyperactivity", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorHyperactivity,
+      expression: "psyCardPr.motorHyperactivity"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_hyperactivity",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorHyperactivity, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorHyperactivity", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorHyperactivity,
+      expression: "psyCardPr.motorHyperactivity"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_hyperactivity",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorHyperactivity, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorHyperactivity", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorHyperactivity,
+      expression: "psyCardPr.motorHyperactivity"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_hyperactivity",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorHyperactivity, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorHyperactivity", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorHyperactivity,
+      expression: "psyCardPr.motorHyperactivity"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_hyperactivity",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorHyperactivity, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorHyperactivity", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.motorHyperactivity,
+      expression: "psyCardPr.motorHyperactivity"
+    }],
+    attrs: {
+      type: "radio",
+      name: "motor_hyperactivity",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.motorHyperactivity, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "motorHyperactivity", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Manierismi e posture")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.mannerismAndPosture,
+      expression: "psyCardPr.mannerismAndPosture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mannerism_and_posture",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.mannerismAndPosture, "0")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "mannerismAndPosture", "0");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("1\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.mannerismAndPosture,
+      expression: "psyCardPr.mannerismAndPosture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mannerism_and_posture",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.mannerismAndPosture, "1")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "mannerismAndPosture", "1");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.mannerismAndPosture,
+      expression: "psyCardPr.mannerismAndPosture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mannerism_and_posture",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.mannerismAndPosture, "2")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "mannerismAndPosture", "2");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.mannerismAndPosture,
+      expression: "psyCardPr.mannerismAndPosture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mannerism_and_posture",
+      value: "3"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.mannerismAndPosture, "3")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "mannerismAndPosture", "3");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.mannerismAndPosture,
+      expression: "psyCardPr.mannerismAndPosture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mannerism_and_posture",
+      value: "4"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.mannerismAndPosture, "4")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "mannerismAndPosture", "4");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.mannerismAndPosture,
+      expression: "psyCardPr.mannerismAndPosture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mannerism_and_posture",
+      value: "5"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.mannerismAndPosture, "5")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "mannerismAndPosture", "5");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.mannerismAndPosture,
+      expression: "psyCardPr.mannerismAndPosture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mannerism_and_posture",
+      value: "6"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.mannerismAndPosture, "6")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "mannerismAndPosture", "6");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPr.mannerismAndPosture,
+      expression: "psyCardPr.mannerismAndPosture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "mannerism_and_posture",
+      value: "7"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPr.mannerismAndPosture, "7")
+    },
+    on: {
+      click: _vm.calculateSum,
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPr, "mannerismAndPosture", "7");
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(3), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.sum,
+      expression: "sum"
+    }],
+    attrs: {
+      type: "text",
+      name: "punteggio"
+    },
+    domProps: {
+      value: _vm.sum
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.sum = $event.target.value;
+      }
+    }
+  })])])])])]), _vm._v("\n                                " + _vm._s(_vm.psyCardPr) + "\n                                "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("span", {
+    staticClass: "btn btn-success i2hBtn",
+    on: {
+      click: function click($event) {
+        return _vm.addPsyRating("pr");
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.btnPrSend))])])])])])])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px"
+    }
+  }, [_c("h1", [_c("strong", [_vm._v("BRIEF PSYCHIATRIC RATING SCALE BPRS")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("tr", [_c("th", [_vm._v("Descrizioni")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", [_c("h2", [_vm._v("\n                                        Valutare i seguenti item da 15 a 24 in base all'eloquio del paziente a al suo comportamento durante l'intervista \n                                    ")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "total_score_rating"
+    }
+  }, [_c("strong", [_c("h2", [_vm._v("Punteggio totale:")])])]);
+}];
+render._withStripped = true;
 
 
 /***/ }),
