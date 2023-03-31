@@ -32,9 +32,9 @@
                                                 <label for="residency_permit" class="col-form-label col-md-3 col-sm-2 label-align"><strong>PERMESSO DI SOGGIORNO</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>SI</span>
-                                                    <input type="radio" name="residency_permit" value="SI" v-model="psyCardSf.residencyPermit"/>
+                                                    <input type="radio" name="residency_permit" value="1" v-model="psyCardSf.residencyPermit"/>
                                                     <span>NO</span>
-                                                    <input type="radio" name="residency_permit" value="NO" v-model="psyCardSf.residencyPermit"/>
+                                                    <input type="radio" name="residency_permit" value="0" v-model="psyCardSf.residencyPermit"/>
                                                 </span>
                                             </div>
                                         </div>
@@ -101,19 +101,17 @@
                                                 <label for="social_degree" class="col-form-label col-md-3 col-sm-2 label-align"><strong>TITOLO DI STUDIO</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span style="border:1px solid black; padding:3px; margin-right: 5px;">Scuola primaria
-                                                        <input type="radio" name="social_degree" v-model="psyCardSf.socialDegree"/>
+                                                        <input type="radio" name="social_degree" value="Scuola primaria" v-model="psyCardSf.socialDegree"/>
                                                     </span>
                                                     <span style="border:1px solid black; padding:3px; margin-right: 5px;">Scuola media
-                                                        <input type="radio" name="social_degree" v-model="psyCardSf.socialDegree"/>
+                                                        <input type="radio" name="social_degree" value="Scuola media" v-model="psyCardSf.socialDegree"/>
                                                     </span>
                                                     <span style="border:1px solid black; padding:3px; margin-right: 5px;">Scuola secondaria superiore
-                                                        <input type="radio" name="social_degree" v-model="psyCardSf.socialDegree"/>
+                                                        <input type="radio" name="social_degree" value="Scuola secondaria superiore" v-model="psyCardSf.socialDegree"/>
                                                     </span>
                                                     <span style="border:1px solid black; padding:3px; margin-right: 5px;">Laurea
-                                                        <input type="radio" name="social_degree" v-model="psyCardSf.socialDegree"/>
+                                                        <input type="radio" name="social_degree" value="Laurea" v-model="psyCardSf.socialDegree"/>
                                                     </span>
-                                                    <input class="ml-2" type="text" name="social_degree" v-model="psyCardSf.socialDegree"/>
-
                                                 </span>
                                             </div>
                                         </div>
@@ -173,9 +171,9 @@
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="legal_status_entered" class="col-form-label col-md-3 col-sm-2 label-align"><strong>FINE PENA</strong></label>
+                                                <label for="legal_status_end_of_sentence" class="col-form-label col-md-3 col-sm-2 label-align"><strong>FINE PENA</strong></label>
                                                 <span class="col-md-12 col-sm-12">
-                                                    <input type="date" name="legal_status_entered" v-model="psyCardSf.legalStatusEntered"/>
+                                                    <input type="date" name="legal_status_end_of_sentence" v-model="psyCardSf.legalStatusEndOfSentence"/>
                                                 </span>
                                             </div>
                                         </div>
@@ -306,7 +304,7 @@
                                                 <label for="social_health_situation_asl" class="col-form-label col-md-3 col-sm-1 label-align"><strong>ALTRI SERVIZI ASL</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="checkbox" name="social_health_situation_asl"  v-model="showInput6"/> 
-                                                    <input type="text" name="social_health_situation_asl" v-if="showInput6" v-model="psyCardSf.socialHealthsituationAsl"/>
+                                                    <input type="text" name="social_health_situation_asl" v-if="showInput6" v-model="psyCardSf.socialHealthSituationAsl"/>
                                                 </span>
                                             </div>
                                         </div>
@@ -341,7 +339,7 @@
                                             <div class="item form-group">
                                                 <label for="social_health_situation_disability" class="col-form-label col-md-3 col-sm-2 label-align"><strong>INVALIDITA' ACCOMPAGNO /LEGGE 104/92 - I.68/99</strong></label>
                                                 <span class="col-md-12 col-sm-12">
-                                                    <input type="checkbox" name="social_health_situation_asl"  v-model="showInput7"/> 
+                                                    <input type="checkbox" name="social_health_situation_disability"  v-model="showInput7"/> 
                                                     <span v-if="showInput7">DAL</span>
                                                     <input type="date" name="social_health_situation_disability" v-if="showInput7" v-model="psyCardSf.socialHealthSituationDisability"/>
                                                     <input type="text" name="social_health_situation_disability" v-if="showInput7" v-model="psyCardSf.socialHealthSituationDisability"/>
@@ -355,10 +353,9 @@
                                                 <label for="social_health_situation_revision" class="col-form-label col-md-3 col-sm-2 label-align"><strong>REVISIONE</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>SI</span>
-                                                    <input type="radio" name="social_health_situation_revision" value="SI" v-model="psyCardSf.socialHealthSituationRevision"/>
+                                                    <input type="radio" name="social_health_situation_revision" value="1" v-model="psyCardSf.socialHealthSituationRevision"/>
                                                     <span>NO</span>
-                                                    <input type="radio" name="social_health_situation_revision" value="NO" v-model="psyCardSf.socialHealthSituationRevision"/>
-
+                                                    <input type="radio" name="social_health_situation_revision" value="0" v-model="psyCardSf.socialHealthSituationRevision"/>
                                                 </span>
                                             </div>
                                         </div>
@@ -408,7 +405,7 @@
                                             <div class="item form-group">
                                                 <label for="environmental_analysis_accommodation" class="col-form-label col-md-2 col-sm-2 label-align"><strong>ALLOGGIO</strong></label>
                                                 <span class="col-md-12 col-sm-12">
-                                                    <input type="text" name="environmental_analysis_accommodation" value="SI" v-model="psyCardSf.environmentalAnalysisAenvironmental_analysis_workccommodation"/>
+                                                    <input type="text" name="environmental_analysis_accommodation" v-model="psyCardSf.environmentalAnalysisAccommodation"/>
                                                 </span>
                                             </div>
                                         </div>
@@ -441,6 +438,36 @@
                                                 <label for="environmental_analysis_formal_network" class="col-form-label col-md-7 col-sm-6 label-align"><strong>RETI FORMALI E INFORMALI (INTERNE ED ESTERNE AL CARCERE)</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="text" name="environmental_analysis_formal_network" v-model="psyCardSf.environmentalAnalysisFormalNetwork"/>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:5px; margin-left: 10px; width: 900px;">
+                                <span style="margin-left:10px;" ><strong> 4. ANALISI SITUAZIONE SOCIO-AMBIENTALE</strong></span> 
+                            </div>
+                            <div class="x_content">
+                                <div style="border:2px solid black; max-width: 900px; max-height: 650px; margin-left: 10px;margin-bottom: 10px;">
+                                    <div class="row" style="margin-top:20px;">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="item form-group">
+                                                <label for="intervention_hypothesis_project" class="col-form-label col-md-4 col-sm-2 label-align"><strong>IPOTESI DI INTERVENTO /PROGETTUALITA' </strong></label>
+                                                <span class="col-md-12 col-sm-12">
+                                                    <input type="text" name="intervention_hypothesis_project" v-model="psyCardSf.interventionHypothesisSocialProject"/>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:20px;">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="item form-group">
+                                                <label for="intervention_hypothesis_social_worker" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Assistente sociale</strong></label>
+                                                <span class="col-md-12 col-sm-12">
+                                                    <input type="text" name="intervention_hypothesis_social_worker" v-model="psyCardSf.interventionHypothesisSocialWorker"/>
                                                 </span>
                                             </div>
                                         </div>
@@ -515,6 +542,7 @@ export default {
             showInput5: false,
             showInput6: false,
             showInput7: false,
+            showinput8: false,
 
             
 
@@ -757,6 +785,9 @@ export default {
                             _wm.psyCardSf.environmentalAnalysisWork = _SocialRep.environmental_analysis_work 
                             _wm.psyCardSf.environmentalAnalysisIncome = _SocialRep.environmental_analysis_income
                             _wm.psyCardSf.environmentalAnalysisFormalNetwork = _SocialRep.environmental_analysis_formal_network 
+
+                            _wm.psyCardSf.interventionHypothesisSocialProject = _SocialRep.intervention_hypothesis_project
+                            _wm.psyCardSf.interventionHypothesisSocialWorker = _SocialRep.intervention_hypothesis_social_worker
 
 
                             _wm.allPsySocialFolders=response.data.allPsySocialFolders;

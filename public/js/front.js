@@ -2192,26 +2192,25 @@ __webpack_require__.r(__webpack_exports__);
       }, function (lastname) {
         return 'Sbardella';
       }],
-      psyRhDoctorId: 0,
-      psyRhDoctorName: '',
-      psyRhDoctorLastname: '',
-      psyRhDate: null,
+      psyRpDoctorId: 0,
+      psyRpDoctorName: '',
+      psyRpDoctorLastname: '',
+      psyRpDate: null,
       psyCardId: null,
       date: new Date(),
-      psyCardRh: {},
+      psyCardRp: {},
       psyCardSa: {},
-      panel: 'rh',
+      panel: 'rp',
       mainTitle: "psy",
       firstSave: true,
-      rHSaved: false,
-      btnRhSend: "Salva",
+      rPSaved: false,
+      btnRpSend: "Salva",
       total: 0,
       allPsyRehabilitationPsychiatricCards: null
     };
   },
   created: function created() {
     // this.getPermissions();
-    //alert(JSON.stringify(this.getPsyMentalHealthDepartmentsByUserInstanceId(1)));
     this.getPsyRehabilitationPsychiatricCardsByUserInstanceId(1);
   },
   methods: {
@@ -2234,8 +2233,8 @@ __webpack_require__.r(__webpack_exports__);
       form.append('doctorId', 14);
       form.append('doctorName', 'dott.');
       form.append('doctorUserName', 'Sbardella');
-      if (_panel == 'rh') {
-        if (!this.rHSaved) {
+      if (_panel == 'rp') {
+        if (!this.rPSaved) {
           form.append('action', 'store');
         } else {
           form.append('action', 'update');
@@ -2247,9 +2246,9 @@ __webpack_require__.r(__webpack_exports__);
             _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
           }
         }
-        form.append('section', 'rh');
-        if (!this.isObjEmpty(this.psyCardRh)) {
-          var _psyCard = JSON.stringify(this.psyCardRh);
+        form.append('section', 'rp');
+        if (!this.isObjEmpty(this.psyCardRp)) {
+          var _psyCard = JSON.stringify(this.psyCardRp);
           form.append('PsyRehabilitationPsychiatricCard', _psyCard);
         }
       } else if (_panel == 'sa') {
@@ -2272,27 +2271,30 @@ __webpack_require__.r(__webpack_exports__);
             form.append('psyCard', _psyCard2);
           }
         }
-      } else if (_panel == 'mh') {
-        if (!this.mHSaved) {
-          form.append('action', 'store');
-        } else {
-          form.append('action', 'update');
-        }
-        if (this.mHSaved) {
-          if (this.psyCardId) {
-            form.append('psyId', this.psyCardId);
-          } else {
-            _errors++;
-            _errorTitle = "Attenzione";
-            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
-          }
-          form.append('section', 'mh');
-          if (!this.isObjEmpty(this.psyCardMh)) {
-            var _psyCard3 = JSON.stringify(this.psyCardMh);
-            form.append('PsyMentalHealthDepartment', _psyCard3);
-          }
-        }
       }
+      // else if(_panel=='mh'){
+      //     if(!this.mHSaved){
+      //         form.append('action', 'store');
+      //     }else{
+      //         form.append('action', 'update');
+      //     }
+
+      //     if (this.mHSaved) {
+      //         if(this.psyCardId){
+      //             form.append('psyId',this.psyCardId);
+      //         }else{
+      //             _errors++;
+      //             _errorTitle="Attenzione";
+      //             _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
+      //         }
+      //         form.append('section', 'mh');
+      //         if(!this.isObjEmpty(this.psyCardMh)){
+      //             let _psyCard=JSON.stringify(this.psyCardMh);
+      //             form.append('PsyMentalHealthDepartment', _psyCard);
+      //         }
+      //     }
+      // }
+
       if (_errors == 0) {
         try {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_PSY_CARD"], form).then(function (response) {
@@ -2359,28 +2361,28 @@ __webpack_require__.r(__webpack_exports__);
           _wm.errNum = error;
           if (error == 0) {
             _wm.mainTitle = "Aggiornamento Cartella psy";
-            if (response.data.PsyMentalHealthDepartment) {
-              _wm.rHSaved = true;
+            if (response.data.PsyRehabilitationPsychiatricCard) {
+              _wm.rPSaved = true;
               //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
-              _wm.btnRhSend = "Aggiorna";
-              var _RehabPsyc = response.data.PsyMentalHealthDepartment;
+              _wm.btnRpSend = "Aggiorna";
+              var _RehabPsyc = response.data.PsyRehabilitationPsychiatricCard;
               //     // _wm.psyCardId=response.data.psyCard.id;
               _wm.psyCardId = _RehabPsyc.id;
-              _wm.psyRhDoctorId = _RehabPsyc.id_doctor;
-              _wm.psyRhDoctorName = _RehabPsyc.doctor_name;
-              _wm.psyRhDoctorLastname = _RehabPsyc.doctor_lastname;
-              _wm.psyCardRh.projectDescription = _RehabPsyc.project_description;
-              _wm.psyCardRh.treatmentAreaObjective = _RehabPsyc.treatment_area_objective;
-              _wm.psyCardRh.psychiatricIntervention = _RehabPsyc.psychiatric_intervention;
-              _wm.psyCardRh.projectManager = _RehabPsyc.project_manager;
-              _wm.psyCardRh.psychiatricAttachment = _RehabPsyc.psychiatric_attachment;
+              _wm.psyRpDoctorId = _RehabPsyc.id_doctor;
+              _wm.psyRpDoctorName = _RehabPsyc.doctor_name;
+              _wm.psyRpDoctorLastname = _RehabPsyc.doctor_lastname;
+              _wm.psyCardRp.projectDescription = _RehabPsyc.project_description;
+              _wm.psyCardRp.treatmentAreaObjective = _RehabPsyc.treatment_area_objective;
+              _wm.psyCardRp.psychiatricIntervention = _RehabPsyc.psychiatric_intervention;
+              _wm.psyCardRp.projectManager = _RehabPsyc.project_manager;
+              _wm.psyCardRp.psychiatricAttachment = _RehabPsyc.psychiatric_attachment;
               _wm.allPsyRehabilitationPsychiatricCards = response.data.allPsyRehabilitationPsychiatricCards;
             } else {
-              _wm.btnRhSend = "Salva";
+              _wm.btnRpSend = "Salva";
             }
             _wm.firstSave = false;
           } else if (error == 7) {
-            _wm.btnRhSend = "Salva";
+            _wm.btnRpSend = "Salva";
             _wm.firstSave = true;
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
@@ -2389,6 +2391,9 @@ __webpack_require__.r(__webpack_exports__);
       } catch (error) {
         throw error;
       }
+    },
+    isObjEmpty: function isObjEmpty(obj) {
+      return Object.keys(obj).length === 0;
     }
   }
 });
@@ -2429,6 +2434,7 @@ __webpack_require__.r(__webpack_exports__);
       showInput5: false,
       showInput6: false,
       showInput7: false,
+      showinput8: false,
       accessData: [function (id) {
         return 14;
       }, function (name) {
@@ -2628,6 +2634,8 @@ __webpack_require__.r(__webpack_exports__);
               _wm.psyCardSf.environmentalAnalysisWork = _SocialRep.environmental_analysis_work;
               _wm.psyCardSf.environmentalAnalysisIncome = _SocialRep.environmental_analysis_income;
               _wm.psyCardSf.environmentalAnalysisFormalNetwork = _SocialRep.environmental_analysis_formal_network;
+              _wm.psyCardSf.interventionHypothesisSocialProject = _SocialRep.intervention_hypothesis_project;
+              _wm.psyCardSf.interventionHypothesisSocialWorker = _SocialRep.intervention_hypothesis_social_worker;
               _wm.allPsySocialFolders = response.data.allPsySocialFolders;
             } else {
               _wm.btnSfSend = "Salva";
@@ -2861,6 +2869,7 @@ __webpack_require__.r(__webpack_exports__);
               _wm.psyCardUd.onSetOfPsychiatricSymptom = _PsyUoc.on_set_of_psychiatric_symptom;
               _wm.psyCardUd.substanceUse = _PsyUoc.substance_use;
               _wm.psyCardUd.inChargeAtSerdTerritorial = _PsyUoc.in_charge_at_serd_territorial;
+              _wm.psyCardUd.inChargeAtSerdTerritorialWhich = _PsyUoc.in_charge_at_serd_territorial_which;
               _wm.psyCardUd.psychoticDymptom = _PsyUoc.psychotic_symptom;
               _wm.psyCardUd.anxiousAffectiveSymptom = _PsyUoc.anxious_affective_symptom;
               _wm.psyCardUd.impulsiveSymptom = _PsyUoc.impulsive_symptom;
@@ -8160,8 +8169,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardRh.projectDescription,
-      expression: "psyCardRh.projectDescription"
+      value: _vm.psyCardRp.projectDescription,
+      expression: "psyCardRp.projectDescription"
     }],
     attrs: {
       name: "project_description",
@@ -8169,12 +8178,12 @@ var render = function render() {
       rows: "4"
     },
     domProps: {
-      value: _vm.psyCardRh.projectDescription
+      value: _vm.psyCardRp.projectDescription
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardRh, "projectDescription", $event.target.value);
+        _vm.$set(_vm.psyCardRp, "projectDescription", $event.target.value);
       }
     }
   })])])])]), _vm._v(" "), _c("div", {
@@ -8194,8 +8203,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardRh.treatmentAreaObjective,
-      expression: "psyCardRh.treatmentAreaObjective"
+      value: _vm.psyCardRp.treatmentAreaObjective,
+      expression: "psyCardRp.treatmentAreaObjective"
     }],
     attrs: {
       name: "treatment_area_objective",
@@ -8203,15 +8212,15 @@ var render = function render() {
       rows: "7"
     },
     domProps: {
-      value: _vm.psyCardRh.treatmentAreaObjective
+      value: _vm.psyCardRp.treatmentAreaObjective
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardRh, "treatmentAreaObjective", $event.target.value);
+        _vm.$set(_vm.psyCardRp, "treatmentAreaObjective", $event.target.value);
       }
     }
-  })])])])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("div", {
+  })])])])]), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "20px"
@@ -8220,14 +8229,14 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(4), _vm._v(" "), _c("div", {
+  }, [_vm._m(3), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("textarea", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardRh.projectManager,
-      expression: "psyCardRh.projectManager"
+      value: _vm.psyCardRp.projectManager,
+      expression: "psyCardRp.projectManager"
     }],
     attrs: {
       name: "project_menager",
@@ -8235,15 +8244,15 @@ var render = function render() {
       rows: "2"
     },
     domProps: {
-      value: _vm.psyCardRh.projectManager
+      value: _vm.psyCardRp.projectManager
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardRh, "projectManager", $event.target.value);
+        _vm.$set(_vm.psyCardRp, "projectManager", $event.target.value);
       }
     }
-  })])])])]), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("hr"), _vm._v("\n                            " + _vm._s(_vm.psyCardRh) + "\n                            "), _c("div", {
+  })])])])]), _vm._v(" "), _c("hr"), _vm._v("\n                            " + _vm._s(_vm.psyCardRp) + "\n                            "), _c("div", {
     staticClass: "ln_solid"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -8256,7 +8265,7 @@ var render = function render() {
         return _vm.addPsyRehabilitationPsychiatricCard("rp");
       }
     }
-  }, [_vm._v(_vm._s(_vm.btnRhSend))])])]), _vm._v(" "), _c("hr")])])])])])])]);
+  }, [_vm._v(_vm._s(_vm.btnRpSend))])])]), _vm._v(" "), _c("hr")])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -8278,7 +8287,7 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "project_description"
     }
-  }, [_c("strong", [_c("h2", [_vm._v("1) Breve Descrizione Progetto")])])]);
+  }, [_c("strong", [_c("h2", [_vm._v(" Breve Descrizione Progetto")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -8287,95 +8296,7 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "treatment_area_objective"
     }
-  }, [_c("strong", [_c("h2", [_vm._v("2) Obiettivi In Cui Viene Specificata Area Trattamento:")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "20px"
-    }
-  }, [_c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("div", {
-    staticClass: "item form-group"
-  }, [_c("label", {
-    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
-    attrs: {
-      "for": "psychiatric_intervention"
-    }
-  }, [_c("strong", [_c("h2", [_vm._v("3) Interventi:")])])]), _vm._v(" "), _c("p", [_c("select", {
-    attrs: {
-      name: "trattamenti"
-    }
-  }, [_c("option", {
-    attrs: {
-      value: "trattamento1"
-    }
-  }, [_vm._v("Trattamento 1")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "trattamento2"
-    }
-  }, [_vm._v("Trattamento 2")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "trattamento3"
-    }
-  }, [_vm._v("Trattamento 3")])]), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": "dataInizio"
-    }
-  }, [_vm._v("Data di inizio:")]), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "date",
-      id: "dataInizio",
-      name: "dataInizio"
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": "dataFine"
-    }
-  }, [_vm._v("Data di fine:")]), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "date",
-      id: "dataFine",
-      name: "dataFine"
-    }
-  })]), _vm._v(" "), _c("span", {
-    staticClass: "ml-3"
-  }, [_vm._v(" -Setting: 1. Individuale e/o 2. Gruppale\n                                                "), _c("form", {
-    staticClass: "ml-3",
-    attrs: {
-      action: ""
-    }
-  }, [_c("input", {
-    attrs: {
-      type: "checkbox",
-      id: "",
-      name: "",
-      value: ""
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": ""
-    }
-  }), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "checkbox",
-      id: "",
-      name: "",
-      value: ""
-    }
-  }), _vm._v(" "), _c("label", {
-    attrs: {
-      "for": ""
-    }
-  }), _c("br"), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "submit",
-      value: "Submit"
-    }
-  })])])])])]);
+  }, [_c("strong", [_c("h2", [_vm._v("Obiettivi In Cui Viene Specificata Area Trattamento:")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -8384,31 +8305,7 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "project_menager"
     }
-  }, [_c("strong", [_c("h2", [_vm._v("4) Responsabile Progetto:")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "20px"
-    }
-  }, [_c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("div", {
-    staticClass: "item form-group"
-  }, [_c("label", {
-    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
-    attrs: {
-      "for": "psychiatric_attachment"
-    }
-  }, [_c("strong", [_c("h2", [_vm._v("5) Allegati:")])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("button", {
-    attrs: {
-      onclick: "downloadFile()"
-    }
-  }, [_vm._v("Download file")])])])])]);
+  }, [_c("strong", [_c("h2", [_vm._v(" Responsabile Progetto:")])])]);
 }];
 render._withStripped = true;
 
@@ -8507,14 +8404,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "residency_permit",
-      value: "SI"
+      value: "1"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.residencyPermit, "SI")
+      checked: _vm._q(_vm.psyCardSf.residencyPermit, "1")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "residencyPermit", "SI");
+        return _vm.$set(_vm.psyCardSf, "residencyPermit", "1");
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
@@ -8527,14 +8424,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "residency_permit",
-      value: "NO"
+      value: "0"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.residencyPermit, "NO")
+      checked: _vm._q(_vm.psyCardSf.residencyPermit, "0")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "residencyPermit", "NO");
+        return _vm.$set(_vm.psyCardSf, "residencyPermit", "0");
       }
     }
   })])])])]), _vm._v(" "), _c("div", {
@@ -8718,14 +8615,15 @@ var render = function render() {
     }],
     attrs: {
       type: "radio",
-      name: "social_degree"
+      name: "social_degree",
+      value: "Scuola primaria"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.socialDegree, null)
+      checked: _vm._q(_vm.psyCardSf.socialDegree, "Scuola primaria")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "socialDegree", null);
+        return _vm.$set(_vm.psyCardSf, "socialDegree", "Scuola primaria");
       }
     }
   })]), _vm._v(" "), _c("span", {
@@ -8743,14 +8641,15 @@ var render = function render() {
     }],
     attrs: {
       type: "radio",
-      name: "social_degree"
+      name: "social_degree",
+      value: "Scuola media"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.socialDegree, null)
+      checked: _vm._q(_vm.psyCardSf.socialDegree, "Scuola media")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "socialDegree", null);
+        return _vm.$set(_vm.psyCardSf, "socialDegree", "Scuola media");
       }
     }
   })]), _vm._v(" "), _c("span", {
@@ -8768,14 +8667,15 @@ var render = function render() {
     }],
     attrs: {
       type: "radio",
-      name: "social_degree"
+      name: "social_degree",
+      value: "Scuola secondaria superiore"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.socialDegree, null)
+      checked: _vm._q(_vm.psyCardSf.socialDegree, "Scuola secondaria superiore")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "socialDegree", null);
+        return _vm.$set(_vm.psyCardSf, "socialDegree", "Scuola secondaria superiore");
       }
     }
   })]), _vm._v(" "), _c("span", {
@@ -8793,38 +8693,18 @@ var render = function render() {
     }],
     attrs: {
       type: "radio",
-      name: "social_degree"
+      name: "social_degree",
+      value: "Laurea"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.socialDegree, null)
+      checked: _vm._q(_vm.psyCardSf.socialDegree, "Laurea")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "socialDegree", null);
+        return _vm.$set(_vm.psyCardSf, "socialDegree", "Laurea");
       }
     }
-  })]), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.psyCardSf.socialDegree,
-      expression: "psyCardSf.socialDegree"
-    }],
-    staticClass: "ml-2",
-    attrs: {
-      type: "text",
-      name: "social_degree"
-    },
-    domProps: {
-      value: _vm.psyCardSf.socialDegree
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardSf, "socialDegree", $event.target.value);
-      }
-    }
-  })])])])])])]), _vm._v(" "), _vm._m(10), _vm._v(" "), _c("div", {
+  })])])])])])])]), _vm._v(" "), _vm._m(10), _vm._v(" "), _c("div", {
     staticClass: "x_content"
   }, [_c("div", {
     staticStyle: {
@@ -8974,20 +8854,20 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardSf.legalStatusEntered,
-      expression: "psyCardSf.legalStatusEntered"
+      value: _vm.psyCardSf.legalStatusEndOfSentence,
+      expression: "psyCardSf.legalStatusEndOfSentence"
     }],
     attrs: {
       type: "date",
-      name: "legal_status_entered"
+      name: "legal_status_end_of_sentence"
     },
     domProps: {
-      value: _vm.psyCardSf.legalStatusEntered
+      value: _vm.psyCardSf.legalStatusEndOfSentence
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardSf, "legalStatusEntered", $event.target.value);
+        _vm.$set(_vm.psyCardSf, "legalStatusEndOfSentence", $event.target.value);
       }
     }
   })])])])]), _vm._v(" "), _c("div", {
@@ -9624,20 +9504,20 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardSf.socialHealthsituationAsl,
-      expression: "psyCardSf.socialHealthsituationAsl"
+      value: _vm.psyCardSf.socialHealthSituationAsl,
+      expression: "psyCardSf.socialHealthSituationAsl"
     }],
     attrs: {
       type: "text",
       name: "social_health_situation_asl"
     },
     domProps: {
-      value: _vm.psyCardSf.socialHealthsituationAsl
+      value: _vm.psyCardSf.socialHealthSituationAsl
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardSf, "socialHealthsituationAsl", $event.target.value);
+        _vm.$set(_vm.psyCardSf, "socialHealthSituationAsl", $event.target.value);
       }
     }
   }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
@@ -9722,7 +9602,7 @@ var render = function render() {
     }],
     attrs: {
       type: "checkbox",
-      name: "social_health_situation_asl"
+      name: "social_health_situation_disability"
     },
     domProps: {
       checked: Array.isArray(_vm.showInput7) ? _vm._i(_vm.showInput7, null) > -1 : _vm.showInput7
@@ -9806,14 +9686,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "social_health_situation_revision",
-      value: "SI"
+      value: "1"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.socialHealthSituationRevision, "SI")
+      checked: _vm._q(_vm.psyCardSf.socialHealthSituationRevision, "1")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "socialHealthSituationRevision", "SI");
+        return _vm.$set(_vm.psyCardSf, "socialHealthSituationRevision", "1");
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
@@ -9826,14 +9706,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "social_health_situation_revision",
-      value: "NO"
+      value: "0"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.socialHealthSituationRevision, "NO")
+      checked: _vm._q(_vm.psyCardSf.socialHealthSituationRevision, "0")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "socialHealthSituationRevision", "NO");
+        return _vm.$set(_vm.psyCardSf, "socialHealthSituationRevision", "0");
       }
     }
   })])])])]), _vm._v(" "), _c("div", {
@@ -9955,21 +9835,20 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardSf.environmentalAnalysisAenvironmental_analysis_workccommodation,
-      expression: "psyCardSf.environmentalAnalysisAenvironmental_analysis_workccommodation"
+      value: _vm.psyCardSf.environmentalAnalysisAccommodation,
+      expression: "psyCardSf.environmentalAnalysisAccommodation"
     }],
     attrs: {
       type: "text",
-      name: "environmental_analysis_accommodation",
-      value: "SI"
+      name: "environmental_analysis_accommodation"
     },
     domProps: {
-      value: _vm.psyCardSf.environmentalAnalysisAenvironmental_analysis_workccommodation
+      value: _vm.psyCardSf.environmentalAnalysisAccommodation
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardSf, "environmentalAnalysisAenvironmental_analysis_workccommodation", $event.target.value);
+        _vm.$set(_vm.psyCardSf, "environmentalAnalysisAccommodation", $event.target.value);
       }
     }
   })])])])]), _vm._v(" "), _c("div", {
@@ -10063,6 +9942,78 @@ var render = function render() {
       input: function input($event) {
         if ($event.target.composing) return;
         _vm.$set(_vm.psyCardSf, "environmentalAnalysisFormalNetwork", $event.target.value);
+      }
+    }
+  })])])])])])]), _vm._v(" "), _vm._m(37), _vm._v(" "), _c("div", {
+    staticClass: "x_content"
+  }, [_c("div", {
+    staticStyle: {
+      border: "2px solid black",
+      "max-width": "900px",
+      "max-height": "650px",
+      "margin-left": "10px",
+      "margin-bottom": "10px"
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(38), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.interventionHypothesisSocialProject,
+      expression: "psyCardSf.interventionHypothesisSocialProject"
+    }],
+    attrs: {
+      type: "text",
+      name: "intervention_hypothesis_project"
+    },
+    domProps: {
+      value: _vm.psyCardSf.interventionHypothesisSocialProject
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "interventionHypothesisSocialProject", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(39), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.interventionHypothesisSocialWorker,
+      expression: "psyCardSf.interventionHypothesisSocialWorker"
+    }],
+    attrs: {
+      type: "text",
+      name: "intervention_hypothesis_social_worker"
+    },
+    domProps: {
+      value: _vm.psyCardSf.interventionHypothesisSocialWorker
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "interventionHypothesisSocialWorker", $event.target.value);
       }
     }
   })])])])])]), _vm._v("\n                            " + _vm._s(_vm.psyCardSf) + "\n                            "), _c("div", {
@@ -10236,7 +10187,7 @@ var staticRenderFns = [function () {
   return _c("label", {
     staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
-      "for": "legal_status_entered"
+      "for": "legal_status_end_of_sentence"
     }
   }, [_c("strong", [_vm._v("FINE PENA")])]);
 }, function () {
@@ -10446,6 +10397,42 @@ var staticRenderFns = [function () {
       "for": "environmental_analysis_formal_network"
     }
   }, [_c("strong", [_vm._v("RETI FORMALI E INFORMALI (INTERNE ED ESTERNE AL CARCERE)")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px",
+      "margin-left": "10px",
+      width: "900px"
+    }
+  }, [_c("span", {
+    staticStyle: {
+      "margin-left": "10px"
+    }
+  }, [_c("strong", [_vm._v(" 4. ANALISI SITUAZIONE SOCIO-AMBIENTALE")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-4 col-sm-2 label-align",
+    attrs: {
+      "for": "intervention_hypothesis_project"
+    }
+  }, [_c("strong", [_vm._v("IPOTESI DI INTERVENTO /PROGETTUALITA' ")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "intervention_hypothesis_social_worker"
+    }
+  }, [_c("strong", [_vm._v("Assistente sociale")])]);
 }];
 render._withStripped = true;
 
@@ -10976,10 +10963,11 @@ var render = function render() {
     }],
     attrs: {
       type: "checkbox",
-      name: "substance_use"
+      name: "substance_use",
+      value: "SI"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardUd.substanceUse) ? _vm._i(_vm.psyCardUd.substanceUse, null) > -1 : _vm.psyCardUd.substanceUse
+      checked: Array.isArray(_vm.psyCardUd.substanceUse) ? _vm._i(_vm.psyCardUd.substanceUse, "SI") > -1 : _vm.psyCardUd.substanceUse
     },
     on: {
       change: function change($event) {
@@ -10987,7 +10975,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = null,
+          var $$v = "SI",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.psyCardUd, "substanceUse", $$a.concat([$$v]));
@@ -11068,9 +11056,24 @@ var render = function render() {
       }
     }
   }) : _vm._e(), _vm._v(" "), _c("span", [_vm.showInput6 ? _c("span", [_vm._v("quale?")]) : _vm._e(), _vm._v(" "), _vm.showInput6 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.inChargeAtSerdTerritorialWhich,
+      expression: "psyCardUd.inChargeAtSerdTerritorialWhich"
+    }],
     attrs: {
       type: "text",
-      name: "in_charge_at_serd_territorial"
+      name: "in_charge_at_serd_territorial_which"
+    },
+    domProps: {
+      value: _vm.psyCardUd.inChargeAtSerdTerritorialWhich
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardUd, "inChargeAtSerdTerritorialWhich", $event.target.value);
+      }
     }
   }) : _vm._e()])])])])]), _vm._v(" "), _c("h3", {
     staticClass: "pb-2"
@@ -11100,10 +11103,10 @@ var render = function render() {
     attrs: {
       type: "checkbox",
       name: "psychotic_symptom",
-      value: "1"
+      value: "SI"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardUd.psychoticSymptom) ? _vm._i(_vm.psyCardUd.psychoticSymptom, "1") > -1 : _vm.psyCardUd.psychoticSymptom
+      checked: Array.isArray(_vm.psyCardUd.psychoticSymptom) ? _vm._i(_vm.psyCardUd.psychoticSymptom, "SI") > -1 : _vm.psyCardUd.psychoticSymptom
     },
     on: {
       change: function change($event) {
@@ -11111,7 +11114,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = "1",
+          var $$v = "SI",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.psyCardUd, "psychoticSymptom", $$a.concat([$$v]));
@@ -11149,10 +11152,10 @@ var render = function render() {
     attrs: {
       type: "checkbox",
       name: "anxious_affective_symptom",
-      value: "1"
+      value: "SI"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardUd.anxiousAffectiveSymptom) ? _vm._i(_vm.psyCardUd.anxiousAffectiveSymptom, "1") > -1 : _vm.psyCardUd.anxiousAffectiveSymptom
+      checked: Array.isArray(_vm.psyCardUd.anxiousAffectiveSymptom) ? _vm._i(_vm.psyCardUd.anxiousAffectiveSymptom, "SI") > -1 : _vm.psyCardUd.anxiousAffectiveSymptom
     },
     on: {
       change: function change($event) {
@@ -11160,7 +11163,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = "1",
+          var $$v = "SI",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.psyCardUd, "anxiousAffectiveSymptom", $$a.concat([$$v]));
@@ -11198,10 +11201,10 @@ var render = function render() {
     attrs: {
       type: "checkbox",
       name: "impulsive_symptom",
-      value: "1"
+      value: "SI"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardUd.impulsiveSymptom) ? _vm._i(_vm.psyCardUd.impulsiveSymptom, "1") > -1 : _vm.psyCardUd.impulsiveSymptom
+      checked: Array.isArray(_vm.psyCardUd.impulsiveSymptom) ? _vm._i(_vm.psyCardUd.impulsiveSymptom, "SI") > -1 : _vm.psyCardUd.impulsiveSymptom
     },
     on: {
       change: function change($event) {
@@ -11209,7 +11212,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = "1",
+          var $$v = "SI",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.psyCardUd, "impulsiveSymptom", $$a.concat([$$v]));
@@ -11247,10 +11250,10 @@ var render = function render() {
     attrs: {
       type: "checkbox",
       name: "psychotic_diagnostic_orientation",
-      value: "1"
+      value: "SI"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardUd.psychoticDiagnosticOrientation) ? _vm._i(_vm.psyCardUd.psychoticDiagnosticOrientation, "1") > -1 : _vm.psyCardUd.psychoticDiagnosticOrientation
+      checked: Array.isArray(_vm.psyCardUd.psychoticDiagnosticOrientation) ? _vm._i(_vm.psyCardUd.psychoticDiagnosticOrientation, "SI") > -1 : _vm.psyCardUd.psychoticDiagnosticOrientation
     },
     on: {
       change: function change($event) {
@@ -11258,7 +11261,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = "1",
+          var $$v = "SI",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.psyCardUd, "psychoticDiagnosticOrientation", $$a.concat([$$v]));
@@ -11296,10 +11299,10 @@ var render = function render() {
     attrs: {
       type: "checkbox",
       name: "anxious_affective_orientation",
-      value: "1"
+      value: "SI"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardUd.anxiousAffectiveOrientation) ? _vm._i(_vm.psyCardUd.anxiousAffectiveOrientation, "1") > -1 : _vm.psyCardUd.anxiousAffectiveOrientation
+      checked: Array.isArray(_vm.psyCardUd.anxiousAffectiveOrientation) ? _vm._i(_vm.psyCardUd.anxiousAffectiveOrientation, "SI") > -1 : _vm.psyCardUd.anxiousAffectiveOrientation
     },
     on: {
       change: function change($event) {
@@ -11307,7 +11310,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = "1",
+          var $$v = "SI",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.psyCardUd, "anxiousAffectiveOrientation", $$a.concat([$$v]));
@@ -11345,10 +11348,10 @@ var render = function render() {
     attrs: {
       type: "checkbox",
       name: "personality_orientation",
-      value: "1"
+      value: "SI"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardUd.personalityOrientation) ? _vm._i(_vm.psyCardUd.personalityOrientation, "1") > -1 : _vm.psyCardUd.personalityOrientation
+      checked: Array.isArray(_vm.psyCardUd.personalityOrientation) ? _vm._i(_vm.psyCardUd.personalityOrientation, "SI") > -1 : _vm.psyCardUd.personalityOrientation
     },
     on: {
       change: function change($event) {
@@ -11356,7 +11359,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = "1",
+          var $$v = "SI",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.psyCardUd, "personalityOrientation", $$a.concat([$$v]));
@@ -11394,10 +11397,10 @@ var render = function render() {
     attrs: {
       type: "checkbox",
       name: "taking_charge_pdta",
-      value: "1"
+      value: "SI"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardUd.takingChargePdta) ? _vm._i(_vm.psyCardUd.takingChargePdta, "1") > -1 : _vm.psyCardUd.takingChargePdta
+      checked: Array.isArray(_vm.psyCardUd.takingChargePdta) ? _vm._i(_vm.psyCardUd.takingChargePdta, "SI") > -1 : _vm.psyCardUd.takingChargePdta
     },
     on: {
       change: function change($event) {
@@ -11405,7 +11408,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = "1",
+          var $$v = "SI",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.psyCardUd, "takingChargePdta", $$a.concat([$$v]));
@@ -11443,10 +11446,10 @@ var render = function render() {
     attrs: {
       type: "checkbox",
       name: "care_intake_pdta",
-      value: "1"
+      value: "SI"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardUd.careIntakePdta) ? _vm._i(_vm.psyCardUd.careIntakePdta, "1") > -1 : _vm.psyCardUd.careIntakePdta
+      checked: Array.isArray(_vm.psyCardUd.careIntakePdta) ? _vm._i(_vm.psyCardUd.careIntakePdta, "SI") > -1 : _vm.psyCardUd.careIntakePdta
     },
     on: {
       change: function change($event) {
@@ -11454,7 +11457,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = "1",
+          var $$v = "SI",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.psyCardUd, "careIntakePdta", $$a.concat([$$v]));
@@ -11492,10 +11495,10 @@ var render = function render() {
     attrs: {
       type: "checkbox",
       name: "consultancy_pdta",
-      value: "1"
+      value: "SI"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardUd.consultancyPdta) ? _vm._i(_vm.psyCardUd.consultancyPdta, "1") > -1 : _vm.psyCardUd.consultancyPdta
+      checked: Array.isArray(_vm.psyCardUd.consultancyPdta) ? _vm._i(_vm.psyCardUd.consultancyPdta, "SI") > -1 : _vm.psyCardUd.consultancyPdta
     },
     on: {
       change: function change($event) {
@@ -11503,7 +11506,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = "1",
+          var $$v = "SI",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.psyCardUd, "consultancyPdta", $$a.concat([$$v]));

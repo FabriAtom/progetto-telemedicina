@@ -20,8 +20,6 @@
                                         <div class="item form-group">
                                             <label for="marital_status" class="col-form-label col-md-3 col-sm-2 label-align">Trattamenti psichiatrici precedenti</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <!-- <input type="text" name="psychiatric_treatment" value="0" placeholder="Diagnosi riferita"  v-model="psyCardUd.psychiatricTreatment"/>    -->
-
                                                 <input type="checkbox" name="psychiatric_treatment" v-model="showInput"/> 
                                                 <input type="text" name="psychiatric_treatment" v-if="showInput" placeholder="Diagnosi riferita" v-model="psyCardUd.psychiatricTreatment"/>
                                             </span>
@@ -104,7 +102,7 @@
                                         <div class="item form-group">
                                             <label for="substance_use" class="col-form-label col-md-3 col-sm-2 label-align">Uso di sostanze</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="substance_use" v-model="psyCardUd.substanceUse"/> 
+                                                <input type="checkbox" name="substance_use" value="SI" v-model="psyCardUd.substanceUse"/> 
                                             </span>
                                         </div>
                                     </div>
@@ -119,7 +117,7 @@
                                                 <input type="text" name="in_charge_at_serd_territorial" v-if="showInput6" v-model="psyCardUd.inChargeAtSerdTerritorial"/>
                                                 <span>
                                                     <span v-if="showInput6">quale?</span>
-                                                <input type="text" name="in_charge_at_serd_territorial" v-if="showInput6"/>
+                                                <input type="text" name="in_charge_at_serd_territorial_which" v-if="showInput6" v-model="psyCardUd.inChargeAtSerdTerritorialWhich"/>
                                                 </span>
                                             </span>
                                         </div>
@@ -133,7 +131,7 @@
                                         <div class="item form-group">
                                             <label for="psychotic_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Psicotica</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="psychotic_symptom" value="1" v-model="psyCardUd.psychoticSymptom"/> 
+                                                <input type="checkbox" name="psychotic_symptom" value="SI" v-model="psyCardUd.psychoticSymptom"/> 
                                             </span>
                                         </div>
                                     </div>
@@ -143,7 +141,7 @@
                                         <div class="item form-group">
                                             <label for="anxious_affective_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Affettiva-Ansiosa</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="anxious_affective_symptom" value="1" v-model="psyCardUd.anxiousAffectiveSymptom"/> 
+                                                <input type="checkbox" name="anxious_affective_symptom" value="SI" v-model="psyCardUd.anxiousAffectiveSymptom"/> 
                                             </span>
                                         </div>
                                     </div>
@@ -153,7 +151,7 @@
                                         <div class="item form-group">
                                             <label for="impulsive_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Impulsiva</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="impulsive_symptom" value="1" v-model="psyCardUd.impulsiveSymptom"/> 
+                                                <input type="checkbox" name="impulsive_symptom" value="SI" v-model="psyCardUd.impulsiveSymptom"/> 
                                             </span>
                                         </div>
                                     </div>
@@ -165,7 +163,7 @@
                                         <div class="item form-group">
                                             <label for="psychotic_diagnostic_orientation" class="col-form-label col-md-3 col-sm-2 label-align">D. Psicotico</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="psychotic_diagnostic_orientation" value="1" v-model="psyCardUd.psychoticDiagnosticOrientation"/> 
+                                                <input type="checkbox" name="psychotic_diagnostic_orientation" value="SI" v-model="psyCardUd.psychoticDiagnosticOrientation"/> 
                                             </span>
                                         </div>
                                     </div>
@@ -175,7 +173,7 @@
                                         <div class="item form-group">
                                             <label for="anxious_affective_orientation" class="col-form-label col-md-3 col-sm-2 label-align">D. Affettivo-Ansioso</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="anxious_affective_orientation" value="1" v-model="psyCardUd.anxiousAffectiveOrientation"/> 
+                                                <input type="checkbox" name="anxious_affective_orientation" value="SI" v-model="psyCardUd.anxiousAffectiveOrientation"/> 
                                             </span>
                                         </div>
                                     </div>
@@ -185,7 +183,7 @@
                                         <div class="item form-group">
                                             <label for="personality_orientation" class="col-form-label col-md-3 col-sm-2 label-align">D. Personalità</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="personality_orientation" value="1" v-model="psyCardUd.personalityOrientation"/> 
+                                                <input type="checkbox" name="personality_orientation" value="SI" v-model="psyCardUd.personalityOrientation"/> 
                                             </span>
                                         </div>
                                     </div>
@@ -197,7 +195,7 @@
                                         <div class="item form-group">
                                             <label for="taking_charge_pdta" class="col-form-label col-md-3 col-sm-2 label-align">Presa in carico</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="taking_charge_pdta" value="1" v-model="psyCardUd.takingChargePdta"/> 
+                                                <input type="checkbox" name="taking_charge_pdta" value="SI" v-model="psyCardUd.takingChargePdta"/> 
                                             </span>
                                         </div>
                                     </div>
@@ -207,7 +205,7 @@
                                         <div class="item form-group">
                                             <label for="care_intake_pdta" class="col-form-label col-md-3 col-sm-2 label-align">Assunzione in cura</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="care_intake_pdta" value="1" v-model="psyCardUd.careIntakePdta"/> 
+                                                <input type="checkbox" name="care_intake_pdta" value="SI" v-model="psyCardUd.careIntakePdta"/> 
                                             </span>
                                         </div>
                                     </div>
@@ -217,7 +215,7 @@
                                         <div class="item form-group">
                                             <label for="consultancy_pdta" class="col-form-label col-md-3 col-sm-2 label-align">Consulenza</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="consultancy_pdta" value="1" v-model="psyCardUd.consultancyPdta"/> 
+                                                <input type="checkbox" name="consultancy_pdta" value="SI" v-model="psyCardUd.consultancyPdta"/> 
                                             </span>
                                         </div>
                                     </div>
@@ -507,6 +505,7 @@ export default {
                             _wm.psyCardUd.onSetOfPsychiatricSymptom = _PsyUoc.on_set_of_psychiatric_symptom
                             _wm.psyCardUd.substanceUse = _PsyUoc.substance_use 
                             _wm.psyCardUd.inChargeAtSerdTerritorial = _PsyUoc.in_charge_at_serd_territorial
+                            _wm.psyCardUd.inChargeAtSerdTerritorialWhich = _PsyUoc.in_charge_at_serd_territorial_which
                             _wm.psyCardUd.psychoticDymptom = _PsyUoc.psychotic_symptom 
                             _wm.psyCardUd.anxiousAffectiveSymptom = _PsyUoc.anxious_affective_symptom
                             _wm.psyCardUd.impulsiveSymptom = _PsyUoc.impulsive_symptom 

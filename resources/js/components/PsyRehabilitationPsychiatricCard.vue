@@ -13,9 +13,9 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="project_description" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>1) Breve Descrizione Progetto</h2></strong></label>
+                                            <label for="project_description" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2> Breve Descrizione Progetto</h2></strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <textarea name="project_description" cols="100" rows="4" v-model="psyCardRh.projectDescription"></textarea>
+                                                <textarea name="project_description" cols="100" rows="4" v-model="psyCardRp.projectDescription"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -23,18 +23,18 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="treatment_area_objective" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>2) Obiettivi In Cui Viene Specificata Area Trattamento:</h2></strong></label>
+                                            <label for="treatment_area_objective" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Obiettivi In Cui Viene Specificata Area Trattamento:</h2></strong></label>
                                             <h5 class="ml-3">- Descrizione:</h5>
                                             <div class="col-md-12 col-sm-12">
-                                                <textarea name="treatment_area_objective" cols="100" rows="7" v-model="psyCardRh.treatmentAreaObjective"></textarea>
+                                                <textarea name="treatment_area_objective" cols="100" rows="7" v-model="psyCardRp.treatmentAreaObjective"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" style="margin-top:20px;">
+                                <!-- <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="psychiatric_intervention" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>3) Interventi:</h2></strong></label>                                    
+                                            <label for="psychiatric_intervention" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Interventi:</h2></strong></label>                                    
                                                 <p>
                                                     <select name="trattamenti">
                                                         <option value="trattamento1">Trattamento 1</option>
@@ -59,33 +59,33 @@
                                                 </span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="project_menager" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>4) Responsabile Progetto:</h2></strong></label>
+                                            <label for="project_menager" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2> Responsabile Progetto:</h2></strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <textarea name="project_menager" cols="40" rows="2" v-model="psyCardRh.projectManager"></textarea>
+                                                <textarea name="project_menager" cols="40" rows="2" v-model="psyCardRp.projectManager"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" style="margin-top:20px;">
+                                <!-- <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="psychiatric_attachment" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>5) Allegati:</h2></strong></label>
+                                            <label for="psychiatric_attachment" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2> Allegati:</h2></strong></label>
                                             <div class="col-md-12 col-sm-12">
                                                 <button onclick="downloadFile()">Download file</button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <hr>
-                                {{psyCardRh}}
+                                {{ psyCardRp }}
                                 <div class="ln_solid"></div>
                                 <div class="item form-group" >
                                     <div class="pull-right">
-                                        <span  class="btn btn-success i2hBtn ml-3" @click="addPsyRehabilitationPsychiatricCard('rp')">{{btnRhSend}}</span>
+                                        <span  class="btn btn-success i2hBtn ml-3" @click="addPsyRehabilitationPsychiatricCard('rp')">{{btnRpSend}}</span>
                                     </div>
                                 </div>
                                 <hr>
@@ -156,24 +156,24 @@
                     lastname => 'Sbardella',
                     
                 ],
-                psyRhDoctorId:0,
-                psyRhDoctorName:'',
-                psyRhDoctorLastname:'',
-                psyRhDate:null,
+                psyRpDoctorId:0,
+                psyRpDoctorName:'',
+                psyRpDoctorLastname:'',
+                psyRpDate:null,
                 psyCardId:null,
                 date:new Date(),
 
-                psyCardRh:{},
+                psyCardRp:{},
                 psyCardSa:{},
               
-                panel:'rh',
+                panel:'rp',
 
                 mainTitle:"psy",
                 firstSave:true,
-                rHSaved:false,
+                rPSaved:false,
 
                 
-                btnRhSend:"Salva",
+                btnRpSend:"Salva",
                 total:0,               
                 allPsyRehabilitationPsychiatricCards:null,
             }
@@ -181,7 +181,6 @@
 
         created: function () {
             // this.getPermissions();
-            //alert(JSON.stringify(this.getPsyMentalHealthDepartmentsByUserInstanceId(1)));
             this.getPsyRehabilitationPsychiatricCardsByUserInstanceId(1)
         },
 
@@ -207,9 +206,9 @@
                 form.append('doctorName', 'dott.');
                 form.append('doctorUserName', 'Sbardella');
 
-                if(_panel=='rh'){
+                if(_panel=='rp'){
 
-                    if(!this.rHSaved){
+                    if(!this.rPSaved){
                         form.append('action', 'store');
                     }else{
                         form.append('action', 'update');
@@ -221,9 +220,9 @@
                             _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
                         }
                     }
-                    form.append('section', 'rh');
-                    if(!this.isObjEmpty(this.psyCardRh)){
-                        let _psyCard=JSON.stringify(this.psyCardRh);
+                    form.append('section', 'rp');
+                    if(!this.isObjEmpty(this.psyCardRp)){
+                        let _psyCard=JSON.stringify(this.psyCardRp);
                         form.append('PsyRehabilitationPsychiatricCard', _psyCard);
                     }
                 }else if(_panel=='sa'){
@@ -247,28 +246,29 @@
                             form.append('psyCard', _psyCard);
                         }
                     }
-                }else if(_panel=='mh'){
-                    if(!this.mHSaved){
-                        form.append('action', 'store');
-                    }else{
-                        form.append('action', 'update');
-                    }
-
-                    if (this.mHSaved) {
-                        if(this.psyCardId){
-                            form.append('psyId',this.psyCardId);
-                        }else{
-                            _errors++;
-                            _errorTitle="Attenzione";
-                            _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
-                        }
-                        form.append('section', 'mh');
-                        if(!this.isObjEmpty(this.psyCardMh)){
-                            let _psyCard=JSON.stringify(this.psyCardMh);
-                            form.append('PsyMentalHealthDepartment', _psyCard);
-                        }
-                    }
                 }
+                // else if(_panel=='mh'){
+                //     if(!this.mHSaved){
+                //         form.append('action', 'store');
+                //     }else{
+                //         form.append('action', 'update');
+                //     }
+
+                //     if (this.mHSaved) {
+                //         if(this.psyCardId){
+                //             form.append('psyId',this.psyCardId);
+                //         }else{
+                //             _errors++;
+                //             _errorTitle="Attenzione";
+                //             _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
+                //         }
+                //         form.append('section', 'mh');
+                //         if(!this.isObjEmpty(this.psyCardMh)){
+                //             let _psyCard=JSON.stringify(this.psyCardMh);
+                //             form.append('PsyMentalHealthDepartment', _psyCard);
+                //         }
+                //     }
+                // }
 
                 if(_errors==0){
                     try {
@@ -354,34 +354,34 @@
                         if(error == 0){
                         
                             _wm.mainTitle="Aggiornamento Cartella psy";
-                            if(response.data.PsyMentalHealthDepartment){
-                            _wm.rHSaved=true;
+                            if(response.data.PsyRehabilitationPsychiatricCard){
+                            _wm.rPSaved=true;
                             //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
-                            _wm.btnRhSend="Aggiorna";
+                            _wm.btnRpSend="Aggiorna";
                                 
-                            let _RehabPsyc=response.data.PsyMentalHealthDepartment;
+                            let _RehabPsyc=response.data.PsyRehabilitationPsychiatricCard;
                             //     // _wm.psyCardId=response.data.psyCard.id;
                             _wm.psyCardId=_RehabPsyc.id;
-                            _wm.psyRhDoctorId = _RehabPsyc.id_doctor;
-                            _wm.psyRhDoctorName = _RehabPsyc.doctor_name;
-                            _wm.psyRhDoctorLastname = _RehabPsyc.doctor_lastname;
+                            _wm.psyRpDoctorId = _RehabPsyc.id_doctor;
+                            _wm.psyRpDoctorName = _RehabPsyc.doctor_name;
+                            _wm.psyRpDoctorLastname = _RehabPsyc.doctor_lastname;
 
 
-                            _wm.psyCardRh.projectDescription =_RehabPsyc.project_description;
-                            _wm.psyCardRh.treatmentAreaObjective = _RehabPsyc.treatment_area_objective 	
-                            _wm.psyCardRh.psychiatricIntervention = _RehabPsyc.psychiatric_intervention
-                            _wm.psyCardRh.projectManager = _RehabPsyc.project_manager
-                            _wm.psyCardRh.psychiatricAttachment = _RehabPsyc.psychiatric_attachment 
+                            _wm.psyCardRp.projectDescription =_RehabPsyc.project_description;
+                            _wm.psyCardRp.treatmentAreaObjective = _RehabPsyc.treatment_area_objective 	
+                            _wm.psyCardRp.psychiatricIntervention = _RehabPsyc.psychiatric_intervention
+                            _wm.psyCardRp.projectManager = _RehabPsyc.project_manager
+                            _wm.psyCardRp.psychiatricAttachment = _RehabPsyc.psychiatric_attachment 
  
         
                             _wm.allPsyRehabilitationPsychiatricCards=response.data.allPsyRehabilitationPsychiatricCards;
                             }else{
-                                _wm.btnRhSend="Salva";
+                                _wm.btnRpSend="Salva";
                             }
                             
                             _wm.firstSave=false;
                         }else if(error == 7){
-                            _wm.btnRhSend="Salva";
+                            _wm.btnRpSend="Salva";
                             _wm.firstSave=true;
                         }
                         else{
@@ -391,6 +391,9 @@
                 } catch (error) {
                     throw error
                 }   
+            },
+            isObjEmpty (obj) {
+                return Object.keys(obj).length === 0;
             },
         }
     }

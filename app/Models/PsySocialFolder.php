@@ -47,6 +47,9 @@ class PsySocialFolder extends Model
         'environmental_analysis_work',
         'environmental_analysis_income',
         'environmental_analysis_formal_network',
+        
+        'intervention_hypothesis_project',
+        'intervention_hypothesis_social_worker',
     ];
 
     protected $table = 'psy_social_folders';

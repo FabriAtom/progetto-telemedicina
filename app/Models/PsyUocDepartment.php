@@ -22,6 +22,7 @@ class PsyUocDepartment extends Model
         'on_set_of_psychiatric_symptom',
         'substance_use',
         'in_charge_at_serd_territorial',
+        'in_charge_at_serd_territorial_which',
         'psychotic_symptom',
         'anxious_affective_symptom',
         'impulsive_symptom',
