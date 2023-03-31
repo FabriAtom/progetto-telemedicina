@@ -11,6 +11,7 @@ class PsyRehabilitationPsychiatricCard extends Model
         'id_doctor',
         'doctor_name',
         'doctor_lastname',
+        'rp_date',
         'project_description',
         'treatment_area_objective',
         'psychiatric_intervention',

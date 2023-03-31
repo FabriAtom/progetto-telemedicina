@@ -5,7 +5,7 @@
         <div class="page-content">
             <div class="row justify-content-center">
                 <div class="col-md-12 col-sm-12">
-                    <div class="x_panel">
+                    <div class="x_panel ml-2">
                         <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:5px;">
                             <h1>Dipartimento Salute Mentale<strong> UOC</strong></h1>
                         </div>
@@ -14,18 +14,221 @@
                             <!-- <div class="tab-content" id="myTabContent"> -->
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left align-items-center">
 
-                                <h2>ELEMENTI ANAMNESTICI RILEVANTI</h2>
+                                <h3 class="pt-3 pl-3">ELEMENTI ANAMNESTICI RILEVANTI</h3>
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="marital_status" class="col-form-label col-md-6 col-sm-2 label-align">Trattamenti psichiatrici precedenti</label>
+                                            <label for="marital_status" class="col-form-label col-md-3 col-sm-2 label-align">Trattamenti psichiatrici precedenti</label>
                                             <span class="col-md-12 col-sm-12">
-                                                
+                                                <!-- <input type="text" name="psychiatric_treatment" value="0" placeholder="Diagnosi riferita"  v-model="psyCardUd.psychiatricTreatment"/>    -->
+
+                                                <input type="checkbox" name="psychiatric_treatment" v-model="showInput"/> 
+                                                <input type="text" name="psychiatric_treatment" v-if="showInput" placeholder="Diagnosi riferita" v-model="psyCardUd.psychiatricTreatment"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="marital_status" class="col-form-label col-md-2 col-sm-2 label-align">- CSM</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="csm" v-model="showInput1"/> 
+                                                <input type="text" name="csm" v-if="showInput1" v-model="psyCardUd.csm"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="marital_status" class="col-form-label col-md-2 col-sm-2 label-align">- SPCD</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="spdc" v-model="showInput2"/> 
+                                                <input type="text" name="spdc" v-if="showInput2" v-model="psyCardUd.spdc"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="marital_status" class="col-form-label col-md-2 col-sm-2 label-align">- REMS</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="rems" v-model="showInput3"/> 
+                                                <input type="text" name="rems" v-if="showInput3" v-model="psyCardUd.rems"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="marital_status" class="col-form-label col-md-2 col-sm-2 label-align">- CARCERE</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="prison" v-model="showInput4"/> 
+                                                <input type="text" name="prison" v-if="showInput4" v-model="psyCardUd.prison"/>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="marital_status" class="col-form-label col-md-2 col-sm-2 label-align">Familiarità psichiatrica</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="psychiatric_familiarity" v-model="showInput5"/> 
+                                                <input type="text" name="psychiatric_familiarity" v-if="showInput5" v-model="psyCardUd.psychiatricFamiliarity"/>
+                                                <span>
+                                                    <span v-if="showInput5">Se si, Chi?</span>
+                                                <input type="text" name="if_familiarity" v-if="showInput5" v-model="psyCardUd.ifFamiliarity"/>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="marital_status" class="col-form-label col-md-3 col-sm-2 label-align">Esordio sintomatologia psichiatrica</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="text" name="on_set_of_psychiatric_symptom" v-model="psyCardUd.onSetOfPsychiatricSymptom"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="substance_use" class="col-form-label col-md-3 col-sm-2 label-align">Uso di sostanze</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="substance_use" v-model="psyCardUd.substanceUse"/> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="marital_status" class="col-form-label col-md-3 col-sm-2 label-align">in carico presso Ser.D. territoriali</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="in_charge_at_serd_territorial" v-model="showInput6"/> 
+                                                <input type="text" name="in_charge_at_serd_territorial" v-if="showInput6" v-model="psyCardUd.inChargeAtSerdTerritorial"/>
+                                                <span>
+                                                    <span v-if="showInput6">quale?</span>
+                                                <input type="text" name="in_charge_at_serd_territorial" v-if="showInput6"/>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 class="pb-2">STATUS ALL'INGRESSO</h3>
+                                <h3>SINTOMATOLOGIA:</h3>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="psychotic_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Psicotica</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="psychotic_symptom" value="1" v-model="psyCardUd.psychoticSymptom"/> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="anxious_affective_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Affettiva-Ansiosa</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="anxious_affective_symptom" value="1" v-model="psyCardUd.anxiousAffectiveSymptom"/> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="impulsive_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Impulsiva</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="impulsive_symptom" value="1" v-model="psyCardUd.impulsiveSymptom"/> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3>ORIENTAMENTO DIAGNOSTICO:</h3>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="psychotic_diagnostic_orientation" class="col-form-label col-md-3 col-sm-2 label-align">D. Psicotico</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="psychotic_diagnostic_orientation" value="1" v-model="psyCardUd.psychoticDiagnosticOrientation"/> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="anxious_affective_orientation" class="col-form-label col-md-3 col-sm-2 label-align">D. Affettivo-Ansioso</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="anxious_affective_orientation" value="1" v-model="psyCardUd.anxiousAffectiveOrientation"/> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="personality_orientation" class="col-form-label col-md-3 col-sm-2 label-align">D. Personalità</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="personality_orientation" value="1" v-model="psyCardUd.personalityOrientation"/> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 style="text-decoration:underline;"><strong>PROFILO DI TRATTAMENTO /PDTA proposto dopo valutazione:</strong></h3>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="taking_charge_pdta" class="col-form-label col-md-3 col-sm-2 label-align">Presa in carico</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="taking_charge_pdta" value="1" v-model="psyCardUd.takingChargePdta"/> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="care_intake_pdta" class="col-form-label col-md-3 col-sm-2 label-align">Assunzione in cura</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="care_intake_pdta" value="1" v-model="psyCardUd.careIntakePdta"/> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="consultancy_pdta" class="col-form-label col-md-3 col-sm-2 label-align">Consulenza</label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="consultancy_pdta" value="1" v-model="psyCardUd.consultancyPdta"/> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ln_solid"></div>
+                                    <div class="item form-group" >
+                                        <div class="pull-right">
+                                            <span  class="btn btn-success i2hBtn ml-3" @click="addPsyUocDepartment('ud')">{{btnUdSend}}</span>
+                                        </div>
+                                    </div>
                             </form>
                         </div>
                     </div>
@@ -83,6 +286,15 @@ export default {
             userFullName:'',
             userInstance:1,
             userId:0,
+            
+            showInput: false,
+            showInput1: false,
+            showInput2: false,
+            showInput3: false,
+            showInput4: false,
+            showInput5: false,
+            showInput6: false,
+    
 
             accessData:[
                
@@ -123,17 +335,6 @@ export default {
 
 
     methods: {
-        calculateSum() {
-            // Calcola la somma delle opzioni selezionate
-            //this.sum = parseInt(this.selectedOption) || 0;
-            let i=0;
-            for (const property in this.psyCardUd) {
-                i += parseInt(this.psyCardUd[property]);  
-            }
-            console.log(i);
-            this.sum=i;
-        },
-
         
         addPsyUocDepartment(panel){
             let _wm = this;
@@ -174,10 +375,6 @@ export default {
                     alert(JSON.stringify(this.psyCardUd))
                     form.append('psyCardUd', _psyCardUd);
                 }
-                // if(!this.isObjEmpty(this.psyCardPr)){
-                //     let _psyCard=JSON.stringify(this.psyCardPr);
-                //     form.append('psyCard', _psyCard);
-                // }
             }else if(_panel=='mh'){
 
                 if(!this.mHSaved){
@@ -196,7 +393,7 @@ export default {
                     form.append('section', 'mh');
                     if(!this.isObjEmpty(this.psyCardMh)){
                         let _psyCardMh=JSON.stringify(this.psyCardMh);
-                        form.append('psyMentalHealthDepartment', _psyCardMh);
+                        form.append('PsyMentalHealthDepartment', _psyCardMh);
                     }  
                 }
             }
@@ -275,7 +472,6 @@ export default {
         },
         getPsyUocDepartmentsByUserInstanceId(id){
             let _wm = this;
-            // alert('yy');
 
             try {
                 let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
@@ -307,6 +503,7 @@ export default {
                             _wm.psyCardUd.rems = _PsyUoc.rems
                             _wm.psyCardUd.prison = _PsyUoc.prison 
                             _wm.psyCardUd.psychiatricFamiliarity = _PsyUoc.psychiatric_familiarity
+                            _wm.psyCardUd.ifFamiliarity = _PsyUoc.if_familiarity
                             _wm.psyCardUd.onSetOfPsychiatricSymptom = _PsyUoc.on_set_of_psychiatric_symptom
                             _wm.psyCardUd.substanceUse = _PsyUoc.substance_use 
                             _wm.psyCardUd.inChargeAtSerdTerritorial = _PsyUoc.in_charge_at_serd_territorial
@@ -316,7 +513,8 @@ export default {
                             _wm.psyCardUd.psychoticDiagnosticOrientation = _PsyUoc.psychotic_diagnostic_orientation
                             _wm.psyCardUd.anxiousAffectiveOrientation = _PsyUoc.anxious_affective_orientation
                             _wm.psyCardUd.personalityOrientation = _PsyUoc.personality_orientation
-                            _wm.psyCardUd.takingChargePdta = _PsyUoc.taking_charge_pdta 
+                            _wm.psyCardUd.takingChargePdta = _PsyUoc.taking_charge_pdta
+                            _wm.psyCardUd.careIntakePdta = _PsyUoc.care_intake_pdta 
 
                             _wm.psyCardUd.consultancyPdta = _PsyUoc.consultancy_pdta 
 

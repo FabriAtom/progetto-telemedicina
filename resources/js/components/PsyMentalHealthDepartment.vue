@@ -61,11 +61,11 @@
                                     </div>
                                 </div>
 
-                                {{ btnMhSend }}
+                                {{ psyCardMh }}
                                 <div class="ln_solid"></div>
                                 <div class="item form-group" >
                                     <div class="pull-right">
-                                        <span class="btn btn-success i2hBtn" @click="addPsyMentalHealthDepartment('mh')">{{btnMhSend}}</span>
+                                        <span class="btn btn-success i2hBtn ml-3" @click="addPsyMentalHealthDepartment('mh')">{{btnMhSend}}</span>
                                     </div>
                                 </div>
                             </form>
@@ -117,7 +117,7 @@
     import Swal from 'sweetalert2';
 
     export default {
-        name: 'psyMentalHealthDepartment',
+        name: 'PsyMentalHealthDepartment',
 
 
         data() {
@@ -205,7 +205,7 @@
                     form.append('section', 'mh');
                     if(!this.isObjEmpty(this.psyCardMh)){
                         let _psyCard=JSON.stringify(this.psyCardMh);
-                        form.append('psyMentalHealthDepartment', _psyCard);
+                        form.append('PsyMentalHealthDepartment', _psyCard);
                     }
                 }else if(_panel=='sa'){
                     if(!this.sASaved){

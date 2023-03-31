@@ -839,7 +839,8 @@
             countCowsTotal(){
                 let i=0;
                 for (const property in this.cows) {
-                    i += parseInt(this.cows[property]);  
+                    i += parseInt(this.cows[property]);
+                    alert(i);
                 }
                 this.total=i + parseInt(this.restingPulseRateResult())
             },

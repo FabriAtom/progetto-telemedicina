@@ -41,9 +41,13 @@ class PsyCard extends Model
         return $this->hasMany(PsyRating::class);
     }
 
-    
     public function PsyUocDepartments()
     {
         return $this->hasMany(PsyUocDepartment::class);
+    }
+
+    public function PsySocialFolders()
+    {
+        return $this->hasMany(PsySocialFolder::class);
     }
 }

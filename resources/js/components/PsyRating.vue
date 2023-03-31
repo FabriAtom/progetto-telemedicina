@@ -695,7 +695,7 @@
                                     <div class="ln_solid"></div>
                                     <div class="item form-group" >
                                         <div class="pull-right">
-                                            <span  class="btn btn-success i2hBtn" @click="addPsyRating('pr')">{{btnPrSend}}</span>
+                                            <span  class="btn btn-success i2hBtn ml-3" @click="addPsyRating('pr')">{{btnPrSend}}</span>
                                         </div>
                                     </div>
                                 </form>
@@ -889,7 +889,7 @@ export default {
                     form.append('section', 'mh');
                     if(!this.isObjEmpty(this.psyCardMh)){
                         let _psyCardMh=JSON.stringify(this.psyCardMh);
-                        form.append('psyMentalHealthDepartment', _psyCardMh);
+                        form.append('PsyMentalHealthDepartment', _psyCardMh);
                     }  
                 }
             }

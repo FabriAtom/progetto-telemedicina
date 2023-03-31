@@ -6,6 +6,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-12 col-sm-12">
                     <div class="x_panel">
+                        <h1 class="text-center"><strong> SAMI</strong></h1>
+                        <h3 class="text-center">Modulo di valutazione</h3><hr>
                         <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:5px;">
                             <span style="margin-left:10px;" ><strong>Fattori di rischio</strong></span>
                             <span style="margin-left:510px;"><strong>Scala (0, 1, 2)</strong></span>
@@ -23,11 +25,11 @@
                                                 <label for="marital_status" class="col-form-label col-md-6 col-sm-2 label-align">1. Stato civile</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span> Zero</span>
-                                                    <input type="radio" @click="calculateSum"  name="marital_status" value="0"  v-model="psyriskFactor.maritalStatus"/>
+                                                    <input type="radio" @change="calculateSum()"  name="marital_status" value="0"  v-model="psyriskFactor.maritalStatus"/>
                                                     <span> Uno</span>
-                                                    <input type="radio" @click="calculateSum"  name="marital_status" value="1"  v-model="psyriskFactor.maritalStatus"/>
+                                                    <input type="radio" @change="calculateSum()"  name="marital_status" value="1"  v-model="psyriskFactor.maritalStatus"/>
                                                     <span>Due</span> 
-                                                    <input type="radio" @click="calculateSum"  name="marital_status" value="2"  v-model="psyriskFactor.maritalStatus"/> 
+                                                    <input type="radio" @change="calculateSum()"  name="marital_status" value="2"  v-model="psyriskFactor.maritalStatus"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -36,11 +38,11 @@
                                                 <label for="drug_and_alcohol_abuse" class="col-form-label col-md-6 col-sm-2 label-align">2. Abuso di droga o alcol</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="drug_and_alcohol_abuse" value="0" v-model="psyriskFactor.drugAndAlcoholAbuse"/>
+                                                    <input type="radio"  @change="calculateSum()" name="drug_and_alcohol_abuse" value="0" v-model="psyriskFactor.drugAndAlcoholAbuse"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="drug_and_alcohol_abuse" value="1" v-model="psyriskFactor.drugAndAlcoholAbuse"/>
+                                                    <input type="radio"  @change="calculateSum()" name="drug_and_alcohol_abuse" value="1" v-model="psyriskFactor.drugAndAlcoholAbuse"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="drug_and_alcohol_abuse" value="2" v-model="psyriskFactor.drugAndAlcoholAbuse"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="drug_and_alcohol_abuse" value="2" v-model="psyriskFactor.drugAndAlcoholAbuse"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -49,11 +51,11 @@
                                                 <label for="psychiatric_aspect" class="col-form-label col-md-6 col-sm-2 label-align">3. Aspetti psichiatrici</label>
                                                 <span class="col-md-12 col-sm-12 ">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="psychiatric_aspect" value="0" v-model="psyriskFactor.psychiatricAspect"/>
+                                                    <input type="radio"  @change="calculateSum()" name="psychiatric_aspect" value="0" v-model="psyriskFactor.psychiatricAspect"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="psychiatric_aspect" value="1" v-model="psyriskFactor.psychiatricAspect"/>
+                                                    <input type="radio"  @change="calculateSum()" name="psychiatric_aspect" value="1" v-model="psyriskFactor.psychiatricAspect"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="psychiatric_aspect" value="2" v-model="psyriskFactor.psychiatricAspect"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="psychiatric_aspect" value="2" v-model="psyriskFactor.psychiatricAspect"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -62,11 +64,11 @@
                                                 <label for="suicide_attempt" class="col-form-label col-md-6 col-sm-2 label-align">4. Tentativi di suicidio</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="suicide_attempt" value="0" v-model="psyriskFactor.suicideAttempt"/>
+                                                    <input type="radio"  @change="calculateSum()" name="suicide_attempt" value="0" v-model="psyriskFactor.suicideAttempt"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="suicide_attempt" value="1" v-model="psyriskFactor.suicideAttempt"/>
+                                                    <input type="radio"  @change="calculateSum()" name="suicide_attempt" value="1" v-model="psyriskFactor.suicideAttempt"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="suicide_attempt" value="2" v-model="psyriskFactor.suicideAttempt"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="suicide_attempt" value="2" v-model="psyriskFactor.suicideAttempt"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -76,11 +78,11 @@
                                                 <label for="suicide_attempt_in_institution" class="col-form-label col-md-6 col-sm-2 label-align">5. Tentativi di suicidio nelle istituzioni</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="suicide_attempt_in_institution" value="0" v-model="psyriskFactor.suicideAttemptInInstitution"/>
+                                                    <input type="radio"  @change="calculateSum()" name="suicide_attempt_in_institution" value="0" v-model="psyriskFactor.suicideAttemptInInstitution"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="suicide_attempt_in_institution" value="1" v-model="psyriskFactor.suicideAttemptInInstitution"/>
+                                                    <input type="radio"  @change="calculateSum()" name="suicide_attempt_in_institution" value="1" v-model="psyriskFactor.suicideAttemptInInstitution"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"   @click="calculateSum" name="suicide_attempt_in_institution" value="2" v-model="psyriskFactor.suicideAttemptInInstitution"/> 
+                                                    <input type="radio"   @change="calculateSum()" name="suicide_attempt_in_institution" value="2" v-model="psyriskFactor.suicideAttemptInInstitution"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -90,11 +92,11 @@
                                                 <label for="family_suicide" class="col-form-label col-md-6 col-sm-2 label-align">6. Suicidi in famiglia</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="family_suicide" value="0" v-model="psyriskFactor.familySuicide"/>
+                                                    <input type="radio"  @change="calculateSum()" name="family_suicide" value="0" v-model="psyriskFactor.familySuicide"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="family_suicide" value="1" v-model="psyriskFactor.familySuicide"/>
+                                                    <input type="radio"  @change="calculateSum()" name="family_suicide" value="1" v-model="psyriskFactor.familySuicide"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="family_suicide" value="2" v-model="psyriskFactor.familySuicide"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="family_suicide" value="2" v-model="psyriskFactor.familySuicide"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -104,11 +106,11 @@
                                                 <label for="arrest_story" class="col-form-label col-md-6 col-sm-2 label-align">7. Storia dell'arresto</label>
                                                 <span class="col-md-12 col-sm-12 ">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="arrest_story" value="0" v-model="psyriskFactor.arrestStory"/>
+                                                    <input type="radio"  @change="calculateSum()" name="arrest_story" value="0" v-model="psyriskFactor.arrestStory"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="arrest_story" value="1" v-model="psyriskFactor.arrestStory"/>
+                                                    <input type="radio"  @change="calculateSum()" name="arrest_story" value="1" v-model="psyriskFactor.arrestStory"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="arrest_story" value="2" v-model="psyriskFactor.arrestStory"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="arrest_story" value="2" v-model="psyriskFactor.arrestStory"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -118,11 +120,11 @@
                                                 <label for="compulsive_behavior" class="col-form-label col-md-6 col-sm-2 label-align">8. Comportamento impulsivo</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="compulsive_behavior" value="0" v-model="psyriskFactor.compulsiveBehavior"/>
+                                                    <input type="radio"  @change="calculateSum()" name="compulsive_behavior" value="0" v-model="psyriskFactor.compulsiveBehavior"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="compulsive_behavior" value="1" v-model="psyriskFactor.compulsiveBehavior"/>
+                                                    <input type="radio"  @change="calculateSum()" name="compulsive_behavior" value="1" v-model="psyriskFactor.compulsiveBehavior"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="compulsive_behavior" value="2" v-model="psyriskFactor.compulsiveBehavior"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="compulsive_behavior" value="2" v-model="psyriskFactor.compulsiveBehavior"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -132,11 +134,11 @@
                                                 <label for="high_crime_profile" class="col-form-label col-md-6 col-sm-2 label-align">9. Alto profilo del delitto o posizione di prestigio</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="high_crime_profile" value="0" v-model="psyriskFactor.highCrimeProfile"/>
+                                                    <input type="radio"  @change="calculateSum()" name="high_crime_profile" value="0" v-model="psyriskFactor.highCrimeProfile"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="high_crime_profile" value="1" v-model="psyriskFactor.highCrimeProfile"/>
+                                                    <input type="radio"  @change="calculateSum()" name="high_crime_profile" value="1" v-model="psyriskFactor.highCrimeProfile"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="high_crime_profile" value="2" v-model="psyriskFactor.highCrimeProfile"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="high_crime_profile" value="2" v-model="psyriskFactor.highCrimeProfile"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -146,11 +148,11 @@
                                                 <label for="current_intoxication" class="col-form-label col-md-6 col-sm-2 label-align">10. Intossicazione attuale</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="current_intoxication" value="0" v-model="psyriskFactor.currentIntoxication"/>
+                                                    <input type="radio"  @change="calculateSum()" name="current_intoxication" value="0" v-model="psyriskFactor.currentIntoxication"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="current_intoxication" value="1" v-model="psyriskFactor.currentIntoxication"/>
+                                                    <input type="radio"  @change="calculateSum()" name="current_intoxication" value="1" v-model="psyriskFactor.currentIntoxication"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="current_intoxication" value="2" v-model="psyriskFactor.currentIntoxication"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="current_intoxication" value="2" v-model="psyriskFactor.currentIntoxication"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -160,11 +162,11 @@
                                                 <label for="worry_about_life_problem" class="col-form-label col-md-6 col-sm-2 label-align-end">11. Preoccupazione per i problemi della vita</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"   @click="calculateSum" name="worry_about_life_problem" value="0" v-model="psyriskFactor.worryAboutLifeProblem"/>
+                                                    <input type="radio"   @change="calculateSum()" name="worry_about_life_problem" value="0" v-model="psyriskFactor.worryAboutLifeProblem"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="worry_about_life_problem" value="1" v-model="psyriskFactor.worryAboutLifeProblem"/>
+                                                    <input type="radio"  @change="calculateSum()" name="worry_about_life_problem" value="1" v-model="psyriskFactor.worryAboutLifeProblem"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="worry_about_life_problem" value="2" v-model="psyriskFactor.worryAboutLifeProblem"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="worry_about_life_problem" value="2" v-model="psyriskFactor.worryAboutLifeProblem"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -174,11 +176,11 @@
                                                 <label for="feeling_of_hopelessness" class="col-form-label col-md-6 col-sm-2 label-align">12. Sentimenti di disperazione o di eccessivi sensi di colpa</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="feeling_of_hopelessness" value="0" v-model="psyriskFactor.feelingOfHopelessness"/>
+                                                    <input type="radio"  @change="calculateSum()" name="feeling_of_hopelessness" value="0" v-model="psyriskFactor.feelingOfHopelessness"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="feeling_of_hopelessness" value="1" v-model="psyriskFactor.feelingOfHopelessness"/>
+                                                    <input type="radio"  @change="calculateSum()" name="feeling_of_hopelessness" value="1" v-model="psyriskFactor.feelingOfHopelessness"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="feeling_of_hopelessness" value="2" v-model="psyriskFactor.feelingOfHopelessness"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="feeling_of_hopelessness" value="2" v-model="psyriskFactor.feelingOfHopelessness"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -188,11 +190,11 @@
                                                 <label for="psychotic_symptom" class="col-form-label col-md-6 col-sm-2 label-align">13. Sintomi psicotici o disturbi del pensiero</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="psychotic_symptom" value="0" v-model="psyriskFactor.psychoticSymptom"/>
+                                                    <input type="radio"  @change="calculateSum()" name="psychotic_symptom" value="0" v-model="psyriskFactor.psychoticSymptom"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="psychotic_symptom" value="1" v-model="psyriskFactor.psychoticSymptom"/>
+                                                    <input type="radio"  @change="calculateSum()" name="psychotic_symptom" value="1" v-model="psyriskFactor.psychoticSymptom"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="psychotic_symptom" value="2" v-model="psyriskFactor.psychoticSymptom"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="psychotic_symptom" value="2" v-model="psyriskFactor.psychoticSymptom"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -202,11 +204,11 @@
                                                 <label for="depressive_symptom" class="col-form-label col-md-6 col-sm-2 label-align">14. Sintomatologia depressiva</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="depressive_symptom" value="0" v-model="psyriskFactor.depressiveSymptom"/>
+                                                    <input type="radio"  @change="calculateSum()" name="depressive_symptom" value="0" v-model="psyriskFactor.depressiveSymptom"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="depressive_symptom" value="1" v-model="psyriskFactor.depressiveSymptom"/>
+                                                    <input type="radio"  @change="calculateSum()" name="depressive_symptom" value="1" v-model="psyriskFactor.depressiveSymptom"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="depressive_symptom" value="2" v-model="psyriskFactor.depressiveSymptom"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="depressive_symptom" value="2" v-model="psyriskFactor.depressiveSymptom"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -216,11 +218,11 @@
                                                 <label for="stress_and_coping" class="col-form-label col-md-6 col-sm-2 label-align">15. Stress e coping</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="stress_and_coping" value="0" v-model="psyriskFactor.stressAndCoping"/>
+                                                    <input type="radio"  @change="calculateSum()" name="stress_and_coping" value="0" v-model="psyriskFactor.stressAndCoping"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"   @click="calculateSum" name="stress_and_coping" value="1" v-model="psyriskFactor.stressAndCoping"/>
+                                                    <input type="radio"   @change="calculateSum()" name="stress_and_coping" value="1" v-model="psyriskFactor.stressAndCoping"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="stress_and_coping" value="2" v-model="psyriskFactor.stressAndCoping"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="stress_and_coping" value="2" v-model="psyriskFactor.stressAndCoping"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -230,11 +232,11 @@
                                                 <label for="social_support" class="col-form-label col-md-6 col-sm-2 label-align">16. Sostegno sociale</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="social_support" value="0" v-model="psyriskFactor.socialSupport"/>
+                                                    <input type="radio"  @change="calculateSum()" name="social_support" value="0" v-model="psyriskFactor.socialSupport"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="social_support" value="1" v-model="psyriskFactor.socialSupport"/>
+                                                    <input type="radio"  @change="calculateSum()" name="social_support" value="1" v-model="psyriskFactor.socialSupport"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="social_support" value="2" v-model="psyriskFactor.socialSupport"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="social_support" value="2" v-model="psyriskFactor.socialSupport"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -244,11 +246,11 @@
                                                 <label for="recent_major_losse" class="col-form-label col-md-6 col-sm-2 label-align">17. Recenti perdite importanti</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="recent_major_losse" value="0" v-model="psyriskFactor.recentMajorLosse"/>
+                                                    <input type="radio"  @change="calculateSum()" name="recent_major_losse" value="0" v-model="psyriskFactor.recentMajorLosse"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="recent_major_losse" value="1" v-model="psyriskFactor.recentMajorLosse"/>
+                                                    <input type="radio"  @change="calculateSum()" name="recent_major_losse" value="1" v-model="psyriskFactor.recentMajorLosse"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="recent_major_losse" value="2" v-model="psyriskFactor.recentMajorLosse"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="recent_major_losse" value="2" v-model="psyriskFactor.recentMajorLosse"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -258,11 +260,11 @@
                                                 <label for="suicidal_ideation" class="col-form-label col-md-6 col-sm-2 label-align">18. Ideazione suicidaria</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="suicidal_ideation" value="0" v-model="psyriskFactor.suicidalIdeation"/>
+                                                    <input type="radio"  @change="calculateSum()" name="suicidal_ideation" value="0" v-model="psyriskFactor.suicidalIdeation"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="suicidal_ideation" value="1" v-model="psyriskFactor.suicidalIdeation"/>
+                                                    <input type="radio"  @change="calculateSum()" name="suicidal_ideation" value="1" v-model="psyriskFactor.suicidalIdeation"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="suicidal_ideation" value="2" v-model="psyriskFactor.suicidalIdeation"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="suicidal_ideation" value="2" v-model="psyriskFactor.suicidalIdeation"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -272,11 +274,11 @@
                                                 <label for="suicidal_intent" class="col-form-label col-md-6 col-sm-2 label-align">19. Intento suicidario</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="suicidal_intent" value="0" v-model="psyriskFactor.suicidalIntent"/>
+                                                    <input type="radio"  @change="calculateSum()" name="suicidal_intent" value="0" v-model="psyriskFactor.suicidalIntent"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="suicidal_intent" value="1" v-model="psyriskFactor.suicidalIntent"/>
+                                                    <input type="radio"  @change="calculateSum()" name="suicidal_intent" value="1" v-model="psyriskFactor.suicidalIntent"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="suicidal_intent" value="2" v-model="psyriskFactor.suicidalIntent"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="suicidal_intent" value="2" v-model="psyriskFactor.suicidalIntent"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -285,11 +287,11 @@
                                                 <label for="suicide_plan" class="col-form-label col-md-6 col-sm-2 label-align">20. Piano di suicidio</label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>Zero</span>
-                                                    <input type="radio"  @click="calculateSum" name="suicide_plan" value="0" v-model="psyriskFactor.suicidePlan"/>
+                                                    <input type="radio"  @change="calculateSum()" name="suicide_plan" value="0" v-model="psyriskFactor.suicidePlan"/>
                                                     <span>Uno</span>
-                                                    <input type="radio"  @click="calculateSum" name="suicide_plan" value="1" v-model="psyriskFactor.suicidePlan"/>
+                                                    <input type="radio"  @change="calculateSum()" name="suicide_plan" value="1" v-model="psyriskFactor.suicidePlan"/>
                                                     <span>Due</span> 
-                                                    <input type="radio"  @click="calculateSum" name="suicide_plan" value="2" v-model="psyriskFactor.suicidePlan"/> 
+                                                    <input type="radio"  @change="calculateSum()" name="suicide_plan" value="2" v-model="psyriskFactor.suicidePlan"/> 
                                                 </span>
                                             </div>
                                         </div>
@@ -402,11 +404,11 @@
                                     </div>
                                    
 
-                                    {{ psyCardSa }}
+                                    psa:{{ psyCardSa }} psyf: {{psyriskFactor}} 
                                     <div class="ln_solid"></div>
                                     <div class="item form-group" >
                                         <div class="pull-right">
-                                            <span  class="btn btn-success i2hBtn" @click="addPsyCard('sa')">{{btnSaSend}}</span>
+                                            <span  class="btn btn-success i2hBtn ml-3" @click="addPsyCard('sa')">{{btnSaSend}}</span>
                                         </div>
                                     </div>
                                 </form>
@@ -488,7 +490,7 @@ export default {
             psyriskFactor:{},
 
 
-            panel:'mh',
+            panel:'sa',
 
             psyCardMh:{},
 
@@ -507,18 +509,22 @@ export default {
     created: function () {
         // this.getPermissions();
         this.getPsyCardsByUserInstanceId(1);
+        
     },
 
     methods: {
         calculateSum() {
             // Calcola la somma delle opzioni selezionate
             //this.sum = parseInt(this.selectedOption) || 0;
+            
             let i=0;
             for (const property in this.psyriskFactor) {
-                i += parseInt(this.psyriskFactor[property]);  
+                if(this.psyriskFactor[property]!==null){
+                    i += parseInt(this.psyriskFactor[property]);
+                }
             }
-            console.log(i);
             this.sum=i;
+
         },
 
         
@@ -542,7 +548,7 @@ export default {
             form.append('doctorUserName', 'bross');
             
             if(_panel=='sa'){
-
+                
                 if(!this.sASaved){
                     form.append('action', 'store');
                 }else{
@@ -558,10 +564,11 @@ export default {
                 form.append('section', 'sa');
                 if(!this.isObjEmpty(this.psyriskFactor)){
                     let _psyriskFactor=JSON.stringify(this.psyriskFactor);
-                    alert(JSON.stringify(this.psyriskFactor))
+                    //alert(JSON.stringify(this.psyriskFactor))
                     form.append('psyriskFactor', _psyriskFactor);
                 }
                 if(!this.isObjEmpty(this.psyCardSa)){
+                    //alert(JSON.stringify(this.psyCardSa));
                     let _psyCard=JSON.stringify(this.psyCardSa);
                     form.append('psyCard', _psyCard);
                 }
@@ -572,7 +579,7 @@ export default {
                 }else{
                     form.append('action', 'update');
                 }
-                if (this.sASaved) {
+                if (this.mHSaved) {
                     if(this.psyCardId){
                         form.append('psyId',this.psyCardId);
                     }else{
@@ -583,7 +590,7 @@ export default {
                     form.append('section', 'mh');
                     if(!this.isObjEmpty(this.psyCardMh)){
                         let _psyCardMh=JSON.stringify(this.psyCardMh);
-                        form.append('psyMentalHealthDepartment', _psyCardMh);
+                        form.append('PsyMentalHealthDepartment', _psyCardMh);
                     }
                     // else{
                     //     _errors++;
@@ -630,7 +637,7 @@ export default {
                     _errorDescription,
                     'error'
                 )
-            }
+             }
         },
 
         getPsyCards(){

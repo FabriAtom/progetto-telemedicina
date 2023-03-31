@@ -18,6 +18,7 @@ class PsyUocDepartment extends Model
         'rems',
         'prison',
         'psychiatric_familiarity',
+        'if_familiarity',
         'on_set_of_psychiatric_symptom',
         'substance_use',
         'in_charge_at_serd_territorial',

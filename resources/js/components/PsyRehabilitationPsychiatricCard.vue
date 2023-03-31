@@ -8,39 +8,33 @@
                         <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:5px;">
                             <h1>AREA RIABILTAZIONE PSICHIATRICA <strong>(TRP)</strong></h1>
                         </div>
-
                         <div class="x_content">
-
-                        <!-- <div class="tab-content" id="myTabContent"> -->
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left align-items-center">
-
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="project_description" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Breve Descrizione Progetto</h2></strong></label>
+                                            <label for="project_description" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>1) Breve Descrizione Progetto</h2></strong></label>
                                             <div class="col-md-12 col-sm-12">
                                                 <textarea name="project_description" cols="100" rows="4" v-model="psyCardRh.projectDescription"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="treatment_area_objective" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Obiettivi In Cui Viene Specificata Area Trattamento:</h2></strong></label>
-                                            <p>-Descrizione:</p>
+                                            <label for="treatment_area_objective" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>2) Obiettivi In Cui Viene Specificata Area Trattamento:</h2></strong></label>
+                                            <h5 class="ml-3">- Descrizione:</h5>
                                             <div class="col-md-12 col-sm-12">
                                                 <textarea name="treatment_area_objective" cols="100" rows="7" v-model="psyCardRh.treatmentAreaObjective"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="psychiatric_intervention" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Interventi:</h2></strong></label>                                    
+                                            <label for="psychiatric_intervention" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>3) Interventi:</h2></strong></label>                                    
                                                 <p>
                                                     <select name="trattamenti">
                                                         <option value="trattamento1">Trattamento 1</option>
@@ -54,51 +48,47 @@
                                                     <label for="dataFine">Data di fine:</label>
                                                     <input type="date" id="dataFine" name="dataFine">
                                                 </p>
-                                                <span>-Setting: 1. Individuale e/o 2. Gruppale
-                                                    <form action="">
+                                                <span class="ml-3"> -Setting: 1. Individuale e/o 2. Gruppale
+                                                    <form class="ml-3" action="">
                                                         <input type="checkbox" id="" name="" value="">
                                                         <label for=""></label>
                                                         <input type="checkbox" id="" name="" value="">
                                                         <label for=""></label><br>
                                                         <input type="submit" value="Submit">
                                                     </form>
-                                                </span> 
-
-                                            <div class="col-md-12 col-sm-12">
-                                                <!-- <textarea name="psychiatric_intervention" cols="100" rows="7" v-model="psyCardRh.psychiatricIntervention"></textarea> -->
-                                            </div>
+                                                </span>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="project_menager" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Responsabile Progetto:</h2></strong></label>
+                                            <label for="project_menager" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>4) Responsabile Progetto:</h2></strong></label>
                                             <div class="col-md-12 col-sm-12">
                                                 <textarea name="project_menager" cols="40" rows="2" v-model="psyCardRh.projectManager"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="psychiatric_attachment" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Allegati:</h2></strong></label>
+                                            <label for="psychiatric_attachment" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>5) Allegati:</h2></strong></label>
                                             <div class="col-md-12 col-sm-12">
+                                                <button onclick="downloadFile()">Download file</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                {{ psyCardRh }}
+                                <hr>
+                                {{psyCardRh}}
                                 <div class="ln_solid"></div>
                                 <div class="item form-group" >
                                     <div class="pull-right">
-                                        <span  class="btn btn-success i2hBtn" @click="addPsyRehabilitationPsychiatricCard('rh')">{{btnRhSend}}</span>
+                                        <span  class="btn btn-success i2hBtn ml-3" @click="addPsyRehabilitationPsychiatricCard('rp')">{{btnRhSend}}</span>
                                     </div>
                                 </div>
+                                <hr>
                             </form>
                         </div>
                     </div>
@@ -275,7 +265,7 @@
                         form.append('section', 'mh');
                         if(!this.isObjEmpty(this.psyCardMh)){
                             let _psyCard=JSON.stringify(this.psyCardMh);
-                            form.append('psyMentalHealthDepartment', _psyCard);
+                            form.append('PsyMentalHealthDepartment', _psyCard);
                         }
                     }
                 }

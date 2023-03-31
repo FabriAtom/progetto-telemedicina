@@ -9,9 +9,11 @@
       <psyCard/>
       <PsyRehabilitationPsychiatricCard/>
       <!-- <serdCard/> -->
-      <PsyMentalHealthDepartment/>
+      <psyMentalHealthDepartment/>
       <PsyRating/>
       <PsyUocDepartment/>
+      <PsySocialFolder/>
+
     </div>
     
   </div>
@@ -25,6 +27,10 @@ import psyMentalHealthDepartment from '../components/psyMentalHealthDepartment.v
 import PsyRehabilitationPsychiatricCard from '../components/PsyRehabilitationPsychiatricCard.vue';
 import PsyRating from '../components/PsyRating.vue';
 import PsyUocDepartment from '../components/PsyUocDepartment.vue';
+import PsySocialFolder from '../components/PsySocialFolder.vue';
+
+
+
 
 
 export default {
@@ -35,7 +41,8 @@ export default {
     psyMentalHealthDepartment,
     PsyRehabilitationPsychiatricCard,
     PsyRating,
-    PsyUocDepartment
+    PsyUocDepartment,
+    PsySocialFolder
   }
 }
 </script>

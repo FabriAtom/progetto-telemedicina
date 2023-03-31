@@ -2025,7 +2025,7 @@ __webpack_require__.r(__webpack_exports__);
           form.append('section', 'mh');
           if (!this.isObjEmpty(this.psyCardMh)) {
             var _psyCardMh2 = JSON.stringify(this.psyCardMh);
-            form.append('psyMentalHealthDepartment', _psyCardMh2);
+            form.append('PsyMentalHealthDepartment', _psyCardMh2);
           }
         }
       }
@@ -2289,7 +2289,7 @@ __webpack_require__.r(__webpack_exports__);
           form.append('section', 'mh');
           if (!this.isObjEmpty(this.psyCardMh)) {
             var _psyCard3 = JSON.stringify(this.psyCardMh);
-            form.append('psyMentalHealthDepartment', _psyCard3);
+            form.append('PsyMentalHealthDepartment', _psyCard3);
           }
         }
       }
@@ -2395,6 +2395,263 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySocialFolder.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySocialFolder.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/ApiUrl */ "./resources/js/config/ApiUrl.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'psyCard',
+  data: function data() {
+    return {
+      userName: 'Andrea',
+      userLastName: 'Giovanni',
+      userFullName: '',
+      userInstance: 1,
+      userId: 0,
+      showInput: false,
+      showInput1: false,
+      showInput2: false,
+      showInput3: false,
+      showInput4: false,
+      showInput5: false,
+      showInput6: false,
+      showInput7: false,
+      accessData: [function (id) {
+        return 14;
+      }, function (name) {
+        return 'Alessio';
+      }, function (lastname) {
+        return 'Ortu';
+      }],
+      psySfDoctorId: 0,
+      psySfDoctorName: '',
+      psySfDoctorLastname: '',
+      psySfDate: null,
+      psyCardId: null,
+      date: new Date(),
+      psyCardSf: {},
+      panel: 'sf',
+      // psyCardMh:{},
+
+      mainTitle: "psy",
+      firstSave: true,
+      sFSaved: false,
+      btnSfSend: "Salva",
+      total: 0,
+      allPsySocialFolders: null
+    };
+  },
+  created: function created() {
+    // this.getPermissions();
+    this.getPsySocialFoldersByUserInstanceId(1);
+  },
+  methods: {
+    addPsySocialFolder: function addPsySocialFolder(panel) {
+      var _this = this;
+      var _wm = this;
+      var _panel = panel;
+      var _errors = 0;
+      var _errorTitle = "Scheda";
+      var _errorDescription = "Non aggiornata";
+      var form = new FormData();
+      form.append('userName', this.userName);
+      form.append('userLastName', this.userLastName);
+      form.append('userFullName', this.userFullName);
+      form.append('userInstance', this.userInstance);
+      form.append('userId', this.userId);
+      // form.append('doctorId', this.accessData.id);
+      // form.append('doctorName', this.accessData.name);
+      // form.append('doctorUserName', this.accessData.lastname);
+      form.append('doctorId', 14);
+      form.append('doctorName', 'mario');
+      form.append('doctorUserName', 'bross');
+      if (_panel == 'sf') {
+        if (!this.sFSaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+          if (this.psyCardId) {
+            form.append('psyId', this.psyCardId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+        }
+        form.append('section', 'sf');
+        if (!this.isObjEmpty(this.psyCardSf)) {
+          var _psyCardSf = JSON.stringify(this.psyCardSf);
+          alert(JSON.stringify(this.psyCardSf));
+          form.append('psyCardSf', _psyCardSf);
+        }
+      } else if (_panel == 'mh') {
+        if (!this.mHSaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+        }
+        if (this.mHSaved) {
+          if (this.psyCardId) {
+            form.append('psyId', this.psyCardId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+          form.append('section', 'mh');
+          if (!this.isObjEmpty(this.psyCardMh)) {
+            var _psyCardMh = JSON.stringify(this.psyCardMh);
+            form.append('PsyMentalHealthDepartment', _psyCardMh);
+          }
+        }
+      }
+      if (_errors == 0) {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_PSY_CARD"], form).then(function (response) {
+            var error = response.data.errorNumber;
+            var _attempts = response.data.attempts;
+            _wm.errNum = error;
+            if (error == 0) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
+              _this.getPsySocialFoldersByUserInstanceId(_this.userInstance);
+            } else {
+              // eventBus.$emit('errorEvent', error, _attempts);
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
+            }
+          });
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
+      }
+    },
+    getPsySocialFolders: function getPsySocialFolders() {
+      //GET ALL CARDS
+      var _wm = this;
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS"]).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getPsySocialFolderById: function getPsySocialFolderById(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARD_BY_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getPsySocialFoldersByUserInstanceId: function getPsySocialFoldersByUserInstanceId(id) {
+      var _wm = this;
+      // alert('yy');
+
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS_BY_USER_INSTANCE_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          // let _attempts=response.data.attempts;
+          _wm.errNum = error;
+          //alert(JSON.stringify(response.data));
+          if (error == 0) {
+            _wm.mainTitle = "Aggiornamento Cartella psy";
+            if (response.data.PsySocialFolder) {
+              _wm.sFSaved = true;
+              _wm.btnSfSend = "Aggiorna";
+              var _SocialRep = response.data.PsySocialFolder;
+              // _wm.psyCardId=response.data.psyCard.id;
+
+              _wm.psyCardId = response.data.psyCard.id;
+              _wm.psySfDoctorId = _SocialRep.id_doctor;
+              _wm.psySfDoctorName = _SocialRep.doctor_name;
+              _wm.psySfDoctorLastname = _SocialRep.doctor_lastname;
+              _wm.psyCardSf.citizenship = _SocialRep.citizenship;
+              _wm.psyCardSf.residencyPermit = _SocialRep.residency_permit;
+              _wm.psyCardSf.typology = _SocialRep.typology;
+              _wm.psyCardSf.expiration = _SocialRep.expiration;
+              _wm.psyCardSf.socialNote = _SocialRep.social_note;
+              _wm.psyCardSf.maritalStatus = _SocialRep.marital_status;
+              _wm.psyCardSf.socialDegree = _SocialRep.social_degree;
+              _wm.psyCardSf.legalStatusEducator = _SocialRep.legal_status_educator;
+              _wm.psyCardSf.legalStatusLawyer = _SocialRep.legal_status_lawyer;
+              _wm.psyCardSf.legalStatusProvenance = _SocialRep.legal_status_provenance;
+              _wm.psyCardSf.legalStatusEntered = _SocialRep.legal_status_entered;
+              _wm.psyCardSf.legalStatusEndOfSentence = _SocialRep.legal_status_end_of_sentence;
+              _wm.psyCardSf.legalStatusSecurityMeasure = _SocialRep.legal_status_security_measure;
+              _wm.psyCardSf.legalStatusEndOfTheSentence = _SocialRep.legal_status_end_of_the_sentence;
+              _wm.psyCardSf.legalStatusRemsOther = _SocialRep.legal_status_rems_other;
+              _wm.psyCardSf.legalStatusUncensored = _SocialRep.legal_status_uncensored;
+              _wm.psyCardSf.socialHealthSituationCsm = _SocialRep.social_health_situation_csm;
+              _wm.psyCardSf.socialHealthSituationSerd = _SocialRep.social_health_situation_serd;
+              _wm.psyCardSf.socialHealthSituationAsl = _SocialRep.social_health_situation_asl;
+              _wm.psyCardSf.socialHealthSituationCertificate = _SocialRep.social_health_situation_certificate;
+              _wm.psyCardSf.socialHealthSituationTherapeuticPathway = _SocialRep.social_health_situation_therapeutic_pathway;
+              _wm.psyCardSf.socialHealthSituationDisability = _SocialRep.social_health_situation_disability;
+              _wm.psyCardSf.socialHealthSituationRevision = _SocialRep.social_health_situation_revision;
+              _wm.psyCardSf.socialHealthSituationInps = _SocialRep.social_health_situation_inps;
+              _wm.psyCardSf.socialHealthSituationAdministrator = _SocialRep.social_health_situation_administrator;
+              _wm.psyCardSf.environmentalAnalysisFamilyOfOrigin = _SocialRep.environmental_analysis_family_of_origin;
+              _wm.psyCardSf.environmentalAnalysisAccommodation = _SocialRep.environmental_analysis_accommodation;
+              _wm.psyCardSf.environmentalAnalysisWork = _SocialRep.environmental_analysis_work;
+              _wm.psyCardSf.environmentalAnalysisIncome = _SocialRep.environmental_analysis_income;
+              _wm.psyCardSf.environmentalAnalysisFormalNetwork = _SocialRep.environmental_analysis_formal_network;
+              _wm.allPsySocialFolders = response.data.allPsySocialFolders;
+            } else {
+              _wm.btnSfSend = "Salva";
+            }
+            _wm.firstSave = false;
+          } else if (error == 7) {
+            _wm.btnSfSend = "Salva";
+            _wm.firstSave = true;
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    isObjEmpty: function isObjEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyUocDepartment.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyUocDepartment.vue?vue&type=script&lang=js& ***!
@@ -2421,6 +2678,13 @@ __webpack_require__.r(__webpack_exports__);
       userFullName: '',
       userInstance: 1,
       userId: 0,
+      showInput: false,
+      showInput1: false,
+      showInput2: false,
+      showInput3: false,
+      showInput4: false,
+      showInput5: false,
+      showInput6: false,
       accessData: [function (id) {
         return 14;
       }, function (name) {
@@ -2450,16 +2714,6 @@ __webpack_require__.r(__webpack_exports__);
     this.getPsyUocDepartmentsByUserInstanceId(1);
   },
   methods: {
-    calculateSum: function calculateSum() {
-      // Calcola la somma delle opzioni selezionate
-      //this.sum = parseInt(this.selectedOption) || 0;
-      var i = 0;
-      for (var property in this.psyCardUd) {
-        i += parseInt(this.psyCardUd[property]);
-      }
-      console.log(i);
-      this.sum = i;
-    },
     addPsyUocDepartment: function addPsyUocDepartment(panel) {
       var _this = this;
       var _wm = this;
@@ -2498,10 +2752,6 @@ __webpack_require__.r(__webpack_exports__);
           alert(JSON.stringify(this.psyCardUd));
           form.append('psyCardUd', _psyCardUd);
         }
-        // if(!this.isObjEmpty(this.psyCardPr)){
-        //     let _psyCard=JSON.stringify(this.psyCardPr);
-        //     form.append('psyCard', _psyCard);
-        // }
       } else if (_panel == 'mh') {
         if (!this.mHSaved) {
           form.append('action', 'store');
@@ -2519,7 +2769,7 @@ __webpack_require__.r(__webpack_exports__);
           form.append('section', 'mh');
           if (!this.isObjEmpty(this.psyCardMh)) {
             var _psyCardMh = JSON.stringify(this.psyCardMh);
-            form.append('psyMentalHealthDepartment', _psyCardMh);
+            form.append('PsyMentalHealthDepartment', _psyCardMh);
           }
         }
       }
@@ -2582,8 +2832,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     getPsyUocDepartmentsByUserInstanceId: function getPsyUocDepartmentsByUserInstanceId(id) {
       var _wm = this;
-      // alert('yy');
-
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS_BY_USER_INSTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
@@ -2609,6 +2857,7 @@ __webpack_require__.r(__webpack_exports__);
               _wm.psyCardUd.rems = _PsyUoc.rems;
               _wm.psyCardUd.prison = _PsyUoc.prison;
               _wm.psyCardUd.psychiatricFamiliarity = _PsyUoc.psychiatric_familiarity;
+              _wm.psyCardUd.ifFamiliarity = _PsyUoc.if_familiarity;
               _wm.psyCardUd.onSetOfPsychiatricSymptom = _PsyUoc.on_set_of_psychiatric_symptom;
               _wm.psyCardUd.substanceUse = _PsyUoc.substance_use;
               _wm.psyCardUd.inChargeAtSerdTerritorial = _PsyUoc.in_charge_at_serd_territorial;
@@ -2619,6 +2868,7 @@ __webpack_require__.r(__webpack_exports__);
               _wm.psyCardUd.anxiousAffectiveOrientation = _PsyUoc.anxious_affective_orientation;
               _wm.psyCardUd.personalityOrientation = _PsyUoc.personality_orientation;
               _wm.psyCardUd.takingChargePdta = _PsyUoc.taking_charge_pdta;
+              _wm.psyCardUd.careIntakePdta = _PsyUoc.care_intake_pdta;
               _wm.psyCardUd.consultancyPdta = _PsyUoc.consultancy_pdta;
               _wm.allpsyUocDepartments = response.data.allpsyUocDepartments;
             } else {
@@ -2687,7 +2937,7 @@ __webpack_require__.r(__webpack_exports__);
       date: new Date(),
       psyCardSa: {},
       psyriskFactor: {},
-      panel: 'mh',
+      panel: 'sa',
       psyCardMh: {},
       mainTitle: "psy",
       firstSave: true,
@@ -2705,11 +2955,13 @@ __webpack_require__.r(__webpack_exports__);
     calculateSum: function calculateSum() {
       // Calcola la somma delle opzioni selezionate
       //this.sum = parseInt(this.selectedOption) || 0;
+
       var i = 0;
       for (var property in this.psyriskFactor) {
-        i += parseInt(this.psyriskFactor[property]);
+        if (this.psyriskFactor[property] !== null) {
+          i += parseInt(this.psyriskFactor[property]);
+        }
       }
-      console.log(i);
       this.sum = i;
     },
     addPsyCard: function addPsyCard(panel) {
@@ -2747,10 +2999,11 @@ __webpack_require__.r(__webpack_exports__);
         form.append('section', 'sa');
         if (!this.isObjEmpty(this.psyriskFactor)) {
           var _psyriskFactor = JSON.stringify(this.psyriskFactor);
-          alert(JSON.stringify(this.psyriskFactor));
+          //alert(JSON.stringify(this.psyriskFactor))
           form.append('psyriskFactor', _psyriskFactor);
         }
         if (!this.isObjEmpty(this.psyCardSa)) {
+          //alert(JSON.stringify(this.psyCardSa));
           var _psyCard = JSON.stringify(this.psyCardSa);
           form.append('psyCard', _psyCard);
         }
@@ -2760,7 +3013,7 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           form.append('action', 'update');
         }
-        if (this.sASaved) {
+        if (this.mHSaved) {
           if (this.psyCardId) {
             form.append('psyId', this.psyCardId);
           } else {
@@ -2771,7 +3024,7 @@ __webpack_require__.r(__webpack_exports__);
           form.append('section', 'mh');
           if (!this.isObjEmpty(this.psyCardMh)) {
             var _psyCardMh = JSON.stringify(this.psyCardMh);
-            form.append('psyMentalHealthDepartment', _psyCardMh);
+            form.append('PsyMentalHealthDepartment', _psyCardMh);
           }
           // else{
           //     _errors++;
@@ -2934,7 +3187,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'psyMentalHealthDepartment',
+  name: 'PsyMentalHealthDepartment',
   data: function data() {
     return {
       userName: 'Andrea',
@@ -3010,7 +3263,7 @@ __webpack_require__.r(__webpack_exports__);
         form.append('section', 'mh');
         if (!this.isObjEmpty(this.psyCardMh)) {
           var _psyCard = JSON.stringify(this.psyCardMh);
-          form.append('psyMentalHealthDepartment', _psyCard);
+          form.append('PsyMentalHealthDepartment', _psyCard);
         }
       } else if (_panel == 'sa') {
         if (!this.sASaved) {
@@ -3294,6 +3547,7 @@ __webpack_require__.r(__webpack_exports__);
       var i = 0;
       for (var property in this.cows) {
         i += parseInt(this.cows[property]);
+        alert(i);
       }
       this.total = i + parseInt(this.restingPulseRateResult());
     },
@@ -3690,9 +3944,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PsyRehabilitationPsychiatricCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/PsyRehabilitationPsychiatricCard.vue */ "./resources/js/components/PsyRehabilitationPsychiatricCard.vue");
 /* harmony import */ var _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/PsyRating.vue */ "./resources/js/components/PsyRating.vue");
 /* harmony import */ var _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/PsyUocDepartment.vue */ "./resources/js/components/PsyUocDepartment.vue");
+/* harmony import */ var _components_PsySocialFolder_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/PsySocialFolder.vue */ "./resources/js/components/PsySocialFolder.vue");
 // import Home from '../pages/Home.vue';
 
 // import serdCard from '../components/serdCard.vue';
+
 
 
 
@@ -3705,7 +3961,8 @@ __webpack_require__.r(__webpack_exports__);
     psyMentalHealthDepartment: _components_psyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     PsyRehabilitationPsychiatricCard: _components_PsyRehabilitationPsychiatricCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     PsyRating: _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    PsyUocDepartment: _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    PsyUocDepartment: _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    PsySocialFolder: _components_PsySocialFolder_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
 });
 
@@ -7813,7 +8070,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "pull-right"
   }, [_c("span", {
-    staticClass: "btn btn-success i2hBtn",
+    staticClass: "btn btn-success i2hBtn ml-3",
     on: {
       click: function click($event) {
         return _vm.addPsyRating("pr");
@@ -7929,7 +8186,9 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(2), _vm._v(" "), _c("p", [_vm._v("-Descrizione:")]), _vm._v(" "), _c("div", {
+  }, [_vm._m(2), _vm._v(" "), _c("h5", {
+    staticClass: "ml-3"
+  }, [_vm._v("- Descrizione:")]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("textarea", {
     directives: [{
@@ -7984,20 +8243,20 @@ var render = function render() {
         _vm.$set(_vm.psyCardRh, "projectManager", $event.target.value);
       }
     }
-  })])])])]), _vm._v(" "), _vm._m(5), _vm._v("\n\n                            " + _vm._s(_vm.psyCardRh) + "\n                            "), _c("div", {
+  })])])])]), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("hr"), _vm._v("\n                            " + _vm._s(_vm.psyCardRh) + "\n                            "), _c("div", {
     staticClass: "ln_solid"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
   }, [_c("div", {
     staticClass: "pull-right"
   }, [_c("span", {
-    staticClass: "btn btn-success i2hBtn",
+    staticClass: "btn btn-success i2hBtn ml-3",
     on: {
       click: function click($event) {
-        return _vm.addPsyRehabilitationPsychiatricCard("rh");
+        return _vm.addPsyRehabilitationPsychiatricCard("rp");
       }
     }
-  }, [_vm._v(_vm._s(_vm.btnRhSend))])])])])])])])])])]);
+  }, [_vm._v(_vm._s(_vm.btnRhSend))])])]), _vm._v(" "), _c("hr")])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -8019,7 +8278,7 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "project_description"
     }
-  }, [_c("strong", [_c("h2", [_vm._v("Breve Descrizione Progetto")])])]);
+  }, [_c("strong", [_c("h2", [_vm._v("1) Breve Descrizione Progetto")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -8028,7 +8287,7 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "treatment_area_objective"
     }
-  }, [_c("strong", [_c("h2", [_vm._v("Obiettivi In Cui Viene Specificata Area Trattamento:")])])]);
+  }, [_c("strong", [_c("h2", [_vm._v("2) Obiettivi In Cui Viene Specificata Area Trattamento:")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -8046,7 +8305,7 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "psychiatric_intervention"
     }
-  }, [_c("strong", [_c("h2", [_vm._v("Interventi:")])])]), _vm._v(" "), _c("p", [_c("select", {
+  }, [_c("strong", [_c("h2", [_vm._v("3) Interventi:")])])]), _vm._v(" "), _c("p", [_c("select", {
     attrs: {
       name: "trattamenti"
     }
@@ -8082,7 +8341,10 @@ var staticRenderFns = [function () {
       id: "dataFine",
       name: "dataFine"
     }
-  })]), _vm._v(" "), _c("span", [_vm._v("-Setting: 1. Individuale e/o 2. Gruppale\n                                                "), _c("form", {
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "ml-3"
+  }, [_vm._v(" -Setting: 1. Individuale e/o 2. Gruppale\n                                                "), _c("form", {
+    staticClass: "ml-3",
     attrs: {
       action: ""
     }
@@ -8113,9 +8375,7 @@ var staticRenderFns = [function () {
       type: "submit",
       value: "Submit"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  })])])]);
+  })])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -8124,7 +8384,7 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "project_menager"
     }
-  }, [_c("strong", [_c("h2", [_vm._v("Responsabile Progetto:")])])]);
+  }, [_c("strong", [_c("h2", [_vm._v("4) Responsabile Progetto:")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -8142,9 +8402,2050 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "psychiatric_attachment"
     }
-  }, [_c("strong", [_c("h2", [_vm._v("Allegati:")])])]), _vm._v(" "), _c("div", {
+  }, [_c("strong", [_c("h2", [_vm._v("5) Allegati:")])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
-  })])])]);
+  }, [_c("button", {
+    attrs: {
+      onclick: "downloadFile()"
+    }
+  }, [_vm._v("Download file")])])])])]);
+}];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySocialFolder.vue?vue&type=template&id=5d041c16&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySocialFolder.vue?vue&type=template&id=5d041c16&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "page-content"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "x_panel"
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("form", {
+    staticClass: "form-horizontal form-label-left align-items-center",
+    attrs: {
+      id: "demo-form2",
+      "data-parsley-validate": ""
+    }
+  }, [_c("div", {
+    staticClass: "x_content"
+  }, [_c("div", {
+    staticStyle: {
+      border: "2px solid black",
+      "max-width": "900px",
+      "max-height": "650px",
+      "margin-left": "10px",
+      "margin-bottom": "10px"
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(2), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.citizenship,
+      expression: "psyCardSf.citizenship"
+    }],
+    attrs: {
+      type: "text",
+      name: "citizenship"
+    },
+    domProps: {
+      value: _vm.psyCardSf.citizenship
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "citizenship", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(3), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.residencyPermit,
+      expression: "psyCardSf.residencyPermit"
+    }],
+    attrs: {
+      type: "radio",
+      name: "residency_permit",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.residencyPermit, "SI")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "residencyPermit", "SI");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.residencyPermit,
+      expression: "psyCardSf.residencyPermit"
+    }],
+    attrs: {
+      type: "radio",
+      name: "residency_permit",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.residencyPermit, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "residencyPermit", "NO");
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(4), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.typology,
+      expression: "psyCardSf.typology"
+    }],
+    attrs: {
+      type: "text",
+      name: "typology"
+    },
+    domProps: {
+      value: _vm.psyCardSf.typology
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "typology", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(5), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.expiration,
+      expression: "psyCardSf.expiration"
+    }],
+    attrs: {
+      type: "date",
+      name: "expiration"
+    },
+    domProps: {
+      value: _vm.psyCardSf.expiration
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "expiration", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(6), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.identificationDocument,
+      expression: "psyCardSf.identificationDocument"
+    }],
+    attrs: {
+      type: "text",
+      name: "identification_document"
+    },
+    domProps: {
+      value: _vm.psyCardSf.identificationDocument
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "identificationDocument", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(7), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialNote,
+      expression: "psyCardSf.socialNote"
+    }],
+    attrs: {
+      type: "text",
+      name: "social_note"
+    },
+    domProps: {
+      value: _vm.psyCardSf.socialNote
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "socialNote", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(8), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.maritalStatus,
+      expression: "psyCardSf.maritalStatus"
+    }],
+    attrs: {
+      type: "text",
+      name: "marital_status"
+    },
+    domProps: {
+      value: _vm.psyCardSf.maritalStatus
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "maritalStatus", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(9), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "3px",
+      "margin-right": "5px"
+    }
+  }, [_vm._v("Scuola primaria\n                                                    "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialDegree,
+      expression: "psyCardSf.socialDegree"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_degree"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.socialDegree, null)
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "socialDegree", null);
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "3px",
+      "margin-right": "5px"
+    }
+  }, [_vm._v("Scuola media\n                                                    "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialDegree,
+      expression: "psyCardSf.socialDegree"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_degree"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.socialDegree, null)
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "socialDegree", null);
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "3px",
+      "margin-right": "5px"
+    }
+  }, [_vm._v("Scuola secondaria superiore\n                                                    "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialDegree,
+      expression: "psyCardSf.socialDegree"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_degree"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.socialDegree, null)
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "socialDegree", null);
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "3px",
+      "margin-right": "5px"
+    }
+  }, [_vm._v("Laurea\n                                                    "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialDegree,
+      expression: "psyCardSf.socialDegree"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_degree"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.socialDegree, null)
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "socialDegree", null);
+      }
+    }
+  })]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialDegree,
+      expression: "psyCardSf.socialDegree"
+    }],
+    staticClass: "ml-2",
+    attrs: {
+      type: "text",
+      name: "social_degree"
+    },
+    domProps: {
+      value: _vm.psyCardSf.socialDegree
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "socialDegree", $event.target.value);
+      }
+    }
+  })])])])])])]), _vm._v(" "), _vm._m(10), _vm._v(" "), _c("div", {
+    staticClass: "x_content"
+  }, [_c("div", {
+    staticStyle: {
+      border: "2px solid black",
+      "max-width": "900px",
+      "max-height": "750px",
+      "margin-left": "10px",
+      "margin-bottom": "10px"
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(11), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusEducator,
+      expression: "psyCardSf.legalStatusEducator"
+    }],
+    attrs: {
+      type: "text",
+      name: "legal_status_educator"
+    },
+    domProps: {
+      value: _vm.psyCardSf.legalStatusEducator
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "legalStatusEducator", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(12), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusLawyer,
+      expression: "psyCardSf.legalStatusLawyer"
+    }],
+    attrs: {
+      type: "text",
+      name: "legal_status_lawyer",
+      value: "SI"
+    },
+    domProps: {
+      value: _vm.psyCardSf.legalStatusLawyer
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "legalStatusLawyer", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(13), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusProvenance,
+      expression: "psyCardSf.legalStatusProvenance"
+    }],
+    attrs: {
+      type: "text",
+      name: "legal_status_provenance"
+    },
+    domProps: {
+      value: _vm.psyCardSf.legalStatusProvenance
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "legalStatusProvenance", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(14), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusEntered,
+      expression: "psyCardSf.legalStatusEntered"
+    }],
+    attrs: {
+      type: "date",
+      name: "legal_status_entered"
+    },
+    domProps: {
+      value: _vm.psyCardSf.legalStatusEntered
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "legalStatusEntered", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(15), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusEntered,
+      expression: "psyCardSf.legalStatusEntered"
+    }],
+    attrs: {
+      type: "date",
+      name: "legal_status_entered"
+    },
+    domProps: {
+      value: _vm.psyCardSf.legalStatusEntered
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "legalStatusEntered", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(16), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput,
+      expression: "showInput"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_security_measure",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.showInput, "SI")
+    },
+    on: {
+      change: function change($event) {
+        _vm.showInput = "SI";
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusSecurityMeasure,
+      expression: "psyCardSf.legalStatusSecurityMeasure"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_security_measure",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.legalStatusSecurityMeasure, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "legalStatusSecurityMeasure", "NO");
+      }
+    }
+  }), _vm._v(" "), _vm.showInput ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusSecurityMeasure,
+      expression: "psyCardSf.legalStatusSecurityMeasure"
+    }],
+    attrs: {
+      type: "text",
+      name: "legal_status_security_measure"
+    },
+    domProps: {
+      value: _vm.psyCardSf.legalStatusSecurityMeasure
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "legalStatusSecurityMeasure", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(17), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput2,
+      expression: "showInput2"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_end_of_the_sentence",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.showInput2, "SI")
+    },
+    on: {
+      change: function change($event) {
+        _vm.showInput2 = "SI";
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusEndOfTheSentence,
+      expression: "psyCardSf.legalStatusEndOfTheSentence"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_end_of_the_sentence",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.legalStatusEndOfTheSentence, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "legalStatusEndOfTheSentence", "NO");
+      }
+    }
+  }), _vm._v(" "), _vm.showInput2 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusEndOfTheSentence,
+      expression: "psyCardSf.legalStatusEndOfTheSentence"
+    }],
+    attrs: {
+      type: "text",
+      name: "legal_status_end_of_the_sentence"
+    },
+    domProps: {
+      value: _vm.psyCardSf.legalStatusEndOfTheSentence
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "legalStatusEndOfTheSentence", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(18), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "3px",
+      "margin-right": "5px"
+    }
+  }, [_vm._v("INTERNATO\n                                                    "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusListMix,
+      expression: "psyCardSf.legalStatusListMix"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_list_mix",
+      value: "INTERNATO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.legalStatusListMix, "INTERNATO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "legalStatusListMix", "INTERNATO");
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "3px",
+      "margin-right": "5px"
+    }
+  }, [_vm._v("GIUDICABILE\n                                                    "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusListMix,
+      expression: "psyCardSf.legalStatusListMix"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_list_mix",
+      value: "GIUDICABILE"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.legalStatusListMix, "GIUDICABILE")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "legalStatusListMix", "GIUDICABILE");
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "3px",
+      "margin-right": "5px"
+    }
+  }, [_vm._v("APPELLANTE\n                                                    "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusListMix,
+      expression: "psyCardSf.legalStatusListMix"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_list_mix",
+      value: "APPELLANTE"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.legalStatusListMix, "APPELLANTE")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "legalStatusListMix", "APPELLANTE");
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "3px",
+      "margin-right": "5px"
+    }
+  }, [_vm._v("DEFINITIVO\n                                                    "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusListMix,
+      expression: "psyCardSf.legalStatusListMix"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_list_mix",
+      value: "DEFINITIVO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.legalStatusListMix, "DEFINITIVO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "legalStatusListMix", "DEFINITIVO");
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "3px",
+      "margin-right": "5px"
+    }
+  }, [_vm._v("CASSAZIONE\n                                                    "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusListMix,
+      expression: "psyCardSf.legalStatusListMix"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_list_mix",
+      value: "CASSAZIONE"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.legalStatusListMix, "CASSAZIONE")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "legalStatusListMix", "CASSAZIONE");
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "3px",
+      "margin-right": "5px"
+    }
+  }, [_vm._v("MISTO\n                                                    "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusListMix,
+      expression: "psyCardSf.legalStatusListMix"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_list_mix",
+      value: "MISTO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.legalStatusListMix, "MISTO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "legalStatusListMix", "MISTO");
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(19), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput3,
+      expression: "showInput3"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_rems_other",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.showInput3, "SI")
+    },
+    on: {
+      change: function change($event) {
+        _vm.showInput3 = "SI";
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusRemsOther,
+      expression: "psyCardSf.legalStatusRemsOther"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_rems_other",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.legalStatusRemsOther, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "legalStatusRemsOther", "NO");
+      }
+    }
+  }), _vm._v(" "), _vm.showInput3 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusRemsOther,
+      expression: "psyCardSf.legalStatusRemsOther"
+    }],
+    attrs: {
+      type: "text",
+      name: "legal_status_rems_other"
+    },
+    domProps: {
+      value: _vm.psyCardSf.legalStatusRemsOther
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "legalStatusRemsOther", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(20), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput4,
+      expression: "showInput4"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_uncensored",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.showInput4, "SI")
+    },
+    on: {
+      change: function change($event) {
+        _vm.showInput4 = "SI";
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusUncensored,
+      expression: "psyCardSf.legalStatusUncensored"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_status_uncensored",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.legalStatusUncensored, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "legalStatusUncensored", "NO");
+      }
+    }
+  }), _vm._v(" "), _vm.showInput4 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.legalStatusUncensored,
+      expression: "psyCardSf.legalStatusUncensored"
+    }],
+    attrs: {
+      type: "text",
+      name: "legal_status_uncensored"
+    },
+    domProps: {
+      value: _vm.psyCardSf.legalStatusUncensored
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "legalStatusUncensored", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])])])]), _vm._v(" "), _vm._m(21), _vm._v(" "), _c("div", {
+    staticClass: "x_content"
+  }, [_c("div", {
+    staticStyle: {
+      border: "2px solid black",
+      "max-width": "900px",
+      "max-height": "720px",
+      "margin-left": "10px",
+      "margin-bottom": "10px"
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(22), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput1,
+      expression: "showInput1"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "social_health_situation_csm"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.showInput1) ? _vm._i(_vm.showInput1, null) > -1 : _vm.showInput1
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.showInput1,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.showInput1 = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.showInput1 = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.showInput1 = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.showInput1 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialHealthSituationCsm,
+      expression: "psyCardSf.socialHealthSituationCsm"
+    }],
+    attrs: {
+      type: "text",
+      name: "social_health_situation_csm"
+    },
+    domProps: {
+      value: _vm.psyCardSf.socialHealthSituationCsm
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "socialHealthSituationCsm", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(23), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput5,
+      expression: "showInput5"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "social_health_situation_serd"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.showInput5) ? _vm._i(_vm.showInput5, null) > -1 : _vm.showInput5
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.showInput5,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.showInput5 = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.showInput5 = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.showInput5 = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.showInput5 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialHealthSituationSerd,
+      expression: "psyCardSf.socialHealthSituationSerd"
+    }],
+    attrs: {
+      type: "text",
+      name: "social_health_situation_serd"
+    },
+    domProps: {
+      value: _vm.psyCardSf.socialHealthSituationSerd
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "socialHealthSituationSerd", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(24), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput6,
+      expression: "showInput6"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "social_health_situation_asl"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.showInput6) ? _vm._i(_vm.showInput6, null) > -1 : _vm.showInput6
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.showInput6,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.showInput6 = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.showInput6 = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.showInput6 = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.showInput6 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialHealthsituationAsl,
+      expression: "psyCardSf.socialHealthsituationAsl"
+    }],
+    attrs: {
+      type: "text",
+      name: "social_health_situation_asl"
+    },
+    domProps: {
+      value: _vm.psyCardSf.socialHealthsituationAsl
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "socialHealthsituationAsl", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(25), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialHealthSituationCertificate,
+      expression: "psyCardSf.socialHealthSituationCertificate"
+    }],
+    attrs: {
+      type: "text",
+      name: "social_health_situation_certificate"
+    },
+    domProps: {
+      value: _vm.psyCardSf.socialHealthSituationCertificate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "socialHealthSituationCertificate", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(26), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialHealthSituationTherapeuticPathway,
+      expression: "psyCardSf.socialHealthSituationTherapeuticPathway"
+    }],
+    attrs: {
+      type: "text",
+      name: "social_health_situation_therapeutic_pathway"
+    },
+    domProps: {
+      value: _vm.psyCardSf.socialHealthSituationTherapeuticPathway
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "socialHealthSituationTherapeuticPathway", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(27), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput7,
+      expression: "showInput7"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "social_health_situation_asl"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.showInput7) ? _vm._i(_vm.showInput7, null) > -1 : _vm.showInput7
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.showInput7,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.showInput7 = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.showInput7 = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.showInput7 = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.showInput7 ? _c("span", [_vm._v("DAL")]) : _vm._e(), _vm._v(" "), _vm.showInput7 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialHealthSituationDisability,
+      expression: "psyCardSf.socialHealthSituationDisability"
+    }],
+    attrs: {
+      type: "date",
+      name: "social_health_situation_disability"
+    },
+    domProps: {
+      value: _vm.psyCardSf.socialHealthSituationDisability
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "socialHealthSituationDisability", $event.target.value);
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), _vm.showInput7 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialHealthSituationDisability,
+      expression: "psyCardSf.socialHealthSituationDisability"
+    }],
+    attrs: {
+      type: "text",
+      name: "social_health_situation_disability"
+    },
+    domProps: {
+      value: _vm.psyCardSf.socialHealthSituationDisability
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "socialHealthSituationDisability", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(28), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialHealthSituationRevision,
+      expression: "psyCardSf.socialHealthSituationRevision"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_health_situation_revision",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.socialHealthSituationRevision, "SI")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "socialHealthSituationRevision", "SI");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialHealthSituationRevision,
+      expression: "psyCardSf.socialHealthSituationRevision"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_health_situation_revision",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSf.socialHealthSituationRevision, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSf, "socialHealthSituationRevision", "NO");
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(29), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialHealthSituationInps,
+      expression: "psyCardSf.socialHealthSituationInps"
+    }],
+    attrs: {
+      type: "text",
+      name: "social_health_situation_inps",
+      value: "NO"
+    },
+    domProps: {
+      value: _vm.psyCardSf.socialHealthSituationInps
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "socialHealthSituationInps", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(30), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.socialHealthSituationAdministrator,
+      expression: "psyCardSf.socialHealthSituationAdministrator"
+    }],
+    attrs: {
+      type: "text",
+      name: "social_health_situation_administrator"
+    },
+    domProps: {
+      value: _vm.psyCardSf.socialHealthSituationAdministrator
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "socialHealthSituationAdministrator", $event.target.value);
+      }
+    }
+  })])])])])])]), _vm._v(" "), _vm._m(31), _vm._v(" "), _c("div", {
+    staticClass: "x_content"
+  }, [_c("div", {
+    staticStyle: {
+      border: "2px solid black",
+      "max-width": "900px",
+      "max-height": "650px",
+      "margin-left": "10px",
+      "margin-bottom": "10px"
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(32), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.environmentalAnalysisFamilyOfOrigin,
+      expression: "psyCardSf.environmentalAnalysisFamilyOfOrigin"
+    }],
+    attrs: {
+      type: "text",
+      name: "environmental_analysis_family_of_origin"
+    },
+    domProps: {
+      value: _vm.psyCardSf.environmentalAnalysisFamilyOfOrigin
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "environmentalAnalysisFamilyOfOrigin", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(33), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.environmentalAnalysisAenvironmental_analysis_workccommodation,
+      expression: "psyCardSf.environmentalAnalysisAenvironmental_analysis_workccommodation"
+    }],
+    attrs: {
+      type: "text",
+      name: "environmental_analysis_accommodation",
+      value: "SI"
+    },
+    domProps: {
+      value: _vm.psyCardSf.environmentalAnalysisAenvironmental_analysis_workccommodation
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "environmentalAnalysisAenvironmental_analysis_workccommodation", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(34), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.environmentalAnalysisWork,
+      expression: "psyCardSf.environmentalAnalysisWork"
+    }],
+    attrs: {
+      type: "text",
+      name: "environmental_analysis_work"
+    },
+    domProps: {
+      value: _vm.psyCardSf.environmentalAnalysisWork
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "environmentalAnalysisWork", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(35), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.environmentalAnalysisIncome,
+      expression: "psyCardSf.environmentalAnalysisIncome"
+    }],
+    attrs: {
+      type: "text",
+      name: "environmental_analysis_income"
+    },
+    domProps: {
+      value: _vm.psyCardSf.environmentalAnalysisIncome
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "environmentalAnalysisIncome", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(36), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSf.environmentalAnalysisFormalNetwork,
+      expression: "psyCardSf.environmentalAnalysisFormalNetwork"
+    }],
+    attrs: {
+      type: "text",
+      name: "environmental_analysis_formal_network"
+    },
+    domProps: {
+      value: _vm.psyCardSf.environmentalAnalysisFormalNetwork
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSf, "environmentalAnalysisFormalNetwork", $event.target.value);
+      }
+    }
+  })])])])])]), _vm._v("\n                            " + _vm._s(_vm.psyCardSf) + "\n                            "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("span", {
+    staticClass: "btn btn-success i2hBtn ml-3",
+    on: {
+      click: function click($event) {
+        return _vm.addPsySocialFolder("sf");
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.btnSfSend))])])])])])])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h1", {
+    staticClass: "ml-3"
+  }, [_c("strong", [_vm._v("CARTELLA SOCIALE")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px",
+      "margin-left": "10px",
+      width: "900px"
+    }
+  }, [_c("span", {
+    staticStyle: {
+      "margin-left": "10px"
+    }
+  }, [_c("strong", [_vm._v("1. DATI ANAGRAFICI")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "citizenship"
+    }
+  }, [_c("strong", [_vm._v("CITTADINANZA")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "residency_permit"
+    }
+  }, [_c("strong", [_vm._v("PERMESSO DI SOGGIORNO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "typology"
+    }
+  }, [_c("strong", [_vm._v("TIPOLOGIA")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "expiration"
+    }
+  }, [_c("strong", [_vm._v("SCADENZA")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "identification_document"
+    }
+  }, [_c("strong", [_vm._v("DOCUMENTO DI RICONOSCIMENTO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "social_note"
+    }
+  }, [_c("strong", [_vm._v("NOTE")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "marital_status"
+    }
+  }, [_c("strong", [_vm._v("STATO CIVILE")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "social_degree"
+    }
+  }, [_c("strong", [_vm._v("TITOLO DI STUDIO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px",
+      "margin-left": "10px",
+      width: "900px"
+    }
+  }, [_c("span", {
+    staticStyle: {
+      "margin-left": "10px"
+    }
+  }, [_c("strong", [_vm._v("2. STATO GIURIDICO")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "legal_status_educator"
+    }
+  }, [_c("strong", [_vm._v("EDUCATORE")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "legal_status_lawyer"
+    }
+  }, [_c("strong", [_vm._v("AVVOCATO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "legal_status_provenance"
+    }
+  }, [_c("strong", [_vm._v("PROVENIENZA")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "legal_status_entered"
+    }
+  }, [_c("strong", [_vm._v("ENTRATO IL")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "legal_status_entered"
+    }
+  }, [_c("strong", [_vm._v("FINE PENA")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "legal_status_security_measure"
+    }
+  }, [_c("strong", [_vm._v("MISURE DI SICUREZZA PRECEDENTI")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "legal_status_end_of_the_sentence"
+    }
+  }, [_c("strong", [_vm._v("A FINE PENA")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "legal_status_list_mix"
+    }
+  }, [_c("strong")]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "legal_status_rems_other"
+    }
+  }, [_c("strong", [_vm._v("REMS O ALTRO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-5 col-sm-2 label-align",
+    attrs: {
+      "for": "legal_status_uncensored"
+    }
+  }, [_c("strong", [_vm._v("INCENSURATO - PRECEDENTI DETENZIONI O MISURE ALTERNATIVE")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px",
+      "margin-left": "10px",
+      width: "900px"
+    }
+  }, [_c("span", {
+    staticStyle: {
+      "margin-left": "10px"
+    }
+  }, [_c("strong", [_vm._v("3. SITUAZIONE SOCIO SANITARIA")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "social_health_situation_csm"
+    }
+  }, [_c("strong", [_vm._v("CSM")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "social_health_situation_serd"
+    }
+  }, [_c("strong", [_vm._v("SERD")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-1 label-align",
+    attrs: {
+      "for": "social_health_situation_asl"
+    }
+  }, [_c("strong", [_vm._v("ALTRI SERVIZI ASL")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-1 label-align",
+    attrs: {
+      "for": "social_health_situation_certificate"
+    }
+  }, [_c("strong", [_vm._v("CERTIFICATO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-5 col-sm-2 label-align",
+    attrs: {
+      "for": "social_health_situation_therapeutic_pathway"
+    }
+  }, [_c("strong", [_vm._v("PERCORSI TERAPEUTICI PRECEDENTI / IN CORSO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "social_health_situation_disability"
+    }
+  }, [_c("strong", [_vm._v("INVALIDITA' ACCOMPAGNO /LEGGE 104/92 - I.68/99")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "social_health_situation_revision"
+    }
+  }, [_c("strong", [_vm._v("REVISIONE")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "social_health_situation_inps"
+    }
+  }, [_c("strong", [_vm._v("INPS DI RIFERIMENTO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-5 col-sm-2 label-align",
+    attrs: {
+      "for": "social_health_situation_administrator"
+    }
+  }, [_c("strong", [_vm._v("AMMINISTRATORE SOSTEGNO/INTERDIZIONE/INABILITAZIONE")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px",
+      "margin-left": "10px",
+      width: "900px"
+    }
+  }, [_c("span", {
+    staticStyle: {
+      "margin-left": "10px"
+    }
+  }, [_c("strong", [_vm._v(" 4. ANALISI SITUAZIONE SOCIO-AMBIENTALE")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-4 col-sm-2 label-align",
+    attrs: {
+      "for": "environmental_analysis_family_of_origin"
+    }
+  }, [_c("strong", [_vm._v("FAMIGLIA DI ORIGINE E ACQUISITA")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "environmental_analysis_accommodation"
+    }
+  }, [_c("strong", [_vm._v("ALLOGGIO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "environmental_analysis_work"
+    }
+  }, [_c("strong", [_vm._v("LAVORO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "environmental_analysis_income"
+    }
+  }, [_c("strong", [_vm._v("REDDITO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-7 col-sm-6 label-align",
+    attrs: {
+      "for": "environmental_analysis_formal_network"
+    }
+  }, [_c("strong", [_vm._v("RETI FORMALI E INFORMALI (INTERNE ED ESTERNE AL CARCERE)")])]);
 }];
 render._withStripped = true;
 
@@ -8165,11 +10466,6 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
   return _c("div", {
     staticClass: "container"
   }, [_c("div", {
@@ -8179,16 +10475,8 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
-    staticClass: "x_panel"
-  }, [_c("div", {
-    staticClass: "x_title",
-    staticStyle: {
-      background: "lightgrey",
-      padding: "7px",
-      "border-radius": "3px",
-      "margin-top": "5px"
-    }
-  }, [_c("h1", [_vm._v("Dipartimento Salute Mentale"), _c("strong", [_vm._v(" UOC")])])]), _vm._v(" "), _c("div", {
+    staticClass: "x_panel ml-2"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "x_content"
   }, [_c("form", {
     staticClass: "form-horizontal form-label-left align-items-center",
@@ -8196,7 +10484,9 @@ var staticRenderFns = [function () {
       id: "demo-form2",
       "data-parsley-validate": ""
     }
-  }, [_c("h2", [_vm._v("ELEMENTI ANAMNESTICI RILEVANTI")]), _vm._v(" "), _c("div", {
+  }, [_c("h3", {
+    staticClass: "pt-3 pl-3"
+  }, [_vm._v("ELEMENTI ANAMNESTICI RILEVANTI")]), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "20px"
@@ -8206,13 +10496,1060 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "item form-group"
   }, [_c("label", {
-    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
       "for": "marital_status"
     }
   }, [_vm._v("Trattamenti psichiatrici precedenti")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
-  })])])])])])])])])])]);
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput,
+      expression: "showInput"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "psychiatric_treatment"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.showInput) ? _vm._i(_vm.showInput, null) > -1 : _vm.showInput
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.showInput,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.showInput = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.showInput = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.showInput = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.showInput ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.psychiatricTreatment,
+      expression: "psyCardUd.psychiatricTreatment"
+    }],
+    attrs: {
+      type: "text",
+      name: "psychiatric_treatment",
+      placeholder: "Diagnosi riferita"
+    },
+    domProps: {
+      value: _vm.psyCardUd.psychiatricTreatment
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardUd, "psychiatricTreatment", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "marital_status"
+    }
+  }, [_vm._v("- CSM")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput1,
+      expression: "showInput1"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "csm"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.showInput1) ? _vm._i(_vm.showInput1, null) > -1 : _vm.showInput1
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.showInput1,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.showInput1 = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.showInput1 = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.showInput1 = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.showInput1 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.csm,
+      expression: "psyCardUd.csm"
+    }],
+    attrs: {
+      type: "text",
+      name: "csm"
+    },
+    domProps: {
+      value: _vm.psyCardUd.csm
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardUd, "csm", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "marital_status"
+    }
+  }, [_vm._v("- SPCD")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput2,
+      expression: "showInput2"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "spdc"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.showInput2) ? _vm._i(_vm.showInput2, null) > -1 : _vm.showInput2
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.showInput2,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.showInput2 = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.showInput2 = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.showInput2 = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.showInput2 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.spdc,
+      expression: "psyCardUd.spdc"
+    }],
+    attrs: {
+      type: "text",
+      name: "spdc"
+    },
+    domProps: {
+      value: _vm.psyCardUd.spdc
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardUd, "spdc", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "marital_status"
+    }
+  }, [_vm._v("- REMS")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput3,
+      expression: "showInput3"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "rems"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.showInput3) ? _vm._i(_vm.showInput3, null) > -1 : _vm.showInput3
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.showInput3,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.showInput3 = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.showInput3 = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.showInput3 = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.showInput3 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.rems,
+      expression: "psyCardUd.rems"
+    }],
+    attrs: {
+      type: "text",
+      name: "rems"
+    },
+    domProps: {
+      value: _vm.psyCardUd.rems
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardUd, "rems", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "marital_status"
+    }
+  }, [_vm._v("- CARCERE")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput4,
+      expression: "showInput4"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "prison"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.showInput4) ? _vm._i(_vm.showInput4, null) > -1 : _vm.showInput4
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.showInput4,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.showInput4 = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.showInput4 = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.showInput4 = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.showInput4 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.prison,
+      expression: "psyCardUd.prison"
+    }],
+    attrs: {
+      type: "text",
+      name: "prison"
+    },
+    domProps: {
+      value: _vm.psyCardUd.prison
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardUd, "prison", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "marital_status"
+    }
+  }, [_vm._v("Familiarità psichiatrica")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput5,
+      expression: "showInput5"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "psychiatric_familiarity"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.showInput5) ? _vm._i(_vm.showInput5, null) > -1 : _vm.showInput5
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.showInput5,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.showInput5 = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.showInput5 = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.showInput5 = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.showInput5 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.psychiatricFamiliarity,
+      expression: "psyCardUd.psychiatricFamiliarity"
+    }],
+    attrs: {
+      type: "text",
+      name: "psychiatric_familiarity"
+    },
+    domProps: {
+      value: _vm.psyCardUd.psychiatricFamiliarity
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardUd, "psychiatricFamiliarity", $event.target.value);
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), _c("span", [_vm.showInput5 ? _c("span", [_vm._v("Se si, Chi?")]) : _vm._e(), _vm._v(" "), _vm.showInput5 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.ifFamiliarity,
+      expression: "psyCardUd.ifFamiliarity"
+    }],
+    attrs: {
+      type: "text",
+      name: "if_familiarity"
+    },
+    domProps: {
+      value: _vm.psyCardUd.ifFamiliarity
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardUd, "ifFamiliarity", $event.target.value);
+      }
+    }
+  }) : _vm._e()])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "marital_status"
+    }
+  }, [_vm._v("Esordio sintomatologia psichiatrica")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.onSetOfPsychiatricSymptom,
+      expression: "psyCardUd.onSetOfPsychiatricSymptom"
+    }],
+    attrs: {
+      type: "text",
+      name: "on_set_of_psychiatric_symptom"
+    },
+    domProps: {
+      value: _vm.psyCardUd.onSetOfPsychiatricSymptom
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardUd, "onSetOfPsychiatricSymptom", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "substance_use"
+    }
+  }, [_vm._v("Uso di sostanze")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.substanceUse,
+      expression: "psyCardUd.substanceUse"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "substance_use"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.psyCardUd.substanceUse) ? _vm._i(_vm.psyCardUd.substanceUse, null) > -1 : _vm.psyCardUd.substanceUse
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.psyCardUd.substanceUse,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardUd, "substanceUse", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardUd, "substanceUse", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardUd, "substanceUse", $$c);
+        }
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "marital_status"
+    }
+  }, [_vm._v("in carico presso Ser.D. territoriali")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput6,
+      expression: "showInput6"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "in_charge_at_serd_territorial"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.showInput6) ? _vm._i(_vm.showInput6, null) > -1 : _vm.showInput6
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.showInput6,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.showInput6 = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.showInput6 = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.showInput6 = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.showInput6 ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.inChargeAtSerdTerritorial,
+      expression: "psyCardUd.inChargeAtSerdTerritorial"
+    }],
+    attrs: {
+      type: "text",
+      name: "in_charge_at_serd_territorial"
+    },
+    domProps: {
+      value: _vm.psyCardUd.inChargeAtSerdTerritorial
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardUd, "inChargeAtSerdTerritorial", $event.target.value);
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), _c("span", [_vm.showInput6 ? _c("span", [_vm._v("quale?")]) : _vm._e(), _vm._v(" "), _vm.showInput6 ? _c("input", {
+    attrs: {
+      type: "text",
+      name: "in_charge_at_serd_territorial"
+    }
+  }) : _vm._e()])])])])]), _vm._v(" "), _c("h3", {
+    staticClass: "pb-2"
+  }, [_vm._v("STATUS ALL'INGRESSO")]), _vm._v(" "), _c("h3", [_vm._v("SINTOMATOLOGIA:")]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "psychotic_symptom"
+    }
+  }, [_vm._v("Psicotica")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.psychoticSymptom,
+      expression: "psyCardUd.psychoticSymptom"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "psychotic_symptom",
+      value: "1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.psyCardUd.psychoticSymptom) ? _vm._i(_vm.psyCardUd.psychoticSymptom, "1") > -1 : _vm.psyCardUd.psychoticSymptom
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.psyCardUd.psychoticSymptom,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardUd, "psychoticSymptom", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardUd, "psychoticSymptom", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardUd, "psychoticSymptom", $$c);
+        }
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "anxious_affective_symptom"
+    }
+  }, [_vm._v("Affettiva-Ansiosa")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.anxiousAffectiveSymptom,
+      expression: "psyCardUd.anxiousAffectiveSymptom"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "anxious_affective_symptom",
+      value: "1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.psyCardUd.anxiousAffectiveSymptom) ? _vm._i(_vm.psyCardUd.anxiousAffectiveSymptom, "1") > -1 : _vm.psyCardUd.anxiousAffectiveSymptom
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.psyCardUd.anxiousAffectiveSymptom,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardUd, "anxiousAffectiveSymptom", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardUd, "anxiousAffectiveSymptom", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardUd, "anxiousAffectiveSymptom", $$c);
+        }
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "impulsive_symptom"
+    }
+  }, [_vm._v("Impulsiva")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.impulsiveSymptom,
+      expression: "psyCardUd.impulsiveSymptom"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "impulsive_symptom",
+      value: "1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.psyCardUd.impulsiveSymptom) ? _vm._i(_vm.psyCardUd.impulsiveSymptom, "1") > -1 : _vm.psyCardUd.impulsiveSymptom
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.psyCardUd.impulsiveSymptom,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardUd, "impulsiveSymptom", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardUd, "impulsiveSymptom", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardUd, "impulsiveSymptom", $$c);
+        }
+      }
+    }
+  })])])])]), _vm._v(" "), _c("h3", [_vm._v("ORIENTAMENTO DIAGNOSTICO:")]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "psychotic_diagnostic_orientation"
+    }
+  }, [_vm._v("D. Psicotico")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.psychoticDiagnosticOrientation,
+      expression: "psyCardUd.psychoticDiagnosticOrientation"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "psychotic_diagnostic_orientation",
+      value: "1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.psyCardUd.psychoticDiagnosticOrientation) ? _vm._i(_vm.psyCardUd.psychoticDiagnosticOrientation, "1") > -1 : _vm.psyCardUd.psychoticDiagnosticOrientation
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.psyCardUd.psychoticDiagnosticOrientation,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardUd, "psychoticDiagnosticOrientation", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardUd, "psychoticDiagnosticOrientation", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardUd, "psychoticDiagnosticOrientation", $$c);
+        }
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "anxious_affective_orientation"
+    }
+  }, [_vm._v("D. Affettivo-Ansioso")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.anxiousAffectiveOrientation,
+      expression: "psyCardUd.anxiousAffectiveOrientation"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "anxious_affective_orientation",
+      value: "1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.psyCardUd.anxiousAffectiveOrientation) ? _vm._i(_vm.psyCardUd.anxiousAffectiveOrientation, "1") > -1 : _vm.psyCardUd.anxiousAffectiveOrientation
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.psyCardUd.anxiousAffectiveOrientation,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardUd, "anxiousAffectiveOrientation", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardUd, "anxiousAffectiveOrientation", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardUd, "anxiousAffectiveOrientation", $$c);
+        }
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "personality_orientation"
+    }
+  }, [_vm._v("D. Personalità")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.personalityOrientation,
+      expression: "psyCardUd.personalityOrientation"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "personality_orientation",
+      value: "1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.psyCardUd.personalityOrientation) ? _vm._i(_vm.psyCardUd.personalityOrientation, "1") > -1 : _vm.psyCardUd.personalityOrientation
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.psyCardUd.personalityOrientation,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardUd, "personalityOrientation", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardUd, "personalityOrientation", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardUd, "personalityOrientation", $$c);
+        }
+      }
+    }
+  })])])])]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "taking_charge_pdta"
+    }
+  }, [_vm._v("Presa in carico")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.takingChargePdta,
+      expression: "psyCardUd.takingChargePdta"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "taking_charge_pdta",
+      value: "1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.psyCardUd.takingChargePdta) ? _vm._i(_vm.psyCardUd.takingChargePdta, "1") > -1 : _vm.psyCardUd.takingChargePdta
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.psyCardUd.takingChargePdta,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardUd, "takingChargePdta", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardUd, "takingChargePdta", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardUd, "takingChargePdta", $$c);
+        }
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "care_intake_pdta"
+    }
+  }, [_vm._v("Assunzione in cura")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.careIntakePdta,
+      expression: "psyCardUd.careIntakePdta"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "care_intake_pdta",
+      value: "1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.psyCardUd.careIntakePdta) ? _vm._i(_vm.psyCardUd.careIntakePdta, "1") > -1 : _vm.psyCardUd.careIntakePdta
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.psyCardUd.careIntakePdta,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardUd, "careIntakePdta", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardUd, "careIntakePdta", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardUd, "careIntakePdta", $$c);
+        }
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "consultancy_pdta"
+    }
+  }, [_vm._v("Consulenza")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardUd.consultancyPdta,
+      expression: "psyCardUd.consultancyPdta"
+    }],
+    attrs: {
+      type: "checkbox",
+      name: "consultancy_pdta",
+      value: "1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.psyCardUd.consultancyPdta) ? _vm._i(_vm.psyCardUd.consultancyPdta, "1") > -1 : _vm.psyCardUd.consultancyPdta
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.psyCardUd.consultancyPdta,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardUd, "consultancyPdta", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardUd, "consultancyPdta", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardUd, "consultancyPdta", $$c);
+        }
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("span", {
+    staticClass: "btn btn-success i2hBtn ml-3",
+    on: {
+      click: function click($event) {
+        return _vm.addPsyUocDepartment("ud");
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.btnUdSend))])])])])])])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px"
+    }
+  }, [_c("h1", [_vm._v("Dipartimento Salute Mentale"), _c("strong", [_vm._v(" UOC")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h3", {
+    staticStyle: {
+      "text-decoration": "underline"
+    }
+  }, [_c("strong", [_vm._v("PROFILO DI TRATTAMENTO /PDTA proposto dopo valutazione:")])]);
 }];
 render._withStripped = true;
 
@@ -8243,7 +11580,9 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "x_panel"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("h3", {
+    staticClass: "text-center"
+  }, [_vm._v("Modulo di valutazione")]), _c("hr"), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "x_content"
   }, [_c("form", {
     staticClass: "form-horizontal form-label-left align-items-center",
@@ -8283,10 +11622,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.maritalStatus, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "maritalStatus", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v(" Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8304,10 +11644,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.maritalStatus, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "maritalStatus", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8325,10 +11666,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.maritalStatus, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "maritalStatus", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -8357,10 +11699,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.drugAndAlcoholAbuse, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "drugAndAlcoholAbuse", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8378,10 +11721,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.drugAndAlcoholAbuse, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "drugAndAlcoholAbuse", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8399,10 +11743,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.drugAndAlcoholAbuse, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "drugAndAlcoholAbuse", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -8431,10 +11776,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.psychiatricAspect, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "psychiatricAspect", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8452,10 +11798,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.psychiatricAspect, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "psychiatricAspect", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8473,10 +11820,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.psychiatricAspect, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "psychiatricAspect", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -8505,10 +11853,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicideAttempt, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicideAttempt", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8526,10 +11875,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicideAttempt, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicideAttempt", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8547,10 +11897,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicideAttempt, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicideAttempt", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -8579,10 +11930,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicideAttemptInInstitution, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicideAttemptInInstitution", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8600,10 +11952,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicideAttemptInInstitution, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicideAttemptInInstitution", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8621,10 +11974,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicideAttemptInInstitution, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicideAttemptInInstitution", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -8653,10 +12007,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.familySuicide, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "familySuicide", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8674,10 +12029,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.familySuicide, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "familySuicide", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8695,10 +12051,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.familySuicide, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "familySuicide", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -8727,10 +12084,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.arrestStory, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "arrestStory", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8748,10 +12106,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.arrestStory, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "arrestStory", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8769,10 +12128,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.arrestStory, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "arrestStory", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -8801,10 +12161,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.compulsiveBehavior, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "compulsiveBehavior", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8822,10 +12183,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.compulsiveBehavior, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "compulsiveBehavior", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8843,10 +12205,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.compulsiveBehavior, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "compulsiveBehavior", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -8875,10 +12238,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.highCrimeProfile, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "highCrimeProfile", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8896,10 +12260,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.highCrimeProfile, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "highCrimeProfile", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8917,10 +12282,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.highCrimeProfile, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "highCrimeProfile", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -8949,10 +12315,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.currentIntoxication, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "currentIntoxication", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8970,10 +12337,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.currentIntoxication, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "currentIntoxication", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -8991,10 +12359,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.currentIntoxication, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "currentIntoxication", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -9023,10 +12392,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.worryAboutLifeProblem, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "worryAboutLifeProblem", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9044,10 +12414,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.worryAboutLifeProblem, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "worryAboutLifeProblem", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9065,10 +12436,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.worryAboutLifeProblem, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "worryAboutLifeProblem", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -9097,10 +12469,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.feelingOfHopelessness, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "feelingOfHopelessness", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9118,10 +12491,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.feelingOfHopelessness, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "feelingOfHopelessness", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9139,10 +12513,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.feelingOfHopelessness, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "feelingOfHopelessness", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -9171,10 +12546,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.psychoticSymptom, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "psychoticSymptom", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9192,10 +12568,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.psychoticSymptom, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "psychoticSymptom", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9213,10 +12590,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.psychoticSymptom, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "psychoticSymptom", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -9245,10 +12623,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.depressiveSymptom, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "depressiveSymptom", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9266,10 +12645,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.depressiveSymptom, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "depressiveSymptom", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9287,10 +12667,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.depressiveSymptom, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "depressiveSymptom", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -9319,10 +12700,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9340,10 +12722,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9361,10 +12744,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -9393,10 +12777,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.socialSupport, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "socialSupport", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9414,10 +12799,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.socialSupport, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "socialSupport", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9435,10 +12821,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.socialSupport, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "socialSupport", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -9467,10 +12854,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.recentMajorLosse, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "recentMajorLosse", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9488,10 +12876,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.recentMajorLosse, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "recentMajorLosse", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9509,10 +12898,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.recentMajorLosse, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "recentMajorLosse", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -9541,10 +12931,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicidalIdeation, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicidalIdeation", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9562,10 +12953,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicidalIdeation, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicidalIdeation", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9583,10 +12975,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicidalIdeation, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicidalIdeation", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -9615,10 +13008,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicidalIntent, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicidalIntent", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9636,10 +13030,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicidalIntent, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicidalIntent", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9657,10 +13052,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicidalIntent, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicidalIntent", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
@@ -9689,10 +13085,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicidePlan, "0")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicidePlan", "0");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9710,10 +13107,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicidePlan, "1")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicidePlan", "1");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9731,10 +13129,11 @@ var render = function render() {
       checked: _vm._q(_vm.psyriskFactor.suicidePlan, "2")
     },
     on: {
-      click: _vm.calculateSum,
-      change: function change($event) {
+      change: [function ($event) {
         return _vm.$set(_vm.psyriskFactor, "suicidePlan", "2");
-      }
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
     }
   })])])])]), _vm._v(" "), _c("div", {
     staticClass: "row",
@@ -9745,7 +13144,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(1), _vm._v(" "), _c("div", {
+  }, [_vm._m(2), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -9820,7 +13219,7 @@ var render = function render() {
     staticStyle: {
       "padding-top": "2rem"
     }
-  }, [_vm._m(2), _vm._v(" "), _c("span", {
+  }, [_vm._m(3), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", [_vm._v("Alto")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9904,7 +13303,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(3), _vm._v(" "), _c("span", {
+  }, [_vm._m(4), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", [_vm._v("Si")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -9955,7 +13354,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(4), _vm._v(" "), _c("span", {
+  }, [_vm._m(5), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", [_vm._v("24 ore")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -10013,7 +13412,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(5), _vm._v(" "), _c("span", {
+  }, [_vm._m(6), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", [_vm._v("Si")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -10092,14 +13491,14 @@ var render = function render() {
         _vm.$set(_vm.psyCardSa, "comment", $event.target.value);
       }
     }
-  })])])])]), _vm._v("\n                               \n\n                                " + _vm._s(_vm.psyCardSa) + "\n                                "), _c("div", {
+  })])])])]), _vm._v("\n                               \n\n                                psa:" + _vm._s(_vm.psyCardSa) + " psyf: " + _vm._s(_vm.psyriskFactor) + " \n                                "), _c("div", {
     staticClass: "ln_solid"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
   }, [_c("div", {
     staticClass: "pull-right"
   }, [_c("span", {
-    staticClass: "btn btn-success i2hBtn",
+    staticClass: "btn btn-success i2hBtn ml-3",
     on: {
       click: function click($event) {
         return _vm.addPsyCard("sa");
@@ -10108,6 +13507,12 @@ var render = function render() {
   }, [_vm._v(_vm._s(_vm.btnSaSend))])])])])])])])])])]);
 };
 var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h1", {
+    staticClass: "text-center"
+  }, [_c("strong", [_vm._v(" SAMI")])]);
+}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
@@ -10338,14 +13743,14 @@ var render = function render() {
         _vm.$set(_vm.psyCardMh, "test", $event.target.value);
       }
     }
-  })])])])]), _vm._v("\n\n                            " + _vm._s(_vm.btnMhSend) + "\n                            "), _c("div", {
+  })])])])]), _vm._v("\n\n                            " + _vm._s(_vm.psyCardMh) + "\n                            "), _c("div", {
     staticClass: "ln_solid"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
   }, [_c("div", {
     staticClass: "pull-right"
   }, [_c("span", {
-    staticClass: "btn btn-success i2hBtn",
+    staticClass: "btn btn-success i2hBtn ml-3",
     on: {
       click: function click($event) {
         return _vm.addPsyMentalHealthDepartment("mh");
@@ -13258,7 +16663,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("PsyMentalHealthDepartment"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment")], 1)], 1);
+  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("psyMentalHealthDepartment"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder")], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -13298,6 +16703,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, ".labelWidth[data-v-0479f7df] {\n  min-width: 190px;\n}\n.dbTitle[data-v-0479f7df] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-0479f7df], .item textarea[data-v-0479f7df] {\n  margin-right: 10px;\n}\n.treatment[data-v-0479f7df] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\n* p[data-v-0479f7df] {\n  margin-left: 15px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".labelWidth[data-v-5d041c16] {\n  min-width: 190px;\n}\n.dbTitle[data-v-5d041c16] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-5d041c16], .item textarea[data-v-5d041c16] {\n  margin-right: 10px;\n}\n.treatment[data-v-5d041c16] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}", ""]);
 
 // exports
 
@@ -35645,6 +39069,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./PsyRehabilitationPsychiatricCard.vue?vue&type=style&index=0&id=0479f7df&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyRehabilitationPsychiatricCard.vue?vue&type=style&index=0&id=0479f7df&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -60589,6 +64043,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyRehabilitationPsychiatricCard_vue_vue_type_template_id_0479f7df_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyRehabilitationPsychiatricCard_vue_vue_type_template_id_0479f7df_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PsySocialFolder.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/PsySocialFolder.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PsySocialFolder_vue_vue_type_template_id_5d041c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PsySocialFolder.vue?vue&type=template&id=5d041c16&scoped=true& */ "./resources/js/components/PsySocialFolder.vue?vue&type=template&id=5d041c16&scoped=true&");
+/* harmony import */ var _PsySocialFolder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PsySocialFolder.vue?vue&type=script&lang=js& */ "./resources/js/components/PsySocialFolder.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PsySocialFolder_vue_vue_type_style_index_0_id_5d041c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true& */ "./resources/js/components/PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PsySocialFolder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PsySocialFolder_vue_vue_type_template_id_5d041c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PsySocialFolder_vue_vue_type_template_id_5d041c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "5d041c16",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PsySocialFolder.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PsySocialFolder.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/PsySocialFolder.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySocialFolder.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySocialFolder.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true&":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true& ***!
+  \***************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_style_index_0_id_5d041c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_style_index_0_id_5d041c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_style_index_0_id_5d041c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_style_index_0_id_5d041c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_style_index_0_id_5d041c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PsySocialFolder.vue?vue&type=template&id=5d041c16&scoped=true&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/PsySocialFolder.vue?vue&type=template&id=5d041c16&scoped=true& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_template_id_5d041c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySocialFolder.vue?vue&type=template&id=5d041c16&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySocialFolder.vue?vue&type=template&id=5d041c16&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_template_id_5d041c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_template_id_5d041c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

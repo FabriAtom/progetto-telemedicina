@@ -11,6 +11,7 @@ class PsyMentalHealthDepartment extends Model
         'id_doctor',
         'doctor_name',
         'doctor_lastname',
+        'mh_date',
         'psychological_interview',
         'hypothesis_psychopathological_classification',
         'planning_type_of_intervention',
