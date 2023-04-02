@@ -2121,22 +2121,34 @@ __webpack_require__.r(__webpack_exports__);
               _wm.psyCardMc.legalPosition = _SocialFold.legal_position;
               _wm.psyCardMc.endOfSentence = _SocialFold.end_of_sentence;
               _wm.psyCardMc.economicResource = _SocialFold.economic_resource;
-
-              // _wm.psyCardMc.socialHealthSituationAsl = _SocialFold.social_health_situation_asl 
-              // _wm.psyCardMc.socialHealthSituationCertificate = _SocialFold.social_health_situation_certificate 
-              // _wm.psyCardMc.socialHealthSituationTherapeuticPathway = _SocialFold.social_health_situation_therapeutic_pathway 
-              // _wm.psyCardMc.socialHealthSituationDisability = _SocialFold.social_health_situation_disability
-              // _wm.psyCardMc.socialHealthSituationRevision = _SocialFold.social_health_situation_revision
-              // _wm.psyCardMc.socialHealthSituationInps = _SocialFold.social_health_situation_inps 
-              // _wm.psyCardMc.socialHealthSituationAdministrator = _SocialFold.social_health_situation_administrator 
-              // _wm.psyCardMc.environmentalAnalysisFamilyOfOrigin = _SocialFold.environmental_analysis_family_of_origin
-              // _wm.psyCardMc.environmentalAnalysisAccommodation = _SocialFold.environmental_analysis_accommodation 
-              // _wm.psyCardMc.environmentalAnalysisWork = _SocialFold.environmental_analysis_work 
-              // _wm.psyCardMc.environmentalAnalysisIncome = _SocialFold.environmental_analysis_income
-              // _wm.psyCardMc.environmentalAnalysisFormalNetwork = _SocialFold.environmental_analysis_formal_network 
-              // _wm.psyCardMc.interventionHypothesisSocialProject = _SocialFold.intervention_hypothesis_project
-              // _wm.psyCardMc.interventionHypothesisSocialWorker = _SocialFold.intervention_hypothesis_social_worker
-
+              _wm.psyCardMc.previousTreatmentForProblem = _SocialFold.previous_treatment_for_problem;
+              _wm.psyCardMc.previousTreatmentFarmacology = _SocialFold.previous_treatment_farmacology;
+              _wm.psyCardMc.previousDiagnosesOfMentalDisorder = _SocialFold.previous_diagnoses_of_mental_disorder;
+              _wm.psyCardMc.previousDiagnosisOfDrugAbuse = _SocialFold.previous_diagnosis_of_drug_abuse;
+              _wm.psyCardMc.previousHospitalizationSpdc = _SocialFold.previous_hospitalization_spdc;
+              _wm.psyCardMc.previousHospitalizationEmergency = _SocialFold.previous_hospitalization_emergency;
+              _wm.psyCardMc.pathologicalAttemptedSuicide = _SocialFold.pathological_attempted_suicide;
+              _wm.psyCardMc.pathologicalDesperate = _SocialFold.pathological_desperate;
+              _wm.psyCardMc.pathologicalAnxious = _SocialFold.pathological_anxious;
+              _wm.psyCardMc.pathologicalActive = _SocialFold.pathological_active;
+              _wm.psyCardMc.pathologicalStrangeThought = _SocialFold.pathological_strange_thought;
+              _wm.psyCardMc.pathologicalSleepless = _SocialFold.pathological_sleepless;
+              _wm.psyCardMc.pathologicalNoFamily = _SocialFold.pathological_no_family;
+              _wm.psyCardMc.pathologicalThoughtSuicide = _SocialFold.pathological_thought_suicide;
+              _wm.psyCardMc.pathologicalAddictiveBehavior = _SocialFold.pathological_addictive_behavior;
+              _wm.psyCardMc.pathologicalClaimsInjuries = _SocialFold.pathological_claims_injuries;
+              _wm.psyCardMc.pathologicalShameLevel = _SocialFold.pathological_shame_level;
+              _wm.psyCardMc.accessToTheInterview = _SocialFold.access_to_the_interview;
+              _wm.psyCardMc.trafficWarden = _SocialFold.traffic_warden;
+              _wm.psyCardMc.lucid = _SocialFold.lucid;
+              _wm.psyCardMc.orientatedInTheThreeParameter = _SocialFold.orientated_in_the_three_parameter;
+              _wm.psyCardMc.umor = _SocialFold.umor;
+              _wm.psyCardMc.anxiety = _SocialFold.anxiety;
+              _wm.psyCardMc.alteredPerception = _SocialFold.altered_perception;
+              _wm.psyCardMc.appetite = _SocialFold.appetite;
+              _wm.psyCardMc.alteredFormThought = _SocialFold.altered_form_thought;
+              _wm.psyCardMc.sleepWakeRhythm = _SocialFold.sleep_wake_rhythm;
+              _wm.psyCardMc.futureProject = _SocialFold.future_project;
               _wm.allPsyMembershipCards = response.data.allPsySocialFolders;
             } else {
               _wm.btnMcSend = "Salva";
@@ -5160,7 +5172,2149 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "economicResource", "Adeguate");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("Adeguate")])])])])])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("span", [_vm._v("Adeguate")])])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "x_content"
+  }, [_vm._m(18), _vm._v(" "), _c("h3", [_vm._v("Anamnesi clinica: Disturbo psichico/ Disturbo uso di sostanze")]), _vm._v(" "), _c("table", [_vm._m(19), _vm._v(" "), _c("tr", [_vm._m(20), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousTreatmentForProblem,
+      expression: "psyCardMc.previousTreatmentForProblem"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_treatment_for_problem",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousTreatmentForProblem, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousTreatmentForProblem", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousTreatmentForProblem,
+      expression: "psyCardMc.previousTreatmentForProblem"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_treatment_for_problem",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousTreatmentForProblem, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousTreatmentForProblem", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousTreatmentForProblem,
+      expression: "psyCardMc.previousTreatmentForProblem"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_treatment_for_problem",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousTreatmentForProblem, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousTreatmentForProblem", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousTreatmentForProblem,
+      expression: "psyCardMc.previousTreatmentForProblem"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_treatment_for_problem",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousTreatmentForProblem, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousTreatmentForProblem", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousTreatmentForProblem,
+      expression: "psyCardMc.previousTreatmentForProblem"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_treatment_for_problem",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousTreatmentForProblem, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousTreatmentForProblem", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_vm._m(21), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousTreatmentFarmacology,
+      expression: "psyCardMc.previousTreatmentFarmacology"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_treatment_farmacology",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousTreatmentFarmacology, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousTreatmentFarmacology", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousTreatmentFarmacology,
+      expression: "psyCardMc.previousTreatmentFarmacology"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_treatment_farmacology",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousTreatmentFarmacology, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousTreatmentFarmacology", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousTreatmentFarmacology,
+      expression: "psyCardMc.previousTreatmentFarmacology"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_treatment_farmacology",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousTreatmentFarmacology, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousTreatmentFarmacology", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousTreatmentFarmacology,
+      expression: "psyCardMc.previousTreatmentFarmacology"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_treatment_farmacology",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousTreatmentFarmacology, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousTreatmentFarmacology", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousTreatmentFarmacology,
+      expression: "psyCardMc.previousTreatmentFarmacology"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_treatment_farmacology",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousTreatmentFarmacology, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousTreatmentFarmacology", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Precedenti diagnosi di disturbo mentale ")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousDiagnosesOfMentalDisorder,
+      expression: "psyCardMc.previousDiagnosesOfMentalDisorder"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_diagnoses_of_mental_disorder",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousDiagnosesOfMentalDisorder, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousDiagnosesOfMentalDisorder", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousDiagnosesOfMentalDisorder,
+      expression: "psyCardMc.previousDiagnosesOfMentalDisorder"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_diagnoses_of_mental_disorder",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousDiagnosesOfMentalDisorder, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousDiagnosesOfMentalDisorder", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousDiagnosesOfMentalDisorder,
+      expression: "psyCardMc.previousDiagnosesOfMentalDisorder"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_diagnoses_of_mental_disorder",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousDiagnosesOfMentalDisorder, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousDiagnosesOfMentalDisorder", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousDiagnosesOfMentalDisorder,
+      expression: "psyCardMc.previousDiagnosesOfMentalDisorder"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_diagnoses_of_mental_disorder",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousDiagnosesOfMentalDisorder, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousDiagnosesOfMentalDisorder", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousDiagnosesOfMentalDisorder,
+      expression: "psyCardMc.previousDiagnosesOfMentalDisorder"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_diagnoses_of_mental_disorder",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousDiagnosesOfMentalDisorder, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousDiagnosesOfMentalDisorder", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_vm._m(22), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousDiagnosisOfDrugAbuse,
+      expression: "psyCardMc.previousDiagnosisOfDrugAbuse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_diagnosis_of_drug_abuse",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousDiagnosisOfDrugAbuse, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousDiagnosisOfDrugAbuse", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousDiagnosisOfDrugAbuse,
+      expression: "psyCardMc.previousDiagnosisOfDrugAbuse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_diagnosis_of_drug_abuse",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousDiagnosisOfDrugAbuse, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousDiagnosisOfDrugAbuse", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousDiagnosisOfDrugAbuse,
+      expression: "psyCardMc.previousDiagnosisOfDrugAbuse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_diagnosis_of_drug_abuse",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousDiagnosisOfDrugAbuse, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousDiagnosisOfDrugAbuse", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousDiagnosisOfDrugAbuse,
+      expression: "psyCardMc.previousDiagnosisOfDrugAbuse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_diagnosis_of_drug_abuse",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousDiagnosisOfDrugAbuse, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousDiagnosisOfDrugAbuse", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousDiagnosisOfDrugAbuse,
+      expression: "psyCardMc.previousDiagnosisOfDrugAbuse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_diagnosis_of_drug_abuse",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousDiagnosisOfDrugAbuse, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousDiagnosisOfDrugAbuse", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_vm._m(23), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousHospitalizationSpdc,
+      expression: "psyCardMc.previousHospitalizationSpdc"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_hospitalization_spdc",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousHospitalizationSpdc, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousHospitalizationSpdc", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousHospitalizationSpdc,
+      expression: "psyCardMc.previousHospitalizationSpdc"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_hospitalization_spdc",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousHospitalizationSpdc, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousHospitalizationSpdc", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousHospitalizationSpdc,
+      expression: "psyCardMc.previousHospitalizationSpdc"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_hospitalization_spdc",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousHospitalizationSpdc, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousHospitalizationSpdc", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousHospitalizationSpdc,
+      expression: "psyCardMc.previousHospitalizationSpdc"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_hospitalization_spdc",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousHospitalizationSpdc, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousHospitalizationSpdc", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousHospitalizationSpdc,
+      expression: "psyCardMc.previousHospitalizationSpdc"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_hospitalization_spdc",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousHospitalizationSpdc, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousHospitalizationSpdc", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_vm._m(24), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousHospitalizationEmergency,
+      expression: "psyCardMc.previousHospitalizationEmergency"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_hospitalization_emergency",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousHospitalizationEmergency, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousHospitalizationEmergency", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousHospitalizationEmergency,
+      expression: "psyCardMc.previousHospitalizationEmergency"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_hospitalization_emergency",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousHospitalizationEmergency, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousHospitalizationEmergency", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousHospitalizationEmergency,
+      expression: "psyCardMc.previousHospitalizationEmergency"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_hospitalization_emergency",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousHospitalizationEmergency, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousHospitalizationEmergency", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousHospitalizationEmergency,
+      expression: "psyCardMc.previousHospitalizationEmergency"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_hospitalization_emergency",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousHospitalizationEmergency, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousHospitalizationEmergency", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.previousHospitalizationEmergency,
+      expression: "psyCardMc.previousHospitalizationEmergency"
+    }],
+    attrs: {
+      type: "radio",
+      name: "previous_hospitalization_emergency",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.previousHospitalizationEmergency, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "previousHospitalizationEmergency", "Riferito");
+      }
+    }
+  })])])]), _vm._v(" "), _c("table", [_c("h3"), _vm._v(" "), _vm._m(25), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Dichiara (o riulta da documentazione/notizie) di aver tentato il suicidio")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAttemptedSuicide,
+      expression: "psyCardMc.pathologicalAttemptedSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_attempted_suicide",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAttemptedSuicide, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAttemptedSuicide", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAttemptedSuicide,
+      expression: "psyCardMc.pathologicalAttemptedSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_attempted_suicide",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAttemptedSuicide, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAttemptedSuicide", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAttemptedSuicide,
+      expression: "psyCardMc.pathologicalAttemptedSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_attempted_suicide",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAttemptedSuicide, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAttemptedSuicide", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAttemptedSuicide,
+      expression: "psyCardMc.pathologicalAttemptedSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_attempted_suicide",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAttemptedSuicide, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAttemptedSuicide", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAttemptedSuicide,
+      expression: "psyCardMc.pathologicalAttemptedSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_attempted_suicide",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAttemptedSuicide, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAttemptedSuicide", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Dichiara di sentirsi (o essersi sentito) disperato o particolarmente depresso")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalDesperate,
+      expression: "psyCardMc.pathologicalDesperate"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_desperate",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalDesperate, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalDesperate", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalDesperate,
+      expression: "psyCardMc.pathologicalDesperate"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_desperate",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalDesperate, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalDesperate", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalDesperate,
+      expression: "psyCardMc.pathologicalDesperate"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_desperate",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalDesperate, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalDesperate", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalDesperate,
+      expression: "psyCardMc.pathologicalDesperate"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_desperate",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalDesperate, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalDesperate", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalDesperate,
+      expression: "psyCardMc.pathologicalDesperate"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_desperate",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalDesperate, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalDesperate", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Dichiara di sentirsi (o essersi sentito) disperato o particolarmente ansioso")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAnxious,
+      expression: "psyCardMc.pathologicalAnxious"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_anxious",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAnxious, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAnxious", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAnxious,
+      expression: "psyCardMc.pathologicalAnxious"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_anxious",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAnxious, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAnxious", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAnxious,
+      expression: "psyCardMc.pathologicalAnxious"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_anxious",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAnxious, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAnxious", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAnxious,
+      expression: "psyCardMc.pathologicalAnxious"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_anxious",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAnxious, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAnxious", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAnxious,
+      expression: "psyCardMc.pathologicalAnxious"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_anxious",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAnxious, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAnxious", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Dichiara di sentirsi (o essersi sentito) disperato o particolarmente attivato")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalActive,
+      expression: "psyCardMc.pathologicalActive"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_active",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalActive, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalActive", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalActive,
+      expression: "psyCardMc.pathologicalActive"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_active",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalActive, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalActive", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalActive,
+      expression: "psyCardMc.pathologicalActive"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_active",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalActive, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalActive", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalActive,
+      expression: "psyCardMc.pathologicalActive"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_active",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalActive, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalActive", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalActive,
+      expression: "psyCardMc.pathologicalActive"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_active",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalActive, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalActive", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v('Dichiara di aver pensieri ritenuti da tutti gli altri come "strani"')]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalStrangeThought,
+      expression: "psyCardMc.pathologicalStrangeThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_strange_thought",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalStrangeThought, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalStrangeThought", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalStrangeThought,
+      expression: "psyCardMc.pathologicalStrangeThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_strange_thought",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalStrangeThought, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalStrangeThought", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalStrangeThought,
+      expression: "psyCardMc.pathologicalStrangeThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_strange_thought",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalStrangeThought, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalStrangeThought", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalStrangeThought,
+      expression: "psyCardMc.pathologicalStrangeThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_strange_thought",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalStrangeThought, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalStrangeThought", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalStrangeThought,
+      expression: "psyCardMc.pathologicalStrangeThought"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_strange_thought",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalStrangeThought, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalStrangeThought", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Dichiara di essere insonne o di avere gravi disturbi del sonno")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalSleepless,
+      expression: "psyCardMc.pathologicalSleepless"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_sleepless",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalSleepless, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalSleepless", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalSleepless,
+      expression: "psyCardMc.pathologicalSleepless"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_sleepless",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalSleepless, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalSleepless", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalSleepless,
+      expression: "psyCardMc.pathologicalSleepless"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_sleepless",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalSleepless, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalSleepless", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalSleepless,
+      expression: "psyCardMc.pathologicalSleepless"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_sleepless",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalSleepless, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalSleepless", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalSleepless,
+      expression: "psyCardMc.pathologicalSleepless"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_sleepless",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalSleepless, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalSleepless", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Dichiara di non avere alcuna rete familiare / sociale di sostegno")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalNoFamily,
+      expression: "psyCardMc.pathologicalNoFamily"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_no_family",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalNoFamily, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalNoFamily", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalNoFamily,
+      expression: "psyCardMc.pathologicalNoFamily"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_no_family",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalNoFamily, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalNoFamily", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalNoFamily,
+      expression: "psyCardMc.pathologicalNoFamily"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_no_family",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalNoFamily, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalNoFamily", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalNoFamily,
+      expression: "psyCardMc.pathologicalNoFamily"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_no_family",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalNoFamily, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalNoFamily", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalNoFamily,
+      expression: "psyCardMc.pathologicalNoFamily"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_no_family",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalNoFamily, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalNoFamily", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Ammette di avere pensieri riguardanti il suicidio e ammette il suicidio come possible soluzione ai problemi")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalThoughtSuicide,
+      expression: "psyCardMc.pathologicalThoughtSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_thought_suicide",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalThoughtSuicide, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalThoughtSuicide", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalThoughtSuicide,
+      expression: "psyCardMc.pathologicalThoughtSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_thought_suicide",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalThoughtSuicide, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalThoughtSuicide", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalThoughtSuicide,
+      expression: "psyCardMc.pathologicalThoughtSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_thought_suicide",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalThoughtSuicide, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalThoughtSuicide", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalThoughtSuicide,
+      expression: "psyCardMc.pathologicalThoughtSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_thought_suicide",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalThoughtSuicide, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalThoughtSuicide", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalThoughtSuicide,
+      expression: "psyCardMc.pathologicalThoughtSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_thought_suicide",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalThoughtSuicide, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalThoughtSuicide", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v('Dichiara Episodi di intossicazione da alcol ("ubriacature") o di bingedrinking ("abbuffata")')]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAlcol,
+      expression: "psyCardMc.pathologicalAlcol"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_alcol",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAlcol, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAlcol", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAlcol,
+      expression: "psyCardMc.pathologicalAlcol"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_alcol",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAlcol, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAlcol", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAlcol,
+      expression: "psyCardMc.pathologicalAlcol"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_alcol",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAlcol, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAlcol", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAlcol,
+      expression: "psyCardMc.pathologicalAlcol"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_alcol",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAlcol, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAlcol", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAlcol,
+      expression: "psyCardMc.pathologicalAlcol"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_alcol",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAlcol, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAlcol", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Dichiara Comportamento additivo problematico senza sostanza (ad esempio GAP)")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAddictiveBehavior,
+      expression: "psyCardMc.pathologicalAddictiveBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_addictive_behavior",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAddictiveBehavior, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAddictiveBehavior", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAddictiveBehavior,
+      expression: "psyCardMc.pathologicalAddictiveBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_addictive_behavior",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAddictiveBehavior, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAddictiveBehavior", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAddictiveBehavior,
+      expression: "psyCardMc.pathologicalAddictiveBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_addictive_behavior",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAddictiveBehavior, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAddictiveBehavior", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAddictiveBehavior,
+      expression: "psyCardMc.pathologicalAddictiveBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_addictive_behavior",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAddictiveBehavior, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAddictiveBehavior", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalAddictiveBehavior,
+      expression: "psyCardMc.pathologicalAddictiveBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_addictive_behavior",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalAddictiveBehavior, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalAddictiveBehavior", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Dichiara Comportamento additivo problematico senza sostanza (ad esempio GAP)")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalClaimsInjuries,
+      expression: "psyCardMc.pathologicalClaimsInjuries"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_claims_injuries",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalClaimsInjuries, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalClaimsInjuries", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalClaimsInjuries,
+      expression: "psyCardMc.pathologicalClaimsInjuries"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_claims_injuries",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalClaimsInjuries, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalClaimsInjuries", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalClaimsInjuries,
+      expression: "psyCardMc.pathologicalClaimsInjuries"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_claims_injuries",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalClaimsInjuries, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalClaimsInjuries", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalClaimsInjuries,
+      expression: "psyCardMc.pathologicalClaimsInjuries"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_claims_injuries",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalClaimsInjuries, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalClaimsInjuries", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalClaimsInjuries,
+      expression: "psyCardMc.pathologicalClaimsInjuries"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_claims_injuries",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalClaimsInjuries, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalClaimsInjuries", "Riferito");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Esprime livelli insoliti o pervasivi di vergogna, colpa, Preoccupazione per l'incarcerazione")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalShameLevel,
+      expression: "psyCardMc.pathologicalShameLevel"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_shame_level",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalShameLevel, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalShameLevel", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalShameLevel,
+      expression: "psyCardMc.pathologicalShameLevel"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_shame_level",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalShameLevel, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalShameLevel", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalShameLevel,
+      expression: "psyCardMc.pathologicalShameLevel"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_shame_level",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalShameLevel, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalShameLevel", "Si");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalShameLevel,
+      expression: "psyCardMc.pathologicalShameLevel"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_shame_level",
+      value: "Documentato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalShameLevel, "Documentato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalShameLevel", "Documentato");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.pathologicalShameLevel,
+      expression: "psyCardMc.pathologicalShameLevel"
+    }],
+    attrs: {
+      type: "radio",
+      name: "pathological_shame_level",
+      value: "Riferito"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.pathologicalShameLevel, "Riferito")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "pathologicalShameLevel", "Riferito");
+      }
+    }
+  })])])]), _vm._v(" "), _c("h3", [_vm._v("Status")]), _vm._v(" "), _c("table", [_c("h3"), _vm._v(" "), _vm._m(26), _vm._v("\n                                 \naccessToTheInterview\ntrafficWarden\nlucid\norientatedInTheThreeParameter\n                                    "), _c("tr", [_c("td", [_vm._v("accesso al colloquio")]), _vm._v(" "), _c("td", [_c("span", [_vm._v("Collaborante")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.accessToTheInterview,
+      expression: "psyCardMc.accessToTheInterview"
+    }],
+    attrs: {
+      type: "radio",
+      name: "access_to_the_interview",
+      value: "Collaborante"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.accessToTheInterview, "Collaborante")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "accessToTheInterview", "Collaborante");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("span", [_vm._v("Passivo")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.accessToTheInterview,
+      expression: "psyCardMc.accessToTheInterview"
+    }],
+    attrs: {
+      type: "radio",
+      name: "access_to_the_interview",
+      value: "Passivo"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.accessToTheInterview, "Passivo")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "accessToTheInterview", "Passivo");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("span", [_vm._v("Oppositivo")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.accessToTheInterview,
+      expression: "psyCardMc.accessToTheInterview"
+    }],
+    attrs: {
+      type: "radio",
+      name: "access_to_the_interview",
+      value: "Oppositivo"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.accessToTheInterview, "Oppositivo")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "accessToTheInterview", "Oppositivo");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Vigile")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.trafficWarden,
+      expression: "psyCardMc.trafficWarden"
+    }],
+    attrs: {
+      type: "radio",
+      name: "traffic_warden",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.trafficWarden, "SI")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "trafficWarden", "SI");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.trafficWarden,
+      expression: "psyCardMc.trafficWarden"
+    }],
+    attrs: {
+      type: "radio",
+      name: "traffic_warden",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.trafficWarden, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "trafficWarden", "NO");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Lucido")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.lucid,
+      expression: "psyCardMc.lucid"
+    }],
+    attrs: {
+      type: "radio",
+      name: "lucid",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.lucid, "SI")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "lucid", "SI");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.lucid,
+      expression: "psyCardMc.lucid"
+    }],
+    attrs: {
+      type: "radio",
+      name: "lucid",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.lucid, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "lucid", "NO");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Orientato nei tre paramentri")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.orientatedInTheThreeParameter,
+      expression: "psyCardMc.orientatedInTheThreeParameter"
+    }],
+    attrs: {
+      type: "radio",
+      name: "orientated_in_the_three_parameter",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.orientatedInTheThreeParameter, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "orientatedInTheThreeParameter", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.orientatedInTheThreeParameter,
+      expression: "psyCardMc.orientatedInTheThreeParameter"
+    }],
+    attrs: {
+      type: "radio",
+      name: "orientated_in_the_three_parameter",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.orientatedInTheThreeParameter, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "orientatedInTheThreeParameter", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.orientatedInTheThreeParameter,
+      expression: "psyCardMc.orientatedInTheThreeParameter"
+    }],
+    attrs: {
+      type: "radio",
+      name: "orientated_in_the_three_parameter",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.orientatedInTheThreeParameter, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "orientatedInTheThreeParameter", "Si");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Umore")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.umor,
+      expression: "psyCardMc.umor"
+    }],
+    attrs: {
+      type: "radio",
+      name: "umor",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.umor, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "umor", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.umor,
+      expression: "psyCardMc.umor"
+    }],
+    attrs: {
+      type: "radio",
+      name: "umor",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.umor, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "umor", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.umor,
+      expression: "psyCardMc.umor"
+    }],
+    attrs: {
+      type: "radio",
+      name: "umor",
+      value: ""
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.umor, "")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "umor", "");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.umor,
+      expression: "psyCardMc.umor"
+    }],
+    attrs: {
+      type: "radio",
+      name: "umor",
+      value: "eccitato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.umor, "eccitato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "umor", "eccitato");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Ansia")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.anxiety,
+      expression: "psyCardMc.anxiety"
+    }],
+    attrs: {
+      type: "radio",
+      name: "anxiety",
+      value: "No"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.anxiety, "No")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "anxiety", "No");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.anxiety,
+      expression: "psyCardMc.anxiety"
+    }],
+    attrs: {
+      type: "radio",
+      name: "anxiety",
+      value: "Nr"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.anxiety, "Nr")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "anxiety", "Nr");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.anxiety,
+      expression: "psyCardMc.anxiety"
+    }],
+    attrs: {
+      type: "radio",
+      name: "anxiety",
+      value: "Si"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.anxiety, "Si")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "anxiety", "Si");
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
     staticClass: "ln_solid"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -5173,7 +7327,7 @@ var render = function render() {
         return _vm.addPsyMembershipCard("mc");
       }
     }
-  }, [_vm._v(_vm._s(_vm.btnMcSend))])])])])])])])])])]);
+  }, [_vm._v(_vm._s(_vm.btnMcSend))])])])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -5349,6 +7503,42 @@ var staticRenderFns = [function () {
       "for": "economic_resource"
     }
   }, [_c("strong", [_vm._v("Risorse economiche")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", [_vm._v("Primo colloquio psicologico "), _c("strong", [_vm._v("Intake")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("tr", [_c("th", [_vm._v("Precedenti trattamenti (documentati o riferiti)")]), _vm._v(" "), _c("td", [_vm._v("No")]), _vm._v(" "), _c("td", [_vm._v("NR")]), _vm._v(" "), _c("td", [_vm._v("SI (indicare "), _c("br"), _vm._v("quali, "), _c("br"), _vm._v("dove,"), _c("br"), _vm._v("quando)")]), _vm._v(" "), _c("td", [_vm._v("Documento")]), _vm._v(" "), _c("td", [_vm._v("Riferito")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("td", [_vm._v("Precedenti trattamenti per problematiche o "), _c("br"), _vm._v(" disturbi psichici "), _c("br"), _vm._v(" (ambulatoriali e/o residenziali)")]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("td", [_vm._v("Precedenti trattamenti farmacologici e/o "), _c("br"), _vm._v(" psicosociali presso servizi ambulatori/residenziali "), _c("br"), _vm._v(" per le dipendenze")]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("td", [_vm._v("Precedenti diagnosi di abuso/dipendenza da"), _c("br"), _vm._v("sostanze ")]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("td", [_vm._v("Precedenti ricoveri in acuzie"), _c("br"), _vm._v("in SPDC ")]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("td", [_vm._v("Precedenti ricoveri in acuzie in "), _c("br"), _vm._v(" Pronto Soccorso e/o "), _c("br"), _vm._v(" ricoveri per intossicazione acuta da sostanze "), _c("br"), _vm._v("(compreso overdose)")]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("tr", [_c("th", [_vm._v("A2. Anamnesi patologica prossima/ remota")]), _vm._v(" "), _c("td", [_vm._v("No")]), _vm._v(" "), _c("td", [_vm._v("NR")]), _vm._v(" "), _c("td", [_vm._v("SI (indicare "), _c("br"), _vm._v("quali, "), _c("br"), _vm._v("dove,"), _c("br"), _vm._v("quando)")]), _vm._v(" "), _c("td", [_vm._v("Documento")]), _vm._v(" "), _c("td", [_vm._v("Riferito")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("tr", [_c("th", [_vm._v("Colloquio e visita psicologica/psichiatrica")]), _vm._v(" "), _c("td", [_vm._v("note e specifiche")])]);
 }];
 render._withStripped = true;
 
@@ -5418,15 +7608,15 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "somatic_concern",
-      value: "0"
+      value: "1"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "1")
     },
     on: {
       click: _vm.calculateSum,
       change: function change($event) {
-        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "1");
       }
     }
   })]), _vm._v(" "), _c("td", [_vm._v("2\n                                            "), _c("input", {
@@ -5439,15 +7629,15 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "somatic_concern",
-      value: "0"
+      value: "2"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "2")
     },
     on: {
       click: _vm.calculateSum,
       change: function change($event) {
-        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "2");
       }
     }
   })]), _vm._v(" "), _c("td", [_vm._v("3\n                                            "), _c("input", {
@@ -5460,15 +7650,15 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "somatic_concern",
-      value: "0"
+      value: "3"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "3")
     },
     on: {
       click: _vm.calculateSum,
       change: function change($event) {
-        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "3");
       }
     }
   })]), _vm._v(" "), _c("td", [_vm._v("4\n                                            "), _c("input", {
@@ -5481,15 +7671,15 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "somatic_concern",
-      value: "0"
+      value: "4"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "4")
     },
     on: {
       click: _vm.calculateSum,
       change: function change($event) {
-        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "4");
       }
     }
   })]), _vm._v(" "), _c("td", [_vm._v("5\n                                            "), _c("input", {
@@ -5502,15 +7692,15 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "somatic_concern",
-      value: "0"
+      value: "5"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "5")
     },
     on: {
       click: _vm.calculateSum,
       change: function change($event) {
-        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "5");
       }
     }
   })]), _vm._v(" "), _c("td", [_vm._v("6\n                                            "), _c("input", {
@@ -5523,15 +7713,15 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "somatic_concern",
-      value: "0"
+      value: "6"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "6")
     },
     on: {
       click: _vm.calculateSum,
       change: function change($event) {
-        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "6");
       }
     }
   })]), _vm._v(" "), _c("td", [_vm._v("7\n                                            "), _c("input", {
@@ -5544,15 +7734,15 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "somatic_concern",
-      value: "0"
+      value: "7"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardPr.somaticConcern, "0")
+      checked: _vm._q(_vm.psyCardPr.somaticConcern, "7")
     },
     on: {
       click: _vm.calculateSum,
       change: function change($event) {
-        return _vm.$set(_vm.psyCardPr, "somaticConcern", "0");
+        return _vm.$set(_vm.psyCardPr, "somaticConcern", "7");
       }
     }
   })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Ansia")]), _vm._v(" "), _c("td", [_vm._v("NV\n                                            "), _c("input", {
@@ -18064,7 +20254,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".labelWidth[data-v-65a79ba1] {\n  min-width: 190px;\n}\n.dbTitle[data-v-65a79ba1] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-65a79ba1], .item textarea[data-v-65a79ba1] {\n  margin-right: 10px;\n}\n.treatment[data-v-65a79ba1] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\n* p[data-v-65a79ba1] {\n  margin-left: 15px;\n}\ntable[data-v-65a79ba1] {\n  font-family: arial, sans-serif;\n  border-collapse: collapse;\n  width: 100%;\n}\ntd[data-v-65a79ba1], th[data-v-65a79ba1] {\n  border: 2px solid #dddddd;\n  text-align: left;\n  padding: 8px;\n}", ""]);
 
 // exports
 

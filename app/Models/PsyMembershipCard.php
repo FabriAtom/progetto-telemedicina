@@ -30,6 +30,38 @@ class PsyMembershipCard extends Model
         'legal_position',
         'end_of_sentence',
         'economic_resource',
+        'previous_treatment_for_problem',
+        'previous_treatment_farmacology',
+        'previous_diagnoses_of_mental_disorder',
+        'previous_diagnosis_of_drug_abuse',
+        'previous_hospitalization_spdc',
+        'previous_hospitalization_emergency',
+        'pathological_attempted_suicide',
+        'pathological_desperate',
+        'pathological_anxious',
+        'pathological_active',
+        'pathological_strange_thought',
+        'pathological_sleepless',
+        'pathological_no_family',
+        'pathological_thought_suicide',
+        'pathological_alcol',
+        'pathological_addictive_behavior',
+        'pathological_claims_injuries',
+        'pathological_shame_level',
+
+
+
+        'access_to_the_interview',
+        'traffic_warden',
+        'lucid',
+        'orientated_in_the_three_parameter',
+        'umor',
+        'anxiety',
+        'altered_perception',
+        'appetite',
+        'altered_form_thought',
+        'sleep_wake_rhythm',
+        'future_project',
     ];
 
     protected $table = 'Psy_membership_card';

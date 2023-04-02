@@ -1064,32 +1064,95 @@ class PsyCardsController extends Controller
                 $_psyMemb->economic_resource=$psyCardArr['economicResource'];
             }
 
+            if(array_key_exists('previousTreatmentForProblem',$psyCardArr)){
+                $_psyMemb->previous_treatment_for_problem=$psyCardArr['previousTreatmentForProblem'];
+            }
+            if(array_key_exists('previousTreatmentFarmacology',$psyCardArr)){
+                $_psyMemb->previous_treatment_farmacology=$psyCardArr['previousTreatmentFarmacology'];
+            }
+            if(array_key_exists('previousDiagnosesOfMentalDisorder',$psyCardArr)){
+                $_psyMemb->previous_diagnoses_of_mental_disorder=$psyCardArr['previousDiagnosesOfMentalDisorder'];
+            }
+            if(array_key_exists('previousDiagnosisOfDrugAbuse',$psyCardArr)){
+                $_psyMemb->previous_diagnosis_of_drug_abuse=$psyCardArr['previousDiagnosisOfDrugAbuse'];
+            }
+            if(array_key_exists('previousHospitalizationSpdc',$psyCardArr)){
+                $_psyMemb->previous_hospitalization_spdc=$psyCardArr['previousHospitalizationSpdc'];
+            }
+            if(array_key_exists('previousHospitalizationEmergency',$psyCardArr)){
+                $_psyMemb->previous_hospitalization_emergency=$psyCardArr['previousHospitalizationEmergency'];
+            }
+            if(array_key_exists('pathologicalAttemptedSuicide',$psyCardArr)){
+                $_psyMemb->pathological_attempted_suicide=$psyCardArr['pathologicalAttemptedSuicide'];
+            }
+            if(array_key_exists('pathologicalDesperate',$psyCardArr)){
+                $_psyMemb->pathological_desperate=$psyCardArr['pathologicalDesperate'];
+            }
+            if(array_key_exists('pathologicalAnxious',$psyCardArr)){
+                $_psyMemb->pathological_anxious=$psyCardArr['pathologicalAnxious'];
+            }
+            if(array_key_exists('pathologicalActive',$psyCardArr)){
+                $_psyMemb->pathological_active=$psyCardArr['pathologicalActive'];
+            }
+            if(array_key_exists('pathologicalStrangeThought',$psyCardArr)){
+                $_psyMemb->pathological_strange_thought=$psyCardArr['pathologicalStrangeThought'];
+            }
+            if(array_key_exists('pathologicalSleepless',$psyCardArr)){
+                $_psyMemb->pathological_sleepless=$psyCardArr['pathologicalSleepless'];
+            }
+            if(array_key_exists('pathologicalNoFamily',$psyCardArr)){
+                $_psyMemb->pathological_no_family=$psyCardArr['pathologicalNoFamily'];
+            }
+            if(array_key_exists('pathologicalThoughtSuicide',$psyCardArr)){
+                $_psyMemb->pathological_thought_suicide=$psyCardArr['pathologicalThoughtSuicide'];
+            }
+            if(array_key_exists('pathologicalAlcol',$psyCardArr)){
+                $_psyMemb->pathological_alcol=$psyCardArr['pathologicalAlcol'];
+            }
+            if(array_key_exists('pathologicalAddictiveBehavior',$psyCardArr)){
+                $_psyMemb->pathological_addictive_behavior=$psyCardArr['pathologicalAddictiveBehavior'];
+            }
+            if(array_key_exists('pathologicalClaimsInjuries',$psyCardArr)){
+                $_psyMemb->pathological_claims_injuries=$psyCardArr['pathologicalClaimsInjuries'];
+            }
+            if(array_key_exists('pathologicalShameLevel',$psyCardArr)){
+                $_psyMemb->pathological_shame_level=$psyCardArr['pathologicalShameLevel'];
+            }
 
-            // if(array_key_exists('socialHealthSituationAdministrator',$psyCardArr)){
-            //     $_psyMemb->social_health_situation_administrator=$psyCardArr['socialHealthSituationAdministrator'];
-            // }
-            // if(array_key_exists('environmentalAnalysisFamilyOfOrigin',$psyCardArr)){
-            //     $_psyMemb->environmental_analysis_family_of_origin=$psyCardArr['environmentalAnalysisFamilyOfOrigin'];
-            // }
-            // if(array_key_exists('environmentalAnalysisAccommodation',$psyCardArr)){
-            //     $_psyMemb->environmental_analysis_accommodation=$psyCardArr['environmentalAnalysisAccommodation'];
-            // }
-            // if(array_key_exists('environmentalAnalysisWork',$psyCardArr)){
-            //     $_psyMemb->environmental_analysis_work=$psyCardArr['environmentalAnalysisWork'];
-            // }
-            // if(array_key_exists('environmentalAnalysisIncome',$psyCardArr)){
-            //     $_psyMemb->environmental_analysis_income=$psyCardArr['environmentalAnalysisIncome'];
-            // }
-            // if(array_key_exists('environmentalAnalysisFormalNetwork',$psyCardArr)){
-            //     $_psyMemb->environmental_analysis_formal_network=$psyCardArr['environmentalAnalysisFormalNetwork'];
-            // }
 
-            // if(array_key_exists('interventionHypothesisSocialProject',$psyCardArr)){
-            //     $_psyMemb->intervention_hypothesis_project=$psyCardArr['interventionHypothesisSocialProject'];
-            // }
-            // if(array_key_exists('interventionHypothesisSocialWorker',$psyCardArr)){
-            //     $_psyMemb->intervention_hypothesis_social_worker=$psyCardArr['interventionHypothesisSocialWorker'];
-            // }
+            if(array_key_exists('accessToTheInterview',$psyCardArr)){
+                $_psyMemb->access_to_the_interview=$psyCardArr['accessToTheInterview'];
+            }
+            if(array_key_exists('trafficWarden',$psyCardArr)){
+                $_psyMemb->pathological_anxious=$psyCardArr['trafficWarden'];
+            }
+            if(array_key_exists('lucid',$psyCardArr)){
+                $_psyMemb->lucid=$psyCardArr['lucid'];
+            }
+            if(array_key_exists('orientatedInTheThreeParameter',$psyCardArr)){
+                $_psyMemb->orientated_in_the_three_parameter=$psyCardArr['orientatedInTheThreeParameter'];
+            }
+            if(array_key_exists('umor',$psyCardArr)){
+                $_psyMemb->umor=$psyCardArr['umor'];
+            }
+            if(array_key_exists('anxiety',$psyCardArr)){
+                $_psyMemb->anxiety=$psyCardArr['anxiety'];
+            }
+            if(array_key_exists('alteredPerception',$psyCardArr)){
+                $_psyMemb->altered_perception=$psyCardArr['alteredPerception'];
+            }
+            if(array_key_exists('appetite',$psyCardArr)){
+                $_psyMemb->appetite=$psyCardArr['appetite'];
+            }
+            if(array_key_exists('alteredFormThought',$psyCardArr)){
+                $_psyMemb->altered_form_thought=$psyCardArr['alteredFormThought'];
+            }
+            if(array_key_exists('sleepWakeRhythm',$psyCardArr)){
+                $_psyMemb->sleep_wake_rhythm=$psyCardArr['sleepWakeRhythm'];
+            }
+            if(array_key_exists('futureProject',$psyCardArr)){
+                $_psyMemb->future_project=$psyCardArr['futureProject'];
+            }
         }
         $_psyMemb->save();
 

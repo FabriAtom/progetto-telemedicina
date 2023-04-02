@@ -24,25 +24,25 @@
                                                 <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
                                             </td>
                                             <td>1
-                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="1" v-model="psyCardPr.somaticConcern">
                                             </td>
                                             <td>2
-                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="2" v-model="psyCardPr.somaticConcern">
                                             </td>
                                             <td>3
-                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="3" v-model="psyCardPr.somaticConcern">
                                             </td>
                                             <td>4
-                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="4" v-model="psyCardPr.somaticConcern">
                                             </td>
                                             <td>5
-                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="5" v-model="psyCardPr.somaticConcern">
                                             </td>
                                             <td>6
-                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="6" v-model="psyCardPr.somaticConcern">
                                             </td>
                                             <td>7
-                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="0" v-model="psyCardPr.somaticConcern">
+                                                <input type="radio" @click="calculateSum" name="somatic_concern" value="7" v-model="psyCardPr.somaticConcern">
                                             </td>
                                         </tr> 
                                         <tr>
