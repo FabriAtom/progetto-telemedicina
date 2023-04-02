@@ -11,7 +11,7 @@ use App\Models\PsyRehabilitationPsychiatricCard;
 use App\Models\PsyRating;
 use App\Models\PsyUocDepartment;
 use App\Models\PsySocialFolder;
-
+use App\Models\PsyMembershipCard;
 
 use Carbon\Carbon;
 use GuzzleHttp\Exception\GuzzleException;
@@ -67,6 +67,9 @@ class PsyCardsController extends Controller
             $PsySocialFolder=null;
             $allPsySocialFolder=null;
 
+            $PsyMembershipCard=null;
+            $allPsyMembershipCard=null;
+
 
        
             if (PsySuicideAssessment::where('psy_card_id', '=', $psyCard->id)->exists()) {
@@ -115,6 +118,13 @@ class PsyCardsController extends Controller
             }
             return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsySocialFolder"=>$PsySocialFolder,"allPsySocialFolders" => $allPsySocialFolders];
 
+            // PsyMembershipCard
+            if (PsyMembershipCard::where('psy_card_id', '=', $psyCard->id)->exists()) {
+                $query=PsyMembershipCard::where('psy_card_id', '=', $psyCard->id)->orderBy('mc_date', 'desc');
+                $PsyMembershipCard=$query->first();
+                $allPsyMembershipCards=PsyMembershipCard::where('psy_card_id', '=', $psyCard->id)->orderBy('mc_date', 'desc')->get();
+            }
+            return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsyMembershipCard"=>$PsyMembershipCard,"allPsyMembershipCards" => $allPsyMembershipCards];
             //return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'],"PsySuicideAssessment"=>$PsySuicideAssessment,"allPsySuicideAssessments" => $allPsySuicideAssessments, "PsyMentalHealthDepartment"=>$PsyMentalHealthDepartment,"allPsyMentalHealthDepartments" => $allPsyMentalHealthDepartments, "PsyRehabilitationPsychiatricCard"=>$PsyRehabilitationPsychiatricCard,"allPsyRehabilitationPsychiatricCards" => $allPsyRehabilitationPsychiatricCards];
             // return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsySuicideAssessment"=>$PsySuicideAssessment,"allPsySuicideAssessments" => $allPsySuicideAssessments];
         }else{
@@ -188,8 +198,20 @@ class PsyCardsController extends Controller
         }  
     }
 
+    public function getCurrentMembershipCardByPsyId(Request $request){
+        if (PsyMembershipCard::where('psy_card_id', '=', $request['id'])->exists()) {
+            $query=PsyMembershipCard::where('psy_card_id', '=', $request['id'])->orderBy('mc_date', 'desc');
+            $PsyMembershipCard=$query->first();
+            return [ "errorNumber"=>0,"message"=>"OK","CurrentPsyMembershipCard" => $PsyMembershipCard,"PsyId" => $request['id']];
+        }else{
+            return ['errorNumber'=>7,'descrizione'=>'no records found'];
+        }  
+    }
 
-    
+
+
+
+
 
 
     public function getSuicideAssessmentsByPsyId(Request $request){
@@ -213,7 +235,6 @@ class PsyCardsController extends Controller
     }
 
     // // PsyRehabilitationPsychiatricCard
-
     public function getPsyRehabilitationPsychiatricCardsByPsyId(Request $request){
         if (PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id'])->exists()) {
             $query=PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id']);
@@ -255,6 +276,20 @@ class PsyCardsController extends Controller
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
         }      
     }
+
+
+    public function getMembershipCardsByPsyId(Request $request){
+        if (PsyMembershipCard::where('psy_card_id', '=', $request['id'])->exists()) {
+            $query=PsyMembershipCard::where('psy_card_id', '=', $request['id']);
+            $PsyMembershipCard=$query->get();
+            return [ "errorNumber"=>0,"message"=>"OK","PsyMembershipCard" => $PsyMembershipCard,"PsyId" => $request['id']];
+        }else{
+            return ['errorNumber'=>7,'descrizione'=>'no records found'];
+        }      
+    }
+
+
+
 
 
 
@@ -320,6 +355,15 @@ class PsyCardsController extends Controller
                                     return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
                                 }
                                 break;
+                            case 'mc':
+                                $_psy = $this->addPsyCard($request);
+                                if($_psy){
+                                    $_psyId=$_psy->id;
+                                }
+                                else{
+                                    return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
+                                }
+                                break;
                             default:
                                 if($request->has('psyId')){
                                     if (PsySuicideAssessment::where('psy_card_id', '=', $request->input('psyId'))->exists()) {
@@ -359,6 +403,9 @@ class PsyCardsController extends Controller
                         break;
                     case 'rp':
                         return $this->addRehabilitationPsychiatricCard($request,$_psyId);
+                        break;
+                    case 'mc':
+                        return $this->addMembershipCard($request,$_psyId);
                         break;
                 }
             }else{
@@ -694,7 +741,7 @@ class PsyCardsController extends Controller
         $_psychiatricScale->save();
 
         if($_psychiatricScale){
-            return ["errorNumber"=>0,"message"=>"ok","sa"=>$_psychiatricScale];
+            return ["errorNumber"=>0,"message"=>"ok","pr"=>$_psychiatricScale];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
@@ -789,7 +836,7 @@ class PsyCardsController extends Controller
         $_psyUoc->save();
 
         if($_psyUoc){
-            return ["errorNumber"=>0,"message"=>"ok","sa"=>$_psyUoc];
+            return ["errorNumber"=>0,"message"=>"ok","ud"=>$_psyUoc];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
@@ -923,6 +970,8 @@ class PsyCardsController extends Controller
                 $_psyFold->environmental_analysis_formal_network=$psyCardArr['environmentalAnalysisFormalNetwork'];
             }
 
+             // 5 ANALISI SE
+
             if(array_key_exists('interventionHypothesisSocialProject',$psyCardArr)){
                 $_psyFold->intervention_hypothesis_project=$psyCardArr['interventionHypothesisSocialProject'];
             }
@@ -934,6 +983,118 @@ class PsyCardsController extends Controller
 
         if($_psyFold){
             return ["errorNumber"=>0,"message"=>"ok","sf"=>$_psyFold];
+
+        }else{
+            return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
+        }
+    }
+
+
+
+    public function addMembershipCard(Request $request,$psyId){
+        $userId=$request->input("userId");
+        $_psyMemb = new PsyMembershipCard;
+        $now=date("Y-m-d H:i:s");
+        $_psyMemb->psy_card_id=$psyId;
+        if($request->has('doctorId')){
+            $_psyMemb->id_doctor=$request->input('doctorId');
+        }
+        if($request->has('doctorName')){
+            $_psyMemb->doctor_name=$request->input('doctorName');
+        }
+        if($request->has('doctorUserName')){
+            $_psyMemb->doctor_lastname=$request->input('doctorUserName');
+        }
+        $_psyMemb->mc_date=$now;
+
+        if($request->has('psyCardMc')){
+            $psyCardArr = json_decode($request->input('psyCardMc'), true);
+            if(array_key_exists('communicateItalian',$psyCardArr)){
+                $_psyMemb->communicate_italian=$psyCardArr['communicateItalian'];
+            }
+            if(array_key_exists('communicate',$psyCardArr)){
+                $_psyMemb->communicate=$psyCardArr['communicate'];
+            }
+            if(array_key_exists('maritalStatus',$psyCardArr)){
+                $_psyMemb->marital_status=$psyCardArr['maritalStatus'];
+            }
+            if(array_key_exists('son',$psyCardArr)){
+                $_psyMemb->son=$psyCardArr['son'];
+            }
+            if(array_key_exists('sonNumber',$psyCardArr)){
+                $_psyMemb->son_number=$psyCardArr['sonNumber'];
+            }
+            if(array_key_exists('sonAge',$psyCardArr)){
+                $_psyMemb->son_age=$psyCardArr['sonAge'];
+            }
+            if(array_key_exists('residenceNot',$psyCardArr)){
+                $_psyMemb->residence_not=$psyCardArr['residenceNot'];
+            }
+            if(array_key_exists('residence',$psyCardArr)){
+                $_psyMemb->residence=$psyCardArr['residence'];
+            }
+            if(array_key_exists('titleStudy',$psyCardArr)){
+                $_psyMemb->title_study=$psyCardArr['titleStudy'];
+            }
+            if(array_key_exists('situationHousing]',$psyCardArr)){
+                $_psyMemb->situation_housing=$psyCardArr['situationHousing'];
+            }
+            if(array_key_exists('situationWork',$psyCardArr)){
+                $_psyMemb->situation_work=$psyCardArr['situationWork'];
+            }
+            if(array_key_exists('dateStartPrison',$psyCardArr)){
+                $_psyMemb->date_start_prison=$psyCardArr['dateStartPrison'];
+            }
+            if(array_key_exists('dateStartInInstitute',$psyCardArr)){
+                $_psyMemb->date_start_in_institute=$psyCardArr['dateStartInInstitute'];
+            }
+            if(array_key_exists('firstExperiencePrison',$psyCardArr)){
+                $_psyMemb->first_experience_prison=$psyCardArr['firstExperiencePrison'];
+            }
+            if(array_key_exists('provenience',$psyCardArr)){
+                $_psyMemb->provenience=$psyCardArr['provenience'];
+            }
+            if(array_key_exists('legalPosition',$psyCardArr)){
+                $_psyMemb->legal_position=$psyCardArr['legalPosition'];
+            }
+            if(array_key_exists('endOfSentence',$psyCardArr)){
+                $_psyMemb->end_of_sentence=$psyCardArr['endOfSentence'];
+            }
+            if(array_key_exists('economicResource',$psyCardArr)){
+                $_psyMemb->economic_resource=$psyCardArr['economicResource'];
+            }
+
+
+            // if(array_key_exists('socialHealthSituationAdministrator',$psyCardArr)){
+            //     $_psyMemb->social_health_situation_administrator=$psyCardArr['socialHealthSituationAdministrator'];
+            // }
+            // if(array_key_exists('environmentalAnalysisFamilyOfOrigin',$psyCardArr)){
+            //     $_psyMemb->environmental_analysis_family_of_origin=$psyCardArr['environmentalAnalysisFamilyOfOrigin'];
+            // }
+            // if(array_key_exists('environmentalAnalysisAccommodation',$psyCardArr)){
+            //     $_psyMemb->environmental_analysis_accommodation=$psyCardArr['environmentalAnalysisAccommodation'];
+            // }
+            // if(array_key_exists('environmentalAnalysisWork',$psyCardArr)){
+            //     $_psyMemb->environmental_analysis_work=$psyCardArr['environmentalAnalysisWork'];
+            // }
+            // if(array_key_exists('environmentalAnalysisIncome',$psyCardArr)){
+            //     $_psyMemb->environmental_analysis_income=$psyCardArr['environmentalAnalysisIncome'];
+            // }
+            // if(array_key_exists('environmentalAnalysisFormalNetwork',$psyCardArr)){
+            //     $_psyMemb->environmental_analysis_formal_network=$psyCardArr['environmentalAnalysisFormalNetwork'];
+            // }
+
+            // if(array_key_exists('interventionHypothesisSocialProject',$psyCardArr)){
+            //     $_psyMemb->intervention_hypothesis_project=$psyCardArr['interventionHypothesisSocialProject'];
+            // }
+            // if(array_key_exists('interventionHypothesisSocialWorker',$psyCardArr)){
+            //     $_psyMemb->intervention_hypothesis_social_worker=$psyCardArr['interventionHypothesisSocialWorker'];
+            // }
+        }
+        $_psyMemb->save();
+
+        if($_psyMemb){
+            return ["errorNumber"=>0,"message"=>"ok","mc"=>$_psyMemb];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];

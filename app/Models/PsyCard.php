@@ -50,4 +50,9 @@ class PsyCard extends Model
     {
         return $this->hasMany(PsySocialFolder::class);
     }
+
+    public function PsyMembershipCards()
+    {
+        return $this->hasMany(PsyMembershipCard::class);
+    }
 }

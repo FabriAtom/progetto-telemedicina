@@ -1899,6 +1899,268 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMembershipCard.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyMembershipCard.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/ApiUrl */ "./resources/js/config/ApiUrl.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'PsyMembershipCard',
+  data: function data() {
+    return {
+      userName: 'Andrea',
+      userLastName: 'Giovanni',
+      userFullName: '',
+      userInstance: 1,
+      userId: 0,
+      showInput: false,
+      showInput1: false,
+      showInput2: false,
+      showInput3: false,
+      showInput4: false,
+      showInput5: false,
+      showInput6: false,
+      showInput7: false,
+      showinput8: false,
+      accessData: [function (id) {
+        return 14;
+      }, function (name) {
+        return 'Alessio';
+      }, function (lastname) {
+        return 'Ortu';
+      }],
+      psyMcDoctorId: 0,
+      psyMcDoctorName: '',
+      psyMcDoctorLastname: '',
+      psyMcDate: null,
+      psyCardId: null,
+      date: new Date(),
+      psyCardMc: {},
+      panel: 'mc',
+      // psyCardMh:{},
+
+      mainTitle: "psy",
+      firstSave: true,
+      mCSaved: false,
+      btnMcSend: "Salva",
+      total: 0,
+      allPsyMembershipCards: null
+    };
+  },
+  created: function created() {
+    // this.getPermissions();
+    this.getPsyMembershipCardsByUserInstanceId(1);
+  },
+  methods: {
+    addPsyMembershipCard: function addPsyMembershipCard(panel) {
+      var _this = this;
+      var _wm = this;
+      var _panel = panel;
+      var _errors = 0;
+      var _errorTitle = "Scheda";
+      var _errorDescription = "Non aggiornata";
+      var form = new FormData();
+      form.append('userName', this.userName);
+      form.append('userLastName', this.userLastName);
+      form.append('userFullName', this.userFullName);
+      form.append('userInstance', this.userInstance);
+      form.append('userId', this.userId);
+      // form.append('doctorId', this.accessData.id);
+      // form.append('doctorName', this.accessData.name);
+      // form.append('doctorUserName', this.accessData.lastname);
+      form.append('doctorId', 14);
+      form.append('doctorName', 'mario');
+      form.append('doctorUserName', 'bross');
+      if (_panel == 'mc') {
+        if (!this.sFSaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+          if (this.psyCardId) {
+            form.append('psyId', this.psyCardId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+        }
+        form.append('section', 'mc');
+        if (!this.isObjEmpty(this.psyCardMc)) {
+          var _psyCardMc = JSON.stringify(this.psyCardMc);
+          alert(JSON.stringify(this.psyCardMc));
+          form.append('psyCardMc', _psyCardMc);
+        }
+      } else if (_panel == 'mh') {
+        if (!this.mHSaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+        }
+        if (this.mHSaved) {
+          if (this.psyCardId) {
+            form.append('psyId', this.psyCardId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+          form.append('section', 'mh');
+          if (!this.isObjEmpty(this.psyCardMh)) {
+            var _psyCardMh = JSON.stringify(this.psyCardMh);
+            form.append('PsyMentalHealthDepartment', _psyCardMh);
+          }
+        }
+      }
+      if (_errors == 0) {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_PSY_CARD"], form).then(function (response) {
+            var error = response.data.errorNumber;
+            var _attempts = response.data.attempts;
+            _wm.errNum = error;
+            if (error == 0) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
+              _this.getPsyMembershipCardsByUserInstanceId(_this.userInstance);
+            } else {
+              // eventBus.$emit('errorEvent', error, _attempts);
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
+            }
+          });
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
+      }
+    },
+    getPsyMembershipCards: function getPsyMembershipCards() {
+      //GET ALL CARDS
+      var _wm = this;
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS"]).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getPsyMembershipCardById: function getPsyMembershipCardById(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARD_BY_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getPsyMembershipCardsByUserInstanceId: function getPsyMembershipCardsByUserInstanceId(id) {
+      var _wm = this;
+      // alert('yy');
+
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS_BY_USER_INSTANCE_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          // let _attempts=response.data.attempts;
+          _wm.errNum = error;
+          //alert(JSON.stringify(response.data));
+          if (error == 0) {
+            _wm.mainTitle = "Aggiornamento Cartella psy";
+            if (response.data.PsyMembershipCard) {
+              _wm.mCSaved = true;
+              _wm.btnMcSend = "Aggiorna";
+              var _SocialFold = response.data.PsySocialFolder;
+              // _wm.psyCardId=response.data.psyCard.id;
+
+              _wm.psyCardId = response.data.psyCard.id;
+              _wm.psyMcDoctorId = _SocialFold.id_doctor;
+              _wm.psyMcDoctorName = _SocialFold.doctor_name;
+              _wm.psyMcDoctorLastname = _SocialFold.doctor_lastname;
+              _wm.psyCardMc.communicateItalian = _SocialFold.communicate_italian;
+              _wm.psyCardMc.communicate = _SocialFold.communicate;
+              _wm.psyCardMc.maritalStatus = _SocialFold.marital_status;
+              _wm.psyCardMc.son = _SocialFold.son;
+              _wm.psyCardMc.sonNumber = _SocialFold.son_number;
+              _wm.psyCardMc.sonAge = _SocialFold.son_age;
+              _wm.psyCardMc.residenceNot = _SocialFold.residence_not;
+              _wm.psyCardMc.residence = _SocialFold.residence;
+              _wm.psyCardMc.titleStudy = _SocialFold.title_study;
+              _wm.psyCardMc.situationHousing = _SocialFold.situation_housing;
+              _wm.psyCardMc.situationWork = _SocialFold.situation_work;
+              _wm.psyCardMc.dateStartPrison = _SocialFold.date_start_prison;
+              _wm.psyCardMc.dateStartInInstitute = _SocialFold.date_start_in_institute;
+              _wm.psyCardMc.firstExperiencePrison = _SocialFold.first_experience_prison;
+              _wm.psyCardMc.provenience = _SocialFold.provenience;
+              _wm.psyCardMc.legalPosition = _SocialFold.legal_position;
+              _wm.psyCardMc.endOfSentence = _SocialFold.end_of_sentence;
+              _wm.psyCardMc.economicResource = _SocialFold.economic_resource;
+
+              // _wm.psyCardMc.socialHealthSituationAsl = _SocialFold.social_health_situation_asl 
+              // _wm.psyCardMc.socialHealthSituationCertificate = _SocialFold.social_health_situation_certificate 
+              // _wm.psyCardMc.socialHealthSituationTherapeuticPathway = _SocialFold.social_health_situation_therapeutic_pathway 
+              // _wm.psyCardMc.socialHealthSituationDisability = _SocialFold.social_health_situation_disability
+              // _wm.psyCardMc.socialHealthSituationRevision = _SocialFold.social_health_situation_revision
+              // _wm.psyCardMc.socialHealthSituationInps = _SocialFold.social_health_situation_inps 
+              // _wm.psyCardMc.socialHealthSituationAdministrator = _SocialFold.social_health_situation_administrator 
+              // _wm.psyCardMc.environmentalAnalysisFamilyOfOrigin = _SocialFold.environmental_analysis_family_of_origin
+              // _wm.psyCardMc.environmentalAnalysisAccommodation = _SocialFold.environmental_analysis_accommodation 
+              // _wm.psyCardMc.environmentalAnalysisWork = _SocialFold.environmental_analysis_work 
+              // _wm.psyCardMc.environmentalAnalysisIncome = _SocialFold.environmental_analysis_income
+              // _wm.psyCardMc.environmentalAnalysisFormalNetwork = _SocialFold.environmental_analysis_formal_network 
+              // _wm.psyCardMc.interventionHypothesisSocialProject = _SocialFold.intervention_hypothesis_project
+              // _wm.psyCardMc.interventionHypothesisSocialWorker = _SocialFold.intervention_hypothesis_social_worker
+
+              _wm.allPsyMembershipCards = response.data.allPsySocialFolders;
+            } else {
+              _wm.btnMcSend = "Salva";
+            }
+            _wm.firstSave = false;
+          } else if (error == 7) {
+            _wm.btnMcSend = "Salva";
+            _wm.firstSave = true;
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    isObjEmpty: function isObjEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyRating.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyRating.vue?vue&type=script&lang=js& ***!
@@ -3954,9 +4216,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/PsyRating.vue */ "./resources/js/components/PsyRating.vue");
 /* harmony import */ var _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/PsyUocDepartment.vue */ "./resources/js/components/PsyUocDepartment.vue");
 /* harmony import */ var _components_PsySocialFolder_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/PsySocialFolder.vue */ "./resources/js/components/PsySocialFolder.vue");
+/* harmony import */ var _components_PsyMembershipCard_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/PsyMembershipCard.vue */ "./resources/js/components/PsyMembershipCard.vue");
 // import Home from '../pages/Home.vue';
 
 // import serdCard from '../components/serdCard.vue';
+
 
 
 
@@ -3971,9 +4235,1123 @@ __webpack_require__.r(__webpack_exports__);
     PsyRehabilitationPsychiatricCard: _components_PsyRehabilitationPsychiatricCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     PsyRating: _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     PsyUocDepartment: _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    PsySocialFolder: _components_PsySocialFolder_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    PsySocialFolder: _components_PsySocialFolder_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    PsyMembershipCard: _components_PsyMembershipCard_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMembershipCard.vue?vue&type=template&id=65a79ba1&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyMembershipCard.vue?vue&type=template&id=65a79ba1&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "page-content"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "x_panel"
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("hr", {
+    staticStyle: {
+      border: "2px solid black"
+    }
+  }), _vm._v(" "), _c("form", {
+    staticClass: "form-horizontal form-label-left align-items-center",
+    attrs: {
+      id: "demo-form2",
+      "data-parsley-validate": ""
+    }
+  }, [_c("div", {
+    staticClass: "x_content"
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.communicateItalian,
+      expression: "psyCardMc.communicateItalian"
+    }],
+    attrs: {
+      type: "radio",
+      name: "communicate_italian",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.communicateItalian, "SI")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "communicateItalian", "SI");
+      }
+    }
+  }), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c("br"), _vm._v(" "), _c("span", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.communicateItalian,
+      expression: "psyCardMc.communicateItalian"
+    }],
+    attrs: {
+      type: "radio",
+      name: "communicate_italian",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.communicateItalian, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "communicateItalian", "NO");
+      }
+    }
+  }), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.communicate,
+      expression: "psyCardMc.communicate"
+    }],
+    attrs: {
+      type: "text",
+      name: "communicate"
+    },
+    domProps: {
+      value: _vm.psyCardMc.communicate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardMc, "communicate", $event.target.value);
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(4), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.maritalStatus,
+      expression: "psyCardMc.maritalStatus"
+    }],
+    attrs: {
+      type: "radio",
+      name: "marital_status",
+      value: "Celibe/nubile"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.maritalStatus, "Celibe/nubile")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "maritalStatus", "Celibe/nubile");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Celibe/nubile")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.maritalStatus,
+      expression: "psyCardMc.maritalStatus"
+    }],
+    attrs: {
+      type: "radio",
+      name: "marital_status",
+      value: "Coniugato/a"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.maritalStatus, "Coniugato/a")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "maritalStatus", "Coniugato/a");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Coniugato/a")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.maritalStatus,
+      expression: "psyCardMc.maritalStatus"
+    }],
+    attrs: {
+      type: "radio",
+      name: "marital_status",
+      value: "convivente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.maritalStatus, "convivente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "maritalStatus", "convivente");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("convivente")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.maritalStatus,
+      expression: "psyCardMc.maritalStatus"
+    }],
+    attrs: {
+      type: "radio",
+      name: "marital_status",
+      value: "Separato/a-Divorziato/a"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.maritalStatus, "Separato/a-Divorziato/a")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "maritalStatus", "Separato/a-Divorziato/a");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Separato/a-Divorziato/a")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.maritalStatus,
+      expression: "psyCardMc.maritalStatus"
+    }],
+    attrs: {
+      type: "radio",
+      name: "marital_status",
+      value: "Vedovo/a"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.maritalStatus, "Vedovo/a")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "maritalStatus", "Vedovo/a");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Vedovo/a")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(5), _c("br"), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.son,
+      expression: "psyCardMc.son"
+    }],
+    attrs: {
+      type: "radio",
+      name: "son",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.son, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "son", "NO");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("NO")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.son,
+      expression: "psyCardMc.son"
+    }],
+    attrs: {
+      type: "radio",
+      name: "son",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.son, "SI")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "son", "SI");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("SI")]), _vm._v(" "), _vm._m(6), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.son_number,
+      expression: "psyCardMc.son_number"
+    }],
+    staticStyle: {
+      width: "50px"
+    },
+    attrs: {
+      type: "number",
+      name: "son_number"
+    },
+    domProps: {
+      value: _vm.psyCardMc.son_number
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardMc, "son_number", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _vm._m(7), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.son_age,
+      expression: "psyCardMc.son_age"
+    }],
+    staticStyle: {
+      width: "90px"
+    },
+    attrs: {
+      type: "number",
+      name: "son_age"
+    },
+    domProps: {
+      value: _vm.psyCardMc.son_age
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardMc, "son_age", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_vm._m(8), _c("br"), _vm._v(" "), _c("span", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.residenceNot,
+      expression: "psyCardMc.residenceNot"
+    }],
+    attrs: {
+      type: "radio",
+      name: "residence_not",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.residenceNot, "SI")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "residenceNot", "SI");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Senza fissa dimora")])]), _vm._v(" "), _c("br"), _vm._v(" "), _c("span", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.residenceNot,
+      expression: "psyCardMc.residenceNot"
+    }],
+    attrs: {
+      type: "radio",
+      name: "residence",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.residenceNot, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "residenceNot", "NO");
+      }
+    }
+  }), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.residence,
+      expression: "psyCardMc.residence"
+    }],
+    attrs: {
+      type: "text",
+      name: "residence"
+    },
+    domProps: {
+      value: _vm.psyCardMc.residence
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardMc, "residence", $event.target.value);
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(9), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.titleStudy,
+      expression: "psyCardMc.titleStudy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "title_study",
+      value: "Celibe/nubile"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.titleStudy, "Celibe/nubile")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "titleStudy", "Celibe/nubile");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Celibe/nubile")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.titleStudy,
+      expression: "psyCardMc.titleStudy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "title_study",
+      value: "Coniugato/a"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.titleStudy, "Coniugato/a")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "titleStudy", "Coniugato/a");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Coniugato/a")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.titleStudy,
+      expression: "psyCardMc.titleStudy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "title_study",
+      value: "convivente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.titleStudy, "convivente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "titleStudy", "convivente");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("convivente")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.titleStudy,
+      expression: "psyCardMc.titleStudy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "title_study",
+      value: "Separato/a-Divorziato/a"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.titleStudy, "Separato/a-Divorziato/a")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "titleStudy", "Separato/a-Divorziato/a");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Separato/a-Divorziato/a")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.titleStudy,
+      expression: "psyCardMc.titleStudy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "title_study",
+      value: "Vedovo/a"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.titleStudy, "Vedovo/a")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "titleStudy", "Vedovo/a");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Vedovo/a")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(10), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.situationWork,
+      expression: "psyCardMc.situationWork"
+    }],
+    attrs: {
+      type: "radio",
+      name: "situation_work",
+      value: "Occupato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.situationWork, "Occupato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "situationWork", "Occupato");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Celibe/nubile")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.situationWork,
+      expression: "psyCardMc.situationWork"
+    }],
+    attrs: {
+      type: "radio",
+      name: "situation_work",
+      value: "Non occupato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.situationWork, "Non occupato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "situationWork", "Non occupato");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Coniugato/a")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.situationWork,
+      expression: "psyCardMc.situationWork"
+    }],
+    attrs: {
+      type: "radio",
+      name: "situation_work",
+      value: "Saltuariamente occupato"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.situationWork, "Saltuariamente occupato")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "situationWork", "Saltuariamente occupato");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("convivente")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(11), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.dateStartPrison,
+      expression: "psyCardMc.dateStartPrison"
+    }],
+    attrs: {
+      type: "date",
+      name: "date_start_prison"
+    },
+    domProps: {
+      value: _vm.psyCardMc.dateStartPrison
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardMc, "dateStartPrison", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _vm._m(12), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.dateStartInInstitute,
+      expression: "psyCardMc.dateStartInInstitute"
+    }],
+    attrs: {
+      type: "date",
+      name: "date_start_in_institute"
+    },
+    domProps: {
+      value: _vm.psyCardMc.dateStartInInstitute
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardMc, "dateStartInInstitute", $event.target.value);
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(13), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.firstExperiencePrison,
+      expression: "psyCardMc.firstExperiencePrison"
+    }],
+    attrs: {
+      type: "radio",
+      name: "first_experience_prison",
+      value: "SI"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.firstExperiencePrison, "SI")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "firstExperiencePrison", "SI");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("SI")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.firstExperiencePrison,
+      expression: "psyCardMc.firstExperiencePrison"
+    }],
+    attrs: {
+      type: "radio",
+      name: "first_experience_prison",
+      value: "NO"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.firstExperiencePrison, "NO")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "firstExperiencePrison", "NO");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("NO")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(14), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.provenience,
+      expression: "psyCardMc.provenience"
+    }],
+    attrs: {
+      type: "radio",
+      name: "provenience",
+      value: "altro istituto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.provenience, "altro istituto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "provenience", "altro istituto");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Altro istituto")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.provenience,
+      expression: "psyCardMc.provenience"
+    }],
+    attrs: {
+      type: "radio",
+      name: "provenience",
+      value: "liberta"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.provenience, "liberta")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "provenience", "liberta");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Libertà")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(15), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.legalPosition,
+      expression: "psyCardMc.legalPosition"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_position",
+      value: "Giudicabile"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.legalPosition, "Giudicabile")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "legalPosition", "Giudicabile");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Giudicabile")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.legalPosition,
+      expression: "psyCardMc.legalPosition"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_position",
+      value: "Appellante"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.legalPosition, "Appellante")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "legalPosition", "Appellante");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Appellante")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.legalPosition,
+      expression: "psyCardMc.legalPosition"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_position",
+      value: "Riccorrente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.legalPosition, "Riccorrente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "legalPosition", "Riccorrente");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Riccorrente")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.legalPosition,
+      expression: "psyCardMc.legalPosition"
+    }],
+    attrs: {
+      type: "radio",
+      name: "legal_position",
+      value: "Definitivo"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.legalPosition, "Definitivo")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "legalPosition", "Definitivo");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Definitivo")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(16), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.endOfSentence,
+      expression: "psyCardMc.endOfSentence"
+    }],
+    attrs: {
+      type: "date",
+      name: "end_of_sentence"
+    },
+    domProps: {
+      value: _vm.psyCardMc.endOfSentence
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardMc, "endOfSentence", $event.target.value);
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(17), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.economicResource,
+      expression: "psyCardMc.economicResource"
+    }],
+    attrs: {
+      type: "radio",
+      name: "economic_resource",
+      value: "Scarse/assenti"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.economicResource, "Scarse/assenti")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "economicResource", "Scarse/assenti");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Scarse o assenti")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.economicResource,
+      expression: "psyCardMc.economicResource"
+    }],
+    attrs: {
+      type: "radio",
+      name: "economic_resource",
+      value: "Sufficienti"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.economicResource, "Sufficienti")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "economicResource", "Sufficienti");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Sufficienti nel breve periodo")])]), _vm._v(" "), _c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMc.economicResource,
+      expression: "psyCardMc.economicResource"
+    }],
+    attrs: {
+      type: "radio",
+      name: "economic_resource",
+      value: "Adeguate"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardMc.economicResource, "Adeguate")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardMc, "economicResource", "Adeguate");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Adeguate")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("span", {
+    staticClass: "btn btn-success i2hBtn ml-3",
+    on: {
+      click: function click($event) {
+        return _vm.addPsyMembershipCard("mc");
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.btnMcSend))])])])])])])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h1", {
+    staticClass: "ml-3"
+  }, [_c("strong", [_vm._v("SCHEDA SOCIO-ANAGRAFICA")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px",
+      "margin-left": "10px",
+      width: "900px"
+    }
+  }, [_c("span", {
+    staticStyle: {
+      "margin-left": "10px"
+    }
+  }, [_c("strong", [_vm._v("CITTADINANZA")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "communicate_italian"
+    }
+  }, [_c("strong", [_vm._v("Comunica in italiano")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "communicate"
+    }
+  }, [_c("strong", [_vm._v("Comunica in")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "marital_status"
+    }
+  }, [_c("strong", [_vm._v("Stato civile")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "son"
+    }
+  }, [_c("strong", [_vm._v("figli")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    staticStyle: {
+      width: "50px"
+    },
+    attrs: {
+      "for": "son_number"
+    }
+  }, [_c("strong", [_vm._v("n°")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    staticStyle: {
+      width: "50px"
+    },
+    attrs: {
+      "for": "son_age"
+    }
+  }, [_c("strong", [_vm._v("età")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "residence_not"
+    }
+  }, [_c("strong", [_vm._v("Residenza")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "title_study"
+    }
+  }, [_c("strong", [_vm._v("Titolo di studio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "situation_work"
+    }
+  }, [_c("strong", [_vm._v("Titolo di studio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "date_start_prison"
+    }
+  }, [_c("strong", [_vm._v("Data inizio carcerazione")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "date_start_in_institute"
+    }
+  }, [_c("strong", [_vm._v("Data ingresso in questo istituto")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "first_experience_prison"
+    }
+  }, [_c("strong", [_vm._v("Prima esperienza detentiva")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "provenience"
+    }
+  }, [_c("strong", [_vm._v("Provenienza")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "legal_position"
+    }
+  }, [_c("strong", [_vm._v("Posizione giuridica")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "end_of_sentence"
+    }
+  }, [_c("strong", [_vm._v("Fine pena")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "economic_resource"
+    }
+  }, [_c("strong", [_vm._v("Risorse economiche")])]);
+}];
+render._withStripped = true;
+
 
 /***/ }),
 
@@ -10351,7 +11729,7 @@ var staticRenderFns = [function () {
     staticStyle: {
       "margin-left": "10px"
     }
-  }, [_c("strong", [_vm._v(" 4. ANALISI SITUAZIONE SOCIO-AMBIENTALE")])])]);
+  }, [_c("strong", [_vm._v(" 5. IPOTESI DI INTERVENTO /PROGETTUALITA'")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -16666,10 +18044,29 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("psyMentalHealthDepartment"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder")], 1)], 1);
+  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("psyMentalHealthDepartment"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard")], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
 
 
 /***/ }),
@@ -39030,6 +40427,36 @@ process.umask = function() { return 0; };
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -63873,6 +65300,93 @@ module.exports = function(module) {
 	}
 	return module;
 };
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PsyMembershipCard.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/PsyMembershipCard.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PsyMembershipCard_vue_vue_type_template_id_65a79ba1_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PsyMembershipCard.vue?vue&type=template&id=65a79ba1&scoped=true& */ "./resources/js/components/PsyMembershipCard.vue?vue&type=template&id=65a79ba1&scoped=true&");
+/* harmony import */ var _PsyMembershipCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PsyMembershipCard.vue?vue&type=script&lang=js& */ "./resources/js/components/PsyMembershipCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PsyMembershipCard_vue_vue_type_style_index_0_id_65a79ba1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true& */ "./resources/js/components/PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PsyMembershipCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PsyMembershipCard_vue_vue_type_template_id_65a79ba1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PsyMembershipCard_vue_vue_type_template_id_65a79ba1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "65a79ba1",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PsyMembershipCard.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PsyMembershipCard.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/PsyMembershipCard.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMembershipCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PsyMembershipCard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMembershipCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMembershipCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true& ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMembershipCard_vue_vue_type_style_index_0_id_65a79ba1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMembershipCard.vue?vue&type=style&index=0&id=65a79ba1&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMembershipCard_vue_vue_type_style_index_0_id_65a79ba1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMembershipCard_vue_vue_type_style_index_0_id_65a79ba1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMembershipCard_vue_vue_type_style_index_0_id_65a79ba1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMembershipCard_vue_vue_type_style_index_0_id_65a79ba1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PsyMembershipCard.vue?vue&type=template&id=65a79ba1&scoped=true&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/PsyMembershipCard.vue?vue&type=template&id=65a79ba1&scoped=true& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMembershipCard_vue_vue_type_template_id_65a79ba1_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./PsyMembershipCard.vue?vue&type=template&id=65a79ba1&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMembershipCard.vue?vue&type=template&id=65a79ba1&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMembershipCard_vue_vue_type_template_id_65a79ba1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMembershipCard_vue_vue_type_template_id_65a79ba1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
 
 
 /***/ }),

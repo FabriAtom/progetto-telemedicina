@@ -13,6 +13,8 @@
       <PsyRating/>
       <PsyUocDepartment/>
       <PsySocialFolder/>
+      <PsyMembershipCard/>
+
 
     </div>
     
@@ -28,13 +30,14 @@ import PsyRehabilitationPsychiatricCard from '../components/PsyRehabilitationPsy
 import PsyRating from '../components/PsyRating.vue';
 import PsyUocDepartment from '../components/PsyUocDepartment.vue';
 import PsySocialFolder from '../components/PsySocialFolder.vue';
+import PsyMembershipCard from '../components/PsyMembershipCard.vue';
 
 
 
 
 
 export default {
-  components: { 
+  components: {
     // serdCard, 
     // Home,
     psyCard,
@@ -42,8 +45,9 @@ export default {
     PsyRehabilitationPsychiatricCard,
     PsyRating,
     PsyUocDepartment,
-    PsySocialFolder
-  }
+    PsySocialFolder,
+    PsyMembershipCard
+}
 }
 </script>
 
