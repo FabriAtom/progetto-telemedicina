@@ -65,19 +65,19 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="son" class="col-form-label col-md-2 col-sm-2 label-align"><strong>figli</strong></label><br>
+                                            <label for="sons" class="col-form-label col-md-2 col-sm-2 label-align"><strong>figli</strong></label><br>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="radio" name="son" value="NO" v-model="psyCardMc.son"/>
+                                                <input type="radio" name="sons" value="NO" v-model="psyCardMc.sons"/>
                                                 <span>NO</span>
                                             </div>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="radio" name="son" value="SI" v-model="psyCardMc.son"/>
+                                                <input type="radio" name="sons" value="SI" v-model="psyCardMc.sons"/>
                                                 <span>SI</span>
 
                                                 <label for="son_number" style="width:50px;" class="col-form-label col-md-1 col-sm-2 label-align"><strong>n°</strong></label>
-                                                <input type="number" style="width:50px;" name="son_number" v-model="psyCardMc.son_number"/>
+                                                <input type="number" style="width:50px;" name="son_number" v-model="psyCardMc.sonNumber"/>
                                                 <label for="son_age" style="width:50px;"  class="col-form-label col-md-1 col-sm-2 label-align"><strong>età</strong></label>
-                                                <input type="number" style="width:90px;" name="son_age" v-model="psyCardMc.son_age"/>
+                                                <input type="number" style="width:90px;" name="son_age" v-model="psyCardMc.sonAge"/>
                                             </div>
                                         </div>
                                     </div>
@@ -130,7 +130,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="row" style="margin-top:20px;">
+
+                                <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
                                             <label for="situation_housing" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Situazione abitativa</strong></label><br>
@@ -140,7 +141,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
 
 
                                 <div class="row" style="margin-top:20px;">
@@ -175,9 +176,9 @@
                                             </div>
                                             <label for="date_start_in_institute" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Data ingresso in questo istituto</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <div>
+                                                <span>
                                                     <input type="date" name="date_start_in_institute"  v-model="psyCardMc.dateStartInInstitute"/>
-                                                </div>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -286,7 +287,7 @@
 
                             <div class="x_content">
 
-                                <h2>Primo colloquio psicologico <strong>Intake</strong></h2>
+                                <h2 class="pt-4">Primo colloquio psicologico <strong>Intake</strong></h2>
                                 <h3>Anamnesi clinica: Disturbo psichico/ Disturbo uso di sostanze</h3>
 
                                 
@@ -424,231 +425,194 @@
 
                                     <tr>
                                         <th>A2. Anamnesi patologica prossima/ remota</th>
-                                        <td>No</td>
-                                        <td>NR</td>
-                                        <td>SI (indicare <br>quali, <br>dove,<br>quando)</td>
-                                        <td>Documento</td>  
-                                        <td>Riferito</td>
+                                        <td>si</td>
+                                        <td>no</td>
+                                        <td>nr</td>
+                                        <td>Se si indicare <br>quando e come</td>  
                                     </tr>
                                     <tr>
                                         <td>Dichiara (o riulta da documentazione/notizie) di aver tentato il suicidio</td>
                                         <td>
-                                            <input type="radio"  name="pathological_attempted_suicide" value="No" v-model="psyCardMc.pathologicalAttemptedSuicide">
+                                            <input type="radio"  name="pathological_attempted_suicide" value="si" v-model="psyCardMc.pathologicalAttemptedSuicide">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_attempted_suicide" value="Nr" v-model="psyCardMc.pathologicalAttemptedSuicide">
+                                            <input type="radio"  name="pathological_attempted_suicide" value="no" v-model="psyCardMc.pathologicalAttemptedSuicide">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_attempted_suicide" value="Si" v-model="psyCardMc.pathologicalAttemptedSuicide">
+                                            <input type="radio"  name="pathological_attempted_suicide" value="nr" v-model="psyCardMc.pathologicalAttemptedSuicide">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_attempted_suicide" value="Documentato" v-model="psyCardMc.pathologicalAttemptedSuicide">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_attempted_suicide" value="Riferito" v-model="psyCardMc.pathologicalAttemptedSuicide">
+                                            <input type="radio"  name="pathological_attempted_suicide" value="se si indicare quando e come" v-model="psyCardMc.pathologicalAttemptedSuicide">
                                         </td>
                                     </tr> 
                                     <tr>
                                         <td>Dichiara di sentirsi (o essersi sentito) disperato o particolarmente depresso</td>
                                         <td>
-                                            <input type="radio"  name="pathological_desperate" value="No" v-model="psyCardMc.pathologicalDesperate">
+                                            <input type="radio"  name="pathological_desperate" value="si" v-model="psyCardMc.pathologicalDesperate">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_desperate" value="Nr" v-model="psyCardMc.pathologicalDesperate">
+                                            <input type="radio"  name="pathological_desperate" value="no" v-model="psyCardMc.pathologicalDesperate">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_desperate" value="Si" v-model="psyCardMc.pathologicalDesperate">
+                                            <input type="radio"  name="pathological_desperate" value="nr" v-model="psyCardMc.pathologicalDesperate">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_desperate" value="Documentato" v-model="psyCardMc.pathologicalDesperate">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_desperate" value="Riferito" v-model="psyCardMc.pathologicalDesperate">
+                                            <input type="radio"  name="pathological_desperate" value="se si indicare quando e come" v-model="psyCardMc.pathologicalDesperate">
                                         </td>
                                     </tr> 
 
                                     <tr>
                                         <td>Dichiara di sentirsi (o essersi sentito) disperato o particolarmente ansioso</td>
                                         <td>
-                                            <input type="radio"  name="pathological_anxious" value="No" v-model="psyCardMc.pathologicalAnxious">
+                                            <input type="radio"  name="pathological_anxious" value="si" v-model="psyCardMc.pathologicalAnxious">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_anxious" value="Nr" v-model="psyCardMc.pathologicalAnxious">
+                                            <input type="radio"  name="pathological_anxious" value="no" v-model="psyCardMc.pathologicalAnxious">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_anxious" value="Si" v-model="psyCardMc.pathologicalAnxious">
+                                            <input type="radio"  name="pathological_anxious" value="nr" v-model="psyCardMc.pathologicalAnxious">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_anxious" value="Documentato" v-model="psyCardMc.pathologicalAnxious">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_anxious" value="Riferito" v-model="psyCardMc.pathologicalAnxious">
+                                            <input type="radio"  name="pathological_anxious" value="se si indicare quando e come" v-model="psyCardMc.pathologicalAnxious">
                                         </td>
                                     </tr> 
                                     <tr>
                                         <td>Dichiara di sentirsi (o essersi sentito) disperato o particolarmente attivato</td>
                                         <td>
-                                            <input type="radio"  name="pathological_active" value="No" v-model="psyCardMc.pathologicalActive">
+                                            <input type="radio"  name="pathological_active" value="si" v-model="psyCardMc.pathologicalActive">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_active" value="Nr" v-model="psyCardMc.pathologicalActive">
+                                            <input type="radio"  name="pathological_active" value="no" v-model="psyCardMc.pathologicalActive">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_active" value="Si" v-model="psyCardMc.pathologicalActive">
+                                            <input type="radio"  name="pathological_active" value="nr" v-model="psyCardMc.pathologicalActive">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_active" value="Documentato" v-model="psyCardMc.pathologicalActive">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_active" value="Riferito" v-model="psyCardMc.pathologicalActive">
+                                            <input type="radio"  name="pathological_active" value="se si indicare quando e come" v-model="psyCardMc.pathologicalActive">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Dichiara di aver pensieri ritenuti da tutti gli altri come "strani"</td>
                                         <td>
-                                            <input type="radio"  name="pathological_strange_thought" value="No" v-model="psyCardMc.pathologicalStrangeThought">
+                                            <input type="radio"  name="pathological_strange_thought" value="si" v-model="psyCardMc.pathologicalStrangeThought">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_strange_thought" value="Nr" v-model="psyCardMc.pathologicalStrangeThought">
+                                            <input type="radio"  name="pathological_strange_thought" value="no" v-model="psyCardMc.pathologicalStrangeThought">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_strange_thought" value="Si" v-model="psyCardMc.pathologicalStrangeThought">
+                                            <input type="radio"  name="pathological_strange_thought" value="nr" v-model="psyCardMc.pathologicalStrangeThought">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_strange_thought" value="Documentato" v-model="psyCardMc.pathologicalStrangeThought">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_strange_thought" value="Riferito" v-model="psyCardMc.pathologicalStrangeThought">
+                                            <input type="radio"  name="pathological_strange_thought" value="se si indicare quando e come" v-model="psyCardMc.pathologicalStrangeThought">
                                         </td>
                                     </tr> 
                                     <tr>
                                         <td>Dichiara di essere insonne o di avere gravi disturbi del sonno</td>
                                         <td>
-                                            <input type="radio"  name="pathological_sleepless" value="No" v-model="psyCardMc.pathologicalSleepless">
+                                            <input type="radio"  name="pathological_sleepless" value="si" v-model="psyCardMc.pathologicalSleepless">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_sleepless" value="Nr" v-model="psyCardMc.pathologicalSleepless">
+                                            <input type="radio"  name="pathological_sleepless" value="no" v-model="psyCardMc.pathologicalSleepless">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_sleepless" value="Si" v-model="psyCardMc.pathologicalSleepless">
+                                            <input type="radio"  name="pathological_sleepless" value="nr" v-model="psyCardMc.pathologicalSleepless">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_sleepless" value="Documentato" v-model="psyCardMc.pathologicalSleepless">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_sleepless" value="Riferito" v-model="psyCardMc.pathologicalSleepless">
+                                            <input type="radio"  name="pathological_sleepless" value="se si indicare quando e come" v-model="psyCardMc.pathologicalSleepless">
                                         </td>
                                     </tr> 
                                     <tr>
                                         <td>Dichiara di non avere alcuna rete familiare / sociale di sostegno</td>
                                         <td>
-                                            <input type="radio"  name="pathological_no_family" value="No" v-model="psyCardMc.pathologicalNoFamily">
+                                            <input type="radio"  name="pathological_no_family" value="si" v-model="psyCardMc.pathologicalNoFamily">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_no_family" value="Nr" v-model="psyCardMc.pathologicalNoFamily">
+                                            <input type="radio"  name="pathological_no_family" value="no" v-model="psyCardMc.pathologicalNoFamily">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_no_family" value="Si" v-model="psyCardMc.pathologicalNoFamily">
+                                            <input type="radio"  name="pathological_no_family" value="nr" v-model="psyCardMc.pathologicalNoFamily">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_no_family" value="Documentato" v-model="psyCardMc.pathologicalNoFamily">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_no_family" value="Riferito" v-model="psyCardMc.pathologicalNoFamily">
+                                            <input type="radio"  name="pathological_no_family" value="se si indicare quando e come" v-model="psyCardMc.pathologicalNoFamily">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Ammette di avere pensieri riguardanti il suicidio e ammette il suicidio come possible soluzione ai problemi</td>
                                         <td>
-                                            <input type="radio"  name="pathological_thought_suicide" value="No" v-model="psyCardMc.pathologicalThoughtSuicide">
+                                            <input type="radio"  name="pathological_thought_suicide" value="si" v-model="psyCardMc.pathologicalThoughtSuicide">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_thought_suicide" value="Nr" v-model="psyCardMc.pathologicalThoughtSuicide">
+                                            <input type="radio"  name="pathological_thought_suicide" value="no" v-model="psyCardMc.pathologicalThoughtSuicide">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_thought_suicide" value="Si" v-model="psyCardMc.pathologicalThoughtSuicide">
+                                            <input type="radio"  name="pathological_thought_suicide" value="nr" v-model="psyCardMc.pathologicalThoughtSuicide">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_thought_suicide" value="Documentato" v-model="psyCardMc.pathologicalThoughtSuicide">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_thought_suicide" value="Riferito" v-model="psyCardMc.pathologicalThoughtSuicide">
+                                            <input type="radio"  name="pathological_thought_suicide" value="se si indicare quando e come" v-model="psyCardMc.pathologicalThoughtSuicide">
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>Dichiara Episodi di intossicazione da alcol ("ubriacature") o di bingedrinking ("abbuffata")</td>
                                         <td>
-                                            <input type="radio"  name="pathological_alcol" value="No" v-model="psyCardMc.pathologicalAlcol">
+                                            <input type="radio"  name="pathological_alcol" value="si" v-model="psyCardMc.pathologicalAlcol">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_alcol" value="Nr" v-model="psyCardMc.pathologicalAlcol">
+                                            <input type="radio"  name="pathological_alcol" value="no" v-model="psyCardMc.pathologicalAlcol">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_alcol" value="Si" v-model="psyCardMc.pathologicalAlcol">
+                                            <input type="radio"  name="pathological_alcol" value="nr" v-model="psyCardMc.pathologicalAlcol">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_alcol" value="Documentato" v-model="psyCardMc.pathologicalAlcol">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_alcol" value="Riferito" v-model="psyCardMc.pathologicalAlcol">
+                                            <input type="radio"  name="pathological_alcol" value="se si indicare quando e come" v-model="psyCardMc.pathologicalAlcol">
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>Dichiara Comportamento additivo problematico senza sostanza (ad esempio GAP)</td>
                                         <td>
-                                            <input type="radio"  name="pathological_addictive_behavior" value="No" v-model="psyCardMc.pathologicalAddictiveBehavior">
+                                            <input type="radio"  name="pathological_addictive_behavior" value="si" v-model="psyCardMc.pathologicalAddictiveBehavior">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_addictive_behavior" value="Nr" v-model="psyCardMc.pathologicalAddictiveBehavior">
+                                            <input type="radio"  name="pathological_addictive_behavior" value="no" v-model="psyCardMc.pathologicalAddictiveBehavior">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_addictive_behavior" value="Si" v-model="psyCardMc.pathologicalAddictiveBehavior">
+                                            <input type="radio"  name="pathological_addictive_behavior" value="nr" v-model="psyCardMc.pathologicalAddictiveBehavior">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_addictive_behavior" value="Documentato" v-model="psyCardMc.pathologicalAddictiveBehavior">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_addictive_behavior" value="Riferito" v-model="psyCardMc.pathologicalAddictiveBehavior">
+                                            <input type="radio"  name="pathological_addictive_behavior" value="se si indicare quando e come" v-model="psyCardMc.pathologicalAddictiveBehavior">
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>Dichiara Comportamento additivo problematico senza sostanza (ad esempio GAP)</td>
                                         <td>
-                                            <input type="radio"  name="pathological_claims_injuries" value="No" v-model="psyCardMc.pathologicalClaimsInjuries">
+                                            <input type="radio"  name="pathological_claims_injuries" value="si" v-model="psyCardMc.pathologicalClaimsInjuries">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_claims_injuries" value="Nr" v-model="psyCardMc.pathologicalClaimsInjuries">
+                                            <input type="radio"  name="pathological_claims_injuries" value="no" v-model="psyCardMc.pathologicalClaimsInjuries">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_claims_injuries" value="Si" v-model="psyCardMc.pathologicalClaimsInjuries">
+                                            <input type="radio"  name="pathological_claims_injuries" value="nr" v-model="psyCardMc.pathologicalClaimsInjuries">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_claims_injuries" value="Documentato" v-model="psyCardMc.pathologicalClaimsInjuries">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_claims_injuries" value="Riferito" v-model="psyCardMc.pathologicalClaimsInjuries">
+                                            <input type="radio"  name="pathological_claims_injuries" value="se si indicare quando e come" v-model="psyCardMc.pathologicalClaimsInjuries">
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>Esprime livelli insoliti o pervasivi di vergogna, colpa, Preoccupazione per l'incarcerazione</td>
                                         <td>
-                                            <input type="radio"  name="pathological_shame_level" value="No" v-model="psyCardMc.pathologicalShameLevel">
+                                            <input type="radio"  name="pathological_shame_level" value="si" v-model="psyCardMc.pathologicalShameLevel">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_shame_level" value="Nr" v-model="psyCardMc.pathologicalShameLevel">
+                                            <input type="radio"  name="pathological_shame_level" value="no" v-model="psyCardMc.pathologicalShameLevel">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_shame_level" value="Si" v-model="psyCardMc.pathologicalShameLevel">
+                                            <input type="radio"  name="pathological_shame_level" value="nr" v-model="psyCardMc.pathologicalShameLevel">
                                         </td>
                                         <td>
-                                            <input type="radio"  name="pathological_shame_level" value="Documentato" v-model="psyCardMc.pathologicalShameLevel">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="pathological_shame_level" value="Riferito" v-model="psyCardMc.pathologicalShameLevel">
+                                            <input type="radio"  name="pathological_shame_level" value="se si indicare quando e come" v-model="psyCardMc.pathologicalShameLevel">
                                         </td>
                                     </tr>
                                 </table>
@@ -660,96 +624,1039 @@
                                     <h3></h3>
 
                                     <tr>
-                                        <th>Colloquio e visita psicologica/psichiatrica</th>
-                                         
+                                        <th style="border-right:0">Colloquio e visita psicologica/psichiatrica</th>
+                                        <td style="border-left:0"></td>
                                         <td>note e specifiche</td>
                                     </tr>
-                                 
-accessToTheInterview
-trafficWarden
-lucid
-orientatedInTheThreeParameter
                                     <tr>
                                         <td>accesso al colloquio</td>
                                         <td>
-                                            <span>Collaborante</span>
-                                            <input type="radio"  name="access_to_the_interview" value="Collaborante" v-model="psyCardMc.accessToTheInterview">
+                                            <ul>
+                                                <li>
+                                                    <input type="radio"  name="access_to_the_interview" value="Collaborante" v-model="psyCardMc.accessToTheInterview">
+                                                    <span>Collaborante</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="access_to_the_interview" value="Passivo" v-model="psyCardMc.accessToTheInterview">
+                                                    <span>Passivo</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="access_to_the_interview" value="Oppositivo" v-model="psyCardMc.accessToTheInterview">
+                                                    <span>Oppositivo</span>
+                                                </li>
+                                            </ul>
                                         </td>
                                         <td>
-                                            <span>Passivo</span>
-                                            <input type="radio"  name="access_to_the_interview" value="Passivo" v-model="psyCardMc.accessToTheInterview">
-                                        </td>
-                                        <td>
-                                            <span>Oppositivo</span>
-                                            <input type="radio"  name="access_to_the_interview" value="Oppositivo" v-model="psyCardMc.accessToTheInterview">
+                                            <input type="textarea" name="access_to_the_interview_note" v-model="psyCardMc.accessToTheInterviewNote"/>
                                         </td>
                                     </tr> 
                                     <tr>
                                         <td>Vigile</td>
                                         <td>
-                                            <input type="radio"  name="traffic_warden" value="SI" v-model="psyCardMc.trafficWarden">
+                                            <ul>
+                                                <li>
+                                                    <input type="radio"  name="traffic_warden" value="SI" v-model="psyCardMc.trafficWarden">
+                                                    <span>si</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="traffic_warden" value="NO" v-model="psyCardMc.trafficWarden">
+                                                    <span>no</span>
+                                                </li>
+                                            </ul>
                                         </td>
                                         <td>
-                                            <input type="radio"  name="traffic_warden" value="NO" v-model="psyCardMc.trafficWarden">
+                                            <input type="textarea" name="traffic_warden_note" v-model="psyCardMc.trafficWardenNote"/>
                                         </td>
                                     </tr> 
 
                                     <tr>
                                         <td>Lucido</td>
                                         <td>
-                                            <input type="radio"  name="lucid" value="SI" v-model="psyCardMc.lucid">
+                                            <ul>
+                                                <li>
+                                                    <input type="radio"  name="lucid" value="SI" v-model="psyCardMc.lucid">
+                                                    <span>si</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="lucid" value="NO" v-model="psyCardMc.lucid">
+                                                    <span>no</span>
+                                                </li>
+                                            </ul>
                                         </td>
                                         <td>
-                                            <input type="radio"  name="lucid" value="NO" v-model="psyCardMc.lucid">
+                                            <input type="textarea" name="lucid_note" v-model="psyCardMc.lucidNote"/>
                                         </td>
                                     </tr> 
                                     
                                     <tr>
                                         <td>Orientato nei tre paramentri</td>
                                         <td>
-                                            <input type="radio"  name="orientated_in_the_three_parameter" value="No" v-model="psyCardMc.orientatedInTheThreeParameter">
+                                            <ul>
+                                                <li>
+                                                    <input type="radio"  name="orientated_in_the_three_parameter" value="SI" v-model="psyCardMc.orientatedInTheThreeParameter">
+                                                    <span>si</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="orientated_in_the_three_parameter" value="NO" v-model="psyCardMc.orientatedInTheThreeParameter">
+                                                    <span>no</span>
+                                                </li>
+                                            </ul>
                                         </td>
                                         <td>
-                                            <input type="radio"  name="orientated_in_the_three_parameter" value="Nr" v-model="psyCardMc.orientatedInTheThreeParameter">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="orientated_in_the_three_parameter" value="Si" v-model="psyCardMc.orientatedInTheThreeParameter">
+                                            <input type="textarea" name="orientated_in_the_three_parameter_note" v-model="psyCardMc.orientatedInTheThreeParameterNote"/>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>Umore</td>
                                         <td>
-                                            <input type="radio"  name="umor" value="No" v-model="psyCardMc.umor">
+                                            <ul>
+                                                <li>
+                                                    <input type="radio"  name="umor" value="in asse/nei limiti" v-model="psyCardMc.umor">
+                                                    <span>in asse/nei limiti</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="umor" value="depresso" v-model="psyCardMc.umor">
+                                                    <span>depresso</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="umor" value="disforico" v-model="psyCardMc.umor">
+                                                    <span>disforico</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="umor" value="eccitato" v-model="psyCardMc.umor">
+                                                    <span>eccitato</span>
+                                                </li>
+                                            </ul>
                                         </td>
                                         <td>
-                                            <input type="radio"  name="umor" value="Nr" v-model="psyCardMc.umor">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="umor" value="" v-model="psyCardMc.umor">
-                                        </td>
-                                        <td>
-                                            <input type="radio"  name="umor" value="eccitato" v-model="psyCardMc.umor">
+                                            <input type="textarea" name="umor_note" v-model="psyCardMc.umorNote"/>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>Ansia</td>
                                         <td>
-                                            <input type="radio"  name="anxiety" value="No" v-model="psyCardMc.anxiety">
+                                            <ul>
+                                                <li>
+                                                    <input type="radio"  name="anxiety" value="assente" v-model="psyCardMc.anxiety">
+                                                    <span>assente</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="anxiety" value="lieve" v-model="psyCardMc.anxiety">
+                                                    <span>lieve</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="anxiety" value="moderata" v-model="psyCardMc.anxiety">
+                                                    <span>moderata</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="anxiety" value="elevata" v-model="psyCardMc.anxiety">
+                                                    <span>elevata</span>
+                                                </li>
+                                            </ul>
                                         </td>
                                         <td>
-                                            <input type="radio"  name="anxiety" value="Nr" v-model="psyCardMc.anxiety">
+                                            <input type="textarea" name="anxiety_note" v-model="psyCardMc.anxietyNote"/>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Alterazione senso percezione</td>
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <input type="radio"  name="altered_perception" value="assente" v-model="psyCardMc.alteredPerception">
+                                                    <span>assente</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="altered_perception" value="presente" v-model="psyCardMc.alteredPerception">
+                                                    <span>presente</span>
+                                                </li>
+                                            </ul>
                                         </td>
                                         <td>
-                                            <input type="radio"  name="anxiety" value="Si" v-model="psyCardMc.anxiety">
+                                            <input type="textarea" name="altered_perception_note" v-model="psyCardMc.alteredPerceptionNote"/>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>appettito</td>
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <input type="radio"  name="appetite" value="conservato" v-model="psyCardMc.appetite">
+                                                    <span>conservato</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="appetite" value="alterato" v-model="psyCardMc.appetite">
+                                                    <span>alterato</span>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <input type="textarea" name="appetite_note" v-model="psyCardMc.appetiteNote"/>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Alterazione forma/contenuto del pensiero</td>
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <input type="radio"  name="altered_form_thought" value="assente" v-model="psyCardMc.alteredFormThought">
+                                                    <span>assente</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="altered_form_thought" value="presente" v-model="psyCardMc.alteredFormThought">
+                                                    <span>presente</span>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <input type="textarea" name="altered_form_thought_note" v-model="psyCardMc.alteredFormThoughtNote"/>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Ritmo sonno-veglia</td>
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <input type="radio"  name="sleep_wake_rhythm" value="conservato" v-model="psyCardMc.sleepWakeRhythm">
+                                                    <span>conservato</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="sleep_wake_rhythm" value="alterato" v-model="psyCardMc.sleepWakeRhythm">
+                                                    <span>alterato</span>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <input type="textarea" name="sleep_wake_rhythm_note" v-model="psyCardMc.sleepWakeRhythmNote"/>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Ritmo sonno-veglia</td>
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <input type="radio"  name="future_project" value="conservato" v-model="psyCardMc.futureProject">
+                                                    <span>conservato</span>
+                                                </li>
+                                                <li>
+                                                    <input type="radio"  name="future_project_note" value="alterato" v-model="psyCardMc.futureProject">
+                                                    <span>alterato</span>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <input type="textarea" name="future_project_note" v-model="psyCardMc.futureProjectNote"/>
                                         </td>
                                     </tr>
                                 </table>
+
+
+
+
+
+
+
+
+                                <h3 class="mt-3">Questionario sul benessere generale (GHQ-12)</h3>
+                                <table>
+                                    <h3></h3>
+
+                                    <tr>
+                                        <th>Nelle ultime due settimane si è sentito</th>
+                                        <td>Più del solito</td>
+                                        <td>Come al solito</td>
+                                        <td>Meno del solito</td>
+                                        <td>Molto meno del solito</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>1. in grado di concentrarsi su cio che stava <br>facendo</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_to_focus" value="0" v-model="psyhowFeel.wellToFocus">
+                                            <span>0</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()" name="well_to_focus" value="1" v-model="psyhowFeel.wellToFocus">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_to_focus" value="2" v-model="psyhowFeel.wellToFocus">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_to_focus" value="3" v-model="psyhowFeel.wellToFocus"/>
+                                            <span>3</span>
+                                        </td>
+                                    </tr> 
+                                    
+                                    <tr>
+                                        <td>2. di aver perso molto sonno tanto da<br>preoccuoparsi</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_lost_sleep" value="3" v-model="psyhowFeel.wellLostSleep">
+                                            <span>3</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()" name="well_lost_sleep" value="2" v-model="psyhowFeel.wellLostSleep">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_lost_sleep" value="1" v-model="psyhowFeel.wellLostSleep">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_lost_sleep" value="0" v-model="psyhowFeel.wellLostSleep"/>
+                                            <span>0</span>
+                                        </td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>3. di essere produttivo nella maggior parte delle<br>attività</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_productive" value="0" v-model="psyhowFeel.wellProductive">
+                                            <span>0</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_productive" value="1" v-model="psyhowFeel.wellProductive">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_productive" value="2" v-model="psyhowFeel.wellProductive">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_productive" value="3" v-model="psyhowFeel.wellProductive"/>
+                                            <span>3</span>
+                                        </td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>4. in grado di prendere decisioni nella maggior<br>parte dei casi?</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_make_decision" value="0" v-model="psyhowFeel.wellMakeDecision">
+                                            <span>0</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()" name="well_make_decision" value="1" v-model="psyhowFeel.wellMakeDecision">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_make_decision" value="2" v-model="psyhowFeel.wellMakeDecision">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_make_decision" value="3" v-model="psyhowFeel.wellMakeDecision"/>
+                                            <span>3</span>
+                                        </td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>5. costantemente sotto pressione/stressato</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_pression" value="3" v-model="psyhowFeel.wellPression">
+                                            <span>3</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()" name="well_pression" value="2" v-model="psyhowFeel.wellPression">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_pression" value="1" v-model="psyhowFeel.wellPression">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_pression" value="0" v-model="psyhowFeel.wellPression"/>
+                                            <span>0</span>
+                                        </td>
+                                    </tr> 
+
+
+                                    <tr>
+                                        <td>6. di non essere in grado di superare le<br>difficoltà?</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_not_able" value="3" v-model="psyhowFeel.wellNotAble">
+                                            <span>3</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()" name="well_not_able" value="2" v-model="psyhowFeel.wellNotAble">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_not_able" value="1" v-model="psyhowFeel.wellNotAble">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_not_able" value="0" v-model="psyhowFeel.wellNotAble"/>
+                                            <span>0</span>
+                                        </td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>7. in grado di ritagliarsi del tempo per sé?</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_time_for_himself" value="0" v-model="psyhowFeel.wellTimeForHimself">
+                                            <span>0</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()" name="well_time_for_himself" value="1" v-model="psyhowFeel.wellTimeForHimself">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_time_for_himself" value="2" v-model="psyhowFeel.wellTimeForHimself">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_time_for_himself" value="3" v-model="psyhowFeel.wellTimeForHimself"/>
+                                            <span>3</span>
+                                        </td>
+                                    </tr> 
+
+
+                                    <tr>
+                                        <td>8. in grado di risolvere i suoi problemi?</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_problem_solving" value="0" v-model="psyhowFeel.wellProblemSolving">
+                                            <span>0</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()" name="well_problem_solving" value="1" v-model="psyhowFeel.wellProblemSolving">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_problem_solving" value="2" v-model="psyhowFeel.wellProblemSolving">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_problem_solving" value="3" v-model="psyhowFeel.wellProblemSolving"/>
+                                            <span>3</span>
+                                        </td>
+                                    </tr> 
+
+
+                                    <tr>
+                                        <td>9. infelice o particolarmente depresso</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_unhappy" value="3" v-model="psyhowFeel.wellUnhappy">
+                                            <span>3</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()" name="well_unhappy" value="2" v-model="psyhowFeel.wellUnhappy">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_unhappy" value="1" v-model="psyhowFeel.wellUnhappy">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_unhappy" value="0" v-model="psyhowFeel.wellUnhappy"/>
+                                            <span>0</span>
+                                        </td>
+                                    </tr> 
+
+
+                                    <tr>
+                                        <td>10. come se avesse perso la fiducia in sé stesso?</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_lost_confidence" value="3" v-model="psyhowFeel.wellLostConfidence">
+                                            <span>3</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()" name="well_lost_confidence" value="2" v-model="psyhowFeel.wellLostConfidence">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_lost_confidence" value="1" v-model="psyhowFeel.wellLostConfidence">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_lost_confidence" value="0" v-model="psyhowFeel.wellLostConfidence"/>
+                                            <span>0</span>
+                                        </td>
+                                    </tr> 
+
+
+                                    <tr>
+                                        <td>11. come se avesse minore stima di sé?</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_lower_esteem" value="0" v-model="psyhowFeel.wellLowerEsteem">
+                                            <span>0</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()" name="well_lower_esteem" value="1" v-model="psyhowFeel.wellLowerEsteem">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_lower_esteem" value="2" v-model="psyhowFeel.wellLowerEsteem">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_lower_esteem" value="3" v-model="psyhowFeel.wellLowerEsteem"/>
+                                            <span>3</span>
+                                        </td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>12. con uno stato nel complesso felice o sereno?</td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()"  name="well_overall_happy" value="0" v-model="psyhowFeel.wellOverallHappy">
+                                            <span>0</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" @change="calculateSum()" name="well_overall_happy" value="1" v-model="psyhowFeel.wellOverallHappy">
+                                            <span>1</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_overall_happy" value="2" v-model="psyhowFeel.wellOverallHappy">
+                                            <span>2</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" @change="calculateSum()" name="well_overall_happy" value="3" v-model="psyhowFeel.wellOverallHappy"/>
+                                            <span>3</span>
+                                        </td>
+                                    </tr> 
+                                </table>
+                                <h3 class="mt-5">Punteggio</h3>
+                                <h4>da 0 a 14: assenza di rischio</h4>
+                                <h4>da 15 a 36: presenza di rischio</h4>
+
+                            
+
+
+                                <h3 class="mt-3">Mini</h3>
+                                <table>
+                                    <h3></h3>
+
+                                    <tr>
+                                        <th>Durante il mese scorso ha:</th>
+                                        <td>Si</td>
+                                        <td>No</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1. Mai pensato che sarebbe stato meglio essere morto o desiderato di esserlo?</td>
+                                        <td>
+                                            <input type="radio" name="thought_he_was_dead" value="1" v-model="psyCardMc.thoughtHeWasDead">
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="thought_he_was_dead" value="0" v-model="psyCardMc.thoughtHeWasDead">
+                                        </td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>2. Voluto farsi del male?</td>
+                                        <td>
+                                            <input type="radio"  name="wanted_to_get_hurt" value="1" v-model="psyCardMc.wantedToGetHurt">
+                                        </td>
+                                         <td>
+                                            <input type="radio"  name="wanted_to_get_hurt" value="0" v-model="psyCardMc.wantedToGetHurt">
+                                        </td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>3. Pensato al suicidio?</td>
+                                        <td>
+                                            <input type="radio" name="thought_suicide" value="1" v-model="psyCardMc.thoughtSuicide">
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="thought_suicide" value="0" v-model="psyCardMc.thoughtSuicide">
+                                        </td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>4. pensato a come suicidarsi?</td>
+                                        <td>
+                                            <input type="radio"  name="thought_how_suicide" value="1" v-model="psyCardMc.thoughtHowSuicide">
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="thought_how_suicide" value="0" v-model="psyCardMc.thoughtHowSuicide">
+                                        </td>
+                                    </tr> 
+
+                                    <tr>
+                                        <!-- <td>Nel corso della sua vita:</td> -->
+                                        <td>5. Messo in atto un tentativo di suicidio?</td>
+                                        <td>
+                                            <input type="radio"  name="attempted_suicide" value="1" v-model="psyCardMc.attemptedSuicide">
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="attempted_suicide" value="0" v-model="psyCardMc.attemptedSuicide">
+                                        </td>
+                                    </tr> 
+                                    <tr>
+                                        <td>6. Ha mai messo in atto un tentativo di suicidio?</td>
+                                        <td>
+                                            <input type="radio"  name="never_try_attempted_suicide" value="1" v-model="psyCardMc.neverTryAttemptedSuicide">
+                                        </td>
+                                         <td>
+                                            <input type="radio"  name="never_try_attempted_suicide" value="0" v-model="psyCardMc.neverTryAttemptedSuicide">
+                                        </td>
+                                    </tr> 
+                                </table>
+
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="gravity_ideation_suicide" class="col-form-label col-md-6 col-sm-2 label-align">Livello di gravità dell'ideazione suicidaria</label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="radio" name="gravity_ideation_suicide" value="basso"  v-model="psyCardMc.gravityIdeationSuicide">
+                                                <span>basso</span><br>
+                                                <input type="radio" name="gravity_ideation_suicide" value="medio" v-model="psyCardMc.gravityIdeationSuicide">
+                                                <span>medio</span><br>
+                                                <input type="radio" name="gravity_ideation_suicide" value="elevato" v-model="psyCardMc.gravityIdeationSuicide">
+                                                <span>elevato</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="x_content">
+
+
+                                <!-- <h3 class="mt-3">Questionario sul benessere generale (GHQ-12)</h3> -->
+                                <table>
+                                    <tr>
+                                        <td style="border-right:0"></td>
+                                        <td style="border-right:0"></td>
+                                        <td style="border-left:0"></td>
+                                        <td style="border-left:0">
+                                            <h3><strong>CHECK-LIST VALUTAZIONE RISCHIO AUTOLESIVO E/O SUICIDARIO</strong></h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>1</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_spdc_hospitalizations" value="0" v-model="psyCardMc.checkSpdcHospitalizations">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_spdc_hospitalizations" value="1" v-model="psyCardMc.checkSpdcHospitalizations">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Precedenti ricoveri in acuzie in SPDC negli ultimi 30 giorni</td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>
+                                            <span>2</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio"  name="check_declare_suicide" value="0" v-model="psyCardMc.checkDeclareSuicide">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio"  name="check_declare_suicide" value="1" v-model="psyCardMc.checkDeclareSuicide">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Dichiara (a risulta da documentazione/notizie) di aver tentato il suicidio nell'ultimo mese </td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>
+                                            <span>3</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_thougth_suicide" value="0" v-model="psyCardMc.checkThougthSuicide">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio"  name="check_thougth_suicide" value="1" v-model="psyCardMc.checkThougthSuicide">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Ammette di avere pensieri riguardanti il suicidio e ammette il suicidio come possibile<br>soluzione ai problemi</td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>
+                                            <span>4</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_unusual_level_of_shame" value="0" v-model="psyCardMc.checkUnusualLevelOfShame">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_unusual_level_of_shame" value="1" v-model="psyCardMc.checkUnusualLevelOfShame">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Esprime livelli insoliti e pervasivi di vergogna, colpa, preoccupazione per<br>l'incarcerazione</td>
+                                    </tr> 
+
+                                    <tr>
+                                        <td>
+                                            <span>5</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_confusional_state" value="0" v-model="psyCardMc.checkConfusionalState">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_confusional_state" value="1" v-model="psyCardMc.checkConfusionalState">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Stato confusionale (disorientamento spazio-temporale) </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span>6</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_psychomotor_agitation" value="0" v-model="psyCardMc.checkPsychomotorAgitation">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_psychomotor_agitation" value="1" v-model="psyCardMc.checkPsychomotorAgitation">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Agitazione psicomotoria a grave e incongruo discontrollo degli impulsi</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span>7</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_bizarre_behavior" value="0" v-model="psyCardMc.checkBizarreBehavior">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_bizarre_behavior" value="1" v-model="psyCardMc.checkBizarreBehavior">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Bizzarrie/gravi alterazioni del comportamento e/o del pensiero</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span>8</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_verbal_communication" value="0" v-model="psyCardMc.checkVerbalCommunication">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_verbal_communication" value="1" v-model="psyCardMc.checkVerbalCommunication">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Pianto/appiattimento affettivo/inibizione psicomotoria/assenza di comunicazione verbale</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span>9</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_level_mini" value="0" v-model="psyCardMc.checkLevelMini">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_level_mini" value="1" v-model="psyCardMc.checkLevelMini">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Livello alto di gravità del M.I.N.I.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span>10</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_general_well_being" value="0" v-model="psyCardMc.checkGeneralWellBeing">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_general_well_being" value="1" v-model="psyCardMc.checkGeneralWellBeing">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Questionario sul benessere Generale (GHQ-12)</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span>11</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_vain_form_violence" value="0" v-model="psyCardMc.checkVainFormViolence">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_vain_form_violence" value="1" v-model="psyCardMc.checkVainFormViolence">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Forme vane di violenza subita negli ultimi 15 giorni </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span>12</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_come_from_forced_isolation" value="0" v-model="psyCardMc.checkComeFromForcedIsolation">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_come_from_forced_isolation" value="1" v-model="psyCardMc.checkComeFromForcedIsolation">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Provenienza da un isolamento forzato</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span>13</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_isolation_social_network" value="0" v-model="psyCardMc.checkIsolationSocialNetwork">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_isolation_social_network" value="1" v-model="psyCardMc.checkIsolationSocialNetwork">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Isolamento delle reti sociali</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span>14</span>
+                                        </td>
+                                         <td>
+                                            <input type="radio" name="check_uncertainty_about_future" value="0" v-model="psyCardMc.checkUncertaintyAboutFuture">
+                                            <span>no</span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="check_uncertainty_about_future" value="1" v-model="psyCardMc.checkUncertaintyAboutFuture">
+                                            <span>si</span>
+                                        </td>
+                                        <td>Incertezza sulle prospettive future, sul lavoro e sulle relazioni</td>
+                                    </tr>
+                                </table>  
                                 
+                                <p class="mt-5">
+                                    Gli <strong>Items 1, 2, 5, 6, 8 e 9</strong> anche quando sono presenti da soli, concorrono all'ipotesi di presenza di 
+                                    <br>
+                                    rischio <strong>autolesivo/suicidario</strong>.
+                                </p>
+                                <p>
+                                    Gli <strong>Items</strong>3, 4, 7, 10, 11, 12, 13 e 14 devono essere presenti in associazione tra loro, <strong>almeno</strong> 4, per 
+                                    <br>
+                                    concorrere all'ipotesi di presenza di <strong>rischio autolesivo/suicidario</strong>.
+                                </p>
+
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="check_conclusion" class="col-form-label col-md-6 col-sm-2 label-align">Conclusioni</label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="radio" name="check_conclusion" value="non necessario, valutazione diagnostica e presa in carico" v-model="psyCardMc.checkConclusion">
+                                                <span>non necessario, al momento, valutazione diagnostica e presa in carico</span><br>
+                                                <input type="radio" name="check_conclusion" value="necessario l'avvio percorso valutazione diagnostica" v-model="psyCardMc.checkConclusion">
+                                                <span>necessario l'avvio di un percorso di valutazione diagnostica</span><br>
+                                                <input type="radio" name="check_conclusion" value="necessario l'avvio di un trattamento in urgenza/valutazione diagnostica" v-model="psyCardMc.checkConclusion">
+                                                <span>necessario l'avvio di un trattamento in urgenza e di una valutazione diagnostica</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="x_content">
+                                <h4 class="mt-5"><strong>CONCLUSIONI VALUTAZIONE RISCHIO AUTOLESIVO E/O SUICIDARIO</strong></h4>
+                                <div style="border:2px solid black; max-width: 800px; max-height: 650px; margin-left: 10px;margin-bottom: 10px;">
+                                    <!-- <h4><strong>SEGNALAZIONE PER RISCHIO AUTOLESIVO E/O SUICIDARIO</strong></h4> -->
+
+                                    <div class="row" style="margin-top:20px;">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="item form-group">
+                                                <label for="risk_assessment_conclusions" class="col-form-label col-md-6 col-sm-2 label-align"><strong>SEGNALAZIONE PER RISCHIO AUTOLESIVO E/O SUICIDARIO</strong></label>
+                                                <div class="col-md-12 col-sm-12">
+                                                    <input type="radio" name="risk_assessment_conclusions" value="1" v-model="psyCardMc.riskAssessmentConclusions">
+                                                    <span>Si</span>
+                                                    <input type="radio" name="risk_assessment_conclusions" value="0" v-model="psyCardMc.riskAssessmentConclusions">
+                                                    <span>No</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+
+                                    <!-- checkkkkkkkkkkkkkk -->
+                                    <div class="row" style="margin-top:20px;">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="item form-group">
+                                                <label for="request_activation_of_measures" class="col-form-label col-md-6 col-sm-2 label-align">Richiesta attivazione di misure di:</label>
+                                                <div class="col-md-12 col-sm-12">
+                                                    <input type="checkbox" name="request_activation_normal_surveillance" value="Sorveglianza normale" v-model="psyCardMc.requestActivationNormalSurveillance">
+                                                    <span>Sorveglianza normale</span><br>
+                                                    <input type="checkbox" name="request_activation_multiple_room" value="Stanza multipla" v-model="psyCardMc.request_activationMultipleRoom">
+                                                    <span>Stanza multipla (per supporters)</span><br>
+                                                    <input type="checkbox" name="request_activation_big_surveillance" value="Grande sorveglianza" v-model="psyCardMc.requestActivationBigSurveillance">
+                                                    <span>Grande sorveglianza</span><br>
+                                                    <input type="checkbox" name="request_activation_visual_surveillance" value="Sorveglianza a vista" v-model="psyCardMc.requestActivationVisualSurveillance">
+                                                    <span>Sorveglianza a vista</span><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div> 
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="first_medical_history_visit" class="col-form-label col-md-6 col-sm-2 label-align"><strong>a. ANAMNESI</strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="text" name="first_medical_history_visit" v-model="psyCardMc.firstMedicalHistoryVisit">                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="first_status" class="col-form-label col-md-6 col-sm-2 label-align"><strong>b. STATUS</strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="text" name="first_status" v-model="psyCardMc.firstStatus">                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="first_terapy" class="col-form-label col-md-6 col-sm-2 label-align"><strong>c. TERAPIA</strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="text" name="first_terapy" v-model="psyCardMc.firstTerapy">                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="first_orientation" class="col-form-label col-md-6 col-sm-2 label-align"><strong>d. ORIENTAMENTO DIAGNOSTICO</strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="text" name="first_orientation" v-model="psyCardMc.firstOrientation">                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                
+                                
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="intervention_plan_conclusions" class="col-form-label col-md-6 col-sm-2 label-align"><strong>e. Conclusioni, si propone un PIANO DI INTERVENTO</strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="intervention_plan_advice" value="Consulenza" v-model="psyCardMc.interventionPlanAdvice">
+                                                <span>CONSULENZA (eventuali consulenze su richiesta;non necessario, al momento, trattamento terapeutico continuativo)</span><br>
+                                                <input type="checkbox" name="intervention_plan_taking_into_care" value="Assunzione in cura" v-model="psyCardMc.interventionPlanTakingIntoCare">
+                                                <span>ASSUNZIONE IN CURA (con trattamento farmacologico sintomatico continuativo, con monitoraggio; con trattamento psicologico, con monitoraggio;)</span><br>
+                                                <input type="checkbox" name="intervention_plan_integrated_handling" value="Sorveglianza a vista" v-model="psyCardMc.interventionPlanIntegratedHandling">
+                                                <span>PRESA IN CARICO INTEGRATA (con Piano di Trattamento individualizzato ed integrato, con presa in carico multidisciplinare)</span><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="specific_prescription_suggestions" class="col-form-label col-md-6 col-sm-2 label-align"><strong>SPECIFICHE PRESCRIZIONI SUGGERIMENTI</strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="radio" name="specific_prescription_suggestions" value="Consulenza" v-model="psyCardMc.specificPrescriptionSuggestions">
+                                                <span>RICHIESTA INVIO/TRASFERIMENTO IN SEZIONI SPECIFICHE AI SENSI ART. 111, 112, 148</span><br>
+                                                <input type="radio" name="specific_prescription_suggestions" value="Assunzione in cura" v-model="psyCardMc.specificPrescriptionSuggestions">
+                                                <span>SUGGERIMENTI DI COLLOCAZIONI PARTICOLARI IN ISTITUTO</span><br>
+                                                <input type="radio" name="specific_prescription_suggestions" value="Sorveglianza a vista" v-model="psyCardMc.specificPrescriptionSuggestions">
+                                                <span>RICHIESTA MISURA DI SORVEGLIANZA</span><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
 
+                            <div class="x_content">
+                                <h3><strong> Visita psichiatrica di controllo</strong></h3>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="psychiatric_visit_status" class="col-form-label col-md-6 col-sm-2 label-align"><strong>a. STATUS</strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="text" name="psychiatric_visit_status" v-model="psyCardMc.psychiatricVisitStatus">                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="psychiatric_visit_terapy" class="col-form-label col-md-6 col-sm-2 label-align"><strong>b. TERAPIA</strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="text" name="psychiatric_visit_terapy" v-model="psyCardMc.psychiatricVisitTerapy">                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="psychiatric_visit_orientation" class="col-form-label col-md-6 col-sm-2 label-align"><strong>c. ORIENTAMENTO DIAGNOSTICO</strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="text" name="psychiatric_visit_orientation" v-model="psyCardMc.psychiatricVisitOrientation">                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <!-- controllo -->
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="psychiatric_visit_plan_conclusions" class="col-form-label col-md-6 col-sm-2 label-align"><strong>d. Conclusioni, si propone un PIANO DI INTERVENTO</strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="checkbox" name="psychiatric_visit_plan_conclusions" value="Consulenza" v-model="psyCardMc.psychiatricVisitPlanConclusions">
+                                                <span>CONSULENZA (eventuali consulenze su richiesta;non necessario, al momento, trattamento terapeutico continuativo)</span><br>
+                                                <input type="checkbox" name="psychiatric_visit_plan_conclusions" value="Assunzione in cura" v-model="psyCardMc.psychiatricVisitPlanConclusions">
+                                                <span>ASSUNZIONE IN CURA (con trattamento farmacologico sintomatico continuativo, con monitoraggio; con trattamento psicologico, con monitoraggio;)</span><br>
+                                                <input type="checkbox" name="psychiatric_visit_plan_conclusions" value="Sorveglianza a vista" v-model="psyCardMc.psychiatricVisitPlanConclusions">
+                                                <span>PRESA IN CARICO INTEGRATA (con Piano di Trattamento individualizzato ed integrato, con presa in carico multidisciplinare)</span><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="item form-group">
+                                            <label for="psychiatric_visit_prescription_suggestions" class="col-form-label col-md-6 col-sm-2 label-align"><strong>SPECIFICHE PRESCRIZIONI SUGGERIMENTI</strong></label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <input type="radio" name="psychiatric_visit_prescription_suggestions" value="Consulenza" v-model="psyCardMc.psychiatricVisitPrescriptionSuggestions">
+                                                <span>RICHIESTA INVIO/TRASFERIMENTO IN SEZIONI SPECIFICHE AI SENSI ART. 111, 112, 148</span><br>
+                                                <input type="radio" name="psychiatric_visit_prescription_suggestions" value="Assunzione in cura" v-model="psyCardMc.psychiatricVisitPrescriptionSuggestions">
+                                                <span>SUGGERIMENTI DI COLLOCAZIONI PARTICOLARI IN ISTITUTO</span><br>
+                                                <input type="radio" name="psychiatric_visit_prescription_suggestions" value="Sorveglianza a vista" v-model="psyCardMc.psychiatricVisitPrescriptionSuggestions">
+                                                <span>RICHIESTA MISURA DI SORVEGLIANZA</span><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            
+
+                           psycard: {{ psyCardMc }}  psyhow:{{ psyhowFeel }}
                             <div class="ln_solid"></div>
                             <div class="item form-group">
                                 <div class="pull-right">
@@ -799,6 +1706,7 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  margin-left:1rem;
 }
 
 td, th {
@@ -807,6 +1715,15 @@ td, th {
   padding: 8px;
 }
 
+li{
+    list-style: none;
+}
+
+*{
+    // padding-left: 3px;
+    // margin: 2px;
+    box-sizing: border-box;
+}
 
 </style>
 
@@ -855,6 +1772,9 @@ export default {
             date:new Date(),
 
             psyCardMc:{},
+            psyhowFeel:{},
+
+
 
             panel:'mc',
 
@@ -877,7 +1797,25 @@ export default {
         this.getPsyMembershipCardsByUserInstanceId(1);
     },
 
+
+
     methods: {
+
+
+        calculateSum() {
+            // Calcola la somma delle opzioni selezionate
+            //this.sum = parseInt(this.selectedOption) || 0;
+            
+            let i=0;
+            for (const property in this.psyhowFeel) {
+                if(this.psyhowFeel[property]!==null){
+                    i += parseInt(this.psyhowFeel[property]);
+                }
+            }
+            this.sum=i;
+
+        },
+
  
         addPsyMembershipCard(panel){
             let _wm = this;
@@ -913,9 +1851,14 @@ export default {
                     }
                 }
                 form.append('section', 'mc');
+                if(!this.isObjEmpty(this.psyhowFeel)){
+                    let _psyhowFeel=JSON.stringify(this.psyhowFeel);
+                    //alert(JSON.stringify(this.psyhowFeel))
+                    form.append('psyhowFeel', _psyhowFeel);
+                }
                 if(!this.isObjEmpty(this.psyCardMc)){
+                    // alert(JSON.stringify(this.psyCardMc));
                     let _psyCardMc=JSON.stringify(this.psyCardMc);
-                    alert(JSON.stringify(this.psyCardMc))
                     form.append('psyCardMc', _psyCardMc);
                 }
             }else if(_panel=='mh'){
@@ -1043,7 +1986,7 @@ export default {
                             _wm.psyCardMc.communicateItalian =_SocialFold.communicate_italian;
                             _wm.psyCardMc.communicate = _SocialFold.communicate 	
                             _wm.psyCardMc.maritalStatus = _SocialFold.marital_status 
-                            _wm.psyCardMc.son = _SocialFold.son
+                            _wm.psyCardMc.sons = _SocialFold.sons
                             _wm.psyCardMc.sonNumber = _SocialFold.son_number 
                             _wm.psyCardMc.sonAge = _SocialFold.son_age
                             _wm.psyCardMc.residenceNot = _SocialFold.residence_not
@@ -1094,7 +2037,77 @@ export default {
                             _wm.psyCardMc.sleepWakeRhythm = _SocialFold.sleep_wake_rhythm
                             _wm.psyCardMc.futureProject = _SocialFold.future_project
 
-                            _wm.allPsyMembershipCards=response.data.allPsySocialFolders;
+
+                            _wm.psyCardMc.accessToTheInterviewNote = _SocialFold.access_to_the_interview_note
+                            _wm.psyCardMc.trafficWardenNote = _SocialFold.traffic_warden_note
+                            _wm.psyCardMc.lucidNote = _SocialFold.lucid
+                            _wm.psyCardMc.orientatedInTheThreeParameterNote = _SocialFold.orientated_in_the_three_parameter_note
+                            _wm.psyCardMc.umorNote = _SocialFold.umor_note
+                            _wm.psyCardMc.anxietyNote = _SocialFold.anxiety_note
+                            _wm.psyCardMc.alteredPerceptionNote = _SocialFold.altered_perception_note
+                            _wm.psyCardMc.appetiteNote = _SocialFold.appetite_note
+                            _wm.psyCardMc.alteredFormThoughtNote = _SocialFold.altered_form_thought_note
+                            _wm.psyCardMc.sleepWakeRhythmNote = _SocialFold.sleep_wake_rhythm_note
+                            _wm.psyCardMc.futureProjectNote = _SocialFold.future_project_note
+
+
+                            _wm.psyhowFeel.wellToFocus = _SocialFold.well_to_focus 
+                            _wm.psyhowFeel.wellLostSleep = _SocialFold.well_lost_sleep
+                            _wm.psyhowFeel.wellProductive = _SocialFold.well_productive
+                            _wm.psyhowFeel.wellMakeDecision = _SocialFold.well_make_decision
+                            _wm.psyhowFeel.wellPression = _SocialFold.well_pression
+                            _wm.psyhowFeel.wellNotAble = _SocialFold.well_not_able
+                            _wm.psyhowFeel.wellTimeForHimself = _SocialFold.well_time_for_himself
+                            _wm.psyhowFeel.wellProblemSolving = _SocialFold.well_problem_solving
+                            _wm.psyhowFeel.wellUnhappy = _SocialFold.well_unhappy
+                            _wm.psyhowFeel.wellLostConfidence = _SocialFold.well_lost_confidence
+                            _wm.psyhowFeel.wellLowerEsteem = _SocialFold.well_lower_esteem
+                            _wm.psyhowFeel.wellOverallHappy = _SocialFold.well_overall_happy
+
+
+                            _wm.psyCardMc.thoughtHeWasDead = _SocialFold.thought_he_was_dead 
+                            _wm.psyCardMc.wantedToGetHurt = _SocialFold.wanted_to_get_hurt
+                            _wm.psyCardMc.thoughtSuicide = _SocialFold.thought_suicide
+                            _wm.psyCardMc.thoughtHowSuicide = _SocialFold.thought_how_suicide
+                            _wm.psyCardMc.attemptedSuicide = _SocialFold.attempted_suicide
+                            _wm.psyCardMc.neverTryAttemptedSuicide = _SocialFold.never_try_attempted_suicide
+
+                            _wm.psyCardMc.gravityIdeationSuicide = _SocialFold.gravity_ideation_suicide
+
+
+                            _wm.psyCardMc.checkSpdcHospitalizations = _SocialFold.check_spdc_hospitalizations
+                            _wm.psyCardMc.checkDeclareSuicide = _SocialFold.check_declare_suicide
+                            _wm.psyCardMc.checkThougthSuicide = _SocialFold.check_thougth_suicide
+                            _wm.psyCardMc.checkUnusualLevelOfShame = _SocialFold.check_unusual_level_of_shame
+                            _wm.psyCardMc.checkConfusionalState = _SocialFold.check_confusional_state
+                            _wm.psyCardMc.checkPsychomotorAgitation = _SocialFold.check_psychomotor_agitation
+                            _wm.psyCardMc.checkBizarreBehavior = _SocialFold.check_bizarre_behavior
+                            _wm.psyCardMc.checkVerbalCommunication = _SocialFold.check_verbal_communication
+                            _wm.psyCardMc.checkLevelMini = _SocialFold.check_level_mini
+                            _wm.psyCardMc.checkGeneralWellBeing = _SocialFold.check_general_well_being
+                            _wm.psyCardMc.checkVainFormViolence = _SocialFold.check_vain_form_violence
+                            _wm.psyCardMc.checkComeFromForcedIsolation = _SocialFold.check_come_from_forced_isolation
+                            _wm.psyCardMc.checkIsolationSocialNetwork = _SocialFold.check_isolation_social_network
+                            _wm.psyCardMc.checkUncertaintyAboutFuture = _SocialFold.check_uncertainty_about_future
+                            _wm.psyCardMc.checkConclusion = _SocialFold.check_conclusion
+
+
+                            _wm.psyCardMc.riskAssessmentConclusions = _SocialFold.risk_assessment_conclusions
+                            _wm.psyCardMc.requestActivationOfMeasures = _SocialFold.request_activation_of_measures
+
+                            _wm.psyCardMc.first_medical_history_visit = _SocialFold.firstMedicalHistoryVisit
+                            _wm.psyCardMc.first_status = _SocialFold.firstStatus
+                            _wm.psyCardMc.first_terapy = _SocialFold.firstTerapy
+                            _wm.psyCardMc.first_orientation = _SocialFold.firstOrientation
+
+                            _wm.psyCardMc.intervention_plan_conclusions = _SocialFold.interventionPlanConclusions
+                            _wm.psyCardMc.intervention_plan_advice = _SocialFold.interventionPlanAdvice
+                            _wm.psyCardMc.intervention_plan_taking_into_care = _SocialFold.interventionPlanTakingIntoCare
+                            _wm.psyCardMc.intervention_plan_integrated_handling = _SocialFold.interventionPlanIntegratedHandling
+
+
+                            
+                            _wm.allPsyMembershipCards=response.data.allPsyMembershipCards;
                         }else{
                             _wm.btnMcSend="Salva";
                         }

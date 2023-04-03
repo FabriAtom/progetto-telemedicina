@@ -133,7 +133,6 @@ class PsyCardsController extends Controller
     }
 
     // PsySuicideAssessment
-
     public function getCurrentSuicideAssessmentByPsyId(Request $request){
         if (PsySuicideAssessment::where('psy_card_id', '=', $request['id'])->exists()) {
             $query=PsySuicideAssessment::where('psy_card_id', '=', $request['id'])->orderBy('sa_date', 'desc');
@@ -145,7 +144,6 @@ class PsyCardsController extends Controller
     }
     
     // PsyMentalHealthDepartment
-
     public function getCurrentMentalHealthDepartmentByPsyId(Request $request){
         if (PsyMentalHealthDepartment::where('psy_card_id', '=', $request['id'])->exists()) {
             $query=PsyMentalHealthDepartment::where('psy_card_id', '=', $request['id'])->orderBy('mh_date', 'desc');
@@ -157,7 +155,6 @@ class PsyCardsController extends Controller
     }
 
     // // PsyRehabilitationPsychiatricCard
-
     public function getCurrentRehabilitationPsychiatricCardByPsyId(Request $request){
         if (PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id'])->exists()) {
             $query=PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id'])->orderBy('rp_date', 'desc');
@@ -1018,8 +1015,8 @@ class PsyCardsController extends Controller
             if(array_key_exists('maritalStatus',$psyCardArr)){
                 $_psyMemb->marital_status=$psyCardArr['maritalStatus'];
             }
-            if(array_key_exists('son',$psyCardArr)){
-                $_psyMemb->son=$psyCardArr['son'];
+            if(array_key_exists('sons',$psyCardArr)){
+                $_psyMemb->sons=$psyCardArr['sons'];
             }
             if(array_key_exists('sonNumber',$psyCardArr)){
                 $_psyMemb->son_number=$psyCardArr['sonNumber'];
@@ -1124,7 +1121,7 @@ class PsyCardsController extends Controller
                 $_psyMemb->access_to_the_interview=$psyCardArr['accessToTheInterview'];
             }
             if(array_key_exists('trafficWarden',$psyCardArr)){
-                $_psyMemb->pathological_anxious=$psyCardArr['trafficWarden'];
+                $_psyMemb->traffic_warden=$psyCardArr['trafficWarden'];
             }
             if(array_key_exists('lucid',$psyCardArr)){
                 $_psyMemb->lucid=$psyCardArr['lucid'];
@@ -1153,6 +1150,193 @@ class PsyCardsController extends Controller
             if(array_key_exists('futureProject',$psyCardArr)){
                 $_psyMemb->future_project=$psyCardArr['futureProject'];
             }
+
+
+            if(array_key_exists('accessToTheInterviewNote',$psyCardArr)){
+                $_psyMemb->access_to_the_interview_note=$psyCardArr['accessToTheInterviewNote'];
+            }
+            if(array_key_exists('trafficWardenNote',$psyCardArr)){
+                $_psyMemb->traffic_warden_note=$psyCardArr['trafficWardenNote'];
+            }
+            if(array_key_exists('lucidNote',$psyCardArr)){
+                $_psyMemb->lucid_note=$psyCardArr['lucidNote'];
+            }
+            if(array_key_exists('orientatedInTheThreeParameterNote',$psyCardArr)){
+                $_psyMemb->orientated_in_the_three_parameter_note=$psyCardArr['orientatedInTheThreeParameterNote'];
+            }
+            if(array_key_exists('umorNote',$psyCardArr)){
+                $_psyMemb->umor_note=$psyCardArr['umorNote'];
+            }
+            if(array_key_exists('anxietyNote',$psyCardArr)){
+                $_psyMemb->anxiety_note=$psyCardArr['anxietyNote'];
+            }
+            if(array_key_exists('alteredPerceptionNote',$psyCardArr)){
+                $_psyMemb->altered_perception_note=$psyCardArr['alteredPerceptionNote'];
+            }
+            if(array_key_exists('appetiteNote',$psyCardArr)){
+                $_psyMemb->appetite_note=$psyCardArr['appetiteNote'];
+            }
+            if(array_key_exists('alteredFormThoughtNote',$psyCardArr)){
+                $_psyMemb->altered_form_thought_note=$psyCardArr['alteredFormThoughtNote'];
+            }
+            if(array_key_exists('sleepWakeRhythmNote',$psyCardArr)){
+                $_psyMemb->sleep_wake_rhythm_note=$psyCardArr['sleepWakeRhythmNote'];
+            }
+            if(array_key_exists('futureProjectNote',$psyCardArr)){
+                $_psyMemb->future_project_note=$psyCardArr['futureProjectNote'];
+            }
+
+
+            if(array_key_exists('thoughtHeWasDead',$psyCardArr)){
+                $_psyMemb->thought_he_was_dead=$psyCardArr['thoughtHeWasDead'];
+            }
+            if(array_key_exists('wantedToGetHurt',$psyCardArr)){
+                $_psyMemb->wanted_to_get_hurt=$psyCardArr['wantedToGetHurt'];
+            }
+            if(array_key_exists('thoughtSuicide',$psyCardArr)){
+                $_psyMemb->thought_suicide=$psyCardArr['thoughtSuicide'];
+            }
+            if(array_key_exists('thoughtHowSuicide',$psyCardArr)){
+                $_psyMemb->thought_how_suicide=$psyCardArr['thoughtHowSuicide'];
+            }
+            if(array_key_exists('attemptedSuicide',$psyCardArr)){
+                $_psyMemb->attempted_suicide=$psyCardArr['attemptedSuicide'];
+            }
+            if(array_key_exists('neverTryAttemptedSuicide',$psyCardArr)){
+                $_psyMemb->never_try_attempted_suicide=$psyCardArr['neverTryAttemptedSuicide'];
+            }
+
+            if(array_key_exists('gravityIdeationSuicide',$psyCardArr)){
+                $_psyMemb->gravity_ideation_suicide=$psyCardArr['gravityIdeationSuicide'];
+            }
+
+
+
+
+            if(array_key_exists('checkSpdcHospitalizations',$psyCardArr)){
+                $_psyMemb->check_spdc_hospitalizations=$psyCardArr['checkSpdcHospitalizations'];
+            }
+            if(array_key_exists('checkDeclareSuicide',$psyCardArr)){
+                $_psyMemb->check_declare_suicide=$psyCardArr['checkDeclareSuicide'];
+            }
+            if(array_key_exists('checkThougthSuicide',$psyCardArr)){
+                $_psyMemb->check_thougth_suicide=$psyCardArr['checkThougthSuicide'];
+            }
+            if(array_key_exists('checkUnusualLevelOfShame',$psyCardArr)){
+                $_psyMemb->check_unusual_level_of_shame=$psyCardArr['checkUnusualLevelOfShame'];
+            }
+            if(array_key_exists('checkConfusionalState',$psyCardArr)){
+                $_psyMemb->check_confusional_state=$psyCardArr['checkConfusionalState'];
+            }
+
+            if(array_key_exists('checkPsychomotorAgitation',$psyCardArr)){
+                $_psyMemb->check_psychomotor_agitation=$psyCardArr['checkPsychomotorAgitation'];
+            }
+            if(array_key_exists('checkBizarreBehavior',$psyCardArr)){
+                $_psyMemb->check_bizarre_behavior=$psyCardArr['checkBizarreBehavior'];
+            }
+            if(array_key_exists('checkVerbalCommunication',$psyCardArr)){
+                $_psyMemb->check_verbal_communication=$psyCardArr['checkVerbalCommunication'];
+            }
+            if(array_key_exists('checkLevelMini',$psyCardArr)){
+                $_psyMemb->check_level_mini=$psyCardArr['checkLevelMini'];
+            }
+            if(array_key_exists('checkGeneralWellBeing',$psyCardArr)){
+                $_psyMemb->check_general_well_being=$psyCardArr['checkGeneralWellBeing'];
+            }
+
+            if(array_key_exists('checkVainFormViolence',$psyCardArr)){
+                $_psyMemb->check_vain_form_violence=$psyCardArr['checkVainFormViolence'];
+            }
+            if(array_key_exists('checkComeFromForcedIsolation',$psyCardArr)){
+                $_psyMemb->check_come_from_forced_isolation=$psyCardArr['checkComeFromForcedIsolation'];
+            }
+            if(array_key_exists('checkIsolationSocialNetwork',$psyCardArr)){
+                $_psyMemb->check_isolation_social_network=$psyCardArr['checkIsolationSocialNetwork'];
+            }
+            if(array_key_exists('checkUncertaintyAboutFuture',$psyCardArr)){
+                $_psyMemb->check_uncertainty_about_future=$psyCardArr['checkUncertaintyAboutFuture'];
+            }
+            if(array_key_exists('checkConclusion',$psyCardArr)){
+                $_psyMemb->check_conclusion=$psyCardArr['checkConclusion'];
+            }
+
+            if(array_key_exists('riskAssessmentConclusions',$psyCardArr)){
+                $_psyMemb->risk_assessment_conclusions=$psyCardArr['riskAssessmentConclusions'];
+            }
+
+
+            if(array_key_exists('requestActivationOfMeasures',$psyCardArr)){
+                $_psyMemb->request_activation_of_measures=$psyCardArr['requestActivationOfMeasures'];
+            }
+
+            if(array_key_exists('requestActivationNormalSurveillance',$psyCardArr)){
+                $_psyMemb->request_activation_normal_surveillance=$psyCardArr['requestActivationNormalSurveillance'];
+            }
+            if(array_key_exists('requestActivationMultipleRoom',$psyCardArr)){
+                $_psyMemb->request_activation_multiple_room=$psyCardArr['requestActivationMultipleRoom'];
+            }
+            if(array_key_exists('requestActivationBigSurveillance',$psyCardArr)){
+                $_psyMemb->request_activation_big_surveillance=$psyCardArr['requestActivationBigSurveillance'];
+            }
+            if(array_key_exists('requestActivationVisualSurveillance',$psyCardArr)){
+                $_psyMemb->request_activation_visual_surveillance=$psyCardArr['requestActivationVisualSurveillance'];
+            }
+
+
+
+
+            if(array_key_exists('firstMedicalHistoryVisit',$psyCardArr)){
+                $_psyMemb->first_medical_history_visit=$psyCardArr['firstMedicalHistoryVisit'];
+            }
+            if(array_key_exists('firstStatus',$psyCardArr)){
+                $_psyMemb->first_status=$psyCardArr['firstStatus'];
+            }
+            if(array_key_exists('firstTerapy',$psyCardArr)){
+                $_psyMemb->first_terapy=$psyCardArr['firstTerapy'];
+            }
+            if(array_key_exists('firstOrientation',$psyCardArr)){
+                $_psyMemb->first_orientation=$psyCardArr['firstOrientation'];
+            }
+
+            if(array_key_exists('interventionPlanConclusions',$psyCardArr)){
+                $_psyMemb->intervention_plan_conclusions=$psyCardArr['interventionPlanConclusions'];
+            }
+            if(array_key_exists('interventionPlanAdvice',$psyCardArr)){
+                $_psyMemb->intervention_plan_advice=$psyCardArr['interventionPlanAdvice'];
+            }
+            if(array_key_exists('interventionPlanTakingIntoCare',$psyCardArr)){
+                $_psyMemb->intervention_plan_taking_into_care=$psyCardArr['interventionPlanTakingIntoCare'];
+            }
+            if(array_key_exists('interventionPlanIntegratedHandling',$psyCardArr)){
+                $_psyMemb->intervention_plan_integrated_handling=$psyCardArr['interventionPlanIntegratedHandling'];
+            }
+
+
+
+
+
+
+            if(array_key_exists('specificPrescriptionSuggestions',$psyCardArr)){
+                $_psyMemb->specific_prescription_suggestions=$psyCardArr['specificPrescriptionSuggestions'];
+            } 
+
+
+            if(array_key_exists('psychiatricVisitStatus',$psyCardArr)){
+                $_psyMemb->psychiatric_visit_status=$psyCardArr['psychiatricVisitStatus'];
+            }
+            if(array_key_exists('psychiatricVisitTerapy',$psyCardArr)){
+                $_psyMemb->psychiatric_visit_terapy=$psyCardArr['psychiatricVisitTerapy'];
+            }
+            if(array_key_exists('psychiatricVisitOrientation',$psyCardArr)){
+                $_psyMemb->psychiatric_visit_orientation=$psyCardArr['psychiatricVisitOrientation'];
+            }
+            if(array_key_exists('psychiatricVisitPlanConclusions',$psyCardArr)){
+                $_psyMemb->psychiatric_visit_plan_conclusions=$psyCardArr['psychiatricVisitPlanConclusions'];
+            }
+            if(array_key_exists('psychiatricVisitPrescriptionSuggestions',$psyCardArr)){
+                $_psyMemb->psychiatric_visit_prescription_suggestions=$psyCardArr['psychiatricVisitPrescriptionSuggestions'];
+            } 
         }
         $_psyMemb->save();
 
