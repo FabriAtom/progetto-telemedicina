@@ -1981,156 +1981,156 @@ export default {
                             _wm.mCSaved=true;
                             _wm.btnMcSend="Aggiorna";
 
-                            let _SocialFold=response.data.PsySocialFolder;
+                            let _MemberShip=response.data.PsyMembershipCard;
                             // _wm.psyCardId=response.data.psyCard.id;
 
                             _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyMcDoctorId = _SocialFold.id_doctor;
+                            _wm.psyMcDoctorId = _MemberShip.id_doctor;
 
-                            _wm.psyMcDoctorName = _SocialFold.doctor_name;
-                            _wm.psyMcDoctorLastname = _SocialFold.doctor_lastname;
-
-                            
-                            _wm.psyCardMc.communicateItalian =_SocialFold.communicate_italian;
-                            _wm.psyCardMc.communicate = _SocialFold.communicate 	
-                            _wm.psyCardMc.maritalStatus = _SocialFold.marital_status 
-                            _wm.psyCardMc.sons = _SocialFold.sons
-                            _wm.psyCardMc.sonNumber = _SocialFold.son_number 
-                            _wm.psyCardMc.sonAge = _SocialFold.son_age
-                            _wm.psyCardMc.residenceNot = _SocialFold.residence_not
-
-                            _wm.psyCardMc.residence = _SocialFold.residence 
-                            _wm.psyCardMc.titleStudy = _SocialFold.title_study
-                            _wm.psyCardMc.situationHousing = _SocialFold.situation_housing 
-                            _wm.psyCardMc.situationWork = _SocialFold.situation_work
-                            _wm.psyCardMc.dateStartPrison = _SocialFold.date_start_prison 
-                            _wm.psyCardMc.dateStartInInstitute = _SocialFold.date_start_in_institute
-                            _wm.psyCardMc.firstExperiencePrison = _SocialFold.first_experience_prison
+                            _wm.psyMcDoctorName = _MemberShip.doctor_name;
+                            _wm.psyMcDoctorLastname = _MemberShip.doctor_lastname;
 
                             
-                            _wm.psyCardMc.provenience = _SocialFold.provenience
-                            _wm.psyCardMc.legalPosition = _SocialFold.legal_position 
+                            _wm.psyCardMc.communicateItalian =_MemberShip.communicate_italian;
+                            _wm.psyCardMc.communicate = _MemberShip.communicate 	
+                            _wm.psyCardMc.maritalStatus = _MemberShip.marital_status 
+                            _wm.psyCardMc.sons = _MemberShip.sons
+                            _wm.psyCardMc.sonNumber = _MemberShip.son_number 
+                            _wm.psyCardMc.sonAge = _MemberShip.son_age
+                            _wm.psyCardMc.residenceNot = _MemberShip.residence_not
 
-                            _wm.psyCardMc.endOfSentence = _SocialFold.end_of_sentence
-                            _wm.psyCardMc.economicResource = _SocialFold.economic_resource 
+                            _wm.psyCardMc.residence = _MemberShip.residence 
+                            _wm.psyCardMc.titleStudy = _MemberShip.title_study
+                            _wm.psyCardMc.situationHousing = _MemberShip.situation_housing 
+                            _wm.psyCardMc.situationWork = _MemberShip.situation_work
+                            _wm.psyCardMc.dateStartPrison = _MemberShip.date_start_prison 
+                            _wm.psyCardMc.dateStartInInstitute = _MemberShip.date_start_in_institute
+                            _wm.psyCardMc.firstExperiencePrison = _MemberShip.first_experience_prison
 
-                            _wm.psyCardMc.previousTreatmentForProblem = _SocialFold.previous_treatment_for_problem 
-                            _wm.psyCardMc.previousTreatmentFarmacology = _SocialFold.previous_treatment_farmacology 
-                            _wm.psyCardMc.previousDiagnosesOfMentalDisorder = _SocialFold.previous_diagnoses_of_mental_disorder 
-                            _wm.psyCardMc.previousDiagnosisOfDrugAbuse = _SocialFold.previous_diagnosis_of_drug_abuse
-                            _wm.psyCardMc.previousHospitalizationSpdc = _SocialFold.previous_hospitalization_spdc
-                            _wm.psyCardMc.previousHospitalizationEmergency = _SocialFold.previous_hospitalization_emergency 
-                            _wm.psyCardMc.pathologicalAttemptedSuicide = _SocialFold.pathological_attempted_suicide 
-                            _wm.psyCardMc.pathologicalDesperate = _SocialFold.pathological_desperate
-                            _wm.psyCardMc.pathologicalAnxious = _SocialFold.pathological_anxious 
-                            _wm.psyCardMc.pathologicalActive = _SocialFold.pathological_active 
-                            _wm.psyCardMc.pathologicalStrangeThought = _SocialFold.pathological_strange_thought
+                            
+                            _wm.psyCardMc.provenience = _MemberShip.provenience
+                            _wm.psyCardMc.legalPosition = _MemberShip.legal_position 
 
-                            _wm.psyCardMc.pathologicalSleepless = _SocialFold.pathological_sleepless 
-                            _wm.psyCardMc.pathologicalNoFamily = _SocialFold.pathological_no_family
-                            _wm.psyCardMc.pathologicalThoughtSuicide = _SocialFold.pathological_thought_suicide
-                            _wm.psyCardMc.pathologicalAddictiveBehavior = _SocialFold.pathological_addictive_behavior
-                            _wm.psyCardMc.pathologicalClaimsInjuries = _SocialFold.pathological_claims_injuries
-                            _wm.psyCardMc.pathologicalShameLevel = _SocialFold.pathological_shame_level
+                            _wm.psyCardMc.endOfSentence = _MemberShip.end_of_sentence
+                            _wm.psyCardMc.economicResource = _MemberShip.economic_resource 
 
-                            _wm.psyCardMc.accessToTheInterview = _SocialFold.access_to_the_interview 
-                            _wm.psyCardMc.trafficWarden = _SocialFold.traffic_warden
-                            _wm.psyCardMc.lucid = _SocialFold.lucid
-                            _wm.psyCardMc.orientatedInTheThreeParameter = _SocialFold.orientated_in_the_three_parameter
-                            _wm.psyCardMc.umor = _SocialFold.umor
-                            _wm.psyCardMc.anxiety = _SocialFold.anxiety
-                            _wm.psyCardMc.alteredPerception = _SocialFold.altered_perception
-                            _wm.psyCardMc.appetite = _SocialFold.appetite
-                            _wm.psyCardMc.alteredFormThought = _SocialFold.altered_form_thought
-                            _wm.psyCardMc.sleepWakeRhythm = _SocialFold.sleep_wake_rhythm
-                            _wm.psyCardMc.futureProject = _SocialFold.future_project
+                            _wm.psyCardMc.previousTreatmentForProblem = _MemberShip.previous_treatment_for_problem 
+                            _wm.psyCardMc.previousTreatmentFarmacology = _MemberShip.previous_treatment_farmacology 
+                            _wm.psyCardMc.previousDiagnosesOfMentalDisorder = _MemberShip.previous_diagnoses_of_mental_disorder 
+                            _wm.psyCardMc.previousDiagnosisOfDrugAbuse = _MemberShip.previous_diagnosis_of_drug_abuse
+                            _wm.psyCardMc.previousHospitalizationSpdc = _MemberShip.previous_hospitalization_spdc
+                            _wm.psyCardMc.previousHospitalizationEmergency = _MemberShip.previous_hospitalization_emergency 
+                            _wm.psyCardMc.pathologicalAttemptedSuicide = _MemberShip.pathological_attempted_suicide 
+                            _wm.psyCardMc.pathologicalDesperate = _MemberShip.pathological_desperate
+                            _wm.psyCardMc.pathologicalAnxious = _MemberShip.pathological_anxious 
+                            _wm.psyCardMc.pathologicalActive = _MemberShip.pathological_active 
+                            _wm.psyCardMc.pathologicalStrangeThought = _MemberShip.pathological_strange_thought
 
+                            _wm.psyCardMc.pathologicalSleepless = _MemberShip.pathological_sleepless 
+                            _wm.psyCardMc.pathologicalNoFamily = _MemberShip.pathological_no_family
+                            _wm.psyCardMc.pathologicalThoughtSuicide = _MemberShip.pathological_thought_suicide
+                            _wm.psyCardMc.pathologicalAddictiveBehavior = _MemberShip.pathological_addictive_behavior
+                            _wm.psyCardMc.pathologicalClaimsInjuries = _MemberShip.pathological_claims_injuries
+                            _wm.psyCardMc.pathologicalShameLevel = _MemberShip.pathological_shame_level
 
-                            _wm.psyCardMc.accessToTheInterviewNote = _SocialFold.access_to_the_interview_note
-                            _wm.psyCardMc.trafficWardenNote = _SocialFold.traffic_warden_note
-                            _wm.psyCardMc.lucidNote = _SocialFold.lucid_note
-                            _wm.psyCardMc.orientatedInTheThreeParameterNote = _SocialFold.orientated_in_the_three_parameter_note
-                            _wm.psyCardMc.umorNote = _SocialFold.umor_note
-                            _wm.psyCardMc.anxietyNote = _SocialFold.anxiety_note
-                            _wm.psyCardMc.alteredPerceptionNote = _SocialFold.altered_perception_note
-                            _wm.psyCardMc.appetiteNote = _SocialFold.appetite_note
-                            _wm.psyCardMc.alteredFormThoughtNote = _SocialFold.altered_form_thought_note
-                            _wm.psyCardMc.sleepWakeRhythmNote = _SocialFold.sleep_wake_rhythm_note
-                            _wm.psyCardMc.futureProjectNote = _SocialFold.future_project_note
-
-
-                            _wm.psyhowFeel.wellToFocus = _SocialFold.well_to_focus 
-                            _wm.psyhowFeel.wellLostSleep = _SocialFold.well_lost_sleep
-                            _wm.psyhowFeel.wellProductive = _SocialFold.well_productive
-                            _wm.psyhowFeel.wellMakeDecision = _SocialFold.well_make_decision
-                            _wm.psyhowFeel.wellPression = _SocialFold.well_pression
-                            _wm.psyhowFeel.wellNotAble = _SocialFold.well_not_able
-                            _wm.psyhowFeel.wellTimeForHimself = _SocialFold.well_time_for_himself
-                            _wm.psyhowFeel.wellProblemSolving = _SocialFold.well_problem_solving
-                            _wm.psyhowFeel.wellUnhappy = _SocialFold.well_unhappy
-                            _wm.psyhowFeel.wellLostConfidence = _SocialFold.well_lost_confidence
-                            _wm.psyhowFeel.wellLowerEsteem = _SocialFold.well_lower_esteem
-                            _wm.psyhowFeel.wellOverallHappy = _SocialFold.well_overall_happy
+                            _wm.psyCardMc.accessToTheInterview = _MemberShip.access_to_the_interview 
+                            _wm.psyCardMc.trafficWarden = _MemberShip.traffic_warden
+                            _wm.psyCardMc.lucid = _MemberShip.lucid
+                            _wm.psyCardMc.orientatedInTheThreeParameter = _MemberShip.orientated_in_the_three_parameter
+                            _wm.psyCardMc.umor = _MemberShip.umor
+                            _wm.psyCardMc.anxiety = _MemberShip.anxiety
+                            _wm.psyCardMc.alteredPerception = _MemberShip.altered_perception
+                            _wm.psyCardMc.appetite = _MemberShip.appetite
+                            _wm.psyCardMc.alteredFormThought = _MemberShip.altered_form_thought
+                            _wm.psyCardMc.sleepWakeRhythm = _MemberShip.sleep_wake_rhythm
+                            _wm.psyCardMc.futureProject = _MemberShip.future_project
 
 
-                            _wm.psyCardMc.thoughtHeWasDead = _SocialFold.thought_he_was_dead 
-                            _wm.psyCardMc.wantedToGetHurt = _SocialFold.wanted_to_get_hurt
-                            _wm.psyCardMc.thoughtSuicide = _SocialFold.thought_suicide
-                            _wm.psyCardMc.thoughtHowSuicide = _SocialFold.thought_how_suicide
-                            _wm.psyCardMc.attemptedSuicide = _SocialFold.attempted_suicide
-                            _wm.psyCardMc.neverTryAttemptedSuicide = _SocialFold.never_try_attempted_suicide
-
-                            _wm.psyCardMc.gravityIdeationSuicide = _SocialFold.gravity_ideation_suicide
-
-
-                            _wm.psyCardMc.checkSpdcHospitalizations = _SocialFold.check_spdc_hospitalizations
-                            _wm.psyCardMc.checkDeclareSuicide = _SocialFold.check_declare_suicide
-                            _wm.psyCardMc.checkThougthSuicide = _SocialFold.check_thougth_suicide
-                            _wm.psyCardMc.checkUnusualLevelOfShame = _SocialFold.check_unusual_level_of_shame
-                            _wm.psyCardMc.checkConfusionalState = _SocialFold.check_confusional_state
-                            _wm.psyCardMc.checkPsychomotorAgitation = _SocialFold.check_psychomotor_agitation
-                            _wm.psyCardMc.checkBizarreBehavior = _SocialFold.check_bizarre_behavior
-                            _wm.psyCardMc.checkVerbalCommunication = _SocialFold.check_verbal_communication
-                            _wm.psyCardMc.checkLevelMini = _SocialFold.check_level_mini
-                            _wm.psyCardMc.checkGeneralWellBeing = _SocialFold.check_general_well_being
-                            _wm.psyCardMc.checkVainFormViolence = _SocialFold.check_vain_form_violence
-                            _wm.psyCardMc.checkComeFromForcedIsolation = _SocialFold.check_come_from_forced_isolation
-                            _wm.psyCardMc.checkIsolationSocialNetwork = _SocialFold.check_isolation_social_network
-                            _wm.psyCardMc.checkUncertaintyAboutFuture = _SocialFold.check_uncertainty_about_future
-                            _wm.psyCardMc.checkConclusion = _SocialFold.check_conclusion
+                            _wm.psyCardMc.accessToTheInterviewNote = _MemberShip.access_to_the_interview_note
+                            _wm.psyCardMc.trafficWardenNote = _MemberShip.traffic_warden_note
+                            _wm.psyCardMc.lucidNote = _MemberShip.lucid_note
+                            _wm.psyCardMc.orientatedInTheThreeParameterNote = _MemberShip.orientated_in_the_three_parameter_note
+                            _wm.psyCardMc.umorNote = _MemberShip.umor_note
+                            _wm.psyCardMc.anxietyNote = _MemberShip.anxiety_note
+                            _wm.psyCardMc.alteredPerceptionNote = _MemberShip.altered_perception_note
+                            _wm.psyCardMc.appetiteNote = _MemberShip.appetite_note
+                            _wm.psyCardMc.alteredFormThoughtNote = _MemberShip.altered_form_thought_note
+                            _wm.psyCardMc.sleepWakeRhythmNote = _MemberShip.sleep_wake_rhythm_note
+                            _wm.psyCardMc.futureProjectNote = _MemberShip.future_project_note
 
 
-                            _wm.psyCardMc.riskAssessmentConclusions = _SocialFold.risk_assessment_conclusions
-
-                            _wm.psyCardMc.requestActivationOfMeasures = _SocialFold.request_activation_of_measures
-                            _wm.psyCardMc.requestActivationNormalSurveillance = _SocialFold.request_activation_normal_surveillance
-                            _wm.psyCardMc.requestActivationMultipleRoom = _SocialFold.request_activation_multiple_room
-                            _wm.psyCardMc.requestActivationBigSurveillance = _SocialFold.request_activation_big_surveillance
-                            _wm.psyCardMc.requestActivationVisualSurveillance = _SocialFold.request_activation_visual_surveillance
-
-
-
-
-
-
-
-
-                            _wm.psyCardMc.firstMedicalHistoryVisit = _SocialFold.first_medical_history_visit
-                            _wm.psyCardMc.firstStatus = _SocialFold.first_status
-                            _wm.psyCardMc.firstTerapy = _SocialFold.first_terapy
-                            _wm.psyCardMc.firstOrientation = _SocialFold.first_orientation
-
-                            // _wm.psyCardMc.interventionPlanConclusions = _SocialFold.intervention_plan_conclusions
-                            _wm.psyCardMc.interventionPlanAdvice = _SocialFold.intervention_plan_advice
-                            _wm.psyCardMc.interventionPlanTakingIntoCare = _SocialFold.intervention_plan_taking_into_care
-                            _wm.psyCardMc.interventionPlanIntegratedHandling = _SocialFold.intervention_plan_integrated_handling
+                            _wm.psyhowFeel.wellToFocus = _MemberShip.well_to_focus 
+                            _wm.psyhowFeel.wellLostSleep = _MemberShip.well_lost_sleep
+                            _wm.psyhowFeel.wellProductive = _MemberShip.well_productive
+                            _wm.psyhowFeel.wellMakeDecision = _MemberShip.well_make_decision
+                            _wm.psyhowFeel.wellPression = _MemberShip.well_pression
+                            _wm.psyhowFeel.wellNotAble = _MemberShip.well_not_able
+                            _wm.psyhowFeel.wellTimeForHimself = _MemberShip.well_time_for_himself
+                            _wm.psyhowFeel.wellProblemSolving = _MemberShip.well_problem_solving
+                            _wm.psyhowFeel.wellUnhappy = _MemberShip.well_unhappy
+                            _wm.psyhowFeel.wellLostConfidence = _MemberShip.well_lost_confidence
+                            _wm.psyhowFeel.wellLowerEsteem = _MemberShip.well_lower_esteem
+                            _wm.psyhowFeel.wellOverallHappy = _MemberShip.well_overall_happy
 
 
+                            _wm.psyCardMc.thoughtHeWasDead = _MemberShip.thought_he_was_dead 
+                            _wm.psyCardMc.wantedToGetHurt = _MemberShip.wanted_to_get_hurt
+                            _wm.psyCardMc.thoughtSuicide = _MemberShip.thought_suicide
+                            _wm.psyCardMc.thoughtHowSuicide = _MemberShip.thought_how_suicide
+                            _wm.psyCardMc.attemptedSuicide = _MemberShip.attempted_suicide
+                            _wm.psyCardMc.neverTryAttemptedSuicide = _MemberShip.never_try_attempted_suicide
 
-                            // _wm.psyCardMc.psychiatricVisitPlanConclusions = _SocialFold.psychiatric_visit_plan_conclusions 
-                            _wm.psyCardMc.psychiatricInterventionPlanAdvice = _SocialFold.psychiatric_intervention_plan_advice
-                            _wm.psyCardMc.psychiatricPlanTakingIntoCare = _SocialFold.psychiatric_plan_taking_into_care
-                            _wm.psyCardMc.psychiatricPlanIntegratedHandling = _SocialFold.psychiatric_plan_integrated_handling
+                            _wm.psyCardMc.gravityIdeationSuicide = _MemberShip.gravity_ideation_suicide
+
+
+                            _wm.psyCardMc.checkSpdcHospitalizations = _MemberShip.check_spdc_hospitalizations
+                            _wm.psyCardMc.checkDeclareSuicide = _MemberShip.check_declare_suicide
+                            _wm.psyCardMc.checkThougthSuicide = _MemberShip.check_thougth_suicide
+                            _wm.psyCardMc.checkUnusualLevelOfShame = _MemberShip.check_unusual_level_of_shame
+                            _wm.psyCardMc.checkConfusionalState = _MemberShip.check_confusional_state
+                            _wm.psyCardMc.checkPsychomotorAgitation = _MemberShip.check_psychomotor_agitation
+                            _wm.psyCardMc.checkBizarreBehavior = _MemberShip.check_bizarre_behavior
+                            _wm.psyCardMc.checkVerbalCommunication = _MemberShip.check_verbal_communication
+                            _wm.psyCardMc.checkLevelMini = _MemberShip.check_level_mini
+                            _wm.psyCardMc.checkGeneralWellBeing = _MemberShip.check_general_well_being
+                            _wm.psyCardMc.checkVainFormViolence = _MemberShip.check_vain_form_violence
+                            _wm.psyCardMc.checkComeFromForcedIsolation = _MemberShip.check_come_from_forced_isolation
+                            _wm.psyCardMc.checkIsolationSocialNetwork = _MemberShip.check_isolation_social_network
+                            _wm.psyCardMc.checkUncertaintyAboutFuture = _MemberShip.check_uncertainty_about_future
+                            _wm.psyCardMc.checkConclusion = _MemberShip.check_conclusion
+
+
+                            _wm.psyCardMc.riskAssessmentConclusions = _MemberShip.risk_assessment_conclusions
+
+                            _wm.psyCardMc.requestActivationOfMeasures = _MemberShip.request_activation_of_measures
+                            _wm.psyCardMc.requestActivationNormalSurveillance = _MemberShip.request_activation_normal_surveillance
+                            _wm.psyCardMc.requestActivationMultipleRoom = _MemberShip.request_activation_multiple_room
+                            _wm.psyCardMc.requestActivationBigSurveillance = _MemberShip.request_activation_big_surveillance
+                            _wm.psyCardMc.requestActivationVisualSurveillance = _MemberShip.request_activation_visual_surveillance
+
+
+
+
+
+
+
+
+                            _wm.psyCardMc.firstMedicalHistoryVisit = _MemberShip.first_medical_history_visit
+                            _wm.psyCardMc.firstStatus = _MemberShip.first_status
+                            _wm.psyCardMc.firstTerapy = _MemberShip.first_terapy
+                            _wm.psyCardMc.firstOrientation = _MemberShip.first_orientation
+
+                            // _wm.psyCardMc.interventionPlanConclusions = _MemberShip.intervention_plan_conclusions
+                            _wm.psyCardMc.interventionPlanAdvice = _MemberShip.intervention_plan_advice
+                            _wm.psyCardMc.interventionPlanTakingIntoCare = _MemberShip.intervention_plan_taking_into_care
+                            _wm.psyCardMc.interventionPlanIntegratedHandling = _MemberShip.intervention_plan_integrated_handling
+
+
+
+                            // _wm.psyCardMc.psychiatricVisitPlanConclusions = _MemberShip.psychiatric_visit_plan_conclusions 
+                            _wm.psyCardMc.psychiatricInterventionPlanAdvice = _MemberShip.psychiatric_intervention_plan_advice
+                            _wm.psyCardMc.psychiatricPlanTakingIntoCare = _MemberShip.psychiatric_plan_taking_into_care
+                            _wm.psyCardMc.psychiatricPlanIntegratedHandling = _MemberShip.psychiatric_plan_integrated_handling
 
 
                             

@@ -12,6 +12,8 @@ use App\Models\PsyRating;
 use App\Models\PsyUocDepartment;
 use App\Models\PsySocialFolder;
 use App\Models\PsyMembershipCard;
+use App\Models\PsySurvey;
+
 
 use Carbon\Carbon;
 use GuzzleHttp\Exception\GuzzleException;
@@ -70,6 +72,9 @@ class PsyCardsController extends Controller
             $PsyMembershipCard=null;
             $allPsyMembershipCard=null;
 
+            $PsySurvey=null;
+            $allPsySurvey=null;
+
 
        
             if (PsySuicideAssessment::where('psy_card_id', '=', $psyCard->id)->exists()) {
@@ -125,6 +130,14 @@ class PsyCardsController extends Controller
                 $allPsyMembershipCards=PsyMembershipCard::where('psy_card_id', '=', $psyCard->id)->orderBy('mc_date', 'desc')->get();
             }
             return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsyMembershipCard"=>$PsyMembershipCard,"allPsyMembershipCards" => $allPsyMembershipCards];
+
+
+            if (PsySurvey::where('psy_card_id', '=', $psyCard->id)->exists()) {
+                $query=PsySurvey::where('psy_card_id', '=', $psyCard->id)->orderBy('ps_date', 'desc');
+                $PsySurvey=$query->first();
+                $allPsySurveys=PsySurvey::where('psy_card_id', '=', $psyCard->id)->orderBy('ps_date', 'desc')->get();
+            }
+            return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsySurvey"=>$PsySurvey,"allPsySurveys" => $allPsySurveys];
             //return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'],"PsySuicideAssessment"=>$PsySuicideAssessment,"allPsySuicideAssessments" => $allPsySuicideAssessments, "PsyMentalHealthDepartment"=>$PsyMentalHealthDepartment,"allPsyMentalHealthDepartments" => $allPsyMentalHealthDepartments, "PsyRehabilitationPsychiatricCard"=>$PsyRehabilitationPsychiatricCard,"allPsyRehabilitationPsychiatricCards" => $allPsyRehabilitationPsychiatricCards];
             // return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsySuicideAssessment"=>$PsySuicideAssessment,"allPsySuicideAssessments" => $allPsySuicideAssessments];
         }else{
@@ -204,6 +217,20 @@ class PsyCardsController extends Controller
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
         }  
     }
+
+    public function getCurrentSurveyByPsyId(Request $request){
+        if (PsySurvey::where('psy_card_id', '=', $request['id'])->exists()) {
+            $query=PsySurvey::where('psy_card_id', '=', $request['id'])->orderBy('ps_date', 'desc');
+            $PsySurvey=$query->first();
+            return [ "errorNumber"=>0,"message"=>"OK","CurrentSurvey" => $PsySurvey,"PsyId" => $request['id']];
+        }else{
+            return ['errorNumber'=>7,'descrizione'=>'no records found'];
+        }  
+    }
+
+
+
+
 
 
 
@@ -286,6 +313,17 @@ class PsyCardsController extends Controller
     }
 
 
+    public function getSurveysByPsyId(Request $request){
+        if (PsySurvey::where('psy_card_id', '=', $request['id'])->exists()) {
+            $query=PsySurvey::where('psy_card_id', '=', $request['id']);
+            $PsySurvey=$query->get();
+            return [ "errorNumber"=>0,"message"=>"OK","PsySurvey" => $PsySurvey,"PsyId" => $request['id']];
+        }else{
+            return ['errorNumber'=>7,'descrizione'=>'no records found'];
+        }      
+    }
+
+
 
 
 
@@ -361,6 +399,15 @@ class PsyCardsController extends Controller
                                     return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
                                 }
                                 break;
+                            case 'ps':
+                                $_psy = $this->addPsyCard($request);
+                                if($_psy){
+                                    $_psyId=$_psy->id;
+                                }
+                                else{
+                                    return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
+                                }
+                                break;
                             default:
                                 if($request->has('psyId')){
                                     if (PsySuicideAssessment::where('psy_card_id', '=', $request->input('psyId'))->exists()) {
@@ -403,6 +450,9 @@ class PsyCardsController extends Controller
                         break;
                     case 'mc':
                         return $this->addMembershipCard($request,$_psyId);
+                        break;
+                    case 'ps':
+                        return $this->addSurvey($request,$_psyId);
                         break;
                 }
             }else{
@@ -1341,9 +1391,6 @@ class PsyCardsController extends Controller
                 $_psyMemb->psychiatric_plan_integrated_handling=$psyCardArr['psychiatricPlanIntegratedHandling'];
             }
 
-
-
-
             if(array_key_exists('psychiatricVisitPrescriptionSuggestions',$psyCardArr)){
                 $_psyMemb->psychiatric_visit_prescription_suggestions=$psyCardArr['psychiatricVisitPrescriptionSuggestions'];
             } 
@@ -1352,6 +1399,148 @@ class PsyCardsController extends Controller
 
         if($_psyMemb){
             return ["errorNumber"=>0,"message"=>"ok","mc"=>$_psyMemb];
+
+        }else{
+            return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
+        }
+    }
+
+
+
+
+
+
+
+
+    public function addSurvey(Request $request,$psyId){
+        $userId=$request->input("userId");
+        $_psySurv = new PsySurvey;
+        $now=date("Y-m-d H:i:s");
+        $_psySurv->psy_card_id=$psyId;
+        if($request->has('doctorId')){
+            $_psySurv->id_doctor=$request->input('doctorId');
+        }
+        if($request->has('doctorName')){
+            $_psySurv->doctor_name=$request->input('doctorName');
+        }
+        if($request->has('doctorUserName')){
+            $_psySurv->doctor_lastname=$request->input('doctorUserName');
+        }
+        $_psySurv->ps_date=$now;
+
+        if($request->has('psyCardPs')){
+            $psyCardArr = json_decode($request->input('psyCardPs'), true);
+            if(array_key_exists('surveyHeardAlone',$psyCardArr)){
+                $_psySurv->survey_heard_alone=$psyCardArr['surveyHeardAlone'];
+            }
+            if(array_key_exists('surveyHeardAnxious',$psyCardArr)){
+                $_psySurv->survey_heard_anxious=$psyCardArr['surveyHeardAnxious'];
+            }
+            if(array_key_exists('surveySupport',$psyCardArr)){
+                $_psySurv->survey_support=$psyCardArr['surveySupport'];
+            }
+            if(array_key_exists('surveyOkayWithMyself',$psyCardArr)){
+                $_psySurv->survey_okay_with_myself=$psyCardArr['surveyOkayWithMyself'];
+            }
+            if(array_key_exists('surveyDevoidOfEnergy',$psyCardArr)){
+                $_psySurv->survey_devoid_of_energy=$psyCardArr['surveyDevoidOfEnergy'];
+            }
+            if(array_key_exists('surveyViolentTowardsOthers',$psyCardArr)){
+                $_psySurv->survey_violent_towards_others=$psyCardArr['surveyViolentTowardsOthers'];
+            }
+            if(array_key_exists('surveyAbleToAdapt',$psyCardArr)){
+                $_psySurv->survey_able_to_adapt=$psyCardArr['surveyAbleToAdapt'];
+            }
+
+            if(array_key_exists('surveyDisturbed',$psyCardArr)){
+                $_psySurv->survey_disturbed=$psyCardArr['surveyDisturbed'];
+            }
+            if(array_key_exists('surveyHurtMe',$psyCardArr)){
+                $_psySurv->survey_hurt_me=$psyCardArr['surveyHurtMe'];
+            }
+            if(array_key_exists('surveyNotForceToSpeak',$psyCardArr)){
+                $_psySurv->survey_not_force_to_speak=$psyCardArr['surveyNotForceToSpeak'];
+            }
+             if(array_key_exists('surveyTensionPrevented',$psyCardArr)){
+                $_psySurv->survey_tension_prevented=$psyCardArr['surveyTensionPrevented'];
+            }
+            if(array_key_exists('surveyHappy',$psyCardArr)){
+                $_psySurv->survey_happy=$psyCardArr['surveyHappy'];
+            }
+            if(array_key_exists('surveyDisturbedByThoughts',$psyCardArr)){
+                $_psySurv->survey_disturbed_by_thoughts=$psyCardArr['surveyDisturbedByThoughts'];
+            }
+            if(array_key_exists('surveyCry',$psyCardArr)){
+                $_psySurv->survey_cry=$psyCardArr['surveyCry'];
+            }
+            if(array_key_exists('surveyFeltPanic',$psyCardArr)){
+                $_psySurv->survey_felt_panic=$psyCardArr['surveyFeltPanic'];
+            }
+            if(array_key_exists('surveyPlannedToSuicide',$psyCardArr)){
+                $_psySurv->survey_planned_to_suicide=$psyCardArr['surveyPlannedToSuicide'];
+            }
+            if(array_key_exists('surveyFeltOverwhelmed',$psyCardArr)){
+                $_psySurv->survey_felt_overwhelmed=$psyCardArr['surveyFeltOverwhelmed'];
+            }
+            if(array_key_exists('surveyDifficultyFallingAsleep',$psyCardArr)){
+                $_psySurv->survey_difficulty_falling_asleep=$psyCardArr['surveyDifficultyFallingAsleep'];
+            }
+            if(array_key_exists('surveyFeltAffection',$psyCardArr)){
+                $_psySurv->survey_felt_affection=$psyCardArr['surveyFeltAffection'];
+            }
+
+            if(array_key_exists('surveyImpossibleAsideProblems',$psyCardArr)){
+                $_psySurv->survey_impossible_aside_problems=$psyCardArr['surveyImpossibleAsideProblems'];
+            }
+            if(array_key_exists('surveyAbleToDoThings',$psyCardArr)){
+                $_psySurv->survey_able_to_do_things=$psyCardArr['surveyAbleToDoThings'];
+            }
+            if(array_key_exists('surveyThreatenedSomeone',$psyCardArr)){
+                $_psySurv->survey_threatened_someone=$psyCardArr['surveyThreatenedSomeone'];
+            }
+            if(array_key_exists('surveyFeltHeartbroken',$psyCardArr)){
+                $_psySurv->survey_felt_heartbroken=$psyCardArr['surveyFeltHeartbroken'];
+            }
+            if(array_key_exists('surveyThoughtBetterToDie',$psyCardArr)){
+                $_psySurv->survey_thought_better_to_die=$psyCardArr['surveyThoughtBetterToDie'];
+            }
+            if(array_key_exists('surveyFeltCritical',$psyCardArr)){
+                $_psySurv->survey_felt_critical=$psyCardArr['surveyFeltCritical'];
+            }
+            if(array_key_exists('surveyThoughtHadNoFriends',$psyCardArr)){
+                $_psySurv->survey_thought_had_no_friends=$psyCardArr['surveyThoughtHadNoFriends'];
+            }
+            if(array_key_exists('surveyFeltUnhappy',$psyCardArr)){
+                $_psySurv->survey_felt_unhappy=$psyCardArr['surveyFeltUnhappy'];
+            }
+            if(array_key_exists('surveyTroubledByImages',$psyCardArr)){
+                $_psySurv->survey_troubled_by_images=$psyCardArr['surveyTroubledByImages'];
+            }
+            if(array_key_exists('surveyFeltIrritated',$psyCardArr)){
+                $_psySurv->survey_felt_irritated=$psyCardArr['surveyFeltIrritated'];
+            }
+
+
+            if(array_key_exists('surveyThoughtMyFault',$psyCardArr)){
+                $_psySurv->survey_thought_my_fault=$psyCardArr['surveyThoughtMyFault'];
+            }
+            if(array_key_exists('surveyOptimisticAboutTheFuture',$psyCardArr)){
+                $_psySurv->survey_optimistic_about_the_future=$psyCardArr['surveyOptimisticAboutTheFuture'];
+            }
+            if(array_key_exists('surveyGotWhatWanted',$psyCardArr)){
+                $_psySurv->survey_got_what_wanted=$psyCardArr['surveyGotWhatWanted'];
+            }
+            if(array_key_exists('surveyFeltHumiliated',$psyCardArr)){
+                $_psySurv->survey_felt_humiliated=$psyCardArr['surveyFeltHumiliated'];
+            }
+            if(array_key_exists('surveyHurtMyself',$psyCardArr)){
+                $_psySurv->survey_hurt_myself=$psyCardArr['surveyHurtMyself'];
+            }
+        }
+        $_psySurv->save();
+
+        if($_psySurv){
+            return ["errorNumber"=>0,"message"=>"ok","ud"=>$_psySurv];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];

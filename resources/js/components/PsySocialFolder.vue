@@ -738,56 +738,56 @@ export default {
                             _wm.sFSaved=true;
                             _wm.btnSfSend="Aggiorna";
 
-                            let _SocialRep=response.data.PsySocialFolder;
+                            let _SocialFold=response.data.PsySocialFolder;
                             // _wm.psyCardId=response.data.psyCard.id;
     
                             _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psySfDoctorId = _SocialRep.id_doctor;
+                            _wm.psySfDoctorId = _SocialFold.id_doctor;
 
-                            _wm.psySfDoctorName = _SocialRep.doctor_name;
-                            _wm.psySfDoctorLastname = _SocialRep.doctor_lastname;
-
-                            
-                            _wm.psyCardSf.citizenship =_SocialRep.citizenship;
-                            _wm.psyCardSf.residencyPermit = _SocialRep.residency_permit 	
-                            _wm.psyCardSf.typology = _SocialRep.typology 
-                            _wm.psyCardSf.expiration = _SocialRep.expiration
-                            _wm.psyCardSf.socialNote = _SocialRep.social_note 
-                            _wm.psyCardSf.maritalStatus = _SocialRep.marital_status
-                            _wm.psyCardSf.socialDegree = _SocialRep.social_degree
-
-                            _wm.psyCardSf.legalStatusEducator = _SocialRep.legal_status_educator 
-                            _wm.psyCardSf.legalStatusLawyer = _SocialRep.legal_status_lawyer
-                            _wm.psyCardSf.legalStatusProvenance = _SocialRep.legal_status_provenance 
-                            _wm.psyCardSf.legalStatusEntered = _SocialRep.legal_status_entered
-                            _wm.psyCardSf.legalStatusEndOfSentence = _SocialRep.legal_status_end_of_sentence 
-                            _wm.psyCardSf.legalStatusSecurityMeasure = _SocialRep.legal_status_security_measure
-                            _wm.psyCardSf.legalStatusEndOfTheSentence = _SocialRep.legal_status_end_of_the_sentence
+                            _wm.psySfDoctorName = _SocialFold.doctor_name;
+                            _wm.psySfDoctorLastname = _SocialFold.doctor_lastname;
 
                             
-                            _wm.psyCardSf.legalStatusRemsOther = _SocialRep.legal_status_rems_other
-                            _wm.psyCardSf.legalStatusUncensored = _SocialRep.legal_status_uncensored 
+                            _wm.psyCardSf.citizenship =_SocialFold.citizenship;
+                            _wm.psyCardSf.residencyPermit = _SocialFold.residency_permit 	
+                            _wm.psyCardSf.typology = _SocialFold.typology 
+                            _wm.psyCardSf.expiration = _SocialFold.expiration
+                            _wm.psyCardSf.socialNote = _SocialFold.social_note 
+                            _wm.psyCardSf.maritalStatus = _SocialFold.marital_status
+                            _wm.psyCardSf.socialDegree = _SocialFold.social_degree
 
-                            _wm.psyCardSf.socialHealthSituationCsm = _SocialRep.social_health_situation_csm
-                            _wm.psyCardSf.socialHealthSituationSerd = _SocialRep.social_health_situation_serd 
-                            _wm.psyCardSf.socialHealthSituationAsl = _SocialRep.social_health_situation_asl 
-                            _wm.psyCardSf.socialHealthSituationCertificate = _SocialRep.social_health_situation_certificate 
+                            _wm.psyCardSf.legalStatusEducator = _SocialFold.legal_status_educator 
+                            _wm.psyCardSf.legalStatusLawyer = _SocialFold.legal_status_lawyer
+                            _wm.psyCardSf.legalStatusProvenance = _SocialFold.legal_status_provenance 
+                            _wm.psyCardSf.legalStatusEntered = _SocialFold.legal_status_entered
+                            _wm.psyCardSf.legalStatusEndOfSentence = _SocialFold.legal_status_end_of_sentence 
+                            _wm.psyCardSf.legalStatusSecurityMeasure = _SocialFold.legal_status_security_measure
+                            _wm.psyCardSf.legalStatusEndOfTheSentence = _SocialFold.legal_status_end_of_the_sentence
 
                             
-                            _wm.psyCardSf.socialHealthSituationTherapeuticPathway = _SocialRep.social_health_situation_therapeutic_pathway 
-                            _wm.psyCardSf.socialHealthSituationDisability = _SocialRep.social_health_situation_disability
-                            _wm.psyCardSf.socialHealthSituationRevision = _SocialRep.social_health_situation_revision
-                            _wm.psyCardSf.socialHealthSituationInps = _SocialRep.social_health_situation_inps 
-                            _wm.psyCardSf.socialHealthSituationAdministrator = _SocialRep.social_health_situation_administrator 
+                            _wm.psyCardSf.legalStatusRemsOther = _SocialFold.legal_status_rems_other
+                            _wm.psyCardSf.legalStatusUncensored = _SocialFold.legal_status_uncensored 
 
-                            _wm.psyCardSf.environmentalAnalysisFamilyOfOrigin = _SocialRep.environmental_analysis_family_of_origin
-                            _wm.psyCardSf.environmentalAnalysisAccommodation = _SocialRep.environmental_analysis_accommodation 
-                            _wm.psyCardSf.environmentalAnalysisWork = _SocialRep.environmental_analysis_work 
-                            _wm.psyCardSf.environmentalAnalysisIncome = _SocialRep.environmental_analysis_income
-                            _wm.psyCardSf.environmentalAnalysisFormalNetwork = _SocialRep.environmental_analysis_formal_network 
+                            _wm.psyCardSf.socialHealthSituationCsm = _SocialFold.social_health_situation_csm
+                            _wm.psyCardSf.socialHealthSituationSerd = _SocialFold.social_health_situation_serd 
+                            _wm.psyCardSf.socialHealthSituationAsl = _SocialFold.social_health_situation_asl 
+                            _wm.psyCardSf.socialHealthSituationCertificate = _SocialFold.social_health_situation_certificate 
 
-                            _wm.psyCardSf.interventionHypothesisSocialProject = _SocialRep.intervention_hypothesis_project
-                            _wm.psyCardSf.interventionHypothesisSocialWorker = _SocialRep.intervention_hypothesis_social_worker
+                            
+                            _wm.psyCardSf.socialHealthSituationTherapeuticPathway = _SocialFold.social_health_situation_therapeutic_pathway 
+                            _wm.psyCardSf.socialHealthSituationDisability = _SocialFold.social_health_situation_disability
+                            _wm.psyCardSf.socialHealthSituationRevision = _SocialFold.social_health_situation_revision
+                            _wm.psyCardSf.socialHealthSituationInps = _SocialFold.social_health_situation_inps 
+                            _wm.psyCardSf.socialHealthSituationAdministrator = _SocialFold.social_health_situation_administrator 
+
+                            _wm.psyCardSf.environmentalAnalysisFamilyOfOrigin = _SocialFold.environmental_analysis_family_of_origin
+                            _wm.psyCardSf.environmentalAnalysisAccommodation = _SocialFold.environmental_analysis_accommodation 
+                            _wm.psyCardSf.environmentalAnalysisWork = _SocialFold.environmental_analysis_work 
+                            _wm.psyCardSf.environmentalAnalysisIncome = _SocialFold.environmental_analysis_income
+                            _wm.psyCardSf.environmentalAnalysisFormalNetwork = _SocialFold.environmental_analysis_formal_network 
+
+                            _wm.psyCardSf.interventionHypothesisSocialProject = _SocialFold.intervention_hypothesis_project
+                            _wm.psyCardSf.interventionHypothesisSocialWorker = _SocialFold.intervention_hypothesis_social_worker
 
 
                             _wm.allPsySocialFolders=response.data.allPsySocialFolders;

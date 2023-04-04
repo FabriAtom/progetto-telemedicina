@@ -2114,124 +2114,124 @@ __webpack_require__.r(__webpack_exports__);
             if (response.data.PsyMembershipCard) {
               _wm.mCSaved = true;
               _wm.btnMcSend = "Aggiorna";
-              var _SocialFold = response.data.PsySocialFolder;
+              var _MemberShip = response.data.PsyMembershipCard;
               // _wm.psyCardId=response.data.psyCard.id;
 
               _wm.psyCardId = response.data.psyCard.id;
-              _wm.psyMcDoctorId = _SocialFold.id_doctor;
-              _wm.psyMcDoctorName = _SocialFold.doctor_name;
-              _wm.psyMcDoctorLastname = _SocialFold.doctor_lastname;
-              _wm.psyCardMc.communicateItalian = _SocialFold.communicate_italian;
-              _wm.psyCardMc.communicate = _SocialFold.communicate;
-              _wm.psyCardMc.maritalStatus = _SocialFold.marital_status;
-              _wm.psyCardMc.sons = _SocialFold.sons;
-              _wm.psyCardMc.sonNumber = _SocialFold.son_number;
-              _wm.psyCardMc.sonAge = _SocialFold.son_age;
-              _wm.psyCardMc.residenceNot = _SocialFold.residence_not;
-              _wm.psyCardMc.residence = _SocialFold.residence;
-              _wm.psyCardMc.titleStudy = _SocialFold.title_study;
-              _wm.psyCardMc.situationHousing = _SocialFold.situation_housing;
-              _wm.psyCardMc.situationWork = _SocialFold.situation_work;
-              _wm.psyCardMc.dateStartPrison = _SocialFold.date_start_prison;
-              _wm.psyCardMc.dateStartInInstitute = _SocialFold.date_start_in_institute;
-              _wm.psyCardMc.firstExperiencePrison = _SocialFold.first_experience_prison;
-              _wm.psyCardMc.provenience = _SocialFold.provenience;
-              _wm.psyCardMc.legalPosition = _SocialFold.legal_position;
-              _wm.psyCardMc.endOfSentence = _SocialFold.end_of_sentence;
-              _wm.psyCardMc.economicResource = _SocialFold.economic_resource;
-              _wm.psyCardMc.previousTreatmentForProblem = _SocialFold.previous_treatment_for_problem;
-              _wm.psyCardMc.previousTreatmentFarmacology = _SocialFold.previous_treatment_farmacology;
-              _wm.psyCardMc.previousDiagnosesOfMentalDisorder = _SocialFold.previous_diagnoses_of_mental_disorder;
-              _wm.psyCardMc.previousDiagnosisOfDrugAbuse = _SocialFold.previous_diagnosis_of_drug_abuse;
-              _wm.psyCardMc.previousHospitalizationSpdc = _SocialFold.previous_hospitalization_spdc;
-              _wm.psyCardMc.previousHospitalizationEmergency = _SocialFold.previous_hospitalization_emergency;
-              _wm.psyCardMc.pathologicalAttemptedSuicide = _SocialFold.pathological_attempted_suicide;
-              _wm.psyCardMc.pathologicalDesperate = _SocialFold.pathological_desperate;
-              _wm.psyCardMc.pathologicalAnxious = _SocialFold.pathological_anxious;
-              _wm.psyCardMc.pathologicalActive = _SocialFold.pathological_active;
-              _wm.psyCardMc.pathologicalStrangeThought = _SocialFold.pathological_strange_thought;
-              _wm.psyCardMc.pathologicalSleepless = _SocialFold.pathological_sleepless;
-              _wm.psyCardMc.pathologicalNoFamily = _SocialFold.pathological_no_family;
-              _wm.psyCardMc.pathologicalThoughtSuicide = _SocialFold.pathological_thought_suicide;
-              _wm.psyCardMc.pathologicalAddictiveBehavior = _SocialFold.pathological_addictive_behavior;
-              _wm.psyCardMc.pathologicalClaimsInjuries = _SocialFold.pathological_claims_injuries;
-              _wm.psyCardMc.pathologicalShameLevel = _SocialFold.pathological_shame_level;
-              _wm.psyCardMc.accessToTheInterview = _SocialFold.access_to_the_interview;
-              _wm.psyCardMc.trafficWarden = _SocialFold.traffic_warden;
-              _wm.psyCardMc.lucid = _SocialFold.lucid;
-              _wm.psyCardMc.orientatedInTheThreeParameter = _SocialFold.orientated_in_the_three_parameter;
-              _wm.psyCardMc.umor = _SocialFold.umor;
-              _wm.psyCardMc.anxiety = _SocialFold.anxiety;
-              _wm.psyCardMc.alteredPerception = _SocialFold.altered_perception;
-              _wm.psyCardMc.appetite = _SocialFold.appetite;
-              _wm.psyCardMc.alteredFormThought = _SocialFold.altered_form_thought;
-              _wm.psyCardMc.sleepWakeRhythm = _SocialFold.sleep_wake_rhythm;
-              _wm.psyCardMc.futureProject = _SocialFold.future_project;
-              _wm.psyCardMc.accessToTheInterviewNote = _SocialFold.access_to_the_interview_note;
-              _wm.psyCardMc.trafficWardenNote = _SocialFold.traffic_warden_note;
-              _wm.psyCardMc.lucidNote = _SocialFold.lucid_note;
-              _wm.psyCardMc.orientatedInTheThreeParameterNote = _SocialFold.orientated_in_the_three_parameter_note;
-              _wm.psyCardMc.umorNote = _SocialFold.umor_note;
-              _wm.psyCardMc.anxietyNote = _SocialFold.anxiety_note;
-              _wm.psyCardMc.alteredPerceptionNote = _SocialFold.altered_perception_note;
-              _wm.psyCardMc.appetiteNote = _SocialFold.appetite_note;
-              _wm.psyCardMc.alteredFormThoughtNote = _SocialFold.altered_form_thought_note;
-              _wm.psyCardMc.sleepWakeRhythmNote = _SocialFold.sleep_wake_rhythm_note;
-              _wm.psyCardMc.futureProjectNote = _SocialFold.future_project_note;
-              _wm.psyhowFeel.wellToFocus = _SocialFold.well_to_focus;
-              _wm.psyhowFeel.wellLostSleep = _SocialFold.well_lost_sleep;
-              _wm.psyhowFeel.wellProductive = _SocialFold.well_productive;
-              _wm.psyhowFeel.wellMakeDecision = _SocialFold.well_make_decision;
-              _wm.psyhowFeel.wellPression = _SocialFold.well_pression;
-              _wm.psyhowFeel.wellNotAble = _SocialFold.well_not_able;
-              _wm.psyhowFeel.wellTimeForHimself = _SocialFold.well_time_for_himself;
-              _wm.psyhowFeel.wellProblemSolving = _SocialFold.well_problem_solving;
-              _wm.psyhowFeel.wellUnhappy = _SocialFold.well_unhappy;
-              _wm.psyhowFeel.wellLostConfidence = _SocialFold.well_lost_confidence;
-              _wm.psyhowFeel.wellLowerEsteem = _SocialFold.well_lower_esteem;
-              _wm.psyhowFeel.wellOverallHappy = _SocialFold.well_overall_happy;
-              _wm.psyCardMc.thoughtHeWasDead = _SocialFold.thought_he_was_dead;
-              _wm.psyCardMc.wantedToGetHurt = _SocialFold.wanted_to_get_hurt;
-              _wm.psyCardMc.thoughtSuicide = _SocialFold.thought_suicide;
-              _wm.psyCardMc.thoughtHowSuicide = _SocialFold.thought_how_suicide;
-              _wm.psyCardMc.attemptedSuicide = _SocialFold.attempted_suicide;
-              _wm.psyCardMc.neverTryAttemptedSuicide = _SocialFold.never_try_attempted_suicide;
-              _wm.psyCardMc.gravityIdeationSuicide = _SocialFold.gravity_ideation_suicide;
-              _wm.psyCardMc.checkSpdcHospitalizations = _SocialFold.check_spdc_hospitalizations;
-              _wm.psyCardMc.checkDeclareSuicide = _SocialFold.check_declare_suicide;
-              _wm.psyCardMc.checkThougthSuicide = _SocialFold.check_thougth_suicide;
-              _wm.psyCardMc.checkUnusualLevelOfShame = _SocialFold.check_unusual_level_of_shame;
-              _wm.psyCardMc.checkConfusionalState = _SocialFold.check_confusional_state;
-              _wm.psyCardMc.checkPsychomotorAgitation = _SocialFold.check_psychomotor_agitation;
-              _wm.psyCardMc.checkBizarreBehavior = _SocialFold.check_bizarre_behavior;
-              _wm.psyCardMc.checkVerbalCommunication = _SocialFold.check_verbal_communication;
-              _wm.psyCardMc.checkLevelMini = _SocialFold.check_level_mini;
-              _wm.psyCardMc.checkGeneralWellBeing = _SocialFold.check_general_well_being;
-              _wm.psyCardMc.checkVainFormViolence = _SocialFold.check_vain_form_violence;
-              _wm.psyCardMc.checkComeFromForcedIsolation = _SocialFold.check_come_from_forced_isolation;
-              _wm.psyCardMc.checkIsolationSocialNetwork = _SocialFold.check_isolation_social_network;
-              _wm.psyCardMc.checkUncertaintyAboutFuture = _SocialFold.check_uncertainty_about_future;
-              _wm.psyCardMc.checkConclusion = _SocialFold.check_conclusion;
-              _wm.psyCardMc.riskAssessmentConclusions = _SocialFold.risk_assessment_conclusions;
-              _wm.psyCardMc.requestActivationOfMeasures = _SocialFold.request_activation_of_measures;
-              _wm.psyCardMc.requestActivationNormalSurveillance = _SocialFold.request_activation_normal_surveillance;
-              _wm.psyCardMc.requestActivationMultipleRoom = _SocialFold.request_activation_multiple_room;
-              _wm.psyCardMc.requestActivationBigSurveillance = _SocialFold.request_activation_big_surveillance;
-              _wm.psyCardMc.requestActivationVisualSurveillance = _SocialFold.request_activation_visual_surveillance;
-              _wm.psyCardMc.firstMedicalHistoryVisit = _SocialFold.first_medical_history_visit;
-              _wm.psyCardMc.firstStatus = _SocialFold.first_status;
-              _wm.psyCardMc.firstTerapy = _SocialFold.first_terapy;
-              _wm.psyCardMc.firstOrientation = _SocialFold.first_orientation;
+              _wm.psyMcDoctorId = _MemberShip.id_doctor;
+              _wm.psyMcDoctorName = _MemberShip.doctor_name;
+              _wm.psyMcDoctorLastname = _MemberShip.doctor_lastname;
+              _wm.psyCardMc.communicateItalian = _MemberShip.communicate_italian;
+              _wm.psyCardMc.communicate = _MemberShip.communicate;
+              _wm.psyCardMc.maritalStatus = _MemberShip.marital_status;
+              _wm.psyCardMc.sons = _MemberShip.sons;
+              _wm.psyCardMc.sonNumber = _MemberShip.son_number;
+              _wm.psyCardMc.sonAge = _MemberShip.son_age;
+              _wm.psyCardMc.residenceNot = _MemberShip.residence_not;
+              _wm.psyCardMc.residence = _MemberShip.residence;
+              _wm.psyCardMc.titleStudy = _MemberShip.title_study;
+              _wm.psyCardMc.situationHousing = _MemberShip.situation_housing;
+              _wm.psyCardMc.situationWork = _MemberShip.situation_work;
+              _wm.psyCardMc.dateStartPrison = _MemberShip.date_start_prison;
+              _wm.psyCardMc.dateStartInInstitute = _MemberShip.date_start_in_institute;
+              _wm.psyCardMc.firstExperiencePrison = _MemberShip.first_experience_prison;
+              _wm.psyCardMc.provenience = _MemberShip.provenience;
+              _wm.psyCardMc.legalPosition = _MemberShip.legal_position;
+              _wm.psyCardMc.endOfSentence = _MemberShip.end_of_sentence;
+              _wm.psyCardMc.economicResource = _MemberShip.economic_resource;
+              _wm.psyCardMc.previousTreatmentForProblem = _MemberShip.previous_treatment_for_problem;
+              _wm.psyCardMc.previousTreatmentFarmacology = _MemberShip.previous_treatment_farmacology;
+              _wm.psyCardMc.previousDiagnosesOfMentalDisorder = _MemberShip.previous_diagnoses_of_mental_disorder;
+              _wm.psyCardMc.previousDiagnosisOfDrugAbuse = _MemberShip.previous_diagnosis_of_drug_abuse;
+              _wm.psyCardMc.previousHospitalizationSpdc = _MemberShip.previous_hospitalization_spdc;
+              _wm.psyCardMc.previousHospitalizationEmergency = _MemberShip.previous_hospitalization_emergency;
+              _wm.psyCardMc.pathologicalAttemptedSuicide = _MemberShip.pathological_attempted_suicide;
+              _wm.psyCardMc.pathologicalDesperate = _MemberShip.pathological_desperate;
+              _wm.psyCardMc.pathologicalAnxious = _MemberShip.pathological_anxious;
+              _wm.psyCardMc.pathologicalActive = _MemberShip.pathological_active;
+              _wm.psyCardMc.pathologicalStrangeThought = _MemberShip.pathological_strange_thought;
+              _wm.psyCardMc.pathologicalSleepless = _MemberShip.pathological_sleepless;
+              _wm.psyCardMc.pathologicalNoFamily = _MemberShip.pathological_no_family;
+              _wm.psyCardMc.pathologicalThoughtSuicide = _MemberShip.pathological_thought_suicide;
+              _wm.psyCardMc.pathologicalAddictiveBehavior = _MemberShip.pathological_addictive_behavior;
+              _wm.psyCardMc.pathologicalClaimsInjuries = _MemberShip.pathological_claims_injuries;
+              _wm.psyCardMc.pathologicalShameLevel = _MemberShip.pathological_shame_level;
+              _wm.psyCardMc.accessToTheInterview = _MemberShip.access_to_the_interview;
+              _wm.psyCardMc.trafficWarden = _MemberShip.traffic_warden;
+              _wm.psyCardMc.lucid = _MemberShip.lucid;
+              _wm.psyCardMc.orientatedInTheThreeParameter = _MemberShip.orientated_in_the_three_parameter;
+              _wm.psyCardMc.umor = _MemberShip.umor;
+              _wm.psyCardMc.anxiety = _MemberShip.anxiety;
+              _wm.psyCardMc.alteredPerception = _MemberShip.altered_perception;
+              _wm.psyCardMc.appetite = _MemberShip.appetite;
+              _wm.psyCardMc.alteredFormThought = _MemberShip.altered_form_thought;
+              _wm.psyCardMc.sleepWakeRhythm = _MemberShip.sleep_wake_rhythm;
+              _wm.psyCardMc.futureProject = _MemberShip.future_project;
+              _wm.psyCardMc.accessToTheInterviewNote = _MemberShip.access_to_the_interview_note;
+              _wm.psyCardMc.trafficWardenNote = _MemberShip.traffic_warden_note;
+              _wm.psyCardMc.lucidNote = _MemberShip.lucid_note;
+              _wm.psyCardMc.orientatedInTheThreeParameterNote = _MemberShip.orientated_in_the_three_parameter_note;
+              _wm.psyCardMc.umorNote = _MemberShip.umor_note;
+              _wm.psyCardMc.anxietyNote = _MemberShip.anxiety_note;
+              _wm.psyCardMc.alteredPerceptionNote = _MemberShip.altered_perception_note;
+              _wm.psyCardMc.appetiteNote = _MemberShip.appetite_note;
+              _wm.psyCardMc.alteredFormThoughtNote = _MemberShip.altered_form_thought_note;
+              _wm.psyCardMc.sleepWakeRhythmNote = _MemberShip.sleep_wake_rhythm_note;
+              _wm.psyCardMc.futureProjectNote = _MemberShip.future_project_note;
+              _wm.psyhowFeel.wellToFocus = _MemberShip.well_to_focus;
+              _wm.psyhowFeel.wellLostSleep = _MemberShip.well_lost_sleep;
+              _wm.psyhowFeel.wellProductive = _MemberShip.well_productive;
+              _wm.psyhowFeel.wellMakeDecision = _MemberShip.well_make_decision;
+              _wm.psyhowFeel.wellPression = _MemberShip.well_pression;
+              _wm.psyhowFeel.wellNotAble = _MemberShip.well_not_able;
+              _wm.psyhowFeel.wellTimeForHimself = _MemberShip.well_time_for_himself;
+              _wm.psyhowFeel.wellProblemSolving = _MemberShip.well_problem_solving;
+              _wm.psyhowFeel.wellUnhappy = _MemberShip.well_unhappy;
+              _wm.psyhowFeel.wellLostConfidence = _MemberShip.well_lost_confidence;
+              _wm.psyhowFeel.wellLowerEsteem = _MemberShip.well_lower_esteem;
+              _wm.psyhowFeel.wellOverallHappy = _MemberShip.well_overall_happy;
+              _wm.psyCardMc.thoughtHeWasDead = _MemberShip.thought_he_was_dead;
+              _wm.psyCardMc.wantedToGetHurt = _MemberShip.wanted_to_get_hurt;
+              _wm.psyCardMc.thoughtSuicide = _MemberShip.thought_suicide;
+              _wm.psyCardMc.thoughtHowSuicide = _MemberShip.thought_how_suicide;
+              _wm.psyCardMc.attemptedSuicide = _MemberShip.attempted_suicide;
+              _wm.psyCardMc.neverTryAttemptedSuicide = _MemberShip.never_try_attempted_suicide;
+              _wm.psyCardMc.gravityIdeationSuicide = _MemberShip.gravity_ideation_suicide;
+              _wm.psyCardMc.checkSpdcHospitalizations = _MemberShip.check_spdc_hospitalizations;
+              _wm.psyCardMc.checkDeclareSuicide = _MemberShip.check_declare_suicide;
+              _wm.psyCardMc.checkThougthSuicide = _MemberShip.check_thougth_suicide;
+              _wm.psyCardMc.checkUnusualLevelOfShame = _MemberShip.check_unusual_level_of_shame;
+              _wm.psyCardMc.checkConfusionalState = _MemberShip.check_confusional_state;
+              _wm.psyCardMc.checkPsychomotorAgitation = _MemberShip.check_psychomotor_agitation;
+              _wm.psyCardMc.checkBizarreBehavior = _MemberShip.check_bizarre_behavior;
+              _wm.psyCardMc.checkVerbalCommunication = _MemberShip.check_verbal_communication;
+              _wm.psyCardMc.checkLevelMini = _MemberShip.check_level_mini;
+              _wm.psyCardMc.checkGeneralWellBeing = _MemberShip.check_general_well_being;
+              _wm.psyCardMc.checkVainFormViolence = _MemberShip.check_vain_form_violence;
+              _wm.psyCardMc.checkComeFromForcedIsolation = _MemberShip.check_come_from_forced_isolation;
+              _wm.psyCardMc.checkIsolationSocialNetwork = _MemberShip.check_isolation_social_network;
+              _wm.psyCardMc.checkUncertaintyAboutFuture = _MemberShip.check_uncertainty_about_future;
+              _wm.psyCardMc.checkConclusion = _MemberShip.check_conclusion;
+              _wm.psyCardMc.riskAssessmentConclusions = _MemberShip.risk_assessment_conclusions;
+              _wm.psyCardMc.requestActivationOfMeasures = _MemberShip.request_activation_of_measures;
+              _wm.psyCardMc.requestActivationNormalSurveillance = _MemberShip.request_activation_normal_surveillance;
+              _wm.psyCardMc.requestActivationMultipleRoom = _MemberShip.request_activation_multiple_room;
+              _wm.psyCardMc.requestActivationBigSurveillance = _MemberShip.request_activation_big_surveillance;
+              _wm.psyCardMc.requestActivationVisualSurveillance = _MemberShip.request_activation_visual_surveillance;
+              _wm.psyCardMc.firstMedicalHistoryVisit = _MemberShip.first_medical_history_visit;
+              _wm.psyCardMc.firstStatus = _MemberShip.first_status;
+              _wm.psyCardMc.firstTerapy = _MemberShip.first_terapy;
+              _wm.psyCardMc.firstOrientation = _MemberShip.first_orientation;
 
-              // _wm.psyCardMc.interventionPlanConclusions = _SocialFold.intervention_plan_conclusions
-              _wm.psyCardMc.interventionPlanAdvice = _SocialFold.intervention_plan_advice;
-              _wm.psyCardMc.interventionPlanTakingIntoCare = _SocialFold.intervention_plan_taking_into_care;
-              _wm.psyCardMc.interventionPlanIntegratedHandling = _SocialFold.intervention_plan_integrated_handling;
+              // _wm.psyCardMc.interventionPlanConclusions = _MemberShip.intervention_plan_conclusions
+              _wm.psyCardMc.interventionPlanAdvice = _MemberShip.intervention_plan_advice;
+              _wm.psyCardMc.interventionPlanTakingIntoCare = _MemberShip.intervention_plan_taking_into_care;
+              _wm.psyCardMc.interventionPlanIntegratedHandling = _MemberShip.intervention_plan_integrated_handling;
 
-              // _wm.psyCardMc.psychiatricVisitPlanConclusions = _SocialFold.psychiatric_visit_plan_conclusions 
-              _wm.psyCardMc.psychiatricInterventionPlanAdvice = _SocialFold.psychiatric_intervention_plan_advice;
-              _wm.psyCardMc.psychiatricPlanTakingIntoCare = _SocialFold.psychiatric_plan_taking_into_care;
-              _wm.psyCardMc.psychiatricPlanIntegratedHandling = _SocialFold.psychiatric_plan_integrated_handling;
+              // _wm.psyCardMc.psychiatricVisitPlanConclusions = _MemberShip.psychiatric_visit_plan_conclusions 
+              _wm.psyCardMc.psychiatricInterventionPlanAdvice = _MemberShip.psychiatric_intervention_plan_advice;
+              _wm.psyCardMc.psychiatricPlanTakingIntoCare = _MemberShip.psychiatric_plan_taking_into_care;
+              _wm.psyCardMc.psychiatricPlanIntegratedHandling = _MemberShip.psychiatric_plan_integrated_handling;
               _wm.allPsyMembershipCards = response.data.allPsyMembershipCards;
             } else {
               _wm.btnMcSend = "Salva";
@@ -2239,6 +2239,229 @@ __webpack_require__.r(__webpack_exports__);
             _wm.firstSave = false;
           } else if (error == 7) {
             _wm.btnMcSend = "Salva";
+            _wm.firstSave = true;
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    isObjEmpty: function isObjEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/ApiUrl */ "./resources/js/config/ApiUrl.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'PsyMentalHealthDepartment',
+  data: function data() {
+    return {
+      userName: 'Andrea',
+      userLastName: 'Giovanni',
+      userFullName: '',
+      userInstance: 1,
+      userId: 0,
+      // selectedOption: null,
+
+      accessData: [function (id) {
+        return 14;
+      }, function (name) {
+        return 'Alessio';
+      }, function (lastname) {
+        return 'Ortu';
+      }],
+      psyMhDoctorId: 0,
+      psyMhDoctorName: '',
+      psyMhDoctorLastname: '',
+      psyMhDate: null,
+      psyCardId: null,
+      date: new Date(),
+      psyCardMh: {},
+      psyCardSa: {},
+      // psyCardTsc
+
+      mainTitle: "psy",
+      firstSave: true,
+      mHSaved: false,
+      btnMhSend: "Salva",
+      total: 0,
+      allPsyMentalHealthDepartments: null
+    };
+  },
+  created: function created() {
+    // this.getPermissions();
+    //alert(JSON.stringify(this.getPsyMentalHealthDepartmentsByUserInstanceId(1)));
+    this.getPsyMentalHealthDepartmentsByUserInstanceId(1);
+  },
+  methods: {
+    addPsyMentalHealthDepartment: function addPsyMentalHealthDepartment(panel) {
+      var _this = this;
+      var _wm = this;
+      var _panel = panel;
+      var _errors = 0;
+      var _errorTitle = "Scheda";
+      var _errorDescription = "Non aggiornata";
+      var form = new FormData();
+      form.append('userName', this.userName);
+      form.append('userLastName', this.userLastName);
+      form.append('userFullName', this.userFullName);
+      form.append('userInstance', this.userInstance);
+      form.append('userId', this.userId);
+      // form.append('doctorId', this.accessData.id);
+      // form.append('doctorName', this.accessData.name);
+      // form.append('doctorUserName', this.accessData.lastname);
+      form.append('doctorId', 14);
+      form.append('doctorName', 'mario');
+      form.append('doctorUserName', 'bross');
+      if (_panel == 'mh') {
+        if (!this.mHSaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+          if (this.psyCardId) {
+            form.append('psyId', this.psyCardId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+        }
+        form.append('section', 'mh');
+        if (!this.isObjEmpty(this.psyCardMh)) {
+          var _psyCard = JSON.stringify(this.psyCardMh);
+          form.append('PsyMentalHealthDepartment', _psyCard);
+        }
+      } else if (_panel == 'sa') {
+        if (!this.sASaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+        }
+        if (this.sASaved) {
+          if (this.psyCardId) {
+            form.append('psyId', this.psyCardId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+          form.append('section', 'sa');
+          if (!this.isObjEmpty(this.psyCardSa)) {
+            var _psyCard2 = JSON.stringify(this.psyCardSa);
+            form.append('psyCard', _psyCard2);
+          }
+        }
+      }
+      if (_errors == 0) {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_PSY_CARD"], form).then(function (response) {
+            var error = response.data.errorNumber;
+            var _attempts = response.data.attempts;
+            _wm.errNum = error;
+            if (error == 0) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
+              _this.getPsyMentalHealthDepartmentsByUserInstanceId(_this.userInstance);
+            } else {
+              // eventBus.$emit('errorEvent', error, _attempts);
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
+            }
+          });
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
+      }
+    },
+    getPsyMentalHealthDepartments: function getPsyMentalHealthDepartments() {
+      var _wm = this;
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS"]).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getPsyMentalHealthDepartmentById: function getPsyMentalHealthDepartmentById(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARD_BY_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getPsyMentalHealthDepartmentsByUserInstanceId: function getPsyMentalHealthDepartmentsByUserInstanceId(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS_BY_USER_INSTANCE_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          // let _attempts=response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            _wm.mainTitle = "Aggiornamento Cartella psy";
+            if (response.data.PsyMentalHealthDepartment) {
+              _wm.mHSaved = true;
+              //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
+              _wm.btnMhSend = "Aggiorna";
+              // _wm.psyCardId=response.data.psyMentalHealthDepartment.id;
+
+              var _MentalInterview = response.data.PsyMentalHealthDepartment;
+              //     // _wm.psyCardId=response.data.psyCard.id;
+              _wm.psyCardId = _MentalInterview.id;
+              _wm.psyMhDoctorId = _MentalInterview.id_doctor;
+              _wm.psyMhDoctorName = _MentalInterview.doctor_name;
+              _wm.psyMhDoctorLastname = _MentalInterview.doctor_lastname;
+              _wm.psyCardMh.psychologicalInterview = _MentalInterview.psychological_interview;
+              _wm.psyCardMh.hypothesisPsychopathologicalClassification = _MentalInterview.hypothesis_psychopathological_classification;
+              _wm.psyCardMh.planningTypeOfIntervention = _MentalInterview.planning_type_of_intervention;
+              _wm.psyCardMh.test = _MentalInterview.test;
+              _wm.allPsyMentalHealthDepartments = response.data.allPsyMentalHealthDepartments;
+            } else {
+              _wm.btnMhSend = "Salva";
+            }
+            _wm.firstSave = false;
+          } else if (error == 7) {
+            _wm.btnMhSend = "Salva";
             _wm.firstSave = true;
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
@@ -2954,45 +3177,45 @@ __webpack_require__.r(__webpack_exports__);
             if (response.data.PsySocialFolder) {
               _wm.sFSaved = true;
               _wm.btnSfSend = "Aggiorna";
-              var _SocialRep = response.data.PsySocialFolder;
+              var _SocialFold = response.data.PsySocialFolder;
               // _wm.psyCardId=response.data.psyCard.id;
 
               _wm.psyCardId = response.data.psyCard.id;
-              _wm.psySfDoctorId = _SocialRep.id_doctor;
-              _wm.psySfDoctorName = _SocialRep.doctor_name;
-              _wm.psySfDoctorLastname = _SocialRep.doctor_lastname;
-              _wm.psyCardSf.citizenship = _SocialRep.citizenship;
-              _wm.psyCardSf.residencyPermit = _SocialRep.residency_permit;
-              _wm.psyCardSf.typology = _SocialRep.typology;
-              _wm.psyCardSf.expiration = _SocialRep.expiration;
-              _wm.psyCardSf.socialNote = _SocialRep.social_note;
-              _wm.psyCardSf.maritalStatus = _SocialRep.marital_status;
-              _wm.psyCardSf.socialDegree = _SocialRep.social_degree;
-              _wm.psyCardSf.legalStatusEducator = _SocialRep.legal_status_educator;
-              _wm.psyCardSf.legalStatusLawyer = _SocialRep.legal_status_lawyer;
-              _wm.psyCardSf.legalStatusProvenance = _SocialRep.legal_status_provenance;
-              _wm.psyCardSf.legalStatusEntered = _SocialRep.legal_status_entered;
-              _wm.psyCardSf.legalStatusEndOfSentence = _SocialRep.legal_status_end_of_sentence;
-              _wm.psyCardSf.legalStatusSecurityMeasure = _SocialRep.legal_status_security_measure;
-              _wm.psyCardSf.legalStatusEndOfTheSentence = _SocialRep.legal_status_end_of_the_sentence;
-              _wm.psyCardSf.legalStatusRemsOther = _SocialRep.legal_status_rems_other;
-              _wm.psyCardSf.legalStatusUncensored = _SocialRep.legal_status_uncensored;
-              _wm.psyCardSf.socialHealthSituationCsm = _SocialRep.social_health_situation_csm;
-              _wm.psyCardSf.socialHealthSituationSerd = _SocialRep.social_health_situation_serd;
-              _wm.psyCardSf.socialHealthSituationAsl = _SocialRep.social_health_situation_asl;
-              _wm.psyCardSf.socialHealthSituationCertificate = _SocialRep.social_health_situation_certificate;
-              _wm.psyCardSf.socialHealthSituationTherapeuticPathway = _SocialRep.social_health_situation_therapeutic_pathway;
-              _wm.psyCardSf.socialHealthSituationDisability = _SocialRep.social_health_situation_disability;
-              _wm.psyCardSf.socialHealthSituationRevision = _SocialRep.social_health_situation_revision;
-              _wm.psyCardSf.socialHealthSituationInps = _SocialRep.social_health_situation_inps;
-              _wm.psyCardSf.socialHealthSituationAdministrator = _SocialRep.social_health_situation_administrator;
-              _wm.psyCardSf.environmentalAnalysisFamilyOfOrigin = _SocialRep.environmental_analysis_family_of_origin;
-              _wm.psyCardSf.environmentalAnalysisAccommodation = _SocialRep.environmental_analysis_accommodation;
-              _wm.psyCardSf.environmentalAnalysisWork = _SocialRep.environmental_analysis_work;
-              _wm.psyCardSf.environmentalAnalysisIncome = _SocialRep.environmental_analysis_income;
-              _wm.psyCardSf.environmentalAnalysisFormalNetwork = _SocialRep.environmental_analysis_formal_network;
-              _wm.psyCardSf.interventionHypothesisSocialProject = _SocialRep.intervention_hypothesis_project;
-              _wm.psyCardSf.interventionHypothesisSocialWorker = _SocialRep.intervention_hypothesis_social_worker;
+              _wm.psySfDoctorId = _SocialFold.id_doctor;
+              _wm.psySfDoctorName = _SocialFold.doctor_name;
+              _wm.psySfDoctorLastname = _SocialFold.doctor_lastname;
+              _wm.psyCardSf.citizenship = _SocialFold.citizenship;
+              _wm.psyCardSf.residencyPermit = _SocialFold.residency_permit;
+              _wm.psyCardSf.typology = _SocialFold.typology;
+              _wm.psyCardSf.expiration = _SocialFold.expiration;
+              _wm.psyCardSf.socialNote = _SocialFold.social_note;
+              _wm.psyCardSf.maritalStatus = _SocialFold.marital_status;
+              _wm.psyCardSf.socialDegree = _SocialFold.social_degree;
+              _wm.psyCardSf.legalStatusEducator = _SocialFold.legal_status_educator;
+              _wm.psyCardSf.legalStatusLawyer = _SocialFold.legal_status_lawyer;
+              _wm.psyCardSf.legalStatusProvenance = _SocialFold.legal_status_provenance;
+              _wm.psyCardSf.legalStatusEntered = _SocialFold.legal_status_entered;
+              _wm.psyCardSf.legalStatusEndOfSentence = _SocialFold.legal_status_end_of_sentence;
+              _wm.psyCardSf.legalStatusSecurityMeasure = _SocialFold.legal_status_security_measure;
+              _wm.psyCardSf.legalStatusEndOfTheSentence = _SocialFold.legal_status_end_of_the_sentence;
+              _wm.psyCardSf.legalStatusRemsOther = _SocialFold.legal_status_rems_other;
+              _wm.psyCardSf.legalStatusUncensored = _SocialFold.legal_status_uncensored;
+              _wm.psyCardSf.socialHealthSituationCsm = _SocialFold.social_health_situation_csm;
+              _wm.psyCardSf.socialHealthSituationSerd = _SocialFold.social_health_situation_serd;
+              _wm.psyCardSf.socialHealthSituationAsl = _SocialFold.social_health_situation_asl;
+              _wm.psyCardSf.socialHealthSituationCertificate = _SocialFold.social_health_situation_certificate;
+              _wm.psyCardSf.socialHealthSituationTherapeuticPathway = _SocialFold.social_health_situation_therapeutic_pathway;
+              _wm.psyCardSf.socialHealthSituationDisability = _SocialFold.social_health_situation_disability;
+              _wm.psyCardSf.socialHealthSituationRevision = _SocialFold.social_health_situation_revision;
+              _wm.psyCardSf.socialHealthSituationInps = _SocialFold.social_health_situation_inps;
+              _wm.psyCardSf.socialHealthSituationAdministrator = _SocialFold.social_health_situation_administrator;
+              _wm.psyCardSf.environmentalAnalysisFamilyOfOrigin = _SocialFold.environmental_analysis_family_of_origin;
+              _wm.psyCardSf.environmentalAnalysisAccommodation = _SocialFold.environmental_analysis_accommodation;
+              _wm.psyCardSf.environmentalAnalysisWork = _SocialFold.environmental_analysis_work;
+              _wm.psyCardSf.environmentalAnalysisIncome = _SocialFold.environmental_analysis_income;
+              _wm.psyCardSf.environmentalAnalysisFormalNetwork = _SocialFold.environmental_analysis_formal_network;
+              _wm.psyCardSf.interventionHypothesisSocialProject = _SocialFold.intervention_hypothesis_project;
+              _wm.psyCardSf.interventionHypothesisSocialWorker = _SocialFold.intervention_hypothesis_social_worker;
               _wm.allPsySocialFolders = response.data.allPsySocialFolders;
             } else {
               _wm.btnSfSend = "Salva";
@@ -3000,6 +3223,258 @@ __webpack_require__.r(__webpack_exports__);
             _wm.firstSave = false;
           } else if (error == 7) {
             _wm.btnSfSend = "Salva";
+            _wm.firstSave = true;
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    isObjEmpty: function isObjEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySurvey.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySurvey.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/ApiUrl */ "./resources/js/config/ApiUrl.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'PsySurvey',
+  data: function data() {
+    return {
+      userName: 'Andrea',
+      userLastName: 'Giovanni',
+      userFullName: '',
+      userInstance: 1,
+      userId: 0,
+      accessData: [function (id) {
+        return 14;
+      }, function (name) {
+        return 'Alessio';
+      }, function (lastname) {
+        return 'Ortu';
+      }],
+      psyPsDoctorId: 0,
+      psyPsDoctorName: '',
+      psyPsDoctorLastname: '',
+      psyPsDate: null,
+      psyCardId: null,
+      date: new Date(),
+      psyCardPs: {},
+      // psyhowFeel:{},
+
+      panel: 'ps',
+      mainTitle: "psy",
+      firstSave: true,
+      pSSaved: false,
+      btnPsSend: "Salva",
+      total: 0,
+      allPsySurveys: null
+    };
+  },
+  created: function created() {
+    // this.getPermissions();
+    this.getPsySurveysByUserInstanceId(1);
+  },
+  methods: {
+    addPsySurvey: function addPsySurvey(panel) {
+      var _this = this;
+      var _wm = this;
+      var _panel = panel;
+      var _errors = 0;
+      var _errorTitle = "Scheda";
+      var _errorDescription = "Non aggiornata";
+      var form = new FormData();
+      form.append('userName', this.userName);
+      form.append('userLastName', this.userLastName);
+      form.append('userFullName', this.userFullName);
+      form.append('userInstance', this.userInstance);
+      form.append('userId', this.userId);
+      // form.append('doctorId', this.accessData.id);
+      // form.append('doctorName', this.accessData.name);
+      // form.append('doctorUserName', this.accessData.lastname);
+      form.append('doctorId', 14);
+      form.append('doctorName', 'mario');
+      form.append('doctorUserName', 'bross');
+      if (_panel == 'ps') {
+        if (!this.pSSaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+          if (this.psyCardId) {
+            form.append('psyId', this.psyCardId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+        }
+        form.append('section', 'ps');
+        if (!this.isObjEmpty(this.psyCardPs)) {
+          // alert(JSON.stringify(this.psyCardPs));
+          var _psyCardPs = JSON.stringify(this.psyCardPs);
+          form.append('psyCardPs', _psyCardPs);
+        }
+      } else if (_panel == 'mh') {
+        if (!this.mHSaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+        }
+        if (this.mHSaved) {
+          if (this.psyCardId) {
+            form.append('psyId', this.psyCardId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+          form.append('section', 'mh');
+          if (!this.isObjEmpty(this.psyCardMh)) {
+            var _psyCardMh = JSON.stringify(this.psyCardMh);
+            form.append('PsyMentalHealthDepartment', _psyCardMh);
+          }
+        }
+      }
+      if (_errors == 0) {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_PSY_CARD"], form).then(function (response) {
+            var error = response.data.errorNumber;
+            var _attempts = response.data.attempts;
+            _wm.errNum = error;
+            if (error == 0) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
+              _this.getPsySurveysByUserInstanceId(_this.userInstance);
+            } else {
+              // eventBus.$emit('errorEvent', error, _attempts);
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
+            }
+          });
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
+      }
+    },
+    getPsySurveys: function getPsySurveys() {
+      //GET ALL CARDS
+      var _wm = this;
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS"]).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getPsySurveyById: function getPsySurveyById(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARD_BY_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getPsySurveysByUserInstanceId: function getPsySurveysByUserInstanceId(id) {
+      var _wm = this;
+      // alert('yy');
+
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS_BY_USER_INSTANCE_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          // let _attempts=response.data.attempts;
+          _wm.errNum = error;
+          //alert(JSON.stringify(response.data));
+          if (error == 0) {
+            _wm.mainTitle = "Aggiornamento Cartella psy";
+            if (response.data.PsySurvey) {
+              _wm.pSSaved = true;
+              _wm.btnPsSend = "Aggiorna";
+              var _PsySurv = response.data.PsySurvey;
+              // _wm.psyCardId=response.data.psyCard.id;
+              _wm.psyCardId = response.data.psyCard.id;
+              _wm.psyPsDoctorId = _PsySurv.id_doctor;
+              _wm.psyPsDoctorName = _PsySurv.doctor_name;
+              _wm.psyPsDoctorLastname = _PsySurv.doctor_lastname;
+              _wm.psyCardPs.surveyHeardAlone = _PsySurv.survey_heard_alone;
+              _wm.psyCardPs.surveyHeardAnxious = _PsySurv.survey_heard_anxious;
+              _wm.psyCardPs.surveySupport = _PsySurv.survey_support;
+              _wm.psyCardPs.surveyOkayWithMyself = _PsySurv.survey_okay_with_myself;
+              _wm.psyCardPs.surveyDevoidOfEnergy = _PsySurv.survey_devoid_of_energy;
+              _wm.psyCardPs.surveyViolentTowardsOthers = _PsySurv.survey_violent_towards_others;
+              _wm.psyCardPs.surveyAbleToAdapt = _PsySurv.survey_able_to_adapt;
+              _wm.psyCardPs.surveyDisturbed = _PsySurv.survey_disturbed;
+              _wm.psyCardPs.surveyHurtMe = _PsySurv.survey_hurt_me;
+              _wm.psyCardPs.surveyNotForceToSpeak = _PsySurv.survey_not_force_to_speak;
+              _wm.psyCardPs.surveyTensionPrevented = _PsySurv.survey_tension_prevented;
+              _wm.psyCardPs.surveyHappy = _PsySurv.survey_happy;
+              _wm.psyCardPs.surveyDisturbedByThoughts = _PsySurv.survey_disturbed_by_thoughts;
+              _wm.psyCardPs.surveyCry = _PsySurv.survey_cry;
+              _wm.psyCardPs.surveyFeltPanic = _PsySurv.survey_felt_panic;
+              _wm.psyCardPs.surveyPlannedToSuicide = _PsySurv.survey_planned_to_suicide;
+              _wm.psyCardPs.surveyFeltOverwhelmed = _PsySurv.survey_felt_overwhelmed;
+              _wm.psyCardPs.surveyDifficultyFallingAsleep = _PsySurv.survey_difficulty_falling_asleep;
+              _wm.psyCardPs.surveyFeltAffection = _PsySurv.survey_felt_affection;
+              _wm.psyCardPs.surveyImpossibleAsideProblems = _PsySurv.survey_impossible_aside_problems;
+              _wm.psyCardPs.surveyAbleToDoThings = _PsySurv.survey_able_to_do_things;
+              _wm.psyCardPs.surveyThreatenedSomeone = _PsySurv.survey_threatened_someone;
+              _wm.psyCardPs.surveyFeltHeartbroken = _PsySurv.survey_felt_heartbroken;
+              _wm.psyCardPs.surveyThoughtBetterToDie = _PsySurv.survey_thought_better_to_die;
+              _wm.psyCardPs.surveyFeltCritical = _PsySurv.survey_felt_critical;
+              _wm.psyCardPs.surveyThoughtHadNoFriends = _PsySurv.survey_thought_had_no_friends;
+              _wm.psyCardPs.surveyFeltUnhappy = _PsySurv.survey_felt_unhappy;
+              _wm.psyCardPs.surveyTroubledByImages = _PsySurv.survey_troubled_by_images;
+              _wm.psyCardPs.surveyFeltIrritated = _PsySurv.survey_felt_irritated;
+              _wm.psyCardPs.surveyThoughtMyFault = _PsySurv.survey_thought_my_fault;
+              _wm.psyCardPs.surveyOptimisticAboutTheFuture = _PsySurv.survey_optimistic_about_the_future;
+              _wm.psyCardPs.surveyGotWhatWanted = _PsySurv.survey_got_what_wanted;
+              _wm.psyCardPs.surveyFeltHumiliated = _PsySurv.survey_felt_humiliated;
+              _wm.psyCardPs.surveyHurtMyself = _PsySurv.survey_hurt_myself;
+              _wm.allPsySurveys = response.data.allPsySurveys;
+            } else {
+              _wm.btnPsSend = "Salva";
+            }
+            _wm.firstSave = false;
+          } else if (error == 7) {
+            _wm.btnPsSend = "Salva";
             _wm.firstSave = true;
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
@@ -4306,15 +4781,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/psyCard.vue */ "./resources/js/components/psyCard.vue");
-/* harmony import */ var _components_psyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/psyMentalHealthDepartment.vue */ "./resources/js/components/psyMentalHealthDepartment.vue");
+/* harmony import */ var _components_PsyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/PsyMentalHealthDepartment.vue */ "./resources/js/components/PsyMentalHealthDepartment.vue");
 /* harmony import */ var _components_PsyRehabilitationPsychiatricCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/PsyRehabilitationPsychiatricCard.vue */ "./resources/js/components/PsyRehabilitationPsychiatricCard.vue");
 /* harmony import */ var _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/PsyRating.vue */ "./resources/js/components/PsyRating.vue");
 /* harmony import */ var _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/PsyUocDepartment.vue */ "./resources/js/components/PsyUocDepartment.vue");
 /* harmony import */ var _components_PsySocialFolder_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/PsySocialFolder.vue */ "./resources/js/components/PsySocialFolder.vue");
 /* harmony import */ var _components_PsyMembershipCard_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/PsyMembershipCard.vue */ "./resources/js/components/PsyMembershipCard.vue");
+/* harmony import */ var _components_PsySurvey_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/PsySurvey.vue */ "./resources/js/components/PsySurvey.vue");
 // import Home from '../pages/Home.vue';
 
 // import serdCard from '../components/serdCard.vue';
+
 
 
 
@@ -4326,12 +4803,13 @@ __webpack_require__.r(__webpack_exports__);
     // serdCard, 
     // Home,
     psyCard: _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    psyMentalHealthDepartment: _components_psyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    psyMentalHealthDepartment: _components_PsyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     PsyRehabilitationPsychiatricCard: _components_PsyRehabilitationPsychiatricCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     PsyRating: _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     PsyUocDepartment: _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     PsySocialFolder: _components_PsySocialFolder_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    PsyMembershipCard: _components_PsyMembershipCard_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+    PsyMembershipCard: _components_PsyMembershipCard_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    PsySurvey: _components_PsySurvey_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
   }
 });
 
@@ -10932,6 +11410,235 @@ render._withStripped = true;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=template&id=00fb9f12&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=template&id=00fb9f12&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "page-content"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "x_panel"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "x_content"
+  }, [_c("form", {
+    staticClass: "form-horizontal form-label-left align-items-center",
+    attrs: {
+      id: "demo-form2",
+      "data-parsley-validate": ""
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMh.psychologicalInterview,
+      expression: "psyCardMh.psychologicalInterview"
+    }],
+    attrs: {
+      name: "psychological_interview",
+      cols: "100",
+      rows: "7"
+    },
+    domProps: {
+      value: _vm.psyCardMh.psychologicalInterview
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardMh, "psychologicalInterview", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(2), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMh.hypothesisPsychopathologicalClassification,
+      expression: "psyCardMh.hypothesisPsychopathologicalClassification"
+    }],
+    attrs: {
+      name: "hypothesis_psychopathological_classification",
+      cols: "100",
+      rows: "4"
+    },
+    domProps: {
+      value: _vm.psyCardMh.hypothesisPsychopathologicalClassification
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardMh, "hypothesisPsychopathologicalClassification", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(3), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMh.planningTypeOfIntervention,
+      expression: "psyCardMh.planningTypeOfIntervention"
+    }],
+    attrs: {
+      name: "planning_type_of_intervention",
+      cols: "100",
+      rows: "4"
+    },
+    domProps: {
+      value: _vm.psyCardMh.planningTypeOfIntervention
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardMh, "planningTypeOfIntervention", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(4), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardMh.test,
+      expression: "psyCardMh.test"
+    }],
+    attrs: {
+      name: "test",
+      cols: "100",
+      rows: "5"
+    },
+    domProps: {
+      value: _vm.psyCardMh.test
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardMh, "test", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v("\n\n                            " + _vm._s(_vm.psyCardMh) + "\n                            "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("span", {
+    staticClass: "btn btn-success i2hBtn ml-3",
+    on: {
+      click: function click($event) {
+        return _vm.addPsyMentalHealthDepartment("mh");
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.btnMhSend))])])])])])])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px"
+    }
+  }, [_c("h1", [_vm._v("PARTE PSICOLOGICA PER CARTELLA CLINICA")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "psychological_interview"
+    }
+  }, [_c("strong", [_c("h2", [_vm._v("Colloquio Psicologico")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "hypothesis_psychopathological_classification"
+    }
+  }, [_c("strong", [_c("h2", [_vm._v("Ipotesi/Inquadramento Psicopatologico")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "planning_type_of_intervention"
+    }
+  }, [_c("strong", [_c("h2", [_vm._v("Progettualità/Tipologia di Intervento")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "test"
+    }
+  }, [_c("strong", [_c("h2", [_vm._v("Test")])])]);
+}];
+render._withStripped = true;
+
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyRating.vue?vue&type=template&id=4f66c0b8&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyRating.vue?vue&type=template&id=4f66c0b8&scoped=true& ***!
@@ -17394,6 +18101,3593 @@ render._withStripped = true;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySurvey.vue?vue&type=template&id=aacce016&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySurvey.vue?vue&type=template&id=aacce016&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "page-content"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "x_panel"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "x_content"
+  }, [_c("form", {
+    staticClass: "form-horizontal form-label-left align-items-center",
+    attrs: {
+      id: "demo-form2",
+      "data-parsley-validate": ""
+    }
+  }, [_vm._m(1), _vm._v(" "), _c("table", [_vm._m(2), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("1")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito terribilmente solo e isolato")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHeardAlone,
+      expression: "psyCardPs.surveyHeardAlone"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_heard_alone",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHeardAlone, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHeardAlone", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHeardAlone,
+      expression: "psyCardPs.surveyHeardAlone"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_heard_alone",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHeardAlone, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHeardAlone", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHeardAlone,
+      expression: "psyCardPs.surveyHeardAlone"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_heard_alone",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHeardAlone, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHeardAlone", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHeardAlone,
+      expression: "psyCardPs.surveyHeardAlone"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_heard_alone",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHeardAlone, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHeardAlone", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHeardAlone,
+      expression: "psyCardPs.surveyHeardAlone"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_heard_alone",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHeardAlone, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHeardAlone", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("2")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito teso, ansioso o nervoso")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHeardAnxious,
+      expression: "psyCardPs.surveyHeardAnxious"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_heard_anxious",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHeardAnxious, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHeardAnxious", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHeardAnxious,
+      expression: "psyCardPs.surveyHeardAnxious"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_heard_anxious",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHeardAnxious, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHeardAnxious", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHeardAnxious,
+      expression: "psyCardPs.surveyHeardAnxious"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_heard_anxious",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHeardAnxious, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHeardAnxious", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHeardAnxious,
+      expression: "psyCardPs.surveyHeardAnxious"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_heard_anxious",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHeardAnxious, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHeardAnxious", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHeardAnxious,
+      expression: "psyCardPs.surveyHeardAnxious"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_heard_anxious",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHeardAnxious, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHeardAnxious", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("3")]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveySupport,
+      expression: "psyCardPs.surveySupport"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_support",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveySupport, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveySupport", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveySupport,
+      expression: "psyCardPs.surveySupport"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_support",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveySupport, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveySupport", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveySupport,
+      expression: "psyCardPs.surveySupport"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_support",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveySupport, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveySupport", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveySupport,
+      expression: "psyCardPs.surveySupport"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_support",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveySupport, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveySupport", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveySupport,
+      expression: "psyCardPs.surveySupport"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_support",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveySupport, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveySupport", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("4")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito a posto con me stesso")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyOkayWithMyself,
+      expression: "psyCardPs.surveyOkayWithMyself"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_okay_with_myself",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyOkayWithMyself, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyOkayWithMyself", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyOkayWithMyself,
+      expression: "psyCardPs.surveyOkayWithMyself"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_okay_with_myself",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyOkayWithMyself, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyOkayWithMyself", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyOkayWithMyself,
+      expression: "psyCardPs.surveyOkayWithMyself"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_okay_with_myself",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyOkayWithMyself, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyOkayWithMyself", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyOkayWithMyself,
+      expression: "psyCardPs.surveyOkayWithMyself"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_okay_with_myself",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyOkayWithMyself, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyOkayWithMyself", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyOkayWithMyself,
+      expression: "psyCardPs.surveyOkayWithMyself"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_okay_with_myself",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyOkayWithMyself, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyOkayWithMyself", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("5")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito completamente privo di energia e di entusiasmo")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDevoidOfEnergy,
+      expression: "psyCardPs.surveyDevoidOfEnergy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_devoid_of_energy",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDevoidOfEnergy, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDevoidOfEnergy", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDevoidOfEnergy,
+      expression: "psyCardPs.surveyDevoidOfEnergy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_devoid_of_energy",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDevoidOfEnergy, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDevoidOfEnergy", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDevoidOfEnergy,
+      expression: "psyCardPs.surveyDevoidOfEnergy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_devoid_of_energy",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDevoidOfEnergy, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDevoidOfEnergy", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDevoidOfEnergy,
+      expression: "psyCardPs.surveyDevoidOfEnergy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_devoid_of_energy",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDevoidOfEnergy, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDevoidOfEnergy", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDevoidOfEnergy,
+      expression: "psyCardPs.surveyDevoidOfEnergy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_devoid_of_energy",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDevoidOfEnergy, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDevoidOfEnergy", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("6")]), _vm._v(" "), _c("td", [_vm._v("Sono stato violento fisicamente verso altre persone")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyViolentTowardsOthers,
+      expression: "psyCardPs.surveyViolentTowardsOthers"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_violent_towards_others",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyViolentTowardsOthers, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyViolentTowardsOthers", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyViolentTowardsOthers,
+      expression: "psyCardPs.surveyViolentTowardsOthers"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_violent_towards_others",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyViolentTowardsOthers, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyViolentTowardsOthers", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyViolentTowardsOthers,
+      expression: "psyCardPs.surveyViolentTowardsOthers"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_violent_towards_others",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyViolentTowardsOthers, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyViolentTowardsOthers", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyViolentTowardsOthers,
+      expression: "psyCardPs.surveyViolentTowardsOthers"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_violent_towards_others",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyViolentTowardsOthers, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyViolentTowardsOthers", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyViolentTowardsOthers,
+      expression: "psyCardPs.surveyViolentTowardsOthers"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_violent_towards_others",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyViolentTowardsOthers, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyViolentTowardsOthers", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("7")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito capace di adattarmi in caso di difficoltà")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyAbleToAdapt,
+      expression: "psyCardPs.surveyAbleToAdapt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_able_to_adapt",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyAbleToAdapt, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyAbleToAdapt", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyAbleToAdapt,
+      expression: "psyCardPs.surveyAbleToAdapt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_able_to_adapt",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyAbleToAdapt, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyAbleToAdapt", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyAbleToAdapt,
+      expression: "psyCardPs.surveyAbleToAdapt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_able_to_adapt",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyAbleToAdapt, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyAbleToAdapt", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyAbleToAdapt,
+      expression: "psyCardPs.surveyAbleToAdapt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_able_to_adapt",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyAbleToAdapt, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyAbleToAdapt", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyAbleToAdapt,
+      expression: "psyCardPs.surveyAbleToAdapt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_able_to_adapt",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyAbleToAdapt, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyAbleToAdapt", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("8")]), _vm._v(" "), _c("td", [_vm._v("Sono stato disturbato da malesseri, dolori o altri problemi fisici")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDisturbed,
+      expression: "psyCardPs.surveyDisturbed"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_disturbed",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDisturbed, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDisturbed", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDisturbed,
+      expression: "psyCardPs.surveyDisturbed"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_disturbed",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDisturbed, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDisturbed", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDisturbed,
+      expression: "psyCardPs.surveyDisturbed"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_disturbed",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDisturbed, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDisturbed", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDisturbed,
+      expression: "psyCardPs.surveyDisturbed"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_disturbed",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDisturbed, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDisturbed", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDisturbed,
+      expression: "psyCardPs.surveyDisturbed"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_disturbed",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDisturbed, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDisturbed", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("9")]), _vm._v(" "), _c("td", [_vm._v("Ho pensato a farmi del male")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHurtMe,
+      expression: "psyCardPs.surveyHurtMe"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_hurt_me",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHurtMe, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHurtMe", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHurtMe,
+      expression: "psyCardPs.surveyHurtMe"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_hurt_me",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHurtMe, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHurtMe", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHurtMe,
+      expression: "psyCardPs.surveyHurtMe"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_hurt_me",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHurtMe, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHurtMe", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHurtMe,
+      expression: "psyCardPs.surveyHurtMe"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_hurt_me",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHurtMe, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHurtMe", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHurtMe,
+      expression: "psyCardPs.surveyHurtMe"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_hurt_me",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHurtMe, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHurtMe", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("10")]), _vm._v(" "), _c("td", [_vm._v("Non ho avuto la forza di parlare con le altre persone")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyNotForceToSpeak,
+      expression: "psyCardPs.surveyNotForceToSpeak"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_not_force_to_speak",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyNotForceToSpeak, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyNotForceToSpeak", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyNotForceToSpeak,
+      expression: "psyCardPs.surveyNotForceToSpeak"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_not_force_to_speak",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyNotForceToSpeak, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyNotForceToSpeak", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyNotForceToSpeak,
+      expression: "psyCardPs.surveyNotForceToSpeak"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_not_force_to_speak",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyNotForceToSpeak, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyNotForceToSpeak", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyNotForceToSpeak,
+      expression: "psyCardPs.surveyNotForceToSpeak"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_not_force_to_speak",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyNotForceToSpeak, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyNotForceToSpeak", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyNotForceToSpeak,
+      expression: "psyCardPs.surveyNotForceToSpeak"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_not_force_to_speak",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyNotForceToSpeak, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyNotForceToSpeak", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("11")]), _vm._v(" "), _c("td", [_vm._v("La tensione e l'ansia mi hanno impedito di fare cose importanti")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyTensionPrevented,
+      expression: "psyCardPs.surveyTensionPrevented"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_tension_prevented",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyTensionPrevented, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyTensionPrevented", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyTensionPrevented,
+      expression: "psyCardPs.surveyTensionPrevented"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_tension_prevented",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyTensionPrevented, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyTensionPrevented", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyTensionPrevented,
+      expression: "psyCardPs.surveyTensionPrevented"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_tension_prevented",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyTensionPrevented, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyTensionPrevented", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyTensionPrevented,
+      expression: "psyCardPs.surveyTensionPrevented"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_tension_prevented",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyTensionPrevented, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyTensionPrevented", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyTensionPrevented,
+      expression: "psyCardPs.surveyTensionPrevented"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_tension_prevented",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyTensionPrevented, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyTensionPrevented", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("12")]), _vm._v(" "), _c("td", [_vm._v("Sono stato contento per le cose che ho fatto")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHappy,
+      expression: "psyCardPs.surveyHappy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_happy",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHappy, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHappy", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHappy,
+      expression: "psyCardPs.surveyHappy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_happy",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHappy, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHappy", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHappy,
+      expression: "psyCardPs.surveyHappy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_happy",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHappy, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHappy", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHappy,
+      expression: "psyCardPs.surveyHappy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_happy",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHappy, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHappy", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHappy,
+      expression: "psyCardPs.surveyHappy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_happy",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHappy, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHappy", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("13")]), _vm._v(" "), _c("td", [_vm._v("Sono stato disturbato da pensieri e stati d'animo indesiderati")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDisturbedByThoughts,
+      expression: "psyCardPs.surveyDisturbedByThoughts"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_disturbed_by_thoughts",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDisturbedByThoughts, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDisturbedByThoughts", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDisturbedByThoughts,
+      expression: "psyCardPs.surveyDisturbedByThoughts"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_disturbed_by_thoughts",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDisturbedByThoughts, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDisturbedByThoughts", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDisturbedByThoughts,
+      expression: "psyCardPs.surveyDisturbedByThoughts"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_disturbed_by_thoughts",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDisturbedByThoughts, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDisturbedByThoughts", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDisturbedByThoughts,
+      expression: "psyCardPs.surveyDisturbedByThoughts"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_disturbed_by_thoughts",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDisturbedByThoughts, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDisturbedByThoughts", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDisturbedByThoughts,
+      expression: "psyCardPs.surveyDisturbedByThoughts"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_disturbed_by_thoughts",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDisturbedByThoughts, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDisturbedByThoughts", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("14")]), _vm._v(" "), _c("td", [_vm._v("Ho avuto voglia di piangere")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyCry,
+      expression: "psyCardPs.surveyCry"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_cry",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyCry, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyCry", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyCry,
+      expression: "psyCardPs.surveyCry"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_cry",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyCry, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyCry", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyCry,
+      expression: "psyCardPs.surveyCry"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_cry",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyCry, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyCry", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyCry,
+      expression: "psyCardPs.surveyCry"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_cry",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyCry, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyCry", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyCry,
+      expression: "psyCardPs.surveyCry"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_cry",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyCry, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyCry", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("15")]), _vm._v(" "), _c("td", [_vm._v("Ho provato panico e terrore")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltPanic,
+      expression: "psyCardPs.surveyFeltPanic"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_panic",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltPanic, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltPanic", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltPanic,
+      expression: "psyCardPs.surveyFeltPanic"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_panic",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltPanic, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltPanic", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltPanic,
+      expression: "psyCardPs.surveyFeltPanic"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_panic",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltPanic, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltPanic", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltPanic,
+      expression: "psyCardPs.surveyFeltPanic"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_panic",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltPanic, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltPanic", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltPanic,
+      expression: "psyCardPs.surveyFeltPanic"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_panic",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltPanic, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltPanic", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("16")]), _vm._v(" "), _c("td", [_vm._v("Ho progettato di mettere fine alla mia vita")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyPlannedToSuicide,
+      expression: "psyCardPs.surveyPlannedToSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_planned_to_suicide",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyPlannedToSuicide, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyPlannedToSuicide", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyPlannedToSuicide,
+      expression: "psyCardPs.surveyPlannedToSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_planned_to_suicide",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyPlannedToSuicide, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyPlannedToSuicide", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyPlannedToSuicide,
+      expression: "psyCardPs.surveyPlannedToSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_planned_to_suicide",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyPlannedToSuicide, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyPlannedToSuicide", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyPlannedToSuicide,
+      expression: "psyCardPs.surveyPlannedToSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_planned_to_suicide",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyPlannedToSuicide, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyPlannedToSuicide", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyPlannedToSuicide,
+      expression: "psyCardPs.surveyPlannedToSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_planned_to_suicide",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyPlannedToSuicide, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyPlannedToSuicide", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("17")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito sopraffatto dai miei problemi")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltOverwhelmed,
+      expression: "psyCardPs.surveyFeltOverwhelmed"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_overwhelmed",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltOverwhelmed, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltOverwhelmed", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltOverwhelmed,
+      expression: "psyCardPs.surveyFeltOverwhelmed"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_overwhelmed",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltOverwhelmed, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltOverwhelmed", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltOverwhelmed,
+      expression: "psyCardPs.surveyFeltOverwhelmed"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_overwhelmed",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltOverwhelmed, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltOverwhelmed", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltOverwhelmed,
+      expression: "psyCardPs.surveyFeltOverwhelmed"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_overwhelmed",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltOverwhelmed, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltOverwhelmed", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltOverwhelmed,
+      expression: "psyCardPs.surveyFeltOverwhelmed"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_overwhelmed",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltOverwhelmed, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltOverwhelmed", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("18")]), _vm._v(" "), _c("td", [_vm._v("Ho avuto difficoltà ad addormentarmi o mantenere il sonno")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDifficultyFallingAsleep,
+      expression: "psyCardPs.surveyDifficultyFallingAsleep"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_difficulty_falling_asleep",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDifficultyFallingAsleep, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDifficultyFallingAsleep", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDifficultyFallingAsleep,
+      expression: "psyCardPs.surveyDifficultyFallingAsleep"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_difficulty_falling_asleep",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDifficultyFallingAsleep, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDifficultyFallingAsleep", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDifficultyFallingAsleep,
+      expression: "psyCardPs.surveyDifficultyFallingAsleep"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_difficulty_falling_asleep",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDifficultyFallingAsleep, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDifficultyFallingAsleep", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDifficultyFallingAsleep,
+      expression: "psyCardPs.surveyDifficultyFallingAsleep"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_difficulty_falling_asleep",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDifficultyFallingAsleep, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDifficultyFallingAsleep", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyDifficultyFallingAsleep,
+      expression: "psyCardPs.surveyDifficultyFallingAsleep"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_difficulty_falling_asleep",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyDifficultyFallingAsleep, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyDifficultyFallingAsleep", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("19")]), _vm._v(" "), _c("td", [_vm._v("Ho provato calore o affetto per qualcuno")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltAffection,
+      expression: "psyCardPs.surveyFeltAffection"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_affection",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltAffection, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltAffection", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltAffection,
+      expression: "psyCardPs.surveyFeltAffection"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_affection",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltAffection, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltAffection", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltAffection,
+      expression: "psyCardPs.surveyFeltAffection"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_affection",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltAffection, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltAffection", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltAffection,
+      expression: "psyCardPs.surveyFeltAffection"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_affection",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltAffection, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltAffection", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltAffection,
+      expression: "psyCardPs.surveyFeltAffection"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_affection",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltAffection, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltAffection", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("20")]), _vm._v(" "), _c("td", [_vm._v("Mi è stato impossibile mettere da parte i miei problemi")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyImpossibleAsideProblems,
+      expression: "psyCardPs.surveyImpossibleAsideProblems"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_impossible_aside_problems",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyImpossibleAsideProblems, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyImpossibleAsideProblems", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyImpossibleAsideProblems,
+      expression: "psyCardPs.surveyImpossibleAsideProblems"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_impossible_aside_problems",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyImpossibleAsideProblems, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyImpossibleAsideProblems", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyImpossibleAsideProblems,
+      expression: "psyCardPs.surveyImpossibleAsideProblems"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_impossible_aside_problems",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyImpossibleAsideProblems, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyImpossibleAsideProblems", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyImpossibleAsideProblems,
+      expression: "psyCardPs.surveyImpossibleAsideProblems"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_impossible_aside_problems",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyImpossibleAsideProblems, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyImpossibleAsideProblems", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyImpossibleAsideProblems,
+      expression: "psyCardPs.surveyImpossibleAsideProblems"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_impossible_aside_problems",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyImpossibleAsideProblems, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyImpossibleAsideProblems", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("21")]), _vm._v(" "), _c("td", [_vm._v("Sono stato in grado di fare le cose la maggior parte delle cose che dovevo fare")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyAbleToDoThings,
+      expression: "psyCardPs.surveyAbleToDoThings"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_able_to_do_things",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyAbleToDoThings, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyAbleToDoThings", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyAbleToDoThings,
+      expression: "psyCardPs.surveyAbleToDoThings"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_able_to_do_things",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyAbleToDoThings, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyAbleToDoThings", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyAbleToDoThings,
+      expression: "psyCardPs.surveyAbleToDoThings"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_able_to_do_things",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyAbleToDoThings, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyAbleToDoThings", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyAbleToDoThings,
+      expression: "psyCardPs.surveyAbleToDoThings"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_able_to_do_things",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyAbleToDoThings, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyAbleToDoThings", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyAbleToDoThings,
+      expression: "psyCardPs.surveyAbleToDoThings"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_able_to_do_things",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyAbleToDoThings, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyAbleToDoThings", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("22")]), _vm._v(" "), _c("td", [_vm._v("Ho minacciato e intimorito qualcuno")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThreatenedSomeone,
+      expression: "psyCardPs.surveyThreatenedSomeone"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_threatened_someone",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThreatenedSomeone, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThreatenedSomeone", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThreatenedSomeone,
+      expression: "psyCardPs.surveyThreatenedSomeone"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_threatened_someone",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThreatenedSomeone, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThreatenedSomeone", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThreatenedSomeone,
+      expression: "psyCardPs.surveyThreatenedSomeone"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_threatened_someone",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThreatenedSomeone, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThreatenedSomeone", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThreatenedSomeone,
+      expression: "psyCardPs.surveyThreatenedSomeone"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_threatened_someone",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThreatenedSomeone, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThreatenedSomeone", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThreatenedSomeone,
+      expression: "psyCardPs.surveyThreatenedSomeone"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_threatened_someone",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThreatenedSomeone, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThreatenedSomeone", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("23")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito affranto o senza speranza")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltHeartbroken,
+      expression: "psyCardPs.surveyFeltHeartbroken"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_heartbroken",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltHeartbroken, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltHeartbroken", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltHeartbroken,
+      expression: "psyCardPs.surveyFeltHeartbroken"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_heartbroken",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltHeartbroken, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltHeartbroken", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltHeartbroken,
+      expression: "psyCardPs.surveyFeltHeartbroken"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_heartbroken",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltHeartbroken, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltHeartbroken", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltHeartbroken,
+      expression: "psyCardPs.surveyFeltHeartbroken"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_heartbroken",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltHeartbroken, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltHeartbroken", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltHeartbroken,
+      expression: "psyCardPs.surveyFeltHeartbroken"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_heartbroken",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltHeartbroken, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltHeartbroken", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("24")]), _vm._v(" "), _c("td", [_vm._v('Ho pensato: "sarebbe meglio essere morto"')]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtBetterToDie,
+      expression: "psyCardPs.surveyThoughtBetterToDie"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_better_to_die",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtBetterToDie, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtBetterToDie", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtBetterToDie,
+      expression: "psyCardPs.surveyThoughtBetterToDie"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_better_to_die",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtBetterToDie, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtBetterToDie", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtBetterToDie,
+      expression: "psyCardPs.surveyThoughtBetterToDie"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_better_to_die",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtBetterToDie, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtBetterToDie", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtBetterToDie,
+      expression: "psyCardPs.surveyThoughtBetterToDie"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_better_to_die",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtBetterToDie, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtBetterToDie", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtBetterToDie,
+      expression: "psyCardPs.surveyThoughtBetterToDie"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_better_to_die",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtBetterToDie, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtBetterToDie", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("25")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito criticato da altre persone")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltCritical,
+      expression: "psyCardPs.surveyFeltCritical"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_critical",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltCritical, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltCritical", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltCritical,
+      expression: "psyCardPs.surveyFeltCritical"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_critical",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltCritical, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltCritical", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltCritical,
+      expression: "psyCardPs.surveyFeltCritical"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_critical",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltCritical, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltCritical", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltCritical,
+      expression: "psyCardPs.surveyFeltCritical"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_critical",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltCritical, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltCritical", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltCritical,
+      expression: "psyCardPs.surveyFeltCritical"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_critical",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltCritical, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltCritical", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("26")]), _vm._v(" "), _c("td", [_vm._v("Ho pensato di non avere amici")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtHadNoFriends,
+      expression: "psyCardPs.surveyThoughtHadNoFriends"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_had_no_friends",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtHadNoFriends, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtHadNoFriends", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtHadNoFriends,
+      expression: "psyCardPs.surveyThoughtHadNoFriends"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_had_no_friends",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtHadNoFriends, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtHadNoFriends", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtHadNoFriends,
+      expression: "psyCardPs.surveyThoughtHadNoFriends"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_had_no_friends",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtHadNoFriends, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtHadNoFriends", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtHadNoFriends,
+      expression: "psyCardPs.surveyThoughtHadNoFriends"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_had_no_friends",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtHadNoFriends, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtHadNoFriends", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtHadNoFriends,
+      expression: "psyCardPs.surveyThoughtHadNoFriends"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_had_no_friends",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtHadNoFriends, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtHadNoFriends", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("27")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito infelice")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltUnhappy,
+      expression: "psyCardPs.surveyFeltUnhappy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_unhappy",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltUnhappy, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltUnhappy", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltUnhappy,
+      expression: "psyCardPs.surveyFeltUnhappy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_unhappy",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltUnhappy, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltUnhappy", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltUnhappy,
+      expression: "psyCardPs.surveyFeltUnhappy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_unhappy",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltUnhappy, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltUnhappy", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltUnhappy,
+      expression: "psyCardPs.surveyFeltUnhappy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_unhappy",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltUnhappy, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltUnhappy", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltUnhappy,
+      expression: "psyCardPs.surveyFeltUnhappy"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_unhappy",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltUnhappy, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltUnhappy", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("28")]), _vm._v(" "), _c("td", [_vm._v("Sono stato turbato da immagini o ricordi indesiderati")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyTroubledByImages,
+      expression: "psyCardPs.surveyTroubledByImages"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_troubled_by_images",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyTroubledByImages, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyTroubledByImages", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyTroubledByImages,
+      expression: "psyCardPs.surveyTroubledByImages"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_troubled_by_images",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyTroubledByImages, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyTroubledByImages", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyTroubledByImages,
+      expression: "psyCardPs.surveyTroubledByImages"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_troubled_by_images",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyTroubledByImages, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyTroubledByImages", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyTroubledByImages,
+      expression: "psyCardPs.surveyTroubledByImages"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_troubled_by_images",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyTroubledByImages, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyTroubledByImages", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyTroubledByImages,
+      expression: "psyCardPs.surveyTroubledByImages"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_troubled_by_images",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyTroubledByImages, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyTroubledByImages", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("29")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito irritato mentre ero con altre persone")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltIrritated,
+      expression: "psyCardPs.surveyFeltIrritated"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_irritated",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltIrritated, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltIrritated", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltIrritated,
+      expression: "psyCardPs.surveyFeltIrritated"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_irritated",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltIrritated, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltIrritated", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltIrritated,
+      expression: "psyCardPs.surveyFeltIrritated"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_irritated",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltIrritated, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltIrritated", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltIrritated,
+      expression: "psyCardPs.surveyFeltIrritated"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_irritated",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltIrritated, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltIrritated", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltIrritated,
+      expression: "psyCardPs.surveyFeltIrritated"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_irritated",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltIrritated, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltIrritated", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("30")]), _vm._v(" "), _c("td", [_vm._v("Ho pensato che è mia la colpa dei problemi e delle difficoltà che ho")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtMyFault,
+      expression: "psyCardPs.surveyThoughtMyFault"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_my_fault",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtMyFault, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtMyFault", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtMyFault,
+      expression: "psyCardPs.surveyThoughtMyFault"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_my_fault",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtMyFault, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtMyFault", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtMyFault,
+      expression: "psyCardPs.surveyThoughtMyFault"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_my_fault",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtMyFault, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtMyFault", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtMyFault,
+      expression: "psyCardPs.surveyThoughtMyFault"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_my_fault",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtMyFault, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtMyFault", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyThoughtMyFault,
+      expression: "psyCardPs.surveyThoughtMyFault"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_thought_my_fault",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyThoughtMyFault, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyThoughtMyFault", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("31")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito ottimista per il mio futuro")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyOptimisticAboutTheFuture,
+      expression: "psyCardPs.surveyOptimisticAboutTheFuture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_optimistic_about_the_future",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyOptimisticAboutTheFuture, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyOptimisticAboutTheFuture", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyOptimisticAboutTheFuture,
+      expression: "psyCardPs.surveyOptimisticAboutTheFuture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_optimistic_about_the_future",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyOptimisticAboutTheFuture, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyOptimisticAboutTheFuture", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyOptimisticAboutTheFuture,
+      expression: "psyCardPs.surveyOptimisticAboutTheFuture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_optimistic_about_the_future",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyOptimisticAboutTheFuture, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyOptimisticAboutTheFuture", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyOptimisticAboutTheFuture,
+      expression: "psyCardPs.surveyOptimisticAboutTheFuture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_optimistic_about_the_future",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyOptimisticAboutTheFuture, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyOptimisticAboutTheFuture", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyOptimisticAboutTheFuture,
+      expression: "psyCardPs.surveyOptimisticAboutTheFuture"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_optimistic_about_the_future",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyOptimisticAboutTheFuture, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyOptimisticAboutTheFuture", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("32")]), _vm._v(" "), _c("td", [_vm._v("Ho ottenuto ciò che volevo")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyGotWhatWanted,
+      expression: "psyCardPs.surveyGotWhatWanted"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_got_what_wanted",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyGotWhatWanted, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyGotWhatWanted", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyGotWhatWanted,
+      expression: "psyCardPs.surveyGotWhatWanted"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_got_what_wanted",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyGotWhatWanted, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyGotWhatWanted", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyGotWhatWanted,
+      expression: "psyCardPs.surveyGotWhatWanted"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_got_what_wanted",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyGotWhatWanted, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyGotWhatWanted", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyGotWhatWanted,
+      expression: "psyCardPs.surveyGotWhatWanted"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_got_what_wanted",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyGotWhatWanted, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyGotWhatWanted", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyGotWhatWanted,
+      expression: "psyCardPs.surveyGotWhatWanted"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_got_what_wanted",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyGotWhatWanted, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyGotWhatWanted", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("td", [_vm._v("33")]), _vm._v(" "), _c("td", [_vm._v("Mi sono sentito umiliato o messo in imbarazzo da altre persone")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltHumiliated,
+      expression: "psyCardPs.surveyFeltHumiliated"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_humiliated",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltHumiliated, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltHumiliated", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltHumiliated,
+      expression: "psyCardPs.surveyFeltHumiliated"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_humiliated",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltHumiliated, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltHumiliated", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltHumiliated,
+      expression: "psyCardPs.surveyFeltHumiliated"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_humiliated",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltHumiliated, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltHumiliated", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltHumiliated,
+      expression: "psyCardPs.surveyFeltHumiliated"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_humiliated",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltHumiliated, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltHumiliated", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyFeltHumiliated,
+      expression: "psyCardPs.surveyFeltHumiliated"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_felt_humiliated",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyFeltHumiliated, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyFeltHumiliated", "molto spesso o sempre");
+      }
+    }
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("34")]), _vm._v(" "), _c("td", [_vm._v("Mi sono fatto del male fisicamente o ho messo seriamente in pericolo la mia salute")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHurtMyself,
+      expression: "psyCardPs.surveyHurtMyself"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_hurt_myself",
+      value: "per nulla"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHurtMyself, "per nulla")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHurtMyself", "per nulla");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHurtMyself,
+      expression: "psyCardPs.surveyHurtMyself"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_hurt_myself",
+      value: "solo occasionalmente"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHurtMyself, "solo occasionalmente")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHurtMyself", "solo occasionalmente");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHurtMyself,
+      expression: "psyCardPs.surveyHurtMyself"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_hurt_myself",
+      value: "ogni tanto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHurtMyself, "ogni tanto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHurtMyself", "ogni tanto");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHurtMyself,
+      expression: "psyCardPs.surveyHurtMyself"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_hurt_myself",
+      value: "spesso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHurtMyself, "spesso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHurtMyself", "spesso");
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardPs.surveyHurtMyself,
+      expression: "psyCardPs.surveyHurtMyself"
+    }],
+    attrs: {
+      type: "radio",
+      name: "survey_hurt_myself",
+      value: "molto spesso o sempre"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardPs.surveyHurtMyself, "molto spesso o sempre")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardPs, "surveyHurtMyself", "molto spesso o sempre");
+      }
+    }
+  })])])]), _vm._v(" "), _vm._m(4), _vm._v("\n\n\n                            " + _vm._s(_vm.psyCardPs) + "\n                            "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("span", {
+    staticClass: "btn btn-success i2hBtn ml-3",
+    on: {
+      click: function click($event) {
+        return _vm.addPsySurvey("ps");
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.btnPsSend))])])])])])])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px"
+    }
+  }, [_c("h1", [_c("strong", [_vm._v(" Clinical Outcome in Routine Evaluation")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h3", {
+    staticClass: "mt-5"
+  }, [_c("strong", [_vm._v(" Nell'ultima settimana")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("tr", [_c("td", {
+    staticStyle: {
+      border: "0"
+    }
+  }), _vm._v(" "), _c("td", {
+    staticStyle: {
+      border: "0"
+    }
+  }), _vm._v(" "), _c("td", {
+    staticStyle: {
+      border: "0"
+    }
+  }, [_c("strong", [_vm._v("Per nulla")])]), _vm._v(" "), _c("td", {
+    staticStyle: {
+      border: "0"
+    }
+  }, [_c("strong", [_vm._v("Solo occasionalmente")])]), _vm._v(" "), _c("td", {
+    staticStyle: {
+      border: "0"
+    }
+  }, [_c("strong", [_vm._v("Ogni tanto")])]), _vm._v(" "), _c("td", {
+    staticStyle: {
+      border: "0"
+    }
+  }, [_c("strong", [_vm._v("Spesso")])]), _vm._v(" "), _c("td", {
+    staticStyle: {
+      border: "0"
+    }
+  }, [_c("strong", [_vm._v(" Molto spesso "), _c("br"), _vm._v(" o sempre")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("td", [_vm._v("Ho sentito di avere qualcuno a cui rivolgermi per ricevere un "), _c("br"), _vm._v(" sostegno quando ne ho avuto bisogno")]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "mt-4 ml-5",
+    staticStyle: {
+      background: "lightgrey",
+      border: "1px solid black",
+      "max-width": "650px",
+      "text-align": "center"
+    }
+  }, [_c("h5", [_c("strong", [_vm._v("GRAZIE DEL TEMPO DEDICATO A COMPLETARE IL QUESTIONARIO!")])])]);
+}];
+render._withStripped = true;
+
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyUocDepartment.vue?vue&type=template&id=20f18420&scoped=true&":
 /*!*************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyUocDepartment.vue?vue&type=template&id=20f18420&scoped=true& ***!
@@ -23621,7 +27915,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("psyMentalHealthDepartment"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard")], 1)], 1);
+  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("psyMentalHealthDepartment"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard"), _vm._v(" "), _c("PsySurvey")], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -23642,6 +27936,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, ".labelWidth[data-v-65a79ba1] {\n  min-width: 190px;\n}\n.dbTitle[data-v-65a79ba1] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-65a79ba1], .item textarea[data-v-65a79ba1] {\n  margin-right: 10px;\n}\n.treatment[data-v-65a79ba1] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\n* p[data-v-65a79ba1] {\n  margin-left: 15px;\n}\ntable[data-v-65a79ba1] {\n  font-family: arial, sans-serif;\n  border-collapse: collapse;\n  width: 100%;\n  margin-left: 1rem;\n}\ntd[data-v-65a79ba1], th[data-v-65a79ba1] {\n  border: 2px solid #dddddd;\n  text-align: left;\n  padding: 8px;\n}\nli[data-v-65a79ba1] {\n  list-style: none;\n}\n*[data-v-65a79ba1] {\n  box-sizing: border-box;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".labelWidth[data-v-00fb9f12] {\n  min-width: 190px;\n}\n.dbTitle[data-v-00fb9f12] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-00fb9f12], .item textarea[data-v-00fb9f12] {\n  margin-right: 10px;\n}\n.treatment[data-v-00fb9f12] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}", ""]);
 
 // exports
 
@@ -23699,6 +28012,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, ".labelWidth[data-v-5d041c16] {\n  min-width: 190px;\n}\n.dbTitle[data-v-5d041c16] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-5d041c16], .item textarea[data-v-5d041c16] {\n  margin-right: 10px;\n}\n.treatment[data-v-5d041c16] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".labelWidth[data-v-aacce016] {\n  min-width: 190px;\n}\n.dbTitle[data-v-aacce016] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-aacce016], .item textarea[data-v-aacce016] {\n  margin-right: 10px;\n}\n.treatment[data-v-aacce016] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\n* p[data-v-aacce016] {\n  margin-left: 15px;\n}\ntable[data-v-aacce016] {\n  font-family: arial, sans-serif;\n  border-collapse: collapse;\n  width: 100%;\n}\ntd[data-v-aacce016], th[data-v-aacce016] {\n  border: 2px solid #dddddd;\n  text-align: left;\n  padding: 8px;\n}", ""]);
 
 // exports
 
@@ -46037,6 +50369,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyRating.vue?vue&type=style&index=0&id=4f66c0b8&lang=scss&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsyRating.vue?vue&type=style&index=0&id=4f66c0b8&lang=scss&scoped=true& ***!
@@ -46106,6 +50468,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySocialFolder.vue?vue&type=style&index=0&id=5d041c16&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -70968,6 +75360,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/PsyMentalHealthDepartment.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/PsyMentalHealthDepartment.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PsyMentalHealthDepartment_vue_vue_type_template_id_00fb9f12_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PsyMentalHealthDepartment.vue?vue&type=template&id=00fb9f12&scoped=true& */ "./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=template&id=00fb9f12&scoped=true&");
+/* harmony import */ var _PsyMentalHealthDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PsyMentalHealthDepartment.vue?vue&type=script&lang=js& */ "./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PsyMentalHealthDepartment_vue_vue_type_style_index_0_id_00fb9f12_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true& */ "./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PsyMentalHealthDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PsyMentalHealthDepartment_vue_vue_type_template_id_00fb9f12_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PsyMentalHealthDepartment_vue_vue_type_template_id_00fb9f12_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "00fb9f12",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PsyMentalHealthDepartment.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMentalHealthDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PsyMentalHealthDepartment.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMentalHealthDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true&":
+/*!*************************************************************************************************************************!*\
+  !*** ./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true& ***!
+  \*************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMentalHealthDepartment_vue_vue_type_style_index_0_id_00fb9f12_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=style&index=0&id=00fb9f12&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMentalHealthDepartment_vue_vue_type_style_index_0_id_00fb9f12_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMentalHealthDepartment_vue_vue_type_style_index_0_id_00fb9f12_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMentalHealthDepartment_vue_vue_type_style_index_0_id_00fb9f12_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMentalHealthDepartment_vue_vue_type_style_index_0_id_00fb9f12_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=template&id=00fb9f12&scoped=true&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=template&id=00fb9f12&scoped=true& ***!
+  \**********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMentalHealthDepartment_vue_vue_type_template_id_00fb9f12_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./PsyMentalHealthDepartment.vue?vue&type=template&id=00fb9f12&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyMentalHealthDepartment.vue?vue&type=template&id=00fb9f12&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMentalHealthDepartment_vue_vue_type_template_id_00fb9f12_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsyMentalHealthDepartment_vue_vue_type_template_id_00fb9f12_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/PsyRating.vue":
 /*!***********************************************!*\
   !*** ./resources/js/components/PsyRating.vue ***!
@@ -71224,6 +75703,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_template_id_5d041c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySocialFolder_vue_vue_type_template_id_5d041c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PsySurvey.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/PsySurvey.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PsySurvey_vue_vue_type_template_id_aacce016_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PsySurvey.vue?vue&type=template&id=aacce016&scoped=true& */ "./resources/js/components/PsySurvey.vue?vue&type=template&id=aacce016&scoped=true&");
+/* harmony import */ var _PsySurvey_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PsySurvey.vue?vue&type=script&lang=js& */ "./resources/js/components/PsySurvey.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PsySurvey_vue_vue_type_style_index_0_id_aacce016_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true& */ "./resources/js/components/PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PsySurvey_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PsySurvey_vue_vue_type_template_id_aacce016_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PsySurvey_vue_vue_type_template_id_aacce016_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "aacce016",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PsySurvey.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PsySurvey.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/PsySurvey.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySurvey_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySurvey.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySurvey.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySurvey_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true& ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySurvey_vue_vue_type_style_index_0_id_aacce016_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySurvey.vue?vue&type=style&index=0&id=aacce016&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySurvey_vue_vue_type_style_index_0_id_aacce016_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySurvey_vue_vue_type_style_index_0_id_aacce016_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySurvey_vue_vue_type_style_index_0_id_aacce016_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySurvey_vue_vue_type_style_index_0_id_aacce016_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PsySurvey.vue?vue&type=template&id=aacce016&scoped=true&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/PsySurvey.vue?vue&type=template&id=aacce016&scoped=true& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySurvey_vue_vue_type_template_id_aacce016_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySurvey.vue?vue&type=template&id=aacce016&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySurvey.vue?vue&type=template&id=aacce016&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySurvey_vue_vue_type_template_id_aacce016_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySurvey_vue_vue_type_template_id_aacce016_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
