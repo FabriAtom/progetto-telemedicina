@@ -1299,9 +1299,9 @@ class PsyCardsController extends Controller
                 $_psyMemb->first_orientation=$psyCardArr['firstOrientation'];
             }
 
-            if(array_key_exists('interventionPlanConclusions',$psyCardArr)){
-                $_psyMemb->intervention_plan_conclusions=$psyCardArr['interventionPlanConclusions'];
-            }
+            // if(array_key_exists('interventionPlanConclusions',$psyCardArr)){
+            //     $_psyMemb->intervention_plan_conclusions=$psyCardArr['interventionPlanConclusions'];
+            // }
             if(array_key_exists('interventionPlanAdvice',$psyCardArr)){
                 $_psyMemb->intervention_plan_advice=$psyCardArr['interventionPlanAdvice'];
             }
@@ -1311,10 +1311,6 @@ class PsyCardsController extends Controller
             if(array_key_exists('interventionPlanIntegratedHandling',$psyCardArr)){
                 $_psyMemb->intervention_plan_integrated_handling=$psyCardArr['interventionPlanIntegratedHandling'];
             }
-
-
-
-
 
 
             if(array_key_exists('specificPrescriptionSuggestions',$psyCardArr)){
@@ -1331,9 +1327,23 @@ class PsyCardsController extends Controller
             if(array_key_exists('psychiatricVisitOrientation',$psyCardArr)){
                 $_psyMemb->psychiatric_visit_orientation=$psyCardArr['psychiatricVisitOrientation'];
             }
-            if(array_key_exists('psychiatricVisitPlanConclusions',$psyCardArr)){
-                $_psyMemb->psychiatric_visit_plan_conclusions=$psyCardArr['psychiatricVisitPlanConclusions'];
+
+            // if(array_key_exists('psychiatricVisitPlanConclusions',$psyCardArr)){
+            //     $_psyMemb->psychiatric_visit_plan_conclusions=$psyCardArr['psychiatricVisitPlanConclusions'];
+            // }
+            if(array_key_exists('psychiatricInterventionPlanAdvice',$psyCardArr)){
+                $_psyMemb->psychiatric_intervention_plan_advice=$psyCardArr['psychiatricInterventionPlanAdvice'];
             }
+            if(array_key_exists('psychiatricPlanTakingIntoCare',$psyCardArr)){
+                $_psyMemb->psychiatric_plan_taking_into_care=$psyCardArr['psychiatricPlanTakingIntoCare'];
+            }
+            if(array_key_exists('psychiatricPlanIntegratedHandling',$psyCardArr)){
+                $_psyMemb->psychiatric_plan_integrated_handling=$psyCardArr['psychiatricPlanIntegratedHandling'];
+            }
+
+
+
+
             if(array_key_exists('psychiatricVisitPrescriptionSuggestions',$psyCardArr)){
                 $_psyMemb->psychiatric_visit_prescription_suggestions=$psyCardArr['psychiatricVisitPrescriptionSuggestions'];
             } 

@@ -67,11 +67,11 @@
                                         <div class="item form-group">
                                             <label for="sons" class="col-form-label col-md-2 col-sm-2 label-align"><strong>figli</strong></label><br>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="radio" name="sons" value="NO" v-model="psyCardMc.sons"/>
+                                                <input type="radio" name="sons" value="0" v-model="psyCardMc.sons"/>
                                                 <span>NO</span>
                                             </div>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="radio" name="sons" value="SI" v-model="psyCardMc.sons"/>
+                                                <input type="radio" name="sons" value="1" v-model="psyCardMc.sons"/>
                                                 <span>SI</span>
 
                                                 <label for="son_number" style="width:50px;" class="col-form-label col-md-1 col-sm-2 label-align"><strong>n°</strong></label>
@@ -107,24 +107,24 @@
                                             <label for="title_study" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Titolo di studio</strong></label>
                                             <div class="col-md-12 col-sm-12">
                                                 <div>
-                                                    <input type="radio" name="title_study" value="Celibe/nubile" v-model="psyCardMc.titleStudy"/>
-                                                    <span>Celibe/nubile</span>
+                                                    <input type="radio" name="title_study" value="Analfabeta" v-model="psyCardMc.titleStudy"/>
+                                                    <span>Analfabeta</span>
                                                 </div>
                                                 <div>
-                                                    <input type="radio" name="title_study" value="Coniugato/a" v-model="psyCardMc.titleStudy"/>
-                                                    <span>Coniugato/a</span>
+                                                    <input type="radio" name="title_study" value="Licenza elementare" v-model="psyCardMc.titleStudy"/>
+                                                    <span>Licenza elementare</span>
                                                 </div>
                                                 <div>
-                                                    <input type="radio" name="title_study" value="convivente" v-model="psyCardMc.titleStudy"/>
-                                                    <span>convivente</span>
+                                                    <input type="radio" name="title_study" value="Licenza media inferiore" v-model="psyCardMc.titleStudy"/>
+                                                    <span>Licenza media inferiore</span>
                                                 </div>
                                                 <div>
-                                                    <input type="radio" name="title_study" value="Separato/a-Divorziato/a" v-model="psyCardMc.titleStudy"/>
-                                                    <span>Separato/a-Divorziato/a</span>
+                                                    <input type="radio" name="title_study" value="Licenza media superiore" v-model="psyCardMc.titleStudy"/>
+                                                    <span>Licenza media superiore</span>
                                                 </div>
                                                 <div>
-                                                    <input type="radio" name="title_study" value="Vedovo/a" v-model="psyCardMc.titleStudy"/>
-                                                    <span>Vedovo/a</span>
+                                                    <input type="radio" name="title_study" value="Laurea" v-model="psyCardMc.titleStudy"/>
+                                                    <span>Laurea</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -136,8 +136,10 @@
                                         <div class="item form-group">
                                             <label for="situation_housing" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Situazione abitativa</strong></label><br>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="radio" name="situation_housing" value="Convivenza/coabitazione" v-model="psyCardMc.situationHousing"/>
+                                                <input type="radio" name="situation_housing" value="1" v-model="psyCardMc.situationHousing"/>
                                                 <span>Convivenza/coabitazione</span>
+                                                <input type="radio" name="situation_housing" value="0" v-model="psyCardMc.situationHousing"/>
+                                                <span>No</span>
                                             </span>
                                         </div>
                                     </div>
@@ -838,16 +840,16 @@
                                     </tr>
 
                                     <tr>
-                                        <td>Ritmo sonno-veglia</td>
+                                        <td>Progettualità futura</td>
                                         <td>
                                             <ul>
                                                 <li>
-                                                    <input type="radio"  name="future_project" value="conservato" v-model="psyCardMc.futureProject">
-                                                    <span>conservato</span>
+                                                    <input type="radio"  name="future_project" value="preservata" v-model="psyCardMc.futureProject">
+                                                    <span>preservata</span>
                                                 </li>
                                                 <li>
-                                                    <input type="radio"  name="future_project_note" value="alterato" v-model="psyCardMc.futureProject">
-                                                    <span>alterato</span>
+                                                    <input type="radio"  name="future_project" value="Incongrua/alterata" v-model="psyCardMc.futureProject">
+                                                    <span>Incongrua/alterata</span>
                                                 </li>
                                             </ul>
                                         </td>
@@ -864,6 +866,8 @@
 
 
 
+
+                                <!-- chekkkkkk -->
                                 <h3 class="mt-3">Questionario sul benessere generale (GHQ-12)</h3>
                                 <table>
                                     <h3></h3>
@@ -1217,8 +1221,11 @@
 
                             <div class="x_content">
 
-
-                                <!-- <h3 class="mt-3">Questionario sul benessere generale (GHQ-12)</h3> -->
+                                <p>
+                                    ad ulteriore supporto prognostico, i sanitari, affinchè al termine della visita possano avvalersi di una <br>
+                                    sintesi <strong>che non deve essere concepita come unico strumento di valutazione del rischio suicidario,</strong><br>
+                                    una volta compilate le sezioni sopra riportate, possono fare riferimento alla seguente <strong>check-list finale:</strong>
+                                </p>
                                 <table>
                                     <tr>
                                         <td style="border-right:0"></td>
@@ -1494,7 +1501,7 @@
                                                 <div class="col-md-12 col-sm-12">
                                                     <input type="checkbox" name="request_activation_normal_surveillance" value="Sorveglianza normale" v-model="psyCardMc.requestActivationNormalSurveillance">
                                                     <span>Sorveglianza normale</span><br>
-                                                    <input type="checkbox" name="request_activation_multiple_room" value="Stanza multipla" v-model="psyCardMc.request_activationMultipleRoom">
+                                                    <input type="checkbox" name="request_activation_multiple_room" value="Stanza multipla" v-model="psyCardMc.requestActivationMultipleRoom">
                                                     <span>Stanza multipla (per supporters)</span><br>
                                                     <input type="checkbox" name="request_activation_big_surveillance" value="Grande sorveglianza" v-model="psyCardMc.requestActivationBigSurveillance">
                                                     <span>Grande sorveglianza</span><br>
@@ -1507,6 +1514,7 @@
 
 
                                 </div> 
+                                <h3><strong>Prima visita psichiatrica</strong></h3>
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
@@ -1555,7 +1563,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="intervention_plan_conclusions" class="col-form-label col-md-6 col-sm-2 label-align"><strong>e. Conclusioni, si propone un PIANO DI INTERVENTO</strong></label>
+                                            <label for="" class="col-form-label col-md-6 col-sm-2 label-align"><strong>e. Conclusioni, si propone un PIANO DI INTERVENTO</strong></label>
                                             <div class="col-md-12 col-sm-12">
                                                 <input type="checkbox" name="intervention_plan_advice" value="Consulenza" v-model="psyCardMc.interventionPlanAdvice">
                                                 <span>CONSULENZA (eventuali consulenze su richiesta;non necessario, al momento, trattamento terapeutico continuativo)</span><br>
@@ -1573,11 +1581,11 @@
                                         <div class="item form-group">
                                             <label for="specific_prescription_suggestions" class="col-form-label col-md-6 col-sm-2 label-align"><strong>SPECIFICHE PRESCRIZIONI SUGGERIMENTI</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="radio" name="specific_prescription_suggestions" value="Consulenza" v-model="psyCardMc.specificPrescriptionSuggestions">
+                                                <input type="radio" name="specific_prescription_suggestions" value="RICHIESTA INVIO/TRASFERIMENTO" v-model="psyCardMc.specificPrescriptionSuggestions">
                                                 <span>RICHIESTA INVIO/TRASFERIMENTO IN SEZIONI SPECIFICHE AI SENSI ART. 111, 112, 148</span><br>
-                                                <input type="radio" name="specific_prescription_suggestions" value="Assunzione in cura" v-model="psyCardMc.specificPrescriptionSuggestions">
+                                                <input type="radio" name="specific_prescription_suggestions" value="SUGGERIMENTI DI COLLOCAZIONI" v-model="psyCardMc.specificPrescriptionSuggestions">
                                                 <span>SUGGERIMENTI DI COLLOCAZIONI PARTICOLARI IN ISTITUTO</span><br>
-                                                <input type="radio" name="specific_prescription_suggestions" value="Sorveglianza a vista" v-model="psyCardMc.specificPrescriptionSuggestions">
+                                                <input type="radio" name="specific_prescription_suggestions" value="RICHIESTA MISURA DI SORVEGLIANZA" v-model="psyCardMc.specificPrescriptionSuggestions">
                                                 <span>RICHIESTA MISURA DI SORVEGLIANZA</span><br>
                                             </div>
                                         </div>
@@ -1622,13 +1630,13 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="psychiatric_visit_plan_conclusions" class="col-form-label col-md-6 col-sm-2 label-align"><strong>d. Conclusioni, si propone un PIANO DI INTERVENTO</strong></label>
+                                            <label for="" class="col-form-label col-md-6 col-sm-2 label-align"><strong>d. Conclusioni, si propone un PIANO DI INTERVENTO</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="psychiatric_visit_plan_conclusions" value="Consulenza" v-model="psyCardMc.psychiatricVisitPlanConclusions">
+                                                <input type="checkbox" name="psychiatric_intervention_plan_advice" value="Consulenza" v-model="psyCardMc.psychiatricInterventionPlanAdvice">
                                                 <span>CONSULENZA (eventuali consulenze su richiesta;non necessario, al momento, trattamento terapeutico continuativo)</span><br>
-                                                <input type="checkbox" name="psychiatric_visit_plan_conclusions" value="Assunzione in cura" v-model="psyCardMc.psychiatricVisitPlanConclusions">
+                                                <input type="checkbox" name="psychiatric_plan_taking_into_care" value="Assunzione in cura" v-model="psyCardMc.psychiatricPlanTakingIntoCare">
                                                 <span>ASSUNZIONE IN CURA (con trattamento farmacologico sintomatico continuativo, con monitoraggio; con trattamento psicologico, con monitoraggio;)</span><br>
-                                                <input type="checkbox" name="psychiatric_visit_plan_conclusions" value="Sorveglianza a vista" v-model="psyCardMc.psychiatricVisitPlanConclusions">
+                                                <input type="checkbox" name="psychiatric_plan_integrated_handling" value="Sorveglianza a vista" v-model="psyCardMc.psychiatricPlanIntegratedHandling">
                                                 <span>PRESA IN CARICO INTEGRATA (con Piano di Trattamento individualizzato ed integrato, con presa in carico multidisciplinare)</span><br>
                                             </div>
                                         </div>
@@ -1640,11 +1648,11 @@
                                         <div class="item form-group">
                                             <label for="psychiatric_visit_prescription_suggestions" class="col-form-label col-md-6 col-sm-2 label-align"><strong>SPECIFICHE PRESCRIZIONI SUGGERIMENTI</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="radio" name="psychiatric_visit_prescription_suggestions" value="Consulenza" v-model="psyCardMc.psychiatricVisitPrescriptionSuggestions">
+                                                <input type="radio" name="psychiatric_visit_prescription_suggestions" value="RICHIESTA INVIO/TRASFERIMENTO" v-model="psyCardMc.psychiatricVisitPrescriptionSuggestions">
                                                 <span>RICHIESTA INVIO/TRASFERIMENTO IN SEZIONI SPECIFICHE AI SENSI ART. 111, 112, 148</span><br>
-                                                <input type="radio" name="psychiatric_visit_prescription_suggestions" value="Assunzione in cura" v-model="psyCardMc.psychiatricVisitPrescriptionSuggestions">
+                                                <input type="radio" name="psychiatric_visit_prescription_suggestions" value="SUGGERIMENTI DI COLLOCAZIONI" v-model="psyCardMc.psychiatricVisitPrescriptionSuggestions">
                                                 <span>SUGGERIMENTI DI COLLOCAZIONI PARTICOLARI IN ISTITUTO</span><br>
-                                                <input type="radio" name="psychiatric_visit_prescription_suggestions" value="Sorveglianza a vista" v-model="psyCardMc.psychiatricVisitPrescriptionSuggestions">
+                                                <input type="radio" name="psychiatric_visit_prescription_suggestions" value="RICHIESTA MISURA DI SORVEGLIANZA" v-model="psyCardMc.psychiatricVisitPrescriptionSuggestions">
                                                 <span>RICHIESTA MISURA DI SORVEGLIANZA</span><br>
                                             </div>
                                         </div>
@@ -2040,7 +2048,7 @@ export default {
 
                             _wm.psyCardMc.accessToTheInterviewNote = _SocialFold.access_to_the_interview_note
                             _wm.psyCardMc.trafficWardenNote = _SocialFold.traffic_warden_note
-                            _wm.psyCardMc.lucidNote = _SocialFold.lucid
+                            _wm.psyCardMc.lucidNote = _SocialFold.lucid_note
                             _wm.psyCardMc.orientatedInTheThreeParameterNote = _SocialFold.orientated_in_the_three_parameter_note
                             _wm.psyCardMc.umorNote = _SocialFold.umor_note
                             _wm.psyCardMc.anxietyNote = _SocialFold.anxiety_note
@@ -2093,17 +2101,36 @@ export default {
 
 
                             _wm.psyCardMc.riskAssessmentConclusions = _SocialFold.risk_assessment_conclusions
+
                             _wm.psyCardMc.requestActivationOfMeasures = _SocialFold.request_activation_of_measures
+                            _wm.psyCardMc.requestActivationNormalSurveillance = _SocialFold.request_activation_normal_surveillance
+                            _wm.psyCardMc.requestActivationMultipleRoom = _SocialFold.request_activation_multiple_room
+                            _wm.psyCardMc.requestActivationBigSurveillance = _SocialFold.request_activation_big_surveillance
+                            _wm.psyCardMc.requestActivationVisualSurveillance = _SocialFold.request_activation_visual_surveillance
 
-                            _wm.psyCardMc.first_medical_history_visit = _SocialFold.firstMedicalHistoryVisit
-                            _wm.psyCardMc.first_status = _SocialFold.firstStatus
-                            _wm.psyCardMc.first_terapy = _SocialFold.firstTerapy
-                            _wm.psyCardMc.first_orientation = _SocialFold.firstOrientation
 
-                            _wm.psyCardMc.intervention_plan_conclusions = _SocialFold.interventionPlanConclusions
-                            _wm.psyCardMc.intervention_plan_advice = _SocialFold.interventionPlanAdvice
-                            _wm.psyCardMc.intervention_plan_taking_into_care = _SocialFold.interventionPlanTakingIntoCare
-                            _wm.psyCardMc.intervention_plan_integrated_handling = _SocialFold.interventionPlanIntegratedHandling
+
+
+
+
+
+
+                            _wm.psyCardMc.firstMedicalHistoryVisit = _SocialFold.first_medical_history_visit
+                            _wm.psyCardMc.firstStatus = _SocialFold.first_status
+                            _wm.psyCardMc.firstTerapy = _SocialFold.first_terapy
+                            _wm.psyCardMc.firstOrientation = _SocialFold.first_orientation
+
+                            // _wm.psyCardMc.interventionPlanConclusions = _SocialFold.intervention_plan_conclusions
+                            _wm.psyCardMc.interventionPlanAdvice = _SocialFold.intervention_plan_advice
+                            _wm.psyCardMc.interventionPlanTakingIntoCare = _SocialFold.intervention_plan_taking_into_care
+                            _wm.psyCardMc.interventionPlanIntegratedHandling = _SocialFold.intervention_plan_integrated_handling
+
+
+
+                            // _wm.psyCardMc.psychiatricVisitPlanConclusions = _SocialFold.psychiatric_visit_plan_conclusions 
+                            _wm.psyCardMc.psychiatricInterventionPlanAdvice = _SocialFold.psychiatric_intervention_plan_advice
+                            _wm.psyCardMc.psychiatricPlanTakingIntoCare = _SocialFold.psychiatric_plan_taking_into_care
+                            _wm.psyCardMc.psychiatricPlanIntegratedHandling = _SocialFold.psychiatric_plan_integrated_handling
 
 
                             

@@ -129,7 +129,7 @@ class PsyMembershipCard extends Model
         'first_status',
         'first_terapy',
         'first_orientation',
-        'intervention_plan_conclusions',
+        // 'intervention_plan_conclusions',
         'intervention_plan_advice',
         'intervention_plan_taking_into_care',
         'intervention_plan_integrated_handling',
@@ -144,7 +144,15 @@ class PsyMembershipCard extends Model
         'psychiatric_visit_status',
         'psychiatric_visit_terapy',
         'psychiatric_visit_orientation',
-        'psychiatric_visit_plan_conclusions',
+        
+        // 'psychiatric_visit_plan_conclusions',
+        'psychiatric_intervention_plan_advice',
+        'psychiatric_plan_taking_into_care',
+        'psychiatric_plan_integrated_handling',
+
+
+
+
         'psychiatric_visit_prescription_suggestions',
 
     ];
