@@ -3206,6 +3206,7 @@ __webpack_require__.r(__webpack_exports__);
               _wm.psyCardSf.socialHealthSituationCertificate = _SocialFold.social_health_situation_certificate;
               _wm.psyCardSf.socialHealthSituationTherapeuticPathway = _SocialFold.social_health_situation_therapeutic_pathway;
               _wm.psyCardSf.socialHealthSituationDisability = _SocialFold.social_health_situation_disability;
+              _wm.psyCardSf.socialHealthSituationDisability_text = _SocialFold.social_health_situation_disability_text;
               _wm.psyCardSf.socialHealthSituationRevision = _SocialFold.social_health_situation_revision;
               _wm.psyCardSf.socialHealthSituationInps = _SocialFold.social_health_situation_inps;
               _wm.psyCardSf.socialHealthSituationAdministrator = _SocialFold.social_health_situation_administrator;
@@ -5333,39 +5334,32 @@ var render = function render() {
       expression: "psyCardMc.situationHousing"
     }],
     attrs: {
-      type: "radio",
+      type: "checkbox",
       name: "situation_housing",
       value: "1"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardMc.situationHousing, "1")
+      checked: Array.isArray(_vm.psyCardMc.situationHousing) ? _vm._i(_vm.psyCardMc.situationHousing, "1") > -1 : _vm.psyCardMc.situationHousing
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardMc, "situationHousing", "1");
+        var $$a = _vm.psyCardMc.situationHousing,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardMc, "situationHousing", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardMc, "situationHousing", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardMc, "situationHousing", $$c);
+        }
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("Convivenza/coabitazione")]), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.psyCardMc.situationHousing,
-      expression: "psyCardMc.situationHousing"
-    }],
-    attrs: {
-      type: "radio",
-      name: "situation_housing",
-      value: "0"
-    },
-    domProps: {
-      checked: _vm._q(_vm.psyCardMc.situationHousing, "0")
-    },
-    on: {
-      change: function change($event) {
-        return _vm.$set(_vm.psyCardMc, "situationHousing", "0");
-      }
-    }
-  }), _vm._v(" "), _c("span", [_vm._v("No")])])])])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("span", [_vm._v("Convivenza/coabitazione")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "20px"
@@ -17311,20 +17305,20 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardSf.socialHealthSituationDisability,
-      expression: "psyCardSf.socialHealthSituationDisability"
+      value: _vm.psyCardSf.socialHealthSituationDisabilityText,
+      expression: "psyCardSf.socialHealthSituationDisabilityText"
     }],
     attrs: {
       type: "text",
-      name: "social_health_situation_disability"
+      name: "social_health_situation_disability_text"
     },
     domProps: {
-      value: _vm.psyCardSf.socialHealthSituationDisability
+      value: _vm.psyCardSf.socialHealthSituationDisabilityText
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardSf, "socialHealthSituationDisability", $event.target.value);
+        _vm.$set(_vm.psyCardSf, "socialHealthSituationDisabilityText", $event.target.value);
       }
     }
   }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
@@ -17966,7 +17960,7 @@ var staticRenderFns = [function () {
   return _c("label", {
     staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
-      "for": "social_health_situation_disability"
+      "for": "social_health_situation_disability_text"
     }
   }, [_c("strong", [_vm._v("INVALIDITA' ACCOMPAGNO /LEGGE 104/92 - I.68/99")])]);
 }, function () {
@@ -18013,7 +18007,7 @@ var staticRenderFns = [function () {
     staticStyle: {
       "margin-left": "10px"
     }
-  }, [_c("strong", [_vm._v(" 5. IPOTESI DI INTERVENTO /PROGETTUALITA'")])])]);
+  }, [_c("strong", [_vm._v("  4. ANALISI SITUAZIONE SOCIO-AMBIENTALE")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -18076,7 +18070,7 @@ var staticRenderFns = [function () {
     staticStyle: {
       "margin-left": "10px"
     }
-  }, [_c("strong", [_vm._v(" 4. ANALISI SITUAZIONE SOCIO-AMBIENTALE")])])]);
+  }, [_c("strong", [_vm._v(" 5. IPOTESI DI INTERVENTO /PROGETTUALITA'")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -21633,7 +21627,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("h3", {
     staticClass: "mt-5"
-  }, [_c("strong", [_vm._v(" Nell'ultima settimana")])]);
+  }, [_c("strong", [_vm._v("Nell'ultima settimana")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -21665,7 +21659,7 @@ var staticRenderFns = [function () {
     staticStyle: {
       border: "0"
     }
-  }, [_c("strong", [_vm._v(" Molto spesso "), _c("br"), _vm._v(" o sempre")])])]);
+  }, [_c("strong", [_vm._v("Molto spesso "), _c("br"), _vm._v(" o sempre")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -27915,7 +27909,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("psyMentalHealthDepartment"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard"), _vm._v(" "), _c("PsySurvey")], 1)], 1);
+  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("psyMentalHealthDepartment"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard"), _vm._v(" "), _c("PsySurvey")], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

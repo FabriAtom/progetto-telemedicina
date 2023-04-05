@@ -38,6 +38,7 @@ class PsySocialFolder extends Model
         'social_health_situation_certificate',
         'social_health_situation_therapeutic_pathway',
         'social_health_situation_disability',
+        'social_health_situation_disability_text',
         'social_health_situation_revision',
         'social_health_situation_inps',
         'social_health_situation_administrator',

@@ -986,8 +986,12 @@ class PsyCardsController extends Controller
                 $_psyFold->social_health_situation_therapeutic_pathway=$psyCardArr['socialHealthSituationTherapeuticPathway'];
             }
             if(array_key_exists('socialHealthSituationDisability',$psyCardArr)){
-                $_psyFold->social_health_situation_disability=$psyCardArr['socialHealthSituationDisability'];
+                $_psyFold->social_health_situation_disability=$psyCardArr['socialHealthSituationDisability'];   
             }
+            if(array_key_exists('socialHealthSituationDisabilityText',$psyCardArr)){
+                $_psyFold->social_health_situation_disability_text=$psyCardArr['socialHealthSituationDisabilityText'];   
+            }
+
             if(array_key_exists('socialHealthSituationRevision',$psyCardArr)){
                 $_psyFold->social_health_situation_revision=$psyCardArr['socialHealthSituationRevision'];
             }

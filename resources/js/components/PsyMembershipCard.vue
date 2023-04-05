@@ -136,10 +136,8 @@
                                         <div class="item form-group">
                                             <label for="situation_housing" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Situazione abitativa</strong></label><br>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="radio" name="situation_housing" value="1" v-model="psyCardMc.situationHousing"/>
+                                                <input type="checkbox" name="situation_housing" value="1" v-model="psyCardMc.situationHousing"/>
                                                 <span>Convivenza/coabitazione</span>
-                                                <input type="radio" name="situation_housing" value="0" v-model="psyCardMc.situationHousing"/>
-                                                <span>No</span>
                                             </span>
                                         </div>
                                     </div>
@@ -1520,7 +1518,7 @@
                                         <div class="item form-group">
                                             <label for="first_medical_history_visit" class="col-form-label col-md-6 col-sm-2 label-align"><strong>a. ANAMNESI</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="text" name="first_medical_history_visit" v-model="psyCardMc.firstMedicalHistoryVisit">                                                    
+                                                <input type="text" name="first_medical_history_visit" v-model="psyCardMc.firstMedicalHistoryVisit">
                                             </div>
                                         </div>
                                     </div>
@@ -1531,7 +1529,7 @@
                                         <div class="item form-group">
                                             <label for="first_status" class="col-form-label col-md-6 col-sm-2 label-align"><strong>b. STATUS</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="text" name="first_status" v-model="psyCardMc.firstStatus">                                                    
+                                                <input type="text" name="first_status" v-model="psyCardMc.firstStatus">
                                             </div>
                                         </div>
                                     </div>
@@ -1542,7 +1540,7 @@
                                         <div class="item form-group">
                                             <label for="first_terapy" class="col-form-label col-md-6 col-sm-2 label-align"><strong>c. TERAPIA</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="text" name="first_terapy" v-model="psyCardMc.firstTerapy">                                                    
+                                                <input type="text" name="first_terapy" v-model="psyCardMc.firstTerapy">
                                             </div>
                                         </div>
                                     </div>
@@ -1553,7 +1551,7 @@
                                         <div class="item form-group">
                                             <label for="first_orientation" class="col-form-label col-md-6 col-sm-2 label-align"><strong>d. ORIENTAMENTO DIAGNOSTICO</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="text" name="first_orientation" v-model="psyCardMc.firstOrientation">                                                    
+                                                <input type="text" name="first_orientation" v-model="psyCardMc.firstOrientation">
                                             </div>
                                         </div>
                                     </div>
@@ -1601,7 +1599,7 @@
                                         <div class="item form-group">
                                             <label for="psychiatric_visit_status" class="col-form-label col-md-6 col-sm-2 label-align"><strong>a. STATUS</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="text" name="psychiatric_visit_status" v-model="psyCardMc.psychiatricVisitStatus">                                                    
+                                                <input type="text" name="psychiatric_visit_status" v-model="psyCardMc.psychiatricVisitStatus">
                                             </div>
                                         </div>
                                     </div>
@@ -1611,7 +1609,7 @@
                                         <div class="item form-group">
                                             <label for="psychiatric_visit_terapy" class="col-form-label col-md-6 col-sm-2 label-align"><strong>b. TERAPIA</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="text" name="psychiatric_visit_terapy" v-model="psyCardMc.psychiatricVisitTerapy">                                                    
+                                                <input type="text" name="psychiatric_visit_terapy" v-model="psyCardMc.psychiatricVisitTerapy">
                                             </div>
                                         </div>
                                     </div>
@@ -1621,7 +1619,7 @@
                                         <div class="item form-group">
                                             <label for="psychiatric_visit_orientation" class="col-form-label col-md-6 col-sm-2 label-align"><strong>c. ORIENTAMENTO DIAGNOSTICO</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="text" name="psychiatric_visit_orientation" v-model="psyCardMc.psychiatricVisitOrientation">                                                    
+                                                <input type="text" name="psychiatric_visit_orientation" v-model="psyCardMc.psychiatricVisitOrientation">
                                             </div>
                                         </div>
                                     </div>

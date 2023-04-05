@@ -337,12 +337,12 @@
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="social_health_situation_disability" class="col-form-label col-md-3 col-sm-2 label-align"><strong>INVALIDITA' ACCOMPAGNO /LEGGE 104/92 - I.68/99</strong></label>
+                                                <label for="social_health_situation_disability_text" class="col-form-label col-md-3 col-sm-2 label-align"><strong>INVALIDITA' ACCOMPAGNO /LEGGE 104/92 - I.68/99</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="checkbox" name="social_health_situation_disability"  v-model="showInput7"/> 
                                                     <span v-if="showInput7">DAL</span>
                                                     <input type="date" name="social_health_situation_disability" v-if="showInput7" v-model="psyCardSf.socialHealthSituationDisability"/>
-                                                    <input type="text" name="social_health_situation_disability" v-if="showInput7" v-model="psyCardSf.socialHealthSituationDisability"/>
+                                                    <input type="text" name="social_health_situation_disability_text" v-if="showInput7" v-model="psyCardSf.socialHealthSituationDisabilityText"/>
                                                 </span>
                                             </div>
                                         </div>
@@ -386,7 +386,7 @@
                             <!-- 4 -->
 
                             <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:5px; margin-left: 10px; width: 900px;">
-                                <span style="margin-left:10px;" ><strong> 5. IPOTESI DI INTERVENTO /PROGETTUALITA'</strong></span> 
+                                <span style="margin-left:10px;" ><strong>  4. ANALISI SITUAZIONE SOCIO-AMBIENTALE</strong></span> 
                             </div>
                             <div class="x_content">
                                 <div style="border:2px solid black; max-width: 900px; max-height: 650px; margin-left: 10px;margin-bottom: 10px;">
@@ -448,7 +448,7 @@
 
 
                             <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:5px; margin-left: 10px; width: 900px;">
-                                <span style="margin-left:10px;" ><strong> 4. ANALISI SITUAZIONE SOCIO-AMBIENTALE</strong></span> 
+                                <span style="margin-left:10px;" ><strong> 5. IPOTESI DI INTERVENTO /PROGETTUALITA'</strong></span> 
                             </div>
                             <div class="x_content">
                                 <div style="border:2px solid black; max-width: 900px; max-height: 650px; margin-left: 10px;margin-bottom: 10px;">
@@ -776,6 +776,8 @@ export default {
                             
                             _wm.psyCardSf.socialHealthSituationTherapeuticPathway = _SocialFold.social_health_situation_therapeutic_pathway 
                             _wm.psyCardSf.socialHealthSituationDisability = _SocialFold.social_health_situation_disability
+                            _wm.psyCardSf.socialHealthSituationDisability_text = _SocialFold.social_health_situation_disability_text
+
                             _wm.psyCardSf.socialHealthSituationRevision = _SocialFold.social_health_situation_revision
                             _wm.psyCardSf.socialHealthSituationInps = _SocialFold.social_health_situation_inps 
                             _wm.psyCardSf.socialHealthSituationAdministrator = _SocialFold.social_health_situation_administrator 

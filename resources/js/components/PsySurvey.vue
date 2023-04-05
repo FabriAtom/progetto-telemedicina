@@ -13,7 +13,7 @@
                         <!-- <div class="tab-content" id="myTabContent"> -->
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left align-items-center">
 
-                                <h3 class="mt-5"><strong> Nell'ultima settimana</strong></h3>
+                                <h3 class="mt-5"><strong>Nell'ultima settimana</strong></h3>
 
                                 <table>
                                     <tr>
@@ -23,7 +23,7 @@
                                         <td style="border: 0;"><strong>Solo occasionalmente</strong></td>
                                         <td style="border: 0;"><strong>Ogni tanto</strong></td>
                                         <td style="border: 0;"><strong>Spesso</strong></td>
-                                        <td style="border: 0;"> <strong> Molto spesso <br> o sempre</strong></td>
+                                        <td style="border: 0;"> <strong>Molto spesso <br> o sempre</strong></td>
                                     </tr>
                                     <tr style="background:lightgrey;">
                                         <td>1</td>

@@ -7,9 +7,9 @@
 
     <div>
       <psyCard/>
-      <PsyRehabilitationPsychiatricCard/>
       <!-- <serdCard/> -->
       <psyMentalHealthDepartment/>
+      <PsyRehabilitationPsychiatricCard/>
       <PsyRating/>
       <PsyUocDepartment/>
       <PsySocialFolder/>
@@ -27,10 +27,12 @@
 import psyCard from '../components/psyCard.vue';
 // import serdCard from '../components/serdCard.vue';
 import psyMentalHealthDepartment from '../components/PsyMentalHealthDepartment.vue';
+
 import PsyRehabilitationPsychiatricCard from '../components/PsyRehabilitationPsychiatricCard.vue';
 import PsyRating from '../components/PsyRating.vue';
 import PsyUocDepartment from '../components/PsyUocDepartment.vue';
 import PsySocialFolder from '../components/PsySocialFolder.vue';
+
 import PsyMembershipCard from '../components/PsyMembershipCard.vue';
 import PsySurvey from '../components/PsySurvey.vue';
 
