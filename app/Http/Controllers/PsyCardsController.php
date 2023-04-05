@@ -57,6 +57,7 @@ class PsyCardsController extends Controller
             $PsyMentalHealthDepartment=null;
             $allPsyMentalHealthDepartments=null;
 
+            // scheda psichiatrica
             $PsyRehabilitationPsychiatricCard=null;
             $allPsyRehabilitationPsychiatricCards=null;
 
@@ -68,6 +69,7 @@ class PsyCardsController extends Controller
 
             $PsySocialFolder=null;
             $allPsySocialFolder=null;
+            // ------------------------
 
             $PsyMembershipCard=null;
             $allPsyMembershipCard=null;
@@ -236,8 +238,6 @@ class PsyCardsController extends Controller
 
 
 
-
-
     public function getSuicideAssessmentsByPsyId(Request $request){
         if (PsySuicideAssessment::where('psy_card_id', '=', $request['id'])->exists()) {
             $query=PsySuicideAssessment::where('psy_card_id', '=', $request['id']);
@@ -258,7 +258,7 @@ class PsyCardsController extends Controller
         }      
     }
 
-    // // PsyRehabilitationPsychiatricCard
+    // PsyRehabilitationPsychiatricCard
     public function getPsyRehabilitationPsychiatricCardsByPsyId(Request $request){
         if (PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id'])->exists()) {
             $query=PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id']);
@@ -270,7 +270,6 @@ class PsyCardsController extends Controller
     }
 
     // PsyRating
-
     public function getRatingsByPsyId(Request $request){
         if (PsyRating::where('psy_card_id', '=', $request['id'])->exists()) {
             $query=PsyRating::where('psy_card_id', '=', $request['id']);
@@ -301,7 +300,6 @@ class PsyCardsController extends Controller
         }      
     }
 
-
     public function getMembershipCardsByPsyId(Request $request){
         if (PsyMembershipCard::where('psy_card_id', '=', $request['id'])->exists()) {
             $query=PsyMembershipCard::where('psy_card_id', '=', $request['id']);
@@ -311,7 +309,6 @@ class PsyCardsController extends Controller
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
         }      
     }
-
 
     public function getSurveysByPsyId(Request $request){
         if (PsySurvey::where('psy_card_id', '=', $request['id'])->exists()) {
@@ -497,9 +494,6 @@ class PsyCardsController extends Controller
             if(array_key_exists('maritalStatus',$psyCardArr)){
                 $_suicideValutation->marital_status=$psyCardArr['maritalStatus'];
             }
-            // else{
-            //      $_suicideValutation->marital_status=1;
-            // }
             if(array_key_exists('drugAndAlcoholAbuse',$psyCardArr)){
                 $_suicideValutation->drug_and_alcohol_abuse=$psyCardArr['drugAndAlcoholAbuse'];
             }
@@ -577,7 +571,6 @@ class PsyCardsController extends Controller
                 $_suicideValutation->sa_date_last=$psyCardArr['saDateLast'];
             }
         }
-        // return $_suicideValutation;
         $_suicideValutation->save();
 
         if($_suicideValutation){
@@ -628,7 +621,7 @@ class PsyCardsController extends Controller
         $_psychologicalInterview->save();
 
         if($_psychologicalInterview){
-            return ["errorNumber"=>0,"message"=>"ok","psyInterview"=>$_psychologicalInterview];
+            return ["errorNumber"=>0,"message"=>"ok","mh"=>$_psychologicalInterview];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
@@ -678,7 +671,7 @@ class PsyCardsController extends Controller
         $_psyRehab->save();
 
         if($_psyRehab){
-            return ["errorNumber"=>0,"message"=>"ok","psyInterview"=>$_psyRehab];
+            return ["errorNumber"=>0,"message"=>"ok","rp"=>$_psyRehab];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];

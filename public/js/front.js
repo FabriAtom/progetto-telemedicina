@@ -2443,8 +2443,6 @@ __webpack_require__.r(__webpack_exports__);
               _wm.mHSaved = true;
               //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
               _wm.btnMhSend = "Aggiorna";
-              // _wm.psyCardId=response.data.psyMentalHealthDepartment.id;
-
               var _MentalInterview = response.data.PsyMentalHealthDepartment;
               //     // _wm.psyCardId=response.data.psyCard.id;
               _wm.psyCardId = _MentalInterview.id;
@@ -4011,229 +4009,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/ApiUrl */ "./resources/js/config/ApiUrl.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'PsyMentalHealthDepartment',
-  data: function data() {
-    return {
-      userName: 'Andrea',
-      userLastName: 'Giovanni',
-      userFullName: '',
-      userInstance: 1,
-      userId: 0,
-      // selectedOption: null,
-
-      accessData: [function (id) {
-        return 14;
-      }, function (name) {
-        return 'Alessio';
-      }, function (lastname) {
-        return 'Ortu';
-      }],
-      psyMhDoctorId: 0,
-      psyMhDoctorName: '',
-      psyMhDoctorLastname: '',
-      psyMhDate: null,
-      psyCardId: null,
-      date: new Date(),
-      psyCardMh: {},
-      psyCardSa: {},
-      // psyCardTsc
-
-      mainTitle: "psy",
-      firstSave: true,
-      mHSaved: false,
-      btnMhSend: "Salva",
-      total: 0,
-      allPsyMentalHealthDepartments: null
-    };
-  },
-  created: function created() {
-    // this.getPermissions();
-    //alert(JSON.stringify(this.getPsyMentalHealthDepartmentsByUserInstanceId(1)));
-    this.getPsyMentalHealthDepartmentsByUserInstanceId(1);
-  },
-  methods: {
-    addPsyMentalHealthDepartment: function addPsyMentalHealthDepartment(panel) {
-      var _this = this;
-      var _wm = this;
-      var _panel = panel;
-      var _errors = 0;
-      var _errorTitle = "Scheda";
-      var _errorDescription = "Non aggiornata";
-      var form = new FormData();
-      form.append('userName', this.userName);
-      form.append('userLastName', this.userLastName);
-      form.append('userFullName', this.userFullName);
-      form.append('userInstance', this.userInstance);
-      form.append('userId', this.userId);
-      // form.append('doctorId', this.accessData.id);
-      // form.append('doctorName', this.accessData.name);
-      // form.append('doctorUserName', this.accessData.lastname);
-      form.append('doctorId', 14);
-      form.append('doctorName', 'mario');
-      form.append('doctorUserName', 'bross');
-      if (_panel == 'mh') {
-        if (!this.mHSaved) {
-          form.append('action', 'store');
-        } else {
-          form.append('action', 'update');
-          if (this.psyCardId) {
-            form.append('psyId', this.psyCardId);
-          } else {
-            _errors++;
-            _errorTitle = "Attenzione";
-            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
-          }
-        }
-        form.append('section', 'mh');
-        if (!this.isObjEmpty(this.psyCardMh)) {
-          var _psyCard = JSON.stringify(this.psyCardMh);
-          form.append('PsyMentalHealthDepartment', _psyCard);
-        }
-      } else if (_panel == 'sa') {
-        if (!this.sASaved) {
-          form.append('action', 'store');
-        } else {
-          form.append('action', 'update');
-        }
-        if (this.sASaved) {
-          if (this.psyCardId) {
-            form.append('psyId', this.psyCardId);
-          } else {
-            _errors++;
-            _errorTitle = "Attenzione";
-            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
-          }
-          form.append('section', 'sa');
-          if (!this.isObjEmpty(this.psyCardSa)) {
-            var _psyCard2 = JSON.stringify(this.psyCardSa);
-            form.append('psyCard', _psyCard2);
-          }
-        }
-      }
-      if (_errors == 0) {
-        try {
-          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_PSY_CARD"], form).then(function (response) {
-            var error = response.data.errorNumber;
-            var _attempts = response.data.attempts;
-            _wm.errNum = error;
-            if (error == 0) {
-              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
-              _this.getPsyMentalHealthDepartmentsByUserInstanceId(_this.userInstance);
-            } else {
-              // eventBus.$emit('errorEvent', error, _attempts);
-              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
-            }
-          });
-        } catch (error) {
-          throw error;
-        }
-      } else {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
-      }
-    },
-    getPsyMentalHealthDepartments: function getPsyMentalHealthDepartments() {
-      var _wm = this;
-      try {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS"]).then(function (response) {
-          var error = response.data.errorNumber;
-          var _attempts = response.data.attempts;
-          _wm.errNum = error;
-          if (error == 0) {
-            //alert(JSON.stringify(response))
-          } else {
-            // eventBus.$emit('errorEvent', error, _attempts);
-          }
-        });
-      } catch (error) {
-        throw error;
-      }
-    },
-    getPsyMentalHealthDepartmentById: function getPsyMentalHealthDepartmentById(id) {
-      var _wm = this;
-      try {
-        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARD_BY_ID"] + '/' + id;
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          var error = response.data.errorNumber;
-          var _attempts = response.data.attempts;
-          _wm.errNum = error;
-          if (error == 0) {
-            //alert(JSON.stringify(response))
-          } else {
-            // eventBus.$emit('errorEvent', error, _attempts);
-          }
-        });
-      } catch (error) {
-        throw error;
-      }
-    },
-    getPsyMentalHealthDepartmentsByUserInstanceId: function getPsyMentalHealthDepartmentsByUserInstanceId(id) {
-      var _wm = this;
-      try {
-        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS_BY_USER_INSTANCE_ID"] + '/' + id;
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          var error = response.data.errorNumber;
-          // let _attempts=response.data.attempts;
-          _wm.errNum = error;
-          if (error == 0) {
-            _wm.mainTitle = "Aggiornamento Cartella psy";
-            if (response.data.PsyMentalHealthDepartment) {
-              _wm.mHSaved = true;
-              //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
-              _wm.btnMhSend = "Aggiorna";
-              // _wm.psyCardId=response.data.psyMentalHealthDepartment.id;
-
-              var _MentalInterview = response.data.PsyMentalHealthDepartment;
-              //     // _wm.psyCardId=response.data.psyCard.id;
-              _wm.psyCardId = _MentalInterview.id;
-              _wm.psyMhDoctorId = _MentalInterview.id_doctor;
-              _wm.psyMhDoctorName = _MentalInterview.doctor_name;
-              _wm.psyMhDoctorLastname = _MentalInterview.doctor_lastname;
-              _wm.psyCardMh.psychologicalInterview = _MentalInterview.psychological_interview;
-              _wm.psyCardMh.hypothesisPsychopathologicalClassification = _MentalInterview.hypothesis_psychopathological_classification;
-              _wm.psyCardMh.planningTypeOfIntervention = _MentalInterview.planning_type_of_intervention;
-              _wm.psyCardMh.test = _MentalInterview.test;
-              _wm.allPsyMentalHealthDepartments = response.data.allPsyMentalHealthDepartments;
-            } else {
-              _wm.btnMhSend = "Salva";
-            }
-            _wm.firstSave = false;
-          } else if (error == 7) {
-            _wm.btnMhSend = "Salva";
-            _wm.firstSave = true;
-          } else {
-            // eventBus.$emit('errorEvent', error, _attempts);
-          }
-        });
-      } catch (error) {
-        throw error;
-      }
-    },
-    isObjEmpty: function isObjEmpty(obj) {
-      return Object.keys(obj).length === 0;
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/serdCard.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/serdCard.vue?vue&type=script&lang=js& ***!
@@ -4804,7 +4579,7 @@ __webpack_require__.r(__webpack_exports__);
     // serdCard, 
     // Home,
     psyCard: _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    psyMentalHealthDepartment: _components_PsyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    PsyMentalHealthDepartment: _components_PsyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     PsyRehabilitationPsychiatricCard: _components_PsyRehabilitationPsychiatricCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     PsyRating: _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     PsyUocDepartment: _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -24829,235 +24604,6 @@ render._withStripped = true;
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=template&id=2af82f32&scoped=true&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=template&id=2af82f32&scoped=true& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "container"
-  }, [_c("div", {
-    staticClass: "page-content"
-  }, [_c("div", {
-    staticClass: "row justify-content-center"
-  }, [_c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("div", {
-    staticClass: "x_panel"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "x_content"
-  }, [_c("form", {
-    staticClass: "form-horizontal form-label-left align-items-center",
-    attrs: {
-      id: "demo-form2",
-      "data-parsley-validate": ""
-    }
-  }, [_c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "20px"
-    }
-  }, [_c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("div", {
-    staticClass: "item form-group"
-  }, [_vm._m(1), _vm._v(" "), _c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("textarea", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.psyCardMh.psychologicalInterview,
-      expression: "psyCardMh.psychologicalInterview"
-    }],
-    attrs: {
-      name: "psychological_interview",
-      cols: "100",
-      rows: "7"
-    },
-    domProps: {
-      value: _vm.psyCardMh.psychologicalInterview
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardMh, "psychologicalInterview", $event.target.value);
-      }
-    }
-  })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "20px"
-    }
-  }, [_c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("div", {
-    staticClass: "item form-group"
-  }, [_vm._m(2), _vm._v(" "), _c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("textarea", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.psyCardMh.hypothesisPsychopathologicalClassification,
-      expression: "psyCardMh.hypothesisPsychopathologicalClassification"
-    }],
-    attrs: {
-      name: "hypothesis_psychopathological_classification",
-      cols: "100",
-      rows: "4"
-    },
-    domProps: {
-      value: _vm.psyCardMh.hypothesisPsychopathologicalClassification
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardMh, "hypothesisPsychopathologicalClassification", $event.target.value);
-      }
-    }
-  })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "20px"
-    }
-  }, [_c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("div", {
-    staticClass: "item form-group"
-  }, [_vm._m(3), _vm._v(" "), _c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("textarea", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.psyCardMh.planningTypeOfIntervention,
-      expression: "psyCardMh.planningTypeOfIntervention"
-    }],
-    attrs: {
-      name: "planning_type_of_intervention",
-      cols: "100",
-      rows: "4"
-    },
-    domProps: {
-      value: _vm.psyCardMh.planningTypeOfIntervention
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardMh, "planningTypeOfIntervention", $event.target.value);
-      }
-    }
-  })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "20px"
-    }
-  }, [_c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("div", {
-    staticClass: "item form-group"
-  }, [_vm._m(4), _vm._v(" "), _c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("textarea", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.psyCardMh.test,
-      expression: "psyCardMh.test"
-    }],
-    attrs: {
-      name: "test",
-      cols: "100",
-      rows: "5"
-    },
-    domProps: {
-      value: _vm.psyCardMh.test
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardMh, "test", $event.target.value);
-      }
-    }
-  })])])])]), _vm._v("\n\n                            " + _vm._s(_vm.psyCardMh) + "\n                            "), _c("div", {
-    staticClass: "ln_solid"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "item form-group"
-  }, [_c("div", {
-    staticClass: "pull-right"
-  }, [_c("span", {
-    staticClass: "btn btn-success i2hBtn ml-3",
-    on: {
-      click: function click($event) {
-        return _vm.addPsyMentalHealthDepartment("mh");
-      }
-    }
-  }, [_vm._v(_vm._s(_vm.btnMhSend))])])])])])])])])])]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "x_title",
-    staticStyle: {
-      background: "lightgrey",
-      padding: "7px",
-      "border-radius": "3px",
-      "margin-top": "5px"
-    }
-  }, [_c("h1", [_vm._v("PARTE PSICOLOGICA PER CARTELLA CLINICA")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("label", {
-    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
-    attrs: {
-      "for": "psychological_interview"
-    }
-  }, [_c("strong", [_c("h2", [_vm._v("Colloquio Psicologico")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("label", {
-    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
-    attrs: {
-      "for": "hypothesis_psychopathological_classification"
-    }
-  }, [_c("strong", [_c("h2", [_vm._v("Ipotesi/Inquadramento Psicopatologico")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("label", {
-    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
-    attrs: {
-      "for": "planning_type_of_intervention"
-    }
-  }, [_c("strong", [_c("h2", [_vm._v("Progettualità/Tipologia di Intervento")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("label", {
-    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
-    attrs: {
-      "for": "test"
-    }
-  }, [_c("strong", [_c("h2", [_vm._v("Test")])])]);
-}];
-render._withStripped = true;
-
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/serdCard.vue?vue&type=template&id=0b8fb702&scoped=true&":
 /*!*****************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/serdCard.vue?vue&type=template&id=0b8fb702&scoped=true& ***!
@@ -27909,7 +27455,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("psyMentalHealthDepartment"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard"), _vm._v(" "), _c("PsySurvey")], 1)], 1);
+  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyMentalHealthDepartment"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard"), _vm._v(" "), _c("PsySurvey")], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -28044,25 +27590,6 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, ".labelWidth[data-v-20f18420] {\n  min-width: 190px;\n}\n.dbTitle[data-v-20f18420] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-20f18420], .item textarea[data-v-20f18420] {\n  margin-right: 10px;\n}\n.treatment[data-v-20f18420] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\n* p[data-v-20f18420] {\n  margin-left: 15px;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".labelWidth[data-v-2af82f32] {\n  min-width: 190px;\n}\n.dbTitle[data-v-2af82f32] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-2af82f32], .item textarea[data-v-2af82f32] {\n  margin-right: 10px;\n}\n.treatment[data-v-2af82f32] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}", ""]);
 
 // exports
 
@@ -50522,36 +50049,6 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./PsyUocDepartment.vue?vue&type=style&index=0&id=20f18420&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsyUocDepartment.vue?vue&type=style&index=0&id=20f18420&lang=scss&scoped=true&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -75963,93 +75460,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/psyMentalHealthDepartment.vue":
-/*!***************************************************************!*\
-  !*** ./resources/js/components/psyMentalHealthDepartment.vue ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _psyMentalHealthDepartment_vue_vue_type_template_id_2af82f32_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./psyMentalHealthDepartment.vue?vue&type=template&id=2af82f32&scoped=true& */ "./resources/js/components/psyMentalHealthDepartment.vue?vue&type=template&id=2af82f32&scoped=true&");
-/* harmony import */ var _psyMentalHealthDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./psyMentalHealthDepartment.vue?vue&type=script&lang=js& */ "./resources/js/components/psyMentalHealthDepartment.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _psyMentalHealthDepartment_vue_vue_type_style_index_0_id_2af82f32_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true& */ "./resources/js/components/psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _psyMentalHealthDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _psyMentalHealthDepartment_vue_vue_type_template_id_2af82f32_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _psyMentalHealthDepartment_vue_vue_type_template_id_2af82f32_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "2af82f32",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/psyMentalHealthDepartment.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/psyMentalHealthDepartment.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/psyMentalHealthDepartment.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_psyMentalHealthDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./psyMentalHealthDepartment.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_psyMentalHealthDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true&":
-/*!*************************************************************************************************************************!*\
-  !*** ./resources/js/components/psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true& ***!
-  \*************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_psyMentalHealthDepartment_vue_vue_type_style_index_0_id_2af82f32_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=style&index=0&id=2af82f32&lang=scss&scoped=true&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_psyMentalHealthDepartment_vue_vue_type_style_index_0_id_2af82f32_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_psyMentalHealthDepartment_vue_vue_type_style_index_0_id_2af82f32_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_psyMentalHealthDepartment_vue_vue_type_style_index_0_id_2af82f32_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_psyMentalHealthDepartment_vue_vue_type_style_index_0_id_2af82f32_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-
-
-/***/ }),
-
-/***/ "./resources/js/components/psyMentalHealthDepartment.vue?vue&type=template&id=2af82f32&scoped=true&":
-/*!**********************************************************************************************************!*\
-  !*** ./resources/js/components/psyMentalHealthDepartment.vue?vue&type=template&id=2af82f32&scoped=true& ***!
-  \**********************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_psyMentalHealthDepartment_vue_vue_type_template_id_2af82f32_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./psyMentalHealthDepartment.vue?vue&type=template&id=2af82f32&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/psyMentalHealthDepartment.vue?vue&type=template&id=2af82f32&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_psyMentalHealthDepartment_vue_vue_type_template_id_2af82f32_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_psyMentalHealthDepartment_vue_vue_type_template_id_2af82f32_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/serdCard.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/serdCard.vue ***!
@@ -76312,8 +75722,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/Home.vue */ "./resources/js/pages/Home.vue");
 /* harmony import */ var _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/serdCard.vue */ "./resources/js/components/serdCard.vue");
 /* harmony import */ var _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/psyCard.vue */ "./resources/js/components/psyCard.vue");
-/* harmony import */ var _components_psyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/psyMentalHealthDepartment.vue */ "./resources/js/components/psyMentalHealthDepartment.vue");
-
 
 
 
@@ -76329,10 +75737,6 @@ var routes = [{
   path: "/test2",
   name: "psyCard",
   component: _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-}, {
-  path: "/test3",
-  name: "psyMentalHealthDepartment",
-  component: _components_psyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 

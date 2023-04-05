@@ -319,7 +319,6 @@
                             _wm.mHSaved=true;
                             //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
                             _wm.btnMhSend="Aggiorna";
-                            // _wm.psyCardId=response.data.psyMentalHealthDepartment.id;
                             
                             let _MentalInterview=response.data.PsyMentalHealthDepartment;
                             //     // _wm.psyCardId=response.data.psyCard.id;
