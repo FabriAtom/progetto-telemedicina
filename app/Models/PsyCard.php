@@ -60,4 +60,9 @@ class PsyCard extends Model
     {
         return $this->hasMany(PsySurvey::class);
     }
+
+    public function PsyJsats()
+    {
+        return $this->hasMany(PsyJsat::class);
+    }
 }

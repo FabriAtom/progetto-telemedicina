@@ -15,6 +15,7 @@
       <PsySocialFolder/>
       <PsyMembershipCard/>
       <PsySurvey/>
+      <PsyJsat/>
 
 
     </div>
@@ -35,8 +36,7 @@ import PsySocialFolder from '../components/PsySocialFolder.vue';
 
 import PsyMembershipCard from '../components/PsyMembershipCard.vue';
 import PsySurvey from '../components/PsySurvey.vue';
-
-
+import PsyJsat from '../components/PsyJsat.vue';
 
 
 
@@ -53,6 +53,7 @@ export default {
     PsySocialFolder,
     PsyMembershipCard,
     PsySurvey,
+    PsyJsat,
 }
 }
 </script>

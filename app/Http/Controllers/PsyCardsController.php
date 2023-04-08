@@ -13,6 +13,8 @@ use App\Models\PsyUocDepartment;
 use App\Models\PsySocialFolder;
 use App\Models\PsyMembershipCard;
 use App\Models\PsySurvey;
+use App\Models\PsyJsat;
+
 
 
 use Carbon\Carbon;
@@ -65,17 +67,22 @@ class PsyCardsController extends Controller
             $allPsyRatings=null;
 
             $PsyUocDepartment=null;
-            $allPsyUocDepartment=null;
+            $allPsyUocDepartments=null;
 
             $PsySocialFolder=null;
-            $allPsySocialFolder=null;
+            $allPsySocialFolders=null;
             // ------------------------
 
             $PsyMembershipCard=null;
-            $allPsyMembershipCard=null;
+            $allPsyMembershipCards=null;
 
             $PsySurvey=null;
-            $allPsySurvey=null;
+            $allPsySurveys=null;
+
+            $PsyJsat=null;
+            $allPsyJsats=null;
+
+
 
 
        
@@ -140,6 +147,14 @@ class PsyCardsController extends Controller
                 $allPsySurveys=PsySurvey::where('psy_card_id', '=', $psyCard->id)->orderBy('ps_date', 'desc')->get();
             }
             return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsySurvey"=>$PsySurvey,"allPsySurveys" => $allPsySurveys];
+
+
+            if (PsyJsat::where('psy_card_id', '=', $psyCard->id)->exists()) {
+                $query=PsyJsat::where('psy_card_id', '=', $psyCard->id)->orderBy('pj_date', 'desc');
+                $PsyJsat=$query->first();
+                $allPsyJsats=PsyJsat::where('psy_card_id', '=', $psyCard->id)->orderBy('pj_date', 'desc')->get();
+            }
+            return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsyJsat"=>$PsyJsat,"allPsyJsats" => $allPsyJsats];
             //return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'],"PsySuicideAssessment"=>$PsySuicideAssessment,"allPsySuicideAssessments" => $allPsySuicideAssessments, "PsyMentalHealthDepartment"=>$PsyMentalHealthDepartment,"allPsyMentalHealthDepartments" => $allPsyMentalHealthDepartments, "PsyRehabilitationPsychiatricCard"=>$PsyRehabilitationPsychiatricCard,"allPsyRehabilitationPsychiatricCards" => $allPsyRehabilitationPsychiatricCards];
             // return [ "errorNumber"=>0,"message"=>"OK","psyCard" => $psyCard,"userIstanceId" => $request['id'], "PsySuicideAssessment"=>$PsySuicideAssessment,"allPsySuicideAssessments" => $allPsySuicideAssessments];
         }else{
@@ -230,6 +245,16 @@ class PsyCardsController extends Controller
         }  
     }
 
+    public function getCurrentJsatByPsyId(Request $request){
+        if (PsyJsat::where('psy_card_id', '=', $request['id'])->exists()) {
+            $query=PsyJsat::where('psy_card_id', '=', $request['id'])->orderBy('pj_date', 'desc');
+            $PsyJsat=$query->first();
+            return [ "errorNumber"=>0,"message"=>"OK","CurrentSurvey" => $PsyJsat,"PsyId" => $request['id']];
+        }else{
+            return ['errorNumber'=>7,'descrizione'=>'no records found'];
+        }  
+    }
+
 
 
 
@@ -259,7 +284,7 @@ class PsyCardsController extends Controller
     }
 
     // PsyRehabilitationPsychiatricCard
-    public function getPsyRehabilitationPsychiatricCardsByPsyId(Request $request){
+    public function getRehabilitationPsychiatricCardsByPsyId(Request $request){
         if (PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id'])->exists()) {
             $query=PsyRehabilitationPsychiatricCard::where('psy_card_id', '=', $request['id']);
             $PsyRehabilitationPsychiatricCard=$query->get();
@@ -315,6 +340,17 @@ class PsyCardsController extends Controller
             $query=PsySurvey::where('psy_card_id', '=', $request['id']);
             $PsySurvey=$query->get();
             return [ "errorNumber"=>0,"message"=>"OK","PsySurvey" => $PsySurvey,"PsyId" => $request['id']];
+        }else{
+            return ['errorNumber'=>7,'descrizione'=>'no records found'];
+        }      
+    }
+
+
+    public function getJsatsByPsyId(Request $request){
+        if (PsyJsat::where('psy_card_id', '=', $request['id'])->exists()) {
+            $query=PsyJsat::where('psy_card_id', '=', $request['id']);
+            $PsyJsat=$query->get();
+            return [ "errorNumber"=>0,"message"=>"OK","PsyJsat" => $PsyJsat,"PsyId" => $request['id']];
         }else{
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
         }      
@@ -405,6 +441,15 @@ class PsyCardsController extends Controller
                                     return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
                                 }
                                 break;
+                            case 'pj':
+                                $_psy = $this->addPsyCard($request);
+                                if($_psy){
+                                    $_psyId=$_psy->id;
+                                }
+                                else{
+                                    return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
+                                }
+                                break;
                             default:
                                 if($request->has('psyId')){
                                     if (PsySuicideAssessment::where('psy_card_id', '=', $request->input('psyId'))->exists()) {
@@ -450,6 +495,9 @@ class PsyCardsController extends Controller
                         break;
                     case 'ps':
                         return $this->addSurvey($request,$_psyId);
+                        break;
+                    case 'pj':
+                        return $this->addJsat($request,$_psyId);
                         break;
                 }
             }else{
@@ -597,8 +645,8 @@ class PsyCardsController extends Controller
         }
         $_psychologicalInterview->mh_date=$now;
 
-        if($request->has('PsyMentalHealthDepartment')){
-            $psyCardArr = json_decode($request->input('PsyMentalHealthDepartment'), true);
+        if($request->has('psyCardMh')){
+            $psyCardArr = json_decode($request->input('psyCardMh'), true);
             if(array_key_exists('psychologicalInterview',$psyCardArr)){
                 $_psychologicalInterview->psychological_interview=$psyCardArr['psychologicalInterview'];
             }
@@ -649,9 +697,9 @@ class PsyCardsController extends Controller
             $_psyRehab->doctor_lastname=$request->input('doctorUserName');
         }
         $_psyRehab->rp_date=$now;
-
-        if($request->has('PsyRehabilitationPsychiatricCard')){
-            $psyCardArr = json_decode($request->input('PsyRehabilitationPsychiatricCard'), true);
+// 
+        if($request->has('psyCardRp')){
+            $psyCardArr = json_decode($request->input('psyCardRp'), true);
             if(array_key_exists('projectDescription',$psyCardArr)){
                 $_psyRehab->project_description=$psyCardArr['projectDescription'];
             }
@@ -1538,6 +1586,416 @@ class PsyCardsController extends Controller
 
         if($_psySurv){
             return ["errorNumber"=>0,"message"=>"ok","ud"=>$_psySurv];
+
+        }else{
+            return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
+        }
+    }
+
+
+    public function addJsat(Request $request,$psyId){
+        $userId=$request->input("userId");
+        $_psyJsa = new PsyJsat;
+        $now=date("Y-m-d H:i:s");
+        $_psyJsa->psy_card_id=$psyId;
+        if($request->has('doctorId')){
+            $_psyJsa->id_doctor=$request->input('doctorId');
+        }
+        if($request->has('doctorName')){
+            $_psyJsa->doctor_name=$request->input('doctorName');
+        }
+        if($request->has('doctorUserName')){
+            $_psyJsa->doctor_lastname=$request->input('doctorUserName');
+        }
+        $_psyJsa->pj_date=$now;
+
+        if($request->has('psyCardPj')){
+            $psyCardArr = json_decode($request->input('psyCardPj'), true);
+            if(array_key_exists('entryDate',$psyCardArr)){
+                $_psyJsa->entry_date=$psyCardArr['entryDate'];
+            }
+            if(array_key_exists('valutationDate',$psyCardArr)){
+                $_psyJsa->valutation_date=$psyCardArr['valutationDate'];
+            }
+            
+            if(array_key_exists('informationAge',$psyCardArr)){
+                $_psyJsa->information_age=$psyCardArr['informationAge'];
+            }
+            if(array_key_exists('informationLanguage',$psyCardArr)){
+                $_psyJsa->information_language=$psyCardArr['informationLanguage'];
+            }
+            if(array_key_exists('informationLevelLanguage',$psyCardArr)){
+                $_psyJsa->information_level_language=$psyCardArr['informationLevelLanguage'];
+            }
+            if(array_key_exists('informationNativeLanguage',$psyCardArr)){
+                $_psyJsa->information_native_language=$psyCardArr['informationNativeLanguage'];
+            }
+            if(array_key_exists('informationBackground',$psyCardArr)){
+                $_psyJsa->information_background=$psyCardArr['informationBackground'];
+            }
+            if(array_key_exists('informationBackgroundOther',$psyCardArr)){
+                $_psyJsa->information_background_other=$psyCardArr['informationBackgroundOther'];
+            }
+
+            if(array_key_exists('legalSituationNow',$psyCardArr)){
+                $_psyJsa->legal_situation_now=$psyCardArr['legalSituationNow'];
+            }
+            if(array_key_exists('legalSituationCrimeCommitted',$psyCardArr)){
+                $_psyJsa->legal_situation_crime_committed=$psyCardArr['legalSituationCrimeCommitted'];
+            }
+            if(array_key_exists('legalSituationCrimeCommittedOther',$psyCardArr)){
+                $_psyJsa->legal_situation_crime_committed_other=$psyCardArr['legalSituationCrimeCommittedOther'];
+            }
+             if(array_key_exists('legalSituationPreviousIncarceration',$psyCardArr)){
+                $_psyJsa->legal_situation_previous_incarceration=$psyCardArr['legalSituationPreviousIncarceration'];
+            }
+            if(array_key_exists('legalSituationPreviousIncarcerationIf',$psyCardArr)){
+                $_psyJsa->legal_situation_previous_incarceration_if=$psyCardArr['legalSituationPreviousIncarcerationIf'];
+            }
+            if(array_key_exists('legalSituationPreviousIncarcerationIfProminence',$psyCardArr)){
+                $_psyJsa->legal_situation_previous_incarceration_if_prominence=$psyCardArr['legalSituationPreviousIncarcerationIfProminence'];
+            }
+
+            if(array_key_exists('criminalRecord',$psyCardArr)){
+                $_psyJsa->criminal_record=$psyCardArr['criminalRecord'];
+            }
+            if(array_key_exists('criminalRecordCondemnation',$psyCardArr)){
+                $_psyJsa->criminal_record_condemnation=$psyCardArr['criminalRecordCondemnation'];
+            }
+
+            if(array_key_exists('violentBehaviorActsAggression',$psyCardArr)){
+                $_psyJsa->violent_behavior_acts_aggression=$psyCardArr['violentBehaviorActsAggression'];
+            }
+            if(array_key_exists('violentBehaviorActsAggressionDesc',$psyCardArr)){
+                $_psyJsa->violent_behavior_acts_aggression_desc=$psyCardArr['violentBehaviorActsAggressionDesc'];
+            }
+            if(array_key_exists('violentBehaviorViolentCrimes',$psyCardArr)){
+                $_psyJsa->violent_behavior_violent_crimes=$psyCardArr['violentBehaviorViolentCrimes'];
+            }
+            if(array_key_exists('violentBehaviorCrimesType',$psyCardArr)){
+                $_psyJsa->violent_behavior_crimes_type=$psyCardArr['violentBehaviorCrimesType'];
+            }
+            if(array_key_exists('violentBehaviorDuringIncarceration',$psyCardArr)){
+                $_psyJsa->violent_behavior_during_incarceration=$psyCardArr['violentBehaviorDuringIncarceration'];
+            }
+            if(array_key_exists('violentBehaviorAggressionProceeding',$psyCardArr)){
+                $_psyJsa->violent_behavior_aggression_proceeding=$psyCardArr['violentBehaviorAggressionProceeding'];
+            }
+            if(array_key_exists('violentBehaviorAggressionProceedingDesc',$psyCardArr)){
+                $_psyJsa->violent_behavior_aggression_proceeding_desc=$psyCardArr['violentBehaviorAggressionProceedingDesc'];
+            }
+            if(array_key_exists('violentBehaviorLastAggression',$psyCardArr)){
+                $_psyJsa->violent_behavior_last_aggression=$psyCardArr['violentBehaviorLastAggression'];
+            }
+            if(array_key_exists('violentAggressionNow',$psyCardArr)){
+                $_psyJsa->violent_aggression_now=$psyCardArr['violentAggressionNow'];
+            }
+
+
+            if(array_key_exists('backgroundSocialMaritalStatus',$psyCardArr)){
+                $_psyJsa->background_social_marital_status=$psyCardArr['backgroundSocialMaritalStatus'];
+            }
+            if(array_key_exists('backgroundSocialStabilityRelation',$psyCardArr)){
+                $_psyJsa->background_social_stability_relation=$psyCardArr['backgroundSocialStabilityRelation'];
+            }
+            if(array_key_exists('backgroundSocialRelationProblem',$psyCardArr)){
+                $_psyJsa->background_social_relation_problem=$psyCardArr['backgroundSocialRelationProblem'];
+            }
+            if(array_key_exists('backgroundSocialSons',$psyCardArr)){
+                $_psyJsa->background_social_sons=$psyCardArr['backgroundSocialSons'];
+            }
+            if(array_key_exists('backgroundSocialSonsProblem',$psyCardArr)){
+                $_psyJsa->background_social_sons_problem=$psyCardArr['backgroundSocialSonsProblem'];
+            }
+            if(array_key_exists('backgroundSocialSituationHouse',$psyCardArr)){
+                $_psyJsa->background_social_situation_house=$psyCardArr['backgroundSocialSituationHouse'];
+            }
+            if(array_key_exists('backgroundSocialSituationHouseOther',$psyCardArr)){
+                $_psyJsa->background_social_situation_house_other=$psyCardArr['backgroundSocialSituationHouseOther'];
+            }
+            if(array_key_exists('backgroundSocialSupportFamily',$psyCardArr)){
+                $_psyJsa->background_social_support_family=$psyCardArr['backgroundSocialSupportFamily'];
+            }
+            if(array_key_exists('backgroundSocialSupportFamilyCont',$psyCardArr)){
+                $_psyJsa->background_social_support_family_cont=$psyCardArr['backgroundSocialSupportFamilyCont'];
+            }
+            if(array_key_exists('backgroundSocialSupportFamilyProblem',$psyCardArr)){
+                $_psyJsa->background_social_support_family_problem=$psyCardArr['backgroundSocialSupportFamilyProblem'];
+            }
+            if(array_key_exists('backgroundSocialSupport',$psyCardArr)){
+                $_psyJsa->background_social_support=$psyCardArr['backgroundSocialSupport'];
+            }
+            if(array_key_exists('backgroundSocialSupportCont',$psyCardArr)){
+                $_psyJsa->background_social_support_cont=$psyCardArr['backgroundSocialSupportCont'];
+            }
+            if(array_key_exists('backgroundSocialSupportOther',$psyCardArr)){
+                $_psyJsa->background_social_support_other=$psyCardArr['backgroundSocialSupportOther'];
+            }
+            if(array_key_exists('backgroundSocialSupportProblem',$psyCardArr)){
+                $_psyJsa->background_social_support_problem=$psyCardArr['backgroundSocialSupportProblem'];
+            }
+            if(array_key_exists('backgroundSocialSchooling',$psyCardArr)){
+                $_psyJsa->background_social_schooling=$psyCardArr['backgroundSocialSchooling'];
+            }
+            if(array_key_exists('backgroundSocialWork',$psyCardArr)){
+                $_psyJsa->background_social_work=$psyCardArr['backgroundSocialWork'];
+            }
+            if(array_key_exists('backgroundSocialWorkOther',$psyCardArr)){
+                $_psyJsa->background_social_work_other=$psyCardArr['backgroundSocialWorkOther'];
+            }
+
+
+
+
+            if(array_key_exists('substanceUse',$psyCardArr)){
+                $_psyJsa->substance_use=$psyCardArr['substanceUse'];
+            }
+            if(array_key_exists('substanceUseTabacco',$psyCardArr)){
+                $_psyJsa->substance_use_tabacco=$psyCardArr['substanceUseTabacco'];
+            }
+            if(array_key_exists('substanceUseAlcol',$psyCardArr)){
+                $_psyJsa->substance_use_alcol=$psyCardArr['substanceUseAlcol'];
+            }
+            if(array_key_exists('substanceUseMarijuana',$psyCardArr)){
+                $_psyJsa->substance_use_marijuana=$psyCardArr['substanceUseMarijuana'];
+            }
+            if(array_key_exists('substanceUseEroin',$psyCardArr)){
+                $_psyJsa->substance_use_eroin=$psyCardArr['substanceUseEroin'];
+            }
+            if(array_key_exists('substanceUseCocaine',$psyCardArr)){
+                $_psyJsa->substance_use_cocaine=$psyCardArr['substanceUseCocaine'];
+            }
+            if(array_key_exists('substanceUseMetamphetamin',$psyCardArr)){
+                $_psyJsa->substance_use_metamphetamin=$psyCardArr['substanceUseMetamphetamin'];
+            }
+            if(array_key_exists('substanceUseOther',$psyCardArr)){
+                $_psyJsa->substance_use_other=$psyCardArr['substanceUseOther'];
+            }
+            if(array_key_exists('substanceUseDescription',$psyCardArr)){
+                $_psyJsa->substance_use_description=$psyCardArr['substanceUseDescription'];
+            }
+            if(array_key_exists('substanceUseIntravenousMode',$psyCardArr)){
+                $_psyJsa->substance_use_intravenous_mode=$psyCardArr['substanceUseIntravenousMode'];
+            }
+            if(array_key_exists('substanceUseCurrentMethadoneTreatment',$psyCardArr)){
+                $_psyJsa->substance_use_current_methadone_treatment=$psyCardArr['substanceUseCurrentMethadoneTreatment'];
+            }
+            if(array_key_exists('substanceUseCurrentMethadonList',$psyCardArr)){
+                $_psyJsa->substance_use_current_methadon_list=$psyCardArr['substanceUseCurrentMethadonList'];
+            }
+            if(array_key_exists('substanceUseSubstanceAbuse',$psyCardArr)){
+                $_psyJsa->substance_use_substance_abuse=$psyCardArr['substanceUseSubstanceAbuse'];
+            }
+            if(array_key_exists('substanceUseSubstanceAbuseList',$psyCardArr)){
+                $_psyJsa->substance_use_substance_abuse_list=$psyCardArr['substanceUseSubstanceAbuseList'];
+            }
+            if(array_key_exists('substanceUseSubstanceAbuseOther',$psyCardArr)){
+                $_psyJsa->substance_use_substance_abuse_other=$psyCardArr['substanceUseSubstanceAbuseOther'];
+            }
+
+
+
+            if(array_key_exists('psycTreatments',$psyCardArr)){
+                $_psyJsa->psyc_treatments=$psyCardArr['psycTreatments'];
+            }
+            if(array_key_exists('psycTreatmentsClinicalEvaluation',$psyCardArr)){
+                $_psyJsa->psyc_treatments_clinical_evaluation=$psyCardArr['psycTreatmentsClinicalEvaluation'];
+            }
+            if(array_key_exists('psycTreatmentsClinicalEvaluationOrder',$psyCardArr)){
+                $_psyJsa->psyc_treatments_clinical_evaluation_order=$psyCardArr['psycTreatmentsClinicalEvaluationOrder'];
+            }
+            if(array_key_exists('psycTreatmentsInPrison',$psyCardArr)){
+                $_psyJsa->psyc_treatments_in_prison=$psyCardArr['psycTreatmentsInPrison'];
+            }
+            if(array_key_exists('psycTreatmentsComunity',$psyCardArr)){
+                $_psyJsa->psyc_treatments_comunity=$psyCardArr['psycTreatmentsComunity'];
+            }
+            if(array_key_exists('psycTreatmentsHospital',$psyCardArr)){
+                $_psyJsa->psyc_treatments_hospital=$psyCardArr['psycTreatmentsHospital'];
+            }
+            if(array_key_exists('psycTreatmentsCourtOrder',$psyCardArr)){
+                $_psyJsa->psyc_treatments_court_order=$psyCardArr['psycTreatmentsCourtOrder'];
+            }
+            if(array_key_exists('psycTreatmentsFarmacy',$psyCardArr)){
+                $_psyJsa->psyc_treatments_farmacy=$psyCardArr['psycTreatmentsFarmacy'];
+            }
+            if(array_key_exists('psycTreatmentsType',$psyCardArr)){
+                $_psyJsa->psyc_treatments_type=$psyCardArr['psycTreatmentsType'];
+            }
+            if(array_key_exists('psycTreatmentsPreviousTrauma',$psyCardArr)){
+                $_psyJsa->psyc_treatments_previous_trauma=$psyCardArr['psycTreatmentsPreviousTrauma'];
+            }
+            if(array_key_exists('psycTreatmentsPreviousTraumaDesc',$psyCardArr)){
+                $_psyJsa->psyc_treatments_previous_trauma_desc=$psyCardArr['psycTreatmentsPreviousTraumaDesc'];
+            }
+
+
+            if(array_key_exists('suicidalRisk',$psyCardArr)){
+                $_psyJsa->suicidal_risk=$psyCardArr['suicidalRisk'];
+            }
+            if(array_key_exists('suicidalRiskNumberAttempts',$psyCardArr)){
+                $_psyJsa->suicidal_risk_number_attempts=$psyCardArr['suicidalRiskNumberAttempts'];
+            }
+            if(array_key_exists('suicidalRiskTimeAttempts',$psyCardArr)){
+                $_psyJsa->suicidal_risk_time_attempts=$psyCardArr['suicidalRiskTimeAttempts'];
+            }
+            if(array_key_exists('suicidalRiskMethodsWeapon',$psyCardArr)){
+                $_psyJsa->suicidal_risk_methods_weapon=$psyCardArr['suicidalRiskMethodsWeapon'];
+            }
+            if(array_key_exists('suicidalRiskMethodsWeaponOther',$psyCardArr)){
+                $_psyJsa->suicidal_risk_methods_weapon_other=$psyCardArr['suicidalRiskMethodsWeaponOther'];
+            }
+            if(array_key_exists('suicidalRiskLevelIdeation',$psyCardArr)){
+                $_psyJsa->suicidal_risk_level_ideation=$psyCardArr['suicidalRiskLevelIdeation'];
+            }
+            if(array_key_exists('suicidalRiskSucideTentative',$psyCardArr)){
+                $_psyJsa->suicidal_risk_sucide_tentative=$psyCardArr['suicidalRiskSucideTentative'];
+            }
+            if(array_key_exists('suicidalRiskSucideTentativeNumber',$psyCardArr)){
+                $_psyJsa->suicidal_risk_sucide_tentative_number=$psyCardArr['suicidalRiskSucideTentativeNumber'];
+            }
+            if(array_key_exists('suicidalRiskTentativeTime',$psyCardArr)){
+                $_psyJsa->suicidal_risk_tentative_time=$psyCardArr['suicidalRiskTentativeTime'];
+            }
+            if(array_key_exists('suicidalRiskMethodsTwo',$psyCardArr)){
+                $_psyJsa->suicidal_risk_methods_two=$psyCardArr['suicidalRiskMethodsTwo'];
+            }
+            if(array_key_exists('suicidalRiskMethodsTwoOther',$psyCardArr)){
+                $_psyJsa->suicidal_risk_methods_two_other=$psyCardArr['suicidalRiskMethodsTwoOther'];
+            }
+            if(array_key_exists('suicidalRiskActOfSelfHarm',$psyCardArr)){
+                $_psyJsa->suicidal_risk_act_of_self_harm=$psyCardArr['suicidalRiskActOfSelfHarm'];
+            }
+            if(array_key_exists('suicidalRiskActOfSelfHarmDesc',$psyCardArr)){
+                $_psyJsa->suicidal_risk_act_of_self_harm_desc=$psyCardArr['suicidalRiskActOfSelfHarmDesc'];
+            }
+
+
+
+
+            if(array_key_exists('mentalConditionsSomaticConcerns',$psyCardArr)){
+                $_psyJsa->mental_conditions_somatic_concerns=$psyCardArr['mentalConditionsSomaticConcerns'];
+            }
+            if(array_key_exists('mentalConditionsAnxiety',$psyCardArr)){
+                $_psyJsa->mental_conditions_anxiety=$psyCardArr['mentalConditionsAnxiety'];
+            }
+            if(array_key_exists('mentalConditionsDepression',$psyCardArr)){
+                $_psyJsa->mental_conditions_depression=$psyCardArr['mentalConditionsDepression'];
+            }
+            if(array_key_exists('mentalConditionsSuicide',$psyCardArr)){
+                $_psyJsa->mental_conditions_suicide=$psyCardArr['mentalConditionsSuicide'];
+            }
+            if(array_key_exists('mentalConditionsGuilt',$psyCardArr)){
+                $_psyJsa->mental_conditions_guilt=$psyCardArr['mentalConditionsGuilt'];
+            }
+            if(array_key_exists('mentalConditionsHostility',$psyCardArr)){
+                $_psyJsa->mental_conditions_hostility=$psyCardArr['mentalConditionsHostility'];
+            }
+            if(array_key_exists('mentalConditionsElevatedMood',$psyCardArr)){
+                $_psyJsa->mental_conditions_elevated_mood=$psyCardArr['mentalConditionsElevatedMood'];
+            }
+            if(array_key_exists('mentalConditionsGrandeur',$psyCardArr)){
+                $_psyJsa->mental_conditions_grandeur=$psyCardArr['mentalConditionsGrandeur'];
+            }
+            if(array_key_exists('mentalConditionsSuspiciousness',$psyCardArr)){
+                $_psyJsa->mental_conditions_suspiciousness=$psyCardArr['mentalConditionsSuspiciousness'];
+            }
+            if(array_key_exists('mentalConditionsAllucination',$psyCardArr)){
+                $_psyJsa->mental_conditions_allucination=$psyCardArr['mentalConditionsAllucination'];
+            }
+            if(array_key_exists('mentalConditionsUnusualThought',$psyCardArr)){
+                $_psyJsa->mental_conditions_unusual_thought=$psyCardArr['mentalConditionsUnusualThought'];
+            }
+            if(array_key_exists('mentalConditionsBizarreBehavior',$psyCardArr)){
+                $_psyJsa->mental_conditions_bizarre_behavior=$psyCardArr['mentalConditionsBizarreBehavior'];
+            }
+            if(array_key_exists('mentalConditionsNeglect',$psyCardArr)){
+                $_psyJsa->mental_conditions_neglect=$psyCardArr['mentalConditionsNeglect'];
+            }
+            if(array_key_exists('mentalConditionsDisorientation',$psyCardArr)){
+                $_psyJsa->mental_conditions_disorientation=$psyCardArr['mentalConditionsDisorientation'];
+            }
+            if(array_key_exists('mentalConditionsDisorganization',$psyCardArr)){
+                $_psyJsa->mental_conditions_disorganization=$psyCardArr['mentalConditionsDisorganization'];
+            }
+            if(array_key_exists('mentalConditionsBlankness',$psyCardArr)){
+                $_psyJsa->mental_conditions_blankness=$psyCardArr['mentalConditionsBlankness'];
+            }
+            if(array_key_exists('mentalConditionsReducedEmotion',$psyCardArr)){
+                $_psyJsa->mental_conditions_reduced_emotion=$psyCardArr['mentalConditionsReducedEmotion'];
+            }
+            if(array_key_exists('mentalConditionsMotorSlowdown',$psyCardArr)){
+                $_psyJsa->mental_conditions_motor_slowdown=$psyCardArr['mentalConditionsMotorSlowdown'];
+            }
+            if(array_key_exists('mentalConditionsVoltage',$psyCardArr)){
+                $_psyJsa->mental_conditions_voltage=$psyCardArr['mentalConditionsVoltage'];
+            }
+            if(array_key_exists('mentalConditionsNotCooperation',$psyCardArr)){
+                $_psyJsa->mental_conditions_not_cooperation=$psyCardArr['mentalConditionsNotCooperation'];
+            }
+            if(array_key_exists('mentalConditionsExcitement',$psyCardArr)){
+                $_psyJsa->mental_conditions_excitement=$psyCardArr['mentalConditionsExcitement'];
+            }
+            if(array_key_exists('mentalConditionsDistractibility',$psyCardArr)){
+                $_psyJsa->mental_conditions_distractibility=$psyCardArr['mentalConditionsDistractibility'];
+            }
+            if(array_key_exists('mentalConditionsMotorHyperactivity',$psyCardArr)){
+                $_psyJsa->mental_conditions_motor_hyperactivity=$psyCardArr['mentalConditionsMotorHyperactivity'];
+            }
+            if(array_key_exists('mentalConditionsMannerisms',$psyCardArr)){
+                $_psyJsa->mental_conditions_mannerisms=$psyCardArr['mentalConditionsMannerisms'];
+            }
+
+
+            if(array_key_exists('psychologicalProblems',$psyCardArr)){
+                $_psyJsa->psychological_problems=$psyCardArr['psychologicalProblems'];
+            }
+            if(array_key_exists('psychologicalProblemsList',$psyCardArr)){
+                $_psyJsa->psychological_problems_list=$psyCardArr['psychologicalProblemsList'];
+            }
+            if(array_key_exists('psychologicalProblemsOther',$psyCardArr)){
+                $_psyJsa->psychological_problems_other=$psyCardArr['psychologicalProblemsOther'];
+            }
+
+
+            if(array_key_exists('reports',$psyCardArr)){
+                $_psyJsa->reports=$psyCardArr['reports'];
+            }
+            if(array_key_exists('reportsList',$psyCardArr)){
+                $_psyJsa->reports_list=$psyCardArr['reportsList'];
+            }
+            if(array_key_exists('reportsOther',$psyCardArr)){
+                $_psyJsa->reports_other=$psyCardArr['reportsOther'];
+            }
+
+            if(array_key_exists('suicidalRiskSelfHarm',$psyCardArr)){
+                $_psyJsa->suicidal_risk_self_harm=$psyCardArr['suicidalRiskSelfHarm'];
+            }
+            if(array_key_exists('riskOfViolence',$psyCardArr)){
+                $_psyJsa->risk_of_violence=$psyCardArr['riskOfViolence'];
+            }
+            if(array_key_exists('riskOfVictimization',$psyCardArr)){
+                $_psyJsa->risk_of_victimization=$psyCardArr['riskOfVictimization'];
+            }
+
+            if(array_key_exists('particularAssignment',$psyCardArr)){
+                $_psyJsa->particular_assignment=$psyCardArr['particularAssignment'];
+            }
+            if(array_key_exists('particularAssignmentList',$psyCardArr)){
+                $_psyJsa->particular_assignment_list=$psyCardArr['particularAssignmentList'];
+            }
+            if(array_key_exists('particularAssignmentOther',$psyCardArr)){
+                $_psyJsa->particular_assignment_other=$psyCardArr['particularAssignmentOther'];
+            }
+            
+            if(array_key_exists('commentClarifications',$psyCardArr)){
+                $_psyJsa->comment_clarifications=$psyCardArr['commentClarifications'];
+            }
+        }
+        $_psyJsa->save();
+
+        if($_psyJsa){
+            return ["errorNumber"=>0,"message"=>"ok","pj"=>$_psyJsa];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];

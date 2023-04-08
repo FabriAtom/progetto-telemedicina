@@ -397,7 +397,7 @@
                                             <div class="item form-group" >
                                                 <label for="comment" class="col-form-label col-md-6 col-sm-2 label-align">Commenti/altre raccomandazioni:</label>
                                                 <div class="col-md-12 col-sm-12">
-                                                    <textarea name="comment" cols="25" rows="5" v-model="psyCardSa.comment"></textarea>
+                                                    <textarea name="textarea" cols="25" rows="5" v-model="psyCardSa.comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>

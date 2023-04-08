@@ -75,6 +75,46 @@ Route::get('/psy/getRatingsByPsyId/{id}', [App\Http\Controllers\PsyCardsControll
 Route::post('/psy/addUocDepartment', [App\Http\Controllers\PsyCardsController::class,'addUocDepartment'])->name('addUocDepartment');
 Route::get('/psy/getUocDepartmentsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getUocDepartmentsByPsyId'])->name('getUocDepartmentsByPsyId');
 
+
+
+Route::post('/psy/addSocialFolder', [App\Http\Controllers\PsyCardsController::class,'addSocialFolder'])->name('addSocialFolder');
+Route::get('/psy/getSocialFoldersByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getSocialFoldersByPsyId'])->name('getSocialFoldersByPsyId');
+
+
+Route::post('/psy/addMemberShipCard', [App\Http\Controllers\PsyCardsController::class,'addMemberShipCard'])->name('addMemberShipCard');
+Route::get('/psy/getMemberShipCardsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getMemberShipCardsByPsyId'])->name('getMemberShipCardsByPsyId');
+
+
+Route::post('/psy/addSurvey', [App\Http\Controllers\PsyCardsController::class,'addSurvey'])->name('addSurvey');
+Route::get('/psy/getSurveysByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getSurveysByPsyId'])->name('getSurveysByPsyId');
+
+
+Route::post('/psy/addJsat', [App\Http\Controllers\PsyCardsController::class,'addJsat'])->name('addJsat');
+Route::get('/psy/getJsatsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getJsatsByPsyId'])->name('getJsatsByPsyId');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/psy/getpermissions', [App\Http\Controllers\PsyCardsController::class,'getPermissions'])->name('getUserPermissions');
 
 

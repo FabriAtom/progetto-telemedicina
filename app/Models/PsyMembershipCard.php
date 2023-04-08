@@ -120,27 +120,16 @@ class PsyMembershipCard extends Model
         'request_activation_big_surveillance',
         'request_activation_visual_surveillance',
 
-
-
-
-
-
         'first_medical_history_visit',
         'first_status',
         'first_terapy',
         'first_orientation',
+
         // 'intervention_plan_conclusions',
         'intervention_plan_advice',
         'intervention_plan_taking_into_care',
         'intervention_plan_integrated_handling',
-
-
-
-
-
         'specific_prescription_suggestions',
-
-
         'psychiatric_visit_status',
         'psychiatric_visit_terapy',
         'psychiatric_visit_orientation',
@@ -149,15 +138,10 @@ class PsyMembershipCard extends Model
         'psychiatric_intervention_plan_advice',
         'psychiatric_plan_taking_into_care',
         'psychiatric_plan_integrated_handling',
-
-
-
-
         'psychiatric_visit_prescription_suggestions',
-
     ];
 
-    protected $table = 'Psy_membership_card';
+    protected $table = 'psy_membership_card';
     protected $primaryKey = 'id';
 
     public function PsyCard()

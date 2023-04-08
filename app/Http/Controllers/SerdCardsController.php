@@ -90,7 +90,7 @@ class SerdCardsController extends Controller
                 $SerdSocialFolder=$query->first();
                 $allSerdSocialFolders=SerdSocialFolder::where('serd_card_id', '=', $serdCard->id)->get();
             }
-            return [ "errorNumber"=>0,"message"=>"OK","serdCard" => $serdCard,"userIstanceId" => $request['id'],"SerdToxicologyReport"=>$SerdToxicologyReport,"SerdPsychologicalAnamnesis"=>$SerdPsychologicalAnamnesis,"SerdSocialFolder"=>$SerdSocialFolder,"allSerdToxicologyReports" => $allSerdToxicologyReports,"allSerdPsychologicalAnamneses"=>$allSerdPsychologicalAnamneses,"allSerdSocialFolder"=>$allSerdSocialFolders];
+            return [ "errorNumber"=>0,"message"=>"OK","serdCard" => $serdCard,"userIstanceId" => $request['id'],"SerdToxicologyReport"=>$SerdToxicologyReport,"SerdPsychologicalAnamnesis"=>$SerdPsychologicalAnamnesis,"SerdSocialFolder"=>$SerdSocialFolder,"allSerdToxicologyReports" => $allSerdToxicologyReports,"allSerdPsychologicalAnamneses"=>$allSerdPsychologicalAnamneses,"allSerdSocialFolders"=>$allSerdSocialFolders];
         }else{
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
         }      
