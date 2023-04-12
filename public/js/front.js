@@ -2766,6 +2766,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     getPsyMentalHealthDepartmentsByUserInstanceId: function getPsyMentalHealthDepartmentsByUserInstanceId(id) {
       var _wm = this;
+      // alert('xx');
+
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PSY_CARDS_BY_USER_INSTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
@@ -3873,14 +3875,15 @@ __webpack_require__.r(__webpack_exports__);
       psyCardId: null,
       date: new Date(),
       psyCardUd: {},
-      psyCardMh: {},
+      // psyCardMh:{},
+
       panel: 'ud',
       mainTitle: "psy",
       firstSave: true,
       uDSaved: false,
       btnUdSend: "Salva",
       total: 0,
-      allpsyUocDepartments: null
+      allPsyUocDepartments: null
     };
   },
   created: function created() {
@@ -3923,7 +3926,7 @@ __webpack_require__.r(__webpack_exports__);
         form.append('section', 'ud');
         if (!this.isObjEmpty(this.psyCardUd)) {
           var _psyCardUd = JSON.stringify(this.psyCardUd);
-          alert(JSON.stringify(this.psyCardUd));
+          // alert(JSON.stringify(this.psyCardUd))
           form.append('psyCardUd', _psyCardUd);
         }
       } else if (_panel == 'mh') {
@@ -4018,34 +4021,34 @@ __webpack_require__.r(__webpack_exports__);
             if (response.data.PsyUocDepartment) {
               _wm.uDSaved = true;
               _wm.btnUdSend = "Aggiorna";
-              var _PsyUoc = response.data.PsyUocDepartment;
+              var _psyDep = response.data.PsyUocDepartment;
               // _wm.psyCardId=response.data.psyCard.id;
 
               _wm.psyCardId = response.data.psyCard.id;
-              _wm.psyUdDoctorId = _PsyUoc.id_doctor;
-              _wm.psyUdDoctorName = _PsyUoc.doctor_name;
-              _wm.psyUdDoctorLastname = _PsyUoc.doctor_lastname;
-              _wm.psyCardUd.psychiatricTreatment = _PsyUoc.psychiatric_treatment;
-              _wm.psyCardUd.csm = _PsyUoc.csm;
-              _wm.psyCardUd.spdc = _PsyUoc.spdc;
-              _wm.psyCardUd.rems = _PsyUoc.rems;
-              _wm.psyCardUd.prison = _PsyUoc.prison;
-              _wm.psyCardUd.psychiatricFamiliarity = _PsyUoc.psychiatric_familiarity;
-              _wm.psyCardUd.ifFamiliarity = _PsyUoc.if_familiarity;
-              _wm.psyCardUd.onSetOfPsychiatricSymptom = _PsyUoc.on_set_of_psychiatric_symptom;
-              _wm.psyCardUd.substanceUse = _PsyUoc.substance_use;
-              _wm.psyCardUd.inChargeAtSerdTerritorial = _PsyUoc.in_charge_at_serd_territorial;
-              _wm.psyCardUd.inChargeAtSerdTerritorialWhich = _PsyUoc.in_charge_at_serd_territorial_which;
-              _wm.psyCardUd.psychoticDymptom = _PsyUoc.psychotic_symptom;
-              _wm.psyCardUd.anxiousAffectiveSymptom = _PsyUoc.anxious_affective_symptom;
-              _wm.psyCardUd.impulsiveSymptom = _PsyUoc.impulsive_symptom;
-              _wm.psyCardUd.psychoticDiagnosticOrientation = _PsyUoc.psychotic_diagnostic_orientation;
-              _wm.psyCardUd.anxiousAffectiveOrientation = _PsyUoc.anxious_affective_orientation;
-              _wm.psyCardUd.personalityOrientation = _PsyUoc.personality_orientation;
-              _wm.psyCardUd.takingChargePdta = _PsyUoc.taking_charge_pdta;
-              _wm.psyCardUd.careIntakePdta = _PsyUoc.care_intake_pdta;
-              _wm.psyCardUd.consultancyPdta = _PsyUoc.consultancy_pdta;
-              _wm.allpsyUocDepartments = response.data.allpsyUocDepartments;
+              _wm.psyUdDoctorId = _psyDep.id_doctor;
+              _wm.psyUdDoctorName = _psyDep.doctor_name;
+              _wm.psyUdDoctorLastname = _psyDep.doctor_lastname;
+              _wm.psyCardUd.psychiatricTreatment = _psyDep.psychiatric_treatment;
+              _wm.psyCardUd.csm = _psyDep.csm;
+              _wm.psyCardUd.spdc = _psyDep.spdc;
+              _wm.psyCardUd.rems = _psyDep.rems;
+              _wm.psyCardUd.prison = _psyDep.prison;
+              _wm.psyCardUd.psychiatricFamiliarity = _psyDep.psychiatric_familiarity;
+              _wm.psyCardUd.ifFamiliarity = _psyDep.if_familiarity;
+              _wm.psyCardUd.onSetOfPsychiatricSymptom = _psyDep.on_set_of_psychiatric_symptom;
+              _wm.psyCardUd.substanceUse = _psyDep.substance_use;
+              _wm.psyCardUd.inChargeAtSerdTerritorial = _psyDep.in_charge_at_serd_territorial;
+              _wm.psyCardUd.inChargeAtSerdTerritorialWhich = _psyDep.in_charge_at_serd_territorial_which;
+              _wm.psyCardUd.psychoticDymptom = _psyDep.psychotic_symptom;
+              _wm.psyCardUd.anxiousAffectiveSymptom = _psyDep.anxious_affective_symptom;
+              _wm.psyCardUd.impulsiveSymptom = _psyDep.impulsive_symptom;
+              _wm.psyCardUd.psychoticDiagnosticOrientation = _psyDep.psychotic_diagnostic_orientation;
+              _wm.psyCardUd.anxiousAffectiveOrientation = _psyDep.anxious_affective_orientation;
+              _wm.psyCardUd.personalityOrientation = _psyDep.personality_orientation;
+              _wm.psyCardUd.takingChargePdta = _psyDep.taking_charge_pdta;
+              _wm.psyCardUd.careIntakePdta = _psyDep.care_intake_pdta;
+              _wm.psyCardUd.consultancyPdta = _psyDep.consultancy_pdta;
+              _wm.allPsyUocDepartments = response.data.allPsyUocDepartments;
             } else {
               _wm.btnUdSend = "Salva";
             }
@@ -4083,13 +4086,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'psyCard',
   data: function data() {
-    return {
+    var _ref;
+    return _ref = {
       userName: 'Andrea',
       userLastName: 'Giovanni',
       userFullName: '',
@@ -4112,15 +4120,8 @@ __webpack_require__.r(__webpack_exports__);
       date: new Date(),
       psyCardSa: {},
       psyriskFactor: {},
-      panel: 'sa',
-      psyCardMh: {},
-      mainTitle: "psy",
-      firstSave: true,
-      sASaved: false,
-      btnSaSend: "Salva",
-      total: 0,
-      allPsySuicideAssessments: null
-    };
+      panel: 'sa'
+    }, _defineProperty(_ref, "psyCardSa", {}), _defineProperty(_ref, "mainTitle", "psy"), _defineProperty(_ref, "firstSave", true), _defineProperty(_ref, "sASaved", false), _defineProperty(_ref, "btnSaSend", "Salva"), _defineProperty(_ref, "total", 0), _defineProperty(_ref, "allPsySuicideAssessments", null), _ref;
   },
   created: function created() {
     // this.getPermissions();
@@ -4427,7 +4428,7 @@ __webpack_require__.r(__webpack_exports__);
       sFSaved: false,
       total: 0,
       abstinenceDegreeScore: '',
-      allSerdSocialFolder: null,
+      allSerdSocialFolders: null,
       allSerdPsychologicalAnamneses: null,
       allSerdToxicologyReports: null
     };
@@ -4811,7 +4812,7 @@ __webpack_require__.r(__webpack_exports__);
               _wm.serdCardSf.servicesInvolved = _serdCardSf.services_involved;
               _wm.serdCardSf.interventionHypothesis = _serdCardSf.intervention_hypothesis;
               _wm.serdCardSf.otherInformation = _serdCardSf.other_information;
-              _wm.allSerdSocialFolder = response.data.allSerdSocialFolder;
+              _wm.allSerdSocialFolders = response.data.allSerdSocialFolders;
             } else {
               _wm.btnSfSend = "Salva";
             }
@@ -4911,11 +4912,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+// import PsySuicideAssessment from '../components/PsySuicideAssessment.vue';
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     // serdCard, 
     // Home,
     psyCard: _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    // PsySuicideAssessment,
     PsyMentalHealthDepartment: _components_PsyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     PsyRehabilitationPsychiatricCard: _components_PsyRehabilitationPsychiatricCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     PsyRating: _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -5622,7 +5627,7 @@ var render = function render() {
     staticClass: "item form-group"
   }, [_vm._m(14), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
-  }, [_c("div", [_c("input", {
+  }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5642,7 +5647,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "firstExperiencePrison", "SI");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("SI")])]), _vm._v(" "), _c("div", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5662,7 +5667,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "firstExperiencePrison", "NO");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("NO")])])])])])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("span", [_vm._v("NO")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "20px"
@@ -10596,95 +10601,56 @@ var render = function render() {
       expression: "psyCardMc.interventionPlanAdvice"
     }],
     attrs: {
-      type: "checkbox",
+      type: "radio",
       name: "intervention_plan_advice",
       value: "Consulenza"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardMc.interventionPlanAdvice) ? _vm._i(_vm.psyCardMc.interventionPlanAdvice, "Consulenza") > -1 : _vm.psyCardMc.interventionPlanAdvice
+      checked: _vm._q(_vm.psyCardMc.interventionPlanAdvice, "Consulenza")
     },
     on: {
       change: function change($event) {
-        var $$a = _vm.psyCardMc.interventionPlanAdvice,
-          $$el = $event.target,
-          $$c = $$el.checked ? true : false;
-        if (Array.isArray($$a)) {
-          var $$v = "Consulenza",
-            $$i = _vm._i($$a, $$v);
-          if ($$el.checked) {
-            $$i < 0 && _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$a.concat([$$v]));
-          } else {
-            $$i > -1 && _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$c);
-        }
+        return _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", "Consulenza");
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("CONSULENZA (eventuali consulenze su richiesta;non necessario, al momento, trattamento terapeutico continuativo)")]), _c("br"), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardMc.interventionPlanTakingIntoCare,
-      expression: "psyCardMc.interventionPlanTakingIntoCare"
+      value: _vm.psyCardMc.interventionPlanAdvice,
+      expression: "psyCardMc.interventionPlanAdvice"
     }],
     attrs: {
-      type: "checkbox",
-      name: "intervention_plan_taking_into_care",
+      type: "radio",
+      name: "intervention_plan_advice",
       value: "Assunzione in cura"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardMc.interventionPlanTakingIntoCare) ? _vm._i(_vm.psyCardMc.interventionPlanTakingIntoCare, "Assunzione in cura") > -1 : _vm.psyCardMc.interventionPlanTakingIntoCare
+      checked: _vm._q(_vm.psyCardMc.interventionPlanAdvice, "Assunzione in cura")
     },
     on: {
       change: function change($event) {
-        var $$a = _vm.psyCardMc.interventionPlanTakingIntoCare,
-          $$el = $event.target,
-          $$c = $$el.checked ? true : false;
-        if (Array.isArray($$a)) {
-          var $$v = "Assunzione in cura",
-            $$i = _vm._i($$a, $$v);
-          if ($$el.checked) {
-            $$i < 0 && _vm.$set(_vm.psyCardMc, "interventionPlanTakingIntoCare", $$a.concat([$$v]));
-          } else {
-            $$i > -1 && _vm.$set(_vm.psyCardMc, "interventionPlanTakingIntoCare", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.$set(_vm.psyCardMc, "interventionPlanTakingIntoCare", $$c);
-        }
+        return _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", "Assunzione in cura");
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("ASSUNZIONE IN CURA (con trattamento farmacologico sintomatico continuativo, con monitoraggio; con trattamento psicologico, con monitoraggio;)")]), _c("br"), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardMc.interventionPlanIntegratedHandling,
-      expression: "psyCardMc.interventionPlanIntegratedHandling"
+      value: _vm.psyCardMc.interventionPlanAdvice,
+      expression: "psyCardMc.interventionPlanAdvice"
     }],
     attrs: {
-      type: "checkbox",
-      name: "intervention_plan_integrated_handling",
+      type: "radio",
+      name: "intervention_plan_advice",
       value: "Sorveglianza a vista"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardMc.interventionPlanIntegratedHandling) ? _vm._i(_vm.psyCardMc.interventionPlanIntegratedHandling, "Sorveglianza a vista") > -1 : _vm.psyCardMc.interventionPlanIntegratedHandling
+      checked: _vm._q(_vm.psyCardMc.interventionPlanAdvice, "Sorveglianza a vista")
     },
     on: {
       change: function change($event) {
-        var $$a = _vm.psyCardMc.interventionPlanIntegratedHandling,
-          $$el = $event.target,
-          $$c = $$el.checked ? true : false;
-        if (Array.isArray($$a)) {
-          var $$v = "Sorveglianza a vista",
-            $$i = _vm._i($$a, $$v);
-          if ($$el.checked) {
-            $$i < 0 && _vm.$set(_vm.psyCardMc, "interventionPlanIntegratedHandling", $$a.concat([$$v]));
-          } else {
-            $$i > -1 && _vm.$set(_vm.psyCardMc, "interventionPlanIntegratedHandling", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.$set(_vm.psyCardMc, "interventionPlanIntegratedHandling", $$c);
-        }
+        return _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", "Sorveglianza a vista");
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("PRESA IN CARICO INTEGRATA (con Piano di Trattamento individualizzato ed integrato, con presa in carico multidisciplinare)")]), _c("br")])])])]), _vm._v(" "), _c("div", {
@@ -10872,95 +10838,56 @@ var render = function render() {
       expression: "psyCardMc.psychiatricInterventionPlanAdvice"
     }],
     attrs: {
-      type: "checkbox",
+      type: "radio",
       name: "psychiatric_intervention_plan_advice",
       value: "Consulenza"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardMc.psychiatricInterventionPlanAdvice) ? _vm._i(_vm.psyCardMc.psychiatricInterventionPlanAdvice, "Consulenza") > -1 : _vm.psyCardMc.psychiatricInterventionPlanAdvice
+      checked: _vm._q(_vm.psyCardMc.psychiatricInterventionPlanAdvice, "Consulenza")
     },
     on: {
       change: function change($event) {
-        var $$a = _vm.psyCardMc.psychiatricInterventionPlanAdvice,
-          $$el = $event.target,
-          $$c = $$el.checked ? true : false;
-        if (Array.isArray($$a)) {
-          var $$v = "Consulenza",
-            $$i = _vm._i($$a, $$v);
-          if ($$el.checked) {
-            $$i < 0 && _vm.$set(_vm.psyCardMc, "psychiatricInterventionPlanAdvice", $$a.concat([$$v]));
-          } else {
-            $$i > -1 && _vm.$set(_vm.psyCardMc, "psychiatricInterventionPlanAdvice", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.$set(_vm.psyCardMc, "psychiatricInterventionPlanAdvice", $$c);
-        }
+        return _vm.$set(_vm.psyCardMc, "psychiatricInterventionPlanAdvice", "Consulenza");
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("CONSULENZA (eventuali consulenze su richiesta;non necessario, al momento, trattamento terapeutico continuativo)")]), _c("br"), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardMc.psychiatricPlanTakingIntoCare,
-      expression: "psyCardMc.psychiatricPlanTakingIntoCare"
+      value: _vm.psyCardMc.psychiatricInterventionPlanAdvice,
+      expression: "psyCardMc.psychiatricInterventionPlanAdvice"
     }],
     attrs: {
-      type: "checkbox",
-      name: "psychiatric_plan_taking_into_care",
+      type: "radio",
+      name: "psychiatric_intervention_plan_advice",
       value: "Assunzione in cura"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardMc.psychiatricPlanTakingIntoCare) ? _vm._i(_vm.psyCardMc.psychiatricPlanTakingIntoCare, "Assunzione in cura") > -1 : _vm.psyCardMc.psychiatricPlanTakingIntoCare
+      checked: _vm._q(_vm.psyCardMc.psychiatricInterventionPlanAdvice, "Assunzione in cura")
     },
     on: {
       change: function change($event) {
-        var $$a = _vm.psyCardMc.psychiatricPlanTakingIntoCare,
-          $$el = $event.target,
-          $$c = $$el.checked ? true : false;
-        if (Array.isArray($$a)) {
-          var $$v = "Assunzione in cura",
-            $$i = _vm._i($$a, $$v);
-          if ($$el.checked) {
-            $$i < 0 && _vm.$set(_vm.psyCardMc, "psychiatricPlanTakingIntoCare", $$a.concat([$$v]));
-          } else {
-            $$i > -1 && _vm.$set(_vm.psyCardMc, "psychiatricPlanTakingIntoCare", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.$set(_vm.psyCardMc, "psychiatricPlanTakingIntoCare", $$c);
-        }
+        return _vm.$set(_vm.psyCardMc, "psychiatricInterventionPlanAdvice", "Assunzione in cura");
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("ASSUNZIONE IN CURA (con trattamento farmacologico sintomatico continuativo, con monitoraggio; con trattamento psicologico, con monitoraggio;)")]), _c("br"), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardMc.psychiatricPlanIntegratedHandling,
-      expression: "psyCardMc.psychiatricPlanIntegratedHandling"
+      value: _vm.psyCardMc.psychiatricInterventionPlanAdvice,
+      expression: "psyCardMc.psychiatricInterventionPlanAdvice"
     }],
     attrs: {
-      type: "checkbox",
-      name: "psychiatric_plan_integrated_handling",
-      value: "Sorveglianza a vista"
+      type: "radio",
+      name: "psychiatric_intervention_plan_advice",
+      value: "Presa in carico integrata"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardMc.psychiatricPlanIntegratedHandling) ? _vm._i(_vm.psyCardMc.psychiatricPlanIntegratedHandling, "Sorveglianza a vista") > -1 : _vm.psyCardMc.psychiatricPlanIntegratedHandling
+      checked: _vm._q(_vm.psyCardMc.psychiatricInterventionPlanAdvice, "Presa in carico integrata")
     },
     on: {
       change: function change($event) {
-        var $$a = _vm.psyCardMc.psychiatricPlanIntegratedHandling,
-          $$el = $event.target,
-          $$c = $$el.checked ? true : false;
-        if (Array.isArray($$a)) {
-          var $$v = "Sorveglianza a vista",
-            $$i = _vm._i($$a, $$v);
-          if ($$el.checked) {
-            $$i < 0 && _vm.$set(_vm.psyCardMc, "psychiatricPlanIntegratedHandling", $$a.concat([$$v]));
-          } else {
-            $$i > -1 && _vm.$set(_vm.psyCardMc, "psychiatricPlanIntegratedHandling", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.$set(_vm.psyCardMc, "psychiatricPlanIntegratedHandling", $$c);
-        }
+        return _vm.$set(_vm.psyCardMc, "psychiatricInterventionPlanAdvice", "Presa in carico integrata");
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("PRESA IN CARICO INTEGRATA (con Piano di Trattamento individualizzato ed integrato, con presa in carico multidisciplinare)")]), _c("br")])])])]), _vm._v(" "), _c("div", {
@@ -11465,7 +11392,7 @@ var staticRenderFns = [function () {
   return _c("label", {
     staticClass: "col-form-label col-md-6 col-sm-2 label-align",
     attrs: {
-      "for": ""
+      "for": "intervention_plan_advice"
     }
   }, [_c("strong", [_vm._v("e. Conclusioni, si propone un PIANO DI INTERVENTO")])]);
 }, function () {
@@ -11514,7 +11441,7 @@ var staticRenderFns = [function () {
   return _c("label", {
     staticClass: "col-form-label col-md-6 col-sm-2 label-align",
     attrs: {
-      "for": ""
+      "for": "psychiatric_intervention_plan_advice"
     }
   }, [_c("strong", [_vm._v("d. Conclusioni, si propone un PIANO DI INTERVENTO")])]);
 }, function () {
@@ -22889,7 +22816,7 @@ var render = function render() {
         }
       }
     }
-  })])])])]), _vm._v(" "), _c("div", {
+  })])])])]), _vm._v("\n\n                             " + _vm._s(_vm.psyCardUd) + "\n                             "), _c("div", {
     staticClass: "ln_solid"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -27545,7 +27472,7 @@ var render = function render() {
         return _vm.addSerdCard("sf");
       }
     }
-  }, [_vm._v(_vm._s(_vm.btnSfSend))])])])]), _vm._v(" "), _vm.allSerdSocialFolder ? _c("div", {
+  }, [_vm._v(_vm._s(_vm.btnSfSend))])])])]), _vm._v(" "), _vm.allSerdSocialFolders ? _c("div", {
     staticClass: "card",
     staticStyle: {
       width: "100%"
@@ -76040,7 +75967,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************!*\
   !*** ./resources/js/config/ApiUrl.js ***!
   \***************************************/
-/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_PSY_SUICIDE_ASSESSMENT_BY_USER_INSTANCE_ID, ADD_PSY_SUICIDE_ASSESSMENT, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_RATING_BY_PSY_ID, ADD_RATING, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_JSAT_BY_PSY_ID, ADD_JSAT */
+/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_RATING_BY_PSY_ID, ADD_RATING, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_JSAT_BY_PSY_ID, ADD_JSAT */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76066,8 +75993,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_PSY_CARD", function() { return ADD_PSY_CARD; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_SUICIDE_ASSESSMENT_BY_PSY_ID", function() { return GET_SUICIDE_ASSESSMENT_BY_PSY_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_SUICIDE_ASSESSMENT", function() { return ADD_SUICIDE_ASSESSMENT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_PSY_SUICIDE_ASSESSMENT_BY_USER_INSTANCE_ID", function() { return GET_PSY_SUICIDE_ASSESSMENT_BY_USER_INSTANCE_ID; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_PSY_SUICIDE_ASSESSMENT", function() { return ADD_PSY_SUICIDE_ASSESSMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID", function() { return GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_MENTAL_HEALTH_DEPARTMENT", function() { return ADD_MENTAL_HEALTH_DEPARTMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_RATING_BY_PSY_ID", function() { return GET_RATING_BY_PSY_ID; });
@@ -76105,8 +76030,8 @@ var ADD_PSY_CARD = '/psy/store';
 // SuicideAssessment
 var GET_SUICIDE_ASSESSMENT_BY_PSY_ID = '/psy/getSuicideAssessmentsByPsyId';
 var ADD_SUICIDE_ASSESSMENT = '/psy/addSuicideAssessment';
-var GET_PSY_SUICIDE_ASSESSMENT_BY_USER_INSTANCE_ID = '/psy/getPsySuicideAssessmentsByUserIstanceId';
-var ADD_PSY_SUICIDE_ASSESSMENT = '/psy/store';
+// export const GET_PSY_SUICIDE_ASSESSMENT_BY_USER_INSTANCE_ID = '/psy/getPsySuicideAssessmentsByUserIstanceId';
+// export const ADD_PSY_SUICIDE_ASSESSMENT= '/psy/store';
 
 // MentalHealthDepartment
 var GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID = '/psy/getMentalHealthDepartmentsByPsyId';
@@ -76172,9 +76097,7 @@ __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 vue__WEBPACK_IMPORTED_MODULE_4___default.a.use(vue_moment__WEBPACK_IMPORTED_MODULE_2___default.a, {
   moment: moment__WEBPACK_IMPORTED_MODULE_1___default.a
 });
-
-//Vue.component('serdCard-cmp', require('./components/serdCard.vue').default);
-
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.component('serdCard-cmp', __webpack_require__(/*! ./components/serdCard.vue */ "./resources/js/components/serdCard.vue")["default"]);
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
@@ -76185,38 +76108,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
   },
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
-
-/***/ }),
-
-/***/ "./resources/js/pages/Home.vue":
-/*!*************************************!*\
-  !*** ./resources/js/pages/Home.vue ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-var render, staticRenderFns
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
-  script,
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-component.options.__file = "resources/js/pages/Home.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
@@ -76254,25 +76145,28 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/Home.vue */ "./resources/js/pages/Home.vue");
-/* harmony import */ var _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/serdCard.vue */ "./resources/js/components/serdCard.vue");
-/* harmony import */ var _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/psyCard.vue */ "./resources/js/components/psyCard.vue");
+/* harmony import */ var _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/serdCard.vue */ "./resources/js/components/serdCard.vue");
+/* harmony import */ var _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/psyCard.vue */ "./resources/js/components/psyCard.vue");
 
 
+// import psyMentalHealthDepartment from '../components/psyMentalHealthDepartment.vue';
 
 var routes = [{
-  path: "/",
-  name: "home",
-  component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-}, {
   path: "/test",
   name: "serdCard",
-  component: _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  component: _components_serdCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
   path: "/test2",
   name: "psyCard",
-  component: _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-}];
+  component: _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+}
+// {
+//   path:"/test3",
+//   name: "psyMentalHealthDepartment",
+//   component: psyMentalHealthDepartment,
+// }
+];
+
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
 /***/ }),

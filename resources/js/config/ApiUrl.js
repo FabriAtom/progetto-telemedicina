@@ -36,8 +36,8 @@ export const ADD_PSY_CARD= '/psy/store';
 // SuicideAssessment
 export const GET_SUICIDE_ASSESSMENT_BY_PSY_ID= '/psy/getSuicideAssessmentsByPsyId';
 export const ADD_SUICIDE_ASSESSMENT= '/psy/addSuicideAssessment';
-export const GET_PSY_SUICIDE_ASSESSMENT_BY_USER_INSTANCE_ID = '/psy/getPsySuicideAssessmentsByUserIstanceId';
-export const ADD_PSY_SUICIDE_ASSESSMENT= '/psy/store';
+// export const GET_PSY_SUICIDE_ASSESSMENT_BY_USER_INSTANCE_ID = '/psy/getPsySuicideAssessmentsByUserIstanceId';
+// export const ADD_PSY_SUICIDE_ASSESSMENT= '/psy/store';
 
 
 // MentalHealthDepartment

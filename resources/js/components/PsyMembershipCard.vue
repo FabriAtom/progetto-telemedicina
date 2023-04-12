@@ -189,14 +189,11 @@
                                         <div class="item form-group">
                                             <label for="first_experience_prison" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Prima esperienza detentiva</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <div>
-                                                    <input type="radio" name="first_experience_prison" value="SI" v-model="psyCardMc.firstExperiencePrison"/>
-                                                    <span>SI</span>
-                                                </div>
-                                                <div>
-                                                    <input type="radio" name="first_experience_prison" value="NO" v-model="psyCardMc.firstExperiencePrison"/>
-                                                    <span>NO</span>
-                                                </div>
+                                                <input type="radio" name="first_experience_prison" value="SI" v-model="psyCardMc.firstExperiencePrison"/>
+                                                <span>SI</span>
+                                                
+                                                <input type="radio" name="first_experience_prison" value="NO" v-model="psyCardMc.firstExperiencePrison"/>
+                                                <span>NO</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1561,13 +1558,13 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="" class="col-form-label col-md-6 col-sm-2 label-align"><strong>e. Conclusioni, si propone un PIANO DI INTERVENTO</strong></label>
+                                            <label for="intervention_plan_advice" class="col-form-label col-md-6 col-sm-2 label-align"><strong>e. Conclusioni, si propone un PIANO DI INTERVENTO</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="intervention_plan_advice" value="Consulenza" v-model="psyCardMc.interventionPlanAdvice">
+                                                <input type="radio" name="intervention_plan_advice" value="Consulenza" v-model="psyCardMc.interventionPlanAdvice">
                                                 <span>CONSULENZA (eventuali consulenze su richiesta;non necessario, al momento, trattamento terapeutico continuativo)</span><br>
-                                                <input type="checkbox" name="intervention_plan_taking_into_care" value="Assunzione in cura" v-model="psyCardMc.interventionPlanTakingIntoCare">
+                                                <input type="radio" name="intervention_plan_advice" value="Assunzione in cura" v-model="psyCardMc.interventionPlanAdvice">
                                                 <span>ASSUNZIONE IN CURA (con trattamento farmacologico sintomatico continuativo, con monitoraggio; con trattamento psicologico, con monitoraggio;)</span><br>
-                                                <input type="checkbox" name="intervention_plan_integrated_handling" value="Sorveglianza a vista" v-model="psyCardMc.interventionPlanIntegratedHandling">
+                                                <input type="radio" name="intervention_plan_advice" value="Sorveglianza a vista" v-model="psyCardMc.interventionPlanAdvice">
                                                 <span>PRESA IN CARICO INTEGRATA (con Piano di Trattamento individualizzato ed integrato, con presa in carico multidisciplinare)</span><br>
                                             </div>
                                         </div>
@@ -1628,13 +1625,13 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="" class="col-form-label col-md-6 col-sm-2 label-align"><strong>d. Conclusioni, si propone un PIANO DI INTERVENTO</strong></label>
+                                            <label for="psychiatric_intervention_plan_advice" class="col-form-label col-md-6 col-sm-2 label-align"><strong>d. Conclusioni, si propone un PIANO DI INTERVENTO</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="psychiatric_intervention_plan_advice" value="Consulenza" v-model="psyCardMc.psychiatricInterventionPlanAdvice">
+                                                <input type="radio" name="psychiatric_intervention_plan_advice" value="Consulenza" v-model="psyCardMc.psychiatricInterventionPlanAdvice">
                                                 <span>CONSULENZA (eventuali consulenze su richiesta;non necessario, al momento, trattamento terapeutico continuativo)</span><br>
-                                                <input type="checkbox" name="psychiatric_plan_taking_into_care" value="Assunzione in cura" v-model="psyCardMc.psychiatricPlanTakingIntoCare">
+                                                <input type="radio" name="psychiatric_intervention_plan_advice" value="Assunzione in cura" v-model="psyCardMc.psychiatricInterventionPlanAdvice">
                                                 <span>ASSUNZIONE IN CURA (con trattamento farmacologico sintomatico continuativo, con monitoraggio; con trattamento psicologico, con monitoraggio;)</span><br>
-                                                <input type="checkbox" name="psychiatric_plan_integrated_handling" value="Sorveglianza a vista" v-model="psyCardMc.psychiatricPlanIntegratedHandling">
+                                                <input type="radio" name="psychiatric_intervention_plan_advice" value="Presa in carico integrata" v-model="psyCardMc.psychiatricInterventionPlanAdvice">
                                                 <span>PRESA IN CARICO INTEGRATA (con Piano di Trattamento individualizzato ed integrato, con presa in carico multidisciplinare)</span><br>
                                             </div>
                                         </div>

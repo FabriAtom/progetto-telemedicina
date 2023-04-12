@@ -1,4 +1,4 @@
-SUICIDE ASSESSMENT
+<!-- SUICIDE ASSESSMENT -->
 <!-- PRIMO FASCICOLO INIZIATO CON SUM SCORE -->
 <template>
     <div class="container">
@@ -565,7 +565,7 @@ export default {
                 if(!this.isObjEmpty(this.psyriskFactor)){
                     let _psyriskFactor=JSON.stringify(this.psyriskFactor);
                     //alert(JSON.stringify(this.psyriskFactor))
-                    form.append('psyriskFactor', _psyriskFactor);
+                    form.append('psyCard', _psyriskFactor);
                 }
                 if(!this.isObjEmpty(this.psyCardSa)){
                     //alert(JSON.stringify(this.psyCardSa));
@@ -590,7 +590,7 @@ export default {
                     form.append('section', 'mh');
                     if(!this.isObjEmpty(this.psyCardMh)){
                         let _psyCardMh=JSON.stringify(this.psyCardMh);
-                        form.append('PsyMentalHealthDepartment', _psyCardMh);
+                        form.append('psyCardMh', _psyCardMh);
                     }
                     // else{
                     //     _errors++;

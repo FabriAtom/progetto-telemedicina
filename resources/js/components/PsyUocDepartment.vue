@@ -221,6 +221,7 @@
                                     </div>
                                 </div>
 
+                                {{ psyCardUd }}
                                 <div class="ln_solid"></div>
                                     <div class="item form-group" >
                                         <div class="pull-right">
@@ -309,7 +310,7 @@ export default {
             date:new Date(),
 
             psyCardUd:{},
-            psyCardMh:{},
+            // psyCardMh:{},
 
             panel:'ud',
 
@@ -322,7 +323,7 @@ export default {
             
             btnUdSend:"Salva",
             total:0,               
-            allpsyUocDepartments:null,
+            allPsyUocDepartments:null,
         }
     },
 
@@ -370,7 +371,7 @@ export default {
                 form.append('section', 'ud');
                 if(!this.isObjEmpty(this.psyCardUd)){
                     let _psyCardUd=JSON.stringify(this.psyCardUd);
-                    alert(JSON.stringify(this.psyCardUd))
+                    // alert(JSON.stringify(this.psyCardUd))
                     form.append('psyCardUd', _psyCardUd);
                 }
             }else if(_panel=='mh'){
@@ -485,39 +486,39 @@ export default {
                             _wm.uDSaved=true;
                             _wm.btnUdSend="Aggiorna";
 
-                            let _PsyUoc=response.data.PsyUocDepartment;
+                            let _psyDep=response.data.PsyUocDepartment;
                             // _wm.psyCardId=response.data.psyCard.id;
     
                             _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyUdDoctorId = _PsyUoc.id_doctor;
+                            _wm.psyUdDoctorId = _psyDep.id_doctor;
 
-                            _wm.psyUdDoctorName = _PsyUoc.doctor_name;
-                            _wm.psyUdDoctorLastname = _PsyUoc.doctor_lastname;
+                            _wm.psyUdDoctorName = _psyDep.doctor_name;
+                            _wm.psyUdDoctorLastname = _psyDep.doctor_lastname;
 
                             
-                            _wm.psyCardUd.psychiatricTreatment =_PsyUoc.psychiatric_treatment;
-                            _wm.psyCardUd.csm = _PsyUoc.csm 	
-                            _wm.psyCardUd.spdc = _PsyUoc.spdc 
-                            _wm.psyCardUd.rems = _PsyUoc.rems
-                            _wm.psyCardUd.prison = _PsyUoc.prison 
-                            _wm.psyCardUd.psychiatricFamiliarity = _PsyUoc.psychiatric_familiarity
-                            _wm.psyCardUd.ifFamiliarity = _PsyUoc.if_familiarity
-                            _wm.psyCardUd.onSetOfPsychiatricSymptom = _PsyUoc.on_set_of_psychiatric_symptom
-                            _wm.psyCardUd.substanceUse = _PsyUoc.substance_use 
-                            _wm.psyCardUd.inChargeAtSerdTerritorial = _PsyUoc.in_charge_at_serd_territorial
-                            _wm.psyCardUd.inChargeAtSerdTerritorialWhich = _PsyUoc.in_charge_at_serd_territorial_which
-                            _wm.psyCardUd.psychoticDymptom = _PsyUoc.psychotic_symptom 
-                            _wm.psyCardUd.anxiousAffectiveSymptom = _PsyUoc.anxious_affective_symptom
-                            _wm.psyCardUd.impulsiveSymptom = _PsyUoc.impulsive_symptom 
-                            _wm.psyCardUd.psychoticDiagnosticOrientation = _PsyUoc.psychotic_diagnostic_orientation
-                            _wm.psyCardUd.anxiousAffectiveOrientation = _PsyUoc.anxious_affective_orientation
-                            _wm.psyCardUd.personalityOrientation = _PsyUoc.personality_orientation
-                            _wm.psyCardUd.takingChargePdta = _PsyUoc.taking_charge_pdta
-                            _wm.psyCardUd.careIntakePdta = _PsyUoc.care_intake_pdta 
+                            _wm.psyCardUd.psychiatricTreatment =_psyDep.psychiatric_treatment;
+                            _wm.psyCardUd.csm = _psyDep.csm 	
+                            _wm.psyCardUd.spdc = _psyDep.spdc 
+                            _wm.psyCardUd.rems = _psyDep.rems
+                            _wm.psyCardUd.prison = _psyDep.prison 
+                            _wm.psyCardUd.psychiatricFamiliarity = _psyDep.psychiatric_familiarity
+                            _wm.psyCardUd.ifFamiliarity = _psyDep.if_familiarity
+                            _wm.psyCardUd.onSetOfPsychiatricSymptom = _psyDep.on_set_of_psychiatric_symptom
+                            _wm.psyCardUd.substanceUse = _psyDep.substance_use 
+                            _wm.psyCardUd.inChargeAtSerdTerritorial = _psyDep.in_charge_at_serd_territorial
+                            _wm.psyCardUd.inChargeAtSerdTerritorialWhich = _psyDep.in_charge_at_serd_territorial_which
+                            _wm.psyCardUd.psychoticDymptom = _psyDep.psychotic_symptom 
+                            _wm.psyCardUd.anxiousAffectiveSymptom = _psyDep.anxious_affective_symptom
+                            _wm.psyCardUd.impulsiveSymptom = _psyDep.impulsive_symptom 
+                            _wm.psyCardUd.psychoticDiagnosticOrientation = _psyDep.psychotic_diagnostic_orientation
+                            _wm.psyCardUd.anxiousAffectiveOrientation = _psyDep.anxious_affective_orientation
+                            _wm.psyCardUd.personalityOrientation = _psyDep.personality_orientation
+                            _wm.psyCardUd.takingChargePdta = _psyDep.taking_charge_pdta
+                            _wm.psyCardUd.careIntakePdta = _psyDep.care_intake_pdta 
 
-                            _wm.psyCardUd.consultancyPdta = _PsyUoc.consultancy_pdta 
+                            _wm.psyCardUd.consultancyPdta = _psyDep.consultancy_pdta 
 
-                            _wm.allpsyUocDepartments=response.data.allpsyUocDepartments;
+                            _wm.allPsyUocDepartments=response.data.allPsyUocDepartments;
                         }else{
                             _wm.btnUdSend="Salva";
                         }

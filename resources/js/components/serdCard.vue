@@ -649,7 +649,7 @@
                                     </form>
                                     <!-- END SOCIAL FOLDER -->
                                     <!-- Archives -->
-                                    <div v-if="allSerdSocialFolder" class="card" style="width: 100%;">
+                                    <div v-if="allSerdSocialFolders" class="card" style="width: 100%;">
                                         <div class="card-body">
                                             <h5 class="card-title">Archivio</h5>
                                             <!-- <div style="cursor:pointer" v-for="(serdSocialFolderArchives) in allSerdSocialFolder" :key="serdSocialFolderArchives.id" v-on:click="printSerdArchives(serdSocialFolderArchives.id,'sf')">Id: {{serdSocialFolderArchives.id}} Medico: {{serdSocialFolderArchives.doctor_name}} {{serdSocialFolderArchives.doctor_lastname}} Data:{{serdSocialFolderArchives.sf_date</div> -->
@@ -764,7 +764,7 @@
                 sFSaved:false,
                 total:0,
                 abstinenceDegreeScore:'',
-                allSerdSocialFolder:null,
+                allSerdSocialFolders:null,
                 allSerdPsychologicalAnamneses:null,
                 allSerdToxicologyReports:null,
             }
@@ -1179,7 +1179,7 @@
                                 _wm.serdCardSf.servicesInvolved = _serdCardSf.services_involved;
                                 _wm.serdCardSf.interventionHypothesis = _serdCardSf.intervention_hypothesis;
                                 _wm.serdCardSf.otherInformation = _serdCardSf.other_information;
-                                _wm.allSerdSocialFolder=response.data.allSerdSocialFolder;
+                                _wm.allSerdSocialFolders=response.data.allSerdSocialFolders;
                             }else{
                                 _wm.btnSfSend="Salva";
                             }

@@ -303,7 +303,7 @@
 
             getPsyMentalHealthDepartmentsByUserInstanceId(id){
                 let _wm = this;
-        
+                // alert('xx');
                 
                 try {
                     let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;

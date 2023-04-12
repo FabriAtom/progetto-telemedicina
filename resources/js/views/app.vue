@@ -7,6 +7,7 @@
 
     <div>
       <psyCard/>
+      <!-- <PsySuicideAssessment/> -->
       <!-- <serdCard/> -->
       <PsyMentalHealthDepartment/>
       <PsyRehabilitationPsychiatricCard/>
@@ -38,6 +39,9 @@ import PsyMembershipCard from '../components/PsyMembershipCard.vue';
 import PsySurvey from '../components/PsySurvey.vue';
 import PsyJsat from '../components/PsyJsat.vue';
 
+// import PsySuicideAssessment from '../components/PsySuicideAssessment.vue';
+
+
 
 
 
@@ -46,6 +50,7 @@ export default {
     // serdCard, 
     // Home,
     psyCard,
+    // PsySuicideAssessment,
     PsyMentalHealthDepartment,
     PsyRehabilitationPsychiatricCard,
     PsyRating,

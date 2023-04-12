@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\PsyCard;
 use App\Models\PsySuicideAssessment;
+
 use App\Models\PsyMentalHealthDepartment;
+
 use App\Models\PsyRehabilitationPsychiatricCard;
 use App\Models\PsyRating;
 use App\Models\PsyUocDepartment;
@@ -161,6 +163,8 @@ class PsyCardsController extends Controller
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
         }
     }
+
+
 
     // PsySuicideAssessment
     public function getCurrentSuicideAssessmentByPsyId(Request $request){
@@ -457,6 +461,20 @@ class PsyCardsController extends Controller
                                     }else{
                                         return ["errorNumber"=>2,"message"=>"Salvare Prima la scheda tossicologica"];
                                     }
+                                }
+                                if($request->has('psyId')){
+                                    if (PsyMentalHealthDepartment::where('psy_card_id', '=', $request->input('psyId'))->exists()) {
+                                        $_psyId=$request->input('psyId');
+                                    }else{
+                                        return ["errorNumber"=>2,"message"=>"Salvare Prima la scheda tossicologica"];
+                                    }
+                                }
+                                if($request->has('psyId')){
+                                    if (psyUocDepartment::where('psy_card_id', '=', $request->input('psyId'))->exists()) {
+                                        $_psyId=$request->input('psyId');
+                                    }else{
+                                        return ["errorNumber"=>2,"message"=>"Salvare Prima la scheda tossicologica"];
+                                    }
                                 }else{
                                     return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
                                 }
@@ -645,8 +663,8 @@ class PsyCardsController extends Controller
         }
         $_psychologicalInterview->mh_date=$now;
 
-        if($request->has('psyCardMh')){
-            $psyCardArr = json_decode($request->input('psyCardMh'), true);
+        if($request->has('PsyMentalHealthDepartment')){
+            $psyCardArr = json_decode($request->input('PsyMentalHealthDepartment'), true);
             if(array_key_exists('psychologicalInterview',$psyCardArr)){
                 $_psychologicalInterview->psychological_interview=$psyCardArr['psychologicalInterview'];
             }
@@ -698,8 +716,8 @@ class PsyCardsController extends Controller
         }
         $_psyRehab->rp_date=$now;
 // 
-        if($request->has('psyCardRp')){
-            $psyCardArr = json_decode($request->input('psyCardRp'), true);
+        if($request->has('PsyRehabilitationPsychiatricCard')){
+            $psyCardArr = json_decode($request->input('PsyRehabilitationPsychiatricCard'), true);
             if(array_key_exists('projectDescription',$psyCardArr)){
                 $_psyRehab->project_description=$psyCardArr['projectDescription'];
             }
@@ -745,10 +763,10 @@ class PsyCardsController extends Controller
         }
         $_psychiatricScale->pr_date=$now;
 
-        if($request->has('psyCardPr')){
-            $psyCardArr = json_decode($request->input('psyCardPr'), true);
-            if(array_key_exists('somatic_concern',$psyCardArr)){
-                $_psychiatricScale->somatic_concern=$psyCardArr['somatic_concern'];
+        if($request->has('PsyRating')){
+            $psyCardArr = json_decode($request->input('PsyRating'), true);
+            if(array_key_exists('somaticConcern',$psyCardArr)){
+                $_psychiatricScale->somatic_concern=$psyCardArr['somaticConcern'];
             }
             if(array_key_exists('anxiety',$psyCardArr)){
                 $_psychiatricScale->anxiety=$psyCardArr['anxiety'];
@@ -756,17 +774,17 @@ class PsyCardsController extends Controller
             if(array_key_exists('depression',$psyCardArr)){
                 $_psychiatricScale->depression=$psyCardArr['depression'];
             }
-            if(array_key_exists('risk_of_suicide',$psyCardArr)){
-                $_psychiatricScale->risk_of_suicide=$psyCardArr['risk_of_suicide'];
+            if(array_key_exists('riskOfSuicide',$psyCardArr)){
+                $_psychiatricScale->risk_of_suicide=$psyCardArr['riskOfSuicide'];
             }
-            if(array_key_exists('feeling_of_guilt',$psyCardArr)){
-                $_psychiatricScale->feeling_of_guilt=$psyCardArr['feeling_of_guilt'];
+            if(array_key_exists('feelingOfGuilt',$psyCardArr)){
+                $_psychiatricScale->feeling_of_guilt=$psyCardArr['feelingOfGuilt'];
             }
             if(array_key_exists('hostility',$psyCardArr)){
                 $_psychiatricScale->hostility=$psyCardArr['hostility'];
             }
-            if(array_key_exists('mood_elevation',$psyCardArr)){
-                $_psychiatricScale->mood_elevation=$psyCardArr['mood_elevation'];
+            if(array_key_exists('moodElevation',$psyCardArr)){
+                $_psychiatricScale->mood_elevation=$psyCardArr['moodElevation'];
             }
             if(array_key_exists('grandeur',$psyCardArr)){
                 $_psychiatricScale->grandeur=$psyCardArr['grandeur'];
@@ -777,38 +795,38 @@ class PsyCardsController extends Controller
             if(array_key_exists('hallucination',$psyCardArr)){
                 $_psychiatricScale->hallucination=$psyCardArr['hallucination'];
             }
-            if(array_key_exists('unusual_content_of_thought',$psyCardArr)){
-                $_psychiatricScale->unusual_content_of_thought=$psyCardArr['unusual_content_of_thought'];
+            if(array_key_exists('unusualContentOfThought',$psyCardArr)){
+                $_psychiatricScale->unusual_content_of_thought=$psyCardArr['unusualContentOfThought'];
             }
-            if(array_key_exists('bizarre_behavior',$psyCardArr)){
-                $_psychiatricScale->bizarre_behavior=$psyCardArr['bizarre_behavior'];
+            if(array_key_exists('bizarreBehavior',$psyCardArr)){
+                $_psychiatricScale->bizarre_behavior=$psyCardArr['bizarreBehavior'];
             }
-            if(array_key_exists('neglect_of_self_care',$psyCardArr)){
-                $_psychiatricScale->neglect_of_self_care=$psyCardArr['neglect_of_self_care'];
+            if(array_key_exists('neglectOfSelfCare',$psyCardArr)){
+                $_psychiatricScale->neglect_of_self_care=$psyCardArr['neglectOfSelfCare'];
             }
             if(array_key_exists('disorientation',$psyCardArr)){
                 $_psychiatricScale->disorientation=$psyCardArr['disorientation'];
             }
-            if(array_key_exists('conceptual_disorganization',$psyCardArr)){
-                $_psychiatricScale->conceptual_disorganization=$psyCardArr['conceptual_disorganization'];
+            if(array_key_exists('conceptualDisorganization',$psyCardArr)){
+                $_psychiatricScale->conceptual_disorganization=$psyCardArr['conceptualDisorganization'];
             }
-            if(array_key_exists('emotional_flattening',$psyCardArr)){
-                $_psychiatricScale->emotional_flattening=$psyCardArr['emotional_flattening'];
+            if(array_key_exists('emotionalFlattening',$psyCardArr)){
+                $_psychiatricScale->emotional_flattening=$psyCardArr['emotionalFlattening'];
             }
-            if(array_key_exists('emotional_isolation',$psyCardArr)){
-                $_psychiatricScale->emotional_isolation=$psyCardArr['emotional_isolation'];
+            if(array_key_exists('emotionalIsolation',$psyCardArr)){
+                $_psychiatricScale->emotional_isolation=$psyCardArr['emotionalIsolation'];
             }
-            if(array_key_exists('suicidal_ideation',$psyCardArr)){
-                $_psychiatricScale->suicidal_ideation=$psyCardArr['suicidal_ideation'];
+            if(array_key_exists('suicidalIdeation',$psyCardArr)){
+                $_psychiatricScale->suicidal_ideation=$psyCardArr['suicidalIdeation'];
             }
-            if(array_key_exists('motor_slowdown',$psyCardArr)){
-                $_psychiatricScale->motor_slowdown=$psyCardArr['motor_slowdown'];
+            if(array_key_exists('motorSlowdown',$psyCardArr)){
+                $_psychiatricScale->motor_slowdown=$psyCardArr['motorSlowdown'];
             }
-            if(array_key_exists('motor_tension',$psyCardArr)){
-                $_psychiatricScale->motor_tension=$psyCardArr['motor_tension'];
+            if(array_key_exists('motorTension',$psyCardArr)){
+                $_psychiatricScale->motor_tension=$psyCardArr['motorTension'];
             }
-            if(array_key_exists('lack_of_cooperation',$psyCardArr)){
-                $_psychiatricScale->lack_of_cooperation=$psyCardArr['lack_of_cooperation'];
+            if(array_key_exists('lackOfCooperation',$psyCardArr)){
+                $_psychiatricScale->lack_of_cooperation=$psyCardArr['lackOfCooperation'];
             }
             if(array_key_exists('excitement',$psyCardArr)){
                 $_psychiatricScale->excitement=$psyCardArr['excitement'];
@@ -816,14 +834,14 @@ class PsyCardsController extends Controller
             if(array_key_exists('distractibility',$psyCardArr)){
                 $_psychiatricScale->distractibility=$psyCardArr['distractibility'];
             }
-            if(array_key_exists('motor_hyperactivity',$psyCardArr)){
-                $_psychiatricScale->motor_hyperactivity=$psyCardArr['motor_hyperactivity'];
+            if(array_key_exists('motorHyperactivity',$psyCardArr)){
+                $_psychiatricScale->motor_hyperactivity=$psyCardArr['motorHyperactivity'];
             }
-            if(array_key_exists('mannerism_and_posture',$psyCardArr)){
-                $_psychiatricScale->mannerism_and_posture=$psyCardArr['mannerism_and_posture'];
+            if(array_key_exists('mannerismAndPosture',$psyCardArr)){
+                $_psychiatricScale->mannerism_and_posture=$psyCardArr['mannerismAndPosture'];
             }
-            if(array_key_exists('total_score_rating',$psyCardArr)){
-                $_psychiatricScale->total_score_rating=$psyCardArr['total_score_rating'];
+            if(array_key_exists('totalScoreRating',$psyCardArr)){
+                $_psychiatricScale->total_score_rating=$psyCardArr['totalScoreRating'];
             }
         }
         $_psychiatricScale->save();
@@ -949,8 +967,8 @@ class PsyCardsController extends Controller
         }
         $_psyFold->sf_date=$now;
 
-        if($request->has('psyCardSf')){
-            $psyCardArr = json_decode($request->input('psyCardSf'), true);
+        if($request->has('PsySocialFolder')){
+            $psyCardArr = json_decode($request->input('PsySocialFolder'), true);
             if(array_key_exists('citizenship',$psyCardArr)){
                 $_psyFold->citizenship=$psyCardArr['citizenship'];
             }
@@ -1394,18 +1412,18 @@ class PsyCardsController extends Controller
                 $_psyMemb->first_orientation=$psyCardArr['firstOrientation'];
             }
 
-            // if(array_key_exists('interventionPlanConclusions',$psyCardArr)){
-            //     $_psyMemb->intervention_plan_conclusions=$psyCardArr['interventionPlanConclusions'];
+            // if(array_key_exists('interventionConclusions',$psyCardArr)){
+            //     $_psyMemb->intervention_conclusion=$psyCardArr['interventionConclusion'];
             // }
             if(array_key_exists('interventionPlanAdvice',$psyCardArr)){
                 $_psyMemb->intervention_plan_advice=$psyCardArr['interventionPlanAdvice'];
             }
-            if(array_key_exists('interventionPlanTakingIntoCare',$psyCardArr)){
-                $_psyMemb->intervention_plan_taking_into_care=$psyCardArr['interventionPlanTakingIntoCare'];
-            }
-            if(array_key_exists('interventionPlanIntegratedHandling',$psyCardArr)){
-                $_psyMemb->intervention_plan_integrated_handling=$psyCardArr['interventionPlanIntegratedHandling'];
-            }
+            // if(array_key_exists('interventionPlanTakingIntoCare',$psyCardArr)){
+            //     $_psyMemb->intervention_plan_taking_into_care=$psyCardArr['interventionPlanTakingIntoCare'];
+            // }
+            // if(array_key_exists('interventionPlanIntegratedHandling',$psyCardArr)){
+            //     $_psyMemb->intervention_plan_integrated_handling=$psyCardArr['interventionPlanIntegratedHandling'];
+            // }
 
 
             if(array_key_exists('specificPrescriptionSuggestions',$psyCardArr)){
@@ -1473,8 +1491,8 @@ class PsyCardsController extends Controller
         }
         $_psySurv->ps_date=$now;
 
-        if($request->has('psyCardPs')){
-            $psyCardArr = json_decode($request->input('psyCardPs'), true);
+        if($request->has('PsySurvey')){
+            $psyCardArr = json_decode($request->input('PsySurvey'), true);
             if(array_key_exists('surveyHeardAlone',$psyCardArr)){
                 $_psySurv->survey_heard_alone=$psyCardArr['surveyHeardAlone'];
             }
@@ -1609,8 +1627,8 @@ class PsyCardsController extends Controller
         }
         $_psyJsa->pj_date=$now;
 
-        if($request->has('psyCardPj')){
-            $psyCardArr = json_decode($request->input('psyCardPj'), true);
+        if($request->has('PsyJsat')){
+            $psyCardArr = json_decode($request->input('PsyJsat'), true);
             if(array_key_exists('entryDate',$psyCardArr)){
                 $_psyJsa->entry_date=$psyCardArr['entryDate'];
             }
