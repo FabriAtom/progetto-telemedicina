@@ -284,8 +284,8 @@
 
                             <div class="x_content">
 
-                                <h2 class="pt-4">Primo colloquio psicologico <strong>Intake</strong></h2>
-                                <h3>Anamnesi clinica: Disturbo psichico/ Disturbo uso di sostanze</h3>
+                                <h2 class="pt-4 pl-3">Primo colloquio psicologico <strong>Intake</strong></h2>
+                                <h3 class="pl-3">Anamnesi clinica: Disturbo psichico/ Disturbo uso di sostanze</h3>
 
                                 
 
@@ -417,7 +417,7 @@
 
 
 
-                                <table>
+                                <table class="mt-2">
                                     <h3></h3>
 
                                     <tr>
@@ -616,7 +616,7 @@
 
 
 
-                                <h3>Status</h3>
+                                <h3 class="ml-3 mt-2">Status</h3>
                                 <table>
                                     <h3></h3>
 
@@ -863,7 +863,7 @@
 
 
                                 <!-- chekkkkkk -->
-                                <h3 class="mt-3">Questionario sul benessere generale (GHQ-12)</h3>
+                                <h3 class="mt-3 ml-3">Questionario sul benessere generale (GHQ-12)</h3>
                                 <table>
                                     <h3></h3>
 
@@ -1120,14 +1120,14 @@
                                         </td>
                                     </tr> 
                                 </table>
-                                <h3 class="mt-5">Punteggio</h3>
-                                <h4>da 0 a 14: assenza di rischio</h4>
-                                <h4>da 15 a 36: presenza di rischio</h4>
+                                <div class="ml-3">
+                                    <h3 class="mt-4">Punteggio</h3>
+                                    <h4>da 0 a 14: assenza di rischio</h4>
+                                    <h4>da 15 a 36: presenza di rischio</h4>
+                                    <h3 class="mt-3">Mini</h3>
+                                </div>
 
-                            
-
-
-                                <h3 class="mt-3">Mini</h3>
+                        
                                 <table>
                                     <h3></h3>
 
@@ -1200,7 +1200,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="gravity_ideation_suicide" class="col-form-label col-md-6 col-sm-2 label-align">Livello di gravità dell'ideazione suicidaria</label>
+                                            <label for="gravity_ideation_suicide" class="col-form-label col-md-6 col-sm-2 label-align"><strong>Livello di gravità dell'ideazione suicidaria</strong></label>
                                             <div class="col-md-12 col-sm-12">
                                                 <input type="radio" name="gravity_ideation_suicide" value="basso"  v-model="psyCardMc.gravityIdeationSuicide">
                                                 <span>basso</span><br>
@@ -1447,7 +1447,7 @@
                                     rischio <strong>autolesivo/suicidario</strong>.
                                 </p>
                                 <p>
-                                    Gli <strong>Items</strong>3, 4, 7, 10, 11, 12, 13 e 14 devono essere presenti in associazione tra loro, <strong>almeno</strong> 4, per 
+                                    Gli <strong>Items</strong> 3, 4, 7, 10, 11, 12, 13 e 14 devono essere presenti in associazione tra loro, <strong>almeno</strong> 4, per 
                                     <br>
                                     concorrere all'ipotesi di presenza di <strong>rischio autolesivo/suicidario</strong>.
                                 </p>
@@ -1455,7 +1455,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="check_conclusion" class="col-form-label col-md-6 col-sm-2 label-align">Conclusioni</label>
+                                            <label for="check_conclusion" class="col-form-label col-md-6 col-sm-2 label-align"><strong>Conclusioni</strong></label>
                                             <div class="col-md-12 col-sm-12">
                                                 <input type="radio" name="check_conclusion" value="non necessario, valutazione diagnostica e presa in carico" v-model="psyCardMc.checkConclusion">
                                                 <span>non necessario, al momento, valutazione diagnostica e presa in carico</span><br>
@@ -1470,14 +1470,14 @@
                             </div>
 
                             <div class="x_content">
-                                <h4 class="mt-5"><strong>CONCLUSIONI VALUTAZIONE RISCHIO AUTOLESIVO E/O SUICIDARIO</strong></h4>
+                                <h4 class="mt-5 ml-2"><strong>CONCLUSIONI VALUTAZIONE RISCHIO AUTOLESIVO E/O SUICIDARIO</strong></h4>
                                 <div style="border:2px solid black; max-width: 800px; max-height: 650px; margin-left: 10px;margin-bottom: 10px;">
                                     <!-- <h4><strong>SEGNALAZIONE PER RISCHIO AUTOLESIVO E/O SUICIDARIO</strong></h4> -->
 
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="risk_assessment_conclusions" class="col-form-label col-md-6 col-sm-2 label-align"><strong>SEGNALAZIONE PER RISCHIO AUTOLESIVO E/O SUICIDARIO</strong></label>
+                                                <label for="risk_assessment_conclusions" class="col-form-label col-md-7 col-sm-5 label-align"><strong>SEGNALAZIONE PER RISCHIO AUTOLESIVO E/O SUICIDARIO</strong></label>
                                                 <div class="col-md-12 col-sm-12">
                                                     <input type="radio" name="risk_assessment_conclusions" value="1" v-model="psyCardMc.riskAssessmentConclusions">
                                                     <span>Si</span>
@@ -1492,7 +1492,7 @@
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="request_activation_of_measures" class="col-form-label col-md-6 col-sm-2 label-align">Richiesta attivazione di misure di:</label>
+                                                <label for="request_activation_of_measures" class="col-form-label col-md-6 col-sm-2 label-align"><strong>Richiesta attivazione di misure di:</strong></label>
                                                 <div class="col-md-12 col-sm-12">
                                                     <input type="checkbox" name="request_activation_normal_surveillance" value="Sorveglianza normale" v-model="psyCardMc.requestActivationNormalSurveillance">
                                                     <span>Sorveglianza normale</span><br>
@@ -1509,7 +1509,7 @@
 
 
                                 </div> 
-                                <h3><strong>Prima visita psichiatrica</strong></h3>
+                                <h3 class="ml-2"><strong>Prima visita psichiatrica</strong></h3>
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">

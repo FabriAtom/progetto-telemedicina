@@ -1627,8 +1627,8 @@ class PsyCardsController extends Controller
         }
         $_psyJsa->pj_date=$now;
 
-        if($request->has('PsyJsat')){
-            $psyCardArr = json_decode($request->input('PsyJsat'), true);
+        if($request->has('psyCardPj')){
+            $psyCardArr = json_decode($request->input('psyCardPj'), true);
             if(array_key_exists('entryDate',$psyCardArr)){
                 $_psyJsa->entry_date=$psyCardArr['entryDate'];
             }
@@ -1654,7 +1654,9 @@ class PsyCardsController extends Controller
             if(array_key_exists('informationBackgroundOther',$psyCardArr)){
                 $_psyJsa->information_background_other=$psyCardArr['informationBackgroundOther'];
             }
-
+            if(array_key_exists('informationBackgroundText',$psyCardArr)){
+                $_psyJsa->information_background_text=$psyCardArr['informationBackgroundText'];
+            }
             if(array_key_exists('legalSituationNow',$psyCardArr)){
                 $_psyJsa->legal_situation_now=$psyCardArr['legalSituationNow'];
             }
@@ -1681,6 +1683,10 @@ class PsyCardsController extends Controller
                 $_psyJsa->criminal_record_condemnation=$psyCardArr['criminalRecordCondemnation'];
             }
 
+            if(array_key_exists('violentBehavior',$psyCardArr)){
+                $_psyJsa->violent_behavior=$psyCardArr['violentBehavior'];
+            }
+            
             if(array_key_exists('violentBehaviorActsAggression',$psyCardArr)){
                 $_psyJsa->violent_behavior_acts_aggression=$psyCardArr['violentBehaviorActsAggression'];
             }
@@ -1716,12 +1722,22 @@ class PsyCardsController extends Controller
             if(array_key_exists('backgroundSocialStabilityRelation',$psyCardArr)){
                 $_psyJsa->background_social_stability_relation=$psyCardArr['backgroundSocialStabilityRelation'];
             }
+
+            if(array_key_exists('backgroundSocialStabilityProblem',$psyCardArr)){
+                $_psyJsa->background_social_stability_problem=$psyCardArr['backgroundSocialStabilityProblem'];
+            }
+
             if(array_key_exists('backgroundSocialRelationProblem',$psyCardArr)){
                 $_psyJsa->background_social_relation_problem=$psyCardArr['backgroundSocialRelationProblem'];
             }
             if(array_key_exists('backgroundSocialSons',$psyCardArr)){
                 $_psyJsa->background_social_sons=$psyCardArr['backgroundSocialSons'];
             }
+            if(array_key_exists('backgroundSocialProblem',$psyCardArr)){
+                $_psyJsa->background_social_problem=$psyCardArr['backgroundSocialProblem'];
+            }
+
+            
             if(array_key_exists('backgroundSocialSonsProblem',$psyCardArr)){
                 $_psyJsa->background_social_sons_problem=$psyCardArr['backgroundSocialSonsProblem'];
             }
@@ -1813,9 +1829,17 @@ class PsyCardsController extends Controller
 
 
 
-            if(array_key_exists('psycTreatments',$psyCardArr)){
-                $_psyJsa->psyc_treatments=$psyCardArr['psycTreatments'];
+            if(array_key_exists('psycTreatmentsCheckHospital',$psyCardArr)){
+                $_psyJsa->psyc_treatments_check_hospital=$psyCardArr['psycTreatmentsCheckHospital'];
             }
+            if(array_key_exists('psycTreatmentsCheckOrder',$psyCardArr)){
+                $_psyJsa->psyc_treatments_check_order=$psyCardArr['psycTreatmentsCheckOrder'];
+            }
+            if(array_key_exists('psycTreatmentsCheckFarmacy',$psyCardArr)){
+                $_psyJsa->psyc_treatments_check_farmacy=$psyCardArr['psycTreatmentsCheckFarmacy'];
+            }
+
+
             if(array_key_exists('psycTreatmentsClinicalEvaluation',$psyCardArr)){
                 $_psyJsa->psyc_treatments_clinical_evaluation=$psyCardArr['psycTreatmentsClinicalEvaluation'];
             }

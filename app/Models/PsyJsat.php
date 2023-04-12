@@ -19,6 +19,7 @@ class PsyJsat extends Model
         'information_native_language',
         'information_background',
         'information_background_other',
+        'information_background_text',
         'legal_situation_now',
         'legal_situation_crime_committed',
         'legal_situation_crime_committed_other',
@@ -28,6 +29,8 @@ class PsyJsat extends Model
         'legal_situation_previous_incarceration_if_prominence',
         'criminal_record',
         'criminal_record_condemnation',
+
+        'violent_behavior',
         'violent_behavior_acts_aggression',
         'violent_behavior_acts_aggression_desc',
         'violent_behavior_violent_crimes',
@@ -39,9 +42,14 @@ class PsyJsat extends Model
         'violent_aggression_now',
         'background_social_marital_status',
         'background_social_stability_relation',
+        'background_social_stability_problem',
         'background_social_relation_problem',
+
+
         'background_social_sons',
+        'background_social_problem',
         'background_social_sons_problem',
+
         'background_social_situation_house',
         'background_social_situation_house_other',
         'background_social_support_family',
@@ -73,17 +81,30 @@ class PsyJsat extends Model
         'substance_use_substance_abuse_list',
         'substance_use_substance_abuse_other',
 
-        'psyc_treatments',
+
+
+        'psyc_treatments_check_hospital',
+        'psyc_treatments_check_order',
+        'psyc_treatments_check_farmacy',
+
+
         'psyc_treatments_clinical_evaluation',
         'psyc_treatments_clinical_evaluation_order',
+
+
         'psyc_treatments_in_prison',
         'psyc_treatments_comunity',
         'psyc_treatments_hospital',
         'psyc_treatments_court_order',
         'psyc_treatments_farmacy',
         'psyc_treatments_type',
+
+
+
         'psyc_treatments_previous_trauma',
         'psyc_treatments_previous_trauma_desc',
+
+
 
         'suicidal_risk',
         'suicidal_risk_number_attempts',

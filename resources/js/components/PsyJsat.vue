@@ -32,11 +32,11 @@
                                 <div class="container" style="border: 1px solid black;">
                                     <span style="max-width: 50%; float: left;">
 
-                                        <div class="row" style="margin-top:20px;">
-                                            <!-- <h2 style="border: 1px solid black;">Informazioni</h2> -->
+                                        <h2>Informazioni</h2>
+                                        <div class="row">
                                             <div class="col-md-12 col-sm-12">
                                                 <span class="item form-group">
-                                                    <label for="information_age" style="border: 1px solid black;" class="col-form-label col-md-5 col-sm-2 label-align mb-3"><h2><strong>Informazioni</strong></h2></label><br>
+                                                    <label for="information_age"  class="col-form-label col-md-5 col-sm-2 label-align mb-3"></label><br>
                                                     <span class="col-md-12 col-sm-12">
                                                         <input type="number" name="information_age" v-model="psyCardPj.informationAge"/>
                                                         <span>anni</span>
@@ -47,7 +47,7 @@
                                         <div class="row" style="margin-top:20px;">
                                             <div class="col-md-12 col-sm-12">
                                                 <span class="item form-group">
-                                                    <label for="information_language" class="col-form-label col-md-2 col-sm-2 label-align">Italiano:</label>
+                                                    <label for="information_language" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Italiano:</strong></label>
                                                     <span class="col-md-12 col-sm-12">
                                                         <span>Si</span>
                                                         <input type="radio" name="information_language" value="1" v-model="psyCardPj.informationLanguage"/>
@@ -60,8 +60,8 @@
                                         <div class="row" style="margin-top:20px;">
                                             <div class="col-md-12 col-sm-12">
                                                 <span class="item form-group">
-                                                    <label for="information_level_language" class="col-form-label col-md-1 col-sm-2 label-align">Livello:</label>
-                                                    <span class="col-md-12 col-sm-12">
+                                                    <label for="information_level_language" class="col-form-label col-md-1 col-sm-2 label-align"><strong>Livello:</strong></label>
+                                                    <span class="col-md-8 col-sm-12">
                                                         <span>Elementare</span>
                                                         <input type="radio" name="information_level_language" value="Elementare" v-model="psyCardPj.informationLevelLanguage"/>
                                                         <span>Intermedio</span>
@@ -77,7 +77,7 @@
                                         <div class="row" style="margin-top:20px;">
                                             <div class="col-md-12 col-sm-12">
                                                 <span class="item form-group">
-                                                    <label for="information_native_language" class="col-form-label col-md-3 col-sm-2 label-align">Lingua madre:</label>
+                                                    <label for="information_native_language" class="col-form-label col-md-4 col-sm-2 label-align"><strong>Lingua madre:</strong></label>
                                                     <span class="col-md-2 col-sm-2">
                                                         <input type="text" name="information_native_language" v-model="psyCardPj.informationNativeLanguage"/>
                                                     </span>
@@ -86,61 +86,67 @@
                                         </div>
                                     </span>
     
-                                    <span style="max-width: 50%;">
-                                        <span class="row" style="margin-top:20px;">
-                                            <span class="col-md-12 col-sm-12">
-                                                <span class="item form-group">
-                                                    <label for="information_background" class="col-form-label col-md-5 col-sm-4 label-align"><strong>Background Etnico/Culurale</strong></label>
-                                                    <span class="col-md-12 col-sm-12 flex">
-                                                        <ul>
-                                                            <li>
-                                                                <input type="radio" name="information_background" value="Italiano" v-model="psyCardPj.informationBackground"/>
-                                                                <span>Italiano</span>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" name="information_background" value="Europeo" v-model="psyCardPj.informationBackground"/>
-                                                                <span>Europeo</span>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" name="information_background" value="Africano" v-model="psyCardPj.informationBackground"/>
-                                                                <span>Africano</span>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" name="information_background" value="Asiatico" v-model="psyCardPj.informationBackground"/>
-                                                                <span>Asiatico</span>
-                                                            </li>
-                                                        </ul>
-                                                        <ul>
-                                                            <li>
-                                                                <input type="radio" name="information_background" value="Nordamericano" v-model="psyCardPj.informationBackground"/>
-                                                                <span>Nordamericano</span>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" name="information_background" value="Sudamericano" v-model="psyCardPj.informationBackground"/>
-                                                                <span>Sudamericano</span>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" name="information_background" value="Rom-sinti/nomade" v-model="psyCardPj.informationBackground"/>
-                                                                <span>Rom-sinti/nomade</span>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" name="information_background_other" value="altro" v-model="psyCardPj.informationBackgroundOther"/>
-                                                                <span>altro</span>
-                                                            </li>
-                                                        </ul>                                                
-                                                    </span>
+                                    <span class="row" style="margin-top:20px;">
+                                        <span class="col-md-12 col-sm-12">
+                                            <span class="item form-group">
+                                                <label for="information_background" class="col-form-label col-md-5 col-sm-4 label-align"><strong>Background Etnico/Culurale:</strong></label>
+                                                <span class="col-md-12 col-sm-12">
+                                                    <ul style="max-width: 30%;">
+                                                        <li>
+                                                            <input type="radio" name="information_background" value="Italiano" v-model="psyCardPj.informationBackground"/>
+                                                            <span>Italiano</span>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="information_background" value="Europeo" v-model="psyCardPj.informationBackground"/>
+                                                            <span>Europeo</span>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="information_background" value="Africano" v-model="psyCardPj.informationBackground"/>
+                                                            <span>Africano</span>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="information_background" value="Asiatico" v-model="psyCardPj.informationBackground"/>
+                                                            <span>Asiatico</span>
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                                <span>
+                                                    <ul>
+                                                        <li>
+                                                            <input type="radio" name="information_background" value="Nordamericano" v-model="psyCardPj.informationBackground"/>
+                                                            <span>Nordamericano</span>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="information_background" value="Sudamericano" v-model="psyCardPj.informationBackground"/>
+                                                            <span>Sudamericano</span>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="information_background" value="Rom-sinti/nomade" v-model="psyCardPj.informationBackground"/>
+                                                            <span>Rom-sinti/nomade</span>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="information_background_other" value="altro" v-model="psyCardPj.informationBackgroundOther"/>
+                                                            <span>altro</span>
+                                                            <input type="text" name="information_background_text" v-model="psyCardPj.informationBackgroundText"/>
+                                                        </li>
+                                                    </ul>                                                
                                                 </span>
                                             </span>
                                         </span>
                                     </span>
                                 </div>
 
+
+
+
+
+
                                 <div class="container" style="border: 1px solid black;">
                                     <h2>Situazione Giuridica</h2>
-                                    <div class="row" style="margin-top:20px;">
-                                        <div class="col-md-12 col-sm-12">
+                                    <span class="row float-left">
+                                        <span class="col-md-12 col-sm-12">
                                             <span class="item form-group">
-                                                <label for="legal_situation_now" class="col-form-label col-md-3 col-sm-3 label-align"><h2><strong>Attuale:</strong></h2></label><br>
+                                                <label for="legal_situation_now" class="col-form-label col-md-3 col-sm-3 label-align"><strong>Attuale:</strong></label>
                                                 <span class="col-md-12 col-sm-12"><br>
                                                     <input type="radio" name="legal_situation_now" value="Imputato" v-model="psyCardPj.legalSituationNow"/>
                                                     <span>Imputato</span><br>
@@ -152,12 +158,12 @@
                                                     <span>In trasferimento</span>
                                                 </span>
                                             </span>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-top:20px;">
-                                        <div class="col-md-12 col-sm-12">
+                                        </span>
+                                    </span>
+                                    <span class="row" style=" float: left;">
+                                        <span class="col-md-12 col-sm-12" style="margin-left: 4rem;">
                                             <span class="item form-group">
-                                                <label for="legal_situation_crime_committed" class="col-form-label col-md-4 col-sm-4 label-align"><h2>Tipo di reato Commesso:</h2></label><br>
+                                                <label for="legal_situation_crime_committed" class="col-form-label col-md-5 col-sm-4 label-align"><strong> Tipo di reato Commesso:</strong></label>
                                                 <span class="col-md-12 col-sm-12"><br>
                                                     <input type="radio" name="legal_situation_crime_committed" value="Contro la persona" v-model="psyCardPj.legalSituationCrimeCommitted"/>
                                                     <span>Contro la persona</span><br>
@@ -173,60 +179,81 @@
                                                     <input type="text" name="legal_situation_crime_committed_other" value="altro" v-model="psyCardPj.legalSituationCrimeCommittedOther"/>
                                                 </span>
                                             </span>
+                                        </span>
+                                    </span>
+                                
+
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="item form-group">
+                                                <label for="legal_situation_previous_incarceration" class="col-form-label col-md-5 col-sm-2 label-align"><strong>Precendenti Carcerazioni:</strong></label>
+                                                <span class="col-md-12 col-sm-12">
+                                                    <input type="radio" name="legal_situation_previous_incarceration" value="1" v-model="psyCardPj.legalSituationPreviousIncarceration"/>
+                                                    <span>Si</span>
+                                                    <input type="radio" name="legal_situation_previous_incarceration" value="0" v-model="psyCardPj.legalSituationPreviousIncarceration"/>
+                                                    <span>No</span>
+                                                </span>
+                                                <span class="col-md-12 col-sm-12"><br>
+                                                    <input type="radio" name="legal_situation_previous_incarceration_if" value="Nell'ultimo anno" v-model="psyCardPj.legalSituationPreviousIncarcerationIf"/>
+                                                    <span>Nell'ultimo anno</span><br>
+                                                    <input type="radio" name="legal_situation_previous_incarceration_if" value="Negli ultimi 6 mesi" v-model="psyCardPj.legalSituationPreviousIncarcerationIf"/>
+                                                    <span>Negli ultimi 6 mesi</span><br>
+                                                    <input type="radio" name="legal_situation_previous_incarceration_if" value="Nell'ultimo mese" v-model="psyCardPj.legalSituationPreviousIncarcerationIf"/>
+                                                    <span>Nell'ultimo mese</span><br>
+                                                    
+                                                    <input type="radio" name="legal_situation_previous_incarceration_if" v-model="psyCardPj.legalSituationPreviousIncarcerationIf"/>
+                                                    <span>indicare qualsiasi rilievo pertinente:</span>
+                                                    <input type="text" name="legal_situation_previous_incarceration_if_prominence" v-model="psyCardPj.legalSituationPreviousIncarcerationIfProminance"/>
+                                                </span>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="item form-group">
+                                                <label for="criminal_record" class="col-form-label col-md-4 col-sm-2 label-align"><strong>Precendenti Penali:</strong></label>
+                                                <span class="col-md-12 col-sm-12">
+                                                    <input type="radio" name="criminal_record" value="1" v-model="psyCardPj.criminalRecord"/>
+                                                    <span>Si</span>
+                                                    <input type="radio" name="criminal_record" value="0" v-model="psyCardPj.criminalRecord"/>
+                                                    <span>No</span><br>
+                                                    
+                                                    <input type="radio" name="criminal_record_condemnation" v-model="psyCardPj.criminalRecordCondemnation"/>
+                                                    <span>Condanna più lunga</span>
+                                                    <input type="text" name="criminal_record_condemnation" v-model="psyCardPj.criminalRecordCondemnation"/>
+                                                </span>
+                                            </div> 
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="item form-group">
-                                            <label for="legal_situation_previous_incarceration" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Precendenti Carcerazioni:</strong></label>
-                                            <span class="col-md-12 col-sm-12">
-                                                <input type="radio" name="legal_situation_previous_incarceration" v-model="psyCardPj.legalSituationPreviousIncarceration"/>
-                                                <span>Si</span>
-                                                <input type="radio" name="legal_situation_previous_incarceration" v-model="psyCardPj.legalSituationPreviousIncarceration"/>
-                                                <span>No</span>
-                                            </span>
-                                            <span class="col-md-12 col-sm-12"><br>
-                                                <input type="radio" name="legal_situation_previous_incarceration_if" value="Nell'ultimo anno" v-model="psyCardPj.legalSituationPreviousIncarcerationIf"/>
-                                                <span>Nell'ultimo anno</span><br>
-                                                <input type="radio" name="legal_situation_previous_incarceration_if" value="Negli ultimi 6 mesi" v-model="psyCardPj.legalSituationPreviousIncarcerationIf"/>
-                                                <span>Negli ultimi 6 mesi</span><br>
-                                                <input type="radio" name="legal_situation_previous_incarceration_if" value="Nell'ultimo mese" v-model="psyCardPj.legalSituationPreviousIncarcerationIf"/>
-                                                <span>Nell'ultimo mese</span><br>
 
-                                                <input type="radio" name="legal_situation_previous_incarceration" v-model="psyCardPj.legalSituationPreviousIncarceration"/>
-                                                <span>indicare qualsiasi rilievo pertinente:</span>
-                                                <input type="text" name="legal_situation_previous_incarceration_if_prominence" v-model="psyCardPj.legalSituationPreviousIncarcerationIfProminance"/>
-                                            </span>
-                                        </div> 
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="item form-group">
-                                            <label for="criminal_record" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Precendenti Penali:</strong></label>
-                                            <span class="col-md-12 col-sm-12">
-                                                <input type="radio" name="criminal_record" v-model="psyCardPj.criminalRecord"/>
-                                                <span>Si</span>
-                                                <input type="radio" name="criminal_record" v-model="psyCardPj.criminalRecord"/>
-                                                <span>No</span><br>
 
-                                                <input type="radio" name="criminal_record" v-model="psyCardPj.criminalRecord"/>
-                                                <span>Condanna più lunga</span>
-                                                <input type="text" name="criminal_record_condemnation" v-model="psyCardPj.criminalRecordCondemnation"/>
-                                            </span>
-                                        </div> 
-                                    </div>
-                                </div>
-
+                            
 
                                 <div class="container" style="border: 1px solid black;">
-                                    <h2>Comportamenti Violenti</h2>
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="item form-group">
+                                    <!-- <h2>Comportamenti Violenti</h2> -->
+                                    <span class="row float">
+                                        <span class="col-md-12 col-sm-12">
+                                            <span class="item form-group">
+                                                <label for="violent_behavior" class="col-form-label col-md-4 col-sm-2 label-align"><h2>Comportamenti Violenti</h2></label>
+                                                <span class="col-md-12 col-sm-12">
+                                                    <input type="radio" name="violent_behavior" value="1" v-model="psyCardPj.violentBehavior"/>
+                                                    <span>Si</span>
+                                                    <input type="radio" name="violent_behavior" value="0" v-model="psyCardPj.violentBehavior"/>
+                                                    <span>No</span><br>
+                                                </span>
+                                            </span> 
+                                        </span>
+                                    </span><br>
+                                    
+                                    
+                                    <span class="row">
+                                        <span class="col-md-12 col-sm-12">
+                                            <span class="item form-group">
                                                 <label for="violent_behavior_acts_aggression" class="col-form-label col-md-4 col-sm-2 label-align"><strong>Precendenti atti di aggressione/violenza:</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="radio" name="violent_behavior_acts_aggression" value="1" v-model="psyCardPj.violentBehaviorActsAggression"/>
@@ -237,12 +264,12 @@
                                                     <span>Descrivere:</span>
                                                     <input type="text" name="violent_behavior_acts_aggression_desc" v-model="psyCardPj.violentBehaviorActsAggressionDesc"/>
                                                 </span>
-                                            </div> 
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="item form-group">
+                                            </span> 
+                                        </span>
+                                    </span><br>
+                                    <span class="row">
+                                        <span class="col-md-12 col-sm-12">
+                                            <span class="item form-group">
                                                 <label for="violent_behavior_violent_crimes" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Precendenti reati violenti:</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="radio" name="violent_behavior_violent_crimes" value="1" v-model="psyCardPj.violentBehaviorViolentCrimes"/>
@@ -253,13 +280,13 @@
                                                     <span>Tipo:</span>
                                                     <input type="text" name="violent_behavior_crimes_type" v-model="psyCardPj.violentBehaviorCrimesType"/>
                                                 </span>
-                                            </div> 
-                                        </div>
-                                    </div>
+                                            </span> 
+                                        </span>
+                                    </span>
 
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="item form-group">
+                                    <span class="row">
+                                        <span class="col-md-12 col-sm-12">
+                                            <span class="item form-group">
                                                 <label for="violent_behavior_during_incarceration" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Atti di violenza durante carcerazione:</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="radio" name="violent_behavior_during_incarceration" value="1" v-model="psyCardPj.violentBehaviorDuringIncarceration"/>
@@ -267,13 +294,17 @@
                                                     <input type="radio" name="violent_behavior_during_incarceration" value="0" v-model="psyCardPj.violentBehaviorDuringIncarceration"/>
                                                     <span>No</span><br>
                                                 </span>
-                                            </div> 
-                                        </div>
-                                    </div>
+                                            </span> 
+                                        </span>
+                                    </span>
 
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="item form-group">
+
+
+
+
+                                    <span class="row" style="float: right;">
+                                        <span class="col-md-12 col-sm-12">
+                                            <span class="item form-group">
                                                 <label for="violent_behavior_aggression_proceeding" class="col-form-label col-md-4 col-sm-2 label-align"><strong>Provvedimenti disciplinari per aggressività:</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="radio" name="violent_behavior_aggression_proceeding" value="1" v-model="psyCardPj.violentBehaviorAggressionProceeding"/>
@@ -284,14 +315,14 @@
                                                     <span>Descrivere:</span>
                                                     <input type="text" name="violent_behavior_aggression_proceeding_desc" v-model="psyCardPj.violentBehaviorAggressionProceedingDesc"/>
                                                 </span>
-                                            </div> 
-                                        </div>
-                                    </div>
+                                            </span> 
+                                        </span>
+                                    </span>
 
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="violent_behavior_last_aggression" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Ultimo atto di aggressione:</strong></label>
+                                                <label for="violent_behavior_last_aggression" class="col-form-label col-md-4 col-sm-2 label-align"><strong>Ultimo atto di aggressione:</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="text" name="violent_behavior_last_aggression" v-model="psyCardPj.violentBehaviorLastAggression"/>
                                                 </span>
@@ -315,14 +346,20 @@
                                 </div>
 
 
+
+
+
+
+
+
                                 <div class="container" style="border: 1px solid black;">
                                     <h2>Background sociale</h2>
 
-                                    <div class="row" style="margin-top:20px;">
-                                        <div class="col-md-12 col-sm-12">
+                                    <div class="row-column" style="margin-top:20px;">
+                                        <div class="col-md-9 col-sm-12">
                                             <span class="item form-group">
-                                                <label for="background_social_marital_status" class="col-form-label col-md-3 col-sm-3 label-align"><h2><strong>Stato civile:</strong></h2></label><br>
-                                                <span class="col-md-12 col-sm-12"><br>
+                                                <label for="background_social_marital_status" class="col-form-label col-md-3 col-sm-3 label-align"><h4><strong>Stato civile:</strong></h4></label>
+                                                <span class="col-md-9 col-sm-12"><br>
                                                     <input type="radio" name="background_social_marital_status" value="Single" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
                                                     <span>Single</span><br>
                                                     <input type="radio" name="background_social_marital_status" value="Sposato" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
@@ -334,24 +371,21 @@
                                                     <input type="radio" name="background_social_marital_status" value="Separato/Divorziato" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
                                                     <span>Separato/Divorziato</span><br>
                                                     <input type="radio" name="background_social_marital_status" value="Vedovo" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
-                                                    <span>Vedovo</span>
+                                                    <span>Vedovo</span><br>
                                                 </span>
                                             </span>
-                                        </div>
-                                    </div>
 
-                                    <div class="row" style="margin-top:20px;">
-                                        <div class="col-md-12 col-sm-12">
                                             <span class="item form-group">
-                                                <label for="background_social_stability_relation" class="col-form-label col-md-4 col-sm-3 label-align"><h2><strong>Stabilità della relazione:</strong></h2></label><br>
+                                                <label for="background_social_stability_relation" class="col-form-label col-md-4 col-sm-3 label-align"><h4><strong>Stabilità della relazione:</strong></h4></label>
                                                 <span class="col-md-12 col-sm-12"><br>
                                                     <input type="radio" name="background_social_stability_relation" value=">1 anno" v-model="psyCardPj.backgroundSocialStabilityRelation"/>
                                                     <span> > 1 anno</span><br>
                                                     <input type="radio" name="background_social_stability_relation" value="<1 anno" v-model="psyCardPj.backgroundSocialStabilityRelation"/>
                                                     <span>  1 anno </span><br>
-                                                    <input type="radio" name="background_social_stability_relation" value="Problematiche" v-model="psyCardPj.backgroundSocialStabilityRelation"/>
+
+                                                    <input type="radio" name="background_social_stability_problem" value="1" v-model="psyCardPj.backgroundSocialStabilityProblem"/>
                                                     <span>Problematiche</span>
-                                                    <input type="text" name="background_social_relation_problem" v-model="psyCardPj.backgroundSocialStabilityRelationProblem">
+                                                    <input type="text" name="background_social_relation_problem" v-model="psyCardPj.backgroundSocialRelationProblem">
                                                 </span>
                                             </span>
                                         </div>
@@ -360,13 +394,32 @@
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
                                             <span class="item form-group">
-                                                <label for="background_social_sons" class="col-form-label col-md-4 col-sm-3 label-align"><h2><strong> Figli:</strong></h2></label><br>
+                                                <label for="background_social_stability_relation" class="col-form-label col-md-4 col-sm-3 label-align"><h4><strong>Stabilità della relazione:</strong></h4></label>
+                                                <span class="col-md-12 col-sm-12"><br>
+                                                    <input type="radio" name="background_social_stability_relation" value=">1 anno" v-model="psyCardPj.backgroundSocialStabilityRelation"/>
+                                                    <span> > 1 anno</span><br>
+                                                    <input type="radio" name="background_social_stability_relation" value="<1 anno" v-model="psyCardPj.backgroundSocialStabilityRelation"/>
+                                                    <span>  1 anno </span><br>
+
+                                                    <input type="radio" name="background_social_stability_problem" value="1" v-model="psyCardPj.backgroundSocialStabilityProblem"/>
+                                                    <span>Problematiche</span>
+                                                    <input type="text" name="background_social_relation_problem" v-model="psyCardPj.backgroundSocialRelationProblem">
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-top:20px;">
+                                        <div class="col-md-12 col-sm-12">
+                                            <span class="item form-group">
+                                                <label for="background_social_sons" class="col-form-label col-md-1 col-sm-3 label-align"><h4><strong>Figli:</strong></h4></label>
                                                 <span class="col-md-12 col-sm-12">
-                                                    <input type="radio" name="background_social_sons" value="1" v-model="psyCardPj.backgroundSocialStabilityRelation"/>
+                                                    <input type="radio" name="background_social_sons" value="1" v-model="psyCardPj.backgroundSocialSons"/>
                                                     <span>Si</span>
-                                                    <input type="radio" name="background_social_sons" value="0" v-model="psyCardPj.backgroundSocialStabilityRelation"/>
+                                                    <input type="radio" name="background_social_sons" value="0" v-model="psyCardPj.backgroundSocialSons"/>
                                                     <span>No</span><br>
-                                                    <input type="radio" name="background_social_sons" value="Problematiche" v-model="psyCardPj.backgroundSocialStabilityRelation"/>
+
+                                                    <input type="radio" name="background_social_problem" value="1" v-model="psyCardPj.backgroundSocialProblem"/>
                                                     <span>Problematiche</span>
                                                     <input type="text" name="background_social_sons_problem" v-model="psyCardPj.backgroundSocialSonsProblem">
                                                 </span>
@@ -377,25 +430,25 @@
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
                                             <span class="item form-group">
-                                                <label for="background_social_situation_house" class="col-form-label col-md-4 col-sm-3 label-align"><h2><strong>Situazione abitativa:</strong></h2></label><br>
+                                                <label for="background_social_situation_house" class="col-form-label col-md-4 col-sm-3 label-align"><h4><strong>Situazione abitativa:</strong></h4></label>
                                                 <span class="col-md-12 col-sm-12"><br>
-                                                    <input type="radio" name="background_social_situation_house" value="Vive in casa di proprietà" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
+                                                    <input type="radio" name="background_social_situation_house" value="Vive in casa di proprietà" v-model="psyCardPj.backgroundSocialSituationHouse"/>
                                                     <span>Vive in casa di proprietà</span><br>
-                                                    <input type="radio" name="background_social_situation_house" value="Vive in affitto" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
+                                                    <input type="radio" name="background_social_situation_house" value="Vive in affitto" v-model="psyCardPj.backgroundSocialSituationHouse"/>
                                                     <span>Vive in affitto</span><br>
-                                                    <input type="radio" name="background_social_situation_house" value="Vive con la famiglia" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
+                                                    <input type="radio" name="background_social_situation_house" value="Vive con la famiglia" v-model="psyCardPj.backgroundSocialSituationHouse"/>
                                                     <span>Vive con la famiglia</span><br>
-                                                    <input type="radio" name="background_social_situation_house" value="Hotel/da amici" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
+                                                    <input type="radio" name="background_social_situation_house" value="Hotel/da amici" v-model="psyCardPj.backgroundSocialSituationHouse"/>
                                                     <span>Hotel/da amici</span><br>
-                                                    <input type="radio" name="background_social_situation_house" value="Istituzione" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
+                                                    <input type="radio" name="background_social_situation_house" value="Istituzione" v-model="psyCardPj.backgroundSocialSituationHouse"/>
                                                     <span>Istituzione</span><br>
-                                                    <input type="radio" name="background_social_situation_house" value="Senza casa" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
+                                                    <input type="radio" name="background_social_situation_house" value="Senza casa" v-model="psyCardPj.backgroundSocialSituationHouse"/>
                                                     <span>Senza casa</span><br>
-                                                    <input type="radio" name="background_social_situation_house" value="In custodia" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
+                                                    <input type="radio" name="background_social_situation_house" value="In custodia" v-model="psyCardPj.backgroundSocialSituationHouse"/>
                                                     <span>In custodia</span><br>
-                                                    <input type="radio" name="background_social_situation_house" value="In custodia" v-model="psyCardPj.backgroundSocialMaritalStatus"/>
+                                                    <input type="radio" name="background_social_situation_house" value="Altro" v-model="psyCardPj.backgroundSocialSituationHouse"/>
                                                     <span>Altro</span>
-                                                    <input type="text" name="background_social_situation_house_other" v-model="psyCardPj.backgroundSocialMaritalStatusOther"/>
+                                                    <input type="text" name="background_social_situation_house_other" v-model="psyCardPj.backgroundSocialSituationHouseOther"/>
                                                 </span>
                                             </span>
                                         </div>
@@ -404,7 +457,7 @@
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
                                             <span class="item form-group">
-                                                <label for="background_social_support_family" class="col-form-label col-md-4 col-sm-3 label-align"><h2><strong>Supporto familiare:</strong></h2></label><br>
+                                                <label for="background_social_support_family" class="col-form-label col-md-4 col-sm-3 label-align"><h4><strong>Supporto familiare:</strong></h4></label>
                                                 <span class="col-md-12 col-sm-12"><br>
                                                     <input type="radio" name="background_social_support_family" value="1" v-model="psyCardPj.backgroundSocialSupportFamily"/>
                                                     <span>Si</span>
@@ -416,7 +469,7 @@
                                                     <input type="radio" name="background_social_support_family_cont" value="Contatti sporadici" v-model="psyCardPj.backgroundSocialSupportFamilyCont"/>
                                                     <span>Contatti sporadici</span><br>
 
-                                                    <input type="radio" name="background_social_support_family" value="Problematiche" v-model="psyCardPj.backgroundSocialSupportFamily"/>
+                                                    <input type="radio" name="background_social_support_family_cont" value="Problematiche" v-model="psyCardPj.backgroundSocialSupportFamilyCont"/>
                                                     <span>Problematiche</span>
                                                     <input type="text" name="background_social_support_family_problem" v-model="psyCardPj.backgroundSocialSupportFamilyProblem">
                                                 </span>
@@ -427,12 +480,13 @@
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
                                             <span class="item form-group">
-                                                <label for="background_social_support" class="col-form-label col-md-4 col-sm-3 label-align"><h2><strong>Supporto sociale:</strong></h2></label><br>
+                                                <label for="background_social_support" class="col-form-label col-md-4 col-sm-3 label-align"><h4><strong>Supporto sociale:</strong></h4></label>
                                                 <span class="col-md-12 col-sm-12"><br>
                                                     <input type="radio" name="background_social_support" value="1" v-model="psyCardPj.backgroundSocialSupport"/>
                                                     <span>Si</span>
                                                     <input type="radio" name="background_social_support" value="0" v-model="psyCardPj.backgroundSocialSupport"/>
                                                     <span>No</span><br>
+
 
                                                     <input type="radio" name="background_social_support_cont" value="Amici conoscenti" v-model="psyCardPj.backgroundSocialSupportCont"/>
                                                     <span>Amici conoscenti</span><br>
@@ -443,11 +497,11 @@
                                                     <input type="radio" name="background_social_support_cont" value="Contatti sporadici" v-model="psyCardPj.backgroundSocialSupportCont"/>
                                                     <span>Associazioni sanitarie</span><br>
 
-                                                    <input type="radio" name="background_social_support" value="altro" v-model="psyCardPj.backgroundSocialSupport"/>
+                                                    <input type="radio" name="background_social_support_cont" value="altro" v-model="psyCardPj.backgroundSocialSupportCont"/>
                                                     <span>altro</span>
                                                     <input type="text" name="background_social_support_other" v-model="psyCardPj.backgroundSocialSupportOther"><br>
 
-                                                    <input type="radio" name="background_social_support" value="Problematiche" v-model="psyCardPj.backgroundSocialSupport"/>
+                                                    <input type="radio" name="background_social_support_cont" value="Problematiche" v-model="psyCardPj.backgroundSocialSupportCont"/>
                                                     <span>Problematiche</span><br>
                                                     <input type="text" name="background_social_support_problem" v-model="psyCardPj.backgroundSocialSupportProblem">
                                                 </span>
@@ -458,7 +512,7 @@
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
                                             <span class="item form-group">
-                                                <label for="background_social_schooling" class="col-form-label col-md-3 col-sm-3 label-align"><h2><strong>Scolarità:</strong></h2></label><br>
+                                                <label for="" class="col-form-label col-md-3 col-sm-3 label-align"><h4><strong>Scolarità:</strong></h4></label>
                                                 <span class="col-md-12 col-sm-12"><br>
                                                     <input type="radio" name="background_social_schooling" value="Analfabeta" v-model="psyCardPj.backgroundSocialSchooling"/>
                                                     <span>Analfabeta</span><br>
@@ -478,7 +532,7 @@
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
                                             <span class="item form-group">
-                                                <label for="background_social_work" class="col-form-label col-md-3 col-sm-3 label-align"><h2><strong>Supporto lavorativo/finanziario:</strong></h2></label><br>
+                                                <label for="background_social_work" class="col-form-label col-md-3 col-sm-3 label-align"><h4><strong>Supporto lavorativo/finanziario:</strong></h4></label>
                                                 <span class="col-md-12 col-sm-12"><br>
                                                     <input type="radio" name="background_social_work" value="Impiego fisso" v-model="psyCardPj.backgroundSocialWork"/>
                                                     <span>Impiego fisso</span><br>
@@ -499,8 +553,10 @@
                                                     <input type="radio" name="background_social_work" value="Nessun mezzo di sostentamento" v-model="psyCardPj.backgroundSocialWork"/>
                                                     <span>Nessun mezzo di sostentamento</span><br>
 
+
+                                                    <input type="radio" name="background_social_work" value="Altro" v-model="psyCardPj.backgroundSocialWork"/>
                                                     <span>Altro:</span>
-                                                    <input type="text" name="background_social_work_other" value="Nessun mezzo di sostentamento" v-model="psyCardPj.backgroundSocialWorkOther"/>
+                                                    <input type="text" name="background_social_work_other" v-model="psyCardPj.backgroundSocialWorkOther"/>
                                                 </span>
                                             </span>
                                         </div>
@@ -515,7 +571,7 @@
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="substance_use" style="border: 1px solid black;" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Uso di sostanze</strong></label>
+                                                <label for="substance_use" class="col-form-label col-md-3 col-sm-2 label-align"><h2>Uso di sostanze</h2></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="radio" name="substance_use" value="1" v-model="psyCardPj.substanceUse"/>
                                                     <span>Si</span>
@@ -675,7 +731,7 @@
                                     </div>
 
 
-                                    <div class="row">
+                                    <div class="row float-left">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
                                                 <label for="substance_use_current_methadone_treatment" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Attuale trattamento metadonico:</strong></label>
@@ -702,7 +758,7 @@
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="substance_use_substance_abuse" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Precedente trattamento per abuso di sostanze:</strong></label>
+                                                <label for="substance_use_substance_abuse" class="col-form-label col-md-4 col-sm-2 label-align"><strong>Precedente trattamento per abuso di sostanze:</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="radio" name="substance_use_substance_abuse" value="1" v-model="psyCardPj.substanceUseSubstanceAbuse"/>
                                                     <span>Si</span>
@@ -720,9 +776,9 @@
                                                     <input type="radio" name="substance_use_substance_abuse_list" value="Counseling" v-model="psyCardPj.substanceUseSubstanceAbuseList"/>
                                                     <span>Counseling</span><br>
 
-                                                    <input type="radio" name="substance_use_substance_abuse_list" value="Counseling" v-model="psyCardPj.substanceUseSubstanceAbuseList"/>
+                                                    <input type="radio" name="substance_use_substance_abuse_list" value="Altro" v-model="psyCardPj.substanceUseSubstanceAbuseList"/>
                                                     <span>Altro</span>
-                                                    <input type="text" name="substance_use_substance_abuse_other" v-model="psyCardPj.substanceUseSubstanceAbuseOther" />
+                                                    <input type="text" name="substance_use_substance_abuse_other" v-model="psyCardPj.substanceUseSubstanceAbuseOther"/>
                                                 </span>
                                             </div> 
                                         </div>
@@ -736,7 +792,7 @@
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="psyc_treatments" style="border: 1px solid black;" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Trattamenti psichiatrici</strong></label>
+                                                <label for="psyc_treatments" class="col-form-label col-md-4 col-sm-2 label-align"><h2>Trattamenti Psichiatrici</h2></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="radio" name="psyc_treatments" value="1" v-model="psyCardPj.psycTreatments"/>
                                                     <span>Si</span>
@@ -754,10 +810,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_clinical_evaluation" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluation"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_clinical_evaluation" value="0" v-model="psyCardPj.psycTreatmentsClinicalEvaluation"/>
                                             </td>
                                             <td>
                                                 <p>valutazione clinica</p>
@@ -769,7 +825,7 @@
                                                 <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="0" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
                                             </td>
                                             <td>
                                                 <p>valutazione clinica (su ordine del tribunale o di altra autorità)</p>
@@ -777,10 +833,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_in_prison" value="1" v-model="psyCardPj.psycTreatmentsInPrison"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_in_prison" value="0" v-model="psyCardPj.psycTreatmentsInPrison"/>
                                             </td>
                                             <td>
                                                <p>Trattamento - in istituzione carceraria</p>
@@ -788,10 +844,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_comunity" value="1" v-model="psyCardPj.psycTreatmentsComunity"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_comunity" value="0" v-model="psyCardPj.psycTreatmentsComunity"/>
                                             </td>
                                             <td>
                                                 <p>Trattamento - in comunità</p>
@@ -799,55 +855,54 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_hospital" value="1" v-model="psyCardPj.psycTreatmentsHospital"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_hospital" value="0" v-model="psyCardPj.psycTreatmentsHospital"/>
                                             </td>
                                             <td>
                                                 <p>Trattamento - ospedalizzato</p>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments" value="> 6 mesi" v-model="psyCardPj.psycTreatments"/>
+                                                <input type="radio" name="psyc_treatments_check_hospital" value="> 6 mesi" v-model="psyCardPj.psycTreatmentsCheckHospital"/>
                                                 <span>> 6 mesi</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_court_order" value="1" v-model="psyCardPj.psycTreatmentsCourtOrder"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_court_order" value="0" v-model="psyCardPj.psycTreatmentsCourtOrder"/>
                                             </td>
                                             <td>
                                                 <p>Trattamento - su ordine del tribunale o di altra autorità</p>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments" value="> 6 mesi" v-model="psyCardPj.psycTreatments"/>
+                                                <input type="radio" name="psyc_treatments_check_order" value="> 6 mesi" v-model="psyCardPj.psycTreatmentsCheckOrder"/>
                                                 <span>> 6 mesi</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_farmacy" value="1" v-model="psyCardPj.psycTreatmentsFarmacy"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_farmacy" value="0" v-model="psyCardPj.psycTreatmentsFarmacy"/>
                                             </td>
                                             <td>
                                                 <p>Terapia farmacologica</p>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments" value=" > 6 mesi" v-model="psyCardPj.psycTreatments"/>
+                                                <input type="radio" name="psyc_treatments_check_farmacy" value=" > 6 mesi" v-model="psyCardPj.psycTreatmentsCheckFarmacy"/>
                                                 <span>> 6 mesi</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="border: 0;">
                                             </td>
-                                            <td>
+                                            <td style="border: 0;">
                                             </td>
-                                            
                                             <td>
                                                 <div class="row">
                                                     <div class="col-md-12 col-sm-12">
@@ -880,7 +935,7 @@
                                             <div class="item form-group">
                                                 <label for="psyc_treatments_previous_trauma_desc" class="col-form-label col-md-1 col-sm-2 label-align"><strong>Descrivere:</strong></label>
                                                 <span class="col-md-12 col-sm-12">
-                                                    <input type="text" name="psyc_treatments_previous_trauma_desc" value="1" v-model="psyCardPj.psycTreatmentsPreviousTraumaDesc"/>
+                                                    <input type="text" name="psyc_treatments_previous_trauma_desc" v-model="psyCardPj.psycTreatmentsPreviousTraumaDesc"/>
                                                 </span>
                                             </div> 
                                         </div>
@@ -894,7 +949,7 @@
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="suicidal_risk" style="border: 1px solid black;" class="col-form-label col-md-4 col-sm-2 label-align"><strong>Rischio suicidario/autolesionismo</strong></label>
+                                                <label for="suicidal_risk" class="col-form-label col-md-6 col-sm-2 label-align"><h2>Rischio Suicidario/Autolesionismo</h2></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="radio" name="suicidal_risk" value="1" v-model="psyCardPj.suicidalRisk"/>
                                                     <span>Si</span>
@@ -945,9 +1000,9 @@
                                                     <input type="radio" name="suicidal_risk_methods_weapon" value="Autoveicolo" v-model="psyCardPj.suicidalRiskMethodsWeapon"/>
                                                     <span>Autoveicolo</span><br>
 
-                                                    <input type="radio" name="suicidal_risk_methods_weapon" value="Autoveicolo" v-model="psyCardPj.suicidalRiskMethodsWeapon"/>
+                                                    <input type="radio" name="suicidal_risk_methods_weapon" value="Altro" v-model="psyCardPj.suicidalRiskMethodsWeapon"/>
                                                     <span>Altro:</span>
-                                                    <input type="text" name="suicidal_risk_methods_weapon_other" value="Autoveicolo" v-model="psyCardPj.suicidalRiskMethodsWeaponOther"/>
+                                                    <input type="text" name="suicidal_risk_methods_weapon_other" v-model="psyCardPj.suicidalRiskMethodsWeaponOther"/>
                                                 </span>
                                             </div> 
                                         </div>
@@ -956,7 +1011,7 @@
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="suicidal_risk_level_ideation" class="col-form-label col-md-4 col-sm-2 label-align"><strong>Livello dell'ideazione/intento suicidario attuale:</strong></label>
+                                                <label for="suicidal_risk_level_ideation" class="col-form-label col-md-5 col-sm-2 label-align"><strong>Livello dell'ideazione/intento suicidario attuale:</strong></label>
                                                 <span class="col-md-12 col-sm-12"><br>
                                                     <input type="radio" name="suicidal_risk_level_ideation" value="Nessun proposito" v-model="psyCardPj.suicidalRiskLevelIdeation"/>
                                                     <span>Nessun proposito</span><br>
@@ -973,11 +1028,10 @@
                                         </div>
                                     </div>
 
-
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="suicidal_risk_sucide_tentative" style="border: 1px solid black;" class="col-form-label col-md-4 col-sm-2 label-align"><strong>tentativi di suicidio durante il periodo detentivo:</strong></label>
+                                                <label for="suicidal_risk_sucide_tentative" class="col-form-label col-md-4 col-sm-2 label-align"><strong>tentativi di suicidio durante il periodo detentivo:</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="radio" name="suicidal_risk_sucide_tentative" value="1" v-model="psyCardPj.suicidalRiskSucideTentative"/>
                                                     <span>Si</span>
@@ -990,7 +1044,7 @@
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="suicidal_risk_sucide_tentative_number" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Numero di tentativi durante la detenzione:</strong></label>
+                                                <label for="suicidal_risk_sucide_tentative_number" class="col-form-label col-md-4 col-sm-2 label-align"><strong>Numero di tentativi durante la detenzione:</strong></label><br>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="text" name="suicidal_risk_sucide_tentative_number" v-model="psyCardPj.suicidalRiskSucideTentativeNumber"/>
                                                 </span>
@@ -1000,7 +1054,7 @@
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="suicidal_risk_tentative_time" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Tempo dall'ultimo tentativo durante la detenzione:</strong></label>
+                                                <label for="suicidal_risk_tentative_time" class="col-form-label col-md-5 col-sm-2 label-align"><strong>Tempo dall'ultimo tentativo durante la detenzione:</strong></label><br>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="text" name="suicidal_risk_tentative_time" v-model="psyCardPj.suicidalRiskTentativeTime"/>
                                                 </span>
@@ -1023,7 +1077,7 @@
                                     
                                                     <input type="radio" name="suicidal_risk_methods_two" value="altro" v-model="psyCardPj.suicidalRiskMethodsTwo"/>
                                                     <span>Altro:</span>
-                                                    <input type="text" name="suicidal_risk_methods_two_other" value="Autoveicolo" v-model="psyCardPj.suicidalRiskMethodsTwoOther"/>
+                                                    <input type="text" name="suicidal_risk_methods_two_other" v-model="psyCardPj.suicidalRiskMethodsTwoOther"/>
                                                 </span>
                                             </div> 
                                         </div>
@@ -1478,6 +1532,7 @@
                                         </tr>
                                     </table>
 
+
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
@@ -1503,6 +1558,7 @@
                                                     <input type="radio" name="psychological_problems_list" value="Tratti di disturbi di personalità" v-model="psyCardPj.psychologicalProblemsList"/>
                                                     <span>Tratti di disturbi di personalità</span><br>
 
+                                                    <input type="radio" name="psychological_problems_list" value="Altro" v-model="psyCardPj.psychologicalProblemsList"/>
                                                     <span>Altro:</span>
                                                     <input type="text" name="psychological_problems_other" v-model="psyCardPj.psychologicalProblemsOther"/>
                                                 </span>
@@ -1510,7 +1566,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row float">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
                                                 <label for="reports" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Segnalazioni :</strong></label>
@@ -1543,7 +1599,7 @@
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="item form-group">
-                                                    <label for="suicidal_risk_self_harm" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Rischio suicidario/autolesionismo:</strong></label>
+                                                    <label for="suicidal_risk_self_harm" class="col-form-label col-md-4 col-sm-2 label-align"><strong>Rischio suicidario/autolesionismo:</strong></label>
                                                     <span class="col-md-12 col-sm-12"><br>
                                                         <input type="radio" name="suicidal_risk_self_harm" value="Nessuna evidenza" v-model="psyCardPj.suicidalRiskSelfHarm"/>
                                                         <span>Nessuna evidenza</span>
@@ -1559,7 +1615,7 @@
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="item form-group">
-                                                    <label for="risk_of_violence" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Rischio di violenza:</strong></label>
+                                                    <label for="risk_of_violence" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Rischio di violenza:</strong></label>
                                                     <span class="col-md-12 col-sm-12"><br>
                                                         <input type="radio" name="risk_of_violence" value="Nessuna evidenza" v-model="psyCardPj.riskOfViolence"/>
                                                         <span>Nessuna evidenza</span>
