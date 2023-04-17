@@ -2650,6 +2650,12 @@ __webpack_require__.r(__webpack_exports__);
     this.getPsyMentalHealthDepartmentsByUserInstanceId(1);
   },
   methods: {
+    printPsyMentalHealthDepartment: function printPsyMentalHealthDepartment(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
     addPsyMentalHealthDepartment: function addPsyMentalHealthDepartment(panel) {
       var _this = this;
       var _wm = this;
@@ -2871,6 +2877,12 @@ __webpack_require__.r(__webpack_exports__);
     this.getPsyRatingsByUserInstanceId(1);
   },
   methods: {
+    printPsyRating: function printPsyRating(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
     calculateSum: function calculateSum() {
       // Calcola la somma delle opzioni selezionate
       //this.sum = parseInt(this.selectedOption) || 0;
@@ -3129,6 +3141,12 @@ __webpack_require__.r(__webpack_exports__);
     this.getPsyRehabilitationPsychiatricCardsByUserInstanceId(1);
   },
   methods: {
+    printPsyRehabilitationPsychiatricCard: function printPsyRehabilitationPsychiatricCard(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
     addPsyRehabilitationPsychiatricCard: function addPsyRehabilitationPsychiatricCard(panel) {
       var _this = this;
       var _wm = this;
@@ -3380,6 +3398,12 @@ __webpack_require__.r(__webpack_exports__);
     this.getPsySocialFoldersByUserInstanceId(1);
   },
   methods: {
+    printPsySocialFolder: function printPsySocialFolder(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
     addPsySocialFolder: function addPsySocialFolder(panel) {
       var _this = this;
       var _wm = this;
@@ -3891,6 +3915,12 @@ __webpack_require__.r(__webpack_exports__);
     this.getPsyUocDepartmentsByUserInstanceId(1);
   },
   methods: {
+    printPsyUocDepartment: function printPsyUocDepartment(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
     addPsyUocDepartment: function addPsyUocDepartment(panel) {
       var _this = this;
       var _wm = this;
@@ -11658,7 +11688,16 @@ var render = function render() {
         return _vm.addPsyMentalHealthDepartment("mh");
       }
     }
-  }, [_vm._v(_vm._s(_vm.btnMhSend))])])])])])])])])])]);
+  }, [_vm._v(_vm._s(_vm.btnMhSend))])])]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-success i2hBtnPrint",
+    on: {
+      click: function click($event) {
+        return _vm.printPsyMentalHealthDepartment("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa")])])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -15822,7 +15861,16 @@ var render = function render() {
         return _vm.addPsyRating("pr");
       }
     }
-  }, [_vm._v(_vm._s(_vm.btnPrSend))])])])])])])])])])]);
+  }, [_vm._v(_vm._s(_vm.btnPrSend))])])]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-success i2hBtnPrint",
+    on: {
+      click: function click($event) {
+        return _vm.printPsyRating("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa")])])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -16002,7 +16050,16 @@ var render = function render() {
         return _vm.addPsyRehabilitationPsychiatricCard("rp");
       }
     }
-  }, [_vm._v(_vm._s(_vm.btnRpSend))])])]), _vm._v(" "), _c("hr")])])])])])])]);
+  }, [_vm._v(_vm._s(_vm.btnRpSend))])])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-success i2hBtnPrint",
+    on: {
+      click: function click($event) {
+        return _vm.printPsyRehabilitationPsychiatricCard("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa")])])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -17473,8 +17530,7 @@ var render = function render() {
     }],
     attrs: {
       type: "text",
-      name: "social_health_situation_inps",
-      value: "NO"
+      name: "social_health_situation_inps"
     },
     domProps: {
       value: _vm.psyCardSf.socialHealthSituationInps
@@ -17766,7 +17822,16 @@ var render = function render() {
         return _vm.addPsySocialFolder("sf");
       }
     }
-  }, [_vm._v(_vm._s(_vm.btnSfSend))])])])])])])])])])]);
+  }, [_vm._v(_vm._s(_vm.btnSfSend))])])]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-success i2hBtnPrint",
+    on: {
+      click: function click($event) {
+        return _vm.printPsySocialFolder("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa")])])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -21809,7 +21874,7 @@ var render = function render() {
   }, [_c("label", {
     staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
-      "for": "marital_status"
+      "for": "psychiatric_treatment"
     }
   }, [_vm._v("Trattamenti psichiatrici precedenti")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
@@ -21878,7 +21943,7 @@ var render = function render() {
   }, [_c("label", {
     staticClass: "col-form-label col-md-2 col-sm-2 label-align",
     attrs: {
-      "for": "marital_status"
+      "for": "csm"
     }
   }, [_vm._v("- CSM")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
@@ -21946,7 +22011,7 @@ var render = function render() {
   }, [_c("label", {
     staticClass: "col-form-label col-md-2 col-sm-2 label-align",
     attrs: {
-      "for": "marital_status"
+      "for": "spdc"
     }
   }, [_vm._v("- SPCD")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
@@ -22014,7 +22079,7 @@ var render = function render() {
   }, [_c("label", {
     staticClass: "col-form-label col-md-2 col-sm-2 label-align",
     attrs: {
-      "for": "marital_status"
+      "for": "rems"
     }
   }, [_vm._v("- REMS")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
@@ -22082,7 +22147,7 @@ var render = function render() {
   }, [_c("label", {
     staticClass: "col-form-label col-md-2 col-sm-2 label-align",
     attrs: {
-      "for": "marital_status"
+      "for": "prison"
     }
   }, [_vm._v("- CARCERE")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
@@ -22150,7 +22215,7 @@ var render = function render() {
   }, [_c("label", {
     staticClass: "col-form-label col-md-2 col-sm-2 label-align",
     attrs: {
-      "for": "marital_status"
+      "for": "psychiatric_familiarity"
     }
   }, [_vm._v("Familiarità psichiatrica")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
@@ -22238,7 +22303,7 @@ var render = function render() {
   }, [_c("label", {
     staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
-      "for": "marital_status"
+      "for": "on_set_of_psychiatric_symptom"
     }
   }, [_vm._v("Esordio sintomatologia psichiatrica")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
@@ -22323,7 +22388,7 @@ var render = function render() {
   }, [_c("label", {
     staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
-      "for": "marital_status"
+      "for": "in_charge_at_serd_territorial"
     }
   }, [_vm._v("in carico presso Ser.D. territoriali")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
@@ -22415,7 +22480,7 @@ var render = function render() {
     attrs: {
       "for": "psychotic_symptom"
     }
-  }, [_vm._v("Psicotica")]), _vm._v(" "), _c("span", {
+  }, [_vm._v("Psicotico")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -22464,7 +22529,7 @@ var render = function render() {
     attrs: {
       "for": "anxious_affective_symptom"
     }
-  }, [_vm._v("Affettiva-Ansiosa")]), _vm._v(" "), _c("span", {
+  }, [_vm._v("Affettivo-Ansioso")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -22513,7 +22578,7 @@ var render = function render() {
     attrs: {
       "for": "impulsive_symptom"
     }
-  }, [_vm._v("Impulsiva")]), _vm._v(" "), _c("span", {
+  }, [_vm._v("Impulsivo")]), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -22855,7 +22920,16 @@ var render = function render() {
         return _vm.addPsyUocDepartment("ud");
       }
     }
-  }, [_vm._v(_vm._s(_vm.btnUdSend))])])])])])])])])])]);
+  }, [_vm._v(_vm._s(_vm.btnUdSend))])])]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-success i2hBtnPrint",
+    on: {
+      click: function click($event) {
+        return _vm.printPsyUocDepartment("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa")])])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,

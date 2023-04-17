@@ -698,6 +698,7 @@
                                             <span  class="btn btn-success i2hBtn ml-3" @click="addPsyRating('pr')">{{btnPrSend}}</span>
                                         </div>
                                     </div>
+                                    <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyRating('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                                 </form>
                             </div>
                         </div>
@@ -816,6 +817,19 @@ export default {
 
 
     methods: {
+
+
+        printPsyRating(printPdf){
+
+            let v_myWindow
+
+            let url= 'printPdf/2';
+
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+
+            return false;
+        },
+
         calculateSum() {
             // Calcola la somma delle opzioni selezionate
             //this.sum = parseInt(this.selectedOption) || 0;

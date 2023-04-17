@@ -365,7 +365,7 @@
                                             <div class="item form-group">
                                                 <label for="social_health_situation_inps" class="col-form-label col-md-3 col-sm-2 label-align"><strong>INPS DI RIFERIMENTO</strong></label>
                                                 <span class="col-md-12 col-sm-12">
-                                                    <input type="text" name="social_health_situation_inps" value="NO" v-model="psyCardSf.socialHealthSituationInps"/>
+                                                    <input type="text" name="social_health_situation_inps" v-model="psyCardSf.socialHealthSituationInps"/>
                                                 </span>
                                             </div>
                                         </div>
@@ -480,6 +480,7 @@
                                         <span class="btn btn-success i2hBtn ml-3" @click="addPsySocialFolder('sf')">{{btnSfSend}}</span>
                                     </div>
                                 </div>
+                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsySocialFolder('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                             </div>
                         </form>
                     </div>
@@ -586,6 +587,18 @@ export default {
     },
 
     methods: {
+
+
+        printPsySocialFolder(printPdf){
+
+        let v_myWindow
+
+        let url= 'printPdf/2';
+
+        v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+
+        return false;
+        },
  
         addPsySocialFolder(panel){
             let _wm = this;

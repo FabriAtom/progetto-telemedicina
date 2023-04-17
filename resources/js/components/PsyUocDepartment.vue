@@ -18,7 +18,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="marital_status" class="col-form-label col-md-3 col-sm-2 label-align">Trattamenti psichiatrici precedenti</label>
+                                            <label for="psychiatric_treatment" class="col-form-label col-md-3 col-sm-2 label-align">Trattamenti psichiatrici precedenti</label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="checkbox" name="psychiatric_treatment" v-model="showInput"/> 
                                                 <input type="text" name="psychiatric_treatment" v-if="showInput" placeholder="Diagnosi riferita" v-model="psyCardUd.psychiatricTreatment"/>
@@ -29,7 +29,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="marital_status" class="col-form-label col-md-2 col-sm-2 label-align">- CSM</label>
+                                            <label for="csm" class="col-form-label col-md-2 col-sm-2 label-align">- CSM</label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="checkbox" name="csm" v-model="showInput1"/> 
                                                 <input type="text" name="csm" v-if="showInput1" v-model="psyCardUd.csm"/>
@@ -40,7 +40,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="marital_status" class="col-form-label col-md-2 col-sm-2 label-align">- SPCD</label>
+                                            <label for="spdc" class="col-form-label col-md-2 col-sm-2 label-align">- SPCD</label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="checkbox" name="spdc" v-model="showInput2"/> 
                                                 <input type="text" name="spdc" v-if="showInput2" v-model="psyCardUd.spdc"/>
@@ -51,7 +51,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="marital_status" class="col-form-label col-md-2 col-sm-2 label-align">- REMS</label>
+                                            <label for="rems" class="col-form-label col-md-2 col-sm-2 label-align">- REMS</label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="checkbox" name="rems" v-model="showInput3"/> 
                                                 <input type="text" name="rems" v-if="showInput3" v-model="psyCardUd.rems"/>
@@ -62,7 +62,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="marital_status" class="col-form-label col-md-2 col-sm-2 label-align">- CARCERE</label>
+                                            <label for="prison" class="col-form-label col-md-2 col-sm-2 label-align">- CARCERE</label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="checkbox" name="prison" v-model="showInput4"/> 
                                                 <input type="text" name="prison" v-if="showInput4" v-model="psyCardUd.prison"/>
@@ -74,7 +74,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="marital_status" class="col-form-label col-md-2 col-sm-2 label-align">Familiarità psichiatrica</label>
+                                            <label for="psychiatric_familiarity" class="col-form-label col-md-2 col-sm-2 label-align">Familiarità psichiatrica</label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="checkbox" name="psychiatric_familiarity" v-model="showInput5"/> 
                                                 <input type="text" name="psychiatric_familiarity" v-if="showInput5" v-model="psyCardUd.psychiatricFamiliarity"/>
@@ -89,7 +89,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="marital_status" class="col-form-label col-md-3 col-sm-2 label-align">Esordio sintomatologia psichiatrica</label>
+                                            <label for="on_set_of_psychiatric_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Esordio sintomatologia psichiatrica</label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="text" name="on_set_of_psychiatric_symptom" v-model="psyCardUd.onSetOfPsychiatricSymptom"/>
                                             </span>
@@ -102,7 +102,7 @@
                                         <div class="item form-group">
                                             <label for="substance_use" class="col-form-label col-md-3 col-sm-2 label-align">Uso di sostanze</label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="substance_use" value="SI" v-model="psyCardUd.substanceUse"/> 
+                                                <input type="checkbox" name="substance_use" value="SI" v-model="psyCardUd.substanceUse"/>
                                             </span>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="marital_status" class="col-form-label col-md-3 col-sm-2 label-align">in carico presso Ser.D. territoriali</label>
+                                            <label for="in_charge_at_serd_territorial" class="col-form-label col-md-3 col-sm-2 label-align">in carico presso Ser.D. territoriali</label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="checkbox" name="in_charge_at_serd_territorial" v-model="showInput6"/> 
                                                 <input type="text" name="in_charge_at_serd_territorial" v-if="showInput6" v-model="psyCardUd.inChargeAtSerdTerritorial"/>
@@ -129,7 +129,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="psychotic_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Psicotica</label>
+                                            <label for="psychotic_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Psicotico</label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="checkbox" name="psychotic_symptom" value="SI" v-model="psyCardUd.psychoticSymptom"/> 
                                             </span>
@@ -139,7 +139,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="anxious_affective_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Affettiva-Ansiosa</label>
+                                            <label for="anxious_affective_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Affettivo-Ansioso</label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="checkbox" name="anxious_affective_symptom" value="SI" v-model="psyCardUd.anxiousAffectiveSymptom"/> 
                                             </span>
@@ -149,7 +149,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="impulsive_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Impulsiva</label>
+                                            <label for="impulsive_symptom" class="col-form-label col-md-3 col-sm-2 label-align">Impulsivo</label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="checkbox" name="impulsive_symptom" value="SI" v-model="psyCardUd.impulsiveSymptom"/> 
                                             </span>
@@ -223,11 +223,12 @@
 
                                 {{ psyCardUd }}
                                 <div class="ln_solid"></div>
-                                    <div class="item form-group" >
-                                        <div class="pull-right">
-                                            <span  class="btn btn-success i2hBtn ml-3" @click="addPsyUocDepartment('ud')">{{btnUdSend}}</span>
-                                        </div>
+                                <div class="item form-group" >
+                                    <div class="pull-right">
+                                        <span  class="btn btn-success i2hBtn ml-3" @click="addPsyUocDepartment('ud')">{{btnUdSend}}</span>
                                     </div>
+                                </div>
+                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyUocDepartment('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                             </form>
                         </div>
                     </div>
@@ -334,6 +335,18 @@ export default {
 
 
     methods: {
+
+        printPsyUocDepartment(printPdf){
+
+            let v_myWindow
+
+            let url= 'printPdf/2';
+
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+
+            return false;
+        },
+
         
         addPsyUocDepartment(panel){
             let _wm = this;
