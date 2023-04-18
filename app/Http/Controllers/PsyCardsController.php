@@ -1276,9 +1276,9 @@ class PsyCardsController extends Controller
 
 
         $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(70,7,'Comunica In Italiano');
+        $pdf->Cell(60,7,'Comunica In Italiano');
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->communicate_italian);
+        $pdf->Cell(40,7,$psy->communicate_italian);
 
         $pdf->SetFont('Arial','B',12);
         $pdf->Cell(60,7,'Comunica in');
@@ -1287,9 +1287,9 @@ class PsyCardsController extends Controller
         $pdf->Ln(12);
 
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(70,7,'Stato Civile');
+        $pdf->Cell(60,7,'Stato Civile');
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->marital_status);
+        $pdf->Cell(40,7,$psy->marital_status);
 
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(60,7,'Figli');
@@ -1298,9 +1298,9 @@ class PsyCardsController extends Controller
         $pdf->Ln(12);
 
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(70,7,'N. Figli');
+        $pdf->Cell(60,7,'N. Figli');
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->son_number);
+        $pdf->Cell(40,7,$psy->son_number);
 
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(60,7,'Età Figli');
@@ -1309,9 +1309,9 @@ class PsyCardsController extends Controller
         $pdf->Ln(12);
 
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(70,7,"Residenza");
+        $pdf->Cell(60,7,"Residenza");
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->residence_not);
+        $pdf->Cell(40,7,$psy->residence_not);
 
         // IF RESIDENZA SI.. TEXT
         $pdf->SetFont('Arial', 'B', 12);
@@ -1322,9 +1322,9 @@ class PsyCardsController extends Controller
 
 
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(70,7,"Titolo Di Studio");
+        $pdf->Cell(60,7,"Titolo Di Studio");
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->title_study);
+        $pdf->Cell(40,7,$psy->title_study);
 
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(60,7,'Situazione Abitativa');
@@ -1333,9 +1333,9 @@ class PsyCardsController extends Controller
         $pdf->Ln(12);
 
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(70,7,"Situazione Lavorativa");
+        $pdf->Cell(60,7,"Situazione Lavorativa");
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->situation_work);
+        $pdf->Cell(40,7,$psy->situation_work);
 
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(60,7,'Data Inizio Carcerazione');
@@ -1344,9 +1344,9 @@ class PsyCardsController extends Controller
         $pdf->Ln(12);
 
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(70,7,"Data Ingresso In Istituto");
+        $pdf->Cell(60,7,"Data Ingresso In Istituto");
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->date_start_in_institute);
+        $pdf->Cell(40,7,$psy->date_start_in_institute);
 
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(60,7,'Prima Esperienza Detentiva');
@@ -1355,9 +1355,9 @@ class PsyCardsController extends Controller
         $pdf->Ln(12);
 
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(70,7,"Provenienza");
+        $pdf->Cell(60,7,"Provenienza");
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->provenience);
+        $pdf->Cell(40,7,$psy->provenience);
 
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(60,7,'Posizione Giuridica');
@@ -1366,9 +1366,9 @@ class PsyCardsController extends Controller
         $pdf->Ln(12);
 
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(70,7,"Fine Pena");
+        $pdf->Cell(60,7,"Fine Pena");
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->end_of_sentence);
+        $pdf->Cell(40,7,$psy->end_of_sentence);
 
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(60,7,'Risorse Economiche');
@@ -1382,7 +1382,7 @@ class PsyCardsController extends Controller
         $pdf->SetTextColor(255,255,255);
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(0,7,'Primo Colloquio Psicologico INTAKE',0,0,'L',true);
-        $pdf->Ln(10);
+        $pdf->Ln(12);
         $pdf->SetFillColor(0,100,250);
         $pdf->Cell(48,7,"Precedenti Trattamenti",0,0,'L',true);
         $pdf->SetFillColor(255,255,255);
