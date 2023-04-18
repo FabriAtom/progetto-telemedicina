@@ -27,10 +27,17 @@ class PsySocialFolder extends Model
         'legal_status_entered',
         'legal_status_end_of_sentence',
         'legal_status_list_mix',
+
         'legal_status_security_measure',
+        'legal_status_security_measure_text',
+
         'legal_status_end_of_the_sentence',
+        'legal_status_end_of_the_sentence_text',
+
         'legal_status_rems_other',
+        'legal_status_rems_other_text',
         'legal_status_uncensored',
+        'legal_status_uncensored_text',
 
         'social_health_situation_csm',
         'social_health_situation_serd',

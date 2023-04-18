@@ -16685,14 +16685,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "legal_status_security_measure",
-      value: "SI"
+      value: "1"
     },
     domProps: {
-      checked: _vm._q(_vm.showInput, "SI")
+      checked: _vm._q(_vm.showInput, "1")
     },
     on: {
       change: function change($event) {
-        _vm.showInput = "SI";
+        _vm.showInput = "1";
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
@@ -16705,34 +16705,34 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "legal_status_security_measure",
-      value: "NO"
+      value: "0"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.legalStatusSecurityMeasure, "NO")
+      checked: _vm._q(_vm.psyCardSf.legalStatusSecurityMeasure, "0")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "legalStatusSecurityMeasure", "NO");
+        return _vm.$set(_vm.psyCardSf, "legalStatusSecurityMeasure", "0");
       }
     }
   }), _vm._v(" "), _vm.showInput ? _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardSf.legalStatusSecurityMeasure,
-      expression: "psyCardSf.legalStatusSecurityMeasure"
+      value: _vm.psyCardSf.legalStatusSecurityMeasureText,
+      expression: "psyCardSf.legalStatusSecurityMeasureText"
     }],
     attrs: {
       type: "text",
-      name: "legal_status_security_measure"
+      name: "legal_status_security_measure_text"
     },
     domProps: {
-      value: _vm.psyCardSf.legalStatusSecurityMeasure
+      value: _vm.psyCardSf.legalStatusSecurityMeasureText
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardSf, "legalStatusSecurityMeasure", $event.target.value);
+        _vm.$set(_vm.psyCardSf, "legalStatusSecurityMeasureText", $event.target.value);
       }
     }
   }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
@@ -16756,14 +16756,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "legal_status_end_of_the_sentence",
-      value: "SI"
+      value: "1"
     },
     domProps: {
-      checked: _vm._q(_vm.showInput2, "SI")
+      checked: _vm._q(_vm.showInput2, "1")
     },
     on: {
       change: function change($event) {
-        _vm.showInput2 = "SI";
+        _vm.showInput2 = "1";
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
@@ -16776,34 +16776,34 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "legal_status_end_of_the_sentence",
-      value: "NO"
+      value: "0"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.legalStatusEndOfTheSentence, "NO")
+      checked: _vm._q(_vm.psyCardSf.legalStatusEndOfTheSentence, "0")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "legalStatusEndOfTheSentence", "NO");
+        return _vm.$set(_vm.psyCardSf, "legalStatusEndOfTheSentence", "0");
       }
     }
   }), _vm._v(" "), _vm.showInput2 ? _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardSf.legalStatusEndOfTheSentence,
-      expression: "psyCardSf.legalStatusEndOfTheSentence"
+      value: _vm.psyCardSf.legalStatusEndOfTheSentenceText,
+      expression: "psyCardSf.legalStatusEndOfTheSentenceText"
     }],
     attrs: {
       type: "text",
-      name: "legal_status_end_of_the_sentence"
+      name: "legal_status_end_of_the_sentence_text"
     },
     domProps: {
-      value: _vm.psyCardSf.legalStatusEndOfTheSentence
+      value: _vm.psyCardSf.legalStatusEndOfTheSentenceText
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardSf, "legalStatusEndOfTheSentence", $event.target.value);
+        _vm.$set(_vm.psyCardSf, "legalStatusEndOfTheSentenceText", $event.target.value);
       }
     }
   }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
@@ -16994,14 +16994,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "legal_status_rems_other",
-      value: "SI"
+      value: "1"
     },
     domProps: {
-      checked: _vm._q(_vm.showInput3, "SI")
+      checked: _vm._q(_vm.showInput3, "1")
     },
     on: {
       change: function change($event) {
-        _vm.showInput3 = "SI";
+        _vm.showInput3 = "1";
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
@@ -17014,34 +17014,34 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "legal_status_rems_other",
-      value: "NO"
+      value: "0"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.legalStatusRemsOther, "NO")
+      checked: _vm._q(_vm.psyCardSf.legalStatusRemsOther, "0")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "legalStatusRemsOther", "NO");
+        return _vm.$set(_vm.psyCardSf, "legalStatusRemsOther", "0");
       }
     }
   }), _vm._v(" "), _vm.showInput3 ? _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardSf.legalStatusRemsOther,
-      expression: "psyCardSf.legalStatusRemsOther"
+      value: _vm.psyCardSf.legalStatusRemsOtherText,
+      expression: "psyCardSf.legalStatusRemsOtherText"
     }],
     attrs: {
       type: "text",
-      name: "legal_status_rems_other"
+      name: "legal_status_rems_other_text"
     },
     domProps: {
-      value: _vm.psyCardSf.legalStatusRemsOther
+      value: _vm.psyCardSf.legalStatusRemsOtherText
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardSf, "legalStatusRemsOther", $event.target.value);
+        _vm.$set(_vm.psyCardSf, "legalStatusRemsOtherText", $event.target.value);
       }
     }
   }) : _vm._e()])])])]), _vm._v(" "), _c("div", {
@@ -17065,14 +17065,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "legal_status_uncensored",
-      value: "SI"
+      value: "1"
     },
     domProps: {
-      checked: _vm._q(_vm.showInput4, "SI")
+      checked: _vm._q(_vm.showInput4, "1")
     },
     on: {
       change: function change($event) {
-        _vm.showInput4 = "SI";
+        _vm.showInput4 = "1";
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
@@ -17085,34 +17085,34 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "legal_status_uncensored",
-      value: "NO"
+      value: "0"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardSf.legalStatusUncensored, "NO")
+      checked: _vm._q(_vm.psyCardSf.legalStatusUncensored, "0")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardSf, "legalStatusUncensored", "NO");
+        return _vm.$set(_vm.psyCardSf, "legalStatusUncensored", "0");
       }
     }
   }), _vm._v(" "), _vm.showInput4 ? _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.psyCardSf.legalStatusUncensored,
-      expression: "psyCardSf.legalStatusUncensored"
+      value: _vm.psyCardSf.legalStatusUncensoredText,
+      expression: "psyCardSf.legalStatusUncensoredText"
     }],
     attrs: {
       type: "text",
-      name: "legal_status_uncensored"
+      name: "legal_status_uncensored_text"
     },
     domProps: {
-      value: _vm.psyCardSf.legalStatusUncensored
+      value: _vm.psyCardSf.legalStatusUncensoredText
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.psyCardSf, "legalStatusUncensored", $event.target.value);
+        _vm.$set(_vm.psyCardSf, "legalStatusUncensoredText", $event.target.value);
       }
     }
   }) : _vm._e()])])])])])]), _vm._v(" "), _vm._m(21), _vm._v(" "), _c("div", {

@@ -185,10 +185,10 @@
                                                 <label for="legal_status_security_measure" class="col-form-label col-md-3 col-sm-2 label-align"><strong>MISURE DI SICUREZZA PRECEDENTI</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>SI</span>
-                                                    <input type="radio" name="legal_status_security_measure" value="SI" v-model="showInput"/>
+                                                    <input type="radio" name="legal_status_security_measure" value="1" v-model="showInput"/>
                                                     <span>NO</span>
-                                                    <input type="radio" name="legal_status_security_measure" value="NO" v-model="psyCardSf.legalStatusSecurityMeasure"/>
-                                                    <input type="text" name="legal_status_security_measure"  v-if="showInput" v-model="psyCardSf.legalStatusSecurityMeasure"/>
+                                                    <input type="radio" name="legal_status_security_measure" value="0" v-model="psyCardSf.legalStatusSecurityMeasure"/>
+                                                    <input type="text" name="legal_status_security_measure_text"  v-if="showInput" v-model="psyCardSf.legalStatusSecurityMeasureText"/>
                                                 </span>
                                             </div>
                                         </div>
@@ -200,10 +200,10 @@
                                                 <label for="legal_status_end_of_the_sentence" class="col-form-label col-md-3 col-sm-2 label-align"><strong>A FINE PENA</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>SI</span>
-                                                    <input type="radio" name="legal_status_end_of_the_sentence" value="SI" v-model="showInput2"/>
+                                                    <input type="radio" name="legal_status_end_of_the_sentence" value="1" v-model="showInput2"/>
                                                     <span>NO</span>
-                                                    <input type="radio" name="legal_status_end_of_the_sentence" value="NO" v-model="psyCardSf.legalStatusEndOfTheSentence"/>
-                                                    <input type="text" name="legal_status_end_of_the_sentence" v-if="showInput2" v-model="psyCardSf.legalStatusEndOfTheSentence"/>
+                                                    <input type="radio" name="legal_status_end_of_the_sentence" value="0" v-model="psyCardSf.legalStatusEndOfTheSentence"/>
+                                                    <input type="text" name="legal_status_end_of_the_sentence_text" v-if="showInput2" v-model="psyCardSf.legalStatusEndOfTheSentenceText"/>
                                                 </span>
                                             </div>
                                         </div>
@@ -243,10 +243,10 @@
                                                 <label for="legal_status_rems_other" class="col-form-label col-md-3 col-sm-2 label-align"><strong>REMS O ALTRO</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>SI</span>
-                                                    <input type="radio" name="legal_status_rems_other" value="SI" v-model="showInput3"/>
+                                                    <input type="radio" name="legal_status_rems_other" value="1" v-model="showInput3"/>
                                                     <span>NO</span>
-                                                    <input type="radio" name="legal_status_rems_other" value="NO" v-model="psyCardSf.legalStatusRemsOther"/>
-                                                    <input type="text" name="legal_status_rems_other" v-if="showInput3" v-model="psyCardSf.legalStatusRemsOther"/>
+                                                    <input type="radio" name="legal_status_rems_other" value="0" v-model="psyCardSf.legalStatusRemsOther"/>
+                                                    <input type="text" name="legal_status_rems_other_text" v-if="showInput3" v-model="psyCardSf.legalStatusRemsOtherText"/>
 
                                                 </span>
                                             </div>
@@ -258,10 +258,10 @@
                                                 <label for="legal_status_uncensored" class="col-form-label col-md-5 col-sm-2 label-align"><strong>INCENSURATO - PRECEDENTI DETENZIONI O MISURE ALTERNATIVE</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <span>SI</span>
-                                                    <input type="radio" name="legal_status_uncensored" value="SI" v-model="showInput4"/>
+                                                    <input type="radio" name="legal_status_uncensored" value="1" v-model="showInput4"/>
                                                     <span>NO</span>
-                                                    <input type="radio" name="legal_status_uncensored" value="NO" v-model="psyCardSf.legalStatusUncensored"/>
-                                                    <input type="text" name="legal_status_uncensored" v-if="showInput4" v-model="psyCardSf.legalStatusUncensored"/>
+                                                    <input type="radio" name="legal_status_uncensored" value="0" v-model="psyCardSf.legalStatusUncensored"/>
+                                                    <input type="text" name="legal_status_uncensored_text" v-if="showInput4" v-model="psyCardSf.legalStatusUncensoredText"/>
                                                 </span>
                                             </div>
                                         </div>
