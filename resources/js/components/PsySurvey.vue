@@ -672,11 +672,6 @@
                                         </td>
                                     </tr> 
                                 </table>
-                                <div style="background:lightgrey; border: 1px solid black; max-width:650px; text-align: center;" class="mt-4 ml-5">
-                                    <h5><strong>GRAZIE DEL TEMPO DEDICATO A COMPLETARE IL QUESTIONARIO!</strong></h5>
-
-                                </div>
-
 
                                 {{ psyCardPs }}
                                 <div class="ln_solid"></div>
@@ -685,6 +680,7 @@
                                         <span class="btn btn-success i2hBtn ml-3" @click="addPsySurvey('ps')">{{btnPsSend}}</span>
                                     </div>
                                 </div>
+                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsySurvey('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                             </form>
                         </div>
                     </div>
@@ -798,8 +794,19 @@ export default {
         this.getPsySurveysByUserInstanceId(1);
     },
 
-
+    
     methods: {
+
+        printPsySurvey(printPdf){
+
+            let v_myWindow
+
+            let url= 'printPdf/2';
+
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+
+            return false;
+        },
  
         addPsySurvey(panel){
             let _wm = this;

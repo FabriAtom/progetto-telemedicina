@@ -3662,6 +3662,12 @@ __webpack_require__.r(__webpack_exports__);
     this.getPsySurveysByUserInstanceId(1);
   },
   methods: {
+    printPsySurvey: function printPsySurvey(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
     addPsySurvey: function addPsySurvey(panel) {
       var _this = this;
       var _wm = this;
@@ -21794,7 +21800,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardPs, "surveyHurtMyself", "molto spesso o sempre");
       }
     }
-  })])])]), _vm._v(" "), _vm._m(4), _vm._v("\n\n\n                            " + _vm._s(_vm.psyCardPs) + "\n                            "), _c("div", {
+  })])])]), _vm._v("\n\n                            " + _vm._s(_vm.psyCardPs) + "\n                            "), _c("div", {
     staticClass: "ln_solid"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -21807,7 +21813,16 @@ var render = function render() {
         return _vm.addPsySurvey("ps");
       }
     }
-  }, [_vm._v(_vm._s(_vm.btnPsSend))])])])])])])])])])]);
+  }, [_vm._v(_vm._s(_vm.btnPsSend))])])]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-success i2hBtnPrint",
+    on: {
+      click: function click($event) {
+        return _vm.printPsySurvey("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa")])])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -21863,18 +21878,6 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("td", [_vm._v("Ho sentito di avere qualcuno a cui rivolgermi per ricevere un "), _c("br"), _vm._v(" sostegno quando ne ho avuto bisogno")]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "mt-4 ml-5",
-    staticStyle: {
-      background: "lightgrey",
-      border: "1px solid black",
-      "max-width": "650px",
-      "text-align": "center"
-    }
-  }, [_c("h5", [_c("strong", [_vm._v("GRAZIE DEL TEMPO DEDICATO A COMPLETARE IL QUESTIONARIO!")])])]);
 }];
 render._withStripped = true;
 
