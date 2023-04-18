@@ -89,12 +89,12 @@
                                             <div class="col-md-12 col-sm-12">
                                                 <label for="residence_not" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Residenza</strong></label><br>
                                                 <span>
-                                                    <input type="radio" name="residence_not" value="SI" v-model="psyCardMc.residenceNot"/>
+                                                    <input type="radio" name="residence_not" value="Senza fissa dimora" v-model="psyCardMc.residenceNot"/>
                                                     <span>Senza fissa dimora</span>
                                                 </span>
                                                 <br>
                                                 <span>
-                                                    <input type="radio" name="residence" value="NO" v-model="psyCardMc.residenceNot"/>
+                                                    <input type="radio" name="residence_not" v-model="psyCardMc.residenceNot"/>
                                                     <input type="text" name="residence" v-model="psyCardMc.residence"/>
                                                 </span>
                                             </div>
@@ -136,7 +136,7 @@
                                         <div class="item form-group">
                                             <label for="situation_housing" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Situazione abitativa</strong></label><br>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="checkbox" name="situation_housing" value="1" v-model="psyCardMc.situationHousing"/>
+                                                <input type="checkbox" name="situation_housing" value="Convivenza" v-model="psyCardMc.situationHousing"/>
                                                 <span>Convivenza/coabitazione</span>
                                             </span>
                                         </div>
@@ -147,7 +147,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="situation_work" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Titolo di studio</strong></label>
+                                            <label for="situation_work" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Situazione lavorativa</strong></label>
                                             <div class="col-md-12 col-sm-12">
                                                 <div>
                                                     <input type="radio" name="situation_work" value="Occupato" v-model="psyCardMc.situationWork"/>
@@ -189,10 +189,10 @@
                                         <div class="item form-group">
                                             <label for="first_experience_prison" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Prima esperienza detentiva</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="radio" name="first_experience_prison" value="SI" v-model="psyCardMc.firstExperiencePrison"/>
+                                                <input type="radio" name="first_experience_prison" value="1" v-model="psyCardMc.firstExperiencePrison"/>
                                                 <span>SI</span>
                                                 
-                                                <input type="radio" name="first_experience_prison" value="NO" v-model="psyCardMc.firstExperiencePrison"/>
+                                                <input type="radio" name="first_experience_prison" value="0" v-model="psyCardMc.firstExperiencePrison"/>
                                                 <span>NO</span>
                                             </div>
                                         </div>
@@ -582,7 +582,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td>Dichiara Comportamento additivo problematico senza sostanza (ad esempio GAP)</td>
+                                        <td>'Dichiara Lesioni Del Setto Nasale (Necrosi/Perforazione)</td>
                                         <td>
                                             <input type="radio"  name="pathological_claims_injuries" value="si" v-model="psyCardMc.pathologicalClaimsInjuries">
                                         </td>
@@ -778,7 +778,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td>appettito</td>
+                                        <td>Appettito</td>
                                         <td>
                                             <ul>
                                                 <li>
@@ -1560,11 +1560,11 @@
                                         <div class="item form-group">
                                             <label for="intervention_plan_advice" class="col-form-label col-md-6 col-sm-2 label-align"><strong>e. Conclusioni, si propone un PIANO DI INTERVENTO</strong></label>
                                             <div class="col-md-12 col-sm-12">
-                                                <input type="radio" name="intervention_plan_advice" value="Consulenza" v-model="psyCardMc.interventionPlanAdvice">
+                                                <input type="checkbox" name="intervention_plan_advice" value="Consulenza" v-model="psyCardMc.interventionPlanAdvice">
                                                 <span>CONSULENZA (eventuali consulenze su richiesta;non necessario, al momento, trattamento terapeutico continuativo)</span><br>
-                                                <input type="radio" name="intervention_plan_advice" value="Assunzione in cura" v-model="psyCardMc.interventionPlanAdvice">
+                                                <input type="checkbox" name="intervention_plan_advice" value="Assunzione in cura" v-model="psyCardMc.interventionPlanAdvice">
                                                 <span>ASSUNZIONE IN CURA (con trattamento farmacologico sintomatico continuativo, con monitoraggio; con trattamento psicologico, con monitoraggio;)</span><br>
-                                                <input type="radio" name="intervention_plan_advice" value="Sorveglianza a vista" v-model="psyCardMc.interventionPlanAdvice">
+                                                <input type="checkbox" name="intervention_plan_advice" value="Sorveglianza a vista" v-model="psyCardMc.interventionPlanAdvice">
                                                 <span>PRESA IN CARICO INTEGRATA (con Piano di Trattamento individualizzato ed integrato, con presa in carico multidisciplinare)</span><br>
                                             </div>
                                         </div>
@@ -1665,6 +1665,7 @@
                                 <div class="pull-right">
                                     <span class="btn btn-success i2hBtn ml-3" @click="addPsyMembershipCard('mc')">{{btnMcSend}}</span>
                                 </div>
+                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyMembershipCard('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                             </div>
                         </form>
                     </div>
@@ -1803,6 +1804,18 @@ export default {
 
 
     methods: {
+
+
+        printPsyMembershipCard(printPdf){
+
+            let v_myWindow
+
+            let url= 'printPdf/2';
+
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+
+            return false;
+        },
 
 
         calculateSum() {

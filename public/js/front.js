@@ -2300,6 +2300,12 @@ __webpack_require__.r(__webpack_exports__);
     this.getPsyMembershipCardsByUserInstanceId(1);
   },
   methods: {
+    printPsyMembershipCard: function printPsyMembershipCard(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
     calculateSum: function calculateSum() {
       // Calcola la somma delle opzioni selezionate
       //this.sum = parseInt(this.selectedOption) || 0;
@@ -5317,14 +5323,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "residence_not",
-      value: "SI"
+      value: "Senza fissa dimora"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardMc.residenceNot, "SI")
+      checked: _vm._q(_vm.psyCardMc.residenceNot, "Senza fissa dimora")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardMc, "residenceNot", "SI");
+        return _vm.$set(_vm.psyCardMc, "residenceNot", "Senza fissa dimora");
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("Senza fissa dimora")])]), _vm._v(" "), _c("br"), _vm._v(" "), _c("span", [_c("input", {
@@ -5336,15 +5342,14 @@ var render = function render() {
     }],
     attrs: {
       type: "radio",
-      name: "residence",
-      value: "NO"
+      name: "residence_not"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardMc.residenceNot, "NO")
+      checked: _vm._q(_vm.psyCardMc.residenceNot, null)
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardMc, "residenceNot", "NO");
+        return _vm.$set(_vm.psyCardMc, "residenceNot", null);
       }
     }
   }), _vm._v(" "), _c("input", {
@@ -5499,10 +5504,10 @@ var render = function render() {
     attrs: {
       type: "checkbox",
       name: "situation_housing",
-      value: "1"
+      value: "Convivenza"
     },
     domProps: {
-      checked: Array.isArray(_vm.psyCardMc.situationHousing) ? _vm._i(_vm.psyCardMc.situationHousing, "1") > -1 : _vm.psyCardMc.situationHousing
+      checked: Array.isArray(_vm.psyCardMc.situationHousing) ? _vm._i(_vm.psyCardMc.situationHousing, "Convivenza") > -1 : _vm.psyCardMc.situationHousing
     },
     on: {
       change: function change($event) {
@@ -5510,7 +5515,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = "1",
+          var $$v = "Convivenza",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.psyCardMc, "situationHousing", $$a.concat([$$v]));
@@ -5667,14 +5672,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "first_experience_prison",
-      value: "SI"
+      value: "1"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardMc.firstExperiencePrison, "SI")
+      checked: _vm._q(_vm.psyCardMc.firstExperiencePrison, "1")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardMc, "firstExperiencePrison", "SI");
+        return _vm.$set(_vm.psyCardMc, "firstExperiencePrison", "1");
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
@@ -5687,14 +5692,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "first_experience_prison",
-      value: "NO"
+      value: "0"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardMc.firstExperiencePrison, "NO")
+      checked: _vm._q(_vm.psyCardMc.firstExperiencePrison, "0")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardMc, "firstExperiencePrison", "NO");
+        return _vm.$set(_vm.psyCardMc, "firstExperiencePrison", "0");
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("NO")])])])])]), _vm._v(" "), _c("div", {
@@ -7347,7 +7352,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "pathologicalAddictiveBehavior", "se si indicare quando e come");
       }
     }
-  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Dichiara Comportamento additivo problematico senza sostanza (ad esempio GAP)")]), _vm._v(" "), _c("td", [_c("input", {
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("'Dichiara Lesioni Del Setto Nasale (Necrosi/Perforazione)")]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -8029,7 +8034,7 @@ var render = function render() {
         _vm.$set(_vm.psyCardMc, "alteredPerceptionNote", $event.target.value);
       }
     }
-  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("appettito")]), _vm._v(" "), _c("td", [_c("ul", [_c("li", [_c("input", {
+  })])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Appettito")]), _vm._v(" "), _c("td", [_c("ul", [_c("li", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -10618,16 +10623,29 @@ var render = function render() {
       expression: "psyCardMc.interventionPlanAdvice"
     }],
     attrs: {
-      type: "radio",
+      type: "checkbox",
       name: "intervention_plan_advice",
       value: "Consulenza"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardMc.interventionPlanAdvice, "Consulenza")
+      checked: Array.isArray(_vm.psyCardMc.interventionPlanAdvice) ? _vm._i(_vm.psyCardMc.interventionPlanAdvice, "Consulenza") > -1 : _vm.psyCardMc.interventionPlanAdvice
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", "Consulenza");
+        var $$a = _vm.psyCardMc.interventionPlanAdvice,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "Consulenza",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$c);
+        }
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("CONSULENZA (eventuali consulenze su richiesta;non necessario, al momento, trattamento terapeutico continuativo)")]), _c("br"), _vm._v(" "), _c("input", {
@@ -10638,16 +10656,29 @@ var render = function render() {
       expression: "psyCardMc.interventionPlanAdvice"
     }],
     attrs: {
-      type: "radio",
+      type: "checkbox",
       name: "intervention_plan_advice",
       value: "Assunzione in cura"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardMc.interventionPlanAdvice, "Assunzione in cura")
+      checked: Array.isArray(_vm.psyCardMc.interventionPlanAdvice) ? _vm._i(_vm.psyCardMc.interventionPlanAdvice, "Assunzione in cura") > -1 : _vm.psyCardMc.interventionPlanAdvice
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", "Assunzione in cura");
+        var $$a = _vm.psyCardMc.interventionPlanAdvice,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "Assunzione in cura",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$c);
+        }
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("ASSUNZIONE IN CURA (con trattamento farmacologico sintomatico continuativo, con monitoraggio; con trattamento psicologico, con monitoraggio;)")]), _c("br"), _vm._v(" "), _c("input", {
@@ -10658,16 +10689,29 @@ var render = function render() {
       expression: "psyCardMc.interventionPlanAdvice"
     }],
     attrs: {
-      type: "radio",
+      type: "checkbox",
       name: "intervention_plan_advice",
       value: "Sorveglianza a vista"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardMc.interventionPlanAdvice, "Sorveglianza a vista")
+      checked: Array.isArray(_vm.psyCardMc.interventionPlanAdvice) ? _vm._i(_vm.psyCardMc.interventionPlanAdvice, "Sorveglianza a vista") > -1 : _vm.psyCardMc.interventionPlanAdvice
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", "Sorveglianza a vista");
+        var $$a = _vm.psyCardMc.interventionPlanAdvice,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = "Sorveglianza a vista",
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.psyCardMc, "interventionPlanAdvice", $$c);
+        }
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v("PRESA IN CARICO INTEGRATA (con Piano di Trattamento individualizzato ed integrato, con presa in carico multidisciplinare)")]), _c("br")])])])]), _vm._v(" "), _c("div", {
@@ -10991,7 +11035,16 @@ var render = function render() {
         return _vm.addPsyMembershipCard("mc");
       }
     }
-  }, [_vm._v(_vm._s(_vm.btnMcSend))])])])])])])])])]);
+  }, [_vm._v(_vm._s(_vm.btnMcSend))])]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-success i2hBtnPrint",
+    on: {
+      click: function click($event) {
+        return _vm.printPsyMembershipCard("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa")])])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -11112,7 +11165,7 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "situation_work"
     }
-  }, [_c("strong", [_vm._v("Titolo di studio")])]);
+  }, [_c("strong", [_vm._v("Situazione lavorativa")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

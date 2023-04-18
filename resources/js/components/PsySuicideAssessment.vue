@@ -413,7 +413,6 @@
                                     </div>
 
                                     <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printpsyCard('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
-
                                 </form>
                             <!-- </div> -->
                         </div>
@@ -517,16 +516,16 @@ export default {
 
     methods: {
 
-    //     printpsyCard(printPdf){
+        // printpsyCard(printPdf){
 
-    //         let v_myWindow
+        //     let v_myWindow
 
-    //         let url= 'printPdf/2';
+        //     let url= 'printPdf/2';
 
-    //         v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+        //     v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
 
-    //         return false;
-    //     },
+        //     return false;
+        // },
 
 
         calculateSum() {
