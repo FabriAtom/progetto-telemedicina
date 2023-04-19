@@ -82,7 +82,7 @@ class PsyJsat extends Model
         'substance_use_substance_abuse_other',
 
 
-
+        'psyc_treatments',
         'psyc_treatments_check_hospital',
         'psyc_treatments_check_order',
         'psyc_treatments_check_farmacy',

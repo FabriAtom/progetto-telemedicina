@@ -89,7 +89,7 @@
                                     <span class="row" style="margin-top:20px;">
                                         <span class="col-md-12 col-sm-12">
                                             <span class="item form-group">
-                                                <label for="information_background" class="col-form-label col-md-5 col-sm-4 label-align"><strong>Background Etnico/Culurale:</strong></label>
+                                                <label for="information_background" class="col-form-label col-md-5 col-sm-4 label-align"><strong>Background Etnico/Culturale:</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <ul style="max-width: 30%;">
                                                         <li>
@@ -125,7 +125,7 @@
                                                             <span>Rom-sinti/nomade</span>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" name="information_background_other" value="altro" v-model="psyCardPj.informationBackgroundOther"/>
+                                                            <input type="radio" name="information_background" value="altro" v-model="psyCardPj.informationBackground"/>
                                                             <span>altro</span>
                                                             <input type="text" name="information_background_text" v-model="psyCardPj.informationBackgroundText"/>
                                                         </li>
@@ -691,16 +691,16 @@
                                         <tr>
                                             <td>altro</td>
                                             <td>
-                                                <input type="radio" name="substanceUseOther" value="uso" v-model="psyCardPj.substanceUseOther">
+                                                <input type="radio" name="substance_use_other" value="uso" v-model="psyCardPj.substanceUseOther">
                                             </td>
                                             <td>
-                                                <input type="radio" name="substanceUseOther" value="attuale" v-model="psyCardPj.substanceUseOther">
+                                                <input type="radio" name="substance_use_other" value="attuale" v-model="psyCardPj.substanceUseOther">
                                             </td>
                                             <td>
-                                                <input type="radio" name="substanceUseOther" value="di lungo periodo" v-model="psyCardPj.substanceUseOther">
+                                                <input type="radio" name="substance_use_other" value="di lungo periodo" v-model="psyCardPj.substanceUseOther">
                                             </td>
                                             <td>
-                                                <input type="radio" name="substanceUseOther" value="precedente" v-model="psyCardPj.substanceUseOther">
+                                                <input type="radio" name="substance_use_other" value="precedente" v-model="psyCardPj.substanceUseOther">
                                             </td>
                                         </tr>
                                     </table>
@@ -787,8 +787,6 @@
 
 
                                 <div class="container" style="border: 1px solid black;">
-                                    <!-- <h2>Background sociale</h2> -->
-
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
@@ -810,10 +808,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluation"/>
+                                                <input type="radio" name="psyc_treatments_clinical_evaluation" value="Ultimo mese" v-model="psyCardPj.psycTreatmentsClinicalEvaluation"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation" value="0" v-model="psyCardPj.psycTreatmentsClinicalEvaluation"/>
+                                                <input type="radio" name="psyc_treatments_clinical_evaluation" value="Da sempre" v-model="psyCardPj.psycTreatmentsClinicalEvaluation"/>
                                             </td>
                                             <td>
                                                 <p>valutazione clinica</p>
@@ -822,10 +820,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="1" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="Ultimo mese" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="0" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
+                                                <input type="radio" name="psyc_treatments_clinical_evaluation_order" value="Da sempre" v-model="psyCardPj.psycTreatmentsClinicalEvaluationOrder"/>
                                             </td>
                                             <td>
                                                 <p>valutazione clinica (su ordine del tribunale o di altra autorità)</p>
@@ -833,10 +831,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_in_prison" value="1" v-model="psyCardPj.psycTreatmentsInPrison"/>
+                                                <input type="radio" name="psyc_treatments_in_prison" value="Ultimo mese" v-model="psyCardPj.psycTreatmentsInPrison"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_in_prison" value="0" v-model="psyCardPj.psycTreatmentsInPrison"/>
+                                                <input type="radio" name="psyc_treatments_in_prison" value="Da sempre" v-model="psyCardPj.psycTreatmentsInPrison"/>
                                             </td>
                                             <td>
                                                <p>Trattamento - in istituzione carceraria</p>
@@ -844,10 +842,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_comunity" value="1" v-model="psyCardPj.psycTreatmentsComunity"/>
+                                                <input type="radio" name="psyc_treatments_comunity" value="Ultimo mese" v-model="psyCardPj.psycTreatmentsComunity"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_comunity" value="0" v-model="psyCardPj.psycTreatmentsComunity"/>
+                                                <input type="radio" name="psyc_treatments_comunity" value="Da sempre" v-model="psyCardPj.psycTreatmentsComunity"/>
                                             </td>
                                             <td>
                                                 <p>Trattamento - in comunità</p>
@@ -855,10 +853,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_hospital" value="1" v-model="psyCardPj.psycTreatmentsHospital"/>
+                                                <input type="radio" name="psyc_treatments_hospital" value="Ultimo mese" v-model="psyCardPj.psycTreatmentsHospital"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_hospital" value="0" v-model="psyCardPj.psycTreatmentsHospital"/>
+                                                <input type="radio" name="psyc_treatments_hospital" value="Da sempre" v-model="psyCardPj.psycTreatmentsHospital"/>
                                             </td>
                                             <td>
                                                 <p>Trattamento - ospedalizzato</p>
@@ -870,10 +868,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_court_order" value="1" v-model="psyCardPj.psycTreatmentsCourtOrder"/>
+                                                <input type="radio" name="psyc_treatments_court_order" value="Ultimo mese" v-model="psyCardPj.psycTreatmentsCourtOrder"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_court_order" value="0" v-model="psyCardPj.psycTreatmentsCourtOrder"/>
+                                                <input type="radio" name="psyc_treatments_court_order" value="Da sempre" v-model="psyCardPj.psycTreatmentsCourtOrder"/>
                                             </td>
                                             <td>
                                                 <p>Trattamento - su ordine del tribunale o di altra autorità</p>
@@ -885,10 +883,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_farmacy" value="1" v-model="psyCardPj.psycTreatmentsFarmacy"/>
+                                                <input type="radio" name="psyc_treatments_farmacy" value="Ultimo mese" v-model="psyCardPj.psycTreatmentsFarmacy"/>
                                             </td>
                                             <td>
-                                                <input type="radio" name="psyc_treatments_farmacy" value="0" v-model="psyCardPj.psycTreatmentsFarmacy"/>
+                                                <input type="radio" name="psyc_treatments_farmacy" value="Da sempre" v-model="psyCardPj.psycTreatmentsFarmacy"/>
                                             </td>
                                             <td>
                                                 <p>Terapia farmacologica</p>
@@ -1017,9 +1015,9 @@
                                                     <span>Nessun proposito</span><br>
                                                     <input type="radio" name="suicidal_risk_level_ideation" value="Ideazione/nessun intento suicidio" v-model="psyCardPj.suicidalRiskLevelIdeation"/>
                                                     <span>Ideazione/ma nessun intento di attuare suicidio</span><br>
-                                                    <input type="radio" name="suicidal_risk_level_ideation" value="Ideazione/qualche intenzione suicidio" v-model="psyCardPj.suicidalRiskLevelIdeation"/>
+                                                    <input type="radio" name="suicidal_risk_level_ideation" value="Ideazione/intenzione suicidio" v-model="psyCardPj.suicidalRiskLevelIdeation"/>
                                                     <span>Ideazione/qualche intenzione di attuare suicidio</span><br>
-                                                    <input type="radio" name="suicidal_risk_level_ideation" value="Ideazione più o meno espressa/osservazione" v-model="psyCardPj.suicidalRiskLevelIdeation"/>
+                                                    <input type="radio" name="suicidal_risk_level_ideation" value="Ideazione più o meno espressa" v-model="psyCardPj.suicidalRiskLevelIdeation"/>
                                                     <span>Ideazione più o meno espressa/in osservazione</span><br>
                                                     <input type="radio" name="suicidal_risk_level_ideation" value="Intenzione suicidarsi durante la detenzione" v-model="psyCardPj.suicidalRiskLevelIdeation"/>
                                                     <span>Intenzione di commettere atti suicidari durante la detenzione</span><br>
@@ -1704,6 +1702,7 @@
                                         <span class="btn btn-success i2hBtn ml-3" @click="addPsyJsat('pj')">{{btnPjSend}}</span>
                                     </div>
                                 </div>
+                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyJsat('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                             </form>
                         </div> 
                     </div>
@@ -1823,6 +1822,18 @@ export default {
 
 
     methods: {
+
+
+        printPsyJsat(printPdf){
+
+            let v_myWindow
+
+            let url= 'printPdf/2';
+
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+
+            return false;
+        },
  
         addPsyJsat(panel){
             let _wm = this;
