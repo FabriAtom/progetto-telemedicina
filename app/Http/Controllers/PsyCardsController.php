@@ -30,188 +30,181 @@ class PsyCardsController extends Controller
 // --------------------------------------------------------------------------
 //     PsyMentalHealthDepartment
 
-    public function printPdf(Request $request) {
+    // public function printPdf(Request $request) {
 
-        $psy = PsyMentalHealthDepartment::where('id',2)->first();
+    //     $psy = PsyMentalHealthDepartment::where('id',2)->first();
     
-        $pdf = new PDFClass();
-        if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
-            header("Content-type: application/PDF");
-        } else {
-            header("Content-type: application/PDF");
-            header("Content-Type: a \pplication/pdf");
-        }
+    //     $pdf = new PDFClass();
+    //     if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+    //         header("Content-type: application/PDF");
+    //     } else {
+    //         header("Content-type: application/PDF");
+    //         header("Content-Type: a \pplication/pdf");
+    //     }
 
-        $pdf->SetAutoPageBreak(true, 30);
+    //     $pdf->SetAutoPageBreak(true, 30);
 
-        $pdf->SetTitle('PDF PsyMentalHealthDepartment');
+    //     $pdf->SetTitle('PDF PsyMentalHealthDepartment');
     
-        $pdf->AliasNbPages();
+    //     $pdf->AliasNbPages();
 
-        $pdf->AddPage();
+    //     $pdf->AddPage();
 
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
-        $pdf->Cell(0,6,'Parte Psicologica Per Cartella Clinica',0,0,'C',true);
-        $pdf->Ln(15);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Cell(0,6,'Parte Psicologica Per Cartella Clinica',0,0,'C',true);
+    //     $pdf->Ln(15);
 
-        $pdf->SetLineWidth(.1);
+    //     $pdf->SetLineWidth(.1);
 
-        $pdf->SetFont('Arial','',12);
-
-
-        $pdf->SetDrawColor(128,0,0);
-        $pdf->SetFillColor(0,78,155);
-        $pdf->SetTextColor(255,255,255);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0,6,'Colloquio Psicologico',0,0,'L',true);
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
-        $pdf->Ln(10);
-
-        $pdf->SetFont('Arial','',12);
-        $pdf->MultiCell(190,10,$psy->psychological_interview,0,2,'L',true);
-        $pdf->Ln(5);
+    //     $pdf->SetFont('Arial','',12);
 
 
-        $pdf->SetDrawColor(128,0,0);
-        $pdf->SetFillColor(0,78,155);
-        $pdf->SetTextColor(255,255,255);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0,6,'Ipotesi/Inquadramento Psicopatologico',0,0,'L',true);
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
-        $pdf->Ln(10);
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,6,'Colloquio Psicologico',0,0,'L',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(10);
 
-        $pdf->SetFont('Arial','',12);
-        $pdf->MultiCell(190,10,$psy->hypothesis_psychopathological_classification,0,2,'L',true);
-        $pdf->Ln(5);
-
-
-        $pdf->SetDrawColor(128,0,0);
-        $pdf->SetFillColor(0,78,155);
-        $pdf->SetTextColor(255,255,255);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0,6,' Progettualità/Tipologia Di Intervento:',0,0,'L',true);
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
-        $pdf->Ln(10);
-        $pdf->SetFont('Arial','',12);
-        $pdf->MultiCell(190,10,$psy->planning_type_of_intervention,0,2,'L',true);
-        $pdf->Ln(5);
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->MultiCell(190,10,$psy->psychological_interview,0,2,'L',true);
+    //     $pdf->Ln(5);
 
 
-        $pdf->SetDrawColor(128,0,0);
-        $pdf->SetFillColor(0,78,155);
-        $pdf->SetTextColor(255,255,255);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0,6,'Test',0,0,'L',true);
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
-        $pdf->Ln(10);
-        $pdf->SetFont('Arial','',12);
-        $pdf->MultiCell(190,10,$psy->test,0,2,'L',true);
-        $pdf->Ln(5);
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,6,'Ipotesi/Inquadramento Psicopatologico',0,0,'L',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(10);
 
-        $pdf->Output("stampa.pdf", "I");
-        exit();
-    }
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->MultiCell(190,10,$psy->hypothesis_psychopathological_classification,0,2,'L',true);
+    //     $pdf->Ln(5);
+
+
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,6,' Progettualità/Tipologia Di Intervento:',0,0,'L',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(10);
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->MultiCell(190,10,$psy->planning_type_of_intervention,0,2,'L',true);
+    //     $pdf->Ln(5);
+
+
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,6,'Test',0,0,'L',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(10);
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->MultiCell(190,10,$psy->test,0,2,'L',true);
+    //     $pdf->Ln(5);
+
+    //     $pdf->Output("stampa.pdf", "I");
+    //     exit();
+    // }
 // --------------------------------------------------------------------------
 
 
 
-
-
-
-
-
-
-
 // --------------------------------------------------------------------------
-//     PsyRehabilitationPsychiatricCard
+    // PsyRehabilitationPsychiatricCard
     
-//     public function printPdf(Request $request) {
+    // public function printPdf(Request $request) {
 
-//         $psyRehab = PsyRehabilitationPsychiatricCard::where('id',2)->first();
+    //     $psyRehab = PsyRehabilitationPsychiatricCard::where('id',2)->first();
 
-//         $pdf = new PDFClass();
-//         if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
-//             header("Content-type: application/PDF");
-//         } else {
-//             header("Content-type: application/PDF");
-//             header("Content-Type: a \pplication/pdf");
-//         }
-//         $pdf->SetAutoPageBreak(true, 30);
+    //     $pdf = new PDFClass();
+    //     if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+    //         header("Content-type: application/PDF");
+    //     } else {
+    //         header("Content-type: application/PDF");
+    //         header("Content-Type: a \pplication/pdf");
+    //     }
+    //     $pdf->SetAutoPageBreak(true, 30);
 
-//         $pdf->SetTitle('PDF PsyRehabilitationPsychiatricCard');
+    //     $pdf->SetTitle('PDF PsyRehabilitationPsychiatricCard');
     
-//         $pdf->AliasNbPages();
+    //     $pdf->AliasNbPages();
 
-//         $pdf->AddPage();
+    //     $pdf->AddPage();
 
-//         $pdf->SetFillColor(255,255,255);
-//         $pdf->SetDrawColor(0,0,0);
-//         $pdf->SetTextColor(0,0,0);
-//         $pdf->Cell(0,6,'Cartella Informatizzata',0,0,'C',true);
-//         $pdf->Ln(8);
-//         $pdf->Cell(0,6,'Area Riabilitazione Pschiatrica (TRP)',0,0,'C',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Cell(0,6,'Cartella Informatizzata',0,0,'C',true);
+    //     $pdf->Ln(8);
+    //     $pdf->Cell(0,6,'Area Riabilitazione Pschiatrica (TRP)',0,0,'C',true);
 
-//         $pdf->Ln(15);
+    //     $pdf->Ln(15);
 
-//         $pdf->SetLineWidth(.1);
+    //     $pdf->SetLineWidth(.1);
 
-//         $pdf->SetFont('Arial','',12);
-
-
-//         $pdf->SetDrawColor(128,0,0);
-//         $pdf->SetFillColor(0,78,155);
-//         $pdf->SetTextColor(255,255,255);
-//         $pdf->SetFont('Arial', 'B', 12);
-//         $pdf->Cell(0,6,'Breve Descrizione Progetto:',0,0,'L',true);
-//         $pdf->SetFillColor(255,255,255);
-//         $pdf->SetDrawColor(0,0,0);
-//         $pdf->SetTextColor(0,0,0);
-//         $pdf->Ln(10);
-//         $pdf->SetFont('Arial','',12);
-//         $pdf->MultiCell(0,10,$psyRehab->project_description,0,2,'L',true);
-//         $pdf->Ln(5);
+    //     $pdf->SetFont('Arial','',12);
 
 
-//         $pdf->SetDrawColor(128,0,0);
-//         $pdf->SetFillColor(0,78,155);
-//         $pdf->SetTextColor(255,255,255);
-//         $pdf->SetFont('Arial', 'B', 12);
-//         $pdf->Cell(0,6,'Obiettivi In Cui Viene Specificata Area Trattamento:',0,0,'L',true);
-//         $pdf->SetFillColor(255,255,255);
-//         $pdf->SetDrawColor(0,0,0);
-//         $pdf->SetTextColor(0,0,0);
-//         $pdf->Ln(10);
-//         $pdf->SetFont('Arial','',12);
-//         $pdf->MultiCell(0,10,$psyRehab->treatment_area_objective,0,2,'L',true);
-//         $pdf->Ln(5);
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,6,'Breve Descrizione Progetto:',0,0,'L',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(10);
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->MultiCell(0,10,$psyRehab->project_description,0,2,'L',true);
+    //     $pdf->Ln(5);
 
 
-//         $pdf->SetDrawColor(128,0,0);
-//         $pdf->SetFillColor(0,78,155);
-//         $pdf->SetTextColor(255,255,255);
-//         $pdf->SetFont('Arial', 'B', 12);
-//         $pdf->Cell(0,6,'Responsabile Progetto:',0,0,'L',true);
-//         $pdf->SetFillColor(255,255,255);
-//         $pdf->SetDrawColor(0,0,0);
-//         $pdf->SetTextColor(0,0,0);
-//         $pdf->Ln(10);
-//         $pdf->SetFont('Arial','',12);
-//         $pdf->MultiCell(0,10,$psyRehab->project_manager,0,2,'L',true);
-//         $pdf->Ln(5);
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,6,'Obiettivi In Cui Viene Specificata Area Trattamento:',0,0,'L',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(10);
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->MultiCell(0,10,$psyRehab->treatment_area_objective,0,2,'L',true);
+    //     $pdf->Ln(5);
 
-//         $pdf->Output("stampa.pdf", "I");
-//         exit();
-//     }
+
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,6,'Responsabile Progetto:',0,0,'L',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(10);
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->MultiCell(0,10,$psyRehab->project_manager,0,2,'L',true);
+    //     $pdf->Ln(5);
+
+    //     $pdf->Output("stampa.pdf", "I");
+    //     exit();
+    // }
 
  // ------------------------------------------------------------------------------------------------
 
@@ -809,192 +802,211 @@ class PsyCardsController extends Controller
 // --------------------------------------------------------------------------
     // psyRating
 
-    // public function printPdf(Request $request) {
+    public function printPdf(Request $request) {
 
-    //     $psy = psyRating::where('id',2)->first();
+        $psy = psyRating::where('id',2)->first();
 
-    //     $pdf = new PDFClass();
-    //     if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
-    //         header("Content-type: application/PDF");
-    //     } else {
-    //         header("Content-type: application/PDF");
-    //         header("Content-Type: a \pplication/pdf");
-    //     }
+        $pdf = new PDFClass();
+        if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+            header("Content-type: application/PDF");
+        } else {
+            header("Content-type: application/PDF");
+            header("Content-Type: a \pplication/pdf");
+        }
 
-    //     $pdf->SetAutoPageBreak(true, 30);
+        $pdf->SetAutoPageBreak(true, 30);
 
-    //     $pdf->SetTitle('PDF psyRating');
+        $pdf->SetTitle('PDF psyRating');
 
-    //     $pdf->AliasNbPages();
+        $pdf->AliasNbPages();
 
-    //     $pdf->AddPage();
+        $pdf->AddPage();
 
-    //     $pdf->SetFillColor(255,255,255);
-    //     $pdf->SetDrawColor(0,0,0);
-    //     $pdf->SetTextColor(0,0,0);
-    //     $pdf->Cell(0,6,'Scheda Psichiatrica',0,0,'C',true);
-    //     $pdf->Ln();
-    //     $pdf->Cell(0,6,'Brief Psychiatric Rating Scale BPRS',0,0,'C',true);
-    //     $pdf->Ln(15);
-    //     $pdf->SetFont('Arial','',12);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+        $pdf->Cell(0,6,'Scheda Psichiatrica',0,0,'C',true);
+        $pdf->Ln();
+        $pdf->Cell(0,6,'Brief Psychiatric Rating Scale BPRS',0,0,'C',true);
+        $pdf->Ln(15);
+        $pdf->SetFont('Arial','B',12);
 
-    //     $pdf->Cell(70,7,'Scala: NV = non valutato;');
-    //     $pdf->Cell(40,7,'1 = assente;');
-    //     $pdf->Cell(50,7,'2 = molto lieve;');
-    //     $pdf->Cell(20,7,'3 = lieve;');
-    //     $pdf->Ln();
-    //     $pdf->Cell(30,7,'4 = moderato;');
-    //     $pdf->Cell(60,7,'5 = moderatamente grave;');
-    //     $pdf->Cell(50,7,'6 = grave;');
-    //     $pdf->Cell(20,7,'7 = molto grave;');
-    //     $pdf->Ln(10);
+        $pdf->SetDrawColor(128,0,0);
+        $pdf->SetFillColor(0,100,250);
+        $pdf->SetTextColor(255,255,255);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(15,7,"Scala:",0,0,'L',true);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+        $pdf->Ln(10);
 
-    //     $pdf->SetDrawColor(128,0,0);
-    //     $pdf->SetFillColor(0,78,155);
-    //     $pdf->SetTextColor(255,255,255);
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Descrizioni',0,0,'L',true);
-    //     $pdf->Ln(10);
-    //     $pdf->SetFillColor(255,255,255);
-    //     $pdf->SetDrawColor(0,0,0);
-    //     $pdf->SetTextColor(0,0,0);
+        $pdf->Cell(70,7,'0 = non valutato;');
+        $pdf->Cell(65,7,'1 = assente;');
+        $pdf->Cell(70,7,'2 = molto lieve;');
+        $pdf->Ln();
 
-    //     $pdf->Ln(5);
+        $pdf->Cell(70,7,'3 = lieve;');
+        $pdf->Cell(65,7,'4 = moderato;');
+        $pdf->Cell(70,7,'5 = moderatamente grave;');
+        $pdf->Ln();
+        $pdf->Cell(70,7,'6 = grave;');
+        $pdf->Cell(65,7,'7 = molto grave;');
+        $pdf->Ln(10);
 
-    //     $pdf->SetFont('Arial','B',12);
-    //     $pdf->Cell(70,7,'Preoccupazioni Somatiche');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->somatic_concern);
-    //     $pdf->SetFont('Arial','B',12);
-    //     $pdf->Cell(60,7,'Ansia');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->anxiety);
-    //     $pdf->Ln(12);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(70,7,'Depressione');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->depression);
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(60,7,'Rischio Di Suicidio');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->risk_of_suicide);
-    //     $pdf->Ln(12);
+        $pdf->SetDrawColor(128,0,0);
+        $pdf->SetFillColor(0,78,155);
+        $pdf->SetTextColor(255,255,255);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0,6,'Descrizioni',0,0,'L',true);
+        $pdf->Ln(10);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(70,7,'Sentimenti Di Colpa');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->feeling_of_guilt);
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(60,7,'Ostilità');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->hostility);
-    //     $pdf->Ln(12);
+        $pdf->Ln(5);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(70,7,"Elevazione Del Tono Dell'Umore");
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->mood_elevation);
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(60,7,'Grandiosità');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->grandeur);
-    //     $pdf->Ln(12);
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(70,7,'Preoccupazioni Somatiche');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->somatic_concern);
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(60,7,'Ansia');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->anxiety);
+        $pdf->Ln(12);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(70,7,"Sospettosità");
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->suspiciousness);
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(60,7,'Allucinazioni');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->hallucination);
-    //     $pdf->Ln(12);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,'Depressione');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->depression);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Rischio Di Suicidio');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->risk_of_suicide);
+        $pdf->Ln(12);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(70,7,"Contenuto Insolito Del Pensiero");
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->unusual_content_of_thought);
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(60,7,'Comportamento Bizzarro');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->bizarre_behavior);
-    //     $pdf->Ln(12);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,'Sentimenti Di Colpa');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->feeling_of_guilt);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Ostilità');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->hostility);
+        $pdf->Ln(12);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(70,7,"Trascuratezza Della Cura Di Sé");
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->neglect_of_self_care);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Elevazione Del Tono Dell'Umore");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->mood_elevation);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Grandiosità');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->grandeur);
+        $pdf->Ln(12);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(60,7,'Disorientamento');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->disorientation);
-    //     $pdf->Ln(12);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Sospettosità");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->suspiciousness);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Allucinazioni');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->hallucination);
+        $pdf->Ln(12);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(70,7,"Disorganizzazione Concettuale");
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->conceptual_disorganization);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Contenuto Insolito Del Pensiero");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->unusual_content_of_thought);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Comportamento Bizzarro');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->bizarre_behavior);
+        $pdf->Ln(12);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(60,7,'Appiattimento Affettivo');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->emotional_flattening);
-    //     $pdf->Ln(12);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Trascuratezza Della Cura Di Sé");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->neglect_of_self_care);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(70,7,"Isolamento Emotivo");
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->emotional_isolation);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Disorientamento');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->disorientation);
+        $pdf->Ln(12);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(60,7,'Rallentamento Motorio');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->motor_slowdown);
-    //     $pdf->Ln(12);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Disorganizzazione Concettuale");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->conceptual_disorganization);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(70,7,"Tensione Motoria");
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->motor_tension);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Appiattimento Affettivo');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->emotional_flattening);
+        $pdf->Ln(12);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(60,7,'Mancanza Di Cooperazione');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->lack_of_cooperation);
-    //     $pdf->Ln(12);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Isolamento Emotivo");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->emotional_isolation);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(70,7,"Eccitamento");
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->excitement);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Rallentamento Motorio');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->motor_slowdown);
+        $pdf->Ln(12);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(60,7,'Distraibilità');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->distractibility);
-    //     $pdf->Ln(12);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Tensione Motoria");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->motor_tension);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(70,7,"Iperattività Motoria");
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->motor_hyperactivity);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Mancanza Di Cooperazione');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->lack_of_cooperation);
+        $pdf->Ln(12);
 
-    //     $pdf->SetFont('Arial','B',12);
-    //     $pdf->Cell(60,7,'Manierismi e posture');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(65,7,$psy->mannerism_and_posture);
-    //     $pdf->Ln(12);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Eccitamento");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->excitement);
 
-    //     $pdf->SetFont('Arial','B',12);
-    //     $pdf->Cell(70,7,'Manierismi e posture');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psy->mannerism_and_posture);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Distraibilità');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->distractibility);
+        $pdf->Ln(12);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Iperattività Motoria");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->motor_hyperactivity);
+
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(60,7,'Manierismi e posture');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(65,7,$psy->mannerism_and_posture);
+        $pdf->Ln(12);
+
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(70,7,'Manierismi e posture');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->mannerism_and_posture);
+        $pdf->Ln(15);
     
-    //     $pdf->Output("stampa.pdf", "I");
-    //     exit();
-    // }
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(15,7,'Totale:');
+        $pdf->Cell(30,7,$psy->total_score_rating);
+
+
+        $pdf->Output("stampa.pdf", "I");
+        exit();
+    }
 // --------------------------------------------------------------------------
 
 
