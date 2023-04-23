@@ -187,7 +187,7 @@
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
-                                            <label for="first_experience_prison" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Prima esperienza detentiva</strong></label>
+                                            <label for="first_experience_prison" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Prima esperienza detentiva</strong></label>
                                             <div class="col-md-12 col-sm-12">
                                                 <input type="radio" name="first_experience_prison" value="1" v-model="psyCardMc.firstExperiencePrison"/>
                                                 <span>SI</span>
@@ -1120,8 +1120,10 @@
                                         </td>
                                     </tr> 
                                 </table>
+
                                 <div class="ml-3">
                                     <h3 class="mt-4">Punteggio</h3>
+                                    <textarea name="well_total_score" v-model="psyhowFeel.wellTotalScore"></textarea>
                                     <h4>da 0 a 14: assenza di rischio</h4>
                                     <h4>da 15 a 36: presenza di rischio</h4>
                                     <h3 class="mt-3">Mini</h3>
@@ -2079,6 +2081,7 @@ export default {
                             _wm.psyhowFeel.wellLostConfidence = _MemberShip.well_lost_confidence
                             _wm.psyhowFeel.wellLowerEsteem = _MemberShip.well_lower_esteem
                             _wm.psyhowFeel.wellOverallHappy = _MemberShip.well_overall_happy
+                            _wm.psyhowFeel.wellTotalScore = _MemberShip.well_total_score
 
 
                             _wm.psyCardMc.thoughtHeWasDead = _MemberShip.thought_he_was_dead 
@@ -2133,13 +2136,9 @@ export default {
                             _wm.psyCardMc.interventionPlanTakingIntoCare = _MemberShip.intervention_plan_taking_into_care
                             _wm.psyCardMc.interventionPlanIntegratedHandling = _MemberShip.intervention_plan_integrated_handling
 
-
-
                             // _wm.psyCardMc.psychiatricVisitPlanConclusions = _MemberShip.psychiatric_visit_plan_conclusions 
                             _wm.psyCardMc.psychiatricInterventionPlanAdvice = _MemberShip.psychiatric_intervention_plan_advice
-                            _wm.psyCardMc.psychiatricPlanTakingIntoCare = _MemberShip.psychiatric_plan_taking_into_care
-                            _wm.psyCardMc.psychiatricPlanIntegratedHandling = _MemberShip.psychiatric_plan_integrated_handling
-
+                            _wm.psyCardMc.psychiatricVisitPrescriptionSuggestions = _MemberShip.psychiatric_visit_prescription_suggestions
 
                             
                             _wm.allPsyMembershipCards=response.data.allPsyMembershipCards;

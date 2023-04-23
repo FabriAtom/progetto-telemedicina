@@ -2538,6 +2538,7 @@ __webpack_require__.r(__webpack_exports__);
               _wm.psyhowFeel.wellLostConfidence = _MemberShip.well_lost_confidence;
               _wm.psyhowFeel.wellLowerEsteem = _MemberShip.well_lower_esteem;
               _wm.psyhowFeel.wellOverallHappy = _MemberShip.well_overall_happy;
+              _wm.psyhowFeel.wellTotalScore = _MemberShip.well_total_score;
               _wm.psyCardMc.thoughtHeWasDead = _MemberShip.thought_he_was_dead;
               _wm.psyCardMc.wantedToGetHurt = _MemberShip.wanted_to_get_hurt;
               _wm.psyCardMc.thoughtSuicide = _MemberShip.thought_suicide;
@@ -2578,8 +2579,7 @@ __webpack_require__.r(__webpack_exports__);
 
               // _wm.psyCardMc.psychiatricVisitPlanConclusions = _MemberShip.psychiatric_visit_plan_conclusions 
               _wm.psyCardMc.psychiatricInterventionPlanAdvice = _MemberShip.psychiatric_intervention_plan_advice;
-              _wm.psyCardMc.psychiatricPlanTakingIntoCare = _MemberShip.psychiatric_plan_taking_into_care;
-              _wm.psyCardMc.psychiatricPlanIntegratedHandling = _MemberShip.psychiatric_plan_integrated_handling;
+              _wm.psyCardMc.psychiatricVisitPrescriptionSuggestions = _MemberShip.psychiatric_visit_prescription_suggestions;
               _wm.allPsyMembershipCards = response.data.allPsyMembershipCards;
             } else {
               _wm.btnMcSend = "Salva";
@@ -9345,7 +9345,32 @@ var render = function render() {
         return _vm.calculateSum();
       }]
     }
-  }), _vm._v(" "), _c("span", [_vm._v("3")])])])]), _vm._v(" "), _vm._m(34), _vm._v(" "), _c("table", [_c("h3"), _vm._v(" "), _vm._m(35), _vm._v(" "), _c("tr", [_c("td", [_vm._v("1. Mai pensato che sarebbe stato meglio essere morto o desiderato di esserlo?")]), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("3")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "ml-3"
+  }, [_c("h3", {
+    staticClass: "mt-4"
+  }, [_vm._v("Punteggio")]), _vm._v(" "), _c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyhowFeel.wellTotalScore,
+      expression: "psyhowFeel.wellTotalScore"
+    }],
+    attrs: {
+      name: "well_total_score"
+    },
+    domProps: {
+      value: _vm.psyhowFeel.wellTotalScore
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyhowFeel, "wellTotalScore", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("h4", [_vm._v("da 0 a 14: assenza di rischio")]), _vm._v(" "), _c("h4", [_vm._v("da 15 a 36: presenza di rischio")]), _vm._v(" "), _c("h3", {
+    staticClass: "mt-3"
+  }, [_vm._v("Mini")])]), _vm._v(" "), _c("table", [_c("h3"), _vm._v(" "), _vm._m(34), _vm._v(" "), _c("tr", [_c("td", [_vm._v("1. Mai pensato che sarebbe stato meglio essere morto o desiderato di esserlo?")]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -9594,7 +9619,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(36), _vm._v(" "), _c("div", {
+  }, [_vm._m(35), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -9658,7 +9683,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("span", [_vm._v("elevato")])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "x_content"
-  }, [_vm._m(37), _vm._v(" "), _c("table", [_vm._m(38), _vm._v(" "), _c("tr", [_vm._m(39), _vm._v(" "), _c("td", [_c("input", {
+  }, [_vm._m(36), _vm._v(" "), _c("table", [_vm._m(37), _vm._v(" "), _c("tr", [_vm._m(38), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -9698,7 +9723,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkSpdcHospitalizations", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Precedenti ricoveri in acuzie in SPDC negli ultimi 30 giorni")])]), _vm._v(" "), _c("tr", [_vm._m(40), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Precedenti ricoveri in acuzie in SPDC negli ultimi 30 giorni")])]), _vm._v(" "), _c("tr", [_vm._m(39), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -9738,7 +9763,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkDeclareSuicide", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Dichiara (a risulta da documentazione/notizie) di aver tentato il suicidio nell'ultimo mese ")])]), _vm._v(" "), _c("tr", [_vm._m(41), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Dichiara (a risulta da documentazione/notizie) di aver tentato il suicidio nell'ultimo mese ")])]), _vm._v(" "), _c("tr", [_vm._m(40), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -9778,7 +9803,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkThougthSuicide", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _vm._m(42)]), _vm._v(" "), _c("tr", [_vm._m(43), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _vm._m(41)]), _vm._v(" "), _c("tr", [_vm._m(42), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -9818,7 +9843,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkUnusualLevelOfShame", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _vm._m(44)]), _vm._v(" "), _c("tr", [_vm._m(45), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _vm._m(43)]), _vm._v(" "), _c("tr", [_vm._m(44), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -9858,7 +9883,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkConfusionalState", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Stato confusionale (disorientamento spazio-temporale) ")])]), _vm._v(" "), _c("tr", [_vm._m(46), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Stato confusionale (disorientamento spazio-temporale) ")])]), _vm._v(" "), _c("tr", [_vm._m(45), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -9898,7 +9923,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkPsychomotorAgitation", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Agitazione psicomotoria a grave e incongruo discontrollo degli impulsi")])]), _vm._v(" "), _c("tr", [_vm._m(47), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Agitazione psicomotoria a grave e incongruo discontrollo degli impulsi")])]), _vm._v(" "), _c("tr", [_vm._m(46), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -9938,7 +9963,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkBizarreBehavior", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Bizzarrie/gravi alterazioni del comportamento e/o del pensiero")])]), _vm._v(" "), _c("tr", [_vm._m(48), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Bizzarrie/gravi alterazioni del comportamento e/o del pensiero")])]), _vm._v(" "), _c("tr", [_vm._m(47), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -9978,7 +10003,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkVerbalCommunication", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Pianto/appiattimento affettivo/inibizione psicomotoria/assenza di comunicazione verbale")])]), _vm._v(" "), _c("tr", [_vm._m(49), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Pianto/appiattimento affettivo/inibizione psicomotoria/assenza di comunicazione verbale")])]), _vm._v(" "), _c("tr", [_vm._m(48), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -10018,7 +10043,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkLevelMini", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Livello alto di gravità del M.I.N.I.")])]), _vm._v(" "), _c("tr", [_vm._m(50), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Livello alto di gravità del M.I.N.I.")])]), _vm._v(" "), _c("tr", [_vm._m(49), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -10058,7 +10083,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkGeneralWellBeing", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Questionario sul benessere Generale (GHQ-12)")])]), _vm._v(" "), _c("tr", [_vm._m(51), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Questionario sul benessere Generale (GHQ-12)")])]), _vm._v(" "), _c("tr", [_vm._m(50), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -10098,7 +10123,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkVainFormViolence", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Forme vane di violenza subita negli ultimi 15 giorni ")])]), _vm._v(" "), _c("tr", [_vm._m(52), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Forme vane di violenza subita negli ultimi 15 giorni ")])]), _vm._v(" "), _c("tr", [_vm._m(51), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -10138,7 +10163,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkComeFromForcedIsolation", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Provenienza da un isolamento forzato")])]), _vm._v(" "), _c("tr", [_vm._m(53), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Provenienza da un isolamento forzato")])]), _vm._v(" "), _c("tr", [_vm._m(52), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -10178,7 +10203,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkIsolationSocialNetwork", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Isolamento delle reti sociali")])]), _vm._v(" "), _c("tr", [_vm._m(54), _vm._v(" "), _c("td", [_c("input", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Isolamento delle reti sociali")])]), _vm._v(" "), _c("tr", [_vm._m(53), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -10218,7 +10243,7 @@ var render = function render() {
         return _vm.$set(_vm.psyCardMc, "checkUncertaintyAboutFuture", "1");
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Incertezza sulle prospettive future, sul lavoro e sulle relazioni")])])]), _vm._v(" "), _vm._m(55), _vm._v(" "), _vm._m(56), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("span", [_vm._v("si")])]), _vm._v(" "), _c("td", [_vm._v("Incertezza sulle prospettive future, sul lavoro e sulle relazioni")])])]), _vm._v(" "), _vm._m(54), _vm._v(" "), _vm._m(55), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "20px"
@@ -10227,7 +10252,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(57), _vm._v(" "), _c("div", {
+  }, [_vm._m(56), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10291,7 +10316,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("span", [_vm._v("necessario l'avvio di un trattamento in urgenza e di una valutazione diagnostica")])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "x_content"
-  }, [_vm._m(58), _vm._v(" "), _c("div", {
+  }, [_vm._m(57), _vm._v(" "), _c("div", {
     staticStyle: {
       border: "2px solid black",
       "max-width": "800px",
@@ -10308,7 +10333,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(59), _vm._v(" "), _c("div", {
+  }, [_vm._m(58), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10359,7 +10384,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(60), _vm._v(" "), _c("div", {
+  }, [_vm._m(59), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10493,7 +10518,7 @@ var render = function render() {
         }
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v("Sorveglianza a vista")]), _c("br")])])])])]), _vm._v(" "), _vm._m(61), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("span", [_vm._v("Sorveglianza a vista")]), _c("br")])])])])]), _vm._v(" "), _vm._m(60), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "20px"
@@ -10502,7 +10527,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(62), _vm._v(" "), _c("div", {
+  }, [_vm._m(61), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10533,7 +10558,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(63), _vm._v(" "), _c("div", {
+  }, [_vm._m(62), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10564,7 +10589,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(64), _vm._v(" "), _c("div", {
+  }, [_vm._m(63), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10595,7 +10620,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(65), _vm._v(" "), _c("div", {
+  }, [_vm._m(64), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10626,7 +10651,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(66), _vm._v(" "), _c("div", {
+  }, [_vm._m(65), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10736,7 +10761,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(67), _vm._v(" "), _c("div", {
+  }, [_vm._m(66), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10800,7 +10825,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("span", [_vm._v("RICHIESTA MISURA DI SORVEGLIANZA")]), _c("br")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "x_content"
-  }, [_vm._m(68), _vm._v(" "), _c("div", {
+  }, [_vm._m(67), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "20px"
@@ -10809,7 +10834,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(69), _vm._v(" "), _c("div", {
+  }, [_vm._m(68), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10840,7 +10865,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(70), _vm._v(" "), _c("div", {
+  }, [_vm._m(69), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10871,7 +10896,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(71), _vm._v(" "), _c("div", {
+  }, [_vm._m(70), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10902,7 +10927,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(72), _vm._v(" "), _c("div", {
+  }, [_vm._m(71), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -10973,7 +10998,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(73), _vm._v(" "), _c("div", {
+  }, [_vm._m(72), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -11201,7 +11226,7 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("label", {
-    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
       "for": "first_experience_prison"
     }
@@ -11312,16 +11337,6 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("td", [_vm._v("6. di non essere in grado di superare le"), _c("br"), _vm._v("difficoltà?")]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "ml-3"
-  }, [_c("h3", {
-    staticClass: "mt-4"
-  }, [_vm._v("Punteggio")]), _vm._v(" "), _c("h4", [_vm._v("da 0 a 14: assenza di rischio")]), _vm._v(" "), _c("h4", [_vm._v("da 15 a 36: presenza di rischio")]), _vm._v(" "), _c("h3", {
-    staticClass: "mt-3"
-  }, [_vm._v("Mini")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

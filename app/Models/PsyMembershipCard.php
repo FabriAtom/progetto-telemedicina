@@ -85,6 +85,7 @@ class PsyMembershipCard extends Model
         'well_lost_confidence',
         'well_lower_esteem',
         'well_overall_happy',
+        'well_total_score',
 
 
         'thought_he_was_dead',
@@ -142,8 +143,6 @@ class PsyMembershipCard extends Model
         
         // 'psychiatric_visit_plan_conclusions',
         'psychiatric_intervention_plan_advice',
-        // 'psychiatric_plan_taking_into_care',
-        // 'psychiatric_plan_integrated_handling',
 
 
         'psychiatric_visit_prescription_suggestions',
