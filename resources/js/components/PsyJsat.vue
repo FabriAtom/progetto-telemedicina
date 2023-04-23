@@ -391,23 +391,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row" style="margin-top:20px;">
-                                        <div class="col-md-12 col-sm-12">
-                                            <span class="item form-group">
-                                                <label for="background_social_stability_relation" class="col-form-label col-md-4 col-sm-3 label-align"><h4><strong>Stabilità della relazione:</strong></h4></label>
-                                                <span class="col-md-12 col-sm-12"><br>
-                                                    <input type="radio" name="background_social_stability_relation" value=">1 anno" v-model="psyCardPj.backgroundSocialStabilityRelation"/>
-                                                    <span> > 1 anno</span><br>
-                                                    <input type="radio" name="background_social_stability_relation" value="<1 anno" v-model="psyCardPj.backgroundSocialStabilityRelation"/>
-                                                    <span>  1 anno </span><br>
-
-                                                    <input type="radio" name="background_social_stability_problem" value="1" v-model="psyCardPj.backgroundSocialStabilityProblem"/>
-                                                    <span>Problematiche</span>
-                                                    <input type="text" name="background_social_relation_problem" v-model="psyCardPj.backgroundSocialRelationProblem">
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
+                                
 
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
@@ -490,11 +474,11 @@
 
                                                     <input type="radio" name="background_social_support_cont" value="Amici conoscenti" v-model="psyCardPj.backgroundSocialSupportCont"/>
                                                     <span>Amici conoscenti</span><br>
-                                                    <input type="radio" name="background_social_support_cont" value="Contatti sporadici" v-model="psyCardPj.backgroundSocialSupportCont"/>
+                                                    <input type="radio" name="background_social_support_cont" value="Associazioni" v-model="psyCardPj.backgroundSocialSupportCont"/>
                                                     <span>Associazioni</span><br>
-                                                    <input type="radio" name="background_social_support_cont" value="Amici conoscenti" v-model="psyCardPj.backgroundSocialSupportCont"/>
+                                                    <input type="radio" name="background_social_support_cont" value="Parrocchia" v-model="psyCardPj.backgroundSocialSupportCont"/>
                                                     <span>Parrocchia</span><br>
-                                                    <input type="radio" name="background_social_support_cont" value="Contatti sporadici" v-model="psyCardPj.backgroundSocialSupportCont"/>
+                                                    <input type="radio" name="background_social_support_cont" value="Associazioni sanitarie" v-model="psyCardPj.backgroundSocialSupportCont"/>
                                                     <span>Associazioni sanitarie</span><br>
 
                                                     <input type="radio" name="background_social_support_cont" value="altro" v-model="psyCardPj.backgroundSocialSupportCont"/>
@@ -2084,6 +2068,7 @@ export default {
                             _wm.psyCardPj.suicidalRiskSucideTentativeNumber = _psyJsa.suicidal_risk_sucide_tentative_number
                             _wm.psyCardPj.suicidalRiskTentativeTime = _psyJsa.suicidal_risk_tentative_time 
                             _wm.psyCardPj.suicidalRiskMethodsTwo = _psyJsa.suicidal_risk_methods_two 
+                            _wm.psyCardPj.suicidalRiskMethodsTwoOther = _psyJsa.suicidal_risk_methods_two_other
                             _wm.psyCardPj.suicidalRiskActOfSelfHarm = _psyJsa.suicidal_risk_act_of_self_harm 
                             _wm.psyCardPj.suicidalRiskActOfSelfHarmDesc = _psyJsa.suicidal_risk_act_of_self_harm_desc 
 

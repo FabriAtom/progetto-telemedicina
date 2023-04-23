@@ -2470,9 +2470,9 @@ class PsyCardsController extends Controller
 
 
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(60,7,'Attuale:');
+        $pdf->Cell(35,7,'Attuale:');
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->legal_situation_now);
+        $pdf->Cell(60,7,$psy->legal_situation_now);
         // $pdf->Ln(12);
 
         $pdf->SetFont('Arial', 'B', 12);
@@ -2592,7 +2592,7 @@ class PsyCardsController extends Controller
             $pdf->Ln(5);
             $pdf->SetFont('Arial','',12);
             $pdf->multiCell(150,7,$psy->violent_behavior_aggression_proceeding_desc);
-            $pdf->Ln(5);
+            $pdf->Ln(2);
         };
 
 
@@ -2600,7 +2600,7 @@ class PsyCardsController extends Controller
         $pdf->Cell(93,7,'Ultimo Atto Di Aggressione:');
         $pdf->SetFont('Arial','',12);
         $pdf->Cell(65,7,$psy->violent_behavior_last_aggression);
-        $pdf->Ln(10);
+        $pdf->Ln(7);
         
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(93,7,'Atti Di Aggressione/Rabbia Attuale:');
@@ -2824,7 +2824,6 @@ class PsyCardsController extends Controller
             $pdf->multiCell(150,7,$psy->substance_use_description);
             $pdf->Ln(2);
         };
-        // $pdf->Ln(5);
 
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(60,7,'Trattamento Metadonico:');
@@ -2836,6 +2835,7 @@ class PsyCardsController extends Controller
         $pdf->SetFont('Arial','',12);
         $pdf->Cell(35,7,$psy->substance_use_intravenous_mode);
         $pdf->Ln(7);
+        
 
         if(isset($psy->substance_use_current_methadon_list)&& $psy->substance_use_current_methadon_list!==""){
             $pdf->SetFont('Arial', 'B', 12);
