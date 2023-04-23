@@ -18187,7 +18187,7 @@ var staticRenderFns = [function () {
   return _c("label", {
     staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
-      "for": "social_health_situation_disability_text"
+      "for": "social_health_situation_disability"
     }
   }, [_c("strong", [_vm._v("INVALIDITA' ACCOMPAGNO /LEGGE 104/92 - I.68/99")])]);
 }, function () {

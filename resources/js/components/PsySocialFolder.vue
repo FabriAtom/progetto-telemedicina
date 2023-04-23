@@ -337,7 +337,7 @@
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
                                             <div class="item form-group">
-                                                <label for="social_health_situation_disability_text" class="col-form-label col-md-3 col-sm-2 label-align"><strong>INVALIDITA' ACCOMPAGNO /LEGGE 104/92 - I.68/99</strong></label>
+                                                <label for="social_health_situation_disability" class="col-form-label col-md-3 col-sm-2 label-align"><strong>INVALIDITA' ACCOMPAGNO /LEGGE 104/92 - I.68/99</strong></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="checkbox" name="social_health_situation_disability"  v-model="showInput7"/> 
                                                     <span v-if="showInput7">DAL</span>
