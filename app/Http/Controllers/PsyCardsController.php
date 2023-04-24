@@ -255,8 +255,6 @@ class PsyCardsController extends Controller
         $pdf->Ln(15);
         // $pdf->SetLineWidth(.1);
         $pdf->SetFont('Arial','',12);
-
-
         $pdf->SetDrawColor(128,0,0);
         $pdf->SetFillColor(0,78,155);
         $pdf->SetTextColor(255,255,255);
@@ -271,39 +269,37 @@ class PsyCardsController extends Controller
         $pdf->Cell(90,7,'Trattamenti Psichiatrici Precedenti');
         $pdf->Ln(7);
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(70,7,$psy->psychiatric_treatment);
-        $pdf->Ln(10);
-
+        $pdf->multiCell(180,7,$psy->psychiatric_treatment);
+        $pdf->Ln(5);
 
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(90,7,'Csm');
         $pdf->Ln(7);
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(70,7,$psy->csm);
-        $pdf->Ln(10);
-
+        $pdf->multiCell(180,7,$psy->csm);
+        $pdf->Ln(5);
 
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(90,7,'Spdc',0,0,'L',true);
+        $pdf->Cell(90,7,'Spdc');
         $pdf->Ln(7);
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(70,7,$psy->spdc);
-        $pdf->Ln(10);
+        $pdf->multiCell(190,7,$psy->spdc);
+        $pdf->Ln(5);
 
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(90,7,'Rems',0,0,'L',true);
         $pdf->Ln(7);
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(70,7,$psy->rems);
-        $pdf->Ln(10);
+        $pdf->multiCell(190,7,$psy->rems);
+        $pdf->Ln(5);
 
         
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(90,7,'Prison',0,0,'L',true);
         $pdf->Ln(7);
         $pdf->SetFont('Arial','',12);
-        $pdf->Cell(70,7,$psy->prison);
-        $pdf->Ln(12);
+        $pdf->multiCell(190,7,$psy->prison);
+        $pdf->Ln(7);
 
 
         $pdf->SetFont('Arial', 'B', 12);
@@ -315,10 +311,9 @@ class PsyCardsController extends Controller
             $pdf->SetFont('Arial', 'B', 12);
             $pdf->Cell(25,7,'Se Si,Chi?');
             $pdf->SetFont('Arial','',12);
-            $pdf->Cell(35,7,$psy->if_familiarity);
-            $pdf->Ln(5);
+            $pdf->multiCell(70,7,$psy->if_familiarity);
         };
-        $pdf->Ln(7);
+        $pdf->Ln(5);
 
         // $pdf->AddPage();
 
@@ -336,11 +331,11 @@ class PsyCardsController extends Controller
         // $pdf->Ln(10);
         $pdf->SetFont('Arial','',12);
         $pdf->Cell(50,7,$psy->substance_use);
-        $pdf->Ln(12);
+        $pdf->Ln(10);
 
 
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(75,7,'In Carico Presso Ser.D. Territoriali:');
+        $pdf->Cell(60,7,'In Carico Presso Ser.D. Terr:');
         $pdf->SetFont('Arial','',12);
         $pdf->Cell(35,7,$psy->in_charge_at_serd_territorial);
 
@@ -348,12 +343,13 @@ class PsyCardsController extends Controller
             $pdf->SetFont('Arial', 'B', 12);
             $pdf->Cell(20,7,'Quale?');
             $pdf->SetFont('Arial','',12);
-            $pdf->Cell(35,7,$psy->in_charge_at_serd_territorial_which);
+            $pdf->multiCell(70,7,$psy->in_charge_at_serd_territorial_which);
             $pdf->Ln(5);
         };
         $pdf->Ln(7);
 
 
+        $pdf->AddPage();
 
         $pdf->SetDrawColor(128,0,0);
         $pdf->SetFillColor(0,78,155);
