@@ -5,7 +5,7 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="x_panel">
                         <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:5px;">
-                            <h1><strong> Clinical Outcome in Routine Evaluation</strong></h1>
+                            <h1><strong>Clinical Outcome in Routine Evaluation</strong></h1>
                         </div>
 
                         <div class="x_content">

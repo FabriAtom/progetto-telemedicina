@@ -21857,7 +21857,7 @@ var staticRenderFns = [function () {
       "border-radius": "3px",
       "margin-top": "5px"
     }
-  }, [_c("h1", [_c("strong", [_vm._v(" Clinical Outcome in Routine Evaluation")])])]);
+  }, [_c("h1", [_c("strong", [_vm._v("Clinical Outcome in Routine Evaluation")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
