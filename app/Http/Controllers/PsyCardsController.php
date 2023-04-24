@@ -1011,235 +1011,218 @@ class PsyCardsController extends Controller
 // --------------------------------------------------------------------------
     // psySucideAssessment
 
-// public function printPdf(Request $request) {
+    public function printPdf(Request $request) {
 
-    //     $psy = psySucideAssessment::where('id',2)->first();
+        $psy = PsySuicideAssessment::where('id',2)->first();
 
-    //     $pdf = new PDFClass();
-    //     if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
-    //         header("Content-type: application/PDF");
-    //     } else {
-    //         header("Content-type: application/PDF");
-    //         header("Content-Type: a \pplication/pdf");
-    //     }
+        $pdf = new PDFClass();
+        if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+            header("Content-type: application/PDF");
+        } else {
+            header("Content-type: application/PDF");
+            header("Content-Type: a \pplication/pdf");
+        }
 
-    //     $pdf->SetAutoPageBreak(true, 30);
+        $pdf->SetAutoPageBreak(true, 30);
 
-    //     $pdf->SetTitle('PDF psySucideAssessment');
+        $pdf->SetTitle('PDF PsySuicideAssessment');
 
-    //     $pdf->AliasNbPages();
+        $pdf->AliasNbPages();
 
-    //     $pdf->AddPage();
+        $pdf->AddPage();
 
-    //     $pdf->SetFillColor(255,255,255);
-    //     $pdf->SetDrawColor(0,0,0);
-    //     $pdf->SetTextColor(0,0,0);
-    //     $pdf->Cell(0,6,'Scheda Psichiatrica',0,0,'C',true);
-    //     $pdf->Ln();
-    //     $pdf->Cell(0,6,'Brief Psychiatric Rating Scale BPRS',0,0,'C',true);
-    //     $pdf->Ln(15);
-    //     // $pdf->SetLineWidth(.1);
-    //     $pdf->SetFont('Arial','',12);
-
-
-    //     $pdf->SetDrawColor(128,0,0);
-    //     $pdf->SetFillColor(0,78,155);
-    //     $pdf->SetTextColor(255,255,255);
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Descrizioni',0,0,'L',true);
-    //     $pdf->Ln(10);
-    //     $pdf->SetFillColor(255,255,255);
-    //     $pdf->SetDrawColor(0,0,0);
-    //     $pdf->SetTextColor(0,0,0);
-
-    //     $pdf->Cell(0,6,'Preoccupazioni Somatiche',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->somatic_concern,0,2,'L',true);
-    //     $pdf->Ln(5);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+        $pdf->Cell(0,7,'SAMI',0,0,'C',true);
+        $pdf->Ln();
+        $pdf->Cell(0,7,'Suicide Assessment Manual For Inmates',0,0,'C',true);
+        $pdf->Ln();
+        $pdf->Cell(0,7,'Modulo Di Valutazione',0,0,'C',true);
+        $pdf->Ln(12);
+        // $pdf->SetLineWidth(.1);
+        $pdf->SetFont('Arial','',12);
 
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Ansia',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->anxiety,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Depressione',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->depression,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Rischio Di Suicidio',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->risk_of_suicide,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Sentimenti Di Colpa',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->feeling_of_guilt,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Ostilità',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->hostility,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,"Elevazione Del Tono Dell'Umore",0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->mood_elevation,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Grandiosità',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->grandeur,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,"Sospettosità",0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->suspiciousness,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Allucinazioni',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->hallucination,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,"Contenuto Insolito Del Pensiero",0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->unusual_content_of_thought,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Comportamento Bizzarro',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->bizarre_behavior,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,"Trascuratezza Della Cura Di Sé",0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->neglect_of_self_care,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Disorientamento',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->disorientation,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,"Disorganizzazione Concettuale",0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->conceptual_disorganization,0,2,'L',true);
-    //     $pdf->Ln(5);
-
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Appiattimento Affettivo',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->emotional_flattening,0,2,'L',true);
-    //     $pdf->Ln(5);
+        $pdf->SetDrawColor(128,0,0);
+        $pdf->SetFillColor(0,78,155);
+        $pdf->SetTextColor(255,255,255);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0,6,'Descrizioni',0,0,'L',true);
+        $pdf->Ln(10);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
 
 
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,"Isolamento Emotivo",0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->emotional_isolation,0,2,'L',true);
-    //     $pdf->Ln(5);
+        $pdf->Cell(65,7,'Stato Civile');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->marital_status);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,'Abuso Di Droga O Alcol');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(20,7,$psy->drug_and_alcohol_abuse);
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(65,7,'Aspetti Psichiatrici');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->psychiatric_aspect);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,'Tentativi Di Suicidio');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(20,7,$psy->suicide_attempt);
+        $pdf->Ln(10);
 
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Rallentamento Motorio',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->motor_slowdown,0,2,'L',true);
-    //     $pdf->Ln(5);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(65,7,'Suicidi In Famiglia');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->family_suicide);
+        
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,'Tentativi Nelle Istituzioni');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(20,7,$psy->suicide_attempt_in_institution);
+        $pdf->Ln(10);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,"Tensione Motoria",0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->motor_tension,0,2,'L',true);
-    //     $pdf->Ln(5);
+        
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(65,7,"Storia Dell'Arresto");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->arrest_story);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Mancanza Di Cooperazione',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->lack_of_cooperation,0,2,'L',true);
-    //     $pdf->Ln(5);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,'Comportamento Impulsivo');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(20,7,$psy->compulsive_behavior);
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(65,7,"Alto Profilo Del Delitto");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->high_crime_profile);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,' Intossicazione Attuale');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(20,7,$psy->current_intoxication);
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(65,7,"Preoccupazione Problemi");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->worry_about_life_problem);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,'Sentimenti Di Disperazione');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(20,7,$psy->feeling_of_hopelessness);
+        $pdf->Ln(10);
 
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,"Eccitamento",0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->excitement,0,2,'L',true);
-    //     $pdf->Ln(5);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(65,7,"Sintomi Psicotici");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->psychotic_symptom);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Distraibilità',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->distractibility,0,2,'L',true);
-    //     $pdf->Ln(5);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,'Sintomatologia Depressiva');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(20,7,$psy->depressive_symptom);
+        $pdf->Ln(10);
 
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,"Iperattività Motoria",0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->motor_hyperactivity,0,2,'L',true);
-    //     $pdf->Ln(5);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(65,7,'Piano di suicidio');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->suicide_plan);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,6,'Manierismi e posture',0,0,'L',true);
-    //     $pdf->Ln(8);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(0,10,$psy->mannerism_and_posture,0,2,'L',true);
-    //     $pdf->Ln(5);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Stress E Coping");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(20,7,$psy->stress_and_coping);
+        $pdf->Ln(10);
+
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(65,7,'Sostegno Sociale');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->social_support);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Recenti Perdite Importanti");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(20,7,$psy->recent_major_losse);
+        $pdf->Ln(10);
+
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(65,7,'Ideazione Suicidaria');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(35,7,$psy->suicidal_ideation);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(70,7,"Intento suicidario");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(20,7,$psy->suicidal_intent);
+        $pdf->Ln(15);
+
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(40,7,'Punteggio Totale:');
+        $pdf->Cell(20,7,$psy->total_score);
+        $pdf->Ln(12);
+
+
+
+
+
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(20,7,"Note/Altre Considerazioni:");
+        $pdf->Ln(8);
+        $pdf->SetFont('Arial','',12);
+        $pdf->multiCell(180,7,$psy->psy_suicide_note);
+        $pdf->Ln(5);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(65,7,'Rischio Imminente Di Suicidio:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(30,7,$psy->imminent_risk_of_suicide);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(75,7,"Raccomandazioni Di Monitoraggio:");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(30,7,$psy->monitoring_recommendation);
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(65,7,'Frequenza:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(30,7,$psy->frequency);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(75,7,'Invio Al Servizio Di Salute Mentale:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(30,7,$psy->referral_mental_health_service);
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0,7,'Commenti/Altre Raccomandazioni:');
+        $pdf->Ln(8);
+        $pdf->SetFont('Arial','',12);
+        $pdf->multiCell(180,7,$psy->comment);
+        $pdf->Ln(10);
 
 
         
-    //     $pdf->Output("stampa.pdf", "I");
-    //     exit();
-    // }
+        $pdf->Output("stampa.pdf", "I");
+        exit();
+    }
 // --------------------------------------------------------------------------
 // --------------------------------------------------------------------------
 
@@ -2159,288 +2142,288 @@ class PsyCardsController extends Controller
 
     // PsySurvey
 
-    public function printPdf(Request $request) {
+    // public function printPdf(Request $request) {
 
-        $psy = PsySurvey::where('id',2)->first();
+    //     $psy = PsySurvey::where('id',2)->first();
 
-        $pdf = new PDFClass();
-        if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
-            header("Content-type: application/PDF");
-        } else {
-            header("Content-type: application/PDF");
-            header("Content-Type: a \pplication/pdf");
-        }
+    //     $pdf = new PDFClass();
+    //     if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+    //         header("Content-type: application/PDF");
+    //     } else {
+    //         header("Content-type: application/PDF");
+    //         header("Content-Type: a \pplication/pdf");
+    //     }
 
-        $pdf->SetAutoPageBreak(true, 30);
+    //     $pdf->SetAutoPageBreak(true, 30);
 
-        $pdf->SetTitle('PDF PsySurvey');
+    //     $pdf->SetTitle('PDF PsySurvey');
 
-        $pdf->AliasNbPages();
+    //     $pdf->AliasNbPages();
 
-        $pdf->AddPage();
+    //     $pdf->AddPage();
 
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
-        $pdf->Cell(0,6,'Scheda Psichiatrica',0,0,'C',true);
-        $pdf->Ln();
-        $pdf->Cell(0,6,'Clinical Outcome In Routine Evaluation',0,0,'C',true);
-        $pdf->Ln(15);
-        $pdf->SetFont('Arial','',12);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Cell(0,6,'Scheda Psichiatrica',0,0,'C',true);
+    //     $pdf->Ln();
+    //     $pdf->Cell(0,6,'Clinical Outcome In Routine Evaluation',0,0,'C',true);
+    //     $pdf->Ln(15);
+    //     $pdf->SetFont('Arial','',12);
 
-        $pdf->SetDrawColor(128,0,0);
-        $pdf->SetFillColor(0,78,155);
-        $pdf->SetTextColor(255,255,255);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0,6,"Nell'Ultima Settimana",0,0,'L',true);
-        $pdf->Ln(10);
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,6,"Nell'Ultima Settimana",0,0,'L',true);
+    //     $pdf->Ln(10);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
 
-        $pdf->Ln(5);
+    //     $pdf->Ln(5);
 
-        $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(135,7,'Mi Sono Sentito Terribilmente Solo E Isolato:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->survey_heard_alone);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial','B',12);
+    //     $pdf->Cell(135,7,'Mi Sono Sentito Terribilmente Solo E Isolato:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(35,7,$psy->survey_heard_alone);
+    //     $pdf->Ln(12);
 
-        $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(135,7,'Mi Sono Sentito Teso, Ansioso O Nervoso:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_heard_anxious);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial','B',12);
+    //     $pdf->Cell(135,7,'Mi Sono Sentito Teso, Ansioso O Nervoso:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_heard_anxious);
+    //     $pdf->Ln(12);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,'Ho Sentito Di Avere Qualcuno A Cui Rivolgermi Per Un Sostegno:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->survey_support);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,'Ho Sentito Di Avere Qualcuno A Cui Rivolgermi Per Un Sostegno:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(35,7,$psy->survey_support);
+    //     $pdf->Ln(12);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,'Mi Sono Sentito A Posto Con Me Stesso:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_okay_with_myself);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,'Mi Sono Sentito A Posto Con Me Stesso:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_okay_with_myself);
+    //     $pdf->Ln(12);
 
         
 
 
 
-        $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(135,7,'Mi Sono Sentito Privo Di Energia E Di Entusiasmo:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->survey_devoid_of_energy);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial','B',12);
+    //     $pdf->Cell(135,7,'Mi Sono Sentito Privo Di Energia E Di Entusiasmo:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(35,7,$psy->survey_devoid_of_energy);
+    //     $pdf->Ln(12);
 
-        $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(135,7,'Sono Stato Violento Fisicamente Verso Altre Persone:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_violent_towards_others);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial','B',12);
+    //     $pdf->Cell(135,7,'Sono Stato Violento Fisicamente Verso Altre Persone:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_violent_towards_others);
+    //     $pdf->Ln(12);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,'Mi Sono Sentito Capace Di Adattarmi In Caso Di Difficoltà:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->survey_able_to_adapt);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,'Mi Sono Sentito Capace Di Adattarmi In Caso Di Difficoltà:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(35,7,$psy->survey_able_to_adapt);
+    //     $pdf->Ln(12);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,'Sono Stato Disturbato Da Malesseri O Altri Problemi Fisici:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_disturbed);
-        $pdf->Ln(12);
-
-
-
-
-        $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(135,7,'Ho Pensato A Farmi Del Male:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_hurt_me);
-        $pdf->Ln(12);
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,'Non Ho Avuto La Forza Di Parlare Con Le Altre Persone:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->survey_not_force_to_speak);
-        $pdf->Ln(12);
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"La Tensione E L'Ansia Mi Hanno Impedito Di Fare Cose Importanti:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_tension_prevented);
-        $pdf->Ln(12);
-
-        $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(135,7,'Sono Stato Contento Per Le Cose Che Ho Fatto:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_happy);
-        $pdf->Ln(12);
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Sono Stato Disturbato Da Pensieri E Stati D'Animo Indesiderati:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(35,7,$psy->survey_disturbed_by_thoughts);
-        $pdf->Ln(12);
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,'Ho Avuto Voglia Di Piangere:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_cry);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,'Sono Stato Disturbato Da Malesseri O Altri Problemi Fisici:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_disturbed);
+    //     $pdf->Ln(12);
 
 
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Ho Provato Panico E Terrore:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_felt_panic);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial','B',12);
+    //     $pdf->Cell(135,7,'Ho Pensato A Farmi Del Male:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_hurt_me);
+    //     $pdf->Ln(12);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Ho Progettato Di Mettere Fine Alla Mia Vita:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_planned_to_suicide);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,'Non Ho Avuto La Forza Di Parlare Con Le Altre Persone:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(35,7,$psy->survey_not_force_to_speak);
+    //     $pdf->Ln(12);
 
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"La Tensione E L'Ansia Mi Hanno Impedito Di Fare Cose Importanti:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_tension_prevented);
+    //     $pdf->Ln(12);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Mi Sono Sentito Sopraffatto Dai Miei Problemi:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_felt_overwhelmed);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial','B',12);
+    //     $pdf->Cell(135,7,'Sono Stato Contento Per Le Cose Che Ho Fatto:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_happy);
+    //     $pdf->Ln(12);
 
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Sono Stato Disturbato Da Pensieri E Stati D'Animo Indesiderati:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(35,7,$psy->survey_disturbed_by_thoughts);
+    //     $pdf->Ln(12);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Ho Avuto Difficoltà Ad Addormentarmi O Mantenere Il Sonno:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_difficulty_falling_asleep);
-        $pdf->Ln(12);
-
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Ho Provato Calore O Affetto Per Qualcuno:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_felt_affection);
-        $pdf->Ln(12);
-
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Mi è Stato Impossibile Mettere Da Parte I Miei Problemi:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_impossible_aside_problems);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,'Ho Avuto Voglia Di Piangere:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_cry);
+    //     $pdf->Ln(12);
 
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Sono Stato In Grado Di Fare Le Cose Che Dovevo Fare:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_able_to_do_things);
-        $pdf->Ln(12);
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Ho Provato Panico E Terrore:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_felt_panic);
+    //     $pdf->Ln(12);
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Ho Progettato Di Mettere Fine Alla Mia Vita:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_planned_to_suicide);
+    //     $pdf->Ln(12);
+
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Mi Sono Sentito Sopraffatto Dai Miei Problemi:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_felt_overwhelmed);
+    //     $pdf->Ln(12);
+
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Ho Avuto Difficoltà Ad Addormentarmi O Mantenere Il Sonno:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_difficulty_falling_asleep);
+    //     $pdf->Ln(12);
+
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Ho Provato Calore O Affetto Per Qualcuno:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_felt_affection);
+    //     $pdf->Ln(12);
+
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Mi è Stato Impossibile Mettere Da Parte I Miei Problemi:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_impossible_aside_problems);
+    //     $pdf->Ln(12);
 
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Ho Minacciato E Intimorito Qualcuno:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_threatened_someone);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Sono Stato In Grado Di Fare Le Cose Che Dovevo Fare:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_able_to_do_things);
+    //     $pdf->Ln(12);
 
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Mi Sono Sentito Affranto O Senza Speranza:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_felt_heartbroken);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Ho Minacciato E Intimorito Qualcuno:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_threatened_someone);
+    //     $pdf->Ln(12);
 
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Ho Pensato: 'Sarebbe Meglio Essere Morto'");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_thought_better_to_die);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Mi Sono Sentito Affranto O Senza Speranza:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_felt_heartbroken);
+    //     $pdf->Ln(12);
 
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Mi Sono Sentito Criticato Da Altre Persone:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_felt_critical);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Ho Pensato: 'Sarebbe Meglio Essere Morto'");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_thought_better_to_die);
+    //     $pdf->Ln(12);
 
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Ho Pensato Di Non Avere Amici:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_thought_had_no_friends);
-        $pdf->Ln(12);
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Mi Sono Sentito Infelice:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_felt_unhappy);
-        $pdf->Ln(12);
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Sono Stato Turbato Da Immagini O Ricordi Indesiderati:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_troubled_by_images);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Mi Sono Sentito Criticato Da Altre Persone:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_felt_critical);
+    //     $pdf->Ln(12);
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Mi Sono Sentito Irritato Mentre Ero Con Altre Persone:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_felt_irritated);
-        $pdf->Ln(12);
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Ho Pensato Di Non Avere Amici:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_thought_had_no_friends);
+    //     $pdf->Ln(12);
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Mi Sono Sentito Infelice:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_felt_unhappy);
+    //     $pdf->Ln(12);
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Sono Stato Turbato Da Immagini O Ricordi Indesiderati:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_troubled_by_images);
+    //     $pdf->Ln(12);
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Ho Pensato Che è Mia La Colpa Dei Problemi:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_thought_my_fault);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Mi Sono Sentito Irritato Mentre Ero Con Altre Persone:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_felt_irritated);
+    //     $pdf->Ln(12);
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Mi Sono Sentito Ottimista Per Il Mio Futuro:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_optimistic_about_the_future);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Ho Pensato Che è Mia La Colpa Dei Problemi:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_thought_my_fault);
+    //     $pdf->Ln(12);
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Ho Ottenuto Ciò Che Volevo:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_got_what_wanted);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Mi Sono Sentito Ottimista Per Il Mio Futuro:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_optimistic_about_the_future);
+    //     $pdf->Ln(12);
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Mi Sono Sentito Umiliato O Imbarazzato Da Altre Persone:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_felt_humiliated);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Ho Ottenuto Ciò Che Volevo:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_got_what_wanted);
+    //     $pdf->Ln(12);
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(135,7,"Mi Sono Fatto Del Male Fisicamente:");
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(65,7,$psy->survey_hurt_myself);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Mi Sono Sentito Umiliato O Imbarazzato Da Altre Persone:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_felt_humiliated);
+    //     $pdf->Ln(12);
+
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(135,7,"Mi Sono Fatto Del Male Fisicamente:");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(65,7,$psy->survey_hurt_myself);
+    //     $pdf->Ln(12);
 
 
     
-        $pdf->Output("stampa.pdf", "I");
-        exit();
-    }
+    //     $pdf->Output("stampa.pdf", "I");
+    //     exit();
+    // }
 // -----------------------------------------------------------------------
 
 // -----------------------------------------------------------------------
@@ -3927,11 +3910,9 @@ class PsyCardsController extends Controller
             }
             if($request->has('section')){
                 switch ($request->input('section')) {
-                        //  suicideAssessment
                     case 'sa':
                         return  $this->addSuicideAssessment($request,$_psyId);
                         break;
-                        // mentalHealth
                     case 'mh':
                         return $this->addMentalHealthDepartment($request,$_psyId);
                         break;

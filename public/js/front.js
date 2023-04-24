@@ -76337,14 +76337,7 @@ var routes = [{
   path: "/test2",
   name: "psyCard",
   component: _components_psyCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-}
-// {
-//   path:"/test3",
-//   name: "psyMentalHealthDepartment",
-//   component: psyMentalHealthDepartment,
-// }
-];
-
+}];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
 /***/ }),

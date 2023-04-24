@@ -68,8 +68,6 @@
                                         <span class="btn btn-success i2hBtn ml-3" @click="addPsyMentalHealthDepartment('mh')">{{btnMhSend}}</span>
                                     </div>
                                 </div>
-
-
                                 <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyMentalHealthDepartment('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                             </form>
                         </div>

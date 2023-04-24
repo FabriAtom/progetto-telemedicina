@@ -17,11 +17,7 @@ const routes = [
       name: "psyCard",
       component: psyCard,
     },
-    // {
-    //   path:"/test3",
-    //   name: "psyMentalHealthDepartment",
-    //   component: psyMentalHealthDepartment,
-    // }
+ 
 ];
 
 
