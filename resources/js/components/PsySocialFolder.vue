@@ -775,10 +775,16 @@ export default {
                             _wm.psyCardSf.legalStatusEntered = _SocialFold.legal_status_entered
                             _wm.psyCardSf.legalStatusEndOfSentence = _SocialFold.legal_status_end_of_sentence 
                             _wm.psyCardSf.legalStatusSecurityMeasure = _SocialFold.legal_status_security_measure
+                            _wm.psyCardSf.legalStatusSecurityMeasureText = _SocialFold.legal_status_security_measure_text
+
+
+
                             _wm.psyCardSf.legalStatusEndOfTheSentence = _SocialFold.legal_status_end_of_the_sentence
 
                             
                             _wm.psyCardSf.legalStatusRemsOther = _SocialFold.legal_status_rems_other
+                            _wm.psyCardSf.legalStatusRemsOtherText = _SocialFold.legal_status_rems_other_text
+
                             _wm.psyCardSf.legalStatusUncensored = _SocialFold.legal_status_uncensored 
 
                             _wm.psyCardSf.socialHealthSituationCsm = _SocialFold.social_health_situation_csm
