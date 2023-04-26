@@ -5057,14 +5057,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "communicate_italian",
-      value: "SI"
+      value: "1"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardMc.communicateItalian, "SI")
+      checked: _vm._q(_vm.psyCardMc.communicateItalian, "1")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardMc, "communicateItalian", "SI");
+        return _vm.$set(_vm.psyCardMc, "communicateItalian", "1");
       }
     }
   }), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c("br"), _vm._v(" "), _c("span", [_c("input", {
@@ -5077,14 +5077,14 @@ var render = function render() {
     attrs: {
       type: "radio",
       name: "communicate_italian",
-      value: "NO"
+      value: "0"
     },
     domProps: {
-      checked: _vm._q(_vm.psyCardMc.communicateItalian, "NO")
+      checked: _vm._q(_vm.psyCardMc.communicateItalian, "0")
     },
     on: {
       change: function change($event) {
-        return _vm.$set(_vm.psyCardMc, "communicateItalian", "NO");
+        return _vm.$set(_vm.psyCardMc, "communicateItalian", "0");
       }
     }
   }), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("input", {

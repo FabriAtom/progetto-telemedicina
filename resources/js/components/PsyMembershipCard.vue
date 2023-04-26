@@ -19,12 +19,12 @@
                                         <div class="item form-group">
                                             <div class="col-md-12 col-sm-12">
                                                 <span>
-                                                    <input type="radio" name="communicate_italian" value="SI" v-model="psyCardMc.communicateItalian"/>
+                                                    <input type="radio" name="communicate_italian" value="1" v-model="psyCardMc.communicateItalian"/>
                                                     <label for="communicate_italian" class="col-form-label col-md-3 col-sm-2 label-align"><strong>Comunica in italiano</strong></label>
                                                 </span>
                                                 <br>
                                                 <span>
-                                                    <input type="radio" name="communicate_italian" value="NO" v-model="psyCardMc.communicateItalian"/>
+                                                    <input type="radio" name="communicate_italian" value="0" v-model="psyCardMc.communicateItalian"/>
                                                     <label for="communicate" class="col-form-label col-md-2 col-sm-2 label-align"><strong>Comunica in</strong></label>
                                                     <input type="text" name="communicate" v-model="psyCardMc.communicate"/>
                                                 </span>
@@ -101,6 +101,9 @@
                                         </div>
                                     </div> 
                                 </div> 
+                            
+
+
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
