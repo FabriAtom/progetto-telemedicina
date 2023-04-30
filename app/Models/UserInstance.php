@@ -54,4 +54,19 @@ class UserInstance extends Model
     {
         return $this->hasMany(PsyCard::class,'user_instance_id');
     }
+
+    public function monitoringClinicalParameters()
+    {
+        return $this->hasMany(monitoringClinicalParameter::class);
+    }
+
+    public function TraceabilityTherapys()
+    {
+        return $this->hasMany(TraceabilityTherapy::class);
+    }
+
+    public function ClinicalParameterCollections()
+    {
+        return $this->hasMany(ClinicalParameterCollection::class);
+    }
 }

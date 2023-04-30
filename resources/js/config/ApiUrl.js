@@ -80,3 +80,49 @@ export const ADD_SURVEY= '/psy/addSurvey';
 export const GET_JSAT_BY_PSY_ID= '/psy/getJsatsByPsyId';
 export const ADD_JSAT= '/psy/addJsat';
 
+
+
+
+
+
+// export const GET_NURSING = '/therapies/getNursingTherapiesByUserIstanceId';
+// export const ADD_NURSING= '/therapies/addtNursingTherapies';
+
+
+
+// export const GET_TRACEABILITY = '/therapies/getTraceabilityTherapysByUserIstanceId';
+// export const ADD_TRACEABILITY= '/therapies/addTraceabilityTherapy';
+
+
+
+
+
+export const GET_TRACEABILITYS = '/therapies/getTraceabilityTherapys';
+export const GET_TRACEABILITY_BY_ID = '/therapies/getTraceabilityTherapyById';
+export const GET_TRACEABILITYS_BY_USER_ISTANCE_ID = '/therapies/getTraceabilityTherapysByUserIstanceId';
+export const ADD_TRACEABILITY= '/therapies/addTraceabilityTherapy';
+
+
+
+export const GET_NURSINGS = '/therapies/getNursingTherapys';
+export const GET_NURSING_BY_ID = '/therapies/getNursingTherapysById';
+export const GET_NURSINGS_BY_USER_ISTANCE_ID = '/therapies/getNursingTherapysByUserIstanceId';
+export const ADD_NURSING= '/therapies/addNursingTherapy';
+
+
+
+export const GET_MONITORINGS = '/therapies/getMonitoringClinicalParameters';
+export const GET_MONITORING_BY_ID = '/therapies/getMonitoringClinicalParameterById';
+export const GET_MONITORINGS_BY_USER_ISTANCE_ID = '/therapies/getMonitoringClinicalParametersByUserIstanceId';
+export const ADD_MONITORING= '/therapies/addMonitoringClinicalParameter';
+
+
+
+
+
+
+export const GET_COLLECTIONS = '/therapies/getClinicalParameterCollections';
+export const GET_COLLECTION_BY_ID = '/therapies/getClinicalParameterCollectionById';
+export const GET_COLLECTIONS_BY_USER_ISTANCE_ID = '/therapies/getClinicalParameterCollectionsByUserIstanceId';
+export const ADD_COLLECTION= '/therapies/addClinicalParameterCollection';
+

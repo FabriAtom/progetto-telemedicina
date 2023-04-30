@@ -18,6 +18,9 @@
       <PsySurvey/>
       <PsyJsat/>
 
+      <TraceabilityTherapy/>
+      <MonitoringClinicalParameter/>
+      <ClinicalParameterCollection/>
 
     </div>
     
@@ -28,6 +31,7 @@
 // import Home from '../pages/Home.vue';
 import psyCard from '../components/psyCard.vue';
 // import serdCard from '../components/serdCard.vue';
+// import PsySuicideAssessment from '../components/PsySuicideAssessment.vue';
 import PsyMentalHealthDepartment from '../components/PsyMentalHealthDepartment.vue';
 
 import PsyRehabilitationPsychiatricCard from '../components/PsyRehabilitationPsychiatricCard.vue';
@@ -39,7 +43,13 @@ import PsyMembershipCard from '../components/PsyMembershipCard.vue';
 import PsySurvey from '../components/PsySurvey.vue';
 import PsyJsat from '../components/PsyJsat.vue';
 
-// import PsySuicideAssessment from '../components/PsySuicideAssessment.vue';
+
+
+import TraceabilityTherapy from '../components/TraceabilityTherapy.vue';
+
+import MonitoringClinicalParameter from '../components/MonitoringClinicalParameter.vue';
+
+import ClinicalParameterCollection from '../components/ClinicalParameterCollection.vue';
 
 
 
@@ -59,6 +69,11 @@ export default {
     PsyMembershipCard,
     PsySurvey,
     PsyJsat,
+
+
+    TraceabilityTherapy,
+    MonitoringClinicalParameter,
+    ClinicalParameterCollection,
 }
 }
 </script>
