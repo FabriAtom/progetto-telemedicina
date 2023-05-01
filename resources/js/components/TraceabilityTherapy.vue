@@ -276,22 +276,7 @@ ul, li{
 
                 showInput:null,
                 showInput1:null,
-                doctorName:null,
-                motivationNotTakeMedicine:null,
-                motivationNotTakeMedicine:null,
-                medicalAlertNote:null,
-                doctorsPrescriptions:null,
-                doctorsPrescriptionsNote:null,
-                thDate:null,  
-                medicalAlert:null,
-                drug:null,
-
-
-                startTherapy:null, 
-                endTherapy:null,
-
-
-
+                
 
                 accessData:[
 
@@ -300,19 +285,10 @@ ul, li{
                     lastname => 'rossi',
                     
                 ],
-                // psyMhDoctorId:0,
-                // psyMhDoctorName:'',
-                // psyMhDoctorLastname:'',
-                // psyMhDate:null,
-                // psyCardId:null,
+           
                 date:new Date(),
 
-
-                // nursCardTh:{},
-                // psyCardSa:{},
-                // psyCardTsc
-
-                mainTitle:"nurs",
+                mainTitle:"psy",
                 firstSave:true,
                 tHSaved:false,
 
@@ -427,7 +403,7 @@ ul, li{
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
                         if(error == 0){
-                            // alert(JSON.stringify(response))
+                            alert(JSON.stringify(response))
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                         }
@@ -464,7 +440,7 @@ ul, li{
                     axios.get(url).then(response => {
                         // alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
-                        let _attempts=response.data.attempts;
+                        // let _attempts=response.data.attempts;
                         _wm.errNum=error;
 
                         if(error == 0){
@@ -475,17 +451,21 @@ ul, li{
                             //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
                             _wm.btnThSend="Aggiorna";
                             
-                            // let _TrachTerapy=response.data.TraceabilityTherapy;
-                                // _wm.user_istance_id=response.data.psyCard.id;
-                            // _wm.user_istance_id=_TrachTerapy.id;
-                            // _wm.psyMhDoctorId = _MentalInterview.id_doctor;
-                            // _wm.psyMhDoctorName = _MentalInterview.doctor_name;
-                            // _wm.psyMhDoctorLastname = _MentalInterview.doctor_lastname;
-
-                            // _wm.psyCardMh.psychologicalInterview =_MentalInterview.psychological_interview;
-                            // _wm.psyCardMh.hypothesisPsychopathologicalClassification = _MentalInterview.hypothesis_psychopathological_classification 	
-                            // _wm.psyCardMh.planningTypeOfIntervention = _MentalInterview.planning_type_of_intervention
-                            // _wm.psyCardMh.test = _MentalInterview.test 
+                            let _Trachterapy=response.data.TraceabilityTherapy;
+                                
+                                _wm.departmentCpc = _Trachterapy.department_cpc
+                                _wm.dateStartCollection = _Trachterapy.date_start_collection
+                                _wm.dateEndCollection = _Trachterapy.date_end_collection
+                                _wm.doctorPrescriber = _Trachterapy.doctor_prescriber
+                                _wm.cpcDate = _Trachterapy.cpc_date
+                                _wm.collectionPa = _Trachterapy.collection_pa
+                                _wm.collectionFc = _Trachterapy.collection_fc
+                                _wm.collectionSpo2 = _Trachterapy.collection_spo2
+                                _wm.collectionTc = _Trachterapy.collection_tc
+                                _wm.collectionOperatorSignature = _Trachterapy.collection_operator_signature
+                                _wm.folderPageCollection = _Trachterapy.folder_page_collection
+    
+    
         
                             _wm.allTraceabilityTherapys=response.data.allTraceabilityTherapys;
                             }else{

@@ -125,10 +125,10 @@ Route::post('/therapies/addTraceabilityTherapy', [App\Http\Controllers\NursingRe
 
 
 
-Route::get('/therapies/getNursingTherapys', [App\Http\Controllers\NursingRecordController::class,'index'])->name('getNursingTherapys');
-Route::get('/therapies/getNursingTherapyById/{id}', [App\Http\Controllers\NursingRecordController::class,'getNursingTherapyById'])->name('getNursingTherapyById');
-Route::get('/therapies/getNursingTherapysByUserIstanceId/{id}', [App\Http\Controllers\NursingRecordController::class,'getNursingTherapysByUserIstanceId'])->name('getNursingTherapysByUserIstanceId');
-Route::post('/therapies/addNursingTherapy', [App\Http\Controllers\NursingRecordController::class,'addNursingTherapy'])->name('addNursingTherapy');
+// Route::get('/therapies/getNursingTherapys', [App\Http\Controllers\NursingRecordController::class,'index'])->name('getNursingTherapys');
+// Route::get('/therapies/getNursingTherapyById/{id}', [App\Http\Controllers\NursingRecordController::class,'getNursingTherapyById'])->name('getNursingTherapyById');
+// Route::get('/therapies/getNursingTherapysByUserIstanceId/{id}', [App\Http\Controllers\NursingRecordController::class,'getNursingTherapysByUserIstanceId'])->name('getNursingTherapysByUserIstanceId');
+// Route::post('/therapies/addNursingTherapy', [App\Http\Controllers\NursingRecordController::class,'addNursingTherapy'])->name('addNursingTherapy');
 
 
 

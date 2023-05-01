@@ -90,10 +90,6 @@ export const ADD_JSAT= '/psy/addJsat';
 
 
 
-// export const GET_TRACEABILITY = '/therapies/getTraceabilityTherapysByUserIstanceId';
-// export const ADD_TRACEABILITY= '/therapies/addTraceabilityTherapy';
-
-
 
 
 
@@ -104,10 +100,10 @@ export const ADD_TRACEABILITY= '/therapies/addTraceabilityTherapy';
 
 
 
-export const GET_NURSINGS = '/therapies/getNursingTherapys';
-export const GET_NURSING_BY_ID = '/therapies/getNursingTherapysById';
-export const GET_NURSINGS_BY_USER_ISTANCE_ID = '/therapies/getNursingTherapysByUserIstanceId';
-export const ADD_NURSING= '/therapies/addNursingTherapy';
+// export const GET_NURSINGS = '/therapies/getNursingTherapys';
+// export const GET_NURSING_BY_ID = '/therapies/getNursingTherapysById';
+// export const GET_NURSINGS_BY_USER_ISTANCE_ID = '/therapies/getNursingTherapysByUserIstanceId';
+// export const ADD_NURSING= '/therapies/addNursingTherapy';
 
 
 

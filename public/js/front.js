@@ -1932,16 +1932,7 @@ __webpack_require__.r(__webpack_exports__);
       }, function (lastname) {
         return 'rossi';
       }],
-      // psyMhDoctorId:0,
-      // psyMhDoctorName:'',
-      // psyMhDoctorLastname:'',
-      // psyMhDate:null,
-      // psyCardId:null,
       date: new Date(),
-      // nursCardTh:{},
-      // psyCardSa:{},
-      // psyCardTsc
-
       mainTitle: "psy",
       firstSave: true,
       cPCSaved: false,
@@ -4755,18 +4746,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'TraceabilityTherapy',
   data: function data() {
-    var _ref;
-    return _ref = {
+    return {
       userName: 'mario',
       userLastName: 'rossi',
       userFullName: '',
@@ -4774,15 +4760,21 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       userId: 237,
       showInput: null,
       showInput1: null,
-      doctorName: null,
-      motivationNotTakeMedicine: null
-    }, _defineProperty(_ref, "motivationNotTakeMedicine", null), _defineProperty(_ref, "medicalAlertNote", null), _defineProperty(_ref, "doctorsPrescriptions", null), _defineProperty(_ref, "doctorsPrescriptionsNote", null), _defineProperty(_ref, "thDate", null), _defineProperty(_ref, "medicalAlert", null), _defineProperty(_ref, "drug", null), _defineProperty(_ref, "startTherapy", null), _defineProperty(_ref, "endTherapy", null), _defineProperty(_ref, "accessData", [function (id) {
-      return 31;
-    }, function (name) {
-      return 'mario';
-    }, function (lastname) {
-      return 'rossi';
-    }]), _defineProperty(_ref, "date", new Date()), _defineProperty(_ref, "mainTitle", "nurs"), _defineProperty(_ref, "firstSave", true), _defineProperty(_ref, "tHSaved", false), _defineProperty(_ref, "btnThSend", "Salva"), _defineProperty(_ref, "total", 0), _defineProperty(_ref, "allTraceabilityTherapys", null), _ref;
+      accessData: [function (id) {
+        return 31;
+      }, function (name) {
+        return 'mario';
+      }, function (lastname) {
+        return 'rossi';
+      }],
+      date: new Date(),
+      mainTitle: "psy",
+      firstSave: true,
+      tHSaved: false,
+      btnThSend: "Salva",
+      total: 0,
+      allTraceabilityTherapys: null
+    };
   },
   created: function created() {
     this.getTraceabilityTherapysByUserIstanceId(1);
@@ -4861,7 +4853,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           var _attempts = response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
-            // alert(JSON.stringify(response))
+            alert(JSON.stringify(response));
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
           }
@@ -4897,7 +4889,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
           // alert(JSON.stringify(response));
           var error = response.data.errorNumber;
-          var _attempts = response.data.attempts;
+          // let _attempts=response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
             _wm.mainTitle = "Aggiornamento Cartella nurs";
@@ -4905,19 +4897,18 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
               _wm.tHSaved = true;
               //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
               _wm.btnThSend = "Aggiorna";
-
-              // let _TrachTerapy=response.data.TraceabilityTherapy;
-              // _wm.user_istance_id=response.data.psyCard.id;
-              // _wm.user_istance_id=_TrachTerapy.id;
-              // _wm.psyMhDoctorId = _MentalInterview.id_doctor;
-              // _wm.psyMhDoctorName = _MentalInterview.doctor_name;
-              // _wm.psyMhDoctorLastname = _MentalInterview.doctor_lastname;
-
-              // _wm.psyCardMh.psychologicalInterview =_MentalInterview.psychological_interview;
-              // _wm.psyCardMh.hypothesisPsychopathologicalClassification = _MentalInterview.hypothesis_psychopathological_classification 	
-              // _wm.psyCardMh.planningTypeOfIntervention = _MentalInterview.planning_type_of_intervention
-              // _wm.psyCardMh.test = _MentalInterview.test 
-
+              var _Trachterapy = response.data.TraceabilityTherapy;
+              _wm.departmentCpc = _Trachterapy.department_cpc;
+              _wm.dateStartCollection = _Trachterapy.date_start_collection;
+              _wm.dateEndCollection = _Trachterapy.date_end_collection;
+              _wm.doctorPrescriber = _Trachterapy.doctor_prescriber;
+              _wm.cpcDate = _Trachterapy.cpc_date;
+              _wm.collectionPa = _Trachterapy.collection_pa;
+              _wm.collectionFc = _Trachterapy.collection_fc;
+              _wm.collectionSpo2 = _Trachterapy.collection_spo2;
+              _wm.collectionTc = _Trachterapy.collection_tc;
+              _wm.collectionOperatorSignature = _Trachterapy.collection_operator_signature;
+              _wm.folderPageCollection = _Trachterapy.folder_page_collection;
               _wm.allTraceabilityTherapys = response.data.allTraceabilityTherapys;
             } else {
               _wm.btnThSend = "Salva";
@@ -78713,7 +78704,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************!*\
   !*** ./resources/js/config/ApiUrl.js ***!
   \***************************************/
-/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_RATING_BY_PSY_ID, ADD_RATING, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_JSAT_BY_PSY_ID, ADD_JSAT, GET_TRACEABILITYS, GET_TRACEABILITY_BY_ID, GET_TRACEABILITYS_BY_USER_ISTANCE_ID, ADD_TRACEABILITY, GET_NURSINGS, GET_NURSING_BY_ID, GET_NURSINGS_BY_USER_ISTANCE_ID, ADD_NURSING, GET_MONITORINGS, GET_MONITORING_BY_ID, GET_MONITORINGS_BY_USER_ISTANCE_ID, ADD_MONITORING, GET_COLLECTIONS, GET_COLLECTION_BY_ID, GET_COLLECTIONS_BY_USER_ISTANCE_ID, ADD_COLLECTION, GET_HGTS, GET_HGT_BY_ID, GET_HGTS_BY_USER_ISTANCE_ID, ADD_HGT */
+/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_RATING_BY_PSY_ID, ADD_RATING, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_JSAT_BY_PSY_ID, ADD_JSAT, GET_TRACEABILITYS, GET_TRACEABILITY_BY_ID, GET_TRACEABILITYS_BY_USER_ISTANCE_ID, ADD_TRACEABILITY, GET_MONITORINGS, GET_MONITORING_BY_ID, GET_MONITORINGS_BY_USER_ISTANCE_ID, ADD_MONITORING, GET_COLLECTIONS, GET_COLLECTION_BY_ID, GET_COLLECTIONS_BY_USER_ISTANCE_ID, ADD_COLLECTION, GET_HGTS, GET_HGT_BY_ID, GET_HGTS_BY_USER_ISTANCE_ID, ADD_HGT */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78757,10 +78748,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_TRACEABILITY_BY_ID", function() { return GET_TRACEABILITY_BY_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_TRACEABILITYS_BY_USER_ISTANCE_ID", function() { return GET_TRACEABILITYS_BY_USER_ISTANCE_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_TRACEABILITY", function() { return ADD_TRACEABILITY; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_NURSINGS", function() { return GET_NURSINGS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_NURSING_BY_ID", function() { return GET_NURSING_BY_ID; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_NURSINGS_BY_USER_ISTANCE_ID", function() { return GET_NURSINGS_BY_USER_ISTANCE_ID; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_NURSING", function() { return ADD_NURSING; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MONITORINGS", function() { return GET_MONITORINGS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MONITORING_BY_ID", function() { return GET_MONITORING_BY_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MONITORINGS_BY_USER_ISTANCE_ID", function() { return GET_MONITORINGS_BY_USER_ISTANCE_ID; });
@@ -78834,17 +78821,16 @@ var ADD_JSAT = '/psy/addJsat';
 // export const GET_NURSING = '/therapies/getNursingTherapiesByUserIstanceId';
 // export const ADD_NURSING= '/therapies/addtNursingTherapies';
 
-// export const GET_TRACEABILITY = '/therapies/getTraceabilityTherapysByUserIstanceId';
-// export const ADD_TRACEABILITY= '/therapies/addTraceabilityTherapy';
-
 var GET_TRACEABILITYS = '/therapies/getTraceabilityTherapys';
 var GET_TRACEABILITY_BY_ID = '/therapies/getTraceabilityTherapyById';
 var GET_TRACEABILITYS_BY_USER_ISTANCE_ID = '/therapies/getTraceabilityTherapysByUserIstanceId';
 var ADD_TRACEABILITY = '/therapies/addTraceabilityTherapy';
-var GET_NURSINGS = '/therapies/getNursingTherapys';
-var GET_NURSING_BY_ID = '/therapies/getNursingTherapysById';
-var GET_NURSINGS_BY_USER_ISTANCE_ID = '/therapies/getNursingTherapysByUserIstanceId';
-var ADD_NURSING = '/therapies/addNursingTherapy';
+
+// export const GET_NURSINGS = '/therapies/getNursingTherapys';
+// export const GET_NURSING_BY_ID = '/therapies/getNursingTherapysById';
+// export const GET_NURSINGS_BY_USER_ISTANCE_ID = '/therapies/getNursingTherapysByUserIstanceId';
+// export const ADD_NURSING= '/therapies/addNursingTherapy';
+
 var GET_MONITORINGS = '/therapies/getMonitoringClinicalParameters';
 var GET_MONITORING_BY_ID = '/therapies/getMonitoringClinicalParameterById';
 var GET_MONITORINGS_BY_USER_ISTANCE_ID = '/therapies/getMonitoringClinicalParametersByUserIstanceId';
