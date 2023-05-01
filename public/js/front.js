@@ -1918,6 +1918,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ClinicalParameterCollection',
+  showInput5: true,
   data: function data() {
     return {
       userName: 'mario',
@@ -4761,6 +4762,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   showInput: false,
   showInput1: false,
   showInput2: false,
+  showInput3: false,
   doctorName: null,
   motivationNotTakeMedicine: null
 }, _defineProperty(_name$showInput$showI, "motivationNotTakeMedicine", null), _defineProperty(_name$showInput$showI, "medicalAlertNote", null), _defineProperty(_name$showInput$showI, "doctorsPrescriptions", null), _defineProperty(_name$showInput$showI, "doctorsPrescriptionsNote", null), _defineProperty(_name$showInput$showI, "thDate", null), _defineProperty(_name$showInput$showI, "medicalAlert", null), _defineProperty(_name$showInput$showI, "drug", null), _defineProperty(_name$showInput$showI, "startTherapy", null), _defineProperty(_name$showInput$showI, "endTherapy", null), _defineProperty(_name$showInput$showI, "data", function data() {
@@ -5962,7 +5964,37 @@ var render = function render() {
         _vm.dateEndCollection = $event.target.value;
       }
     }
-  })])])])]), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("table", [_vm._m(6), _vm._v(" "), _c("tr", [_c("td", [_vm._v("\n                                        " + _vm._s(_vm.cpcDate) + "\n                                    ")]), _vm._v(" "), _c("td", [_c("input", {
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "justify-content:end"
+  }, [_c("a", {
+    staticClass: "btn btn-info i2hBtnPrint",
+    staticStyle: {
+      "margin-left": "949px",
+      "margin-top": "20px",
+      "margin-bottom": "10px"
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.showInput5,
+      expression: "showInput5"
+    }],
+    attrs: {
+      type: "radio",
+      value: "true"
+    },
+    domProps: {
+      checked: _vm._q(_vm.showInput5, "true")
+    },
+    on: {
+      change: function change($event) {
+        _vm.showInput5 = "true";
+      }
+    }
+  })]), _vm._v("Aggiungi Modulo")])]), _vm._v(" "), _c("table", [_vm._m(5), _vm._v(" "), _c("tr", [_c("td", [_vm._v("\n                                        " + _vm._s(_vm.cpcDate) + "\n                                    ")]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -6054,7 +6086,99 @@ var render = function render() {
         _vm.collectionTc = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("td", [_vm._v("\n                                        " + _vm._s(_vm.collectionOperatorSignature) + "\n                                    ")])])]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("td", [_vm._v("\n                                        " + _vm._s(_vm.collectionOperatorSignature) + "\n                                    ")])]), _vm._v(" "), _vm.showInput5 ? _c("tr", [_c("td", [_vm._v("\n                                        " + _vm._s(_vm.cpcDate) + "\n                                    ")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.collectionPa,
+      expression: "collectionPa"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "text",
+      name: "collection_pa"
+    },
+    domProps: {
+      value: _vm.collectionPa
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.collectionPa = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.collectionFc,
+      expression: "collectionFc"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "text",
+      name: "collection_fc"
+    },
+    domProps: {
+      value: _vm.collectionFc
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.collectionFc = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.collectionSpo2,
+      expression: "collectionSpo2"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "text",
+      name: "collection_spo2"
+    },
+    domProps: {
+      value: _vm.collectionSpo2
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.collectionSpo2 = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.collectionTc,
+      expression: "collectionTc"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "text",
+      name: "collection_tc"
+    },
+    domProps: {
+      value: _vm.collectionTc
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.collectionTc = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("\n                                        " + _vm._s(_vm.collectionOperatorSignature) + "\n                                    ")])]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "50px"
@@ -6063,7 +6187,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", {
     staticClass: "item form-group"
-  }, [_vm._m(7), _vm._v(" "), _c("span", {
+  }, [_vm._m(6), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -6157,21 +6281,6 @@ var staticRenderFns = [function () {
       "for": "date_end_collection"
     }
   }, [_c("strong", [_c("h4", [_vm._v("data fine raccolta dati")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "justify-content:end"
-  }, [_c("a", {
-    staticClass: "btn btn-info i2hBtnPrint",
-    staticStyle: {
-      "margin-left": "949px",
-      "margin-top": "20px",
-      "margin-bottom": "10px"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-print"
-  }), _vm._v("Aggiungi Modulo")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -25118,8 +25227,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.showInput,
-      expression: "showInput"
+      value: _vm.showInput3,
+      expression: "showInput3"
     }],
     staticStyle: {
       width: "5rem"
@@ -25130,14 +25239,14 @@ var render = function render() {
       value: "true"
     },
     domProps: {
-      checked: _vm._q(_vm.showInput, "true")
+      checked: _vm._q(_vm.showInput3, "true")
     },
     on: {
       change: function change($event) {
-        _vm.showInput = "true";
+        _vm.showInput3 = "true";
       }
     }
-  }), _vm._v(" "), _vm.showInput2 ? _c("input", {
+  }), _vm._v(" "), _vm.showInput3 ? _c("input", {
     attrs: {
       type: "text",
       placeholder: "scrivi la motivazione",

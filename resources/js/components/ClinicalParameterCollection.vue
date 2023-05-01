@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                                 <div class="justify-content:end">
-                                    <a style="margin-left: 949px; margin-top: 20px; margin-bottom: 10px;" class="btn btn-info i2hBtnPrint"><i class="fa fa-print"></i>Aggiungi Modulo</a>
+                                    <a style="margin-left: 949px; margin-top: 20px; margin-bottom: 10px;" class="btn btn-info i2hBtnPrint"><i class="fa fa-print"><input type="radio" v-model="showInput5" value="true"></i>Aggiungi Modulo</a>
                                 </div>
 
                                
@@ -79,12 +79,30 @@
                                         <td>
                                             {{collectionOperatorSignature}}
                                         </td>
-                                        
                                     </tr>
-                               
-
-                                    
+                                    <tr v-if="showInput5">
+                                        <td>
+                                            {{cpcDate}}
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="collection_pa" v-model="collectionPa">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="collection_fc" v-model="collectionFc">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="collection_spo2" v-model="collectionSpo2">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="collection_tc" v-model="collectionTc">
+                                        </td>
+                                        <td>
+                                            {{collectionOperatorSignature}}
+                                        </td>
+                                    </tr>
                                 </table>
+
+
 
                                 <div class="row" style="margin-top:50px; ">
                                     <span class="col-md-12 col-sm-12">
@@ -173,6 +191,8 @@ ul, li{
     export default {
         
         name: 'ClinicalParameterCollection',
+
+        showInput5:true,
 
 
         data() {

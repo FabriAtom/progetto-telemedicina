@@ -120,8 +120,8 @@
                                             <input style="width: 5rem;" type="text" name="th_frequency" v-model="thFrequency">
                                         </td>
                                         <td>
-                                            <input style="width: 5rem;" type="radio" name="drugs_not_administered" v-model="showInput" value="true">
-                                            <input  type="text" placeholder="scrivi la motivazione"  rows="4" v-if="showInput2">
+                                            <input style="width: 5rem;" type="radio" name="drugs_not_administered" v-model="showInput3" value="true">
+                                            <input  type="text" placeholder="scrivi la motivazione"  rows="4" v-if="showInput3">
 
                                         </td>
 
@@ -244,6 +244,7 @@ ul, li{
         showInput:false,
         showInput1:false,
         showInput2:false,
+        showInput3:false,
 
         doctorName:null,
         motivationNotTakeMedicine:null,
