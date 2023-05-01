@@ -5,7 +5,7 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="x_panel">
                         <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:100px;">
-                            <h1>Modulo di raccolta dei parametri clinici come da prescrizione</h1>
+                            <h1>Modulo di raccolta <strong>HGT</strong></h1>
                         </div>
 
                         <div class="x_content">
@@ -13,85 +13,64 @@
                         <!-- <div class="tab-content" id="myTabContent"> -->
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left align-items-center">
 
-                                <div class="row" style="margin-top:20px;">
+                                <div class="row mt-4">
                                     <span class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="department_cpc" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>Reparto/Sezione</h4></strong></label>
+                                            <label for="department_hgt" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>Reparto/Sezione</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input style="margin-right: 10.6rem;" type="text" name="department_cpc" v-model="departmentCpc">
+                                                <input style="margin-right: 10.6rem;" type="text" name="department_hgt" v-model="departmentHgt">
                                             </span>
                                             <span class="item form-group">
-                                            <label for="doctor_prescriber" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Medico Prescrittore</h4></strong></label>
+                                            <label for="doctor_prescriber_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Medico Prescrittore</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="text" name="doctor_prescriber" v-model="doctorPrescriber">
+                                                <input type="text" name="doctor_prescriber_hgt" v-model="doctorPrescriberHgt">
                                             </span>
                                         </span>
                                         </span>
                                     </span>
                                 </div>
+                                
 
                                 <!-- <div class="row" style="margin-top:20px;"> -->
                                 <!-- </div> -->
-                                <div class="row mb-3" style="margin-top:20px;">
+                                <div class="row mb-3 mt-2">
                                     <div class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="date_start_collection" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>data inizio raccolta dati </h4></strong></label>
+                                            <label for="date_start_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>data inizio raccolta dati </h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input style="margin-right: 8rem;" type="date" name="date_start_collection" v-model="dateStartCollection">
+                                                <input style="margin-right: 8rem;" type="date" name="date_start_collection_hgt" v-model="dateStartCollectionHgt">
                                             </span>
-                                            <label for="date_end_collection" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>data fine raccolta dati</h4></strong></label>
+                                            <label for="date_end_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>data fine raccolta dati</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="date" name="date_end_collection" v-model="dateEndCollection">
+                                                <input type="date" name="date_end_collection_hgt" v-model="dateEndCollectionHgt">
                                             </span>
                                         </span>
                                     </div>
                                 </div>
-                                <div class="justify-content:end">
-                                    <a style="margin-left: 949px; margin-top: 20px; margin-bottom: 10px;" class="btn btn-info i2hBtnPrint"><i class="fa fa-print"></i>Aggiungi Modulo</a>
-                                </div>
 
-                               
+                              
                                 <table>
                                     <tr>
                                         <td>DATA</td>
-                                        <td>P.A.</td>
-                                        <td>F.C.</td>
-                                        <td>SPO2</td>
-                                        <td>T.C.</td>
+                                        <td>ORA</td>
+                                        <td>HGT</td>
                                         <td>FIRMA</td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            {{cpcDate}}
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_pa" v-model="collectionPa">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_fc" v-model="collectionFc">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_spo2" v-model="collectionSpo2">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_tc" v-model="collectionTc">
-                                        </td>
-                                        <td>
-                                            {{collectionOperatorSignature}}
-                                        </td>
-                                        
-                                    </tr>
-                               
-
-                                    
+                                   
+                                    <!--  
+                                    hgt_date
+                                    hours
+                                    hgt
+                                    hgt_operator_signature
+                                    -->        
                                 </table>
 
-                                <div class="row" style="margin-top:50px; ">
+                                <div class="row" style="margin-top:320px;">
                                     <span class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="folder_page_collection" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n</h4></strong></label>
+                                            <label for="hgt_folder_page" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="text" name="folder_page_collection" v-model="folderPageCollection">
+                                                <input type="text" name="hgt_folder_page" v-model="folderPageCollectionHgt">
                                             </span>
                                         </span>
                                     </span>
@@ -155,7 +134,6 @@ td, th {
   border: 2px solid #dddddd;
   text-align: center;
   padding: 6px;
-//   font-size: ;
 }
 
 ul, li{
@@ -171,8 +149,7 @@ ul, li{
     import Swal from 'sweetalert2';
 
     export default {
-        
-        name: 'ClinicalParameterCollection',
+        name: 'CollectionFormHgt',
 
 
         data() {
@@ -184,7 +161,16 @@ ul, li{
                 userId:237,
 
 
-            
+                departmentHgt:null,
+                dateStartCollectionHgt:null,
+                dateEndCollectionHgt:null,
+                doctorPrescriberHgt:null,
+                hgtDate:null,  
+                hours:null,
+                hgt:null,
+                hgtOperatorSignature:null, 
+                folderPageCollectionHgt:null,
+                
 
                 accessData:[
 
@@ -212,18 +198,18 @@ ul, li{
                 
                 btnCpcSend:"Salva",
                 total:0,               
-                allClinicalParameterCollections:null,
+                allCollectionFormHgts:null,
             }
         },
 
         created: function () {
-            this.getClinicalParameterCollectionsByUserIstanceId(1)
+            this.getCollectionFormHgtsByUserIstanceId(1)
         },
 
 
         methods: {
 
-            printClinicalParameterCollection(printPdf){
+            printCollectionFormHgt(printPdf){
 
                 let v_myWindow
 
@@ -237,7 +223,7 @@ ul, li{
             
 
 
-            addClinicalParameterCollection(panel){
+            addCollectionFormHgt(panel){
                 let _wm = this;
                 let _panel=panel;
                 let _errors=0;
@@ -256,9 +242,9 @@ ul, li{
                 form.append('doctorName', 'mario');
                 form.append('doctorUserName', 'rossi');
 
-                if(_panel=='cpc'){
+                if(_panel=='mcp'){
 
-                    if(!this.cPCSaved){
+                    if(!this.nTSaved){
                         form.append('action', 'store');
                     }else{
                         form.append('action', 'update');
@@ -270,7 +256,7 @@ ul, li{
                             _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
                         }
                     }
-                    form.append('section', 'cpc');
+                    form.append('section', 'mcp');
                     if(!this.isObjEmpty(this.nursCardTh)){
                         let _nurs=JSON.stringify(this.nursCardTh);
                         form.append('NursingTherapies', _nurs);
@@ -290,7 +276,7 @@ ul, li{
                                     'Aggiornata correttamente',
                                     'success'
                                 )
-                                this.getClinicalParameterCollectionsByUserIstanceId(this.userInstance);
+                                this.getCollectionFormHgtsByUserIstanceId(this.userInstance);
                             }else{
                                 // eventBus.$emit('errorEvent', error, _attempts);
                                 Swal.fire(
@@ -312,7 +298,7 @@ ul, li{
                 }
             },
 
-            getClinicalParameterCollections(){
+            getCollectionFormHgts(){
                 let _wm = this;
                 try {
                     axios.get(actions.GET_COLLECTIONS).then(response => {
@@ -329,7 +315,7 @@ ul, li{
                     throw error
                 }
             },
-            getClinicalParameterCollectionById(id){
+            getCollectionFormHgtById(id){
                 let _wm = this;
                 try {
                     let url=actions.GET_COLLECTION_BY_ID+'/'+id;
@@ -348,7 +334,7 @@ ul, li{
                 }
             },
 
-            getClinicalParameterCollectionsByUserIstanceId(id){
+            getCollectionFormHgtsByUserIstanceId(id){
                 let _wm = this;
                 id=36;
                 try {
@@ -362,38 +348,21 @@ ul, li{
                         if(error == 0){
                         
                             _wm.mainTitle="Aggiornamento Cartella nurs";
-                            if(response.data.ClinicalParameterCollection){
-                            _wm.cPCSaved=true;
-                            _wm.btnCpcSend="Aggiorna";
+                            if(response.data.CollectionFormHgt){
+                            _wm.hGTSaved=true;
+                            _wm.btnHgtSend="Aggiorna";
                             
-                            let _Nursvarible=response.data.ClinicalParameterCollection;
+                            let _NursTerapy=response.data.CollectionFormHgt;
                                 
-                            _wm.departmentCpc = _Nursvarible.department_cpc
-                            _wm.dateStartCollection = _Nursvarible.date_start_collection
-                            _wm.dateEndCollection = _Nursvarible.date_end_collection
-                            _wm.doctorPrescriber = _Nursvarible.doctor_prescriber
-                            _wm.cpcDate = _Nursvarible.cpc_date
-                            _wm.collectionPa = _Nursvarible.collection_pa
-                            _wm.collectionFc = _Nursvarible.collection_fc
-                            _wm.collectionSpo2 = _Nursvarible.collection_spo2
-                            _wm.collectionTc = _Nursvarible.collection_tc
-                            _wm.collectionOperatorSignature = _Nursvarible.collection_operator_signature
-                            _wm.folderPageCollection = _Nursvarible.folder_page_collection
 
-
-
-
-
-
-
-                            _wm.allClinicalParameterCollections=response.data.allClinicalParameterCollections;
+                            _wm.allCollectionFormHgts=response.data.allCollectionFormHgts;
                             }else{
-                                _wm.btnCpcSend="Salva";
+                                _wm.btnNhSend="Salva";
                             }
                             
                             _wm.firstSave=false;
                         }else if(error == 7){
-                            _wm.btnCpcSend="Salva";
+                            _wm.btnHgtSend="Salva";
                             _wm.firstSave=true;
                         }
                         else{

@@ -55,6 +55,10 @@ class UserInstance extends Model
         return $this->hasMany(PsyCard::class,'user_instance_id');
     }
 
+
+
+
+
     public function monitoringClinicalParameters()
     {
         return $this->hasMany(monitoringClinicalParameter::class);
@@ -68,5 +72,10 @@ class UserInstance extends Model
     public function ClinicalParameterCollections()
     {
         return $this->hasMany(ClinicalParameterCollection::class);
+    }
+    
+    public function CollectionFormHgts()
+    {
+        return $this->hasMany(CollectionFormHgt::class);
     }
 }

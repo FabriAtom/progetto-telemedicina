@@ -33,7 +33,7 @@
                                 <div class="ml-3 mt-4">
                                     <h5>Visto il mattinale, verificati i presenti segnalati e le relative terapie prescritte dai medici per ogni detenuto, <br> si attesta quanto segue:</h5>
                                     
-                                    <h2>Terapia <strong>non somministata </strong>al paziente:</h2>
+                                    <h2 class="mt-4 mb-4">Terapia <strong>non somministata </strong>al paziente:</h2>
                                 </div>
 
                                 <!-- <div class="row" style="margin-top:20px;">
@@ -67,11 +67,11 @@
                                             
                                         </tr>
                                         <tr>
-                                            <td>Farmaco</td>
-                                            <td>Dal</td>
-                                            <td>Al</td>
-                                            <td>Ora</td>
-                                            <td>Frequenza</td>
+                                            <td>FARMACO</td>
+                                            <td>DAL</td>
+                                            <td>AL</td>
+                                            <td>ORA</td>
+                                            <td>FREQUENZA</td>
 
                                         </tr>
                                         <tr>

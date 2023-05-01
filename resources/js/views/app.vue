@@ -21,6 +21,8 @@
       <TraceabilityTherapy/>
       <MonitoringClinicalParameter/>
       <ClinicalParameterCollection/>
+      <CollectionFormHgt/>
+
 
     </div>
     
@@ -51,6 +53,8 @@ import MonitoringClinicalParameter from '../components/MonitoringClinicalParamet
 
 import ClinicalParameterCollection from '../components/ClinicalParameterCollection.vue';
 
+import CollectionFormHgt from '../components/CollectionFormHgt.vue';
+
 
 
 
@@ -74,6 +78,7 @@ export default {
     TraceabilityTherapy,
     MonitoringClinicalParameter,
     ClinicalParameterCollection,
+    CollectionFormHgt,
 }
 }
 </script>

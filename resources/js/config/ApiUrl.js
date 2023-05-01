@@ -126,3 +126,12 @@ export const GET_COLLECTION_BY_ID = '/therapies/getClinicalParameterCollectionBy
 export const GET_COLLECTIONS_BY_USER_ISTANCE_ID = '/therapies/getClinicalParameterCollectionsByUserIstanceId';
 export const ADD_COLLECTION= '/therapies/addClinicalParameterCollection';
 
+
+
+
+
+export const GET_HGTS = '/therapies/getCollectionFormHgts';
+export const GET_HGT_BY_ID = '/therapies/getCollectionFormHgtById';
+export const GET_HGTS_BY_USER_ISTANCE_ID = '/therapies/getCollectionFormHgtsByUserIstanceId';
+export const ADD_HGT= '/therapies/addCollectionFormHgt';
+

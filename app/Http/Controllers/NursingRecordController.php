@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 
-use App\Models\NursingTherapy;
 use App\Models\TraceabilityTherapy;
+use App\Models\NursingTherapy;
 use App\Models\monitoringClinicalParameter;
 use App\Models\ClinicalParameterCollection;
+use App\Models\CollectionFormHgt;
 
 
 use App\Classes\PDFClass;
@@ -22,8 +23,8 @@ class NursingRecordController extends Controller
 {
 
     public function index(Request $request){
-        // $result= TraceabilityTherapy::all();
-        $result= NursingTherapy::all();
+        $result= TraceabilityTherapy::all();
+        // $result= NursingTherapy::all();
         if($result){
             return [ "errorNumber"=>0,"message"=>"OK","remarks" => $result];
         }else{
@@ -195,6 +196,7 @@ class NursingRecordController extends Controller
 
 
 
+
     public function getClinicalParameterCollectionById(Request $request){
         // return 'mario';
         if (ClinicalParameterCollection::where('user_instance_id', '=', 36)->exists()) {
@@ -218,15 +220,6 @@ class NursingRecordController extends Controller
             return ['errorNumber'=>5000,'descrizione'=>'no records found'];
         }
     }
-
-
-
-
-
-
-
-
-
     
     public function getCurrentClinicalParameterCollectionById(Request $request){
         if (ClinicalParameterCollection::where('user_instance_id', '=',36)->exists()) {
@@ -237,6 +230,67 @@ class NursingRecordController extends Controller
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
         }  
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    public function getCollectionFormHgtById(Request $request){
+        // return 'mario';
+        if (CollectionFormHgt::where('user_instance_id', '=', 36)->exists()) {
+            $query=CollectionFormHgt::where('user_instance_id', '=',36);
+            $CollectionFormHgt=$query->get();
+
+            return [ "errorNumber"=>0,"message"=>"OK","CollectionFormHgt" => $CollectionFormHgt,"CollectionFormHgtsId" => 36];
+        }else{
+            return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        }
+    }
+
+    public function getCollectionFormHgtsByUserIstanceId(Request $request){
+
+        if (CollectionFormHgt::where('user_instance_id', '=', 36)->exists()) {
+            $query=CollectionFormHgt::where('user_instance_id', '=', 36);
+            $allCollectionFormHgts=$query->first();
+
+            return [ "errorNumber"=>0,"message"=>"OK","CollectionFormHgt" => $allCollectionFormHgts,"CollectionFormHgtsId" => 36];
+        }else{
+            return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        }
+    }
+    
+    public function getCurrentCollectionFormHgtById(Request $request){
+        if (CollectionFormHgt::where('user_instance_id', '=',36)->exists()) {
+            $query=CollectionFormHgt::where('user_instance_id', '=',36)->orderBy('th_date', 'desc');
+            $CollectionFormHgt=$query->first();
+            return [ "errorNumber"=>0,"message"=>"OK","CurrentCollectionFormHgt" => $CollectionFormHgt,"CollectionFormHgtsId" => 36];
+        }else{
+            return ['errorNumber'=>7,'descrizione'=>'no records found'];
+        }  
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -301,8 +355,18 @@ class NursingRecordController extends Controller
                                     return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
                                 }
                                 break;
+                                // 
                             case 'cpc':
                                 $_nurs = $this->addClinicalParameterCollection($request);
+                                if($_nurs){
+                                    $_nursId=$_nurs->id;
+                                }
+                                else{
+                                    return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
+                                }
+                                break;
+                            case 'cpc':
+                                $_nurs = $this->addCollectionFormHgt($request);
                                 if($_nurs){
                                     $_nursId=$_nurs->id;
                                 }
@@ -341,6 +405,9 @@ class NursingRecordController extends Controller
                         break; 
                     case 'th':
                         return  $this->addClinicalParameterCollection($request,$_nursId);
+                        break; 
+                    case 'th':
+                        return  $this->addCollectionFormHgt($request,$_nursId);
                         break;    
                 }
             }else{
@@ -358,9 +425,9 @@ class NursingRecordController extends Controller
 
 
 
-    public function addNursingTherapies(Request $request,$nursId){
+    public function addNursingTherapy(Request $request,$nursId){
         $userInstanceId=$request->input("user_instance_id",36);
-        $_nursingTh = new addNursingTherapies;
+        $_nursingTh = new NursingTherapy;
         $now=date("Y-m-d H:i:s");
         $_nursingTh->user_instance_id=$nursId;
         if($request->has('doctorId')){
@@ -428,6 +495,112 @@ class NursingRecordController extends Controller
 
         if($_nursingTh){
             return ["errorNumber"=>0,"message"=>"ok","th"=>$_nursingTh];
+
+        }else{
+            return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function addClinicalParameterCollection(request $request){
+        $userInstanceId=$request->input("user_instance_id",36);
+        $_nursingCpc = new ClinicalParameterCollection;
+        $now=date("Y-m-d H:i:s");
+        $_nursingCpc->user_instance_id=$userInstanceId;
+        if($request->has('doctorId')){
+            $_nursingCpc->id_doctor=$request->input('doctorId');
+        }
+        if($request->has('doctorName')){
+            $_nursingCpc->doctor_name=$request->input('doctorName');
+        }
+        if($request->has('doctorUserName')){
+            $_nursingCpc->doctor_lastname=$request->input('doctorUserName');
+        }
+        $_nursingCpc->cpc_date=$now;
+
+
+        if($request->has('ClinicalParameterCollection')){
+            $psyCardArr = json_decode($request->input('ClinicalParameterCollection'), true);
+            if(array_key_exists('departmentCpc',$psyCardArr)){
+                $_nursingCpc->department_cpc=$psyCardArr['departmentCpc'];
+            }
+            if(array_key_exists('dateStartCollection',$psyCardArr)){
+                $_nursingCpc->date_start_collection=$psyCardArr['dateStartCollection'];
+            }
+            if(array_key_exists('dateEndCollection',$psyCardArr)){
+                $_nursingCpc->date_end_collection=$psyCardArr['dateEndCollection'];
+            }
+            if(array_key_exists('doctorPrescriber',$psyCardArr)){
+                $_nursingCpc->doctor_prescriber=$psyCardArr['doctorPrescriber'];
+            }
+            if(array_key_exists('cpcDate',$psyCardArr)){
+                $_nursingCpc->cpc_date=$psyCardArr['cpcDate'];
+            }
+            if(array_key_exists('collectionPa',$psyCardArr)){
+                $_nursingCpc->collection_pa=$psyCardArr['collectionPa'];
+            }
+            if(array_key_exists('collectionFc',$psyCardArr)){
+                $_nursingCpc->collection_fc=$psyCardArr['collectionFc'];
+            }
+            if(array_key_exists('collectionSpo2',$psyCardArr)){
+                $_nursingCpc->collection_spo2=$psyCardArr['collectionSpo2'];
+            }
+            if(array_key_exists('collectionTc',$psyCardArr)){
+                $_nursingCpc->collection_tc=$psyCardArr['collectionTc'];
+            }
+            if(array_key_exists('collectionOperatorSignature',$psyCardArr)){
+                $_nursingCpc->collection_operator_signature=$psyCardArr['collectionOperatorSignature'];
+            }
+            if(array_key_exists('folderPageCollection',$psyCardArr)){
+                $_nursingCpc->folder_page_collection=$psyCardArr['folderPageCollection'];
+            }
+        }
+        $_nursingCpc->save();
+
+        if($_nursingCpc){
+            return ["errorNumber"=>0,"message"=>"ok","th"=>$_nursingCpc];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];

@@ -1925,19 +1925,6 @@ __webpack_require__.r(__webpack_exports__);
       userFullName: '',
       userInstanceId: 36,
       userId: 237,
-      doctorName: null,
-      department: null,
-      departmentCpc: null,
-      dateStartCollection: null,
-      dateEndCollection: null,
-      doctorPrescriber: null,
-      cpcDate: null,
-      collectionPa: null,
-      collectionFc: null,
-      collectionSpo2: null,
-      collectionTc: null,
-      collectionOperatorSignature: null,
-      folderPageCollection: null,
       accessData: [function (id) {
         return 31;
       }, function (name) {
@@ -1992,8 +1979,8 @@ __webpack_require__.r(__webpack_exports__);
       form.append('doctorId', 36);
       form.append('doctorName', 'mario');
       form.append('doctorUserName', 'rossi');
-      if (_panel == 'mcp') {
-        if (!this.nTSaved) {
+      if (_panel == 'cpc') {
+        if (!this.cPCSaved) {
           form.append('action', 'store');
         } else {
           form.append('action', 'update');
@@ -2005,7 +1992,7 @@ __webpack_require__.r(__webpack_exports__);
             _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
           }
         }
-        form.append('section', 'mcp');
+        form.append('section', 'cpc');
         if (!this.isObjEmpty(this.nursCardTh)) {
           var _nurs = JSON.stringify(this.nursCardTh);
           form.append('NursingTherapies', _nurs);
@@ -2080,16 +2067,231 @@ __webpack_require__.r(__webpack_exports__);
           if (error == 0) {
             _wm.mainTitle = "Aggiornamento Cartella nurs";
             if (response.data.ClinicalParameterCollection) {
-              _wm.mCPSaved = true;
-              _wm.btnMcpSend = "Aggiorna";
-              var _NursTerapy = response.data.ClinicalParameterCollection;
+              _wm.cPCSaved = true;
+              _wm.btnCpcSend = "Aggiorna";
+              var _Nursvarible = response.data.ClinicalParameterCollection;
+              _wm.departmentCpc = _Nursvarible.department_cpc;
+              _wm.dateStartCollection = _Nursvarible.date_start_collection;
+              _wm.dateEndCollection = _Nursvarible.date_end_collection;
+              _wm.doctorPrescriber = _Nursvarible.doctor_prescriber;
+              _wm.cpcDate = _Nursvarible.cpc_date;
+              _wm.collectionPa = _Nursvarible.collection_pa;
+              _wm.collectionFc = _Nursvarible.collection_fc;
+              _wm.collectionSpo2 = _Nursvarible.collection_spo2;
+              _wm.collectionTc = _Nursvarible.collection_tc;
+              _wm.collectionOperatorSignature = _Nursvarible.collection_operator_signature;
+              _wm.folderPageCollection = _Nursvarible.folder_page_collection;
               _wm.allClinicalParameterCollections = response.data.allClinicalParameterCollections;
+            } else {
+              _wm.btnCpcSend = "Salva";
+            }
+            _wm.firstSave = false;
+          } else if (error == 7) {
+            _wm.btnCpcSend = "Salva";
+            _wm.firstSave = true;
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    isObjEmpty: function isObjEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CollectionFormHgt.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CollectionFormHgt.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/ApiUrl */ "./resources/js/config/ApiUrl.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CollectionFormHgt',
+  data: function data() {
+    return {
+      userName: 'mario',
+      userLastName: 'rossi',
+      userFullName: '',
+      userInstanceId: 36,
+      userId: 237,
+      departmentHgt: null,
+      dateStartCollectionHgt: null,
+      dateEndCollectionHgt: null,
+      doctorPrescriberHgt: null,
+      hgtDate: null,
+      hours: null,
+      hgt: null,
+      hgtOperatorSignature: null,
+      folderPageCollectionHgt: null,
+      accessData: [function (id) {
+        return 31;
+      }, function (name) {
+        return 'mario';
+      }, function (lastname) {
+        return 'rossi';
+      }],
+      // psyMhDoctorId:0,
+      // psyMhDoctorName:'',
+      // psyMhDoctorLastname:'',
+      // psyMhDate:null,
+      // psyCardId:null,
+      date: new Date(),
+      // nursCardTh:{},
+      // psyCardSa:{},
+      // psyCardTsc
+
+      mainTitle: "psy",
+      firstSave: true,
+      cPCSaved: false,
+      btnCpcSend: "Salva",
+      total: 0,
+      allCollectionFormHgts: null
+    };
+  },
+  created: function created() {
+    this.getCollectionFormHgtsByUserIstanceId(1);
+  },
+  methods: {
+    printCollectionFormHgt: function printCollectionFormHgt(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    addCollectionFormHgt: function addCollectionFormHgt(panel) {
+      var _this = this;
+      var _wm = this;
+      var _panel = panel;
+      var _errors = 0;
+      var _errorTitle = "Scheda";
+      var _errorDescription = "Non aggiornata";
+      var form = new FormData();
+      form.append('userName', this.userName);
+      form.append('userLastName', this.userLastName);
+      form.append('userFullName', this.userFullName);
+      form.append('userInstance', this.userInstance);
+      form.append('userId', this.userId);
+      // form.append('doctorId', this.accessData.id);
+      // form.append('doctorName', this.accessData.name);
+      // form.append('doctorUserName', this.accessData.lastname);
+      form.append('doctorId', 36);
+      form.append('doctorName', 'mario');
+      form.append('doctorUserName', 'rossi');
+      if (_panel == 'mcp') {
+        if (!this.nTSaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+          if (this.userIstanceId) {
+            form.append('nursId', this.userIstanceId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+        }
+        form.append('section', 'mcp');
+        if (!this.isObjEmpty(this.nursCardTh)) {
+          var _nurs = JSON.stringify(this.nursCardTh);
+          form.append('NursingTherapies', _nurs);
+        }
+      }
+      if (_errors == 0) {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_COLLECTION"], form).then(function (response) {
+            var error = response.data.errorNumber;
+            var _attempts = response.data.attempts;
+            _wm.errNum = error;
+            if (error == 0) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
+              _this.getCollectionFormHgtsByUserIstanceId(_this.userInstance);
+            } else {
+              // eventBus.$emit('errorEvent', error, _attempts);
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
+            }
+          });
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
+      }
+    },
+    getCollectionFormHgts: function getCollectionFormHgts() {
+      var _wm = this;
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_COLLECTIONS"]).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            alert(JSON.stringify(response));
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getCollectionFormHgtById: function getCollectionFormHgtById(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_COLLECTION_BY_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            alert(JSON.stringify(response));
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getCollectionFormHgtsByUserIstanceId: function getCollectionFormHgtsByUserIstanceId(id) {
+      var _wm = this;
+      id = 36;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_COLLECTIONS_BY_USER_ISTANCE_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          // alert(JSON.stringify(response));
+          var error = response.data.errorNumber;
+          // let _attempts=response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            _wm.mainTitle = "Aggiornamento Cartella nurs";
+            if (response.data.CollectionFormHgt) {
+              _wm.hGTSaved = true;
+              _wm.btnHgtSend = "Aggiorna";
+              var _NursTerapy = response.data.CollectionFormHgt;
+              _wm.allCollectionFormHgts = response.data.allCollectionFormHgts;
             } else {
               _wm.btnNhSend = "Salva";
             }
             _wm.firstSave = false;
           } else if (error == 7) {
-            _wm.btnMcpSend = "Salva";
+            _wm.btnHgtSend = "Salva";
             _wm.firstSave = true;
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
@@ -5572,10 +5774,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_TraceabilityTherapy_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/TraceabilityTherapy.vue */ "./resources/js/components/TraceabilityTherapy.vue");
 /* harmony import */ var _components_MonitoringClinicalParameter_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/MonitoringClinicalParameter.vue */ "./resources/js/components/MonitoringClinicalParameter.vue");
 /* harmony import */ var _components_ClinicalParameterCollection_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/ClinicalParameterCollection.vue */ "./resources/js/components/ClinicalParameterCollection.vue");
+/* harmony import */ var _components_CollectionFormHgt_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/CollectionFormHgt.vue */ "./resources/js/components/CollectionFormHgt.vue");
 // import Home from '../pages/Home.vue';
 
 // import serdCard from '../components/serdCard.vue';
 // import PsySuicideAssessment from '../components/PsySuicideAssessment.vue';
+
 
 
 
@@ -5603,7 +5807,8 @@ __webpack_require__.r(__webpack_exports__);
     PsyJsat: _components_PsyJsat_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
     TraceabilityTherapy: _components_TraceabilityTherapy_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
     MonitoringClinicalParameter: _components_MonitoringClinicalParameter_vue__WEBPACK_IMPORTED_MODULE_10__["default"],
-    ClinicalParameterCollection: _components_ClinicalParameterCollection_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
+    ClinicalParameterCollection: _components_ClinicalParameterCollection_vue__WEBPACK_IMPORTED_MODULE_11__["default"],
+    CollectionFormHgt: _components_CollectionFormHgt_vue__WEBPACK_IMPORTED_MODULE_12__["default"]
   }
 });
 
@@ -5659,6 +5864,9 @@ var render = function render() {
       value: _vm.departmentCpc,
       expression: "departmentCpc"
     }],
+    staticStyle: {
+      "margin-right": "10.6rem"
+    },
     attrs: {
       type: "text",
       name: "department_cpc"
@@ -5672,69 +5880,9 @@ var render = function render() {
         _vm.departmentCpc = $event.target.value;
       }
     }
-  })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "20px"
-    }
-  }, [_c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("span", {
+  })]), _vm._v(" "), _c("span", {
     staticClass: "item form-group"
   }, [_vm._m(2), _vm._v(" "), _c("span", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.dateStartCollection,
-      expression: "dateStartCollection"
-    }],
-    attrs: {
-      type: "date",
-      name: "date_start_collection"
-    },
-    domProps: {
-      value: _vm.dateStartCollection
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.dateStartCollection = $event.target.value;
-      }
-    }
-  })]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("span", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.dateEndCollection,
-      expression: "dateEndCollection"
-    }],
-    attrs: {
-      type: "date",
-      name: "date_end_collection"
-    },
-    domProps: {
-      value: _vm.dateEndCollection
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.dateEndCollection = $event.target.value;
-      }
-    }
-  })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "20px"
-    }
-  }, [_c("span", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("span", {
-    staticClass: "item form-group"
-  }, [_vm._m(4), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -5756,16 +5904,164 @@ var render = function render() {
         _vm.doctorPrescriber = $event.target.value;
       }
     }
-  })])])])]), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("div", {
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row mb-3",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(3), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.dateStartCollection,
+      expression: "dateStartCollection"
+    }],
+    staticStyle: {
+      "margin-right": "8rem"
+    },
+    attrs: {
+      type: "date",
+      name: "date_start_collection"
+    },
+    domProps: {
+      value: _vm.dateStartCollection
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.dateStartCollection = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.dateEndCollection,
+      expression: "dateEndCollection"
+    }],
+    attrs: {
+      type: "date",
+      name: "date_end_collection"
+    },
+    domProps: {
+      value: _vm.dateEndCollection
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.dateEndCollection = $event.target.value;
+      }
+    }
+  })])])])]), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("table", [_vm._m(6), _vm._v(" "), _c("tr", [_c("td", [_vm._v("\n                                        " + _vm._s(_vm.cpcDate) + "\n                                    ")]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.collectionPa,
+      expression: "collectionPa"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "text",
+      name: "collection_pa"
+    },
+    domProps: {
+      value: _vm.collectionPa
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.collectionPa = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.collectionFc,
+      expression: "collectionFc"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "text",
+      name: "collection_fc"
+    },
+    domProps: {
+      value: _vm.collectionFc
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.collectionFc = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.collectionSpo2,
+      expression: "collectionSpo2"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "text",
+      name: "collection_spo2"
+    },
+    domProps: {
+      value: _vm.collectionSpo2
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.collectionSpo2 = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.collectionTc,
+      expression: "collectionTc"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "text",
+      name: "collection_tc"
+    },
+    domProps: {
+      value: _vm.collectionTc
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.collectionTc = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_vm._v("\n                                        " + _vm._s(_vm.collectionOperatorSignature) + "\n                                    ")])])]), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
-      "margin-top": "320px"
+      "margin-top": "50px"
     }
   }, [_c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", {
     staticClass: "item form-group"
-  }, [_vm._m(6), _vm._v(" "), _c("span", {
+  }, [_vm._m(7), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -5836,7 +6132,16 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("label", {
-    staticClass: "col-form-label col-md-4 col-sm-2 label-align",
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "doctor_prescriber"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("Medico Prescrittore")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
       "for": "date_start_collection"
     }
@@ -5845,7 +6150,7 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("label", {
-    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
       "for": "date_end_collection"
     }
@@ -5853,23 +6158,291 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "justify-content:end"
+  }, [_c("a", {
+    staticClass: "btn btn-info i2hBtnPrint",
+    staticStyle: {
+      "margin-left": "949px",
+      "margin-top": "20px",
+      "margin-bottom": "10px"
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Aggiungi Modulo")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("tr", [_c("td", [_vm._v("DATA")]), _vm._v(" "), _c("td", [_vm._v("P.A.")]), _vm._v(" "), _c("td", [_vm._v("F.C.")]), _vm._v(" "), _c("td", [_vm._v("SPO2")]), _vm._v(" "), _c("td", [_vm._v("T.C.")]), _vm._v(" "), _c("td", [_vm._v("FIRMA")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "folder_page_collection"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("Pagina della cartella n")])])]);
+}];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CollectionFormHgt.vue?vue&type=template&id=fdf941d0&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CollectionFormHgt.vue?vue&type=template&id=fdf941d0&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "page-content"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "x_panel"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "x_content"
+  }, [_c("form", {
+    staticClass: "form-horizontal form-label-left align-items-center",
+    attrs: {
+      id: "demo-form2",
+      "data-parsley-validate": ""
+    }
+  }, [_c("div", {
+    staticClass: "row mt-4"
+  }, [_c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(1), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.departmentHgt,
+      expression: "departmentHgt"
+    }],
+    staticStyle: {
+      "margin-right": "10.6rem"
+    },
+    attrs: {
+      type: "text",
+      name: "department_hgt"
+    },
+    domProps: {
+      value: _vm.departmentHgt
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.departmentHgt = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(2), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.doctorPrescriberHgt,
+      expression: "doctorPrescriberHgt"
+    }],
+    attrs: {
+      type: "text",
+      name: "doctor_prescriber_hgt"
+    },
+    domProps: {
+      value: _vm.doctorPrescriberHgt
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.doctorPrescriberHgt = $event.target.value;
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row mb-3 mt-2"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(3), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.dateStartCollectionHgt,
+      expression: "dateStartCollectionHgt"
+    }],
+    staticStyle: {
+      "margin-right": "8rem"
+    },
+    attrs: {
+      type: "date",
+      name: "date_start_collection_hgt"
+    },
+    domProps: {
+      value: _vm.dateStartCollectionHgt
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.dateStartCollectionHgt = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.dateEndCollectionHgt,
+      expression: "dateEndCollectionHgt"
+    }],
+    attrs: {
+      type: "date",
+      name: "date_end_collection_hgt"
+    },
+    domProps: {
+      value: _vm.dateEndCollectionHgt
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.dateEndCollectionHgt = $event.target.value;
+      }
+    }
+  })])])])]), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "320px"
+    }
+  }, [_c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(6), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.folderPageCollectionHgt,
+      expression: "folderPageCollectionHgt"
+    }],
+    attrs: {
+      type: "text",
+      name: "hgt_folder_page"
+    },
+    domProps: {
+      value: _vm.folderPageCollectionHgt
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.folderPageCollectionHgt = $event.target.value;
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid mt-5"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("span", {
+    staticClass: "btn btn-success i2hBtn ml-3",
+    on: {
+      click: function click($event) {
+        return _vm.addClinicalParameterCollection("mcp");
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.btnCpcSend))])])]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-success i2hBtnPrint",
+    on: {
+      click: function click($event) {
+        return _vm.printClinicalParameterCollection("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa")])])])])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "100px"
+    }
+  }, [_c("h1", [_vm._v("Modulo di raccolta "), _c("strong", [_vm._v("HGT")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
   return _c("label", {
     staticClass: "col-form-label col-md-2 col-sm-2 label-align",
     attrs: {
-      "for": "doctor_prescriber"
+      "for": "department_hgt"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("Reparto/Sezione")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "doctor_prescriber_hgt"
     }
   }, [_c("strong", [_c("h4", [_vm._v("Medico Prescrittore")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("table", [_c("tr", [_c("td", [_vm._v("DATA")]), _vm._v(" "), _c("td", [_vm._v("P.A.")]), _vm._v(" "), _c("td", [_vm._v("F.C.")]), _vm._v(" "), _c("td", [_vm._v("SPO2")]), _vm._v(" "), _c("td", [_vm._v("T.C.")]), _vm._v(" "), _c("td", [_vm._v("FIRMA")])])]);
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "date_start_collection_hgt"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("data inizio raccolta dati ")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("label", {
-    staticClass: "col-form-label col-md-4 col-sm-2 label-align",
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
-      "for": "folder_page_collection"
+      "for": "date_end_collection_hgt"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("data fine raccolta dati")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("table", [_c("tr", [_c("td", [_vm._v("DATA")]), _vm._v(" "), _c("td", [_vm._v("ORA")]), _vm._v(" "), _c("td", [_vm._v("HGT")]), _vm._v(" "), _c("td", [_vm._v("FIRMA")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
+    attrs: {
+      "for": "hgt_folder_page"
     }
   }, [_c("strong", [_c("h4", [_vm._v("Pagina della cartella n")])])]);
 }];
@@ -5942,7 +6515,7 @@ var render = function render() {
       }
     }
   })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "row",
+    staticClass: "row mb-3",
     staticStyle: {
       "margin-top": "20px"
     }
@@ -5959,6 +6532,9 @@ var render = function render() {
       value: _vm.dateStartRejection,
       expression: "dateStartRejection"
     }],
+    staticStyle: {
+      "margin-right": "8rem"
+    },
     attrs: {
       type: "date",
       name: "date_start_rejection"
@@ -6096,7 +6672,7 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("label", {
-    staticClass: "col-form-label col-md-4 col-sm-2 label-align",
+    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
       "for": "folder_page"
     }
@@ -24452,11 +25028,13 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "ml-3 mt-4"
-  }, [_c("h5", [_vm._v("Visto il mattinale, verificati i presenti segnalati e le relative terapie prescritte dai medici per ogni detenuto, "), _c("br"), _vm._v(" si attesta quanto segue:")]), _vm._v(" "), _c("h2", [_vm._v("Terapia "), _c("strong", [_vm._v("non somministata ")]), _vm._v("al paziente:")])]);
+  }, [_c("h5", [_vm._v("Visto il mattinale, verificati i presenti segnalati e le relative terapie prescritte dai medici per ogni detenuto, "), _c("br"), _vm._v(" si attesta quanto segue:")]), _vm._v(" "), _c("h2", {
+    staticClass: "mt-4 mb-4"
+  }, [_vm._v("Terapia "), _c("strong", [_vm._v("non somministata ")]), _vm._v("al paziente:")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("table", [_c("tr"), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Farmaco")]), _vm._v(" "), _c("td", [_vm._v("Dal")]), _vm._v(" "), _c("td", [_vm._v("Al")]), _vm._v(" "), _c("td", [_vm._v("Ora")]), _vm._v(" "), _c("td", [_vm._v("Frequenza")])]), _vm._v(" "), _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")]), _vm._v(" "), _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")]), _vm._v(" "), _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")]), _vm._v(" "), _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")]), _vm._v(" "), _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")])]);
+  return _c("table", [_c("tr"), _vm._v(" "), _c("tr", [_c("td", [_vm._v("FARMACO")]), _vm._v(" "), _c("td", [_vm._v("DAL")]), _vm._v(" "), _c("td", [_vm._v("AL")]), _vm._v(" "), _c("td", [_vm._v("ORA")]), _vm._v(" "), _c("td", [_vm._v("FREQUENZA")])]), _vm._v(" "), _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")]), _vm._v(" "), _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")]), _vm._v(" "), _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")]), _vm._v(" "), _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")]), _vm._v(" "), _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -29359,7 +29937,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyMentalHealthDepartment"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard"), _vm._v(" "), _c("PsySurvey"), _vm._v(" "), _c("PsyJsat"), _vm._v(" "), _c("TraceabilityTherapy"), _vm._v(" "), _c("MonitoringClinicalParameter"), _vm._v(" "), _c("ClinicalParameterCollection")], 1)], 1);
+  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyMentalHealthDepartment"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard"), _vm._v(" "), _c("PsySurvey"), _vm._v(" "), _c("PsyJsat"), _vm._v(" "), _c("TraceabilityTherapy"), _vm._v(" "), _c("MonitoringClinicalParameter"), _vm._v(" "), _c("ClinicalParameterCollection"), _vm._v(" "), _c("CollectionFormHgt")], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -29380,6 +29958,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, ".labelWidth[data-v-d6d3400e] {\n  min-width: 190px;\n}\n.dbTitle[data-v-d6d3400e] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-d6d3400e], .item textarea[data-v-d6d3400e] {\n  margin-right: 10px;\n}\n.treatment[data-v-d6d3400e] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\ntable[data-v-d6d3400e] {\n  font-family: arial, sans-serif;\n  border-collapse: collapse;\n  width: 100%;\n}\ntd[data-v-d6d3400e], th[data-v-d6d3400e] {\n  border: 2px solid #dddddd;\n  text-align: center;\n  padding: 6px;\n}\nul[data-v-d6d3400e], li[data-v-d6d3400e] {\n  list-style: none;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".labelWidth[data-v-fdf941d0] {\n  min-width: 190px;\n}\n.dbTitle[data-v-fdf941d0] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-fdf941d0], .item textarea[data-v-fdf941d0] {\n  margin-right: 10px;\n}\n.treatment[data-v-fdf941d0] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\ntable[data-v-fdf941d0] {\n  font-family: arial, sans-serif;\n  border-collapse: collapse;\n  width: 100%;\n}\ntd[data-v-fdf941d0], th[data-v-fdf941d0] {\n  border: 2px solid #dddddd;\n  text-align: center;\n  padding: 6px;\n}\nul[data-v-fdf941d0], li[data-v-fdf941d0] {\n  list-style: none;\n}", ""]);
 
 // exports
 
@@ -51849,6 +52446,36 @@ process.umask = function() { return 0; };
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./ClinicalParameterCollection.vue?vue&type=style&index=0&id=d6d3400e&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ClinicalParameterCollection.vue?vue&type=style&index=0&id=d6d3400e&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -76951,6 +77578,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/CollectionFormHgt.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/CollectionFormHgt.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CollectionFormHgt_vue_vue_type_template_id_fdf941d0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CollectionFormHgt.vue?vue&type=template&id=fdf941d0&scoped=true& */ "./resources/js/components/CollectionFormHgt.vue?vue&type=template&id=fdf941d0&scoped=true&");
+/* harmony import */ var _CollectionFormHgt_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CollectionFormHgt.vue?vue&type=script&lang=js& */ "./resources/js/components/CollectionFormHgt.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _CollectionFormHgt_vue_vue_type_style_index_0_id_fdf941d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true& */ "./resources/js/components/CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _CollectionFormHgt_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CollectionFormHgt_vue_vue_type_template_id_fdf941d0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CollectionFormHgt_vue_vue_type_template_id_fdf941d0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "fdf941d0",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CollectionFormHgt.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CollectionFormHgt.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/CollectionFormHgt.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CollectionFormHgt_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CollectionFormHgt.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CollectionFormHgt.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CollectionFormHgt_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true& ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CollectionFormHgt_vue_vue_type_style_index_0_id_fdf941d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CollectionFormHgt.vue?vue&type=style&index=0&id=fdf941d0&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CollectionFormHgt_vue_vue_type_style_index_0_id_fdf941d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CollectionFormHgt_vue_vue_type_style_index_0_id_fdf941d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CollectionFormHgt_vue_vue_type_style_index_0_id_fdf941d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CollectionFormHgt_vue_vue_type_style_index_0_id_fdf941d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/CollectionFormHgt.vue?vue&type=template&id=fdf941d0&scoped=true&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/CollectionFormHgt.vue?vue&type=template&id=fdf941d0&scoped=true& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_CollectionFormHgt_vue_vue_type_template_id_fdf941d0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./CollectionFormHgt.vue?vue&type=template&id=fdf941d0&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CollectionFormHgt.vue?vue&type=template&id=fdf941d0&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_CollectionFormHgt_vue_vue_type_template_id_fdf941d0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_CollectionFormHgt_vue_vue_type_template_id_fdf941d0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/MonitoringClinicalParameter.vue":
 /*!*****************************************************************!*\
   !*** ./resources/js/components/MonitoringClinicalParameter.vue ***!
@@ -77999,7 +78713,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************!*\
   !*** ./resources/js/config/ApiUrl.js ***!
   \***************************************/
-/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_RATING_BY_PSY_ID, ADD_RATING, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_JSAT_BY_PSY_ID, ADD_JSAT, GET_TRACEABILITYS, GET_TRACEABILITY_BY_ID, GET_TRACEABILITYS_BY_USER_ISTANCE_ID, ADD_TRACEABILITY, GET_NURSINGS, GET_NURSING_BY_ID, GET_NURSINGS_BY_USER_ISTANCE_ID, ADD_NURSING, GET_MONITORINGS, GET_MONITORING_BY_ID, GET_MONITORINGS_BY_USER_ISTANCE_ID, ADD_MONITORING, GET_COLLECTIONS, GET_COLLECTION_BY_ID, GET_COLLECTIONS_BY_USER_ISTANCE_ID, ADD_COLLECTION */
+/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_RATING_BY_PSY_ID, ADD_RATING, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_JSAT_BY_PSY_ID, ADD_JSAT, GET_TRACEABILITYS, GET_TRACEABILITY_BY_ID, GET_TRACEABILITYS_BY_USER_ISTANCE_ID, ADD_TRACEABILITY, GET_NURSINGS, GET_NURSING_BY_ID, GET_NURSINGS_BY_USER_ISTANCE_ID, ADD_NURSING, GET_MONITORINGS, GET_MONITORING_BY_ID, GET_MONITORINGS_BY_USER_ISTANCE_ID, ADD_MONITORING, GET_COLLECTIONS, GET_COLLECTION_BY_ID, GET_COLLECTIONS_BY_USER_ISTANCE_ID, ADD_COLLECTION, GET_HGTS, GET_HGT_BY_ID, GET_HGTS_BY_USER_ISTANCE_ID, ADD_HGT */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78055,6 +78769,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_COLLECTION_BY_ID", function() { return GET_COLLECTION_BY_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_COLLECTIONS_BY_USER_ISTANCE_ID", function() { return GET_COLLECTIONS_BY_USER_ISTANCE_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_COLLECTION", function() { return ADD_COLLECTION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_HGTS", function() { return GET_HGTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_HGT_BY_ID", function() { return GET_HGT_BY_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_HGTS_BY_USER_ISTANCE_ID", function() { return GET_HGTS_BY_USER_ISTANCE_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_HGT", function() { return ADD_HGT; });
 var GET_PERMISSIONS = '/serd/getpermissions';
 var GET_SERD_CARDS = '/serd/getSerdCards';
 var GET_SERD_CARD_BY_ID = '/serd/getSerdCardById';
@@ -78135,6 +78853,10 @@ var GET_COLLECTIONS = '/therapies/getClinicalParameterCollections';
 var GET_COLLECTION_BY_ID = '/therapies/getClinicalParameterCollectionById';
 var GET_COLLECTIONS_BY_USER_ISTANCE_ID = '/therapies/getClinicalParameterCollectionsByUserIstanceId';
 var ADD_COLLECTION = '/therapies/addClinicalParameterCollection';
+var GET_HGTS = '/therapies/getCollectionFormHgts';
+var GET_HGT_BY_ID = '/therapies/getCollectionFormHgtById';
+var GET_HGTS_BY_USER_ISTANCE_ID = '/therapies/getCollectionFormHgtsByUserIstanceId';
+var ADD_HGT = '/therapies/addCollectionFormHgt';
 
 /***/ }),
 

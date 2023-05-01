@@ -26,12 +26,12 @@
 
                                 <!-- <div class="row" style="margin-top:20px;"> -->
                                 <!-- </div> -->
-                                <div class="row" style="margin-top:20px;">
+                                <div class="row mb-3" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <span class="item form-group">
                                             <label for="date_start_rejection" class="col-form-label col-md-4 col-sm-2 label-align"><strong><h4>data inizio rifiuto alimentazione</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="date" name="date_start_rejection" v-model="dateStartRejection">
+                                                <input style="margin-right: 8rem;" type="date" name="date_start_rejection" v-model="dateStartRejection">
                                             </span>
                                             <label for="date_end_rejection" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>data fine</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
@@ -62,7 +62,7 @@
                                 <div class="row" style="margin-top:320px; ">
                                     <span class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="folder_page" class="col-form-label col-md-4 col-sm-2 label-align"><strong><h4>Pagina della cartella n</h4></strong></label>
+                                            <label for="folder_page" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="text" name="folder_page" v-model="folderPage">
                                             </span>

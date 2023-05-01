@@ -149,6 +149,15 @@ Route::post('/therapies/addClinicalParameterCollection', [App\Http\Controllers\N
 
 
 
+Route::get('/therapies/getCollectionFormHgts', [App\Http\Controllers\NursingRecordController::class,'index'])->name('getCollectionFormHgts');
+Route::get('/therapies/getCollectionFormHgtById/{id}', [App\Http\Controllers\NursingRecordController::class,'getCollectionFormHgtById'])->name('getCollectionFormHgtById');
+Route::get('/therapies/getCollectionFormHgtsByUserIstanceId/{id}', [App\Http\Controllers\NursingRecordController::class,'getCollectionFormHgtsByUserIstanceId'])->name('getCollectionFormHgtsByUserIstanceId');
+Route::post('/therapies/addCollectionFormHgt', [App\Http\Controllers\NursingRecordController::class,'addCollectionFormHgt'])->name('addCollectionFormHgt');
+
+
+
+
+
 
 
 
