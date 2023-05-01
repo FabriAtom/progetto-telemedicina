@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 
-use App\Models\TraceabilityTherapy;
 use App\Models\NursingTherapy;
 use App\Models\monitoringClinicalParameter;
 use App\Models\ClinicalParameterCollection;
+use App\Models\TraceabilityTherapy;
 use App\Models\CollectionFormHgt;
 
 
@@ -23,8 +23,8 @@ class NursingRecordController extends Controller
 {
 
     public function index(Request $request){
-        // $result= TraceabilityTherapy::all();
-        $result= NursingTherapy::all();
+        $result= TraceabilityTherapy::all();
+        // $result= NursingTherapy::all();
         if($result){
             return [ "errorNumber"=>0,"message"=>"OK","remarks" => $result];
         }else{
@@ -149,39 +149,39 @@ class NursingRecordController extends Controller
 
 
 
-    // public function getMonitoringClinicalParameterById(Request $request){
-    //     // return 'mario';
-    //     if (MonitoringClinicalParameter::where('user_instance_id', '=', 36)->exists()) {
-    //         $query=MonitoringClinicalParameter::where('user_instance_id', '=',36);
-    //         $monitoringClinicalParameter=$query->get();
+    public function getMonitoringClinicalParameterById(Request $request){
+        // return 'mario';
+        if (MonitoringClinicalParameter::where('user_instance_id', '=', 36)->exists()) {
+            $query=MonitoringClinicalParameter::where('user_instance_id', '=',36);
+            $monitoringClinicalParameter=$query->get();
 
-    //         return [ "errorNumber"=>0,"message"=>"OK","monitoringClinicalParameter" => $monitoringClinicalParameter,"monitoringClinicalParametersId" => 36];
-    //     }else{
-    //         return ['errorNumber'=>5000,'descrizione'=>'no records found'];
-    //     }
-    // }
+            return [ "errorNumber"=>0,"message"=>"OK","monitoringClinicalParameter" => $monitoringClinicalParameter,"monitoringClinicalParametersId" => 36];
+        }else{
+            return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        }
+    }
 
-    // public function getMonitoringClinicalParametersByUserIstanceId(Request $request){
+    public function getMonitoringClinicalParametersByUserIstanceId(Request $request){
 
-    //     if (MonitoringClinicalParameter::where('user_instance_id', '=', 36)->exists()) {
-    //         $query=MonitoringClinicalParameter::where('user_instance_id', '=', 36);
-    //         $allMonitoringClinicalParameters=$query->first();
+        if (MonitoringClinicalParameter::where('user_instance_id', '=', 36)->exists()) {
+            $query=MonitoringClinicalParameter::where('user_instance_id', '=', 36);
+            $allMonitoringClinicalParameters=$query->first();
 
-    //         return [ "errorNumber"=>0,"message"=>"OK","MonitoringClinicalParameter" => $allMonitoringClinicalParameters,"monitoringClinicalParametersId" => 36];
-    //     }else{
-    //         return ['errorNumber'=>5000,'descrizione'=>'no records found'];
-    //     }
-    // }
+            return [ "errorNumber"=>0,"message"=>"OK","MonitoringClinicalParameter" => $allMonitoringClinicalParameters,"monitoringClinicalParametersId" => 36];
+        }else{
+            return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        }
+    }
     
-    // public function getCurrentMonitoringClinicalParameterById(Request $request){
-    //     if (MonitoringClinicalParameter::where('user_instance_id', '=',36)->exists()) {
-    //         $query=MonitoringClinicalParameter::where('user_instance_id', '=',36)->orderBy('th_date', 'desc');
-    //         $MonitoringClinicalParameter=$query->first();
-    //         return [ "errorNumber"=>0,"message"=>"OK","CurrentMonitoringClinicalParameter" => $MonitoringClinicalParameter,"MonitoringClinicalParametersId" => 36];
-    //     }else{
-    //         return ['errorNumber'=>7,'descrizione'=>'no records found'];
-    //     }  
-    // }
+    public function getCurrentMonitoringClinicalParameterById(Request $request){
+        if (MonitoringClinicalParameter::where('user_instance_id', '=',36)->exists()) {
+            $query=MonitoringClinicalParameter::where('user_instance_id', '=',36)->orderBy('th_date', 'desc');
+            $MonitoringClinicalParameter=$query->first();
+            return [ "errorNumber"=>0,"message"=>"OK","CurrentMonitoringClinicalParameter" => $MonitoringClinicalParameter,"MonitoringClinicalParametersId" => 36];
+        }else{
+            return ['errorNumber'=>7,'descrizione'=>'no records found'];
+        }  
+    }
 
 
 
@@ -197,39 +197,39 @@ class NursingRecordController extends Controller
 
 
 
-    // public function getClinicalParameterCollectionById(Request $request){
-    //     // return 'mario';
-    //     if (ClinicalParameterCollection::where('user_instance_id', '=', 36)->exists()) {
-    //         $query=ClinicalParameterCollection::where('user_instance_id', '=',36);
-    //         $clinicalParameterCollection=$query->get();
+    public function getClinicalParameterCollectionById(Request $request){
+        // return 'mario';
+        if (ClinicalParameterCollection::where('user_instance_id', '=', 36)->exists()) {
+            $query=ClinicalParameterCollection::where('user_instance_id', '=',36);
+            $clinicalParameterCollection=$query->get();
 
-    //         return [ "errorNumber"=>0,"message"=>"OK","ClinicalParameterCollection" => $ClinicalParameterCollection,"ClinicalParameterCollectionsId" => 36];
-    //     }else{
-    //         return ['errorNumber'=>5000,'descrizione'=>'no records found'];
-    //     }
-    // }
+            return [ "errorNumber"=>0,"message"=>"OK","ClinicalParameterCollection" => $ClinicalParameterCollection,"ClinicalParameterCollectionsId" => 36];
+        }else{
+            return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        }
+    }
 
-    // public function getClinicalParameterCollectionsByUserIstanceId(Request $request){
+    public function getClinicalParameterCollectionsByUserIstanceId(Request $request){
 
-    //     if (ClinicalParameterCollection::where('user_instance_id', '=', 36)->exists()) {
-    //         $query=ClinicalParameterCollection::where('user_instance_id', '=', 36);
-    //         $allClinicalParameterCollections=$query->first();
+        if (ClinicalParameterCollection::where('user_instance_id', '=', 36)->exists()) {
+            $query=ClinicalParameterCollection::where('user_instance_id', '=', 36);
+            $allClinicalParameterCollections=$query->first();
 
-    //         return [ "errorNumber"=>0,"message"=>"OK","ClinicalParameterCollection" => $allClinicalParameterCollections,"ClinicalParameterCollectionsId" => 36];
-    //     }else{
-    //         return ['errorNumber'=>5000,'descrizione'=>'no records found'];
-    //     }
-    // }
+            return [ "errorNumber"=>0,"message"=>"OK","ClinicalParameterCollection" => $allClinicalParameterCollections,"ClinicalParameterCollectionsId" => 36];
+        }else{
+            return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        }
+    }
     
-    // public function getCurrentClinicalParameterCollectionById(Request $request){
-    //     if (ClinicalParameterCollection::where('user_instance_id', '=',36)->exists()) {
-    //         $query=ClinicalParameterCollection::where('user_instance_id', '=',36)->orderBy('th_date', 'desc');
-    //         $ClinicalParameterCollection=$query->first();
-    //         return [ "errorNumber"=>0,"message"=>"OK","CurrentClinicalParameterCollection" => $ClinicalParameterCollection,"ClinicalParameterCollectionsId" => 36];
-    //     }else{
-    //         return ['errorNumber'=>7,'descrizione'=>'no records found'];
-    //     }  
-    // }
+    public function getCurrentClinicalParameterCollectionById(Request $request){
+        if (ClinicalParameterCollection::where('user_instance_id', '=',36)->exists()) {
+            $query=ClinicalParameterCollection::where('user_instance_id', '=',36)->orderBy('th_date', 'desc');
+            $ClinicalParameterCollection=$query->first();
+            return [ "errorNumber"=>0,"message"=>"OK","CurrentClinicalParameterCollection" => $ClinicalParameterCollection,"ClinicalParameterCollectionsId" => 36];
+        }else{
+            return ['errorNumber'=>7,'descrizione'=>'no records found'];
+        }  
+    }
 
 
 
@@ -524,61 +524,67 @@ class NursingRecordController extends Controller
 
     public function addTraceabilityTherapy(request $request){
         $userInstanceId=$request->input("user_instance_id",36);
-        $_nursingCpc = new ClinicalParameterCollection;
+        $_nursingTh = new TraceabilityTherapy;
         $now=date("Y-m-d H:i:s");
-        $_nursingCpc->user_instance_id=$userInstanceId;
+        $_nursingTh->user_instance_id=$userInstanceId;
         if($request->has('doctorId')){
-            $_nursingCpc->id_doctor=$request->input('doctorId');
+            $_nursingTh->id_doctor=$request->input('doctorId');
         }
         if($request->has('doctorName')){
-            $_nursingCpc->doctor_name=$request->input('doctorName');
+            $_nursingTh->doctor_name=$request->input('doctorName');
         }
         if($request->has('doctorUserName')){
-            $_nursingCpc->doctor_lastname=$request->input('doctorUserName');
+            $_nursingTh->doctor_lastname=$request->input('doctorUserName');
         }
-        $_nursingCpc->cpc_date=$now;
+        $_nursingTh->th_date=$now;
 
 
-        if($request->has('ClinicalParameterCollection')){
-            $psyCardArr = json_decode($request->input('ClinicalParameterCollection'), true);
-            if(array_key_exists('departmentCpc',$psyCardArr)){
-                $_nursingCpc->department_cpc=$psyCardArr['departmentCpc'];
+        if($request->has('TraceabilityTherapy')){
+            $psyCardArr = json_decode($request->input('TraceabilityTherapy'), true);
+            if(array_key_exists('thDate',$psyCardArr)){
+                $_nursingTh->th_date=$psyCardArr['departmentCpc'];
             }
-            if(array_key_exists('dateStartCollection',$psyCardArr)){
-                $_nursingCpc->date_start_collection=$psyCardArr['dateStartCollection'];
+            if(array_key_exists('drugsNotAdministered',$psyCardArr)){
+                $_nursingTh->drugs_not_administered=$psyCardArr['drugsNotAdministered'];
             }
-            if(array_key_exists('dateEndCollection',$psyCardArr)){
-                $_nursingCpc->date_end_collection=$psyCardArr['dateEndCollection'];
+            if(array_key_exists('drugs',$psyCardArr)){
+                $_nursingTh->drugs=$psyCardArr['drugs'];
             }
-            if(array_key_exists('doctorPrescriber',$psyCardArr)){
-                $_nursingCpc->doctor_prescriber=$psyCardArr['doctorPrescriber'];
+
+            if(array_key_exists('thFromThe',$psyCardArr)){
+                $_nursingTh->drugs=$psyCardArr['thFromThe'];
             }
-            if(array_key_exists('cpcDate',$psyCardArr)){
-                $_nursingCpc->cpc_date=$psyCardArr['cpcDate'];
+            if(array_key_exists('thToThe',$psyCardArr)){
+                $_nursingTh->motivation_not_take_medicine=$psyCardArr['thToThe'];
             }
-            if(array_key_exists('collectionPa',$psyCardArr)){
-                $_nursingCpc->collection_pa=$psyCardArr['collectionPa'];
+            if(array_key_exists('thHours',$psyCardArr)){
+                $_nursingTh->medical_alert=$psyCardArr['thHours'];
             }
-            if(array_key_exists('collectionFc',$psyCardArr)){
-                $_nursingCpc->collection_fc=$psyCardArr['collectionFc'];
+            if(array_key_exists('thFrequency',$psyCardArr)){
+                $_nursingTh->medical_alert_note=$psyCardArr['thFrequency'];
             }
-            if(array_key_exists('collectionSpo2',$psyCardArr)){
-                $_nursingCpc->collection_spo2=$psyCardArr['collectionSpo2'];
+
+            if(array_key_exists('motivationNotTakeMedicine',$psyCardArr)){
+                $_nursingTh->motivation_not_take_medicine=$psyCardArr['motivationNotTakeMedicine'];
             }
-            if(array_key_exists('collectionTc',$psyCardArr)){
-                $_nursingCpc->collection_tc=$psyCardArr['collectionTc'];
+            if(array_key_exists('medicalAlert',$psyCardArr)){
+                $_nursingTh->medical_alert=$psyCardArr['medicalAlert'];
             }
-            if(array_key_exists('collectionOperatorSignature',$psyCardArr)){
-                $_nursingCpc->collection_operator_signature=$psyCardArr['collectionOperatorSignature'];
+            if(array_key_exists('medicalAlertNote',$psyCardArr)){
+                $_nursingTh->medical_alert_note=$psyCardArr['medicalAlertNote'];
             }
-            if(array_key_exists('folderPageCollection',$psyCardArr)){
-                $_nursingCpc->folder_page_collection=$psyCardArr['folderPageCollection'];
+            if(array_key_exists('doctorsPrescriptions',$psyCardArr)){
+                $_nursingTh->doctors_prescriptions=$psyCardArr['doctorsPrescriptions'];
             }
+            if(array_key_exists('doctorsPrescriptionsNote',$psyCardArr)){
+                $_nursingTh->doctors_prescriptions_note=$psyCardArr['doctorsPrescriptionsNote'];
+            }
+          
         }
-        $_nursingCpc->save();
+        $_nursingTh->save();
 
-        if($_nursingCpc){
-            return ["errorNumber"=>0,"message"=>"ok","th"=>$_nursingCpc];
+        if($_nursingTh){
+            return ["errorNumber"=>0,"message"=>"ok","th"=>$_nursingTh];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];

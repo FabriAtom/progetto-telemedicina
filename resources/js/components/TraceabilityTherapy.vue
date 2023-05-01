@@ -13,27 +13,27 @@
                         <!-- <div class="tab-content" id="myTabContent"> -->
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left align-items-center">
 
-                                <div class="row" style="margin-top:20px;">
+                               <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="doctor_name" class="col-form-label col-md-4 col-sm-2 label-align"><strong><h4>Personale addetto alla terapia</h4></strong></label>
+                                            <label for="" class="col-form-label col-md-4 col-sm-2 label-align"><strong><h4>Personale addetto alla terapia</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input style="margin-right: 8rem;" type="text" name="doctor_name" v-model="doctorName">
+                                                <input style="margin-right: 8rem;" type="text" name="" v-model="doctorName">
                                             </span>
                                         </span>
                                         <span class="item form-group ml-5">
-                                            <label for="doctor_name" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>Turno</h4></strong></label>
+                                            <label for="" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>Turno</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="text" name="doctor_name" v-model="doctorName">
+                                                <input type="text" name="" v-model="doctorName">
                                             </span>
                                         </span>
                                     </div>
-                                </div>
+                                </div> 
 
                                 <div class="ml-3 mt-4">
                                     <h5>Visto il mattinale, verificati i presenti segnalati e le relative terapie prescritte dai medici per ogni detenuto, <br> si attesta quanto segue:</h5>
                                     
-                                    <h2 class="mt-4 mb-4">Terapia <strong>non somministata </strong>al paziente:</h2>
+                                    <h2 class="mt-4 mb-2">Terapia <strong>non somministata </strong>al paziente:</h2>
                                 </div>
 
                                 <!-- <div class="row" style="margin-top:20px;">
@@ -48,8 +48,8 @@
                                             </div> 
                                         </div>
                                     </div>
-                                </div> -->
-                                <!-- <div class="row" style="margin-top:20px;">
+                                </div>
+                                <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
                                             <label for="drugs_not_administered" class="col-form-label col-md-6 col-sm-2 label-align"></label>
@@ -61,133 +61,106 @@
                                     </div>
                                 </div> -->
 
+                                <div>
+                                    <a style="margin-left: 949px; margin-top: 20px; margin-bottom: 10px;" class="btn btn-info i2hBtnPrint"><i class="fa fa-print"><input type="radio" v-model="showInput1" value="true"></i>Aggiungi Terapia</a>
+                                </div>
+
+
                                 
                                 <table>
-                                        <tr>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>FARMACO</td>
-                                            <td>DAL</td>
-                                            <td>AL</td>
-                                            <td>ORA</td>
-                                            <td>FREQUENZA</td>
+                                    <tr>
+                                        <td>FARMACO</td>
+                                        <td>DAL</td>
+                                        <td>AL</td>
+                                        <td>ORA</td>
+                                        <td>FREQUENZA</td>
+                                        <td>NON <br> SOMMINISTRATO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="drugs" v-model="drugs">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="th_from_the" v-model="thFromThe">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="th_to_the" v-model="thToThe">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="th_hours" v-model="thHours">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="th_frequency" v-model="thFrequency">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="radio" name="drugs_not_administered" v-model="showInput" value="true">
+                                            <input  type="text" placeholder="scrivi la motivazione"  rows="4" v-if="showInput">
 
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <!-- <div class="row" style="margin-top:20px;">
-                                                    <div class="col-md-12 col-sm-12">
-                                                        <div class="item form-group">
-                                                            <label for="start_therapy" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2></h2></strong></label>
-                                                            <div class="col-md-12 col-sm-12">
-                                                                <input type="checkbox" name="start_therapy"  v-model="startTherapy">
-                                                                <input name="drug" v-model="drug">
+                                        </td>
+                                    </tr>
+                                    <!-- <tr v-if="showInput">
+                                        <td colspan="6">
+                                            <input  type="text" placeholder="scrivi la motivazione"  rows="4" v-if="showInput">
+                                        </td>
+                                    </tr> -->
+                                    <tr v-if="showInput1">
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="drugs" v-model="drugs">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="th_from_the" v-model="thFromThe">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="th_to_the" v-model="thToThe">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="th_hours" v-model="thHours">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="th_frequency" v-model="thFrequency">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="radio" name="drugs_not_administered" v-model="showInput" value="true">
+                                            <input  type="text" placeholder="scrivi la motivazione"  rows="4" v-if="showInput2">
 
-                                                                <input type="text" name="start_therapy" v-model="startTherapy">
-                                                            </div> 
-                                                        </div>
-                                                    </div>
-                                                </div> -->
-                                            </td>
-                                            <td>
+                                        </td>
 
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
+                                    </tr>
+                               
 
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                    
+                                </table>
 
 
-                                <div class="row" style="margin-top:20px;">
+                                <div class="row" style="margin-top:50px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
                                             <label for="medical_alert" class="col-form-label col-md-2 col-sm-2 label-align"><h4><strong>Avvisato medico</strong></h4></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <span>SI</span>
-                                                <input type="radio" name="medical_alert" value="1" v-model="medicalAlert"/>
+                                                <input type="radio" name="medical_alert" value="1" />
                                                 <span>NO</span>
-                                                <input type="radio" name="medical_alert" value="0" v-model="medicalAlert"/>
-                                                <input type="text" name="medical_alert_note" placeholder="Note" v-model="medicalAlertNote"/>
+                                                <input type="radio" name="medical_alert" value="0" />
+                                                <input type="text" name="medical_alert_note" placeholder="Note"/>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row" style="margin-top:20px;">
+                                <div class="row">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
                                             <label for="doctors_prescriptions" class="col-form-label col-md-5 col-sm-2 label-align"><h4><strong>Annotazione o prescrizione del medico</strong></h4></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <span>SI</span>
-                                                <input type="radio" name="doctors_prescriptions" value="1" v-model="doctorsPrescriptions"/>
+                                                <input type="radio" name="doctors_prescriptions" value="1" />
                                                 <span>NO</span>
-                                                <input type="radio" name="doctors_prescriptions" value="0" v-model="doctorsPrescriptions"/>
-                                                <input type="text" name="doctors_prescriptions_note" placeholder="Note" v-model="doctorsPrescriptionsNote"/>
+                                                <input type="radio" name="doctors_prescriptions" value="0" />
+                                                <input type="text" name="doctors_prescriptions_note" placeholder="Note" />
                                             </span>
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-
-
 
                                 
                                 <div class="ln_solid"></div>
@@ -246,7 +219,7 @@ table {
 td, th {
   border: 2px solid #dddddd;
   text-align: center;
-  padding: 8px;
+  padding: 6px;
 }
 
 ul, li{
@@ -262,7 +235,29 @@ ul, li{
     import Swal from 'sweetalert2';
 
     export default {
+
         name: 'TraceabilityTherapy',
+
+
+        // input:null,
+        // showRow:false,
+        showInput:false,
+        showInput1:false,
+        showInput2:false,
+
+        doctorName:null,
+        motivationNotTakeMedicine:null,
+        motivationNotTakeMedicine:null,
+        medicalAlertNote:null,
+        doctorsPrescriptions:null,
+        doctorsPrescriptionsNote:null,
+        thDate:null,  
+        medicalAlert:null,
+        drug:null,
+
+
+        startTherapy:null, 
+        endTherapy:null,
 
 
         data() {
@@ -453,20 +448,24 @@ ul, li{
                             
                             let _Trachterapy=response.data.TraceabilityTherapy;
                                 
-                                _wm.departmentCpc = _Trachterapy.department_cpc
-                                _wm.dateStartCollection = _Trachterapy.date_start_collection
-                                _wm.dateEndCollection = _Trachterapy.date_end_collection
-                                _wm.doctorPrescriber = _Trachterapy.doctor_prescriber
-                                _wm.cpcDate = _Trachterapy.cpc_date
-                                _wm.collectionPa = _Trachterapy.collection_pa
-                                _wm.collectionFc = _Trachterapy.collection_fc
-                                _wm.collectionSpo2 = _Trachterapy.collection_spo2
-                                _wm.collectionTc = _Trachterapy.collection_tc
-                                _wm.collectionOperatorSignature = _Trachterapy.collection_operator_signature
-                                _wm.folderPageCollection = _Trachterapy.folder_page_collection
-    
-    
-        
+                                // _wm.thDate = _Trachterapy.th_date
+                                // _wm.drugsNotAdministered = _Trachterapy.drugs_not_administered
+                                _wm.drugs = _Trachterapy.drugs
+                                _wm.motivationNotTakeMedicine = _Trachterapy.motivation_not_take_medicine
+                                _wm.medicalAlert = _Trachterapy.medical_alert
+                                _wm.medicalAlertNote = _Trachterapy.medical_alert_note
+                                _wm.doctorsPrescriptions = _Trachterapy.doctors_prescriptions
+                                _wm.doctorsPrescriptionsNote = _Trachterapy.doctors_prescriptions_note
+
+                                _wm.thFromThe = _Trachterapy.th_from_the
+                                _wm.thToThe = _Trachterapy.th_to_the
+                                _wm.thHours = _Trachterapy.th_hours
+                                _wm.thFrequency = _Trachterapy.th_frequency
+
+                                
+                                
+                                
+                                
                             _wm.allTraceabilityTherapys=response.data.allTraceabilityTherapys;
                             }else{
                                 _wm.btnThSend="Salva";
