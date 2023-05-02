@@ -1,4 +1,7 @@
 <template>
+
+<!-- Modulo di raccolta dei parametri clinici come da prescrizione -->
+
     <div class="container">
         <div class="page-content">
             <div class="row justify-content-center">
@@ -46,7 +49,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="justify-content:end">
+                                <div>
                                     <a style="margin-left: 949px; margin-top: 20px; margin-bottom: 10px;" class="btn btn-info i2hBtnPrint"><i class="fa fa-print"><input type="radio" v-model="showInput5" value="true"></i>Aggiungi Modulo</a>
                                 </div>
 
@@ -104,10 +107,10 @@
 
 
 
-                                <div class="row" style="margin-top:50px; ">
+                                <div class="row" style="margin-top:50px;">
                                     <span class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="folder_page_collection" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n</h4></strong></label>
+                                            <label for="folder_page_collection" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n.</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="text" name="folder_page_collection" v-model="folderPageCollection">
                                             </span>
@@ -120,9 +123,9 @@
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addClinicalParameterCollection('mcp')">{{btnCpcSend}}</span>
+                                        <a  class="btn btn-success i2hBtnPrint"  @click=" printClinicalParameterCollection('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                                     </div>
                                 </div>
-                                <a  class="btn btn-success i2hBtnPrint"  @click=" printClinicalParameterCollection('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                             </form>
                         </div>
                     </div>
@@ -192,7 +195,6 @@ ul, li{
         
         name: 'ClinicalParameterCollection',
 
-        showInput5:true,
 
 
         data() {
@@ -204,7 +206,25 @@ ul, li{
                 userId:237,
 
 
-            
+
+
+                showInput5:false,
+
+                departmentCpc:null,
+                dateStartCollection:null,
+                dateEndCollection:null,
+                doctorPrescriber:null,
+                cpcDate:null,
+                collectionPa:null,
+                collectionFc:null,
+                collectionSpo2:null,
+                collectionTc:null,
+                collectionOperatorSignature:null,
+                folderPageCollection:null,
+
+
+
+                nursCpc:{},
 
                 accessData:[
 
@@ -244,6 +264,8 @@ ul, li{
 
                 return false;
             },
+
+            
                  
             
 
@@ -282,9 +304,9 @@ ul, li{
                         }
                     }
                     form.append('section', 'cpc');
-                    if(!this.isObjEmpty(this.nursCardTh)){
-                        let _nurs=JSON.stringify(this.nursCardTh);
-                        form.append('NursingTherapies', _nurs);
+                    if(!this.isObjEmpty(this.nursCpc)){
+                        let _nursCpc=JSON.stringify(this.nursCpc);
+                        form.append('NursingTherapies', _nursCpc);
                     }
                 }
                 
@@ -331,7 +353,7 @@ ul, li{
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
                         if(error == 0){
-                            alert(JSON.stringify(response))
+                            // alert(JSON.stringify(response))
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                         }
@@ -379,17 +401,17 @@ ul, li{
                             
                             let _Nursvarible=response.data.ClinicalParameterCollection;
                                 
-                            _wm.departmentCpc = _Nursvarible.department_cpc
-                            _wm.dateStartCollection = _Nursvarible.date_start_collection
-                            _wm.dateEndCollection = _Nursvarible.date_end_collection
-                            _wm.doctorPrescriber = _Nursvarible.doctor_prescriber
-                            _wm.cpcDate = _Nursvarible.cpc_date
-                            _wm.collectionPa = _Nursvarible.collection_pa
-                            _wm.collectionFc = _Nursvarible.collection_fc
-                            _wm.collectionSpo2 = _Nursvarible.collection_spo2
-                            _wm.collectionTc = _Nursvarible.collection_tc
-                            _wm.collectionOperatorSignature = _Nursvarible.collection_operator_signature
-                            _wm.folderPageCollection = _Nursvarible.folder_page_collection
+                            _wm.nursCpc.departmentCpc = _Nursvarible.department_cpc
+                            _wm.nursCpc.dateStartCollection = _Nursvarible.date_start_collection
+                            _wm.nursCpc.dateEndCollection = _Nursvarible.date_end_collection
+                            _wm.nursCpc.doctorPrescriber = _Nursvarible.doctor_prescriber
+                            _wm.nursCpc.cpcDate = _Nursvarible.cpc_date
+                            _wm.nursCpc.collectionPa = _Nursvarible.collection_pa
+                            _wm.nursCpc.collectionFc = _Nursvarible.collection_fc
+                            _wm.nursCpc.collectionSpo2 = _Nursvarible.collection_spo2
+                            _wm.nursCpc.collectionTc = _Nursvarible.collection_tc
+                            _wm.nursCpc.collectionOperatorSignature = _Nursvarible.collection_operator_signature
+                            _wm.nursCpc.folderPageCollection = _Nursvarible.folder_page_collection
 
 
 

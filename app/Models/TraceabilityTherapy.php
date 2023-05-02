@@ -19,9 +19,6 @@ class TraceabilityTherapy extends Model
         'th_to_the',
         'th_hours',
         'th_frequency',
-
-
-
         'medical_alert',
         'medical_alert_note',
         'doctors_prescriptions',

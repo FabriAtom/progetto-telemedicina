@@ -5,7 +5,7 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="x_panel">
                         <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:100px;">
-                            <h1>Modulo di monitoraggio parametri clinici</h1>
+                            <h1>Modulo di monitoraggio parametri clinici in caso di rifiuto della alimentazione (sia liquidi, sia solidi).</h1>
                         </div>
 
                         <div class="x_content">
@@ -29,40 +29,86 @@
                                 <div class="row mb-3" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="date_start_rejection" class="col-form-label col-md-4 col-sm-2 label-align"><strong><h4>data inizio rifiuto alimentazione</h4></strong></label>
+                                            <label for="date_start_rejection" class="col-form-label col-md-4 col-sm-2 label-align"><strong><h4>Data inizio rifiuto alimentazione</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input style="margin-right: 8rem;" type="date" name="date_start_rejection" v-model="dateStartRejection">
                                             </span>
-                                            <label for="date_end_rejection" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>data fine</h4></strong></label>
+                                            <label for="date_end_rejection" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>Data fine</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="date" name="date_end_rejection" v-model="dateEndRejection">
                                             </span>
                                         </span>
                                     </div>
                                 </div>
+                                <div>
+                                    <a style="margin-left: 949px; margin-top: 20px; margin-bottom: 10px;" class="btn btn-info i2hBtnPrint"><i class="fa fa-print"><input type="radio" v-model="showInput1" value="true"></i>Aggiungi Modulo</a>
+                                </div>
                                
                                 <table>
+                                    
                                     <tr>
                                         <td>DATA</td>
-                                        <td>ALIMENTAZIONE</td>
+                                        <td>ALIMENTAZIONE <br>(dichiarata dal detenuto)</td>
                                         <td>PESO <br> CORPOREO</td>
                                         <td>P.A.</td>
                                         <td>F.C.</td>
                                         <td>FIRMA <br> OPERATORE</td>
                                     </tr>
+                                    <tr  >
+                                        <td>
+                                            <!-- {{Parameter.mcpDate}} -->
+                                        </td>
 
-                                     <!-- mcp_date -->
-                                    <!-- inmate_feed -->
-                                    <!-- body_weight
-                                    monitoring_pa
-                                    monitoring_fc
-                                    operator_signature -->
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="inmate_feed" v-model="inmateFeed">     
+                                        </td>
+
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="body_weight" v-model="bodyWeight">     
+                                        </td>
+                                        
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="monitoring_pa" v-model="monitoringPa">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="monitoring_fc" v-model="monitoringFc">  
+                                        </td>
+                                        <td>
+                                           {{operatorSignature}}
+                                        </td>
+                                    </tr>
+
+
+                                    <tr v-if="showInput1">
+                                        <td>
+                                            {{mcpDate}}
+                                        </td>
+
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="inmate_feed" v-model="inmateFeed">     
+                                        </td>
+
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="body_weight" v-model="bodyWeight">     
+                                        </td>
+                                        
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="monitoring_pa" v-model="monitoringPa">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="monitoring_fc" v-model="monitoringFc">  
+                                        </td>
+                                        <td>
+                                           {{operatorSignature}}
+                                        </td>
+                                    </tr>
+
                                 </table>
 
-                                <div class="row" style="margin-top:320px; ">
+                                <div class="row" style="margin-top:50px;">
                                     <span class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="folder_page" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n</h4></strong></label>
+                                            <label for="folder_page" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n.</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="text" name="folder_page" v-model="folderPage">
                                             </span>
@@ -71,13 +117,13 @@
                                 </div>
 
                                 
-                                <div class="ln_solid mt-5"></div>
+                                <div class="ln_solid mt-3"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addMonitoringClinicalParameter('mcp')">{{btnMcpSend}}</span>
+                                        <a  class="btn btn-success i2hBtnPrint"  @click=" printMonitoringClinicalParameter('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                                     </div>
                                 </div>
-                                <a  class="btn btn-success i2hBtnPrint"  @click=" printMonitoringClinicalParameter('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                             </form>
                         </div>
                     </div>
@@ -143,6 +189,7 @@ ul, li{
     import Swal from 'sweetalert2';
 
     export default {
+        
         name: 'MonitoringClinicalParameter',
 
 
@@ -155,9 +202,9 @@ ul, li{
                 userId:237,
 
 
-                showInput:null,
-                showInput1:null,
-                doctorName:null,
+                showInput1:false,
+
+
                 department:null,
                 dateStartRejection:null,
                 dateEndRejection:null,
@@ -170,6 +217,7 @@ ul, li{
                 folderPage:null,
 
 
+                Parameter:{},
 
 
                 accessData:[
@@ -348,14 +396,28 @@ ul, li{
                         if(error == 0){
                         
                             _wm.mainTitle="Aggiornamento Cartella nurs";
-                            if(response.data.MonitoringClinicalParameter){
-                            _wm.mCPSaved=true;
-                            _wm.btnMcpSend="Aggiorna";
-                            
-                            let _NursTerapy=response.data.MonitoringClinicalParameter;
-                                
+                            if(response.data.Parameter){
+                            // _wm.mCPSaved=true;
+                            // _wm.btnMcpSend="Aggiorna";
+                            _wm.Parameter=response.data.Parameter;
+                            alert(JSON.stringify(_wm.Parameter));
 
-                            _wm.allMonitoringClinicalParameters=response.data.allMonitoringClinicalParameters;
+                            
+                            // let _NursMcp=response.data.MonitoringClinicalParameter;
+
+                            // _wm.department = _NursMcp.department
+                            // _wm.dateStartRejection = _NursMcp.date_start_rejection
+                            // _wm.dateEndRejection = _NursMcp.date_end_rejection
+                            // _wm.mcpDate = _NursMcp.mcp_date
+                            // _wm.inmateFeed = _NursMcp.inmate_feed
+                            // _wm.bodyWeight = _NursMcp.body_weight
+
+                            // _wm.monitoringPa = _NursMcp.monitoring_pa
+                            // _wm.monitoringFc = _NursMcp.monitoring_fc
+                            // _wm.operatorSignature = _NursMcp.operator_signature
+                            // _wm.folderPage = _NursMcp.folder_page
+
+                            // _wm.allMonitoringClinicalParameters=response.data.allMonitoringClinicalParameters;
                             }else{
                                 _wm.btnNhSend="Salva";
                             }

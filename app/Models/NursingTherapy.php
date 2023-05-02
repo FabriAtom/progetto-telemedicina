@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class NursingTherapy extends Model
 {
     protected $fillable = [
+        
         'id_doctor',
         'doctor_name',
         'doctor_lastname',

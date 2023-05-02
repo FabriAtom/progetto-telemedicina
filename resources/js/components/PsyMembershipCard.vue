@@ -1939,7 +1939,6 @@ export default {
             }
         },
         getPsyMembershipCards(){
-            //GET ALL CARDS
             let _wm = this;
             try {
                 axios.get(actions.GET_PSY_CARDS).then(response => {

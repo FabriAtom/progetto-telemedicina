@@ -33,42 +33,47 @@
 
                                 <!-- <div class="row" style="margin-top:20px;"> -->
                                 <!-- </div> -->
-                                <div class="row mb-3 mt-2">
+                                <div class="row mb-2 mt-2">
                                     <div class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="date_start_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>data inizio raccolta dati </h4></strong></label>
+                                            <label for="date_start_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Data inizio raccolta dati </h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input style="margin-right: 8rem;" type="date" name="date_start_collection_hgt" v-model="dateStartCollectionHgt">
                                             </span>
-                                            <label for="date_end_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>data fine raccolta dati</h4></strong></label>
+                                            <label for="date_end_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Data fine raccolta dati</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="date" name="date_end_collection_hgt" v-model="dateEndCollectionHgt">
                                             </span>
                                         </span>
                                     </div>
                                 </div>
+                                <div>
+                                    <a style="margin-left: 949px; margin-top: 20px; margin-bottom: 10px;" class="btn btn-info i2hBtnPrint"><i class="fa fa-print"><input type="radio" v-model="showInput1" value="true"></i>Aggiungi Modulo</a>
+                                </div>
 
                               
                                 <table>
+
                                     <tr>
                                         <td>DATA</td>
                                         <td>ORA</td>
                                         <td>HGT</td>
                                         <td>FIRMA</td>
                                     </tr>
-                                   
-                                    <!--  
-                                    hgt_date
-                                    hours
-                                    hgt
-                                    hgt_operator_signature
-                                    -->        
-                                </table>
+                                    <tr v-if="showInput1">
+                                        <td>{{hgtDate}}</td>
+                                        <td>{{hours}}</td>
+                                        <td>{{hgt}}</td>
+                                        <td>{{hgtOperatorSignature}}</td>
+                                    </tr>
 
-                                <div class="row" style="margin-top:320px;">
+                                </table>
+                                
+                                
+                                <div class="row" style="margin-top:50px;">
                                     <span class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="hgt_folder_page" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n</h4></strong></label>
+                                            <label for="hgt_folder_page" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n.</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="text" name="hgt_folder_page" v-model="folderPageCollectionHgt">
                                             </span>
@@ -80,10 +85,10 @@
                                 <div class="ln_solid mt-5"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
-                                        <span class="btn btn-success i2hBtn ml-3" @click="addClinicalParameterCollection('mcp')">{{btnCpcSend}}</span>
+                                        <span class="btn btn-success i2hBtn ml-3" @click="addCollectionFormHgt('hgt')">{{btnHgtSend}}</span>
+                                        <a  class="btn btn-success i2hBtnPrint"  @click=" printCollectionFormHgt('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                                     </div>
                                 </div>
-                                <a  class="btn btn-success i2hBtnPrint"  @click=" printClinicalParameterCollection('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                             </form>
                         </div>
                     </div>
@@ -149,6 +154,7 @@ ul, li{
     import Swal from 'sweetalert2';
 
     export default {
+
         name: 'CollectionFormHgt',
 
 
@@ -161,6 +167,7 @@ ul, li{
                 userId:237,
 
 
+                showInput1:false,
                 departmentHgt:null,
                 dateStartCollectionHgt:null,
                 dateEndCollectionHgt:null,
@@ -193,10 +200,10 @@ ul, li{
 
                 mainTitle:"psy",
                 firstSave:true,
-                cPCSaved:false,
+                hGTSaved:false,
 
                 
-                btnCpcSend:"Salva",
+                btnHgtSend:"Salva",
                 total:0,               
                 allCollectionFormHgts:null,
             }
@@ -242,7 +249,7 @@ ul, li{
                 form.append('doctorName', 'mario');
                 form.append('doctorUserName', 'rossi');
 
-                if(_panel=='mcp'){
+                if(_panel=='hgt'){
 
                     if(!this.nTSaved){
                         form.append('action', 'store');
@@ -259,13 +266,13 @@ ul, li{
                     form.append('section', 'mcp');
                     if(!this.isObjEmpty(this.nursCardTh)){
                         let _nurs=JSON.stringify(this.nursCardTh);
-                        form.append('NursingTherapies', _nurs);
+                        form.append('CollectionFormHgt', _nurs);
                     }
                 }
                 
                 if(_errors==0){
                     try {
-                        axios.post(actions.ADD_COLLECTION,form).then(response => {
+                        axios.post(actions.ADD_HGT,form).then(response => {
                             let error=response.data.errorNumber;
                             let _attempts=response.data.attempts;
                             _wm.errNum=error;
@@ -301,7 +308,7 @@ ul, li{
             getCollectionFormHgts(){
                 let _wm = this;
                 try {
-                    axios.get(actions.GET_COLLECTIONS).then(response => {
+                    axios.get(actions.GET_HGTS).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -318,7 +325,7 @@ ul, li{
             getCollectionFormHgtById(id){
                 let _wm = this;
                 try {
-                    let url=actions.GET_COLLECTION_BY_ID+'/'+id;
+                    let url=actions.GET_HGT_BY_ID+'/'+id;
                     axios.get(url).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
@@ -338,7 +345,7 @@ ul, li{
                 let _wm = this;
                 id=36;
                 try {
-                    let url=actions.GET_COLLECTIONS_BY_USER_ISTANCE_ID+'/'+id;
+                    let url=actions.GET_HGTS_BY_USER_ISTANCE_ID+'/'+id;
                     axios.get(url).then(response => {
                         // alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
@@ -352,12 +359,21 @@ ul, li{
                             _wm.hGTSaved=true;
                             _wm.btnHgtSend="Aggiorna";
                             
-                            let _NursTerapy=response.data.CollectionFormHgt;
-                                
+                            let _NursHgt=response.data.CollectionFormHgt;
+                            _wm.departmentHgt = _NursHgt.department_hgt
+                            _wm.dateStartCollectionHgt = _NursHgt.date_start_collection_hgt
+                            _wm.dateEndCollectionHgt = _NursHgt.date_end_collection_hgt
+                            _wm.doctorPrescriberHgt = _NursHgt.doctor_prescriber_hgt
+                            _wm.hgtDate = _NursHgt.hgt_date
+                            _wm.hours = _NursHgt.hours
+                            _wm.hgt = _NursHgt.hgt
+                            _wm.hgtOperatorSignature = _NursHgt.hgt_operator_signature
+                            _wm.folderPageCollectionHgt = _NursHgt.folder_page_collection_hgt
 
+                
                             _wm.allCollectionFormHgts=response.data.allCollectionFormHgts;
                             }else{
-                                _wm.btnNhSend="Salva";
+                                _wm.btnHgtSend="Salva";
                             }
                             
                             _wm.firstSave=false;

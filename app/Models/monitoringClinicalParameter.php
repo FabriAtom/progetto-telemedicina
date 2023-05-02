@@ -12,7 +12,7 @@ class MonitoringClinicalParameter extends Model
         'doctor_lastname',
         'department',
         'date_start_rejection',
-        'date_end_rejection	',
+        'date_end_rejection',
         'mcp_date',
         'inmate_feed',
         'body_weight',

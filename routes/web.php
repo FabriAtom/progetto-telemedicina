@@ -158,11 +158,11 @@ Route::post('/therapies/addCollectionFormHgt', [App\Http\Controllers\NursingReco
 
 
 
+Route::get('/therapies/getNursingTherapyByUserIstanceId/{id}', [App\Http\Controllers\NursingRecordController::class,'getNursingTherapyByUserIstanceId'])->name('getNursingTherapyByUserIstanceId');
 
 
 
 // Route::post('/therapies/addNursingTherapies', [App\Http\Controllers\NursingRecordController::class,'addNursingTherapies'])->name('addNursingTherapies');
-// Route::get('/therapies/getNursingTherapiesByUserIstanceId/{id}', [App\Http\Controllers\NursingRecordController::class,'getNursingTherapiesByUserIstanceId'])->name('getNursingTherapiesByUserIstanceId');
 
   
 
