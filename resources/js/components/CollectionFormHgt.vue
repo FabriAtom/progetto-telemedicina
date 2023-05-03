@@ -18,12 +18,12 @@
                                         <span class="item form-group">
                                             <label for="department_hgt" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>Reparto/Sezione</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input style="margin-right: 10.6rem;" type="text" name="department_hgt" v-model="departmentHgt">
+                                                <input style="margin-right: 10.6rem;" type="text" name="department_hgt" v-model="nursHgt.departmentHgt">
                                             </span>
                                             <span class="item form-group">
                                             <label for="doctor_prescriber_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Medico Prescrittore</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="text" name="doctor_prescriber_hgt" v-model="doctorPrescriberHgt">
+                                                <input type="text" name="doctor_prescriber_hgt" v-model="nursHgt.doctorPrescriberHgt">
                                             </span>
                                         </span>
                                         </span>
@@ -38,11 +38,11 @@
                                         <span class="item form-group">
                                             <label for="date_start_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Data inizio raccolta dati </h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input style="margin-right: 8rem;" type="date" name="date_start_collection_hgt" v-model="dateStartCollectionHgt">
+                                                <input style="margin-right: 8rem;" type="date" name="date_start_collection_hgt" v-model="nursHgt.dateStartCollectionHgt">
                                             </span>
                                             <label for="date_end_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Data fine raccolta dati</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="date" name="date_end_collection_hgt" v-model="dateEndCollectionHgt">
+                                                <input type="date" name="date_end_collection_hgt" v-model="nursHgt.dateEndCollectionHgt">
                                             </span>
                                         </span>
                                     </div>
@@ -53,35 +53,28 @@
 
                               
                                 <table>
-
                                     <tr>
                                         <td>DATA</td>
                                         <td>ORA</td>
                                         <td>HGT</td>
                                         <td>FIRMA</td>
                                     </tr>
-                                    <tr v-if="showInput1">
-                                        <td>{{hgtDate}}</td>
-                                        <td>{{hours}}</td>
-                                        <td>{{hgt}}</td>
-                                        <td>{{hgtOperatorSignature}}</td>
+                                    <tr>
+                                        <td>
+                                            <input type="date" name="hgt_date" v-model="nursHgt.hgtDate">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="hours" v-model="nursHgt.hours">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="hgt" v-model="nursHgt.hgt">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="hgt" v-model="nursHgt.hgtOperatorSignature">{{ nursHgt.hgtOperatorSignature }}
+                                        </td>
                                     </tr>
-
                                 </table>
-                                
-                                
-                                <div class="row" style="margin-top:50px;">
-                                    <span class="col-md-12 col-sm-12">
-                                        <span class="item form-group">
-                                            <label for="hgt_folder_page" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n.</h4></strong></label>
-                                            <span class="col-md-12 col-sm-12">
-                                                <input type="text" name="hgt_folder_page" v-model="folderPageCollectionHgt">
-                                            </span>
-                                        </span>
-                                    </span>
-                                </div>
-
-                                
+                                            
                                 <div class="ln_solid mt-5"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
@@ -168,16 +161,25 @@ ul, li{
 
 
                 showInput1:false,
-                departmentHgt:null,
-                dateStartCollectionHgt:null,
-                dateEndCollectionHgt:null,
-                doctorPrescriberHgt:null,
-                hgtDate:null,  
-                hours:null,
-                hgt:null,
-                hgtOperatorSignature:null, 
-                folderPageCollectionHgt:null,
+
+
+                // departmentHgt:null,
+                // dateStartCollectionHgt:null,
+                // dateEndCollectionHgt:null,
+                // doctorPrescriberHgt:null,
+                // hgtDate:null,  
+                // hours:null,
+                // hgt:null,
+                // hgtOperatorSignature:null, 
+                // folderPageCollectionHgt:null,
                 
+
+
+
+                CollectionFormHgt:{},
+
+                nursHgt:{},
+
 
                 accessData:[
 
@@ -239,8 +241,8 @@ ul, li{
                 let form = new FormData();
                 form.append('userName', this.userName);
                 form.append('userLastName', this.userLastName);
-                form.append('userFullName', this.userFullName);
-                form.append('userInstance', this.userInstance);
+                // form.append('userFullName', this.userFullName);
+                form.append('userInstanceId', this.userInstanceId);
                 form.append('userId', this.userId);
                 // form.append('doctorId', this.accessData.id);
                 // form.append('doctorName', this.accessData.name);
@@ -256,16 +258,16 @@ ul, li{
                     }else{
                         form.append('action', 'update');
                         if(this.userIstanceId){
-                            form.append('nursId',this.userIstanceId);
+                            form.append('userIstanceId',this.userIstanceId);
                         }else{
                             _errors++;
                             _errorTitle="Attenzione";
                             _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
                         }
                     }
-                    form.append('section', 'mcp');
-                    if(!this.isObjEmpty(this.nursCardTh)){
-                        let _nurs=JSON.stringify(this.nursCardTh);
+                    form.append('section', 'hgt');
+                    if(!this.isObjEmpty(this.nursHgt)){
+                        let _nurs=JSON.stringify(this.nursHgt);
                         form.append('CollectionFormHgt', _nurs);
                     }
                 }
@@ -283,7 +285,7 @@ ul, li{
                                     'Aggiornata correttamente',
                                     'success'
                                 )
-                                this.getCollectionFormHgtsByUserIstanceId(this.userInstance);
+                                // this.getCollectionFormHgtsByUserIstanceId(this.userInstance);
                             }else{
                                 // eventBus.$emit('errorEvent', error, _attempts);
                                 Swal.fire(
@@ -313,7 +315,7 @@ ul, li{
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
                         if(error == 0){
-                            alert(JSON.stringify(response))
+                            // alert(JSON.stringify(response))
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                         }
@@ -331,7 +333,7 @@ ul, li{
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
                         if(error == 0){
-                            alert(JSON.stringify(response))
+                            // alert(JSON.stringify(response))
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                         }
@@ -347,7 +349,7 @@ ul, li{
                 try {
                     let url=actions.GET_HGTS_BY_USER_ISTANCE_ID+'/'+id;
                     axios.get(url).then(response => {
-                        // alert(JSON.stringify(response));
+                        alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -356,22 +358,26 @@ ul, li{
                         
                             _wm.mainTitle="Aggiornamento Cartella nurs";
                             if(response.data.CollectionFormHgt){
-                            _wm.hGTSaved=true;
-                            _wm.btnHgtSend="Aggiorna";
+                            // _wm.hGTSaved=true;
+                            // _wm.btnHgtSend="Aggiorna";
+
+                            _wm.CollectionFormHgt=response.data.CollectionFormHgt;
+                            alert(JSON.stringify(_wm.CollectionFormHgt));
+
                             
-                            let _NursHgt=response.data.CollectionFormHgt;
-                            _wm.departmentHgt = _NursHgt.department_hgt
-                            _wm.dateStartCollectionHgt = _NursHgt.date_start_collection_hgt
-                            _wm.dateEndCollectionHgt = _NursHgt.date_end_collection_hgt
-                            _wm.doctorPrescriberHgt = _NursHgt.doctor_prescriber_hgt
-                            _wm.hgtDate = _NursHgt.hgt_date
-                            _wm.hours = _NursHgt.hours
-                            _wm.hgt = _NursHgt.hgt
-                            _wm.hgtOperatorSignature = _NursHgt.hgt_operator_signature
-                            _wm.folderPageCollectionHgt = _NursHgt.folder_page_collection_hgt
+                            // let _NursHgt=response.data.CollectionFormHgt;
+                            // _wm.departmentHgt = _NursHgt.department_hgt
+                            // _wm.dateStartCollectionHgt = _NursHgt.date_start_collection_hgt
+                            // _wm.dateEndCollectionHgt = _NursHgt.date_end_collection_hgt
+                            // _wm.doctorPrescriberHgt = _NursHgt.doctor_prescriber_hgt
+                            // _wm.hgtDate = _NursHgt.hgt_date
+                            // _wm.hours = _NursHgt.hours
+                            // _wm.hgt = _NursHgt.hgt
+                            // _wm.hgtOperatorSignature = _NursHgt.hgt_operator_signature
+                            // _wm.folderPageCollectionHgt = _NursHgt.folder_page_collection_hgt
 
                 
-                            _wm.allCollectionFormHgts=response.data.allCollectionFormHgts;
+                            // _wm.allCollectionFormHgts=response.data.allCollectionFormHgts;
                             }else{
                                 _wm.btnHgtSend="Salva";
                             }

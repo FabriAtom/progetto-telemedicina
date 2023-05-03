@@ -14,12 +14,13 @@ class MonitoringClinicalParameter extends Model
         'date_start_rejection',
         'date_end_rejection',
         'mcp_date',
-        'inmate_feed',
+        'breakfast',
+        'lunch',
+        'dinner',
         'body_weight',
         'monitoring_pa',
         'monitoring_fc',
         'operator_signature',
-        'folder_page',
         
     ];
 

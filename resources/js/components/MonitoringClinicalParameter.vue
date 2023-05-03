@@ -18,7 +18,7 @@
                                         <span class="item form-group">
                                             <label for="department" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>Reparto/Sezione</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="text" name="department" v-model="department">
+                                                <input type="text" name="department" v-model="nursMcp.department">
                                             </span>
                                         </span>
                                     </span>
@@ -31,11 +31,11 @@
                                         <span class="item form-group">
                                             <label for="date_start_rejection" class="col-form-label col-md-4 col-sm-2 label-align"><strong><h4>Data inizio rifiuto alimentazione</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input style="margin-right: 8rem;" type="date" name="date_start_rejection" v-model="dateStartRejection">
+                                                <input style="margin-right: 8rem;" type="date" name="date_start_rejection" v-model="nursMcp.dateStartRejection">
                                             </span>
                                             <label for="date_end_rejection" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>Data fine</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="date" name="date_end_rejection" v-model="dateEndRejection">
+                                                <input type="date" name="date_end_rejection" v-model="nursMcp.dateEndRejection">
                                             </span>
                                         </span>
                                     </div>
@@ -47,20 +47,128 @@
                                 <table>
                                     
                                     <tr>
-                                        <td>DATA</td>
-                                        <td>ALIMENTAZIONE <br>(dichiarata dal detenuto)</td>
-                                        <td>PESO <br> CORPOREO</td>
-                                        <td>P.A.</td>
-                                        <td>F.C.</td>
-                                        <td>FIRMA <br> OPERATORE</td>
+                                        <th>DATA</th>
+                                        <th colspan="4">
+                                            ALIMENTAZIONE 
+                                            
+                                        </th>
+
+                                        <th>PESO <br> CORPOREO</th>
+
+                                        <th>P.A.</th>
+                                        <th>F.C.</th>
+                                        <th>FIRMA <br> OPERATORE</th>
                                     </tr>
-                                    <tr  >
+                                    <tr>
                                         <td>
-                                            <!-- {{Parameter.mcpDate}} -->
+                                            <!-- data -->
+                                        </td>
+                                        <td>
+                                            <td>
+                                                colazione
+                                            </td>
+                                            <td>
+                                                pranzo
+                                            </td>
+                                            <td>
+                                                cena
+                                            </td>
                                         </td>
 
                                         <td>
-                                            <input style="width: 5rem;" type="text" name="inmate_feed" v-model="inmateFeed">     
+                                            <!-- <input style="width: 5rem;" type="text" name="body_weight" v-model="bodyWeight">      -->
+                                        </td>
+                                        
+                                        <td>
+                                            <!-- <input style="width: 5rem;" type="text" name="monitoring_pa" v-model="monitoringPa"> -->
+                                        </td>
+                                        <td>
+                                            <!-- <input style="width: 5rem;" type="text" name="monitoring_fc" v-model="monitoringFc">   -->
+                                        </td>
+                                        <td>
+                                           <!-- {{operatorSignature}} -->
+                                        </td>
+                                    </tr>
+
+
+                                    <!-- <tr v-for="(therapies, index) in MonitoringClinicalParameter" :key="index">
+                                        <td>
+                                            <input style="width: 7rem;" type="date" name="mcp_date" v-model="therapies.mcpDate">
+                                        </td>
+
+                                        <td>
+                                            <td>
+                                                <input style="width: 5rem;" type="checkbox" name="breakfast" v-model="therapies.breakfast">
+                                                {{therapies.breakfast}}
+                                            </td>
+                                            <td>                                                
+                                                <input style="width: 5rem;" type="checkbox" name="lunch" v-model="therapies.lunch">
+                                            </td>
+                                            <td>   
+                                                <input style="width: 5rem;" type="checkbox" name="dinner" v-model="therapies.dinner">
+                                            </td>
+                                        </td>
+
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="body_weight" v-model="therapies.bodyWeight">     
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="monitoring_pa" v-model="therapies.monitoringPa">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="monitoring_fc" v-model="therapies.monitoringFc">  
+                                        </td>
+                                        <td>
+                                           {{therapies.operatorSignature}}
+                                        </td>
+                                    </tr> -->
+
+                                     <tr>
+                                        <td>
+                                            <input style="width: 7rem;" type="date" name="mcp_date" v-model="nursMcp.mcpDate">
+                                        </td>
+
+                                        <td>
+                                            <td>
+                                                <input style="width: 5rem;" type="checkbox" name="breakfast" v-model="nursMcp.breakfast">
+                                            </td>
+                                            <td>                                                
+                                                <input style="width: 5rem;" type="checkbox" name="lunch" v-model="nursMcp.lunch">
+                                            </td>
+                                            <td>   
+                                                <input style="width: 5rem;" type="checkbox" name="dinner" v-model="nursMcp.dinner">
+                                            </td>
+                                        </td>
+
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="body_weight" v-model="nursMcp.bodyWeight">     
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="monitoring_pa" v-model="nursMcp.monitoringPa">
+                                        </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="monitoring_fc" v-model="nursMcp.monitoringFc">  
+                                        </td>
+                                        <td>
+                                           {{nursMcp.operatorSignature}}
+                                        </td>
+                                    </tr>
+
+
+
+
+                                    <!-- <tr v-if="showInput1">
+                                        <td>{{mcpDate}}</td>
+                                         <td>
+                                            <td>
+                                                <input style="width: 5rem;" type="checkbox" name="breakfast" v-model="breakfast">
+                                            </td>
+                                            <td>
+                                                <input style="width: 5rem;" type="checkbox" name="lunch" v-model="lunch">
+                                            </td>
+                                            <td>
+                                                <input style="width: 5rem;" type="checkbox" name="dinner" v-model="dinner">
+                                            </td>
                                         </td>
 
                                         <td>
@@ -76,41 +184,18 @@
                                         <td>
                                            {{operatorSignature}}
                                         </td>
-                                    </tr>
-
-
-                                    <tr v-if="showInput1">
-                                        <td>
-                                            {{mcpDate}}
-                                        </td>
-
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="inmate_feed" v-model="inmateFeed">     
-                                        </td>
-
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="body_weight" v-model="bodyWeight">     
-                                        </td>
-                                        
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="monitoring_pa" v-model="monitoringPa">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="monitoring_fc" v-model="monitoringFc">  
-                                        </td>
-                                        <td>
-                                           {{operatorSignature}}
-                                        </td>
-                                    </tr>
-
+                                    </tr> -->
                                 </table>
+
+
+
 
                                 <div class="row" style="margin-top:50px;">
                                     <span class="col-md-12 col-sm-12">
                                         <span class="item form-group">
                                             <label for="folder_page" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n.</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="text" name="folder_page" v-model="folderPage">
+                                                <input type="text" name="folder_page" v-model="nursMcp.folderPage">
                                             </span>
                                         </span>
                                     </span>
@@ -205,19 +290,22 @@ ul, li{
                 showInput1:false,
 
 
-                department:null,
-                dateStartRejection:null,
-                dateEndRejection:null,
-                mcpDate:null,
-                inmateFeed:null,
-                bodyWeight:null,  
-                monitoringPa:null,
-                monitoringFc:null,
-                operatorSignature:null, 
-                folderPage:null,
+                // department:null,
+                // dateStartRejection:null,
+                // dateEndRejection:null,
+                // mcpDate:null,
+                // inmateFeed:null,
+                // bodyWeight:null,  
+                // monitoringPa:null,
+                // monitoringFc:null,
+                // operatorSignature:null, 
+                // folderPage:null,
+                // breakfast:null,
+                // lunch:null,
+                // dinner:null,
 
 
-                Parameter:{},
+                MonitoringClinicalParameter:{},
 
 
                 accessData:[
@@ -235,9 +323,10 @@ ul, li{
                 date:new Date(),
 
 
-                // nursCardTh:{},
-                // psyCardSa:{},
-                // psyCardTsc
+                nursMcp:{},
+
+
+                
 
                 mainTitle:"psy",
                 firstSave:true,
@@ -280,13 +369,13 @@ ul, li{
                 let form = new FormData();
                 form.append('userName', this.userName);
                 form.append('userLastName', this.userLastName);
-                form.append('userFullName', this.userFullName);
-                form.append('userInstance', this.userInstance);
+                // form.append('userFullName', this.userFullName);
+                form.append('userInstanceId', this.userInstanceId);
                 form.append('userId', this.userId);
                 // form.append('doctorId', this.accessData.id);
                 // form.append('doctorName', this.accessData.name);
                 // form.append('doctorUserName', this.accessData.lastname);
-                form.append('doctorId', 36);
+                form.append('doctorId', 63);
                 form.append('doctorName', 'mario');
                 form.append('doctorUserName', 'rossi');
 
@@ -297,7 +386,7 @@ ul, li{
                     }else{
                         form.append('action', 'update');
                         if(this.userIstanceId){
-                            form.append('nursId',this.userIstanceId);
+                            form.append('userInstanceId',this.userIstanceId);
                         }else{
                             _errors++;
                             _errorTitle="Attenzione";
@@ -305,9 +394,9 @@ ul, li{
                         }
                     }
                     form.append('section', 'mcp');
-                    if(!this.isObjEmpty(this.nursCardTh)){
-                        let _nurs=JSON.stringify(this.nursCardTh);
-                        form.append('NursingTherapies', _nurs);
+                    if(!this.isObjEmpty(this.nursMcp)){
+                        let _nurs=JSON.stringify(this.nursMcp);
+                        form.append('MonitoringClinicalParameter', _nurs);
                     }
                 }
                 
@@ -324,7 +413,7 @@ ul, li{
                                     'Aggiornata correttamente',
                                     'success'
                                 )
-                                this.getMonitoringClinicalParametersByUserIstanceId(this.userInstance);
+                                //this.getMonitoringClinicalParametersByUserIstanceId(this.userInstance);
                             }else{
                                 // eventBus.$emit('errorEvent', error, _attempts);
                                 Swal.fire(
@@ -354,7 +443,7 @@ ul, li{
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
                         if(error == 0){
-                            alert(JSON.stringify(response))
+                            // alert(JSON.stringify(response))
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                         }
@@ -372,7 +461,7 @@ ul, li{
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
                         if(error == 0){
-                            alert(JSON.stringify(response))
+                            // alert(JSON.stringify(response))
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                         }
@@ -388,7 +477,7 @@ ul, li{
                 try {
                     let url=actions.GET_MONITORINGS_BY_USER_ISTANCE_ID+'/'+id;
                     axios.get(url).then(response => {
-                        // alert(JSON.stringify(response));
+                        alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -396,11 +485,11 @@ ul, li{
                         if(error == 0){
                         
                             _wm.mainTitle="Aggiornamento Cartella nurs";
-                            if(response.data.Parameter){
+                            if(response.data.MonitoringClinicalParameter){
                             // _wm.mCPSaved=true;
                             // _wm.btnMcpSend="Aggiorna";
-                            _wm.Parameter=response.data.Parameter;
-                            alert(JSON.stringify(_wm.Parameter));
+                            _wm.MonitoringClinicalParameter=response.data.MonitoringClinicalParameter;
+                            alert(JSON.stringify(_wm.MonitoringClinicalParameter));
 
                             
                             // let _NursMcp=response.data.MonitoringClinicalParameter;
@@ -409,13 +498,11 @@ ul, li{
                             // _wm.dateStartRejection = _NursMcp.date_start_rejection
                             // _wm.dateEndRejection = _NursMcp.date_end_rejection
                             // _wm.mcpDate = _NursMcp.mcp_date
-                            // _wm.inmateFeed = _NursMcp.inmate_feed
                             // _wm.bodyWeight = _NursMcp.body_weight
 
                             // _wm.monitoringPa = _NursMcp.monitoring_pa
                             // _wm.monitoringFc = _NursMcp.monitoring_fc
                             // _wm.operatorSignature = _NursMcp.operator_signature
-                            // _wm.folderPage = _NursMcp.folder_page
 
                             // _wm.allMonitoringClinicalParameters=response.data.allMonitoringClinicalParameters;
                             }else{

@@ -386,7 +386,6 @@ class NursingRecordController extends Controller
                                     return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
                                 }
                                 break;
-                                // 
                             case 'cpc':
                                 $_nurs = $this->addClinicalParameterCollection($request);
                                 if($_nurs){
@@ -396,7 +395,7 @@ class NursingRecordController extends Controller
                                     return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
                                 }
                                 break;
-                            case 'cpc':
+                            case 'hgt':
                                 $_nurs = $this->addCollectionFormHgt($request);
                                 if($_nurs){
                                     $_nursId=$_nurs->id;
@@ -412,7 +411,22 @@ class NursingRecordController extends Controller
                                     }else{
                                         return ["errorNumber"=>2,"message"=>"message errorNumber"];
                                     }
-                                }else{
+                                }
+                                if($request->has('nursId')){
+                                    if (MonitoringClinicalParameter::where('user_instance_id', '=', $request->input('user_instance_id', 36))->exists()) {
+                                        $_nursId=$request->input('nursId');
+                                    }else{
+                                        return ["errorNumber"=>2,"message"=>"message errorNumber"];
+                                    }
+                                }
+                                if($request->has('nursId')){
+                                    if (ClinicalParameterCollection::where('user_instance_id', '=', $request->input('user_instance_id', 36))->exists()) {
+                                        $_nursId=$request->input('nursId');
+                                    }else{
+                                        return ["errorNumber"=>2,"message"=>"message errorNumber"];
+                                    }
+                                }
+                                else{
                                     return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
                                 }
                         }
@@ -431,13 +445,13 @@ class NursingRecordController extends Controller
                     case 'th':
                         return  $this->addTraceabilityTherapy($request,$_nursId);
                         break; 
-                    case 'th':
+                    case 'mcp':
                         return  $this->addMonitoringClinicalParameter($request,$_nursId);
                         break; 
-                    case 'th':
+                    case 'cpc':
                         return  $this->addClinicalParameterCollection($request,$_nursId);
                         break; 
-                    case 'th':
+                    case 'hgt':
                         return  $this->addCollectionFormHgt($request,$_nursId);
                         break;    
                 }
@@ -476,51 +490,51 @@ class NursingRecordController extends Controller
         $_nursingTh->th_date=$now;
 
         if($request->has('NursingTherapy')){
-            $psyCardArr = json_decode($request->input('NursingTherapy'), true);
-            if(array_key_exists('externalDoctorPrescription',$psyCardArr)){
-                $_nursingTh->external_doctor_prescription=$psyCardArr['externalDoctorPrescription'];
+            $nursArr = json_decode($request->input('NursingTherapy'), true);
+            if(array_key_exists('externalDoctorPrescription',$nursArr)){
+                $_nursingTh->external_doctor_prescription=$nursArr['externalDoctorPrescription'];
             }
-            if(array_key_exists('drug',$psyCardArr)){
-                $_nursingTh->drug=$psyCardArr['drug'];
+            if(array_key_exists('drug',$nursArr)){
+                $_nursingTh->drug=$nursArr['drug'];
             }
-            if(array_key_exists('posology',$psyCardArr)){
-                $_nursingTh->posology=$psyCardArr['posology'];
+            if(array_key_exists('posology',$nursArr)){
+                $_nursingTh->posology=$nursArr['posology'];
             }
-            if(array_key_exists('frequency',$psyCardArr)){
-                $_nursingTh->frequency=$psyCardArr['frequency'];
+            if(array_key_exists('frequency',$nursArr)){
+                $_nursingTh->frequency=$nursArr['frequency'];
             }
-            if(array_key_exists('startTherapy',$psyCardArr)){
-                $_nursingTh->start_therapy=$psyCardArr['startTherapy'];
+            if(array_key_exists('startTherapy',$nursArr)){
+                $_nursingTh->start_therapy=$nursArr['startTherapy'];
             }
-            if(array_key_exists('endTherapy',$psyCardArr)){
-                $_nursingTh->end_therapy=$psyCardArr['endTherapy'];
+            if(array_key_exists('endTherapy',$nursArr)){
+                $_nursingTh->end_therapy=$nursArr['endTherapy'];
             }
-            if(array_key_exists('drugRoute',$psyCardArr)){
-                $_nursingTh->drug_route=$psyCardArr['drugRoute'];
+            if(array_key_exists('drugRoute',$nursArr)){
+                $_nursingTh->drug_route=$nursArr['drugRoute'];
             }
-            if(array_key_exists('morning',$psyCardArr)){
-                $_nursingTh->morning=$psyCardArr['morning'];
+            if(array_key_exists('morning',$nursArr)){
+                $_nursingTh->morning=$nursArr['morning'];
             }
-            if(array_key_exists('afternoon',$psyCardArr)){
-                $_nursingTh->afternoon=$psyCardArr['afternoon'];
+            if(array_key_exists('afternoon',$nursArr)){
+                $_nursingTh->afternoon=$nursArr['afternoon'];
             }
-            if(array_key_exists('evening',$psyCardArr)){
-                $_nursingTh->evening=$psyCardArr['evening'];
+            if(array_key_exists('evening',$nursArr)){
+                $_nursingTh->evening=$nursArr['evening'];
             }
-            if(array_key_exists('deleted',$psyCardArr)){
-                $_nursingTh->deleted=$psyCardArr['deleted'];
+            if(array_key_exists('deleted',$nursArr)){
+                $_nursingTh->deleted=$nursArr['deleted'];
             }
-            if(array_key_exists('dateDeleted',$psyCardArr)){
-                $_nursingTh->date_deleted=$psyCardArr['dateDeleted'];
+            if(array_key_exists('dateDeleted',$nursArr)){
+                $_nursingTh->date_deleted=$nursArr['dateDeleted'];
             }
-            if(array_key_exists('idDoctorDeleted',$psyCardArr)){
-                $_nursingTh->id_doctor_deleted=$psyCardArr['idDoctorDeleted'];
+            if(array_key_exists('idDoctorDeleted',$nursArr)){
+                $_nursingTh->id_doctor_deleted=$nursArr['idDoctorDeleted'];
             }
-            if(array_key_exists('doctorDeletedName',$psyCardArr)){
-                $_nursingTh->doctor_deleted_name=$psyCardArr['doctorDeletedName'];
+            if(array_key_exists('doctorDeletedName',$nursArr)){
+                $_nursingTh->doctor_deleted_name=$nursArr['doctorDeletedName'];
             }
-            if(array_key_exists('doctorDeletedLastname',$psyCardArr)){
-                $_nursingTh->doctor_deleted_lastname=$psyCardArr['doctorDeletedLastname'];
+            if(array_key_exists('doctorDeletedLastname',$nursArr)){
+                $_nursingTh->doctor_deleted_lastname=$nursArr['doctorDeletedLastname'];
             }
         }
         $_nursingTh->save();
@@ -572,44 +586,44 @@ class NursingRecordController extends Controller
 
 
         if($request->has('TraceabilityTherapy')){
-            $psyCardArr = json_decode($request->input('TraceabilityTherapy'), true);
-            if(array_key_exists('thDate',$psyCardArr)){
-                $_traceTerapy->th_date=$psyCardArr['departmentCpc'];
+            $nursArr = json_decode($request->input('TraceabilityTherapy'), true);
+            if(array_key_exists('thDate',$nursArr)){
+                $_traceTerapy->th_date=$nursArr['departmentCpc'];
             }
-            if(array_key_exists('drugsNotAdministered',$psyCardArr)){
-                $_traceTerapy->drugs_not_administered=$psyCardArr['drugsNotAdministered'];
+            if(array_key_exists('drugsNotAdministered',$nursArr)){
+                $_traceTerapy->drugs_not_administered=$nursArr['drugsNotAdministered'];
             }
-            if(array_key_exists('drugs',$psyCardArr)){
-                $_traceTerapy->drugs=$psyCardArr['drugs'];
-            }
-
-            if(array_key_exists('thFromThe',$psyCardArr)){
-                $_traceTerapy->drugs=$psyCardArr['thFromThe'];
-            }
-            if(array_key_exists('thToThe',$psyCardArr)){
-                $_traceTerapy->motivation_not_take_medicine=$psyCardArr['thToThe'];
-            }
-            if(array_key_exists('thHours',$psyCardArr)){
-                $_traceTerapy->medical_alert=$psyCardArr['thHours'];
-            }
-            if(array_key_exists('thFrequency',$psyCardArr)){
-                $_traceTerapy->medical_alert_note=$psyCardArr['thFrequency'];
+            if(array_key_exists('drugs',$nursArr)){
+                $_traceTerapy->drugs=$nursArr['drugs'];
             }
 
-            if(array_key_exists('motivationNotTakeMedicine',$psyCardArr)){
-                $_traceTerapy->motivation_not_take_medicine=$psyCardArr['motivationNotTakeMedicine'];
+            if(array_key_exists('thFromThe',$nursArr)){
+                $_traceTerapy->drugs=$nursArr['thFromThe'];
             }
-            if(array_key_exists('medicalAlert',$psyCardArr)){
-                $_traceTerapy->medical_alert=$psyCardArr['medicalAlert'];
+            if(array_key_exists('thToThe',$nursArr)){
+                $_traceTerapy->motivation_not_take_medicine=$nursArr['thToThe'];
             }
-            if(array_key_exists('medicalAlertNote',$psyCardArr)){
-                $_traceTerapy->medical_alert_note=$psyCardArr['medicalAlertNote'];
+            if(array_key_exists('thHours',$nursArr)){
+                $_traceTerapy->medical_alert=$nursArr['thHours'];
             }
-            if(array_key_exists('doctorsPrescriptions',$psyCardArr)){
-                $_traceTerapy->doctors_prescriptions=$psyCardArr['doctorsPrescriptions'];
+            if(array_key_exists('thFrequency',$nursArr)){
+                $_traceTerapy->medical_alert_note=$nursArr['thFrequency'];
             }
-            if(array_key_exists('doctorsPrescriptionsNote',$psyCardArr)){
-                $_traceTerapy->doctors_prescriptions_note=$psyCardArr['doctorsPrescriptionsNote'];
+
+            if(array_key_exists('motivationNotTakeMedicine',$nursArr)){
+                $_traceTerapy->motivation_not_take_medicine=$nursArr['motivationNotTakeMedicine'];
+            }
+            if(array_key_exists('medicalAlert',$nursArr)){
+                $_traceTerapy->medical_alert=$nursArr['medicalAlert'];
+            }
+            if(array_key_exists('medicalAlertNote',$nursArr)){
+                $_traceTerapy->medical_alert_note=$nursArr['medicalAlertNote'];
+            }
+            if(array_key_exists('doctorsPrescriptions',$nursArr)){
+                $_traceTerapy->doctors_prescriptions=$nursArr['doctorsPrescriptions'];
+            }
+            if(array_key_exists('doctorsPrescriptionsNote',$nursArr)){
+                $_traceTerapy->doctors_prescriptions_note=$nursArr['doctorsPrescriptionsNote'];
             }
           
         }
@@ -646,10 +660,10 @@ class NursingRecordController extends Controller
 
 
     public function addClinicalParameterCollection(request $request){
-        $userInstanceId=$request->input("user_instance_id",36);
+        $userInstanceId=$request->input("user_instance_id");
         $_nursingCpc = new ClinicalParameterCollection;
         $now=date("Y-m-d H:i:s");
-        $_nursingCpc->user_instance_id=$userInstanceId;
+        $_nursingCpc->user_instance_id= 36;
         if($request->has('doctorId')){
             $_nursingCpc->id_doctor=$request->input('doctorId');
         }
@@ -662,40 +676,37 @@ class NursingRecordController extends Controller
         $_nursingCpc->cpc_date=$now;
 
 
-        if($request->has('nursCpc')){
-            $psyCardArr = json_decode($request->input('nursCpc'), true);
-            if(array_key_exists('departmentCpc',$psyCardArr)){
-                $_nursingCpc->department_cpc=$psyCardArr['departmentCpc'];
+        if($request->has('ClinicalParameterCollection')){
+            $nursArr = json_decode($request->input('ClinicalParameterCollection'), true);
+            if(array_key_exists('departmentCpc',$nursArr)){
+                $_nursingCpc->department_cpc=$nursArr['departmentCpc'];
             }
-            if(array_key_exists('dateStartCollection',$psyCardArr)){
-                $_nursingCpc->date_start_collection=$psyCardArr['dateStartCollection'];
+            if(array_key_exists('dateStartCollection',$nursArr)){
+                $_nursingCpc->date_start_collection=$nursArr['dateStartCollection'];
             }
-            if(array_key_exists('dateEndCollection',$psyCardArr)){
-                $_nursingCpc->date_end_collection=$psyCardArr['dateEndCollection'];
+            if(array_key_exists('dateEndCollection',$nursArr)){
+                $_nursingCpc->date_end_collection=$nursArr['dateEndCollection'];
             }
-            if(array_key_exists('doctorPrescriber',$psyCardArr)){
-                $_nursingCpc->doctor_prescriber=$psyCardArr['doctorPrescriber'];
+            if(array_key_exists('doctorPrescriber',$nursArr)){
+                $_nursingCpc->doctor_prescriber=$nursArr['doctorPrescriber'];
             }
-            if(array_key_exists('cpcDate',$psyCardArr)){
-                $_nursingCpc->cpc_date=$psyCardArr['cpcDate'];
+            if(array_key_exists('cpcDate',$nursArr)){
+                $_nursingCpc->cpc_date=$nursArr['cpcDate'];
             }
-            if(array_key_exists('collectionPa',$psyCardArr)){
-                $_nursingCpc->collection_pa=$psyCardArr['collectionPa'];
+            if(array_key_exists('collectionPa',$nursArr)){
+                $_nursingCpc->collection_pa=$nursArr['collectionPa'];
             }
-            if(array_key_exists('collectionFc',$psyCardArr)){
-                $_nursingCpc->collection_fc=$psyCardArr['collectionFc'];
+            if(array_key_exists('collectionFc',$nursArr)){
+                $_nursingCpc->collection_fc=$nursArr['collectionFc'];
             }
-            if(array_key_exists('collectionSpo2',$psyCardArr)){
-                $_nursingCpc->collection_spo2=$psyCardArr['collectionSpo2'];
+            if(array_key_exists('collectionSpo2',$nursArr)){
+                $_nursingCpc->collection_spo2=$nursArr['collectionSpo2'];
             }
-            if(array_key_exists('collectionTc',$psyCardArr)){
-                $_nursingCpc->collection_tc=$psyCardArr['collectionTc'];
+            if(array_key_exists('collectionTc',$nursArr)){
+                $_nursingCpc->collection_tc=$nursArr['collectionTc'];
             }
-            if(array_key_exists('collectionOperatorSignature',$psyCardArr)){
-                $_nursingCpc->collection_operator_signature=$psyCardArr['collectionOperatorSignature'];
-            }
-            if(array_key_exists('folderPageCollection',$psyCardArr)){
-                $_nursingCpc->folder_page_collection=$psyCardArr['folderPageCollection'];
+            if(array_key_exists('collectionOperatorSignature',$nursArr)){
+                $_nursingCpc->collection_operator_signature=$nursArr['collectionOperatorSignature'];
             }
         }
         $_nursingCpc->save();
@@ -723,10 +734,10 @@ class NursingRecordController extends Controller
     
 
     public function addCollectionFormHgt(request $request){
-        $userInstanceId=$request->input("user_instance_id",36);
+        $userInstanceId=$request->input("user_instance_id");
         $_nursingHgt = new CollectionFormHgt;
         $now=date("Y-m-d H:i:s");
-        $_nursingHgt->user_instance_id=$userInstanceId;
+        $_nursingHgt->user_instance_id= 36;
         if($request->has('doctorId')){
             $_nursingHgt->id_doctor=$request->input('doctorId');
         }
@@ -736,43 +747,111 @@ class NursingRecordController extends Controller
         if($request->has('doctorUserName')){
             $_nursingHgt->doctor_lastname=$request->input('doctorUserName');
         }
-        $_nursingHgt->cpc_date=$now;
-
+        $_nursingHgt->hgt_date=$now;
 
         if($request->has('CollectionFormHgt')){
-            $psyCardArr = json_decode($request->input('CollectionFormHgt'), true);
-            if(array_key_exists('departmentHgt',$psyCardArr)){
-                $_nursingHgt->department_hgt=$psyCardArr['departmentHgt'];
+            $nursArr = json_decode($request->input('CollectionFormHgt'), true);
+            if(array_key_exists('departmentHgt',$nursArr)){
+                $_nursingHgt->department_hgt=$nursArr['departmentHgt'];
             }
-            if(array_key_exists('dateStartCollectionHgt',$psyCardArr)){
-                $_nursingHgt->date_start_collection_hgt=$psyCardArr['dateStartCollectionHgt'];
+            if(array_key_exists('dateStartCollectionHgt',$nursArr)){
+                $_nursingHgt->date_start_collection_hgt=$nursArr['dateStartCollectionHgt'];
             }
-            if(array_key_exists('dateEndCollectionHgt',$psyCardArr)){
-                $_nursingHgt->date_end_collection_hgt=$psyCardArr['dateEndCollectionHgt'];
+            if(array_key_exists('dateEndCollectionHgt',$nursArr)){
+                $_nursingHgt->date_end_collection_hgt=$nursArr['dateEndCollectionHgt'];
             }
-            if(array_key_exists('doctorPrescriberHgt',$psyCardArr)){
-                $_nursingHgt->doctor_prescriber_hgt=$psyCardArr['doctorPrescriberHgt'];
+            if(array_key_exists('doctorPrescriberHgt',$nursArr)){
+                $_nursingHgt->doctor_prescriber_hgt=$nursArr['doctorPrescriberHgt'];
             }
-            if(array_key_exists('hgtDate',$psyCardArr)){
-                $_nursingHgt->hgt_date=$psyCardArr['hgtDate'];
+            if(array_key_exists('hgtDate',$nursArr)){
+                $_nursingHgt->hgt_date=$nursArr['hgtDate'];
             }
-            if(array_key_exists('hours',$psyCardArr)){
-                $_nursingHgt->hours=$psyCardArr['hours'];
+            if(array_key_exists('hours',$nursArr)){
+                $_nursingHgt->hours=$nursArr['hours'];
             }
-            if(array_key_exists('hgt',$psyCardArr)){
-                $_nursingHgt->hgt=$psyCardArr['hgt'];
+            if(array_key_exists('hgt',$nursArr)){
+                $_nursingHgt->hgt=$nursArr['hgt'];
             }
-            if(array_key_exists('hgtOperatorSignature',$psyCardArr)){
-                $_nursingHgt->hgt_operator_signature=$psyCardArr['hgtOperatorSignature'];
+            if(array_key_exists('hgtOperatorSignature',$nursArr)){
+                $_nursingHgt->hgt_operator_signature=$nursArr['hgtOperatorSignature'];
             }
-            if(array_key_exists('hgtFolderPage',$psyCardArr)){
-                $_nursingHgt->hgt_folder_page=$psyCardArr['hgtFolderPage'];
+            if(array_key_exists('hgtFolderPage',$nursArr)){
+                $_nursingHgt->hgt_folder_page=$nursArr['hgtFolderPage'];
             }
         }
         $_nursingHgt->save();
 
         if($_nursingHgt){
             return ["errorNumber"=>0,"message"=>"ok","hgt"=>$_nursingHgt];
+
+        }else{
+            return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
+        }
+    }
+
+
+
+
+
+
+
+
+    public function addMonitoringClinicalParameter(request $request){
+        $userInstanceId=$request->input("user_instance_id");
+        $_nursingMcp = new MonitoringClinicalParameter;
+        $now=date("Y-m-d H:i:s");
+        $_nursingMcp->user_instance_id= 36;
+        if($request->has('doctorId')){
+            $_nursingMcp->id_doctor=$request->input('doctorId');
+        }
+        if($request->has('doctorName')){
+            $_nursingMcp->doctor_name=$request->input('doctorName');
+        }
+        if($request->has('doctorUserName')){
+            $_nursingMcp->doctor_lastname=$request->input('doctorUserName');
+        }
+        $_nursingMcp->mcp_date=$now;
+
+        if($request->has('MonitoringClinicalParameter')){
+            $nursArr = json_decode($request->input('MonitoringClinicalParameter'), true);
+            if(array_key_exists('department',$nursArr)){
+                $_nursingMcp->department=$nursArr['department'];
+            }
+            if(array_key_exists('dateStartRejection',$nursArr)){
+                $_nursingMcp->date_start_rejection=$nursArr['dateStartRejection'];
+            }
+            if(array_key_exists('dateEndRejection',$nursArr)){
+                $_nursingMcp->date_end_rejection=$nursArr['dateEndRejection'];
+            }
+            if(array_key_exists('mcpDate',$nursArr)){
+                $_nursingMcp->mcp_date=$nursArr['mcpDate'];
+            }
+            if(array_key_exists('breakfast',$nursArr)){
+                $_nursingMcp->breakfast=$nursArr['breakfast'];
+            }
+            if(array_key_exists('lunch',$nursArr)){
+                $_nursingMcp->lunch=$nursArr['lunch'];
+            }
+            if(array_key_exists('dinner',$nursArr)){
+                $_nursingMcp->dinner=$nursArr['dinner'];
+            }
+            if(array_key_exists('bodyWeight',$nursArr)){
+                $_nursingMcp->body_weight=$nursArr['bodyWeight'];
+            }
+            if(array_key_exists('monitoringPa',$nursArr)){
+                $_nursingMcp->monitoring_pa=$nursArr['dinner'];
+            }
+            if(array_key_exists('monitoringFc',$nursArr)){
+                $_nursingMcp->monitoring_fc=$nursArr['monitoringFc'];
+            }
+            if(array_key_exists('operatorSignature',$nursArr)){
+                $_nursingMcp->operator_signature=$nursArr['operatorSignature'];
+            }
+        }
+        $_nursingMcp->save();
+
+        if($_nursingMcp){
+            return ["errorNumber"=>0,"message"=>"ok","mcp"=>$_nursingMcp];
 
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];

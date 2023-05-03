@@ -68,17 +68,10 @@
                                             {{therapy.frequency}}
                                         </td>
                                         <td>
-                                            
-
-
-
-
-
+                                        
 
                                             <input type="checkbox" :value="therapy.drug" v-model="terapieRifiutate">
- 
-
-                                            <!-- <input style="width: 5rem;" type="checkbox" v-model="fields" value="campo1" @click="toggleField('campo1')"> -->
+                                            <!-- <input style="width: 5rem;" type="checkbox" v-model=""> -->
                                         </td>     
                                     </tr>  
                                 </table>
@@ -164,7 +157,6 @@
     color: #333; 
 } 
 
-
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -179,6 +171,290 @@ td, th {
 
 ul, li{
     list-style: none;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Jost', sans-serif;
+}
+
+
+body {
+    margin: 0;
+}
+
+header {
+
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+
+margin: 3rem;
+
+border-radius: 10px;
+
+padding: 1rem;
+
+background-color: #1b995e;
+
+color: white;
+
+text-align: center;
+
+}
+
+
+
+#demo {
+
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+
+margin: 3rem;
+
+border-radius: 10px;
+
+padding: 1rem;
+
+text-align: center;
+
+}
+
+.demot {
+
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+
+margin: 3rem;
+
+border-radius: 10px;
+
+padding: 1rem;
+
+text-align: center;
+
+}
+
+
+
+#assignment h2 {
+
+font-size: 2rem;
+
+border-bottom: 4px solid #ccc;
+
+color: #1b995e;
+
+margin: 0 0 1rem 0;
+
+}
+
+
+
+#assignment p {
+
+font-size: 1.25rem;
+
+font-weight: bold;
+
+background-color: #8ddba4;
+
+padding: 0.5rem;
+
+color: #1f1f1f;
+
+border-radius: 25px;
+
+}
+
+
+
+#assignment input {
+
+font: inherit;
+
+border: 1px solid #ccc;
+
+}
+
+
+
+#assignment input:focus {
+
+outline: none;
+
+border-color: #1b995e;
+
+background-color: #d7fdeb;
+
+}
+
+
+
+#assignment button {
+
+font: inherit;
+
+cursor: pointer;
+
+border: 1px solid #ff0077;
+
+background-color: #ff0077;
+
+color: white;
+
+padding: 0.05rem 1rem;
+
+box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
+
+}
+
+
+
+#assignment button:hover,
+
+#assignment button:active {
+
+background-color: #ec3169;
+
+border-color: #ec3169;
+
+box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+
+}
+
+
+
+.i2hCheckbox{
+
+margin-right: 10px;
+
+}
+
+.i2hCheckboxLabel{
+
+min-width:100px; 
+
+display:inline-block;
+
+}
+
+.btnArchives{
+
+background:none;
+
+border:none;
+
+color:#333;
+
+cursor:pointer;
+
+}
+
+.i2hLoaderContainer{
+
+height: 100vh;
+
+width:100vw;
+
+background:#fff;
+
+}
+
+.i2hLoader{
+
+position: absolute;
+
+left: 50%;
+
+top: 40%;
+
+-webkit-transform: translate(-50%, -50%);
+
+transform: translate(-50%, -50%);
+
+}
+
+label {
+
+font-weight: 100;
+
+}
+
+.form-control {
+
+height: 28px;
+
+padding: 6px 12px;
+
+font-size: 12px;
+
+line-height: 1.2;
+
+}
+
+.acceptance{
+
+-moz-box-shadow: inset -3px -3px 10px #1cee77;
+
+-webkit-box-shadow: inset -3px -3px 10px #1cee77;
+
+box-shadow: inset -3px -3px 10px #1cee77;
+
+background: rgb(255,255,255);
+
+background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(235,255,235,1) 44%, rgba(255,255,255,1) 100%);
+
+}
+
+.noAcceptance{
+
+-moz-box-shadow: inset -3px -3px 10px #fafddc;
+
+-webkit-box-shadow: inset -3px -3px 10px #fafddc;
+
+box-shadow: inset -3px -3px 10px #fafddc;
+
+background: rgb(255,255,255);
+
+background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(252,255,227,1) 44%, rgba(255,255,255,1) 100%);
+
+}
+
+
+
+.therapy{
+
+border:1px double #f1f1f1;
+
+margin: 1.5rem 0;
+
+padding: 20px 15px;
+
+font-style: italic; 
+
+-webkit-box-shadow: 1px 1px 3px 1px #ccc; 
+
+box-shadow: 1px 1px 3px 1px #ccc; 
+
+border-radius: 5px;
+
+color: #333; 
+
+}
+
+.container{
+
+margin-top:30px;
+
+}
+
+.closeButton{
+
+width:25px;
+
+height:25px;
+
 }
 </style>
 
@@ -204,7 +480,26 @@ ul, li{
 
 
 
-                // fields: [],
+                refusedTreatments: {
+                    checked:{},
+                    descriptions:{}
+                },
+                chechedDescriptions: [],
+                therapies:[{id:1,drug:'tachipirina',start_date:'2022-10-12',end_date:'2023-06-10'},
+                    {id:2,drug:'toradol',start_date:'2023-01-01',end_date:'2023-12-31'},
+                    {id:3,drug:'buscopan',start_date:'2022-08-12',end_date:'2023-07-23'
+                }],
+
+                computed: {
+                },
+
+                watch: {
+
+                },
+                                    
+
+
+                
 
 
                 
@@ -271,14 +566,88 @@ ul, li{
 
         created: function () {
             this.getTraceabilityTherapysByUserIstanceId(1)
-
-        },
-        created: function () {
             this.getNursingTherapysByUserIstanceId(1)
         },
-
+        
 
         methods: {
+
+
+            saveRefusedTreatments(){
+                for (var refusedTreatment in this.refusedTreatments.checked){
+                    if (this.refusedTreatments.checked.hasOwnProperty(refusedTreatment)) {
+                        
+                        if(this.refusedTreatments.checked[refusedTreatment]==true){
+                            this.refused[refusedTreatment]=this.refusedTreatments.descriptions[refusedTreatment];
+                        }
+                        //alert("Selezionato " + refusedTreatment + ", valore " + this.refusedTreatments.checked[refusedTreatment]);
+                        // alert(this.refusedTreatments.descriptions[refusedTreatment])
+                    }
+                }
+            },
+
+
+            addTherapy () {
+
+                this.newTherapies.push({
+                    idDoctor:14,
+                    doctorName:'medico',
+                    doctorLastname:'test',   
+                    userInstanceId :17,
+                    userId:36,
+                    drug: "",
+                    posology: "",
+                    frequency: "",
+                    drugRoute: "",
+                    morning: 0,
+                    afternoon: 0,
+                    evening: 0,
+                    external_doctor_prescription:0,
+                    deleted:0, 
+                    acceptance:0,  
+                    acceptanceId:0 
+                })
+            },
+
+            saveTherapy(){
+                let _wm=this;
+                var addTherapyForm = new FormData();
+                addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
+                if(this.newTherapies.length>0){
+                    try {
+                        //let url=actions.ADD_THERAPIES_DATA;
+                        //  axios.post(url,addTherapyForm).then(response => {
+                        //      let error=response.data.errorNumber;
+                        //      let _attempts=response.data.attempts;
+                        //      _wm.errNum=error;
+                        //      if(error == 0){
+                        //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
+                        //         // setTimeout(function(){
+                        //         //     _wm.hideSuccess();
+                        //         // }, 4000);
+                        //         _wm.i2hLoader=true;
+                        //         _wm.initTherapies();
+                        //         _wm.getTherapies();
+                        //      }else{
+                        //         let _errorDescription=response.data.errorDescription
+                        //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
+                        //      }
+                        //  })
+                    }catch (error) {
+                        throw error
+                    }                             
+                }else{
+                    eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
+                }
+            },
+
+
+
+
+
+
+
+
 
             printTraceabilityTherapy(printPdf){
 
@@ -384,7 +753,7 @@ ul, li{
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
                         if(error == 0){
-                            alert(JSON.stringify(response))
+                            // alert(JSON.stringify(response))
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                         }
@@ -402,7 +771,7 @@ ul, li{
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
                         if(error == 0){
-                            alert(JSON.stringify(response))
+                            // alert(JSON.stringify(response))
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                         }
@@ -469,15 +838,6 @@ ul, li{
             isObjEmpty (obj) {
                 return Object.keys(obj).length === 0;
             },
-
-
-
-
-
-
-
-
-
 
 
 
@@ -593,7 +953,7 @@ ul, li{
                             if(response.data.therapies){
                             _wm.therapies=response.data.therapies;
 
-                            alert(JSON.stringify(_wm.therapies));
+                            // alert(JSON.stringify(_wm.therapies));
 
 
                             // alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
@@ -635,5 +995,5 @@ ul, li{
                 return Object.keys(obj).length === 0;
             },
         }    
-    }
+    };
 </script>

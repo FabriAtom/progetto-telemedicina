@@ -19,9 +19,7 @@ class ClinicalParameterCollection extends Model
         'collection_fc',
         'collection_spo2',
         'collection_tc',
-        'collection_operator_signature',
-        'folder_page_collection',
-        
+        'collection_operator_signature',        
     ];
 
     protected $table = 'clinical_parameter_collections';

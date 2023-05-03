@@ -249,6 +249,7 @@ ul, li{
     import Swal from 'sweetalert2';
 
     export default {
+
         name: 'NursingTherapy',
 
 
@@ -287,17 +288,10 @@ ul, li{
                     lastname => 'rossi',
                     
                 ],
-                // psyMhDoctorId:0,
-                // psyMhDoctorName:'',
-                // psyMhDoctorLastname:'',
-                // psyMhDate:null,
-                // psyCardId:null,
+               
                 date:new Date(),
 
 
-                // nursCardTh:{},
-                // psyCardSa:{},
-                // psyCardTsc
 
                 mainTitle:"psy",
                 firstSave:true,

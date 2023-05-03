@@ -1925,18 +1925,20 @@ __webpack_require__.r(__webpack_exports__);
       userFullName: '',
       userInstanceId: 36,
       userId: 237,
+      ClinicalParameterCollection: {},
       showInput5: false,
-      departmentCpc: null,
-      dateStartCollection: null,
-      dateEndCollection: null,
-      doctorPrescriber: null,
-      cpcDate: null,
-      collectionPa: null,
-      collectionFc: null,
-      collectionSpo2: null,
-      collectionTc: null,
-      collectionOperatorSignature: null,
-      folderPageCollection: null,
+      // departmentCpc:null,
+      // dateStartCollection:null,
+      // dateEndCollection:null,
+      // doctorPrescriber:null,
+      // cpcDate:null,
+      // collectionPa:null,
+      // collectionFc:null,
+      // collectionSpo2:null,
+      // collectionTc:null,
+      // collectionOperatorSignature:null,
+      // folderPageCollection:null,
+
       nursCpc: {},
       accessData: [function (id) {
         return 31;
@@ -1965,7 +1967,6 @@ __webpack_require__.r(__webpack_exports__);
       return false;
     },
     addClinicalParameterCollection: function addClinicalParameterCollection(panel) {
-      var _this = this;
       var _wm = this;
       var _panel = panel;
       var _errors = 0;
@@ -1974,13 +1975,13 @@ __webpack_require__.r(__webpack_exports__);
       var form = new FormData();
       form.append('userName', this.userName);
       form.append('userLastName', this.userLastName);
-      form.append('userFullName', this.userFullName);
-      form.append('userInstance', this.userInstance);
+      // form.append('userFullName', this.userFullName);
+      form.append('userInstanceId', this.userInstanceId);
       form.append('userId', this.userId);
       // form.append('doctorId', this.accessData.id);
       // form.append('doctorName', this.accessData.name);
       // form.append('doctorUserName', this.accessData.lastname);
-      form.append('doctorId', 36);
+      form.append('doctorId', 63);
       form.append('doctorName', 'mario');
       form.append('doctorUserName', 'rossi');
       if (_panel == 'cpc') {
@@ -1989,7 +1990,7 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           form.append('action', 'update');
           if (this.userIstanceId) {
-            form.append('nursId', this.userIstanceId);
+            form.append('userInstanceId', this.userIstanceId);
           } else {
             _errors++;
             _errorTitle = "Attenzione";
@@ -1998,8 +1999,8 @@ __webpack_require__.r(__webpack_exports__);
         }
         form.append('section', 'cpc');
         if (!this.isObjEmpty(this.nursCpc)) {
-          var _nursCpc = JSON.stringify(this.nursCpc);
-          form.append('NursingTherapies', _nursCpc);
+          var _nurs = JSON.stringify(this.nursCpc);
+          form.append('ClinicalParameterCollection', _nurs);
         }
       }
       if (_errors == 0) {
@@ -2010,7 +2011,7 @@ __webpack_require__.r(__webpack_exports__);
             _wm.errNum = error;
             if (error == 0) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
-              _this.getClinicalParameterCollectionsByUserIstanceId(_this.userInstance);
+              // this.getClinicalParameterCollectionsByUserIstanceId(this.userInstanceId);
             } else {
               // eventBus.$emit('errorEvent', error, _attempts);
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
@@ -2049,7 +2050,7 @@ __webpack_require__.r(__webpack_exports__);
           var _attempts = response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
-            alert(JSON.stringify(response));
+            // alert(JSON.stringify(response))
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
           }
@@ -2064,28 +2065,35 @@ __webpack_require__.r(__webpack_exports__);
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_COLLECTIONS_BY_USER_ISTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          // alert(JSON.stringify(response));
+          alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
             _wm.mainTitle = "Aggiornamento Cartella nurs";
             if (response.data.ClinicalParameterCollection) {
-              _wm.cPCSaved = true;
-              _wm.btnCpcSend = "Aggiorna";
-              var _Nursvarible = response.data.ClinicalParameterCollection;
-              _wm.nursCpc.departmentCpc = _Nursvarible.department_cpc;
-              _wm.nursCpc.dateStartCollection = _Nursvarible.date_start_collection;
-              _wm.nursCpc.dateEndCollection = _Nursvarible.date_end_collection;
-              _wm.nursCpc.doctorPrescriber = _Nursvarible.doctor_prescriber;
-              _wm.nursCpc.cpcDate = _Nursvarible.cpc_date;
-              _wm.nursCpc.collectionPa = _Nursvarible.collection_pa;
-              _wm.nursCpc.collectionFc = _Nursvarible.collection_fc;
-              _wm.nursCpc.collectionSpo2 = _Nursvarible.collection_spo2;
-              _wm.nursCpc.collectionTc = _Nursvarible.collection_tc;
-              _wm.nursCpc.collectionOperatorSignature = _Nursvarible.collection_operator_signature;
-              _wm.nursCpc.folderPageCollection = _Nursvarible.folder_page_collection;
-              _wm.allClinicalParameterCollections = response.data.allClinicalParameterCollections;
+              // _wm.cPCSaved=true;
+              // alert(JSON.stringify(response.data.ClinicalParameterCollection))
+              // _wm.btnCpcSend="Aggiorna";
+
+              _wm.ClinicalParameterCollection = response.data.ClinicalParameterCollection;
+              alert(JSON.stringify(_wm.ClinicalParameterCollection));
+
+              // let _Nursvarible=response.data.ClinicalParameterCollection;
+
+              // _wm.nursCpc.departmentCpc = _Nursvarible.department_cpc
+              // _wm.nursCpc.dateStartCollection = _Nursvarible.date_start_collection
+              // _wm.nursCpc.dateEndCollection = _Nursvarible.date_end_collection
+              // _wm.nursCpc.doctorPrescriber = _Nursvarible.doctor_prescriber
+              // _wm.nursCpc.cpcDate = _Nursvarible.cpc_date
+              // _wm.nursCpc.collectionPa = _Nursvarible.collection_pa
+              // _wm.nursCpc.collectionFc = _Nursvarible.collection_fc
+              // _wm.nursCpc.collectionSpo2 = _Nursvarible.collection_spo2
+              // _wm.nursCpc.collectionTc = _Nursvarible.collection_tc
+              // _wm.nursCpc.collectionOperatorSignature = _Nursvarible.collection_operator_signature
+              // _wm.nursCpc.folderPageCollection = _Nursvarible.folder_page_collection
+
+              // _wm.nursCpc.allClinicalParameterCollections=response.data.allClinicalParameterCollections;
             } else {
               _wm.btnCpcSend = "Salva";
             }
@@ -2136,15 +2144,18 @@ __webpack_require__.r(__webpack_exports__);
       userInstanceId: 36,
       userId: 237,
       showInput1: false,
-      departmentHgt: null,
-      dateStartCollectionHgt: null,
-      dateEndCollectionHgt: null,
-      doctorPrescriberHgt: null,
-      hgtDate: null,
-      hours: null,
-      hgt: null,
-      hgtOperatorSignature: null,
-      folderPageCollectionHgt: null,
+      // departmentHgt:null,
+      // dateStartCollectionHgt:null,
+      // dateEndCollectionHgt:null,
+      // doctorPrescriberHgt:null,
+      // hgtDate:null,  
+      // hours:null,
+      // hgt:null,
+      // hgtOperatorSignature:null, 
+      // folderPageCollectionHgt:null,
+
+      CollectionFormHgt: {},
+      nursHgt: {},
       accessData: [function (id) {
         return 31;
       }, function (name) {
@@ -2181,7 +2192,6 @@ __webpack_require__.r(__webpack_exports__);
       return false;
     },
     addCollectionFormHgt: function addCollectionFormHgt(panel) {
-      var _this = this;
       var _wm = this;
       var _panel = panel;
       var _errors = 0;
@@ -2190,8 +2200,8 @@ __webpack_require__.r(__webpack_exports__);
       var form = new FormData();
       form.append('userName', this.userName);
       form.append('userLastName', this.userLastName);
-      form.append('userFullName', this.userFullName);
-      form.append('userInstance', this.userInstance);
+      // form.append('userFullName', this.userFullName);
+      form.append('userInstanceId', this.userInstanceId);
       form.append('userId', this.userId);
       // form.append('doctorId', this.accessData.id);
       // form.append('doctorName', this.accessData.name);
@@ -2205,16 +2215,16 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           form.append('action', 'update');
           if (this.userIstanceId) {
-            form.append('nursId', this.userIstanceId);
+            form.append('userIstanceId', this.userIstanceId);
           } else {
             _errors++;
             _errorTitle = "Attenzione";
             _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
           }
         }
-        form.append('section', 'mcp');
-        if (!this.isObjEmpty(this.nursCardTh)) {
-          var _nurs = JSON.stringify(this.nursCardTh);
+        form.append('section', 'hgt');
+        if (!this.isObjEmpty(this.nursHgt)) {
+          var _nurs = JSON.stringify(this.nursHgt);
           form.append('CollectionFormHgt', _nurs);
         }
       }
@@ -2226,7 +2236,7 @@ __webpack_require__.r(__webpack_exports__);
             _wm.errNum = error;
             if (error == 0) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
-              _this.getCollectionFormHgtsByUserIstanceId(_this.userInstance);
+              // this.getCollectionFormHgtsByUserIstanceId(this.userInstance);
             } else {
               // eventBus.$emit('errorEvent', error, _attempts);
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
@@ -2247,7 +2257,7 @@ __webpack_require__.r(__webpack_exports__);
           var _attempts = response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
-            alert(JSON.stringify(response));
+            // alert(JSON.stringify(response))
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
           }
@@ -2265,7 +2275,7 @@ __webpack_require__.r(__webpack_exports__);
           var _attempts = response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
-            alert(JSON.stringify(response));
+            // alert(JSON.stringify(response))
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
           }
@@ -2280,26 +2290,31 @@ __webpack_require__.r(__webpack_exports__);
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_HGTS_BY_USER_ISTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          // alert(JSON.stringify(response));
+          alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
             _wm.mainTitle = "Aggiornamento Cartella nurs";
             if (response.data.CollectionFormHgt) {
-              _wm.hGTSaved = true;
-              _wm.btnHgtSend = "Aggiorna";
-              var _NursHgt = response.data.CollectionFormHgt;
-              _wm.departmentHgt = _NursHgt.department_hgt;
-              _wm.dateStartCollectionHgt = _NursHgt.date_start_collection_hgt;
-              _wm.dateEndCollectionHgt = _NursHgt.date_end_collection_hgt;
-              _wm.doctorPrescriberHgt = _NursHgt.doctor_prescriber_hgt;
-              _wm.hgtDate = _NursHgt.hgt_date;
-              _wm.hours = _NursHgt.hours;
-              _wm.hgt = _NursHgt.hgt;
-              _wm.hgtOperatorSignature = _NursHgt.hgt_operator_signature;
-              _wm.folderPageCollectionHgt = _NursHgt.folder_page_collection_hgt;
-              _wm.allCollectionFormHgts = response.data.allCollectionFormHgts;
+              // _wm.hGTSaved=true;
+              // _wm.btnHgtSend="Aggiorna";
+
+              _wm.CollectionFormHgt = response.data.CollectionFormHgt;
+              alert(JSON.stringify(_wm.CollectionFormHgt));
+
+              // let _NursHgt=response.data.CollectionFormHgt;
+              // _wm.departmentHgt = _NursHgt.department_hgt
+              // _wm.dateStartCollectionHgt = _NursHgt.date_start_collection_hgt
+              // _wm.dateEndCollectionHgt = _NursHgt.date_end_collection_hgt
+              // _wm.doctorPrescriberHgt = _NursHgt.doctor_prescriber_hgt
+              // _wm.hgtDate = _NursHgt.hgt_date
+              // _wm.hours = _NursHgt.hours
+              // _wm.hgt = _NursHgt.hgt
+              // _wm.hgtOperatorSignature = _NursHgt.hgt_operator_signature
+              // _wm.folderPageCollectionHgt = _NursHgt.folder_page_collection_hgt
+
+              // _wm.allCollectionFormHgts=response.data.allCollectionFormHgts;
             } else {
               _wm.btnHgtSend = "Salva";
             }
@@ -2350,17 +2365,21 @@ __webpack_require__.r(__webpack_exports__);
       userInstanceId: 36,
       userId: 237,
       showInput1: false,
-      department: null,
-      dateStartRejection: null,
-      dateEndRejection: null,
-      mcpDate: null,
-      inmateFeed: null,
-      bodyWeight: null,
-      monitoringPa: null,
-      monitoringFc: null,
-      operatorSignature: null,
-      folderPage: null,
-      Parameter: {},
+      // department:null,
+      // dateStartRejection:null,
+      // dateEndRejection:null,
+      // mcpDate:null,
+      // inmateFeed:null,
+      // bodyWeight:null,  
+      // monitoringPa:null,
+      // monitoringFc:null,
+      // operatorSignature:null, 
+      // folderPage:null,
+      // breakfast:null,
+      // lunch:null,
+      // dinner:null,
+
+      MonitoringClinicalParameter: {},
       accessData: [function (id) {
         return 31;
       }, function (name) {
@@ -2374,10 +2393,7 @@ __webpack_require__.r(__webpack_exports__);
       // psyMhDate:null,
       // psyCardId:null,
       date: new Date(),
-      // nursCardTh:{},
-      // psyCardSa:{},
-      // psyCardTsc
-
+      nursMcp: {},
       mainTitle: "psy",
       firstSave: true,
       mCPSaved: false,
@@ -2397,7 +2413,6 @@ __webpack_require__.r(__webpack_exports__);
       return false;
     },
     addMonitoringClinicalParameter: function addMonitoringClinicalParameter(panel) {
-      var _this = this;
       var _wm = this;
       var _panel = panel;
       var _errors = 0;
@@ -2406,13 +2421,13 @@ __webpack_require__.r(__webpack_exports__);
       var form = new FormData();
       form.append('userName', this.userName);
       form.append('userLastName', this.userLastName);
-      form.append('userFullName', this.userFullName);
-      form.append('userInstance', this.userInstance);
+      // form.append('userFullName', this.userFullName);
+      form.append('userInstanceId', this.userInstanceId);
       form.append('userId', this.userId);
       // form.append('doctorId', this.accessData.id);
       // form.append('doctorName', this.accessData.name);
       // form.append('doctorUserName', this.accessData.lastname);
-      form.append('doctorId', 36);
+      form.append('doctorId', 63);
       form.append('doctorName', 'mario');
       form.append('doctorUserName', 'rossi');
       if (_panel == 'mcp') {
@@ -2421,7 +2436,7 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           form.append('action', 'update');
           if (this.userIstanceId) {
-            form.append('nursId', this.userIstanceId);
+            form.append('userInstanceId', this.userIstanceId);
           } else {
             _errors++;
             _errorTitle = "Attenzione";
@@ -2429,9 +2444,9 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
         form.append('section', 'mcp');
-        if (!this.isObjEmpty(this.nursCardTh)) {
-          var _nurs = JSON.stringify(this.nursCardTh);
-          form.append('NursingTherapies', _nurs);
+        if (!this.isObjEmpty(this.nursMcp)) {
+          var _nurs = JSON.stringify(this.nursMcp);
+          form.append('MonitoringClinicalParameter', _nurs);
         }
       }
       if (_errors == 0) {
@@ -2442,7 +2457,7 @@ __webpack_require__.r(__webpack_exports__);
             _wm.errNum = error;
             if (error == 0) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
-              _this.getMonitoringClinicalParametersByUserIstanceId(_this.userInstance);
+              //this.getMonitoringClinicalParametersByUserIstanceId(this.userInstance);
             } else {
               // eventBus.$emit('errorEvent', error, _attempts);
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
@@ -2463,7 +2478,7 @@ __webpack_require__.r(__webpack_exports__);
           var _attempts = response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
-            alert(JSON.stringify(response));
+            // alert(JSON.stringify(response))
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
           }
@@ -2481,7 +2496,7 @@ __webpack_require__.r(__webpack_exports__);
           var _attempts = response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
-            alert(JSON.stringify(response));
+            // alert(JSON.stringify(response))
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
           }
@@ -2496,17 +2511,17 @@ __webpack_require__.r(__webpack_exports__);
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_MONITORINGS_BY_USER_ISTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          // alert(JSON.stringify(response));
+          alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
             _wm.mainTitle = "Aggiornamento Cartella nurs";
-            if (response.data.Parameter) {
+            if (response.data.MonitoringClinicalParameter) {
               // _wm.mCPSaved=true;
               // _wm.btnMcpSend="Aggiorna";
-              _wm.Parameter = response.data.Parameter;
-              alert(JSON.stringify(_wm.Parameter));
+              _wm.MonitoringClinicalParameter = response.data.MonitoringClinicalParameter;
+              alert(JSON.stringify(_wm.MonitoringClinicalParameter));
 
               // let _NursMcp=response.data.MonitoringClinicalParameter;
 
@@ -2514,13 +2529,11 @@ __webpack_require__.r(__webpack_exports__);
               // _wm.dateStartRejection = _NursMcp.date_start_rejection
               // _wm.dateEndRejection = _NursMcp.date_end_rejection
               // _wm.mcpDate = _NursMcp.mcp_date
-              // _wm.inmateFeed = _NursMcp.inmate_feed
               // _wm.bodyWeight = _NursMcp.body_weight
 
               // _wm.monitoringPa = _NursMcp.monitoring_pa
               // _wm.monitoringFc = _NursMcp.monitoring_fc
               // _wm.operatorSignature = _NursMcp.operator_signature
-              // _wm.folderPage = _NursMcp.folder_page
 
               // _wm.allMonitoringClinicalParameters=response.data.allMonitoringClinicalParameters;
             } else {
@@ -4783,7 +4796,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
-var _name$data$created$cr;
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
@@ -4791,353 +4803,402 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_name$data$created$cr = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: 'TraceabilityTherapy',
   data: function data() {
-    return {
+    var _ref;
+    return _ref = {
       userName: 'mario',
       userLastName: 'rossi',
       userFullName: '',
       userInstanceId: 36,
       userId: 237,
-      // fields: [],
-
-      showInput: false,
-      // showInput1:false,
-      // showInput2:false,
-      // showInput3:false,
-
-      therapies: {
-        check_drugs_not_administered: [],
-        note_drugs_not_administered: []
+      refusedTreatments: {
+        checked: {},
+        descriptions: {}
       },
-      terapieRifiutate: [],
-      drug: '',
-      // startTherapy:null,
-      // endTherapy:null,
-      // hours:null,
-      // frequency:null,
-      // doctorName:'',
-      // thDate:'',  
-
-      // doctorName:null,
-      // drugsNotAdministered:null,
-      // drugs:null,
-      // motivationNotTakeMedicine:null,
-      // thFromThe:null,
-      // thToThe:null, 
-      // thHours:null,
-      // thFrequency:null,
-      // medicalAlert:null,
-      // medicalAlertNote:null,
-      // doctorsPrescriptions:null,
-      // doctorsPrescriptionsNote:null,
-
-      accessData: [function (id) {
-        return 31;
-      }, function (name) {
-        return 'mario';
-      }, function (lastname) {
-        return 'rossi';
+      chechedDescriptions: [],
+      therapies: [{
+        id: 1,
+        drug: 'tachipirina',
+        start_date: '2022-10-12',
+        end_date: '2023-06-10'
+      }, {
+        id: 2,
+        drug: 'toradol',
+        start_date: '2023-01-01',
+        end_date: '2023-12-31'
+      }, {
+        id: 3,
+        drug: 'buscopan',
+        start_date: '2022-08-12',
+        end_date: '2023-07-23'
       }],
-      date: new Date(),
-      mainTitle: "psy",
-      firstSave: true,
-      tHSaved: false,
-      btnThSend: "Salva",
-      total: 0,
-      allTraceabilityTherapys: null,
-      allNursingTherapys: null
-    };
+      computed: {},
+      watch: {},
+      showInput: false
+    }, _defineProperty(_ref, "therapies", {
+      check_drugs_not_administered: [],
+      note_drugs_not_administered: []
+    }), _defineProperty(_ref, "terapieRifiutate", []), _defineProperty(_ref, "drug", ''), _defineProperty(_ref, "accessData", [function (id) {
+      return 31;
+    }, function (name) {
+      return 'mario';
+    }, function (lastname) {
+      return 'rossi';
+    }]), _defineProperty(_ref, "date", new Date()), _defineProperty(_ref, "mainTitle", "psy"), _defineProperty(_ref, "firstSave", true), _defineProperty(_ref, "tHSaved", false), _defineProperty(_ref, "btnThSend", "Salva"), _defineProperty(_ref, "total", 0), _defineProperty(_ref, "allTraceabilityTherapys", null), _defineProperty(_ref, "allNursingTherapys", null), _ref;
   },
   created: function created() {
     this.getTraceabilityTherapysByUserIstanceId(1);
-  }
-}, _defineProperty(_name$data$created$cr, "created", function created() {
-  this.getNursingTherapysByUserIstanceId(1);
-}), _defineProperty(_name$data$created$cr, "methods", _defineProperty({
-  printTraceabilityTherapy: function printTraceabilityTherapy(printPdf) {
-    var v_myWindow;
-    var url = 'printPdf/2';
-    v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-    return false;
+    this.getNursingTherapysByUserIstanceId(1);
   },
-  // toggleField(field) {
-  //     const index = this.fields.indexOf(field);
-  //     if (index > -1) {
-  //         this.fields.splice(index, 1);
-  //     } else {
-  //         this.fields.push(field);
-  //     }           
-  // },
-  addTraceabilityTherapy: function addTraceabilityTherapy(panel) {
-    var _this = this;
-    var _wm = this;
-    var _panel = panel;
-    var _errors = 0;
-    var _errorTitle = "Scheda";
-    var _errorDescription = "Non aggiornata";
-    var form = new FormData();
-    form.append('userName', this.userName);
-    form.append('userLastName', this.userLastName);
-    form.append('userFullName', this.userFullName);
-    form.append('userInstance', this.userInstance);
-    form.append('userId', this.userId);
-    // form.append('doctorId', this.accessData.id);
-    // form.append('doctorName', this.accessData.name);
-    // form.append('doctorUserName', this.accessData.lastname);
-    form.append('doctorId', 36);
-    form.append('doctorName', 'mario');
-    form.append('doctorUserName', 'rossi');
-    if (_panel == 'th') {
-      if (!this.tHSaved) {
-        form.append('action', 'store');
-      } else {
-        form.append('action', 'update');
-        if (this.userInstanceId) {
-          form.append('nursId', this.userInstanceId);
-        } else {
-          _errors++;
-          _errorTitle = "Attenzione";
-          _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+  methods: _defineProperty({
+    saveRefusedTreatments: function saveRefusedTreatments() {
+      for (var refusedTreatment in this.refusedTreatments.checked) {
+        if (this.refusedTreatments.checked.hasOwnProperty(refusedTreatment)) {
+          if (this.refusedTreatments.checked[refusedTreatment] == true) {
+            this.refused[refusedTreatment] = this.refusedTreatments.descriptions[refusedTreatment];
+          }
+          //alert("Selezionato " + refusedTreatment + ", valore " + this.refusedTreatments.checked[refusedTreatment]);
+          // alert(this.refusedTreatments.descriptions[refusedTreatment])
         }
       }
-      form.append('section', 'th');
-      if (!this.isObjEmpty(this.nursCardTh)) {
-        var _nurs = JSON.stringify(this.nursCardTh);
-        form.append('TraceabilityTherapy', _nurs);
+    },
+    addTherapy: function addTherapy() {
+      this.newTherapies.push({
+        idDoctor: 14,
+        doctorName: 'medico',
+        doctorLastname: 'test',
+        userInstanceId: 17,
+        userId: 36,
+        drug: "",
+        posology: "",
+        frequency: "",
+        drugRoute: "",
+        morning: 0,
+        afternoon: 0,
+        evening: 0,
+        external_doctor_prescription: 0,
+        deleted: 0,
+        acceptance: 0,
+        acceptanceId: 0
+      });
+    },
+    saveTherapy: function saveTherapy() {
+      var _wm = this;
+      var addTherapyForm = new FormData();
+      addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));
+      if (this.newTherapies.length > 0) {
+        try {
+          //let url=actions.ADD_THERAPIES_DATA;
+          //  axios.post(url,addTherapyForm).then(response => {
+          //      let error=response.data.errorNumber;
+          //      let _attempts=response.data.attempts;
+          //      _wm.errNum=error;
+          //      if(error == 0){
+          //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
+          //         // setTimeout(function(){
+          //         //     _wm.hideSuccess();
+          //         // }, 4000);
+          //         _wm.i2hLoader=true;
+          //         _wm.initTherapies();
+          //         _wm.getTherapies();
+          //      }else{
+          //         let _errorDescription=response.data.errorDescription
+          //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
+          //      }
+          //  })
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        eventBus.$emit('errorEvent', 1000, 4, 'show', 'Aggiungi almeno una terapia');
       }
-    }
-    if (_errors == 0) {
+    },
+    printTraceabilityTherapy: function printTraceabilityTherapy(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    // toggleField(field) {
+    //     const index = this.fields.indexOf(field);
+    //     if (index > -1) {
+    //         this.fields.splice(index, 1);
+    //     } else {
+    //         this.fields.push(field);
+    //     }           
+    // },
+    addTraceabilityTherapy: function addTraceabilityTherapy(panel) {
+      var _this = this;
+      var _wm = this;
+      var _panel = panel;
+      var _errors = 0;
+      var _errorTitle = "Scheda";
+      var _errorDescription = "Non aggiornata";
+      var form = new FormData();
+      form.append('userName', this.userName);
+      form.append('userLastName', this.userLastName);
+      form.append('userFullName', this.userFullName);
+      form.append('userInstance', this.userInstance);
+      form.append('userId', this.userId);
+      // form.append('doctorId', this.accessData.id);
+      // form.append('doctorName', this.accessData.name);
+      // form.append('doctorUserName', this.accessData.lastname);
+      form.append('doctorId', 36);
+      form.append('doctorName', 'mario');
+      form.append('doctorUserName', 'rossi');
+      if (_panel == 'th') {
+        if (!this.tHSaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+          if (this.userInstanceId) {
+            form.append('nursId', this.userInstanceId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+        }
+        form.append('section', 'th');
+        if (!this.isObjEmpty(this.nursCardTh)) {
+          var _nurs = JSON.stringify(this.nursCardTh);
+          form.append('TraceabilityTherapy', _nurs);
+        }
+      }
+      if (_errors == 0) {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_TRACEABILITY"], form).then(function (response) {
+            var error = response.data.errorNumber;
+            var _attempts = response.data.attempts;
+            _wm.errNum = error;
+            if (error == 0) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
+              _this.getTraceabilityTherapysByUserIstanceId(_this.userInstanceId);
+            } else {
+              // eventBus.$emit('errorEvent', error, _attempts);
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
+            }
+          });
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
+      }
+    },
+    getTraceabilityTherapys: function getTraceabilityTherapys() {
+      var _wm = this;
       try {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_TRACEABILITY"], form).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_TRACEABILITYS"]).then(function (response) {
           var error = response.data.errorNumber;
           var _attempts = response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
-            _this.getTraceabilityTherapysByUserIstanceId(_this.userInstanceId);
+            // alert(JSON.stringify(response))
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
-            sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
           }
         });
       } catch (error) {
         throw error;
       }
-    } else {
-      sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
-    }
-  },
-  getTraceabilityTherapys: function getTraceabilityTherapys() {
-    var _wm = this;
-    try {
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_TRACEABILITYS"]).then(function (response) {
-        var error = response.data.errorNumber;
-        var _attempts = response.data.attempts;
-        _wm.errNum = error;
-        if (error == 0) {
-          alert(JSON.stringify(response));
-        } else {
-          // eventBus.$emit('errorEvent', error, _attempts);
-        }
-      });
-    } catch (error) {
-      throw error;
-    }
-  },
-  getTraceabilityTherapyById: function getTraceabilityTherapyById(id) {
-    var _wm = this;
-    try {
-      var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_TRACEABILITY_BY_ID"] + '/' + id;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-        var error = response.data.errorNumber;
-        var _attempts = response.data.attempts;
-        _wm.errNum = error;
-        if (error == 0) {
-          alert(JSON.stringify(response));
-        } else {
-          // eventBus.$emit('errorEvent', error, _attempts);
-        }
-      });
-    } catch (error) {
-      throw error;
-    }
-  },
-  getTraceabilityTherapysByUserIstanceId: function getTraceabilityTherapysByUserIstanceId(id) {
-    var _wm = this;
-    id = 36;
-    try {
-      var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_TRACEABILITYS_BY_USER_ISTANCE_ID"] + '/' + id;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-        // alert('xx');
-        // alert(JSON.stringify(response));
-        var error = response.data.errorNumber;
-        // let _attempts=response.data.attempts;
-        _wm.errNum = error;
-        if (error == 0) {
-          _wm.mainTitle = "Aggiornamento Cartella nurs";
-          if (response.data.TraceabilityTherapy) {
-            _wm.tHSaved = true;
-            //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
-            _wm.btnThSend = "Aggiorna";
-            var _Trachterapy = response.data.TraceabilityTherapy;
-            _wm.thDate = _Trachterapy.th_date;
-            _wm.drugsNotAdministered = _Trachterapy.drugs_not_administered;
-            _wm.drugs = _Trachterapy.drugs;
-            _wm.motivationNotTakeMedicine = _Trachterapy.motivation_not_take_medicine;
-            _wm.medicalAlert = _Trachterapy.medical_alert;
-            _wm.medicalAlertNote = _Trachterapy.medical_alert_note;
-            _wm.doctorsPrescriptions = _Trachterapy.doctors_prescriptions;
-            _wm.doctorsPrescriptionsNote = _Trachterapy.doctors_prescriptions_note;
-            _wm.thFromThe = _Trachterapy.th_from_the;
-            _wm.thToThe = _Trachterapy.th_to_the;
-            _wm.thHours = _Trachterapy.th_hours;
-            _wm.thFrequency = _Trachterapy.th_frequency;
-            _wm.allTraceabilityTherapys = response.data.allTraceabilityTherapys;
+    },
+    getTraceabilityTherapyById: function getTraceabilityTherapyById(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_TRACEABILITY_BY_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            // alert(JSON.stringify(response))
           } else {
-            _wm.btnThSend = "Salva";
+            // eventBus.$emit('errorEvent', error, _attempts);
           }
-          _wm.firstSave = false;
-        } else if (error == 7) {
-          _wm.btnThSend = "Salva";
-          _wm.firstSave = true;
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getTraceabilityTherapysByUserIstanceId: function getTraceabilityTherapysByUserIstanceId(id) {
+      var _wm = this;
+      id = 36;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_TRACEABILITYS_BY_USER_ISTANCE_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          // alert('xx');
+          // alert(JSON.stringify(response));
+          var error = response.data.errorNumber;
+          // let _attempts=response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            _wm.mainTitle = "Aggiornamento Cartella nurs";
+            if (response.data.TraceabilityTherapy) {
+              _wm.tHSaved = true;
+              //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
+              _wm.btnThSend = "Aggiorna";
+              var _Trachterapy = response.data.TraceabilityTherapy;
+              _wm.thDate = _Trachterapy.th_date;
+              _wm.drugsNotAdministered = _Trachterapy.drugs_not_administered;
+              _wm.drugs = _Trachterapy.drugs;
+              _wm.motivationNotTakeMedicine = _Trachterapy.motivation_not_take_medicine;
+              _wm.medicalAlert = _Trachterapy.medical_alert;
+              _wm.medicalAlertNote = _Trachterapy.medical_alert_note;
+              _wm.doctorsPrescriptions = _Trachterapy.doctors_prescriptions;
+              _wm.doctorsPrescriptionsNote = _Trachterapy.doctors_prescriptions_note;
+              _wm.thFromThe = _Trachterapy.th_from_the;
+              _wm.thToThe = _Trachterapy.th_to_the;
+              _wm.thHours = _Trachterapy.th_hours;
+              _wm.thFrequency = _Trachterapy.th_frequency;
+              _wm.allTraceabilityTherapys = response.data.allTraceabilityTherapys;
+            } else {
+              _wm.btnThSend = "Salva";
+            }
+            _wm.firstSave = false;
+          } else if (error == 7) {
+            _wm.btnThSend = "Salva";
+            _wm.firstSave = true;
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    isObjEmpty: function isObjEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    },
+    addNursingTherapy: function addNursingTherapy(panel) {
+      var _this2 = this;
+      var _wm = this;
+      var _panel = panel;
+      var _errors = 0;
+      var _errorTitle = "Scheda";
+      var _errorDescription = "Non aggiornata";
+      var form = new FormData();
+      form.append('userName', this.userName);
+      form.append('userLastName', this.userLastName);
+      form.append('userFullName', this.userFullName);
+      form.append('userInstance', this.userInstance);
+      form.append('userId', this.userId);
+      // form.append('doctorId', this.accessData.id);
+      // form.append('doctorName', this.accessData.name);
+      // form.append('doctorUserName', this.accessData.lastname);
+      form.append('doctorId', 36);
+      form.append('doctorName', 'mario');
+      form.append('doctorUserName', 'rossi');
+      if (_panel == 'nt') {
+        if (!this.tHSaved) {
+          form.append('action', 'store');
         } else {
-          // eventBus.$emit('errorEvent', error, _attempts);
+          form.append('action', 'update');
+          if (this.userInstanceId) {
+            form.append('nursId', this.userInstanceId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
         }
-      });
-    } catch (error) {
-      throw error;
+        form.append('section', 'nt');
+        if (!this.isObjEmpty(this.nursCardTh)) {
+          var _nurs = JSON.stringify(this.nursCardTh);
+          form.append('NursingTherapy', _nurs);
+        }
+      }
+      if (_errors == 0) {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_NURSING"], form).then(function (response) {
+            var error = response.data.errorNumber;
+            var _attempts = response.data.attempts;
+            _wm.errNum = error;
+            if (error == 0) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
+              _this2.getNursingTherapysByUserIstanceId(_this2.userInstanceId);
+            } else {
+              // eventBus.$emit('errorEvent', error, _attempts);
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
+            }
+          });
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
+      }
+    },
+    getNursingTherapys: function getNursingTherapys() {
+      var _wm = this;
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_NURSINGS"]).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            alert(JSON.stringify(response));
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getNursingTherapysByUserIstanceId: function getNursingTherapysByUserIstanceId(id) {
+      var _wm = this;
+      id = 36;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_NURSINGS_BY_USER_ISTANCE_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          // let _attempts=response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            _wm.mainTitle = "Aggiornamento Cartella nurs";
+            if (response.data.therapies) {
+              _wm.therapies = response.data.therapies;
+
+              // alert(JSON.stringify(_wm.therapies));
+
+              // alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
+              //_wm.btnThSend="Aggiorna";
+
+              // let _NursTherapy=response.data.NursingTherapy;
+
+              //     _wm.drug = _NursTherapy.drug
+              //     _wm.posology = _NursTherapy.posology
+              //     _wm.frequency = _NursTherapy.frequency
+              //     _wm.startTherapy = _NursTherapy.start_therapy
+              //     _wm.endTherapy = _NursTherapy.end_therapy
+              //     _wm.drugRoute = _NursTherapy.drug_route
+              //     _wm.morning = _NursTherapy.morning
+              //     _wm.afternoon = _NursTherapy.afternoon
+              //     _wm.evening = _NursTherapy.evening
+
+              // _wm.allNursingTherapys=response.data.allNursingTherapys;
+            } else {
+              _wm.btnThSend = "Salva";
+            }
+            _wm.firstSave = false;
+          } else if (error == 7) {
+            _wm.btnThSend = "Salva";
+            _wm.firstSave = true;
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
     }
-  },
-  isObjEmpty: function isObjEmpty(obj) {
+  }, "isObjEmpty", function isObjEmpty(obj) {
     return Object.keys(obj).length === 0;
-  },
-  addNursingTherapy: function addNursingTherapy(panel) {
-    var _this2 = this;
-    var _wm = this;
-    var _panel = panel;
-    var _errors = 0;
-    var _errorTitle = "Scheda";
-    var _errorDescription = "Non aggiornata";
-    var form = new FormData();
-    form.append('userName', this.userName);
-    form.append('userLastName', this.userLastName);
-    form.append('userFullName', this.userFullName);
-    form.append('userInstance', this.userInstance);
-    form.append('userId', this.userId);
-    // form.append('doctorId', this.accessData.id);
-    // form.append('doctorName', this.accessData.name);
-    // form.append('doctorUserName', this.accessData.lastname);
-    form.append('doctorId', 36);
-    form.append('doctorName', 'mario');
-    form.append('doctorUserName', 'rossi');
-    if (_panel == 'nt') {
-      if (!this.tHSaved) {
-        form.append('action', 'store');
-      } else {
-        form.append('action', 'update');
-        if (this.userInstanceId) {
-          form.append('nursId', this.userInstanceId);
-        } else {
-          _errors++;
-          _errorTitle = "Attenzione";
-          _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
-        }
-      }
-      form.append('section', 'nt');
-      if (!this.isObjEmpty(this.nursCardTh)) {
-        var _nurs = JSON.stringify(this.nursCardTh);
-        form.append('NursingTherapy', _nurs);
-      }
-    }
-    if (_errors == 0) {
-      try {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_NURSING"], form).then(function (response) {
-          var error = response.data.errorNumber;
-          var _attempts = response.data.attempts;
-          _wm.errNum = error;
-          if (error == 0) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
-            _this2.getNursingTherapysByUserIstanceId(_this2.userInstanceId);
-          } else {
-            // eventBus.$emit('errorEvent', error, _attempts);
-            sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
-          }
-        });
-      } catch (error) {
-        throw error;
-      }
-    } else {
-      sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
-    }
-  },
-  getNursingTherapys: function getNursingTherapys() {
-    var _wm = this;
-    try {
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_NURSINGS"]).then(function (response) {
-        var error = response.data.errorNumber;
-        var _attempts = response.data.attempts;
-        _wm.errNum = error;
-        if (error == 0) {
-          alert(JSON.stringify(response));
-        } else {
-          // eventBus.$emit('errorEvent', error, _attempts);
-        }
-      });
-    } catch (error) {
-      throw error;
-    }
-  },
-  getNursingTherapysByUserIstanceId: function getNursingTherapysByUserIstanceId(id) {
-    var _wm = this;
-    id = 36;
-    try {
-      var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_NURSINGS_BY_USER_ISTANCE_ID"] + '/' + id;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-        var error = response.data.errorNumber;
-        // let _attempts=response.data.attempts;
-        _wm.errNum = error;
-        if (error == 0) {
-          _wm.mainTitle = "Aggiornamento Cartella nurs";
-          if (response.data.therapies) {
-            _wm.therapies = response.data.therapies;
-            alert(JSON.stringify(_wm.therapies));
-
-            // alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
-            //_wm.btnThSend="Aggiorna";
-
-            // let _NursTherapy=response.data.NursingTherapy;
-
-            //     _wm.drug = _NursTherapy.drug
-            //     _wm.posology = _NursTherapy.posology
-            //     _wm.frequency = _NursTherapy.frequency
-            //     _wm.startTherapy = _NursTherapy.start_therapy
-            //     _wm.endTherapy = _NursTherapy.end_therapy
-            //     _wm.drugRoute = _NursTherapy.drug_route
-            //     _wm.morning = _NursTherapy.morning
-            //     _wm.afternoon = _NursTherapy.afternoon
-            //     _wm.evening = _NursTherapy.evening
-
-            // _wm.allNursingTherapys=response.data.allNursingTherapys;
-          } else {
-            _wm.btnThSend = "Salva";
-          }
-          _wm.firstSave = false;
-        } else if (error == 7) {
-          _wm.btnThSend = "Salva";
-          _wm.firstSave = true;
-        } else {
-          // eventBus.$emit('errorEvent', error, _attempts);
-        }
-      });
-    } catch (error) {
-      throw error;
-    }
-  }
-}, "isObjEmpty", function isObjEmpty(obj) {
-  return Object.keys(obj).length === 0;
-})), _name$data$created$cr);
+  })
+});
 
 /***/ }),
 
@@ -6060,8 +6121,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.departmentCpc,
-      expression: "departmentCpc"
+      value: _vm.nursCpc.departmentCpc,
+      expression: "nursCpc.departmentCpc"
     }],
     staticStyle: {
       "margin-right": "10.6rem"
@@ -6071,12 +6132,12 @@ var render = function render() {
       name: "department_cpc"
     },
     domProps: {
-      value: _vm.departmentCpc
+      value: _vm.nursCpc.departmentCpc
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.departmentCpc = $event.target.value;
+        _vm.$set(_vm.nursCpc, "departmentCpc", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("span", {
@@ -6087,20 +6148,20 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.doctorPrescriber,
-      expression: "doctorPrescriber"
+      value: _vm.nursCpc.doctorPrescriber,
+      expression: "nursCpc.doctorPrescriber"
     }],
     attrs: {
       type: "text",
       name: "doctor_prescriber"
     },
     domProps: {
-      value: _vm.doctorPrescriber
+      value: _vm.nursCpc.doctorPrescriber
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.doctorPrescriber = $event.target.value;
+        _vm.$set(_vm.nursCpc, "doctorPrescriber", $event.target.value);
       }
     }
   })])])])])]), _vm._v(" "), _c("div", {
@@ -6118,8 +6179,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.dateStartCollection,
-      expression: "dateStartCollection"
+      value: _vm.nursCpc.dateStartCollection,
+      expression: "nursCpc.dateStartCollection"
     }],
     staticStyle: {
       "margin-right": "8rem"
@@ -6129,12 +6190,12 @@ var render = function render() {
       name: "date_start_collection"
     },
     domProps: {
-      value: _vm.dateStartCollection
+      value: _vm.nursCpc.dateStartCollection
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.dateStartCollection = $event.target.value;
+        _vm.$set(_vm.nursCpc, "dateStartCollection", $event.target.value);
       }
     }
   })]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c("span", {
@@ -6143,20 +6204,20 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.dateEndCollection,
-      expression: "dateEndCollection"
+      value: _vm.nursCpc.dateEndCollection,
+      expression: "nursCpc.dateEndCollection"
     }],
     attrs: {
       type: "date",
       name: "date_end_collection"
     },
     domProps: {
-      value: _vm.dateEndCollection
+      value: _vm.nursCpc.dateEndCollection
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.dateEndCollection = $event.target.value;
+        _vm.$set(_vm.nursCpc, "dateEndCollection", $event.target.value);
       }
     }
   })])])])]), _vm._v(" "), _c("div", [_c("a", {
@@ -6187,12 +6248,12 @@ var render = function render() {
         _vm.showInput5 = "true";
       }
     }
-  })]), _vm._v("Aggiungi Modulo")])]), _vm._v(" "), _c("table", [_vm._m(5), _vm._v(" "), _c("tr", [_c("td", [_vm._v("\r\n                                            " + _vm._s(_vm.cpcDate) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_c("input", {
+  })]), _vm._v("Aggiungi Modulo")])]), _vm._v(" "), _c("table", [_vm._m(5), _vm._v(" "), _c("tr", [_c("td", [_vm._v("\r\n                                            " + _vm._s(_vm.nursCpc.cpcDate) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.collectionPa,
-      expression: "collectionPa"
+      value: _vm.nursCpc.collectionPa,
+      expression: "nursCpc.collectionPa"
     }],
     staticStyle: {
       width: "5rem"
@@ -6202,20 +6263,20 @@ var render = function render() {
       name: "collection_pa"
     },
     domProps: {
-      value: _vm.collectionPa
+      value: _vm.nursCpc.collectionPa
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.collectionPa = $event.target.value;
+        _vm.$set(_vm.nursCpc, "collectionPa", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.collectionFc,
-      expression: "collectionFc"
+      value: _vm.nursCpc.collectionFc,
+      expression: "nursCpc.collectionFc"
     }],
     staticStyle: {
       width: "5rem"
@@ -6225,20 +6286,20 @@ var render = function render() {
       name: "collection_fc"
     },
     domProps: {
-      value: _vm.collectionFc
+      value: _vm.nursCpc.collectionFc
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.collectionFc = $event.target.value;
+        _vm.$set(_vm.nursCpc, "collectionFc", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.collectionSpo2,
-      expression: "collectionSpo2"
+      value: _vm.nursCpc.collectionSpo2,
+      expression: "nursCpc.collectionSpo2"
     }],
     staticStyle: {
       width: "5rem"
@@ -6248,20 +6309,20 @@ var render = function render() {
       name: "collection_spo2"
     },
     domProps: {
-      value: _vm.collectionSpo2
+      value: _vm.nursCpc.collectionSpo2
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.collectionSpo2 = $event.target.value;
+        _vm.$set(_vm.nursCpc, "collectionSpo2", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.collectionTc,
-      expression: "collectionTc"
+      value: _vm.nursCpc.collectionTc,
+      expression: "nursCpc.collectionTc"
     }],
     staticStyle: {
       width: "5rem"
@@ -6271,20 +6332,20 @@ var render = function render() {
       name: "collection_tc"
     },
     domProps: {
-      value: _vm.collectionTc
+      value: _vm.nursCpc.collectionTc
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.collectionTc = $event.target.value;
+        _vm.$set(_vm.nursCpc, "collectionTc", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(_vm.collectionOperatorSignature) + "\r\n                                        ")])]), _vm._v(" "), _vm.showInput5 ? _c("tr", [_c("td", [_vm._v("\r\n                                            " + _vm._s(_vm.cpcDate) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_c("input", {
+  })]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(_vm.nursCpc.collectionOperatorSignature) + "\r\n                                        ")])]), _vm._v(" "), _vm.showInput5 ? _c("tr", [_c("td", [_vm._v("\r\n                                            " + _vm._s(_vm.nursCpc.cpcDate) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.collectionPa,
-      expression: "collectionPa"
+      value: _vm.nursCpc.collectionPa,
+      expression: "nursCpc.collectionPa"
     }],
     staticStyle: {
       width: "5rem"
@@ -6294,20 +6355,20 @@ var render = function render() {
       name: "collection_pa"
     },
     domProps: {
-      value: _vm.collectionPa
+      value: _vm.nursCpc.collectionPa
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.collectionPa = $event.target.value;
+        _vm.$set(_vm.nursCpc, "collectionPa", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.collectionFc,
-      expression: "collectionFc"
+      value: _vm.nursCpc.collectionFc,
+      expression: "nursCpc.collectionFc"
     }],
     staticStyle: {
       width: "5rem"
@@ -6317,20 +6378,20 @@ var render = function render() {
       name: "collection_fc"
     },
     domProps: {
-      value: _vm.collectionFc
+      value: _vm.nursCpc.collectionFc
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.collectionFc = $event.target.value;
+        _vm.$set(_vm.nursCpc, "collectionFc", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.collectionSpo2,
-      expression: "collectionSpo2"
+      value: _vm.nursCpc.collectionSpo2,
+      expression: "nursCpc.collectionSpo2"
     }],
     staticStyle: {
       width: "5rem"
@@ -6340,20 +6401,20 @@ var render = function render() {
       name: "collection_spo2"
     },
     domProps: {
-      value: _vm.collectionSpo2
+      value: _vm.nursCpc.collectionSpo2
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.collectionSpo2 = $event.target.value;
+        _vm.$set(_vm.nursCpc, "collectionSpo2", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.collectionTc,
-      expression: "collectionTc"
+      value: _vm.nursCpc.collectionTc,
+      expression: "nursCpc.collectionTc"
     }],
     staticStyle: {
       width: "5rem"
@@ -6363,46 +6424,15 @@ var render = function render() {
       name: "collection_tc"
     },
     domProps: {
-      value: _vm.collectionTc
+      value: _vm.nursCpc.collectionTc
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.collectionTc = $event.target.value;
+        _vm.$set(_vm.nursCpc, "collectionTc", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(_vm.collectionOperatorSignature) + "\r\n                                        ")])]) : _vm._e()]), _vm._v(" "), _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "50px"
-    }
-  }, [_c("span", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("span", {
-    staticClass: "item form-group"
-  }, [_vm._m(6), _vm._v(" "), _c("span", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.folderPageCollection,
-      expression: "folderPageCollection"
-    }],
-    attrs: {
-      type: "text",
-      name: "folder_page_collection"
-    },
-    domProps: {
-      value: _vm.folderPageCollection
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.folderPageCollection = $event.target.value;
-      }
-    }
-  })])])])]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("td")]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "ln_solid mt-5"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -6412,7 +6442,7 @@ var render = function render() {
     staticClass: "btn btn-success i2hBtn ml-3",
     on: {
       click: function click($event) {
-        return _vm.addClinicalParameterCollection("mcp");
+        return _vm.addClinicalParameterCollection("cpc");
       }
     }
   }, [_vm._v(_vm._s(_vm.btnCpcSend))]), _vm._v(" "), _c("a", {
@@ -6478,15 +6508,6 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("tr", [_c("td", [_vm._v("DATA")]), _vm._v(" "), _c("td", [_vm._v("P.A.")]), _vm._v(" "), _c("td", [_vm._v("F.C.")]), _vm._v(" "), _c("td", [_vm._v("SPO2")]), _vm._v(" "), _c("td", [_vm._v("T.C.")]), _vm._v(" "), _c("td", [_vm._v("FIRMA")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("label", {
-    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
-    attrs: {
-      "for": "folder_page_collection"
-    }
-  }, [_c("strong", [_c("h4", [_vm._v("Pagina della cartella n.")])])]);
 }];
 render._withStripped = true;
 
@@ -6537,8 +6558,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.departmentHgt,
-      expression: "departmentHgt"
+      value: _vm.nursHgt.departmentHgt,
+      expression: "nursHgt.departmentHgt"
     }],
     staticStyle: {
       "margin-right": "10.6rem"
@@ -6548,12 +6569,12 @@ var render = function render() {
       name: "department_hgt"
     },
     domProps: {
-      value: _vm.departmentHgt
+      value: _vm.nursHgt.departmentHgt
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.departmentHgt = $event.target.value;
+        _vm.$set(_vm.nursHgt, "departmentHgt", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("span", {
@@ -6564,20 +6585,20 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.doctorPrescriberHgt,
-      expression: "doctorPrescriberHgt"
+      value: _vm.nursHgt.doctorPrescriberHgt,
+      expression: "nursHgt.doctorPrescriberHgt"
     }],
     attrs: {
       type: "text",
       name: "doctor_prescriber_hgt"
     },
     domProps: {
-      value: _vm.doctorPrescriberHgt
+      value: _vm.nursHgt.doctorPrescriberHgt
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.doctorPrescriberHgt = $event.target.value;
+        _vm.$set(_vm.nursHgt, "doctorPrescriberHgt", $event.target.value);
       }
     }
   })])])])])]), _vm._v(" "), _c("div", {
@@ -6592,8 +6613,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.dateStartCollectionHgt,
-      expression: "dateStartCollectionHgt"
+      value: _vm.nursHgt.dateStartCollectionHgt,
+      expression: "nursHgt.dateStartCollectionHgt"
     }],
     staticStyle: {
       "margin-right": "8rem"
@@ -6603,12 +6624,12 @@ var render = function render() {
       name: "date_start_collection_hgt"
     },
     domProps: {
-      value: _vm.dateStartCollectionHgt
+      value: _vm.nursHgt.dateStartCollectionHgt
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.dateStartCollectionHgt = $event.target.value;
+        _vm.$set(_vm.nursHgt, "dateStartCollectionHgt", $event.target.value);
       }
     }
   })]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c("span", {
@@ -6617,20 +6638,20 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.dateEndCollectionHgt,
-      expression: "dateEndCollectionHgt"
+      value: _vm.nursHgt.dateEndCollectionHgt,
+      expression: "nursHgt.dateEndCollectionHgt"
     }],
     attrs: {
       type: "date",
       name: "date_end_collection_hgt"
     },
     domProps: {
-      value: _vm.dateEndCollectionHgt
+      value: _vm.nursHgt.dateEndCollectionHgt
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.dateEndCollectionHgt = $event.target.value;
+        _vm.$set(_vm.nursHgt, "dateEndCollectionHgt", $event.target.value);
       }
     }
   })])])])]), _vm._v(" "), _c("div", [_c("a", {
@@ -6661,38 +6682,87 @@ var render = function render() {
         _vm.showInput1 = "true";
       }
     }
-  })]), _vm._v("Aggiungi Modulo")])]), _vm._v(" "), _c("table", [_vm._m(5), _vm._v(" "), _vm.showInput1 ? _c("tr", [_c("td", [_vm._v(_vm._s(_vm.hgtDate))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.hours))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.hgt))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.hgtOperatorSignature))])]) : _vm._e()]), _vm._v(" "), _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "50px"
-    }
-  }, [_c("span", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("span", {
-    staticClass: "item form-group"
-  }, [_vm._m(6), _vm._v(" "), _c("span", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("input", {
+  })]), _vm._v("Aggiungi Modulo")])]), _vm._v(" "), _c("table", [_vm._m(5), _vm._v(" "), _c("tr", [_c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.folderPageCollectionHgt,
-      expression: "folderPageCollectionHgt"
+      value: _vm.nursHgt.hgtDate,
+      expression: "nursHgt.hgtDate"
     }],
     attrs: {
-      type: "text",
-      name: "hgt_folder_page"
+      type: "date",
+      name: "hgt_date"
     },
     domProps: {
-      value: _vm.folderPageCollectionHgt
+      value: _vm.nursHgt.hgtDate
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.folderPageCollectionHgt = $event.target.value;
+        _vm.$set(_vm.nursHgt, "hgtDate", $event.target.value);
       }
     }
-  })])])])]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursHgt.hours,
+      expression: "nursHgt.hours"
+    }],
+    attrs: {
+      type: "text",
+      name: "hours"
+    },
+    domProps: {
+      value: _vm.nursHgt.hours
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursHgt, "hours", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursHgt.hgt,
+      expression: "nursHgt.hgt"
+    }],
+    attrs: {
+      type: "text",
+      name: "hgt"
+    },
+    domProps: {
+      value: _vm.nursHgt.hgt
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursHgt, "hgt", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursHgt.hgtOperatorSignature,
+      expression: "nursHgt.hgtOperatorSignature"
+    }],
+    attrs: {
+      type: "text",
+      name: "hgt"
+    },
+    domProps: {
+      value: _vm.nursHgt.hgtOperatorSignature
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursHgt, "hgtOperatorSignature", $event.target.value);
+      }
+    }
+  }), _vm._v(_vm._s(_vm.nursHgt.hgtOperatorSignature) + "\n                                    ")])])]), _vm._v(" "), _c("div", {
     staticClass: "ln_solid mt-5"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -6768,15 +6838,6 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("tr", [_c("td", [_vm._v("DATA")]), _vm._v(" "), _c("td", [_vm._v("ORA")]), _vm._v(" "), _c("td", [_vm._v("HGT")]), _vm._v(" "), _c("td", [_vm._v("FIRMA")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("label", {
-    staticClass: "col-form-label col-md-3 col-sm-2 label-align",
-    attrs: {
-      "for": "hgt_folder_page"
-    }
-  }, [_c("strong", [_c("h4", [_vm._v("Pagina della cartella n.")])])]);
 }];
 render._withStripped = true;
 
@@ -6830,20 +6891,20 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.department,
-      expression: "department"
+      value: _vm.nursMcp.department,
+      expression: "nursMcp.department"
     }],
     attrs: {
       type: "text",
       name: "department"
     },
     domProps: {
-      value: _vm.department
+      value: _vm.nursMcp.department
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.department = $event.target.value;
+        _vm.$set(_vm.nursMcp, "department", $event.target.value);
       }
     }
   })])])])]), _vm._v(" "), _c("div", {
@@ -6861,8 +6922,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.dateStartRejection,
-      expression: "dateStartRejection"
+      value: _vm.nursMcp.dateStartRejection,
+      expression: "nursMcp.dateStartRejection"
     }],
     staticStyle: {
       "margin-right": "8rem"
@@ -6872,12 +6933,12 @@ var render = function render() {
       name: "date_start_rejection"
     },
     domProps: {
-      value: _vm.dateStartRejection
+      value: _vm.nursMcp.dateStartRejection
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.dateStartRejection = $event.target.value;
+        _vm.$set(_vm.nursMcp, "dateStartRejection", $event.target.value);
       }
     }
   })]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("span", {
@@ -6886,20 +6947,20 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.dateEndRejection,
-      expression: "dateEndRejection"
+      value: _vm.nursMcp.dateEndRejection,
+      expression: "nursMcp.dateEndRejection"
     }],
     attrs: {
       type: "date",
       name: "date_end_rejection"
     },
     domProps: {
-      value: _vm.dateEndRejection
+      value: _vm.nursMcp.dateEndRejection
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.dateEndRejection = $event.target.value;
+        _vm.$set(_vm.nursMcp, "dateEndRejection", $event.target.value);
       }
     }
   })])])])]), _vm._v(" "), _c("div", [_c("a", {
@@ -6930,35 +6991,140 @@ var render = function render() {
         _vm.showInput1 = "true";
       }
     }
-  })]), _vm._v("Aggiungi Modulo")])]), _vm._v(" "), _c("table", [_vm._m(4), _vm._v(" "), _c("tr", [_c("td"), _vm._v(" "), _c("td", [_c("input", {
+  })]), _vm._v("Aggiungi Modulo")])]), _vm._v(" "), _c("table", [_vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("tr", [_c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.inmateFeed,
-      expression: "inmateFeed"
+      value: _vm.nursMcp.mcpDate,
+      expression: "nursMcp.mcpDate"
+    }],
+    staticStyle: {
+      width: "7rem"
+    },
+    attrs: {
+      type: "date",
+      name: "mcp_date"
+    },
+    domProps: {
+      value: _vm.nursMcp.mcpDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursMcp, "mcpDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("td"), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursMcp.breakfast,
+      expression: "nursMcp.breakfast"
     }],
     staticStyle: {
       width: "5rem"
     },
     attrs: {
-      type: "text",
-      name: "inmate_feed"
+      type: "checkbox",
+      name: "breakfast"
     },
     domProps: {
-      value: _vm.inmateFeed
+      checked: Array.isArray(_vm.nursMcp.breakfast) ? _vm._i(_vm.nursMcp.breakfast, null) > -1 : _vm.nursMcp.breakfast
     },
     on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.inmateFeed = $event.target.value;
+      change: function change($event) {
+        var $$a = _vm.nursMcp.breakfast,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.nursMcp, "breakfast", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.nursMcp, "breakfast", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.nursMcp, "breakfast", $$c);
+        }
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.bodyWeight,
-      expression: "bodyWeight"
+      value: _vm.nursMcp.lunch,
+      expression: "nursMcp.lunch"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "checkbox",
+      name: "lunch"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.nursMcp.lunch) ? _vm._i(_vm.nursMcp.lunch, null) > -1 : _vm.nursMcp.lunch
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.nursMcp.lunch,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.nursMcp, "lunch", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.nursMcp, "lunch", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.nursMcp, "lunch", $$c);
+        }
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursMcp.dinner,
+      expression: "nursMcp.dinner"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "checkbox",
+      name: "dinner"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.nursMcp.dinner) ? _vm._i(_vm.nursMcp.dinner, null) > -1 : _vm.nursMcp.dinner
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.nursMcp.dinner,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.nursMcp, "dinner", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.nursMcp, "dinner", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.nursMcp, "dinner", $$c);
+        }
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursMcp.bodyWeight,
+      expression: "nursMcp.bodyWeight"
     }],
     staticStyle: {
       width: "5rem"
@@ -6968,20 +7134,20 @@ var render = function render() {
       name: "body_weight"
     },
     domProps: {
-      value: _vm.bodyWeight
+      value: _vm.nursMcp.bodyWeight
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.bodyWeight = $event.target.value;
+        _vm.$set(_vm.nursMcp, "bodyWeight", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.monitoringPa,
-      expression: "monitoringPa"
+      value: _vm.nursMcp.monitoringPa,
+      expression: "nursMcp.monitoringPa"
     }],
     staticStyle: {
       width: "5rem"
@@ -6991,20 +7157,20 @@ var render = function render() {
       name: "monitoring_pa"
     },
     domProps: {
-      value: _vm.monitoringPa
+      value: _vm.nursMcp.monitoringPa
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.monitoringPa = $event.target.value;
+        _vm.$set(_vm.nursMcp, "monitoringPa", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.monitoringFc,
-      expression: "monitoringFc"
+      value: _vm.nursMcp.monitoringFc,
+      expression: "nursMcp.monitoringFc"
     }],
     staticStyle: {
       width: "5rem"
@@ -7014,107 +7180,15 @@ var render = function render() {
       name: "monitoring_fc"
     },
     domProps: {
-      value: _vm.monitoringFc
+      value: _vm.nursMcp.monitoringFc
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.monitoringFc = $event.target.value;
+        _vm.$set(_vm.nursMcp, "monitoringFc", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("td", [_vm._v("\n                                       " + _vm._s(_vm.operatorSignature) + "\n                                    ")])]), _vm._v(" "), _vm.showInput1 ? _c("tr", [_c("td", [_vm._v("\n                                        " + _vm._s(_vm.mcpDate) + "\n                                    ")]), _vm._v(" "), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.inmateFeed,
-      expression: "inmateFeed"
-    }],
-    staticStyle: {
-      width: "5rem"
-    },
-    attrs: {
-      type: "text",
-      name: "inmate_feed"
-    },
-    domProps: {
-      value: _vm.inmateFeed
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.inmateFeed = $event.target.value;
-      }
-    }
-  })]), _vm._v(" "), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.bodyWeight,
-      expression: "bodyWeight"
-    }],
-    staticStyle: {
-      width: "5rem"
-    },
-    attrs: {
-      type: "text",
-      name: "body_weight"
-    },
-    domProps: {
-      value: _vm.bodyWeight
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.bodyWeight = $event.target.value;
-      }
-    }
-  })]), _vm._v(" "), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.monitoringPa,
-      expression: "monitoringPa"
-    }],
-    staticStyle: {
-      width: "5rem"
-    },
-    attrs: {
-      type: "text",
-      name: "monitoring_pa"
-    },
-    domProps: {
-      value: _vm.monitoringPa
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.monitoringPa = $event.target.value;
-      }
-    }
-  })]), _vm._v(" "), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.monitoringFc,
-      expression: "monitoringFc"
-    }],
-    staticStyle: {
-      width: "5rem"
-    },
-    attrs: {
-      type: "text",
-      name: "monitoring_fc"
-    },
-    domProps: {
-      value: _vm.monitoringFc
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.monitoringFc = $event.target.value;
-      }
-    }
-  })]), _vm._v(" "), _c("td", [_vm._v("\n                                       " + _vm._s(_vm.operatorSignature) + "\n                                    ")])]) : _vm._e()]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("td", [_vm._v("\n                                       " + _vm._s(_vm.nursMcp.operatorSignature) + "\n                                    ")])])]), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "50px"
@@ -7123,26 +7197,26 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", {
     staticClass: "item form-group"
-  }, [_vm._m(5), _vm._v(" "), _c("span", {
+  }, [_vm._m(6), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.folderPage,
-      expression: "folderPage"
+      value: _vm.nursMcp.folderPage,
+      expression: "nursMcp.folderPage"
     }],
     attrs: {
       type: "text",
       name: "folder_page"
     },
     domProps: {
-      value: _vm.folderPage
+      value: _vm.nursMcp.folderPage
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.folderPage = $event.target.value;
+        _vm.$set(_vm.nursMcp, "folderPage", $event.target.value);
       }
     }
   })])])])]), _vm._v(" "), _c("div", {
@@ -7211,7 +7285,15 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("tr", [_c("td", [_vm._v("DATA")]), _vm._v(" "), _c("td", [_vm._v("ALIMENTAZIONE "), _c("br"), _vm._v("(dichiarata dal detenuto)")]), _vm._v(" "), _c("td", [_vm._v("PESO "), _c("br"), _vm._v(" CORPOREO")]), _vm._v(" "), _c("td", [_vm._v("P.A.")]), _vm._v(" "), _c("td", [_vm._v("F.C.")]), _vm._v(" "), _c("td", [_vm._v("FIRMA "), _c("br"), _vm._v(" OPERATORE")])]);
+  return _c("tr", [_c("th", [_vm._v("DATA")]), _vm._v(" "), _c("th", {
+    attrs: {
+      colspan: "4"
+    }
+  }, [_vm._v("\n                                        ALIMENTAZIONE \n                                        \n                                    ")]), _vm._v(" "), _c("th", [_vm._v("PESO "), _c("br"), _vm._v(" CORPOREO")]), _vm._v(" "), _c("th", [_vm._v("P.A.")]), _vm._v(" "), _c("th", [_vm._v("F.C.")]), _vm._v(" "), _c("th", [_vm._v("FIRMA "), _c("br"), _vm._v(" OPERATORE")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("tr", [_c("td"), _vm._v(" "), _c("td"), _c("td", [_vm._v("\n                                            colazione\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            pranzo\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            cena\n                                        ")]), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -30581,7 +30663,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".labelWidth[data-v-29856c49] {\n  min-width: 190px;\n}\n.dbTitle[data-v-29856c49] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-29856c49], .item textarea[data-v-29856c49] {\n  margin-right: 10px;\n}\n.treatment[data-v-29856c49] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\ntable[data-v-29856c49] {\n  font-family: arial, sans-serif;\n  border-collapse: collapse;\n  width: 100%;\n}\ntd[data-v-29856c49], th[data-v-29856c49] {\n  border: 2px solid #dddddd;\n  text-align: center;\n  padding: 6px;\n}\nul[data-v-29856c49], li[data-v-29856c49] {\n  list-style: none;\n}", ""]);
+exports.push([module.i, ".labelWidth[data-v-29856c49] {\n  min-width: 190px;\n}\n.dbTitle[data-v-29856c49] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-29856c49], .item textarea[data-v-29856c49] {\n  margin-right: 10px;\n}\n.treatment[data-v-29856c49] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\ntable[data-v-29856c49] {\n  font-family: arial, sans-serif;\n  border-collapse: collapse;\n  width: 100%;\n}\ntd[data-v-29856c49], th[data-v-29856c49] {\n  border: 2px solid #dddddd;\n  text-align: center;\n  padding: 6px;\n}\nul[data-v-29856c49], li[data-v-29856c49] {\n  list-style: none;\n}\n*[data-v-29856c49] {\n  box-sizing: border-box;\n}\nhtml[data-v-29856c49] {\n  font-family: \"Jost\", sans-serif;\n}\nbody[data-v-29856c49] {\n  margin: 0;\n}\nheader[data-v-29856c49] {\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);\n  margin: 3rem;\n  border-radius: 10px;\n  padding: 1rem;\n  background-color: #1b995e;\n  color: white;\n  text-align: center;\n}\n#demo[data-v-29856c49] {\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);\n  margin: 3rem;\n  border-radius: 10px;\n  padding: 1rem;\n  text-align: center;\n}\n.demot[data-v-29856c49] {\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);\n  margin: 3rem;\n  border-radius: 10px;\n  padding: 1rem;\n  text-align: center;\n}\n#assignment h2[data-v-29856c49] {\n  font-size: 2rem;\n  border-bottom: 4px solid #ccc;\n  color: #1b995e;\n  margin: 0 0 1rem 0;\n}\n#assignment p[data-v-29856c49] {\n  font-size: 1.25rem;\n  font-weight: bold;\n  background-color: #8ddba4;\n  padding: 0.5rem;\n  color: #1f1f1f;\n  border-radius: 25px;\n}\n#assignment input[data-v-29856c49] {\n  font: inherit;\n  border: 1px solid #ccc;\n}\n#assignment input[data-v-29856c49]:focus {\n  outline: none;\n  border-color: #1b995e;\n  background-color: #d7fdeb;\n}\n#assignment button[data-v-29856c49] {\n  font: inherit;\n  cursor: pointer;\n  border: 1px solid #ff0077;\n  background-color: #ff0077;\n  color: white;\n  padding: 0.05rem 1rem;\n  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);\n}\n#assignment button[data-v-29856c49]:hover,\n#assignment button[data-v-29856c49]:active {\n  background-color: #ec3169;\n  border-color: #ec3169;\n  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);\n}\n.i2hCheckbox[data-v-29856c49] {\n  margin-right: 10px;\n}\n.i2hCheckboxLabel[data-v-29856c49] {\n  min-width: 100px;\n  display: inline-block;\n}\n.btnArchives[data-v-29856c49] {\n  background: none;\n  border: none;\n  color: #333;\n  cursor: pointer;\n}\n.i2hLoaderContainer[data-v-29856c49] {\n  height: 100vh;\n  width: 100vw;\n  background: #fff;\n}\n.i2hLoader[data-v-29856c49] {\n  position: absolute;\n  left: 50%;\n  top: 40%;\n  transform: translate(-50%, -50%);\n}\nlabel[data-v-29856c49] {\n  font-weight: 100;\n}\n.form-control[data-v-29856c49] {\n  height: 28px;\n  padding: 6px 12px;\n  font-size: 12px;\n  line-height: 1.2;\n}\n.acceptance[data-v-29856c49] {\n  box-shadow: inset -3px -3px 10px #1cee77;\n  background: rgb(255, 255, 255);\n  background: linear-gradient(45deg, rgb(255, 255, 255) 0%, rgb(235, 255, 235) 44%, rgb(255, 255, 255) 100%);\n}\n.noAcceptance[data-v-29856c49] {\n  box-shadow: inset -3px -3px 10px #fafddc;\n  background: rgb(255, 255, 255);\n  background: linear-gradient(45deg, rgb(255, 255, 255) 0%, rgb(252, 255, 227) 44%, rgb(255, 255, 255) 100%);\n}\n.therapy[data-v-29856c49] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\n.container[data-v-29856c49] {\n  margin-top: 30px;\n}\n.closeButton[data-v-29856c49] {\n  width: 25px;\n  height: 25px;\n}", ""]);
 
 // exports
 

@@ -21,12 +21,12 @@
                                         <span class="item form-group">
                                             <label for="department_cpc" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>Reparto/Sezione</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input style="margin-right: 10.6rem;" type="text" name="department_cpc" v-model="departmentCpc">
+                                                <input style="margin-right: 10.6rem;" type="text" name="department_cpc" v-model="nursCpc.departmentCpc">
                                             </span>
                                             <span class="item form-group">
                                             <label for="doctor_prescriber" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Medico Prescrittore</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="text" name="doctor_prescriber" v-model="doctorPrescriber">
+                                                <input type="text" name="doctor_prescriber" v-model="nursCpc.doctorPrescriber">
                                             </span>
                                         </span>
                                         </span>
@@ -40,11 +40,11 @@
                                         <span class="item form-group">
                                             <label for="date_start_collection" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>data inizio raccolta dati </h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input style="margin-right: 8rem;" type="date" name="date_start_collection" v-model="dateStartCollection">
+                                                <input style="margin-right: 8rem;" type="date" name="date_start_collection" v-model="nursCpc.dateStartCollection">
                                             </span>
                                             <label for="date_end_collection" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>data fine raccolta dati</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
-                                                <input type="date" name="date_end_collection" v-model="dateEndCollection">
+                                                <input type="date" name="date_end_collection" v-model="nursCpc.dateEndCollection">
                                             </span>
                                         </span>
                                     </div>
@@ -64,65 +64,53 @@
                                         <td>FIRMA</td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            {{cpcDate}}
+                                         <td>
+                                            {{nursCpc.cpcDate}}
                                         </td>
                                         <td>
-                                            <input style="width: 5rem;" type="text" name="collection_pa" v-model="collectionPa">
+                                            <input style="width: 5rem;" type="text" name="collection_pa" v-model="nursCpc.collectionPa">
                                         </td>
                                         <td>
-                                            <input style="width: 5rem;" type="text" name="collection_fc" v-model="collectionFc">
+                                            <input style="width: 5rem;" type="text" name="collection_fc" v-model="nursCpc.collectionFc">
                                         </td>
                                         <td>
-                                            <input style="width: 5rem;" type="text" name="collection_spo2" v-model="collectionSpo2">
+                                            <input style="width: 5rem;" type="text" name="collection_spo2" v-model="nursCpc.collectionSpo2">
                                         </td>
                                         <td>
-                                            <input style="width: 5rem;" type="text" name="collection_tc" v-model="collectionTc">
+                                            <input style="width: 5rem;" type="text" name="collection_tc" v-model="nursCpc.collectionTc">
                                         </td>
                                         <td>
-                                            {{collectionOperatorSignature}}
+                                            {{nursCpc.collectionOperatorSignature}}
                                         </td>
-                                    </tr>
+                                    </tr> 
                                     <tr v-if="showInput5">
                                         <td>
-                                            {{cpcDate}}
+                                            {{nursCpc.cpcDate}}
                                         </td>
                                         <td>
-                                            <input style="width: 5rem;" type="text" name="collection_pa" v-model="collectionPa">
+                                            <input style="width: 5rem;" type="text" name="collection_pa" v-model="nursCpc.collectionPa">
                                         </td>
                                         <td>
-                                            <input style="width: 5rem;" type="text" name="collection_fc" v-model="collectionFc">
+                                            <input style="width: 5rem;" type="text" name="collection_fc" v-model="nursCpc.collectionFc">
                                         </td>
                                         <td>
-                                            <input style="width: 5rem;" type="text" name="collection_spo2" v-model="collectionSpo2">
+                                            <input style="width: 5rem;" type="text" name="collection_spo2" v-model="nursCpc.collectionSpo2">
                                         </td>
                                         <td>
-                                            <input style="width: 5rem;" type="text" name="collection_tc" v-model="collectionTc">
+                                            <input style="width: 5rem;" type="text" name="collection_tc" v-model="nursCpc.collectionTc">
                                         </td>
                                         <td>
-                                            {{collectionOperatorSignature}}
+                                            <!-- {{nursCpc.collectionOperatorSignature}} -->
                                         </td>
                                     </tr>
                                 </table>
 
 
-
-                                <div class="row" style="margin-top:50px;">
-                                    <span class="col-md-12 col-sm-12">
-                                        <span class="item form-group">
-                                            <label for="folder_page_collection" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n.</h4></strong></label>
-                                            <span class="col-md-12 col-sm-12">
-                                                <input type="text" name="folder_page_collection" v-model="folderPageCollection">
-                                            </span>
-                                        </span>
-                                    </span>
-                                </div>
-
                                 
                                 <div class="ln_solid mt-5"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
-                                        <span class="btn btn-success i2hBtn ml-3" @click="addClinicalParameterCollection('mcp')">{{btnCpcSend}}</span>
+                                        <span class="btn btn-success i2hBtn ml-3" @click="addClinicalParameterCollection('cpc')">{{btnCpcSend}}</span>
                                         <a  class="btn btn-success i2hBtnPrint"  @click=" printClinicalParameterCollection('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                                     </div>
                                 </div>
@@ -195,8 +183,6 @@ ul, li{
         
         name: 'ClinicalParameterCollection',
 
-
-
         data() {
             return {
                 userName: 'mario',
@@ -206,21 +192,21 @@ ul, li{
                 userId:237,
 
 
-
+                ClinicalParameterCollection:{},
 
                 showInput5:false,
 
-                departmentCpc:null,
-                dateStartCollection:null,
-                dateEndCollection:null,
-                doctorPrescriber:null,
-                cpcDate:null,
-                collectionPa:null,
-                collectionFc:null,
-                collectionSpo2:null,
-                collectionTc:null,
-                collectionOperatorSignature:null,
-                folderPageCollection:null,
+                // departmentCpc:null,
+                // dateStartCollection:null,
+                // dateEndCollection:null,
+                // doctorPrescriber:null,
+                // cpcDate:null,
+                // collectionPa:null,
+                // collectionFc:null,
+                // collectionSpo2:null,
+                // collectionTc:null,
+                // collectionOperatorSignature:null,
+                // folderPageCollection:null,
 
 
 
@@ -279,13 +265,13 @@ ul, li{
                 let form = new FormData();
                 form.append('userName', this.userName);
                 form.append('userLastName', this.userLastName);
-                form.append('userFullName', this.userFullName);
-                form.append('userInstance', this.userInstance);
+                // form.append('userFullName', this.userFullName);
+                form.append('userInstanceId', this.userInstanceId);
                 form.append('userId', this.userId);
                 // form.append('doctorId', this.accessData.id);
                 // form.append('doctorName', this.accessData.name);
                 // form.append('doctorUserName', this.accessData.lastname);
-                form.append('doctorId', 36);
+                form.append('doctorId', 63);
                 form.append('doctorName', 'mario');
                 form.append('doctorUserName', 'rossi');
 
@@ -296,7 +282,7 @@ ul, li{
                     }else{
                         form.append('action', 'update');
                         if(this.userIstanceId){
-                            form.append('nursId',this.userIstanceId);
+                            form.append('userInstanceId',this.userIstanceId);
                         }else{
                             _errors++;
                             _errorTitle="Attenzione";
@@ -305,8 +291,8 @@ ul, li{
                     }
                     form.append('section', 'cpc');
                     if(!this.isObjEmpty(this.nursCpc)){
-                        let _nursCpc=JSON.stringify(this.nursCpc);
-                        form.append('NursingTherapies', _nursCpc);
+                        let _nurs=JSON.stringify(this.nursCpc);
+                        form.append('ClinicalParameterCollection', _nurs);
                     }
                 }
                 
@@ -323,7 +309,7 @@ ul, li{
                                     'Aggiornata correttamente',
                                     'success'
                                 )
-                                this.getClinicalParameterCollectionsByUserIstanceId(this.userInstance);
+                                // this.getClinicalParameterCollectionsByUserIstanceId(this.userInstanceId);
                             }else{
                                 // eventBus.$emit('errorEvent', error, _attempts);
                                 Swal.fire(
@@ -371,7 +357,7 @@ ul, li{
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
                         if(error == 0){
-                            alert(JSON.stringify(response))
+                            // alert(JSON.stringify(response))
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                         }
@@ -387,7 +373,7 @@ ul, li{
                 try {
                     let url=actions.GET_COLLECTIONS_BY_USER_ISTANCE_ID+'/'+id;
                     axios.get(url).then(response => {
-                        // alert(JSON.stringify(response));
+                        alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -396,34 +382,32 @@ ul, li{
                         
                             _wm.mainTitle="Aggiornamento Cartella nurs";
                             if(response.data.ClinicalParameterCollection){
-                            _wm.cPCSaved=true;
-                            _wm.btnCpcSend="Aggiorna";
+                            // _wm.cPCSaved=true;
+                            // alert(JSON.stringify(response.data.ClinicalParameterCollection))
+                            // _wm.btnCpcSend="Aggiorna";
+
+                            _wm.ClinicalParameterCollection=response.data.ClinicalParameterCollection;
+                            alert(JSON.stringify(_wm.ClinicalParameterCollection));
+
                             
-                            let _Nursvarible=response.data.ClinicalParameterCollection;
+                            // let _Nursvarible=response.data.ClinicalParameterCollection;
                                 
-                            _wm.nursCpc.departmentCpc = _Nursvarible.department_cpc
-                            _wm.nursCpc.dateStartCollection = _Nursvarible.date_start_collection
-                            _wm.nursCpc.dateEndCollection = _Nursvarible.date_end_collection
-                            _wm.nursCpc.doctorPrescriber = _Nursvarible.doctor_prescriber
-                            _wm.nursCpc.cpcDate = _Nursvarible.cpc_date
-                            _wm.nursCpc.collectionPa = _Nursvarible.collection_pa
-                            _wm.nursCpc.collectionFc = _Nursvarible.collection_fc
-                            _wm.nursCpc.collectionSpo2 = _Nursvarible.collection_spo2
-                            _wm.nursCpc.collectionTc = _Nursvarible.collection_tc
-                            _wm.nursCpc.collectionOperatorSignature = _Nursvarible.collection_operator_signature
-                            _wm.nursCpc.folderPageCollection = _Nursvarible.folder_page_collection
+                            // _wm.nursCpc.departmentCpc = _Nursvarible.department_cpc
+                            // _wm.nursCpc.dateStartCollection = _Nursvarible.date_start_collection
+                            // _wm.nursCpc.dateEndCollection = _Nursvarible.date_end_collection
+                            // _wm.nursCpc.doctorPrescriber = _Nursvarible.doctor_prescriber
+                            // _wm.nursCpc.cpcDate = _Nursvarible.cpc_date
+                            // _wm.nursCpc.collectionPa = _Nursvarible.collection_pa
+                            // _wm.nursCpc.collectionFc = _Nursvarible.collection_fc
+                            // _wm.nursCpc.collectionSpo2 = _Nursvarible.collection_spo2
+                            // _wm.nursCpc.collectionTc = _Nursvarible.collection_tc
+                            // _wm.nursCpc.collectionOperatorSignature = _Nursvarible.collection_operator_signature
+                            // _wm.nursCpc.folderPageCollection = _Nursvarible.folder_page_collection
 
-
-
-
-
-
-
-                            _wm.allClinicalParameterCollections=response.data.allClinicalParameterCollections;
+                            // _wm.nursCpc.allClinicalParameterCollections=response.data.allClinicalParameterCollections;
                             }else{
                                 _wm.btnCpcSend="Salva";
                             }
-                            
                             _wm.firstSave=false;
                         }else if(error == 7){
                             _wm.btnCpcSend="Salva";
