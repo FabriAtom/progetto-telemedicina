@@ -173,288 +173,162 @@ ul, li{
     list-style: none;
 }
 
-
 * {
-    box-sizing: border-box;
+box-sizing: border-box;
 }
 
 html {
     font-family: 'Jost', sans-serif;
 }
 
-
 body {
     margin: 0;
 }
 
 header {
-
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-
-margin: 3rem;
-
-border-radius: 10px;
-
-padding: 1rem;
-
-background-color: #1b995e;
-
-color: white;
-
-text-align: center;
-
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin: 3rem;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #1b995e;
+    color: white;
+    text-align: center;
 }
 
-
-
 #demo {
-
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-
-margin: 3rem;
-
-border-radius: 10px;
-
-padding: 1rem;
-
-text-align: center;
-
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin: 3rem;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
 }
 
 .demot {
-
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-
-margin: 3rem;
-
-border-radius: 10px;
-
-padding: 1rem;
-
-text-align: center;
-
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin: 3rem;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
 }
-
-
 
 #assignment h2 {
-
-font-size: 2rem;
-
-border-bottom: 4px solid #ccc;
-
-color: #1b995e;
-
-margin: 0 0 1rem 0;
-
+    font-size: 2rem;
+    border-bottom: 4px solid #ccc;
+    color: #1b995e;
+    margin: 0 0 1rem 0;
 }
-
-
 
 #assignment p {
-
-font-size: 1.25rem;
-
-font-weight: bold;
-
-background-color: #8ddba4;
-
-padding: 0.5rem;
-
-color: #1f1f1f;
-
-border-radius: 25px;
-
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: #8ddba4;
+    padding: 0.5rem;
+    color: #1f1f1f;
+    border-radius: 25px;
 }
-
 
 
 #assignment input {
-
-font: inherit;
-
-border: 1px solid #ccc;
-
+    font: inherit;
+    border: 1px solid #ccc;
 }
-
-
 
 #assignment input:focus {
-
-outline: none;
-
-border-color: #1b995e;
-
-background-color: #d7fdeb;
-
+    outline: none;
+    border-color: #1b995e;
+    background-color: #d7fdeb;
 }
-
-
 
 #assignment button {
-
 font: inherit;
-
 cursor: pointer;
-
-border: 1px solid #ff0077;
-
-background-color: #ff0077;
-
-color: white;
-
-padding: 0.05rem 1rem;
-
-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
-
+    border: 1px solid #ff0077;
+    background-color: #ff0077;
+    color: white;
+    padding: 0.05rem 1rem;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
 }
-
-
 
 #assignment button:hover,
-
 #assignment button:active {
-
-background-color: #ec3169;
-
-border-color: #ec3169;
-
-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
-
+    background-color: #ec3169;
+    border-color: #ec3169;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
 
-
-
 .i2hCheckbox{
-
-margin-right: 10px;
-
+    margin-right: 10px;
 }
 
 .i2hCheckboxLabel{
-
-min-width:100px; 
-
-display:inline-block;
-
+    min-width:100px; 
+    display:inline-block;
 }
 
 .btnArchives{
-
-background:none;
-
-border:none;
-
-color:#333;
-
-cursor:pointer;
-
+    background:none;
+    border:none;
+    color:#333;
+    cursor:pointer;
 }
 
 .i2hLoaderContainer{
-
-height: 100vh;
-
-width:100vw;
-
-background:#fff;
-
+    height: 100vh;
+    width:100vw;
+    background:#fff;
 }
 
 .i2hLoader{
-
-position: absolute;
-
-left: 50%;
-
-top: 40%;
-
--webkit-transform: translate(-50%, -50%);
-
-transform: translate(-50%, -50%);
-
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 label {
-
-font-weight: 100;
-
+    font-weight: 100;
 }
 
 .form-control {
-
-height: 28px;
-
-padding: 6px 12px;
-
-font-size: 12px;
-
-line-height: 1.2;
-
+    height: 28px;
+    padding: 6px 12px;
+    font-size: 12px;
+    line-height: 1.2;
 }
-
 .acceptance{
-
--moz-box-shadow: inset -3px -3px 10px #1cee77;
-
--webkit-box-shadow: inset -3px -3px 10px #1cee77;
-
-box-shadow: inset -3px -3px 10px #1cee77;
-
-background: rgb(255,255,255);
-
-background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(235,255,235,1) 44%, rgba(255,255,255,1) 100%);
-
+    -moz-box-shadow: inset -3px -3px 10px #1cee77;
+    -webkit-box-shadow: inset -3px -3px 10px #1cee77;
+    box-shadow: inset -3px -3px 10px #1cee77;
+    background: rgb(255,255,255);
+    background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(235,255,235,1) 44%, rgba(255,255,255,1) 100%);
 }
-
 .noAcceptance{
-
--moz-box-shadow: inset -3px -3px 10px #fafddc;
-
--webkit-box-shadow: inset -3px -3px 10px #fafddc;
-
-box-shadow: inset -3px -3px 10px #fafddc;
-
-background: rgb(255,255,255);
-
-background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(252,255,227,1) 44%, rgba(255,255,255,1) 100%);
-
+    -moz-box-shadow: inset -3px -3px 10px #fafddc;
+    -webkit-box-shadow: inset -3px -3px 10px #fafddc;
+    box-shadow: inset -3px -3px 10px #fafddc;
+    background: rgb(255,255,255);
+    background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(252,255,227,1) 44%, rgba(255,255,255,1) 100%);
 }
-
-
 
 .therapy{
-
-border:1px double #f1f1f1;
-
-margin: 1.5rem 0;
-
-padding: 20px 15px;
-
-font-style: italic; 
-
--webkit-box-shadow: 1px 1px 3px 1px #ccc; 
-
-box-shadow: 1px 1px 3px 1px #ccc; 
-
-border-radius: 5px;
-
-color: #333; 
-
+    border:1px double #f1f1f1;
+    margin: 1.5rem 0;
+    padding: 20px 15px;
+    font-style: italic; 
+    -webkit-box-shadow: 1px 1px 3px 1px #ccc;
+    box-shadow: 1px 1px 3px 1px #ccc; 
+    border-radius: 5px;
+    color: #333; 
 }
 
 .container{
-
-margin-top:30px;
-
+    margin-top:30px;
 }
 
 .closeButton{
-
-width:25px;
-
-height:25px;
-
+    width:25px;
+    height:25px;
 }
 </style>
 
@@ -484,29 +358,16 @@ height:25px;
                     checked:{},
                     descriptions:{}
                 },
+
+
                 chechedDescriptions: [],
+
+
+
                 therapies:[{id:1,drug:'tachipirina',start_date:'2022-10-12',end_date:'2023-06-10'},
                     {id:2,drug:'toradol',start_date:'2023-01-01',end_date:'2023-12-31'},
                     {id:3,drug:'buscopan',start_date:'2022-08-12',end_date:'2023-07-23'
                 }],
-
-                computed: {
-                },
-
-                watch: {
-
-                },
-                                    
-
-
-                
-
-
-                
-                showInput:false,
-                // showInput1:false,
-                // showInput2:false,
-                // showInput3:false,
 
 
                 therapies:{
@@ -514,40 +375,13 @@ height:25px;
                     note_drugs_not_administered: [],
                 },
                 terapieRifiutate:[],
-                drug:'',
-
-
-
-                // startTherapy:null,
-                // endTherapy:null,
-                // hours:null,
-                // frequency:null,
-                // doctorName:'',
-                // thDate:'',  
-
-
-
-
-                // doctorName:null,
-                // drugsNotAdministered:null,
-                // drugs:null,
-                // motivationNotTakeMedicine:null,
-                // thFromThe:null,
-                // thToThe:null, 
-                // thHours:null,
-                // thFrequency:null,
-                // medicalAlert:null,
-                // medicalAlertNote:null,
-                // doctorsPrescriptions:null,
-                // doctorsPrescriptionsNote:null,
+                drug:'',        
 
 
                 accessData:[
-
                     id => 31,
                     name => 'mario',
-                    lastname => 'rossi',
-                    
+                    lastname => 'rossi',   
                 ],
            
                 date:new Date(),
@@ -556,7 +390,6 @@ height:25px;
                 firstSave:true,
                 tHSaved:false,
 
-                
                 btnThSend:"Salva",
                 total:0,               
                 allTraceabilityTherapys:null,
@@ -569,6 +402,12 @@ height:25px;
             this.getNursingTherapysByUserIstanceId(1)
         },
         
+
+        computed: {
+        },
+
+        watch: {
+        },
 
         methods: {
 

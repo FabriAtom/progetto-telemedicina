@@ -120,14 +120,13 @@
                                         </td>
                                         <td>
                                            {{therapies.operatorSignature}}
-                                        </td>
-                                    </tr> -->
+                                        </td> 
+                                    </tr>-->
 
                                      <tr>
                                         <td>
                                             <input style="width: 7rem;" type="date" name="mcp_date" v-model="nursMcp.mcpDate">
                                         </td>
-
                                         <td>
                                             <td>
                                                 <input style="width: 5rem;" type="checkbox" name="breakfast" v-model="nursMcp.breakfast">
@@ -186,20 +185,6 @@
                                         </td>
                                     </tr> -->
                                 </table>
-
-
-
-
-                                <div class="row" style="margin-top:50px;">
-                                    <span class="col-md-12 col-sm-12">
-                                        <span class="item form-group">
-                                            <label for="folder_page" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Pagina della cartella n.</h4></strong></label>
-                                            <span class="col-md-12 col-sm-12">
-                                                <input type="text" name="folder_page" v-model="nursMcp.folderPage">
-                                            </span>
-                                        </span>
-                                    </span>
-                                </div>
 
                                 
                                 <div class="ln_solid mt-3"></div>
@@ -489,22 +474,25 @@ ul, li{
                             // _wm.mCPSaved=true;
                             // _wm.btnMcpSend="Aggiorna";
                             _wm.MonitoringClinicalParameter=response.data.MonitoringClinicalParameter;
-                            alert(JSON.stringify(_wm.MonitoringClinicalParameter));
+                            // alert(JSON.stringify(_wm.MonitoringClinicalParameter));
 
                             
-                            // let _NursMcp=response.data.MonitoringClinicalParameter;
+                            let _NursMcp=response.data.MonitoringClinicalParameter;
 
-                            // _wm.department = _NursMcp.department
-                            // _wm.dateStartRejection = _NursMcp.date_start_rejection
-                            // _wm.dateEndRejection = _NursMcp.date_end_rejection
-                            // _wm.mcpDate = _NursMcp.mcp_date
-                            // _wm.bodyWeight = _NursMcp.body_weight
+                            _wm.nursMcp.department = _NursMcp.department
+                            _wm.nursMcp.dateStartRejection = _NursMcp.date_start_rejection
+                            _wm.nursMcp.dateEndRejection = _NursMcp.date_end_rejection
+                            _wm.nursMcp.mcpDate = _NursMcp.mcp_date
+                            _wm.nursMcp.breakfast = _NursMcp.breakfast
+                            _wm.nursMcp.lunch = _NursMcp.lunch
+                            _wm.nursMcp.dinner = _NursMcp.dinner
 
-                            // _wm.monitoringPa = _NursMcp.monitoring_pa
-                            // _wm.monitoringFc = _NursMcp.monitoring_fc
-                            // _wm.operatorSignature = _NursMcp.operator_signature
+                            _wm.nursMcp.bodyWeight = _NursMcp.body_weight
+                            _wm.nursMcp.monitoringPa = _NursMcp.monitoring_pa
+                            _wm.nursMcp.monitoringFc = _NursMcp.monitoring_fc
+                            _wm.nursMcp.operatorSignature = _NursMcp.operator_signature
 
-                            // _wm.allMonitoringClinicalParameters=response.data.allMonitoringClinicalParameters;
+                            _wm.allMonitoringClinicalParameters=response.data.allMonitoringClinicalParameters;
                             }else{
                                 _wm.btnNhSend="Salva";
                             }

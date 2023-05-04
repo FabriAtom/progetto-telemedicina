@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('printPdf/{id}', [App\Http\Controllers\PsyCardsController::class,'printPdf'])->name('printPdf');
+Route::get('printPdf/{id}', [App\Http\Controllers\NursingRecordController::class,'printPdf'])->name('printPdf');
 
 
 
@@ -158,15 +159,10 @@ Route::post('/therapies/addCollectionFormHgt', [App\Http\Controllers\NursingReco
 
 
 
-Route::get('/therapies/getNursingTherapyByUserIstanceId/{id}', [App\Http\Controllers\NursingRecordController::class,'getNursingTherapyByUserIstanceId'])->name('getNursingTherapyByUserIstanceId');
-
-
-
-// Route::post('/therapies/addNursingTherapies', [App\Http\Controllers\NursingRecordController::class,'addNursingTherapies'])->name('addNursingTherapies');
-
-  
-
-// Route::get('/therapies/getTraceabilityTherapyByUserIstanceId/{id}', [App\Http\Controllers\NursingRecordController::class,'getTraceabilityTherapyByUserIstanceId'])->name('getTraceabilityTherapyByUserIstanceId');
+Route::get('/therapies/getMonitoringPrescriptionTaos', [App\Http\Controllers\NursingRecordController::class,'index'])->name('getMonitoringPrescriptionTaos');
+Route::get('/therapies/getMonitoringPrescriptionTaoById/{id}', [App\Http\Controllers\NursingRecordController::class,'getMonitoringPrescriptionTaoById'])->name('getMonitoringPrescriptionTaoById');
+Route::get('/therapies/getMonitoringPrescriptionTaosByUserIstanceId/{id}', [App\Http\Controllers\NursingRecordController::class,'getMonitoringPrescriptionTaosByUserIstanceId'])->name('getMonitoringPrescriptionTaosByUserIstanceId');
+Route::post('/therapies/addMonitoringPrescriptionTao', [App\Http\Controllers\NursingRecordController::class,'addMonitoringPrescriptionTao'])->name('addMonitoringPrescriptionTao');
 
 
 
@@ -179,9 +175,7 @@ Route::get('/therapies/getNursingTherapyByUserIstanceId/{id}', [App\Http\Control
 
 
 
-
-
-
+Route::get('/therapies/getNursingTherapysByUserIstanceId/{id}', [App\Http\Controllers\NursingRecordController::class,'getNursingTherapysByUserIstanceId'])->name('getNursingTherapysByUserIstanceId');
 
 
 

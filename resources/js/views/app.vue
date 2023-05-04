@@ -22,8 +22,7 @@
       <MonitoringClinicalParameter/>
       <ClinicalParameterCollection/>
       <CollectionFormHgt/>
-
-
+      <MonitoringPrescriptionTao/>
     </div>
     
   </div>
@@ -48,15 +47,10 @@ import PsyJsat from '../components/PsyJsat.vue';
 
 
 import TraceabilityTherapy from '../components/TraceabilityTherapy.vue';
-
 import MonitoringClinicalParameter from '../components/MonitoringClinicalParameter.vue';
-
 import ClinicalParameterCollection from '../components/ClinicalParameterCollection.vue';
-
 import CollectionFormHgt from '../components/CollectionFormHgt.vue';
-
-
-
+import MonitoringPrescriptionTao from '../components/MonitoringPrescriptionTao.vue';
 
 
 export default {
@@ -79,6 +73,7 @@ export default {
     MonitoringClinicalParameter,
     ClinicalParameterCollection,
     CollectionFormHgt,
+    MonitoringPrescriptionTao,
 }
 }
 </script>

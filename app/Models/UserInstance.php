@@ -78,4 +78,9 @@ class UserInstance extends Model
     {
         return $this->hasMany(CollectionFormHgt::class);
     }
+
+    public function MonitoringPrescriptionTaos()
+    {
+        return $this->hasMany(MonitoringPrescriptionTao::class);
+    }
 }

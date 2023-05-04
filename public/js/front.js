@@ -2290,7 +2290,7 @@ __webpack_require__.r(__webpack_exports__);
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_HGTS_BY_USER_ISTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          alert(JSON.stringify(response));
+          // alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
           _wm.errNum = error;
@@ -2301,7 +2301,7 @@ __webpack_require__.r(__webpack_exports__);
               // _wm.btnHgtSend="Aggiorna";
 
               _wm.CollectionFormHgt = response.data.CollectionFormHgt;
-              alert(JSON.stringify(_wm.CollectionFormHgt));
+              // alert(JSON.stringify(_wm.CollectionFormHgt));
 
               // let _NursHgt=response.data.CollectionFormHgt;
               // _wm.departmentHgt = _NursHgt.department_hgt
@@ -2521,27 +2521,228 @@ __webpack_require__.r(__webpack_exports__);
               // _wm.mCPSaved=true;
               // _wm.btnMcpSend="Aggiorna";
               _wm.MonitoringClinicalParameter = response.data.MonitoringClinicalParameter;
-              alert(JSON.stringify(_wm.MonitoringClinicalParameter));
+              // alert(JSON.stringify(_wm.MonitoringClinicalParameter));
 
-              // let _NursMcp=response.data.MonitoringClinicalParameter;
-
-              // _wm.department = _NursMcp.department
-              // _wm.dateStartRejection = _NursMcp.date_start_rejection
-              // _wm.dateEndRejection = _NursMcp.date_end_rejection
-              // _wm.mcpDate = _NursMcp.mcp_date
-              // _wm.bodyWeight = _NursMcp.body_weight
-
-              // _wm.monitoringPa = _NursMcp.monitoring_pa
-              // _wm.monitoringFc = _NursMcp.monitoring_fc
-              // _wm.operatorSignature = _NursMcp.operator_signature
-
-              // _wm.allMonitoringClinicalParameters=response.data.allMonitoringClinicalParameters;
+              var _NursMcp = response.data.MonitoringClinicalParameter;
+              _wm.nursMcp.department = _NursMcp.department;
+              _wm.nursMcp.dateStartRejection = _NursMcp.date_start_rejection;
+              _wm.nursMcp.dateEndRejection = _NursMcp.date_end_rejection;
+              _wm.nursMcp.mcpDate = _NursMcp.mcp_date;
+              _wm.nursMcp.breakfast = _NursMcp.breakfast;
+              _wm.nursMcp.lunch = _NursMcp.lunch;
+              _wm.nursMcp.dinner = _NursMcp.dinner;
+              _wm.nursMcp.bodyWeight = _NursMcp.body_weight;
+              _wm.nursMcp.monitoringPa = _NursMcp.monitoring_pa;
+              _wm.nursMcp.monitoringFc = _NursMcp.monitoring_fc;
+              _wm.nursMcp.operatorSignature = _NursMcp.operator_signature;
+              _wm.allMonitoringClinicalParameters = response.data.allMonitoringClinicalParameters;
             } else {
               _wm.btnNhSend = "Salva";
             }
             _wm.firstSave = false;
           } else if (error == 7) {
             _wm.btnMcpSend = "Salva";
+            _wm.firstSave = true;
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    isObjEmpty: function isObjEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/ApiUrl */ "./resources/js/config/ApiUrl.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'MonitoringPrescriptionTao',
+  data: function data() {
+    return {
+      userName: 'mario',
+      userLastName: 'rossi',
+      userFullName: '',
+      userInstanceId: 36,
+      userId: 237,
+      MonitoringPrescriptionTao: {},
+      nursTao: {},
+      accessData: [function (id) {
+        return 31;
+      }, function (name) {
+        return 'mario';
+      }, function (lastname) {
+        return 'rossi';
+      }],
+      date: new Date(),
+      mainTitle: "psy",
+      firstSave: true,
+      tAOSaved: false,
+      btnTaoSend: "Salva",
+      total: 0,
+      allMonitoringPrescriptionTaos: null
+    };
+  },
+  created: function created() {
+    this.getMonitoringPrescriptionTaosByUserIstanceId(1);
+  },
+  methods: {
+    printMonitoringPrescriptionTao: function printMonitoringPrescriptionTao(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    addMonitoringPrescriptionTao: function addMonitoringPrescriptionTao(panel) {
+      var _wm = this;
+      var _panel = panel;
+      var _errors = 0;
+      var _errorTitle = "Scheda";
+      var _errorDescription = "Non aggiornata";
+      var form = new FormData();
+      form.append('userName', this.userName);
+      form.append('userLastName', this.userLastName);
+      // form.append('userFullName', this.userFullName);
+      form.append('userInstanceId', this.userInstanceId);
+      form.append('userId', this.userId);
+      // form.append('doctorId', this.accessData.id);
+      // form.append('doctorName', this.accessData.name);
+      // form.append('doctorUserName', this.accessData.lastname);
+      form.append('doctorId', 36);
+      form.append('doctorName', 'mario');
+      form.append('doctorUserName', 'rossi');
+      if (_panel == 'tao') {
+        if (!this.nTSaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+          if (this.userIstanceId) {
+            form.append('userIstanceId', this.userIstanceId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+        }
+        form.append('section', 'tao');
+        if (!this.isObjEmpty(this.nursTao)) {
+          var _nurs = JSON.stringify(this.nursTao);
+          form.append('MonitoringPrescriptionTao', _nurs);
+        }
+      }
+      if (_errors == 0) {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_PRESCRIPTION"], form).then(function (response) {
+            var error = response.data.errorNumber;
+            var _attempts = response.data.attempts;
+            _wm.errNum = error;
+            if (error == 0) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
+              // this.getMonitoringPrescriptionTaosByUserIstanceId(this.userInstance);
+            } else {
+              // eventBus.$emit('errorEvent', error, _attempts);
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
+            }
+          });
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
+      }
+    },
+    getMonitoringPrescriptionTaos: function getMonitoringPrescriptionTaos() {
+      var _wm = this;
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PRESCRIPTIONS"]).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            // alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getMonitoringPrescriptionTaoById: function getMonitoringPrescriptionTaoById(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PRESCRIPTION_BY_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            // alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getMonitoringPrescriptionTaosByUserIstanceId: function getMonitoringPrescriptionTaosByUserIstanceId(id) {
+      var _wm = this;
+      id = 36;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          // alert(JSON.stringify(response));
+          var error = response.data.errorNumber;
+          // let _attempts=response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            _wm.mainTitle = "Aggiornamento Cartella nurs";
+            if (response.data.MonitoringPrescriptionTao) {
+              // _wm.hGTSaved=true;
+              // _wm.btnHgtSend="Aggiorna";
+
+              _wm.MonitoringPrescriptionTao = response.data.MonitoringPrescriptionTao;
+              // alert(JSON.stringify(_wm.MonitoringPrescriptionTao));
+
+              // let _nursTao=response.data.MonitoringPrescriptionTao;
+              // _wm.departmentHgt = _nursTao.department_hgt
+              // _wm.dateStartCollectionHgt = _nursTao.date_start_collection_hgt
+              // _wm.dateEndCollectionHgt = _nursTao.date_end_collection_hgt
+              // _wm.doctorPrescriberHgt = _nursTao.doctor_prescriber_hgt
+              // _wm.hgtDate = _nursTao.hgt_date
+              // _wm.hours = _nursTao.hours
+              // _wm.hgt = _nursTao.hgt
+              // _wm.hgtOperatorSignature = _nursTao.hgt_operator_signature
+              // _wm.folderPageCollectionHgt = _nursTao.folder_page_collection_hgt
+
+              // _wm.allMonitoringPrescriptionTaos=response.data.allMonitoringPrescriptionTaos;
+            } else {
+              _wm.btnTaoSend = "Salva";
+            }
+            _wm.firstSave = false;
+          } else if (error == 7) {
+            _wm.btnTaoSend = "Salva";
             _wm.firstSave = true;
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
@@ -4833,10 +5034,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         drug: 'buscopan',
         start_date: '2022-08-12',
         end_date: '2023-07-23'
-      }],
-      computed: {},
-      watch: {},
-      showInput: false
+      }]
     }, _defineProperty(_ref, "therapies", {
       check_drugs_not_administered: [],
       note_drugs_not_administered: []
@@ -4852,6 +5050,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     this.getTraceabilityTherapysByUserIstanceId(1);
     this.getNursingTherapysByUserIstanceId(1);
   },
+  computed: {},
+  watch: {},
   methods: _defineProperty({
     saveRefusedTreatments: function saveRefusedTreatments() {
       for (var refusedTreatment in this.refusedTreatments.checked) {
@@ -6035,10 +6235,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_MonitoringClinicalParameter_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/MonitoringClinicalParameter.vue */ "./resources/js/components/MonitoringClinicalParameter.vue");
 /* harmony import */ var _components_ClinicalParameterCollection_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/ClinicalParameterCollection.vue */ "./resources/js/components/ClinicalParameterCollection.vue");
 /* harmony import */ var _components_CollectionFormHgt_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/CollectionFormHgt.vue */ "./resources/js/components/CollectionFormHgt.vue");
+/* harmony import */ var _components_MonitoringPrescriptionTao_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/MonitoringPrescriptionTao.vue */ "./resources/js/components/MonitoringPrescriptionTao.vue");
 // import Home from '../pages/Home.vue';
 
 // import serdCard from '../components/serdCard.vue';
 // import PsySuicideAssessment from '../components/PsySuicideAssessment.vue';
+
 
 
 
@@ -6068,7 +6270,8 @@ __webpack_require__.r(__webpack_exports__);
     TraceabilityTherapy: _components_TraceabilityTherapy_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
     MonitoringClinicalParameter: _components_MonitoringClinicalParameter_vue__WEBPACK_IMPORTED_MODULE_10__["default"],
     ClinicalParameterCollection: _components_ClinicalParameterCollection_vue__WEBPACK_IMPORTED_MODULE_11__["default"],
-    CollectionFormHgt: _components_CollectionFormHgt_vue__WEBPACK_IMPORTED_MODULE_12__["default"]
+    CollectionFormHgt: _components_CollectionFormHgt_vue__WEBPACK_IMPORTED_MODULE_12__["default"],
+    MonitoringPrescriptionTao: _components_MonitoringPrescriptionTao_vue__WEBPACK_IMPORTED_MODULE_13__["default"]
   }
 });
 
@@ -7189,37 +7392,6 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("td", [_vm._v("\n                                       " + _vm._s(_vm.nursMcp.operatorSignature) + "\n                                    ")])])]), _vm._v(" "), _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "50px"
-    }
-  }, [_c("span", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("span", {
-    staticClass: "item form-group"
-  }, [_vm._m(6), _vm._v(" "), _c("span", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.nursMcp.folderPage,
-      expression: "nursMcp.folderPage"
-    }],
-    attrs: {
-      type: "text",
-      name: "folder_page"
-    },
-    domProps: {
-      value: _vm.nursMcp.folderPage
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.nursMcp, "folderPage", $event.target.value);
-      }
-    }
-  })])])])]), _vm._v(" "), _c("div", {
     staticClass: "ln_solid mt-3"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -7294,15 +7466,226 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("tr", [_c("td"), _vm._v(" "), _c("td"), _c("td", [_vm._v("\n                                            colazione\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            pranzo\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            cena\n                                        ")]), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")]);
+}];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=template&id=05c8ffe5&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=template&id=05c8ffe5&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "page-content"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "x_panel"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "x_content"
+  }, [_c("form", {
+    staticClass: "form-horizontal form-label-left align-items-center",
+    attrs: {
+      id: "demo-form2",
+      "data-parsley-validate": ""
+    }
+  }, [_c("div", {
+    staticClass: "row mt-4"
+  }, [_c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(1), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursTao.departmentTao,
+      expression: "nursTao.departmentTao"
+    }],
+    staticStyle: {
+      "margin-right": "10.6rem"
+    },
+    attrs: {
+      type: "text",
+      name: "department_tao"
+    },
+    domProps: {
+      value: _vm.nursTao.departmentTao
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursTao, "departmentTao", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(2), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursTao.drugPrescribed,
+      expression: "nursTao.drugPrescribed"
+    }],
+    attrs: {
+      type: "text",
+      name: "drug_prescribed"
+    },
+    domProps: {
+      value: _vm.nursTao.drugPrescribed
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursTao, "drugPrescribed", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row mt-3"
+  }, [_c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(3), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursTao.diagnosisTao,
+      expression: "nursTao.diagnosisTao"
+    }],
+    attrs: {
+      type: "text",
+      name: "diagnosis_tao"
+    },
+    domProps: {
+      value: _vm.nursTao.diagnosisTao
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursTao, "diagnosisTao", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(4), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursTao.dateTao,
+      expression: "nursTao.dateTao"
+    }],
+    attrs: {
+      type: "date",
+      name: "date_tao"
+    },
+    domProps: {
+      value: _vm.nursTao.dateTao
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursTao, "dateTao", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid mt-5"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("span", {
+    staticClass: "btn btn-success i2hBtn ml-3",
+    on: {
+      click: function click($event) {
+        return _vm.addMonitoringPrescriptionTao("tao");
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.btnTaoSend))]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-success i2hBtnPrint",
+    on: {
+      click: function click($event) {
+        return _vm.printMonitoringPrescriptionTao("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa")])])])])])])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "100px"
+    }
+  }, [_c("h1", [_vm._v("Modulo di monitoraggio della prescrizione e della somministrazione della terapia "), _c("strong", [_vm._v("TAO")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "department_tao"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("Reparto/Sezione")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "col-form-label col-md-3 col-sm-2 label-align",
     attrs: {
-      "for": "folder_page"
+      "for": "drug_prescribed"
     }
-  }, [_c("strong", [_c("h4", [_vm._v("Pagina della cartella n.")])])]);
+  }, [_c("strong", [_c("h4", [_vm._v("Farmaco Prescritto")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "diagnosis_tao"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("Diagnosi")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    staticStyle: {
+      "margin-left": "10rem"
+    },
+    attrs: {
+      "for": "date_tao"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("Data")])])]);
 }];
 render._withStripped = true;
 
@@ -30434,7 +30817,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyMentalHealthDepartment"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard"), _vm._v(" "), _c("PsySurvey"), _vm._v(" "), _c("PsyJsat"), _vm._v(" "), _c("TraceabilityTherapy"), _vm._v(" "), _c("MonitoringClinicalParameter"), _vm._v(" "), _c("ClinicalParameterCollection"), _vm._v(" "), _c("CollectionFormHgt")], 1)], 1);
+  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("psyCard"), _vm._v(" "), _c("PsyMentalHealthDepartment"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard"), _vm._v(" "), _c("PsySurvey"), _vm._v(" "), _c("PsyJsat"), _vm._v(" "), _c("TraceabilityTherapy"), _vm._v(" "), _c("MonitoringClinicalParameter"), _vm._v(" "), _c("ClinicalParameterCollection"), _vm._v(" "), _c("CollectionFormHgt"), _vm._v(" "), _c("MonitoringPrescriptionTao")], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -30493,6 +30876,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, ".labelWidth[data-v-6b142053] {\n  min-width: 190px;\n}\n.dbTitle[data-v-6b142053] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-6b142053], .item textarea[data-v-6b142053] {\n  margin-right: 10px;\n}\n.treatment[data-v-6b142053] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\ntable[data-v-6b142053] {\n  font-family: arial, sans-serif;\n  border-collapse: collapse;\n  width: 100%;\n}\ntd[data-v-6b142053], th[data-v-6b142053] {\n  border: 2px solid #dddddd;\n  text-align: center;\n  padding: 2;\n}\nul[data-v-6b142053], li[data-v-6b142053] {\n  list-style: none;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".labelWidth[data-v-05c8ffe5] {\n  min-width: 190px;\n}\n.dbTitle[data-v-05c8ffe5] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-05c8ffe5], .item textarea[data-v-05c8ffe5] {\n  margin-right: 10px;\n}\n.treatment[data-v-05c8ffe5] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\ntable[data-v-05c8ffe5] {\n  font-family: arial, sans-serif;\n  border-collapse: collapse;\n  width: 100%;\n}\ntd[data-v-05c8ffe5], th[data-v-05c8ffe5] {\n  border: 2px solid #dddddd;\n  text-align: center;\n  padding: 6px;\n}\nul[data-v-05c8ffe5], li[data-v-05c8ffe5] {\n  list-style: none;\n}", ""]);
 
 // exports
 
@@ -53003,6 +53405,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./MonitoringClinicalParameter.vue?vue&type=style&index=0&id=6b142053&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MonitoringClinicalParameter.vue?vue&type=style&index=0&id=6b142053&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -78249,6 +78681,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/MonitoringPrescriptionTao.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/MonitoringPrescriptionTao.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MonitoringPrescriptionTao_vue_vue_type_template_id_05c8ffe5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MonitoringPrescriptionTao.vue?vue&type=template&id=05c8ffe5&scoped=true& */ "./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=template&id=05c8ffe5&scoped=true&");
+/* harmony import */ var _MonitoringPrescriptionTao_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MonitoringPrescriptionTao.vue?vue&type=script&lang=js& */ "./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _MonitoringPrescriptionTao_vue_vue_type_style_index_0_id_05c8ffe5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true& */ "./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _MonitoringPrescriptionTao_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MonitoringPrescriptionTao_vue_vue_type_template_id_05c8ffe5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MonitoringPrescriptionTao_vue_vue_type_template_id_05c8ffe5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "05c8ffe5",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MonitoringPrescriptionTao.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MonitoringPrescriptionTao_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MonitoringPrescriptionTao.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MonitoringPrescriptionTao_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true&":
+/*!*************************************************************************************************************************!*\
+  !*** ./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true& ***!
+  \*************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_MonitoringPrescriptionTao_vue_vue_type_style_index_0_id_05c8ffe5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=style&index=0&id=05c8ffe5&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_MonitoringPrescriptionTao_vue_vue_type_style_index_0_id_05c8ffe5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_MonitoringPrescriptionTao_vue_vue_type_style_index_0_id_05c8ffe5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_MonitoringPrescriptionTao_vue_vue_type_style_index_0_id_05c8ffe5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_MonitoringPrescriptionTao_vue_vue_type_style_index_0_id_05c8ffe5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=template&id=05c8ffe5&scoped=true&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=template&id=05c8ffe5&scoped=true& ***!
+  \**********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_MonitoringPrescriptionTao_vue_vue_type_template_id_05c8ffe5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./MonitoringPrescriptionTao.vue?vue&type=template&id=05c8ffe5&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MonitoringPrescriptionTao.vue?vue&type=template&id=05c8ffe5&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_MonitoringPrescriptionTao_vue_vue_type_template_id_05c8ffe5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_MonitoringPrescriptionTao_vue_vue_type_template_id_05c8ffe5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/PsyJsat.vue":
 /*!*********************************************!*\
   !*** ./resources/js/components/PsyJsat.vue ***!
@@ -79210,7 +79729,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************!*\
   !*** ./resources/js/config/ApiUrl.js ***!
   \***************************************/
-/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_RATING_BY_PSY_ID, ADD_RATING, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_JSAT_BY_PSY_ID, ADD_JSAT, GET_TRACEABILITYS, GET_TRACEABILITY_BY_ID, GET_TRACEABILITYS_BY_USER_ISTANCE_ID, ADD_TRACEABILITY, GET_MONITORINGS, GET_MONITORING_BY_ID, GET_MONITORINGS_BY_USER_ISTANCE_ID, ADD_MONITORING, GET_COLLECTIONS, GET_COLLECTION_BY_ID, GET_COLLECTIONS_BY_USER_ISTANCE_ID, ADD_COLLECTION, GET_HGTS, GET_HGT_BY_ID, GET_HGTS_BY_USER_ISTANCE_ID, ADD_HGT, GET_NURSINGS, GET_NURSING_BY_ID, GET_NURSINGS_BY_USER_ISTANCE_ID, ADD_NURSING */
+/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_RATING_BY_PSY_ID, ADD_RATING, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_JSAT_BY_PSY_ID, ADD_JSAT, GET_TRACEABILITYS, GET_TRACEABILITY_BY_ID, GET_TRACEABILITYS_BY_USER_ISTANCE_ID, ADD_TRACEABILITY, GET_MONITORINGS, GET_MONITORING_BY_ID, GET_MONITORINGS_BY_USER_ISTANCE_ID, ADD_MONITORING, GET_COLLECTIONS, GET_COLLECTION_BY_ID, GET_COLLECTIONS_BY_USER_ISTANCE_ID, ADD_COLLECTION, GET_HGTS, GET_HGT_BY_ID, GET_HGTS_BY_USER_ISTANCE_ID, ADD_HGT, GET_NURSINGS, GET_NURSING_BY_ID, GET_NURSINGS_BY_USER_ISTANCE_ID, ADD_NURSING, GET_PRESCRIPTIONS, GET_PRESCRIPTION_BY_ID, GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID, ADD_PRESCRIPTION */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79270,6 +79789,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_NURSING_BY_ID", function() { return GET_NURSING_BY_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_NURSINGS_BY_USER_ISTANCE_ID", function() { return GET_NURSINGS_BY_USER_ISTANCE_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_NURSING", function() { return ADD_NURSING; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_PRESCRIPTIONS", function() { return GET_PRESCRIPTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_PRESCRIPTION_BY_ID", function() { return GET_PRESCRIPTION_BY_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID", function() { return GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_PRESCRIPTION", function() { return ADD_PRESCRIPTION; });
 var GET_PERMISSIONS = '/serd/getpermissions';
 var GET_SERD_CARDS = '/serd/getSerdCards';
 var GET_SERD_CARD_BY_ID = '/serd/getSerdCardById';
@@ -79349,8 +79872,12 @@ var GET_HGTS_BY_USER_ISTANCE_ID = '/therapies/getCollectionFormHgtsByUserIstance
 var ADD_HGT = '/therapies/addCollectionFormHgt';
 var GET_NURSINGS = '/therapies/getNursingTherapys';
 var GET_NURSING_BY_ID = '/therapies/getNursingTherapysById';
-var GET_NURSINGS_BY_USER_ISTANCE_ID = '/therapies/getNursingTherapyByUserIstanceId';
+var GET_NURSINGS_BY_USER_ISTANCE_ID = '/therapies/getNursingTherapysByUserIstanceId';
 var ADD_NURSING = '/therapies/addNursingTherapy';
+var GET_PRESCRIPTIONS = '/therapies/getMonitoringPrescriptionTaos';
+var GET_PRESCRIPTION_BY_ID = '/therapies/getMonitoringPrescriptionTaosById';
+var GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID = '/therapies/getMonitoringPrescriptionTaosByUserIstanceId';
+var ADD_PRESCRIPTION = '/therapies/addMonitoringPrescriptionTao';
 
 /***/ }),
 

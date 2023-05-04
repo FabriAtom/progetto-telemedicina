@@ -123,6 +123,14 @@ export const ADD_HGT= '/therapies/addCollectionFormHgt';
 
 export const GET_NURSINGS = '/therapies/getNursingTherapys';
 export const GET_NURSING_BY_ID = '/therapies/getNursingTherapysById';
-export const GET_NURSINGS_BY_USER_ISTANCE_ID = '/therapies/getNursingTherapyByUserIstanceId';
+export const GET_NURSINGS_BY_USER_ISTANCE_ID = '/therapies/getNursingTherapysByUserIstanceId';
 export const ADD_NURSING= '/therapies/addNursingTherapy';
+
+
+
+
+export const GET_PRESCRIPTIONS = '/therapies/getMonitoringPrescriptionTaos';
+export const GET_PRESCRIPTION_BY_ID = '/therapies/getMonitoringPrescriptionTaosById';
+export const GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID = '/therapies/getMonitoringPrescriptionTaosByUserIstanceId';
+export const ADD_PRESCRIPTION= '/therapies/addMonitoringPrescriptionTao';
 
