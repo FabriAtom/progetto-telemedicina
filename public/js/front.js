@@ -2065,7 +2065,7 @@ __webpack_require__.r(__webpack_exports__);
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_COLLECTIONS_BY_USER_ISTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          alert(JSON.stringify(response));
+          // alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
           _wm.errNum = error;
@@ -2077,7 +2077,7 @@ __webpack_require__.r(__webpack_exports__);
               // _wm.btnCpcSend="Aggiorna";
 
               _wm.ClinicalParameterCollection = response.data.ClinicalParameterCollection;
-              alert(JSON.stringify(_wm.ClinicalParameterCollection));
+              // alert(JSON.stringify(_wm.ClinicalParameterCollection));
 
               // let _Nursvarible=response.data.ClinicalParameterCollection;
 
@@ -2511,7 +2511,7 @@ __webpack_require__.r(__webpack_exports__);
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_MONITORINGS_BY_USER_ISTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          alert(JSON.stringify(response));
+          // alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
           _wm.errNum = error;
@@ -4997,6 +4997,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+var _methods;
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
@@ -5038,7 +5039,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     }, _defineProperty(_ref, "therapies", {
       check_drugs_not_administered: [],
       note_drugs_not_administered: []
-    }), _defineProperty(_ref, "terapieRifiutate", []), _defineProperty(_ref, "drug", ''), _defineProperty(_ref, "accessData", [function (id) {
+    }), _defineProperty(_ref, "terapieRifiutate", []), _defineProperty(_ref, "drug", ''), _defineProperty(_ref, "nursCardTh", {}), _defineProperty(_ref, "TraceabilityTherapy", {}), _defineProperty(_ref, "accessData", [function (id) {
       return 31;
     }, function (name) {
       return 'mario';
@@ -5052,7 +5053,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   },
   computed: {},
   watch: {},
-  methods: _defineProperty({
+  methods: (_methods = {
     saveRefusedTreatments: function saveRefusedTreatments() {
       for (var refusedTreatment in this.refusedTreatments.checked) {
         if (this.refusedTreatments.checked.hasOwnProperty(refusedTreatment)) {
@@ -5121,16 +5122,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
       return false;
     },
-    // toggleField(field) {
-    //     const index = this.fields.indexOf(field);
-    //     if (index > -1) {
-    //         this.fields.splice(index, 1);
-    //     } else {
-    //         this.fields.push(field);
-    //     }           
-    // },
     addTraceabilityTherapy: function addTraceabilityTherapy(panel) {
-      var _this = this;
+      alert('yy');
       var _wm = this;
       var _panel = panel;
       var _errors = 0;
@@ -5139,22 +5132,23 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       var form = new FormData();
       form.append('userName', this.userName);
       form.append('userLastName', this.userLastName);
-      form.append('userFullName', this.userFullName);
-      form.append('userInstance', this.userInstance);
+      // form.append('userFullName', this.userFullName);
+      form.append('userInstanceId', this.userInstanceId);
       form.append('userId', this.userId);
       // form.append('doctorId', this.accessData.id);
       // form.append('doctorName', this.accessData.name);
       // form.append('doctorUserName', this.accessData.lastname);
-      form.append('doctorId', 36);
+      form.append('doctorId', 63);
       form.append('doctorName', 'mario');
       form.append('doctorUserName', 'rossi');
       if (_panel == 'th') {
+        alert('th');
         if (!this.tHSaved) {
           form.append('action', 'store');
         } else {
           form.append('action', 'update');
           if (this.userInstanceId) {
-            form.append('nursId', this.userInstanceId);
+            form.append('userInstanceId', this.userInstanceId);
           } else {
             _errors++;
             _errorTitle = "Attenzione";
@@ -5164,7 +5158,15 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         form.append('section', 'th');
         if (!this.isObjEmpty(this.nursCardTh)) {
           var _nurs = JSON.stringify(this.nursCardTh);
-          form.append('TraceabilityTherapy', _nurs);
+          form.append('medicalAlertNote', this.nursCardTh.medicalAlertNote);
+          form.append('medicalAlert', this.nursCardTh.medicalAlert);
+          form.append('doctorsPrescriptionsNote', this.nursCardTh.doctorsPrescriptionsNote);
+          form.append('doctorsPrescriptions', this.nursCardTh.doctorsPrescriptions);
+        }
+        if (!this.isObjEmpty(this.refusedTreatments.checked)) {
+          var _nurs2 = JSON.stringify(this.refusedTreatments);
+          form.append('RefusedTreatment', _nurs2);
+          alert(_nurs2);
         }
       }
       if (_errors == 0) {
@@ -5175,7 +5177,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
             _wm.errNum = error;
             if (error == 0) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
-              _this.getTraceabilityTherapysByUserIstanceId(_this.userInstanceId);
+              // this.getTraceabilityTherapysByUserIstanceId(this.userInstanceId);
             } else {
               // eventBus.$emit('errorEvent', error, _attempts);
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
@@ -5229,31 +5231,37 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_TRACEABILITYS_BY_USER_ISTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          // alert('xx');
-          // alert(JSON.stringify(response));
+          alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
             _wm.mainTitle = "Aggiornamento Cartella nurs";
             if (response.data.TraceabilityTherapy) {
-              _wm.tHSaved = true;
+              // _wm.tHSaved=true;
               //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
-              _wm.btnThSend = "Aggiorna";
-              var _Trachterapy = response.data.TraceabilityTherapy;
-              _wm.thDate = _Trachterapy.th_date;
-              _wm.drugsNotAdministered = _Trachterapy.drugs_not_administered;
-              _wm.drugs = _Trachterapy.drugs;
-              _wm.motivationNotTakeMedicine = _Trachterapy.motivation_not_take_medicine;
-              _wm.medicalAlert = _Trachterapy.medical_alert;
-              _wm.medicalAlertNote = _Trachterapy.medical_alert_note;
-              _wm.doctorsPrescriptions = _Trachterapy.doctors_prescriptions;
-              _wm.doctorsPrescriptionsNote = _Trachterapy.doctors_prescriptions_note;
-              _wm.thFromThe = _Trachterapy.th_from_the;
-              _wm.thToThe = _Trachterapy.th_to_the;
-              _wm.thHours = _Trachterapy.th_hours;
-              _wm.thFrequency = _Trachterapy.th_frequency;
-              _wm.allTraceabilityTherapys = response.data.allTraceabilityTherapys;
+              // _wm.btnThSend="Aggiorna";
+
+              _wm.TraceabilityTherapy = response.data.TraceabilityTherapy;
+              alert(JSON.stringify(_wm.TraceabilityTherapy));
+
+              // let _Trachterapy=response.data.TraceabilityTherapy;
+
+              // _wm.thDate = _Trachterapy.th_date
+              // _wm.drugsNotAdministered = _Trachterapy.drugs_not_administered
+              // _wm.drugs = _Trachterapy.drugs
+              // _wm.motivationNotTakeMedicine = _Trachterapy.motivation_not_take_medicine
+              // _wm.medicalAlert = _Trachterapy.medical_alert
+              // _wm.medicalAlertNote = _Trachterapy.medical_alert_note
+              // _wm.doctorsPrescriptions = _Trachterapy.doctors_prescriptions
+              // _wm.doctorsPrescriptionsNote = _Trachterapy.doctors_prescriptions_note
+
+              // _wm.thFromThe = _Trachterapy.th_from_the
+              // _wm.thToThe = _Trachterapy.th_to_the
+              // _wm.thHours = _Trachterapy.th_hours
+              // _wm.thFrequency = _Trachterapy.th_frequency
+
+              // _wm.allTraceabilityTherapys=response.data.allTraceabilityTherapys;
             } else {
               _wm.btnThSend = "Salva";
             }
@@ -5273,7 +5281,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       return Object.keys(obj).length === 0;
     },
     addNursingTherapy: function addNursingTherapy(panel) {
-      var _this2 = this;
       var _wm = this;
       var _panel = panel;
       var _errors = 0;
@@ -5282,8 +5289,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       var form = new FormData();
       form.append('userName', this.userName);
       form.append('userLastName', this.userLastName);
-      form.append('userFullName', this.userFullName);
-      form.append('userInstance', this.userInstance);
+      // form.append('userFullName', this.userFullName);
+      form.append('userInstanceId', this.userInstanceId);
       form.append('userId', this.userId);
       // form.append('doctorId', this.accessData.id);
       // form.append('doctorName', this.accessData.name);
@@ -5297,7 +5304,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         } else {
           form.append('action', 'update');
           if (this.userInstanceId) {
-            form.append('nursId', this.userInstanceId);
+            form.append('userInstanceId', this.userInstanceId);
           } else {
             _errors++;
             _errorTitle = "Attenzione";
@@ -5305,8 +5312,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           }
         }
         form.append('section', 'nt');
-        if (!this.isObjEmpty(this.nursCardTh)) {
-          var _nurs = JSON.stringify(this.nursCardTh);
+        if (!this.isObjEmpty(this.nursCardNt)) {
+          var _nurs = JSON.stringify(this.nursCardNt);
           form.append('NursingTherapy', _nurs);
         }
       }
@@ -5318,7 +5325,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
             _wm.errNum = error;
             if (error == 0) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
-              _this2.getNursingTherapysByUserIstanceId(_this2.userInstanceId);
+              // this.getNursingTherapysByUserIstanceId(this.userInstanceId);
             } else {
               // eventBus.$emit('errorEvent', error, _attempts);
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
@@ -5339,7 +5346,25 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           var _attempts = response.data.attempts;
           _wm.errNum = error;
           if (error == 0) {
-            alert(JSON.stringify(response));
+            // alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getNursingTherapysById: function getNursingTherapysById(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_NURSING_BY_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            // alert(JSON.stringify(response))
           } else {
             // eventBus.$emit('errorEvent', error, _attempts);
           }
@@ -5360,9 +5385,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           if (error == 0) {
             _wm.mainTitle = "Aggiornamento Cartella nurs";
             if (response.data.therapies) {
-              _wm.therapies = response.data.therapies;
+              // _wm.therapies=response.data.therapies;
 
               // alert(JSON.stringify(_wm.therapies));
+
+              _wm.therapies = response.data.therapies;
+              alert(JSON.stringify(_wm.therapies));
 
               // alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
               //_wm.btnThSend="Aggiorna";
@@ -5395,9 +5423,84 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         throw error;
       }
     }
-  }, "isObjEmpty", function isObjEmpty(obj) {
+  }, _defineProperty(_methods, "isObjEmpty", function isObjEmpty(obj) {
     return Object.keys(obj).length === 0;
-  })
+  }), _defineProperty(_methods, "addRefusedTreatment", function addRefusedTreatment(panel) {
+    alert('test1');
+    var _wm = this;
+    var _panel = panel;
+    var _errors = 0;
+    var _errorTitle = "Scheda";
+    var _errorDescription = "Non aggiornata";
+    var form = new FormData();
+    form.append('userName', this.userName);
+    form.append('userLastName', this.userLastName);
+    // form.append('userFullName', this.userFullName);
+    form.append('userInstanceId', this.userInstanceId);
+    form.append('userId', this.userId);
+    // form.append('doctorId', this.accessData.id);
+    // form.append('doctorName', this.accessData.name);
+    // form.append('doctorUserName', this.accessData.lastname);
+    form.append('doctorId', 36);
+    form.append('doctorName', 'mario');
+    form.append('doctorUserName', 'rossi');
+    if (_panel == 'rt') {
+      if (!this.tHSaved) {
+        form.append('action', 'store');
+      } else {
+        form.append('action', 'update');
+        if (this.userInstanceId) {
+          form.append('userInstanceId', this.userInstanceId);
+        } else {
+          _errors++;
+          _errorTitle = "Attenzione";
+          _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+        }
+      }
+      form.append('section', 'rt');
+      // if(!this.isObjEmpty(this.refusedTreatments)){
+      var _nurs = JSON.stringify(this.refusedTreatments);
+      form.append('RefusedTreatment', _nurs);
+      alert('test');
+      //}    
+    }
+
+    alert(form);
+
+    // if(_errors==0){
+    //     try {
+    //         axios.post(actions.ADD_REFUSED,form).then(response => {
+    //             let error=response.data.errorNumber;
+    //             let _attempts=response.data.attempts;
+    //             _wm.errNum=error;
+    //             if(error == 0){
+
+    //                 Swal.fire(
+    //                     'Scheda',
+    //                     'Aggiornata correttamente',
+    //                     'success'
+    //                 )
+    //                 // this.getRefusedTreatmentsByUserIstanceId(this.userInstanceId);
+    //             }else{
+    //                 // eventBus.$emit('errorEvent', error, _attempts);
+    //                 Swal.fire(
+    //                     'Scheda',
+    //                     'Non aggiornata contattare l\'amministratore di sistema',
+    //                     'warning'
+    //                 )
+    //             }
+    //         });
+    //     } catch (error) {
+    //         throw error
+    //     }
+    // }else{
+    //     Swal.fire(
+    //         _errorTitle,
+    //         _errorDescription,
+    //         'error'
+    //     )
+    // }
+  }), _methods)
 });
 
 /***/ }),
@@ -25776,43 +25879,215 @@ var render = function render() {
       id: "demo-form2",
       "data-parsley-validate": ""
     }
-  }, [_vm._m(1), _vm._v(" "), _c("table", [_vm._m(2), _vm._v(" "), _vm._l(_vm.therapies, function (therapy, index) {
+  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("table", [_vm._m(3), _vm._v(" "), _vm._l(_vm.therapies, function (therapy, index) {
     return _c("tr", {
       key: index
-    }, [_c("td", [_vm._v("\r\n                                            " + _vm._s(therapy.drug) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(therapy.startTherapy) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(therapy.endTherapy) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(therapy.posology) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(therapy.frequency) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_c("input", {
+    }, [_c("td", [_vm._v("\r\n                                            " + _vm._s(therapy.drug) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(therapy.startTherapy) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(therapy.endTherapy) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(therapy.posology) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(therapy.frequency) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_c("label", {
+      staticClass: "i2hCheckboxLabel",
+      attrs: {
+        "for": therapy.drug
+      }
+    }, [_vm._v(_vm._s(therapy.drug))]), _vm._v(" "), _c("input", {
       directives: [{
         name: "model",
         rawName: "v-model",
-        value: _vm.terapieRifiutate,
-        expression: "terapieRifiutate"
+        value: _vm.refusedTreatments.checked[therapy.drug],
+        expression: "refusedTreatments.checked[therapy.drug]"
       }],
+      staticClass: "form-control i2hCheckbox",
       attrs: {
-        type: "checkbox"
+        type: "checkbox",
+        id: therapy.drug,
+        name: therapy.drug
       },
       domProps: {
         value: therapy.drug,
-        checked: Array.isArray(_vm.terapieRifiutate) ? _vm._i(_vm.terapieRifiutate, therapy.drug) > -1 : _vm.terapieRifiutate
+        checked: Array.isArray(_vm.refusedTreatments.checked[therapy.drug]) ? _vm._i(_vm.refusedTreatments.checked[therapy.drug], therapy.drug) > -1 : _vm.refusedTreatments.checked[therapy.drug]
       },
       on: {
         change: function change($event) {
-          var $$a = _vm.terapieRifiutate,
+          var $$a = _vm.refusedTreatments.checked[therapy.drug],
             $$el = $event.target,
             $$c = $$el.checked ? true : false;
           if (Array.isArray($$a)) {
             var $$v = therapy.drug,
               $$i = _vm._i($$a, $$v);
             if ($$el.checked) {
-              $$i < 0 && (_vm.terapieRifiutate = $$a.concat([$$v]));
+              $$i < 0 && _vm.$set(_vm.refusedTreatments.checked, therapy.drug, $$a.concat([$$v]));
             } else {
-              $$i > -1 && (_vm.terapieRifiutate = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+              $$i > -1 && _vm.$set(_vm.refusedTreatments.checked, therapy.drug, $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
             }
           } else {
-            _vm.terapieRifiutate = $$c;
+            _vm.$set(_vm.refusedTreatments.checked, therapy.drug, $$c);
           }
         }
       }
-    })])]);
-  })], 2), _vm._v("\r\n\r\n                                " + _vm._s(_vm.terapieRifiutate) + "\r\n\r\n\r\n                               \r\n                                "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _c("div", {
+    })]), _vm._v(" "), _c("td", [_vm.refusedTreatments.checked[therapy.drug] ? _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: _vm.refusedTreatments.descriptions[therapy.drug],
+        expression: "refusedTreatments.descriptions[therapy.drug]"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        id: therapy.id,
+        name: therapy.id,
+        placeholder: "motivazione"
+      },
+      domProps: {
+        value: _vm.refusedTreatments.descriptions[therapy.drug]
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(_vm.refusedTreatments.descriptions, therapy.drug, $event.target.value);
+        }
+      }
+    }) : _vm._e()])]);
+  })], 2), _vm._v(" "), _c("br"), _vm._v("\r\n                                TERAPIE RIFIUTATE: " + _vm._s(_vm.refusedTreatments) + "\r\n                                "), _c("br"), _vm._v(" "), _c("br"), _vm._v("\r\n                                nursTh: " + _vm._s(_vm.nursCardTh) + "\r\n                                "), _c("br"), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "50px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(4), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursCardTh.medicalAlert,
+      expression: "nursCardTh.medicalAlert"
+    }],
+    attrs: {
+      type: "radio",
+      name: "medical_alert",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.nursCardTh.medicalAlert, "1")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.nursCardTh, "medicalAlert", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursCardTh.medicalAlert,
+      expression: "nursCardTh.medicalAlert"
+    }],
+    attrs: {
+      type: "radio",
+      name: "medical_alert",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.nursCardTh.medicalAlert, "0")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.nursCardTh, "medicalAlert", "0");
+      }
+    }
+  }), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursCardTh.medicalAlertNote,
+      expression: "nursCardTh.medicalAlertNote"
+    }],
+    attrs: {
+      type: "text",
+      name: "medical_alert_note",
+      placeholder: "Note"
+    },
+    domProps: {
+      value: _vm.nursCardTh.medicalAlertNote
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursCardTh, "medicalAlertNote", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(5), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursCardTh.doctorsPrescriptions,
+      expression: "nursCardTh.doctorsPrescriptions"
+    }],
+    attrs: {
+      type: "radio",
+      name: "doctors_prescriptions",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.nursCardTh.doctorsPrescriptions, "1")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.nursCardTh, "doctorsPrescriptions", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursCardTh.doctorsPrescriptions,
+      expression: "nursCardTh.doctorsPrescriptions"
+    }],
+    attrs: {
+      type: "radio",
+      name: "doctors_prescriptions",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.nursCardTh.doctorsPrescriptions, "0")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.nursCardTh, "doctorsPrescriptions", "0");
+      }
+    }
+  }), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursCardTh.doctorsPrescriptionsNote,
+      expression: "nursCardTh.doctorsPrescriptionsNote"
+    }],
+    attrs: {
+      type: "text",
+      name: "doctors_prescriptions_note",
+      placeholder: "Note"
+    },
+    domProps: {
+      value: _vm.nursCardTh.doctorsPrescriptionsNote
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursCardTh, "doctorsPrescriptionsNote", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
     staticClass: "ln_solid"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -25852,6 +26127,17 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "ml-3 mt-4"
   }, [_c("h5", [_vm._v("Visto il mattinale, verificati i presenti segnalati e le relative terapie prescritte dai medici per ogni detenuto, "), _c("br"), _vm._v(" si attesta quanto segue:")]), _vm._v(" "), _c("h2", {
     staticClass: "mt-4 mb-2"
@@ -25863,76 +26149,21 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-top": "50px"
-    }
-  }, [_c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("div", {
-    staticClass: "item form-group"
-  }, [_c("label", {
+  return _c("label", {
     staticClass: "col-form-label col-md-2 col-sm-2 label-align",
     attrs: {
       "for": "medical_alert"
     }
-  }, [_c("h4", [_c("strong", [_vm._v("Avvisato medico")])])]), _vm._v(" "), _c("span", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "radio",
-      name: "medical_alert",
-      value: "1"
-    }
-  }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "radio",
-      name: "medical_alert",
-      value: "0"
-    }
-  }), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "text",
-      name: "medical_alert_note",
-      placeholder: "Note"
-    }
-  })])])])]);
+  }, [_c("h4", [_c("strong", [_vm._v("Avvisato medico")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("div", {
-    staticClass: "item form-group"
-  }, [_c("label", {
+  return _c("label", {
     staticClass: "col-form-label col-md-5 col-sm-2 label-align",
     attrs: {
       "for": "doctors_prescriptions"
     }
-  }, [_c("h4", [_c("strong", [_vm._v("Annotazione o prescrizione del medico")])])]), _vm._v(" "), _c("span", {
-    staticClass: "col-md-12 col-sm-12"
-  }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "radio",
-      name: "doctors_prescriptions",
-      value: "1"
-    }
-  }), _vm._v(" "), _c("span", [_vm._v("NO")]), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "radio",
-      name: "doctors_prescriptions",
-      value: "0"
-    }
-  }), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "text",
-      name: "doctors_prescriptions_note",
-      placeholder: "Note"
-    }
-  })])])])]);
+  }, [_c("h4", [_c("strong", [_vm._v("Annotazione o prescrizione del medico")])])]);
 }];
 render._withStripped = true;
 
@@ -79729,7 +79960,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************!*\
   !*** ./resources/js/config/ApiUrl.js ***!
   \***************************************/
-/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_RATING_BY_PSY_ID, ADD_RATING, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_JSAT_BY_PSY_ID, ADD_JSAT, GET_TRACEABILITYS, GET_TRACEABILITY_BY_ID, GET_TRACEABILITYS_BY_USER_ISTANCE_ID, ADD_TRACEABILITY, GET_MONITORINGS, GET_MONITORING_BY_ID, GET_MONITORINGS_BY_USER_ISTANCE_ID, ADD_MONITORING, GET_COLLECTIONS, GET_COLLECTION_BY_ID, GET_COLLECTIONS_BY_USER_ISTANCE_ID, ADD_COLLECTION, GET_HGTS, GET_HGT_BY_ID, GET_HGTS_BY_USER_ISTANCE_ID, ADD_HGT, GET_NURSINGS, GET_NURSING_BY_ID, GET_NURSINGS_BY_USER_ISTANCE_ID, ADD_NURSING, GET_PRESCRIPTIONS, GET_PRESCRIPTION_BY_ID, GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID, ADD_PRESCRIPTION */
+/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, ADD_SOCIAL_FOLDER, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_RATING_BY_PSY_ID, ADD_RATING, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_JSAT_BY_PSY_ID, ADD_JSAT, GET_TRACEABILITYS, GET_TRACEABILITY_BY_ID, GET_TRACEABILITYS_BY_USER_ISTANCE_ID, ADD_TRACEABILITY, GET_MONITORINGS, GET_MONITORING_BY_ID, GET_MONITORINGS_BY_USER_ISTANCE_ID, ADD_MONITORING, GET_COLLECTIONS, GET_COLLECTION_BY_ID, GET_COLLECTIONS_BY_USER_ISTANCE_ID, ADD_COLLECTION, GET_HGTS, GET_HGT_BY_ID, GET_HGTS_BY_USER_ISTANCE_ID, ADD_HGT, GET_NURSINGS, GET_NURSING_BY_ID, GET_NURSINGS_BY_USER_ISTANCE_ID, ADD_NURSING, GET_PRESCRIPTIONS, GET_PRESCRIPTION_BY_ID, GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID, ADD_PRESCRIPTION, ADD_REFUSED */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79793,6 +80024,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_PRESCRIPTION_BY_ID", function() { return GET_PRESCRIPTION_BY_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID", function() { return GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_PRESCRIPTION", function() { return ADD_PRESCRIPTION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_REFUSED", function() { return ADD_REFUSED; });
 var GET_PERMISSIONS = '/serd/getpermissions';
 var GET_SERD_CARDS = '/serd/getSerdCards';
 var GET_SERD_CARD_BY_ID = '/serd/getSerdCardById';
@@ -79878,6 +80110,12 @@ var GET_PRESCRIPTIONS = '/therapies/getMonitoringPrescriptionTaos';
 var GET_PRESCRIPTION_BY_ID = '/therapies/getMonitoringPrescriptionTaosById';
 var GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID = '/therapies/getMonitoringPrescriptionTaosByUserIstanceId';
 var ADD_PRESCRIPTION = '/therapies/addMonitoringPrescriptionTao';
+
+// export const GET_REFUSEDS = '/therapies/getRefusedTreatments';
+// export const GET_REFUSED_BY_ID = '/therapies/getRefusedTreatmentsById';
+// export const GET_REFUSED_BY_USER_ISTANCE_ID = '/therapies/getRefusedTreatmentsByUserIstanceId';
+
+var ADD_REFUSED = '/therapies/addRefusedTreatment';
 
 /***/ }),
 

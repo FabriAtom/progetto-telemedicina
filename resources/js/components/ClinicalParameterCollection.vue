@@ -373,7 +373,7 @@ ul, li{
                 try {
                     let url=actions.GET_COLLECTIONS_BY_USER_ISTANCE_ID+'/'+id;
                     axios.get(url).then(response => {
-                        alert(JSON.stringify(response));
+                        // alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -387,7 +387,7 @@ ul, li{
                             // _wm.btnCpcSend="Aggiorna";
 
                             _wm.ClinicalParameterCollection=response.data.ClinicalParameterCollection;
-                            alert(JSON.stringify(_wm.ClinicalParameterCollection));
+                            // alert(JSON.stringify(_wm.ClinicalParameterCollection));
 
                             
                             // let _Nursvarible=response.data.ClinicalParameterCollection;

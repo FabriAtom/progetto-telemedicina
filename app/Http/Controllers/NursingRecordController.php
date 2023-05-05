@@ -16,6 +16,8 @@ use App\Models\TraceabilityTherapy;
 use App\Models\CollectionFormHgt;
 use App\Models\MonitoringPrescriptionTao;
 
+
+
 use App\Classes\PDFClass;
 use Codedge\Fpdf\Fpdf\Fpdf;
 
@@ -944,6 +946,16 @@ class NursingRecordController extends Controller
                                     return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
                                 }
                                 break;
+                            case 'tao':
+                                $_nurs = $this->addRefusedTreatment($request);
+                                if($_nurs){
+                                    $_nursId=$_nurs->id;
+                                }
+                                else{
+                                    return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
+                                }
+                                break;
+
                             default:
                                 if($request->has('nursId')){
                                     if (NursingTherapies::where('user_instance_id', '=', $request->input('user_instance_id', 36))->exists()) {
@@ -1003,6 +1015,9 @@ class NursingRecordController extends Controller
                         break;  
                     case 'tao':
                         return  $this->addMonitoringPrescriptionTao($request,$_nursId);
+                        break;  
+                    case 'rt':
+                        return  $this->addRefusedTreatment($request,$_nursId);
                         break;   
                 }
             }else{
@@ -1121,6 +1136,40 @@ class NursingRecordController extends Controller
     public function addTraceabilityTherapy(request $request){
         $userInstanceId=$request->input("user_instance_id",36);
         $_traceTerapy = new TraceabilityTherapy;
+
+
+        // userName: mario
+        // userLastName: rossi
+        // userInstanceId: 36
+        // userId: 237
+        // doctorId: 63
+        // doctorName: mario
+        // doctorUserName: rossi
+        // action: store
+        // section: th
+    
+        // RefusedTreatment: {"checked":{"Tachipirina":true,"Cortisone":true},"descriptions":{"Tachipirina":"test","Cortisone":"test"}}
+
+
+
+        // 'medicalAlertNote'
+        // 'medicalAlert'
+        //'doctorsPrescriptionsNote'
+        //'doctorsPrescriptions'
+        // id	
+        // id_doctor	
+        // user_instance_id	
+        // doctor_name	
+        // doctor_lastname	
+        // th_date	
+        // drugs_not_administered	
+        // medical_alert	
+        // medical_alert_note	
+        // doctors_prescriptions	
+        // doctors_prescriptions_note	
+
+
+
         $now=date("Y-m-d H:i:s");
         $_traceTerapy->user_instance_id=$userInstanceId;
         if($request->has('doctorId')){
@@ -1137,32 +1186,10 @@ class NursingRecordController extends Controller
 
         if($request->has('TraceabilityTherapy')){
             $nursArr = json_decode($request->input('TraceabilityTherapy'), true);
-            if(array_key_exists('thDate',$nursArr)){
-                $_traceTerapy->th_date=$nursArr['departmentCpc'];
-            }
-            if(array_key_exists('drugsNotAdministered',$nursArr)){
-                $_traceTerapy->drugs_not_administered=$nursArr['drugsNotAdministered'];
-            }
-            if(array_key_exists('drugs',$nursArr)){
-                $_traceTerapy->drugs=$nursArr['drugs'];
-            }
-
-            if(array_key_exists('thFromThe',$nursArr)){
-                $_traceTerapy->drugs=$nursArr['thFromThe'];
-            }
-            if(array_key_exists('thToThe',$nursArr)){
-                $_traceTerapy->motivation_not_take_medicine=$nursArr['thToThe'];
-            }
-            if(array_key_exists('thHours',$nursArr)){
-                $_traceTerapy->medical_alert=$nursArr['thHours'];
-            }
-            if(array_key_exists('thFrequency',$nursArr)){
-                $_traceTerapy->medical_alert_note=$nursArr['thFrequency'];
-            }
-
-            if(array_key_exists('motivationNotTakeMedicine',$nursArr)){
-                $_traceTerapy->motivation_not_take_medicine=$nursArr['motivationNotTakeMedicine'];
-            }
+            
+            // if(array_key_exists('drugsNotAdministered',$nursArr)){
+            //     $_traceTerapy->drugs_not_administered=$nursArr['drugsNotAdministered'];
+            // }
             if(array_key_exists('medicalAlert',$nursArr)){
                 $_traceTerapy->medical_alert=$nursArr['medicalAlert'];
             }
@@ -1175,8 +1202,16 @@ class NursingRecordController extends Controller
             if(array_key_exists('doctorsPrescriptionsNote',$nursArr)){
                 $_traceTerapy->doctors_prescriptions_note=$nursArr['doctorsPrescriptionsNote'];
             }
-          
         }
+        if($request->has('RefusedTreatment')){
+            $nursArr = json_decode($request->input('RefusedTreatment'), true);
+            
+            if(array_key_exists('drugsNotAdministered',$nursArr)){
+                $_traceTerapy->drugs_not_administered=$nursArr['drugsNotAdministered'];
+            }
+            
+        }
+        
         $_traceTerapy->save();
 
         if($_traceTerapy){
@@ -1186,18 +1221,6 @@ class NursingRecordController extends Controller
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1224,7 +1247,6 @@ class NursingRecordController extends Controller
             $_nursingCpc->doctor_lastname=$request->input('doctorUserName');
         }
         $_nursingCpc->cpc_date=$now;
-
 
         if($request->has('ClinicalParameterCollection')){
             $nursArr = json_decode($request->input('ClinicalParameterCollection'), true);
@@ -1275,13 +1297,6 @@ class NursingRecordController extends Controller
 
 
 
-
-
-
-
-
-
-    
 
     public function addCollectionFormHgt(request $request){
         $userInstanceId=$request->input("user_instance_id");
@@ -1338,7 +1353,6 @@ class NursingRecordController extends Controller
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
         }
     }
-
 
 
 
@@ -1453,4 +1467,46 @@ class NursingRecordController extends Controller
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
         }
     }
+
+
+
+    
+
+    public function addRefusedTreatment(request $request){
+        $userInstanceId=$request->input("user_instance_id");
+        $_refusedTreat = new RefusedTreatment;
+        $now=date("Y-m-d H:i:s");
+        $_refusedTreat->user_instance_id= 36;
+        if($request->has('doctorId')){
+            $_refusedTreat->id_doctor=$request->input('doctorId');
+        }
+        if($request->has('doctorName')){
+            $_refusedTreat->doctor_name=$request->input('doctorName');
+        }
+        if($request->has('doctorUserName')){
+            $_refusedTreat->doctor_lastname=$request->input('doctorUserName');
+        }
+        $_refusedTreat->rt_date=$now;
+
+        if($request->has('RefusedTreatment')){
+            $nursArr = json_decode($request->input('RefusedTreatment'), true);
+            // if(array_key_exists('checked',$nursArr)){
+            //     $_refusedTreat->checked=$nursArr['checked'];
+            // }
+            // if(array_key_exists('descriptions',$nursArr)){
+            //     $_refusedTreat->descriptions=$nursArr['descriptions'];
+            // }
+        }
+        //$_refusedTreat->save();
+        return $nursArr;
+
+        // if($_refusedTreat){
+        //     return ["errorNumber"=>0,"message"=>"ok","rt"=>$_refusedTreat];
+
+        // }else{
+        //     return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
+        // }
+    }
 }
+
+

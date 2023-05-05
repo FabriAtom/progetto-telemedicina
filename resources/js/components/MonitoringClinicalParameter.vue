@@ -462,7 +462,7 @@ ul, li{
                 try {
                     let url=actions.GET_MONITORINGS_BY_USER_ISTANCE_ID+'/'+id;
                     axios.get(url).then(response => {
-                        alert(JSON.stringify(response));
+                        // alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
                         _wm.errNum=error;

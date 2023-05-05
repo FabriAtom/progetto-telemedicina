@@ -134,3 +134,16 @@ export const GET_PRESCRIPTION_BY_ID = '/therapies/getMonitoringPrescriptionTaosB
 export const GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID = '/therapies/getMonitoringPrescriptionTaosByUserIstanceId';
 export const ADD_PRESCRIPTION= '/therapies/addMonitoringPrescriptionTao';
 
+
+
+
+
+// export const GET_REFUSEDS = '/therapies/getRefusedTreatments';
+// export const GET_REFUSED_BY_ID = '/therapies/getRefusedTreatmentsById';
+// export const GET_REFUSED_BY_USER_ISTANCE_ID = '/therapies/getRefusedTreatmentsByUserIstanceId';
+
+
+export const ADD_REFUSED = '/therapies/addRefusedTreatment';
+
+
+

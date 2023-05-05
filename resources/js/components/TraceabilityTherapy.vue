@@ -16,22 +16,22 @@
                         <!-- <div class="tab-content" id="myTabContent"> -->
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left align-items-center">
 
-                               <!-- <div class="row" style="margin-top:20px;">
+                               <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
-                                        <span class="item form-group">
+                                        <!-- <span class="item form-group">
                                             <label for="doctor_name" class="col-form-label col-md-4 col-sm-2 label-align"><strong><h4>Personale addetto alla terapia</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input style="margin-right: 8rem;" type="text" name="doctor_name" v-model="doctorName">
                                             </span>
-                                        </span>
-                                        <span class="item form-group ml-5">
+                                        </span> -->
+                                        <!-- <span class="item form-group ml-5">
                                             <label for="" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>Turno</h4></strong></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="text" name="" v-model="">
                                             </span>
-                                        </span>
+                                        </span> -->
                                     </div>
-                                </div>  -->
+                                </div> 
 
                                 <div class="ml-3 mt-4">
                                     <h5>Visto il mattinale, verificati i presenti segnalati e le relative terapie prescritte dai medici per ogni detenuto, <br> si attesta quanto segue:</h5>
@@ -69,27 +69,52 @@
                                         </td>
                                         <td>
                                         
+                                            <label  class="i2hCheckboxLabel" :for="therapy.drug">{{therapy.drug}}</label>
+                                            <input type="checkbox" class="form-control i2hCheckbox" :id="therapy.drug" :name="therapy.drug" :value="therapy.drug" v-model="refusedTreatments.checked[therapy.drug]"> 
 
-                                            <input type="checkbox" :value="therapy.drug" v-model="terapieRifiutate">
+                                            <!-- <input type="checkbox" :value="therapy.drug" v-model="terapieRifiutate"> -->
                                             <!-- <input style="width: 5rem;" type="checkbox" v-model=""> -->
+                                        </td>
+                                        <td>
+                                            <input v-if="refusedTreatments.checked[therapy.drug]" type="text" class="form-control" :id="therapy.id" :name="therapy.id" placeholder="motivazione" v-model="refusedTreatments.descriptions[therapy.drug]"> 
                                         </td>     
                                     </tr>  
                                 </table>
 
-                                {{ terapieRifiutate }}
+                                <!-- <button @click="saveRefusedTreatments">Save</button> -->
+                                <br>
+                                TERAPIE RIFIUTATE: {{ refusedTreatments }}
+                                <br>
+                                <br>
+                                nursTh: {{nursCardTh}}
+                                <br>
 
 
-                               
+                                <!-- <div class="row">
+                                    <div  class="pull-right" style="margin-bottom:30px">
+                                        <button @click="addTherapy" :disabled="addDrugbuttonDisabled" type="button" class="btn btn-primary">Aggiungi Terapia</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div  class="" style="margin-bottom:30px">
+                                            <button style="width:20%" @click="saveTherapy" :disabled="addDrugbuttonDisabled" type="button" class="btn btn-success">Salva</button>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+
+                                
                                 <div class="row" style="margin-top:50px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
                                             <label for="medical_alert" class="col-form-label col-md-2 col-sm-2 label-align"><h4><strong>Avvisato medico</strong></h4></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <span>SI</span>
-                                                <input type="radio" name="medical_alert" value="1" />
+                                                <input type="radio" name="medical_alert" value="1" v-model="nursCardTh.medicalAlert"/>
                                                 <span>NO</span>
-                                                <input type="radio" name="medical_alert" value="0" />
-                                                <input type="text" name="medical_alert_note" placeholder="Note"/>
+                                                <input type="radio" name="medical_alert" value="0" v-model="nursCardTh.medicalAlert"/>
+                                                <input type="text" name="medical_alert_note" placeholder="Note" v-model="nursCardTh.medicalAlertNote"/>
                                             </span>
                                         </div>
                                     </div>
@@ -101,10 +126,10 @@
                                             <label for="doctors_prescriptions" class="col-form-label col-md-5 col-sm-2 label-align"><h4><strong>Annotazione o prescrizione del medico</strong></h4></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <span>SI</span>
-                                                <input type="radio" name="doctors_prescriptions" value="1" />
+                                                <input type="radio" name="doctors_prescriptions" value="1" v-model="nursCardTh.doctorsPrescriptions" />
                                                 <span>NO</span>
-                                                <input type="radio" name="doctors_prescriptions" value="0" />
-                                                <input type="text" name="doctors_prescriptions_note" placeholder="Note" />
+                                                <input type="radio" name="doctors_prescriptions" value="0" v-model="nursCardTh.doctorsPrescriptions"/>
+                                                <input type="text" name="doctors_prescriptions_note" placeholder="Note" v-model="nursCardTh.doctorsPrescriptionsNote"/>
                                             </span>
                                         </div>
                                     </div>
@@ -377,12 +402,20 @@ label {
                 terapieRifiutate:[],
                 drug:'',        
 
+                
+                nursCardTh:{},
+                TraceabilityTherapy:{},
+                
+                
+                
+                                accessData:[
+                                    id => 31,
+                                    name => 'mario',
+                                    lastname => 'rossi',   
+                                ],
+                
 
-                accessData:[
-                    id => 31,
-                    name => 'mario',
-                    lastname => 'rossi',   
-                ],
+
            
                 date:new Date(),
 
@@ -483,11 +516,6 @@ label {
 
 
 
-
-
-
-
-
             printTraceabilityTherapy(printPdf){
 
                 let v_myWindow
@@ -499,17 +527,9 @@ label {
                 return false;
             },
                  
-            // toggleField(field) {
-            //     const index = this.fields.indexOf(field);
-            //     if (index > -1) {
-            //         this.fields.splice(index, 1);
-            //     } else {
-            //         this.fields.push(field);
-            //     }           
-            // },
-
-
+          
             addTraceabilityTherapy(panel){
+                alert('yy')
                 let _wm = this;
                 let _panel=panel;
                 let _errors=0;
@@ -518,24 +538,24 @@ label {
                 let form = new FormData();
                 form.append('userName', this.userName);
                 form.append('userLastName', this.userLastName);
-                form.append('userFullName', this.userFullName);
-                form.append('userInstance', this.userInstance);
+                // form.append('userFullName', this.userFullName);
+                form.append('userInstanceId', this.userInstanceId);
                 form.append('userId', this.userId);
                 // form.append('doctorId', this.accessData.id);
                 // form.append('doctorName', this.accessData.name);
                 // form.append('doctorUserName', this.accessData.lastname);
-                form.append('doctorId', 36);
+                form.append('doctorId', 63);
                 form.append('doctorName', 'mario');
                 form.append('doctorUserName', 'rossi');
 
                 if(_panel=='th'){
-
+                    alert('th')
                     if(!this.tHSaved){
                         form.append('action', 'store');
                     }else{
                         form.append('action', 'update');
                         if(this.userInstanceId){
-                            form.append('nursId',this.userInstanceId);
+                            form.append('userInstanceId',this.userInstanceId);
                         }else{
                             _errors++;
                             _errorTitle="Attenzione";
@@ -545,8 +565,18 @@ label {
                     form.append('section', 'th');
                     if(!this.isObjEmpty(this.nursCardTh)){
                         let _nurs=JSON.stringify(this.nursCardTh);
-                        form.append('TraceabilityTherapy', _nurs);
+
+                        form.append('medicalAlertNote', this.nursCardTh.medicalAlertNote);
+                        form.append('medicalAlert', this.nursCardTh.medicalAlert);
+                        form.append('doctorsPrescriptionsNote', this.nursCardTh.doctorsPrescriptionsNote);
+                        form.append('doctorsPrescriptions', this.nursCardTh.doctorsPrescriptions);
+                        
                     }
+                    if(!this.isObjEmpty(this.refusedTreatments.checked)){
+                        let _nurs2=JSON.stringify(this.refusedTreatments);
+                        form.append('RefusedTreatment', _nurs2);
+                        alert(_nurs2);
+                    }  
                 }
                 
                 if(_errors==0){
@@ -562,7 +592,7 @@ label {
                                     'Aggiornata correttamente',
                                     'success'
                                 )
-                                this.getTraceabilityTherapysByUserIstanceId(this.userInstanceId);
+                                // this.getTraceabilityTherapysByUserIstanceId(this.userInstanceId);
                             }else{
                                 // eventBus.$emit('errorEvent', error, _attempts);
                                 Swal.fire(
@@ -626,8 +656,7 @@ label {
                 try {
                     let url=actions.GET_TRACEABILITYS_BY_USER_ISTANCE_ID+'/'+id;
                     axios.get(url).then(response => {
-                        // alert('xx');
-                        // alert(JSON.stringify(response));
+                        alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -636,27 +665,31 @@ label {
                         
                             _wm.mainTitle="Aggiornamento Cartella nurs";
                             if(response.data.TraceabilityTherapy){
-                            _wm.tHSaved=true;
+                            // _wm.tHSaved=true;
                             //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
-                            _wm.btnThSend="Aggiorna";
+                            // _wm.btnThSend="Aggiorna";
+
+                            _wm.TraceabilityTherapy=response.data.TraceabilityTherapy;
+                            alert(JSON.stringify(_wm.TraceabilityTherapy));
+
                             
-                            let _Trachterapy=response.data.TraceabilityTherapy;
+                            // let _Trachterapy=response.data.TraceabilityTherapy;
                                 
-                            _wm.thDate = _Trachterapy.th_date
-                            _wm.drugsNotAdministered = _Trachterapy.drugs_not_administered
-                            _wm.drugs = _Trachterapy.drugs
-                            _wm.motivationNotTakeMedicine = _Trachterapy.motivation_not_take_medicine
-                            _wm.medicalAlert = _Trachterapy.medical_alert
-                            _wm.medicalAlertNote = _Trachterapy.medical_alert_note
-                            _wm.doctorsPrescriptions = _Trachterapy.doctors_prescriptions
-                            _wm.doctorsPrescriptionsNote = _Trachterapy.doctors_prescriptions_note
+                            // _wm.thDate = _Trachterapy.th_date
+                            // _wm.drugsNotAdministered = _Trachterapy.drugs_not_administered
+                            // _wm.drugs = _Trachterapy.drugs
+                            // _wm.motivationNotTakeMedicine = _Trachterapy.motivation_not_take_medicine
+                            // _wm.medicalAlert = _Trachterapy.medical_alert
+                            // _wm.medicalAlertNote = _Trachterapy.medical_alert_note
+                            // _wm.doctorsPrescriptions = _Trachterapy.doctors_prescriptions
+                            // _wm.doctorsPrescriptionsNote = _Trachterapy.doctors_prescriptions_note
 
-                            _wm.thFromThe = _Trachterapy.th_from_the
-                            _wm.thToThe = _Trachterapy.th_to_the
-                            _wm.thHours = _Trachterapy.th_hours
-                            _wm.thFrequency = _Trachterapy.th_frequency
+                            // _wm.thFromThe = _Trachterapy.th_from_the
+                            // _wm.thToThe = _Trachterapy.th_to_the
+                            // _wm.thHours = _Trachterapy.th_hours
+                            // _wm.thFrequency = _Trachterapy.th_frequency
 
-                            _wm.allTraceabilityTherapys=response.data.allTraceabilityTherapys;
+                            // _wm.allTraceabilityTherapys=response.data.allTraceabilityTherapys;
                             }else{
                                 _wm.btnThSend="Salva";
                             }
@@ -690,8 +723,8 @@ label {
                 let form = new FormData();
                 form.append('userName', this.userName);
                 form.append('userLastName', this.userLastName);
-                form.append('userFullName', this.userFullName);
-                form.append('userInstance', this.userInstance);
+                // form.append('userFullName', this.userFullName);
+                form.append('userInstanceId', this.userInstanceId);
                 form.append('userId', this.userId);
                 // form.append('doctorId', this.accessData.id);
                 // form.append('doctorName', this.accessData.name);
@@ -707,7 +740,7 @@ label {
                     }else{
                         form.append('action', 'update');
                         if(this.userInstanceId){
-                            form.append('nursId',this.userInstanceId);
+                            form.append('userInstanceId',this.userInstanceId);
                         }else{
                             _errors++;
                             _errorTitle="Attenzione";
@@ -715,10 +748,10 @@ label {
                         }
                     }
                     form.append('section', 'nt');
-                    if(!this.isObjEmpty(this.nursCardTh)){
-                        let _nurs=JSON.stringify(this.nursCardTh);
+                    if(!this.isObjEmpty(this.nursCardNt)){
+                        let _nurs=JSON.stringify(this.nursCardNt);
                         form.append('NursingTherapy', _nurs);
-                    }
+                    }    
                 }
                 
                 if(_errors==0){
@@ -734,7 +767,7 @@ label {
                                     'Aggiornata correttamente',
                                     'success'
                                 )
-                                this.getNursingTherapysByUserIstanceId(this.userInstanceId);
+                                // this.getNursingTherapysByUserIstanceId(this.userInstanceId);
                             }else{
                                 // eventBus.$emit('errorEvent', error, _attempts);
                                 Swal.fire(
@@ -764,7 +797,26 @@ label {
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
                         if(error == 0){
-                            alert(JSON.stringify(response))
+                            // alert(JSON.stringify(response))
+                        }else{
+                            // eventBus.$emit('errorEvent', error, _attempts);
+                        }
+                    });
+                } catch (error) {
+                    throw error
+                }
+            },
+
+            getNursingTherapysById(id){
+                let _wm = this;
+                try {
+                    let url=actions.GET_NURSING_BY_ID+'/'+id;
+                    axios.get(url).then(response => {
+                        let error=response.data.errorNumber;
+                        let _attempts=response.data.attempts;
+                        _wm.errNum=error;
+                        if(error == 0){
+                            // alert(JSON.stringify(response))
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                         }
@@ -790,10 +842,13 @@ label {
                         
                             _wm.mainTitle="Aggiornamento Cartella nurs";
                             if(response.data.therapies){
-                            _wm.therapies=response.data.therapies;
+                            // _wm.therapies=response.data.therapies;
 
                             // alert(JSON.stringify(_wm.therapies));
 
+
+                            _wm.therapies=response.data.therapies;
+                            alert(JSON.stringify(_wm.therapies));
 
                             // alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
                             //_wm.btnThSend="Aggiorna";
@@ -833,6 +888,87 @@ label {
             isObjEmpty (obj) {
                 return Object.keys(obj).length === 0;
             },
-        }    
+
+
+
+
+            addRefusedTreatment(panel){
+                alert('test1')
+                let _wm = this;
+                let _panel=panel;
+                let _errors=0;
+                let _errorTitle="Scheda"
+                let _errorDescription="Non aggiornata";
+                let form = new FormData();
+                form.append('userName', this.userName);
+                form.append('userLastName', this.userLastName);
+                // form.append('userFullName', this.userFullName);
+                form.append('userInstanceId', this.userInstanceId);
+                form.append('userId', this.userId);
+                // form.append('doctorId', this.accessData.id);
+                // form.append('doctorName', this.accessData.name);
+                // form.append('doctorUserName', this.accessData.lastname);
+                form.append('doctorId', 36);
+                form.append('doctorName', 'mario');
+                form.append('doctorUserName', 'rossi');
+    
+                if(_panel=='rt'){
+    
+                    if(!this.tHSaved){
+                        form.append('action', 'store');
+                    }else{
+                        form.append('action', 'update');
+                        if(this.userInstanceId){
+                            form.append('userInstanceId',this.userInstanceId);
+                        }else{
+                            _errors++;
+                            _errorTitle="Attenzione";
+                            _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
+                        }
+                    }
+                    form.append('section', 'rt');
+                    // if(!this.isObjEmpty(this.refusedTreatments)){
+                        let _nurs=JSON.stringify(this.refusedTreatments);
+                        form.append('RefusedTreatment', _nurs);
+                        alert('test');
+                    //}    
+                }
+                alert(form);
+                
+                // if(_errors==0){
+                //     try {
+                //         axios.post(actions.ADD_REFUSED,form).then(response => {
+                //             let error=response.data.errorNumber;
+                //             let _attempts=response.data.attempts;
+                //             _wm.errNum=error;
+                //             if(error == 0){
+    
+                //                 Swal.fire(
+                //                     'Scheda',
+                //                     'Aggiornata correttamente',
+                //                     'success'
+                //                 )
+                //                 // this.getRefusedTreatmentsByUserIstanceId(this.userInstanceId);
+                //             }else{
+                //                 // eventBus.$emit('errorEvent', error, _attempts);
+                //                 Swal.fire(
+                //                     'Scheda',
+                //                     'Non aggiornata contattare l\'amministratore di sistema',
+                //                     'warning'
+                //                 )
+                //             }
+                //         });
+                //     } catch (error) {
+                //         throw error
+                //     }
+                // }else{
+                //     Swal.fire(
+                //         _errorTitle,
+                //         _errorDescription,
+                //         'error'
+                //     )
+                // }
+            },
+        },
     };
 </script>

@@ -11,13 +11,11 @@ class PrescriptionDayTao extends Model
         'id_doctor',
         'doctor_name',
         'doctor_lastname',
-        'department_tao',
-        'diagnosis_tao',
-        'drug_prescribed',
-        'date_tao',
+        'dosage',
+        'tao_operator_signature',
     ];
 
-    protected $table = 'monitoring_prescription_tao';
+    protected $table = 'Prescription_day_tao';
     protected $primaryKey = 'id';
 
 
