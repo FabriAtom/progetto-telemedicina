@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-12 col-sm-12">
                     <div class="x_panel">
-                        <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:100px;">
+                        <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:50px;">
                             <h1>Modulo di raccolta <strong>HGT</strong></h1>
                         </div>
 
@@ -16,12 +16,12 @@
                                 <div class="row mt-4">
                                     <span class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="department_hgt" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>Reparto/Sezione</h4></strong></label>
+                                            <label for="department_hgt" class="col-form-label col-md-2 col-sm-2 label-align"><h4>Reparto/Sezione</h4></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input style="margin-right: 10.6rem;" type="text" name="department_hgt" v-model="nursHgt.departmentHgt">
                                             </span>
                                             <span class="item form-group">
-                                                <label for="doctor_prescriber_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Medico Prescrittore</h4></strong></label>
+                                                <label for="doctor_prescriber_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><h4>Medico Prescrittore</h4></label>
                                                 <span class="col-md-12 col-sm-12">
                                                     <input type="text" name="doctor_prescriber_hgt" v-model="nursHgt.doctorPrescriberHgt">
                                                 </span>
@@ -30,52 +30,40 @@
                                     </span>
                                 </div>
                                 
-
-                                <!-- <div class="row" style="margin-top:20px;"> -->
-                                <!-- </div> -->
                                 <div class="row mb-2 mt-2">
                                     <div class="col-md-12 col-sm-12">
                                         <span class="item form-group">
-                                            <label for="date_start_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Data inizio raccolta dati </h4></strong></label>
+                                            <label for="date_start_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><h4>Data inizio raccolta dati </h4></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input style="margin-right: 8rem;" type="date" name="date_start_collection_hgt" v-model="nursHgt.dateStartCollectionHgt">
                                             </span>
-                                            <label for="date_end_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><strong><h4>Data fine raccolta dati</h4></strong></label>
+                                            <label for="date_end_collection_hgt" class="col-form-label col-md-3 col-sm-2 label-align"><h4>Data fine raccolta dati</h4></label>
                                             <span class="col-md-12 col-sm-12">
                                                 <input type="date" name="date_end_collection_hgt" v-model="nursHgt.dateEndCollectionHgt">
                                             </span>
                                         </span>
                                     </div>
                                 </div>
-                                <div>
-                                    <a style="margin-left: 949px; margin-top: 20px; margin-bottom: 10px;" class="btn btn-info i2hBtnPrint"><i class="fa fa-print"><input type="radio" v-model="showInput1" value="true"></i>Aggiungi Modulo</a>
+
+
+                                <div class="row mb-2 mt-3">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="hgt" class="col-form-label col-md-1 col-sm-2 label-align"><h4><strong>HGT</strong></h4></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input  type="text" name="hgt" v-model="nursHgt.hgt">
+                                            </span>
+                                        </span>
+                                    </div>
                                 </div>
 
-                              
-                                <table>
-                                    <tr>
-                                        <td>DATA</td>
-                                        <td>ORA</td>
-                                        <td>HGT</td>
-                                        <td>FIRMA</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="date" name="hgt_date" v-model="nursHgt.hgtDate">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="hours" v-model="nursHgt.hours">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="hgt" v-model="nursHgt.hgt">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="hgt" v-model="nursHgt.hgtOperatorSignature">{{ nursHgt.hgtOperatorSignature }}
-                                        </td>
-                                    </tr>
-                                </table>
+                                {{nursHgt}}
+
+                               
+
+                        
                                             
-                                <div class="ln_solid mt-5"></div>
+                                <div class="ln_solid mt-2"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addCollectionFormHgt('hgt')">{{btnHgtSend}}</span>
@@ -142,15 +130,27 @@ ul, li{
 
 <script>
 
+    // const table = document.getElementById('myTable');
+    // const button = document.getElementById('addRowButton');
+
+    // button.addEventListener('click', function() {
+    //     const newRow = table.insertRow(-1);
+    //     const cell1 = newRow.insertCell(0);
+    //     const cell2 = newRow.insertCell(1);
+    //     cell1.innerHTML = 'Nuova riga, colonna 1';
+    //     cell2.innerHTML = 'Nuova riga, colonna 2';
+    // }); 
+
+
     import * as actions from "../config/ApiUrl";
     import axios from 'axios';
     import Swal from 'sweetalert2';
-
+  
+    
     export default {
-
+        
         name: 'CollectionFormHgt',
-
-
+        
         data() {
             return {
                 userName: 'mario',
@@ -160,7 +160,6 @@ ul, li{
                 userId:237,
 
 
-                showInput1:false,
 
 
                 // departmentHgt:null,
@@ -208,6 +207,7 @@ ul, li{
                 btnHgtSend:"Salva",
                 total:0,               
                 allCollectionFormHgts:null,
+
             }
         },
 
@@ -215,22 +215,72 @@ ul, li{
             this.getCollectionFormHgtsByUserIstanceId(1)
         },
 
-
         methods: {
 
+
+            // addTherapy () {
+
+            // this.newTherapies.push({
+            //     idDoctor:14,
+            //     doctorName:'medico',
+            //     doctorLastname:'test',   
+            //     userInstanceId :17,
+            //     userId:36,
+            //     // drug: "",
+            //     // posology: "",
+            //     // frequency: "",
+            //     // drugRoute: "",
+            //     // morning: 0,
+            //     // afternoon: 0,
+            //     // evening: 0,
+            //     // external_doctor_prescription:0,
+            //     // deleted:0, 
+            //     // acceptance:0,  
+            //     // acceptanceId:0 
+               
+            // })
+            // },
+
+            // saveTherapy(){
+            // let _wm=this;
+            // var addTherapyForm = new FormData();
+            // addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
+            // if(this.newTherapies.length>0){
+            // try {
+            //     //let url=actions.ADD_THERAPIES_DATA;
+            //     //  axios.post(url,addTherapyForm).then(response => {
+            //     //      let error=response.data.errorNumber;
+            //     //      let _attempts=response.data.attempts;
+            //     //      _wm.errNum=error;
+            //     //      if(error == 0){
+            //     //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
+            //     //         // setTimeout(function(){
+            //     //         //     _wm.hideSuccess();
+            //     //         // }, 4000);
+            //     //         _wm.i2hLoader=true;
+            //     //         _wm.initTherapies();
+            //     //         _wm.getTherapies();
+            //     //      }else{
+            //     //         let _errorDescription=response.data.errorDescription
+            //     //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
+            //     //      }
+            //     //  })
+            // }catch (error) {
+            //     throw error
+            // }                             
+            // }else{
+            // eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
+            // }
+            // },
+
+
             printCollectionFormHgt(printPdf){
-
                 let v_myWindow
-
                 let url= 'printPdf/2';
-
                 v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-
                 return false;
             },
-                 
-            
-
+        
 
             addCollectionFormHgt(panel){
                 let _wm = this;
@@ -398,6 +448,6 @@ ul, li{
             isObjEmpty (obj) {
                 return Object.keys(obj).length === 0;
             },
-        }    
-    }
+        } 
+    } 
 </script>

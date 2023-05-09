@@ -121,28 +121,8 @@ class NursingRecordController extends Controller
 
     //     $pdf->SetFont('Arial', 'B', 12);
     //     $pdf->Cell(55,7,'Alimentazione Rifiutata:');
-    //     // $pdf->SetFillColor(255,255,255);
-    //     // $pdf->SetDrawColor(0,0,0);
-    //     // $pdf->SetTextColor(0,0,0);
-    //     // $pdf->Ln(10);
-        
-    //     if(isset($nursMcp->breakfast)&& $nursMcp->breakfast!==""){
-    //         $pdf->SetFont('Arial','',12);
-    //         $pdf->Cell(25,7,'Colazione');
-    //         // $pdf->cell(20,7,$nursMcp->breakfast);
-    //     };
-
-    //     if(isset($nursMcp->lunch)&& $nursMcp->lunch!==""){
-    //         $pdf->SetFont('Arial','',12);
-    //         $pdf->Cell(20,7,'Pranzo');
-    //         // $pdf->cell(30,7,$nursMcp->lunch);
-    //     };
-
-    //     if(isset($nursMcp->dinner)&& $nursMcp->dinner!==""){
-    //         $pdf->SetFont('Arial','',12);
-    //         $pdf->Cell(20,7,'Cena');
-    //         // $pdf->cell(30,7,$nursMcp->dinner);
-    //     };
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->cell(20,7,$nursMcp->mcp_diet);
     //     $pdf->Ln(10);
 
 
@@ -154,11 +134,17 @@ class NursingRecordController extends Controller
 
 
     //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(15,7,'P/A:');
+    //     $pdf->Cell(30,7,'P/A Sitsolica:');
     //     // $pdf->Ln(10);
     //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(60,7,$nursMcp->monitoring_pa);
+    //     $pdf->cell(20,7,$nursMcp->monitoring_pa_systolic);
 
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(33,7,'P/A Diastolica:');
+    //     // $pdf->Ln(10);
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->cell(20,7,$nursMcp->monitoring_pa_diastolic);
+    //     // $pdf->Ln(10);
 
     //     $pdf->SetFont('Arial', 'B', 12);
     //     $pdf->Cell(13,7,'F/C:');
@@ -180,9 +166,9 @@ class NursingRecordController extends Controller
     //     exit();
     // }
 
- // ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
 
-  // -----------------------------------------------------------------------------------------------
+//   -----------------------------------------------------------------------------------------------
     // ClinicalParameterCollection
     
     // public function printPdf(Request $request) {
@@ -276,25 +262,31 @@ class NursingRecordController extends Controller
 
 
     //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(12,7,'P/A:');
+    //     $pdf->Cell(30,7,'P/A Sistolica:');
     //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(35,7,$nursMcp->collection_pa);
-    //     // $pdf->Ln(10);
+    //     $pdf->cell(36,7,$nursMcp->collection_pa_systolic);
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(32,7,'P/A Diastolica:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->cell(35,7,$nursMcp->collection_pa_diastolic);
+    //     $pdf->Ln(10);
         
+
     //     $pdf->SetFont('Arial', 'B', 12);
     //     $pdf->Cell(12,7,'F/C:');
     //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(40,7,$nursMcp->collection_fc);
+    //     $pdf->cell(54,7,$nursMcp->collection_fc);
 
     //     $pdf->SetFont('Arial', 'B', 12);
     //     $pdf->Cell(15,7,'SPO2:');
     //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(40,7,$nursMcp->collection_spo2);
+    //     $pdf->cell(58,7,$nursMcp->collection_spo2);
 
     //     $pdf->SetFont('Arial', 'B', 12);
     //     $pdf->Cell(12,7,'T/C:');
     //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(37,7,$nursMcp->collection_tc);
+    //     $pdf->cell(56,7,$nursMcp->collection_tc);
     //     $pdf->Ln(20);
 
 
@@ -308,10 +300,10 @@ class NursingRecordController extends Controller
     //     $pdf->Output("stampa.pdf", "I");
     //     exit();
     // }
- // ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
 
  
-  // -----------------------------------------------------------------------------------------------
+//   -----------------------------------------------------------------------------------------------
     // CollectionFormHgt
     
     // public function printPdf(Request $request) {
@@ -343,7 +335,6 @@ class NursingRecordController extends Controller
 
     //     $pdf->SetFont('Arial','',12);
 
-
     //     $pdf->SetDrawColor(128,0,0);
     //     $pdf->SetFillColor(0,78,155);
     //     $pdf->SetTextColor(255,255,255);
@@ -353,7 +344,6 @@ class NursingRecordController extends Controller
     //     $pdf->SetDrawColor(0,0,0);
     //     $pdf->SetTextColor(0,0,0);
     //     $pdf->Ln(12);
-
 
     //     $pdf->Cell(37,7,'Reparto/Sezione:');
     //     $pdf->SetFont('Arial','',12);
@@ -365,9 +355,6 @@ class NursingRecordController extends Controller
     //     $pdf->SetFont('Arial','',12);
     //     $pdf->cell(40,7,$nursMcp->doctor_prescriber_hgt);
     //     $pdf->Ln(10);
-
-
-
 
     //     $pdf->SetFont('Arial', 'B', 12);
     //     $pdf->Cell(53,7,'Data Inizio Raccolta Dati:');
@@ -423,9 +410,9 @@ class NursingRecordController extends Controller
     //     $pdf->Output("stampa.pdf", "I");
     //     exit();
     // }
- // ------------------------------------------------------------------------------------------------
+//  ------------------------------------------------------------------------------------------------
 
- // -----------------------------------------------------------------------------------------------
+//  -----------------------------------------------------------------------------------------------
     // TraceabilityTherapy
     
     // public function printPdf(Request $request) {
@@ -541,7 +528,7 @@ class NursingRecordController extends Controller
 // ----------------------------------------------------------------------------------
 
 
- // -----------------------------------------------------------------------------------------------
+//  -----------------------------------------------------------------------------------------------
     // MonitoringPrescriptionTao
     
     // public function printPdf(Request $request) {
@@ -566,7 +553,7 @@ class NursingRecordController extends Controller
     //     $pdf->SetFillColor(255,255,255);
     //     $pdf->SetDrawColor(0,0,0);
     //     $pdf->SetTextColor(0,0,0);
-    //     $pdf->Cell(0,6,'Modulo Di Monitoraggio Della Prescrizione E Della Somministrazione Della Terapia',0,0,'C',true);
+    //     $pdf->Cell(0,6,'Modulo Di Monitoraggio Della Prescrizione E Della Somministrazione Della Terapia TAO',0,0,'C',true);
     //     $pdf->Ln(15);
 
     //     $pdf->SetLineWidth(.1);
@@ -585,27 +572,62 @@ class NursingRecordController extends Controller
     //     $pdf->Ln(12);
 
 
-    //     $pdf->Cell(47,7,'Reparto/Sezione:');
+    //     $pdf->Cell(39,7,'Reparto/Sezione:');
     //     $pdf->SetFont('Arial','',12);
     //     $pdf->cell(40,7,$nursMcp->department_tao);
-    //     // $pdf->Ln(5);
 
     //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(43,7,'Diagnosi:');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(40,7,$nursMcp->diagnosis_tao);
-    //     $pdf->Ln(10);
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(47,7,'Farmaco Prescritto:');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(40,7,$nursMcp->drug_prescribed);
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(43,7,'Data:');
+    //     $pdf->Cell(40,7,'Data Prescrizione:');
     //     $pdf->SetFont('Arial','',12);
     //     $pdf->cell(40,7,$nursMcp->date_tao);
     //     $pdf->Ln(10);
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(43,7,'Diagnosi:');
+    //     $pdf->Ln(6);
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Multicell(180,7,$nursMcp->diagnosis_tao);
+    //     $pdf->Ln(5);
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(47,7,'Farmaco Prescritto:');
+    //     $pdf->Ln(6);
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Multicell(180,7,$nursMcp->drug_prescribed);
+    //     $pdf->Ln(6);
+
+    //     // $pdf->SetFont('Arial', 'B', 12);
+    //     // $pdf->Cell(40,7,'Data Prescrizione:');
+    //     // $pdf->SetFont('Arial','',12);
+    //     // $pdf->cell(40,7,$nursMcp->date_tao);
+    //     // $pdf->Ln(10);
+
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,7,'Monitoraggio',0,0,'L',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(12);
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(24,7,'Dosaggio:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->cell(60,7,$nursMcp->tao_dosage);
+        
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(20,7,'Medico:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->cell(45,7,$nursMcp->tao_doctor);
+    //     $pdf->Ln(10);
+        
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(27,7,'Firma CPSI:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->cell(60,7,$nursMcp->tao_cpsi_signature);
+        
 
     //     $pdf->Output("stampa.pdf", "I");
     //     exit();
@@ -1169,7 +1191,7 @@ class NursingRecordController extends Controller
         // doctors_prescriptions_note	
 
 
-
+ 
         $now=date("Y-m-d H:i:s");
         $_traceTerapy->user_instance_id=$userInstanceId;
         if($request->has('doctorId')){
@@ -1183,40 +1205,40 @@ class NursingRecordController extends Controller
         }
         $_traceTerapy->th_date=$now;
 
-
-        if($request->has('TraceabilityTherapy')){
-            $nursArr = json_decode($request->input('TraceabilityTherapy'), true);
-            
-            // if(array_key_exists('drugsNotAdministered',$nursArr)){
-            //     $_traceTerapy->drugs_not_administered=$nursArr['drugsNotAdministered'];
-            // }
-            if(array_key_exists('medicalAlert',$nursArr)){
-                $_traceTerapy->medical_alert=$nursArr['medicalAlert'];
-            }
-            if(array_key_exists('medicalAlertNote',$nursArr)){
-                $_traceTerapy->medical_alert_note=$nursArr['medicalAlertNote'];
-            }
-            if(array_key_exists('doctorsPrescriptions',$nursArr)){
-                $_traceTerapy->doctors_prescriptions=$nursArr['doctorsPrescriptions'];
-            }
-            if(array_key_exists('doctorsPrescriptionsNote',$nursArr)){
-                $_traceTerapy->doctors_prescriptions_note=$nursArr['doctorsPrescriptionsNote'];
-            }
+        if($request->has('medicalAlert')){
+            $_traceTerapy->medical_alert=$request->input('medicalAlert');
         }
-        if($request->has('RefusedTreatment')){
-            $nursArr = json_decode($request->input('RefusedTreatment'), true);
-            
-            if(array_key_exists('drugsNotAdministered',$nursArr)){
-                $_traceTerapy->drugs_not_administered=$nursArr['drugsNotAdministered'];
-            }
-            
+        if($request->has('medicalAlertNote')){
+            $_traceTerapy->medical_alert_note=$request->input('medicalAlertNote');
+        }
+        if($request->has('doctorsPrescriptions')){
+            $_traceTerapy->doctors_prescriptions=$request->input('doctorsPrescriptions');
+        }
+        if($request->has('doctorsPrescriptionsNote')){
+            $_traceTerapy->doctors_prescriptions_note=$request->input('doctorsPrescriptionsNote');
         }
         
-        $_traceTerapy->save();
+        $testValue=0;
+        if($request->has('RefusedTreatment')){
+            $test=json_decode($request['RefusedTreatment'],true);
 
+            foreach ($test['checked'] as $key => $value) {
+                if($value==true){
+                    $testValue+=$value;
+                }
+              };
+              $_traceTerapy->drugs_not_administered=$request['RefusedTreatment'];
+        }
+        if($testValue>0){
+            $_traceTerapy->save();
+        }else{
+            return ["errorNumber"=>4,"message"=>"Non ci sono dati da salvare"];
+        }
+        
+        $test=json_decode($request['RefusedTreatment'],true);
+        
         if($_traceTerapy){
             return ["errorNumber"=>0,"message"=>"ok","th"=>$_traceTerapy];
-
         }else{
             return ["errorNumber"=>3,"message"=>"Scheda non salvata contattare l'amministratore di sistema"];
         }
@@ -1265,8 +1287,11 @@ class NursingRecordController extends Controller
             if(array_key_exists('cpcDate',$nursArr)){
                 $_nursingCpc->cpc_date=$nursArr['cpcDate'];
             }
-            if(array_key_exists('collectionPa',$nursArr)){
-                $_nursingCpc->collection_pa=$nursArr['collectionPa'];
+            if(array_key_exists('collectionPaSystolic',$nursArr)){
+                $_nursingCpc->collection_pa_systolic=$nursArr['collectionPaSystolic'];
+            }
+            if(array_key_exists('collectionPaDiastolic',$nursArr)){
+                $_nursingCpc->collection_pa_diastolic=$nursArr['collectionPaDiastolic'];
             }
             if(array_key_exists('collectionFc',$nursArr)){
                 $_nursingCpc->collection_fc=$nursArr['collectionFc'];
@@ -1390,20 +1415,17 @@ class NursingRecordController extends Controller
             if(array_key_exists('mcpDate',$nursArr)){
                 $_nursingMcp->mcp_date=$nursArr['mcpDate'];
             }
-            if(array_key_exists('breakfast',$nursArr)){
-                $_nursingMcp->breakfast=$nursArr['breakfast'];
-            }
-            if(array_key_exists('lunch',$nursArr)){
-                $_nursingMcp->lunch=$nursArr['lunch'];
-            }
-            if(array_key_exists('dinner',$nursArr)){
-                $_nursingMcp->dinner=$nursArr['dinner'];
+            if(array_key_exists('mcpDiet',$nursArr)){
+                $_nursingMcp->mcp_diet=$nursArr['mcpDiet'];
             }
             if(array_key_exists('bodyWeight',$nursArr)){
                 $_nursingMcp->body_weight=$nursArr['bodyWeight'];
             }
-            if(array_key_exists('monitoringPa',$nursArr)){
-                $_nursingMcp->monitoring_pa=$nursArr['monitoringPa'];
+            if(array_key_exists('monitoringPaSystolic',$nursArr)){
+                $_nursingMcp->monitoring_pa_systolic=$nursArr['monitoringPaSystolic'];
+            }
+            if(array_key_exists('monitoringPaDiastolic',$nursArr)){
+                $_nursingMcp->monitoring_pa_diastolic=$nursArr['monitoringPaDiastolic'];
             }
             if(array_key_exists('monitoringFc',$nursArr)){
                 $_nursingMcp->monitoring_fc=$nursArr['monitoringFc'];
@@ -1456,6 +1478,15 @@ class NursingRecordController extends Controller
             }
             if(array_key_exists('dateTao',$nursArr)){
                 $_nursingTao->date_tao=$nursArr['dateTao'];
+            }
+            if(array_key_exists('taoDosage',$nursArr)){
+                $_nursingTao->tao_dosage=$nursArr['taoDosage'];
+            }
+            if(array_key_exists('taoDoctor',$nursArr)){
+                $_nursingTao->tao_doctor=$nursArr['taoDoctor'];
+            }
+            if(array_key_exists('taoCpsiSignature',$nursArr)){
+                $_nursingTao->tao_cpsi_signature=$nursArr['taoCpsiSignature'];
             }
         }
         $_nursingTao->save();

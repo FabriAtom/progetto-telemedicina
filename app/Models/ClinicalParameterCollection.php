@@ -15,7 +15,11 @@ class ClinicalParameterCollection extends Model
         'date_end_collection',
         'doctor_prescriber',
         'cpc_date',
-        'collection_pa',
+        
+        'collection_pa_systolic',
+        'collection_pa_diastolic',
+
+
         'collection_fc',
         'collection_spo2',
         'collection_tc',

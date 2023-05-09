@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-12 col-sm-12">
                     <div class="x_panel">
-                        <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:100px;">
+                        <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:50px;">
                             <h1>Modulo di monitoraggio parametri clinici in caso di rifiuto della alimentazione (sia liquidi, sia solidi).</h1>
                         </div>
 
@@ -40,154 +40,110 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div>
-                                    <a style="margin-left: 949px; margin-top: 20px; margin-bottom: 10px;" class="btn btn-info i2hBtnPrint"><i class="fa fa-print"><input type="radio" v-model="showInput1" value="true"></i>Aggiungi Modulo</a>
-                                </div>
+                                 
+                                
                                
                                 <table>
-                                    
                                     <tr>
-                                        <th>DATA</th>
-                                        <th colspan="4">
-                                            ALIMENTAZIONE 
-                                            
-                                        </th>
-
-                                        <th>PESO <br> CORPOREO</th>
-
-                                        <th>P.A.</th>
+                                        <th colspan="3"><strong>ALIMENTAZIONE</strong></th>
+                                        <th rowspan="1"><strong> PESO <br> CORPOREO</strong></th>
+                                        <th colspan="2"><strong>P.A.</strong></th>
                                         <th>F.C.</th>
-                                        <th>FIRMA <br> OPERATORE</th>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <!-- data -->
-                                        </td>
-                                        <td>
-                                            <td>
-                                                colazione
-                                            </td>
-                                            <td>
-                                                pranzo
-                                            </td>
-                                            <td>
-                                                cena
-                                            </td>
-                                        </td>
-
-                                        <td>
-                                            <!-- <input style="width: 5rem;" type="text" name="body_weight" v-model="bodyWeight">      -->
-                                        </td>
+                                        
+                                        
+                                        <td><strong>colazione</strong></td>
+                                        <td><strong>pranzo</strong></td>
+                                        <td><strong>cena</strong></td>   
+                                        
+                                        <td></td>
+                                        <td><strong>sistolica</strong></td>  
+                                        <td><strong>diastolica</strong></td>
+                                        <td></td>
+                                    </tr>
+                                     <tr>
+                                        
                                         
                                         <td>
-                                            <!-- <input style="width: 5rem;" type="text" name="monitoring_pa" v-model="monitoringPa"> -->
+                                            <input style="width: 5rem;" type="radio" value="colazione" name="mcp_diet" v-model="nursMcp.mcpDiet">
                                         </td>
-                                        <td>
-                                            <!-- <input style="width: 5rem;" type="text" name="monitoring_fc" v-model="monitoringFc">   -->
+                                        <td>                                                
+                                            <input style="width: 5rem;" type="radio" value="pranzo" name="mcp_diet" v-model="nursMcp.mcpDiet">
                                         </td>
-                                        <td>
-                                           <!-- {{operatorSignature}} -->
+                                        <td>   
+                                            <input style="width: 5rem;" type="radio" value="cena" name="mcp_diet" v-model="nursMcp.mcpDiet">
                                         </td>
-                                    </tr>
-
-
-                                    <!-- <tr v-for="(therapies, index) in MonitoringClinicalParameter" :key="index">
-                                        <td>
-                                            <input style="width: 7rem;" type="date" name="mcp_date" v-model="therapies.mcpDate">
-                                        </td>
-
-                                        <td>
-                                            <td>
-                                                <input style="width: 5rem;" type="checkbox" name="breakfast" v-model="therapies.breakfast">
-                                                {{therapies.breakfast}}
-                                            </td>
-                                            <td>                                                
-                                                <input style="width: 5rem;" type="checkbox" name="lunch" v-model="therapies.lunch">
-                                            </td>
-                                            <td>   
-                                                <input style="width: 5rem;" type="checkbox" name="dinner" v-model="therapies.dinner">
-                                            </td>
-                                        </td>
-
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="body_weight" v-model="therapies.bodyWeight">     
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="monitoring_pa" v-model="therapies.monitoringPa">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="monitoring_fc" v-model="therapies.monitoringFc">  
-                                        </td>
-                                        <td>
-                                           {{therapies.operatorSignature}}
-                                        </td> 
-                                    </tr>-->
-
-                                     <tr>
-                                        <td>
-                                            <input style="width: 7rem;" type="date" name="mcp_date" v-model="nursMcp.mcpDate">
-                                        </td>
-                                        <td>
-                                            <td>
-                                                <input style="width: 5rem;" type="checkbox" name="breakfast" v-model="nursMcp.breakfast">
-                                            </td>
-                                            <td>                                                
-                                                <input style="width: 5rem;" type="checkbox" name="lunch" v-model="nursMcp.lunch">
-                                            </td>
-                                            <td>   
-                                                <input style="width: 5rem;" type="checkbox" name="dinner" v-model="nursMcp.dinner">
-                                            </td>
-                                        </td>
-
+                                        
                                         <td>
                                             <input style="width: 5rem;" type="text" name="body_weight" v-model="nursMcp.bodyWeight">     
                                         </td>
+
                                         <td>
-                                            <input style="width: 5rem;" type="text" name="monitoring_pa" v-model="nursMcp.monitoringPa">
+                                            <input style="width: 5rem;" type="text" name="monitoring_pa_systolic" v-model="nursMcp.monitoringPaSystolic">
                                         </td>
+                                        <td>
+                                            <input style="width: 5rem;" type="text" name="monitoring_pa_diastolic" v-model="nursMcp.monitoringPaDiastolic">
+                                        </td>
+
                                         <td>
                                             <input style="width: 5rem;" type="text" name="monitoring_fc" v-model="nursMcp.monitoringFc">  
                                         </td>
-                                        <td>
-                                           {{nursMcp.operatorSignature}}
-                                        </td>
-                                    </tr>
-
-
-
-
-                                    <!-- <tr v-if="showInput1">
-                                        <td>{{mcpDate}}</td>
-                                         <td>
-                                            <td>
-                                                <input style="width: 5rem;" type="checkbox" name="breakfast" v-model="breakfast">
-                                            </td>
-                                            <td>
-                                                <input style="width: 5rem;" type="checkbox" name="lunch" v-model="lunch">
-                                            </td>
-                                            <td>
-                                                <input style="width: 5rem;" type="checkbox" name="dinner" v-model="dinner">
-                                            </td>
-                                        </td>
-
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="body_weight" v-model="bodyWeight">     
-                                        </td>
                                         
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="monitoring_pa" v-model="monitoringPa">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="monitoring_fc" v-model="monitoringFc">  
-                                        </td>
-                                        <td>
-                                           {{operatorSignature}}
-                                        </td>
-                                    </tr> -->
+                                    </tr>
                                 </table>
 
-                                
-                                <div class="ln_solid mt-3"></div>
+
+                                <!-- <div v-if="newTheraphyPnl">
+                                    <div v-for="(newTherapy, index) in newTherapies" :key="newTherapy.id" class="demot">
+                                        <table> 
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="autoCompResp" :id="`newTherapy1`" :name="index" v-model="newTherapy.mcpDate" style="margin: 0 0; width: 7rem;">
+                                                    // :class="form-control" 
+                                                </td>
+                                                <td>
+                                                    <td>
+                                                        <input type="checkbox" :id="`newTherapy2`" style="margin: 0 0; width: 5rem;" :name="index" v-model="newTherapy.breakfast">
+                                                    </td>
+                                                    <td>                                                
+                                                        <input type="checkbox" style="margin: 0 0; width: 5rem;" :name="index" v-model="newTherapy.lunch">
+                                                    </td>
+                                                    <td>   
+                                                        <input type="checkbox" style="margin: 0 0;width: 5rem;" :name="index" v-model="newTherapy.dinner">
+                                                    </td>
+                                                </td>
+                                                <td> 
+                                                    <input type="text" :id="`newTherapy3`" :name="index" v-model="newTherapy.bodyWeight"  style="margin: 0 0; width: 5rem;">
+                                                </td>
+                                                <td>
+                                                    <input type="text" :id="`newTherapy4`" :name="index" v-model="newTherapy.monitoringPa"  style="margin: 0 0; width: 5rem;">
+                                                </td>
+                                                <td>
+                                                    <input type="text" :id="`newTherapy5`" :name="index" v-model="newTherapy.monitoringFc"  style="margin: 0 0; width: 5rem;">
+                                                </td>
+                                                <td>
+                                                    <input type="text" :id="`newTherapy6`" :name="index" v-model="newTherapy.collectionOperatorSignature"  style="margin: 0 0; width: 5rem;">
+                                                </td>
+                                            </tr>    
+                                        </table>
+                                    </div>
+                                </div> -->
+<!-- 
+                                <hr><hr>
+
+                                {{therapies}}
+
+                                <hr><hr>
+
+                                {{newTherapies}} -->
+
+
+
+                                {{nursMcp}}
+
+
+                                <div class="ln_solid mt-2"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addMonitoringClinicalParameter('mcp')">{{btnMcpSend}}</span>
@@ -243,7 +199,7 @@ table {
 td, th {
   border: 2px solid #dddddd;
   text-align: center;
-  padding: 2;
+  padding: 3;
 }
 
 ul, li{
@@ -257,6 +213,11 @@ ul, li{
     import * as actions from "../config/ApiUrl";
     import axios from 'axios';
     import Swal from 'sweetalert2';
+
+
+    
+
+
 
     export default {
         
@@ -272,7 +233,7 @@ ul, li{
                 userId:237,
 
 
-                showInput1:false,
+                // showInput1:false,
 
 
                 // department:null,
@@ -310,7 +271,6 @@ ul, li{
 
                 nursMcp:{},
 
-
                 
 
                 mainTitle:"psy",
@@ -321,6 +281,80 @@ ul, li{
                 btnMcpSend:"Salva",
                 total:0,               
                 allMonitoringClinicalParameters:null,
+
+
+                // therapies: [
+                // {
+                //     id: 1,
+                //     drug: "tachipirina",
+                //     posology: "2 volte al di",
+                //     frequency: "test test",
+                //     startTherapy: "2022-10-12",
+                //     endTherapy: "2023-06-10",
+                //     drugRoute: "intramuscolare",
+                //     morning: "",
+                //     afternoon: true,
+                //     evening: "",
+                //     external_doctor_prescription:0
+                // },
+                // {
+                //     id: 2,          
+                //     drug: "toradol",
+                //     posology: "2 volte al di",
+                //     frequency: "il venerdì",
+                //     startTherapy: "2023-01-01",
+                //     endTherapy: "2023-12-31",
+                //     drugRoute: "orale",
+                //     morning: true,
+                //     afternoon: true,
+                //     evening: "",
+                //     external_doctor_prescription:0
+                // },
+                // {
+                //     id: 3,        
+                //     drug: "buscopan",
+                //     posology: "unidie",
+                //     frequency: "tutti i giorni",
+                //     startTherapy: "2022-08-12",
+                //     endTherapy: "2023-07-23",
+                //     drugRoute: "intramuscolare",
+                //     morning: true,
+                //     afternoon: "",
+                //     evening: "",
+                //     external_doctor_prescription:0
+                // },
+                // ],
+
+            //     newTherapies: [
+            //     {
+            //         idDoctor:0,
+            //         doctorName:'',
+            //         doctorLastname:'',
+            //         userInstanceId:0,
+            //         userId:0,
+
+            //         cpc_date:'',
+            //         collection_pa:'',
+            //         collection_fc:'',
+            //         collection_spo2:'',
+            //         collection_tc:'',
+            //         // drug: "",
+            //         // posology: "",
+            //         // frequency: "",
+            //         // startTherapy: "",
+            //         // endTherapy: null,
+            //         // drugRoute: "",
+            //         // morning: 0,
+            //         // afternoon: 0,
+            //         // evening: 0,
+            //         // external_doctor_prescription:0,
+            //         // deleted:0,
+            //         // acceptance:0,
+            //         // acceptanceId:0 
+            //     },
+            // ],
+            // showtherapies:true,
+            // newTheraphyPnl:true,
             }
         },
 
@@ -330,6 +364,70 @@ ul, li{
 
 
         methods: {
+
+            // addTherapy () {
+
+            //     this.newTherapies.push({
+            //         idDoctor:14,
+            //         doctorName:'medico',
+            //         doctorLastname:'test',   
+            //         userInstanceId :17,
+            //         userId:36,
+            //         // drug: "",
+            //         // posology: "",
+            //         // frequency: "",
+            //         // drugRoute: "",
+            //         // morning: 0,
+            //         // afternoon: 0,
+            //         // evening: 0,
+            //         // external_doctor_prescription:0,
+            //         // deleted:0, 
+            //         // acceptance:0,  
+            //         // acceptanceId:0 
+            //         cpc_date:'',
+            //         collection_pa:'',
+            //         collection_fc:'',
+            //         collection_spo2:'',
+            //         collection_tc:'',
+            //     })
+            // },
+
+            // saveTherapy(){
+            // let _wm=this;
+            // var addTherapyForm = new FormData();
+            // addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
+            // if(this.newTherapies.length>0){
+            //     try {
+            //         //let url=actions.ADD_THERAPIES_DATA;
+            //         //  axios.post(url,addTherapyForm).then(response => {
+            //         //      let error=response.data.errorNumber;
+            //         //      let _attempts=response.data.attempts;
+            //         //      _wm.errNum=error;
+            //         //      if(error == 0){
+            //         //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
+            //         //         // setTimeout(function(){
+            //         //         //     _wm.hideSuccess();
+            //         //         // }, 4000);
+            //         //         _wm.i2hLoader=true;
+            //         //         _wm.initTherapies();
+            //         //         _wm.getTherapies();
+            //         //      }else{
+            //         //         let _errorDescription=response.data.errorDescription
+            //         //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
+            //         //      }
+            //         //  })
+            //     }catch (error) {
+            //         throw error
+            //     }                             
+            // }else{
+            //     eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
+            // }
+            // },
+
+
+
+
+
 
             printMonitoringClinicalParameter(printPdf){
 
@@ -342,6 +440,7 @@ ul, li{
                 return false;
             },
                  
+            
             
 
 
@@ -477,22 +576,22 @@ ul, li{
                             // alert(JSON.stringify(_wm.MonitoringClinicalParameter));
 
                             
-                            let _NursMcp=response.data.MonitoringClinicalParameter;
+                            // let _NursMcp=response.data.MonitoringClinicalParameter;
 
-                            _wm.nursMcp.department = _NursMcp.department
-                            _wm.nursMcp.dateStartRejection = _NursMcp.date_start_rejection
-                            _wm.nursMcp.dateEndRejection = _NursMcp.date_end_rejection
-                            _wm.nursMcp.mcpDate = _NursMcp.mcp_date
-                            _wm.nursMcp.breakfast = _NursMcp.breakfast
-                            _wm.nursMcp.lunch = _NursMcp.lunch
-                            _wm.nursMcp.dinner = _NursMcp.dinner
+                            // _wm.nursMcp.department = _NursMcp.department
+                            // _wm.nursMcp.dateStartRejection = _NursMcp.date_start_rejection
+                            // _wm.nursMcp.dateEndRejection = _NursMcp.date_end_rejection
+                            // _wm.nursMcp.mcpDate = _NursMcp.mcp_date
+                            // _wm.nursMcp.breakfast = _NursMcp.breakfast
+                            // _wm.nursMcp.lunch = _NursMcp.lunch
+                            // _wm.nursMcp.dinner = _NursMcp.dinner
 
-                            _wm.nursMcp.bodyWeight = _NursMcp.body_weight
-                            _wm.nursMcp.monitoringPa = _NursMcp.monitoring_pa
-                            _wm.nursMcp.monitoringFc = _NursMcp.monitoring_fc
-                            _wm.nursMcp.operatorSignature = _NursMcp.operator_signature
+                            // _wm.nursMcp.bodyWeight = _NursMcp.body_weight
+                            // _wm.nursMcp.monitoringPa = _NursMcp.monitoring_pa
+                            // _wm.nursMcp.monitoringFc = _NursMcp.monitoring_fc
+                            // _wm.nursMcp.operatorSignature = _NursMcp.operator_signature
 
-                            _wm.allMonitoringClinicalParameters=response.data.allMonitoringClinicalParameters;
+                            // _wm.allMonitoringClinicalParameters=response.data.allMonitoringClinicalParameters;
                             }else{
                                 _wm.btnNhSend="Salva";
                             }

@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-12 col-sm-12">
                     <div class="x_panel">
-                        <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:100px;">
+                        <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:50px;">
                             <h1>Modulo di monitoraggio della prescrizione e della somministrazione della terapia <strong>TAO</strong></h1>
                         </div>
 
@@ -27,7 +27,6 @@
                                                 <input type="text" name="drug_prescribed" v-model="nursTao.drugPrescribed">
                                             </span>               
                                         </span>
-                                        
                                     </span>
                                 </div>
 
@@ -48,6 +47,68 @@
                                         </span>
                                     </span>
                                 </div>
+
+                                <hr>
+                                <h2 class="text-center"><strong>Monitoraggio</strong></h2>
+                                <hr>
+                                <!-- <table>
+                                    <tr>
+                                        <th colspan="3">Lunedì</th>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Dosaggio</strong></td>
+                                        <td><strong>Medico</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" name="diagnosis_tao" v-model="nursTao.diagnosisTao">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="diagnosis_tao" v-model="nursTao.diagnosisTao">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="3">Somministrato Da</th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="border-top: 0;">
+                                            <input type="text" name="diagnosis_tao" v-model="nursTao.diagnosisTao">
+                                        </td>
+                                    </tr>
+                                </table> -->
+
+                                <div class="row mt-3">
+                                    <span class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="tao_dosage" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>Dosaggio</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="text" name="tao_dosage" v-model="nursTao.taoDosage">
+                                            </span>               
+                                        </span>
+                                        <span class="item form-group">
+                                            <label for="tao_doctor" style="margin-left: 10rem;" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>Medico</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="text" name="tao_doctor" v-model="nursTao.taoDoctor">
+                                            </span>               
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="row mt-3">
+                                    <span class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="tao_cpsi_signature" class="col-form-label col-md-2 col-sm-2 label-align"><strong><h4>Firma CPSI</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="text" name="tao_cpsi_signature" v-model="nursTao.taoCpsiSignature">
+                                            </span>               
+                                        </span>
+                                    </span>
+                                </div>
+
+
+
+
+
+
 
                                 <div class="ln_solid mt-5"></div>
                                 <div class="item form-group">

@@ -1927,18 +1927,6 @@ __webpack_require__.r(__webpack_exports__);
       userId: 237,
       ClinicalParameterCollection: {},
       showInput5: false,
-      // departmentCpc:null,
-      // dateStartCollection:null,
-      // dateEndCollection:null,
-      // doctorPrescriber:null,
-      // cpcDate:null,
-      // collectionPa:null,
-      // collectionFc:null,
-      // collectionSpo2:null,
-      // collectionTc:null,
-      // collectionOperatorSignature:null,
-      // folderPageCollection:null,
-
       nursCpc: {},
       accessData: [function (id) {
         return 31;
@@ -1954,12 +1942,144 @@ __webpack_require__.r(__webpack_exports__);
       btnCpcSend: "Salva",
       total: 0,
       allClinicalParameterCollections: null
+
+      //     therapies: [
+      //     {
+      //         id: 1,
+      //         drug: "tachipirina",
+      //         posology: "2 volte al di",
+      //         frequency: "test test",
+      //         startTherapy: "2022-10-12",
+      //         endTherapy: "2023-06-10",
+      //         drugRoute: "intramuscolare",
+      //         morning: "",
+      //         afternoon: true,
+      //         evening: "",
+      //         external_doctor_prescription:0
+      //     },
+      //     {
+      //         id: 2,          
+      //         drug: "toradol",
+      //         posology: "2 volte al di",
+      //         frequency: "il venerdì",
+      //         startTherapy: "2023-01-01",
+      //         endTherapy: "2023-12-31",
+      //         drugRoute: "orale",
+      //         morning: true,
+      //         afternoon: true,
+      //         evening: "",
+      //         external_doctor_prescription:0
+      //     },
+      //     {
+      //         id: 3,        
+      //         drug: "buscopan",
+      //         posology: "unidie",
+      //         frequency: "tutti i giorni",
+      //         startTherapy: "2022-08-12",
+      //         endTherapy: "2023-07-23",
+      //         drugRoute: "intramuscolare",
+      //         morning: true,
+      //         afternoon: "",
+      //         evening: "",
+      //         external_doctor_prescription:0
+      //     },
+      //     ],
+
+      //     newTherapies: [
+      //     {
+      //         idDoctor:0,
+      //         doctorName:'',
+      //         doctorLastname:'',
+      //         userInstanceId:0,
+      //         userId:0,
+
+      //         cpc_date:'',
+      //         collection_pa:'',
+      //         collection_fc:'',
+      //         collection_spo2:'',
+      //         collection_tc:'',
+      //         // drug: "",
+      //         // posology: "",
+      //         // frequency: "",
+      //         // startTherapy: "",
+      //         // endTherapy: null,
+      //         // drugRoute: "",
+      //         // morning: 0,
+      //         // afternoon: 0,
+      //         // evening: 0,
+      //         // external_doctor_prescription:0,
+      //         // deleted:0,
+      //         // acceptance:0,
+      //         // acceptanceId:0 
+      //     },
+      // ],
+      // showtherapies:true,
+      // newTheraphyPnl:true,
     };
   },
+
   created: function created() {
     this.getClinicalParameterCollectionsByUserIstanceId(1);
   },
+  computed: {},
+  watch: {},
   methods: {
+    // addTherapy () {
+    //     this.newTherapies.push({
+    //         idDoctor:14,
+    //         doctorName:'medico',
+    //         doctorLastname:'test',   
+    //         userInstanceId :17,
+    //         userId:36,
+    //         // drug: "",
+    //         // posology: "",
+    //         // frequency: "",
+    //         // drugRoute: "",
+    //         // morning: 0,
+    //         // afternoon: 0,
+    //         // evening: 0,
+    //         // external_doctor_prescription:0,
+    //         // deleted:0, 
+    //         // acceptance:0,  
+    //         // acceptanceId:0 
+    //         cpc_date:'',
+    //         collection_pa:'',
+    //         collection_fc:'',
+    //         collection_spo2:'',
+    //         collection_tc:'',
+    //     })
+    // },
+    // saveTherapy(){
+    // let _wm=this;
+    // var addTherapyForm = new FormData();
+    // addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
+    // if(this.newTherapies.length>0){
+    //     try {
+    //         //let url=actions.ADD_THERAPIES_DATA;
+    //         //  axios.post(url,addTherapyForm).then(response => {
+    //         //      let error=response.data.errorNumber;
+    //         //      let _attempts=response.data.attempts;
+    //         //      _wm.errNum=error;
+    //         //      if(error == 0){
+    //         //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
+    //         //         // setTimeout(function(){
+    //         //         //     _wm.hideSuccess();
+    //         //         // }, 4000);
+    //         //         _wm.i2hLoader=true;
+    //         //         _wm.initTherapies();
+    //         //         _wm.getTherapies();
+    //         //      }else{
+    //         //         let _errorDescription=response.data.errorDescription
+    //         //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
+    //         //      }
+    //         //  })
+    //     }catch (error) {
+    //         throw error
+    //     }                             
+    // }else{
+    //     eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
+    // }
+    // },
     printClinicalParameterCollection: function printClinicalParameterCollection(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
@@ -2131,6 +2251,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+// const table = document.getElementById('myTable');
+// const button = document.getElementById('addRowButton');
+
+// button.addEventListener('click', function() {
+//     const newRow = table.insertRow(-1);
+//     const cell1 = newRow.insertCell(0);
+//     const cell2 = newRow.insertCell(1);
+//     cell1.innerHTML = 'Nuova riga, colonna 1';
+//     cell2.innerHTML = 'Nuova riga, colonna 2';
+// }); 
+
 
 
 
@@ -2143,7 +2274,6 @@ __webpack_require__.r(__webpack_exports__);
       userFullName: '',
       userInstanceId: 36,
       userId: 237,
-      showInput1: false,
       // departmentHgt:null,
       // dateStartCollectionHgt:null,
       // dateEndCollectionHgt:null,
@@ -2185,6 +2315,57 @@ __webpack_require__.r(__webpack_exports__);
     this.getCollectionFormHgtsByUserIstanceId(1);
   },
   methods: {
+    // addTherapy () {
+    // this.newTherapies.push({
+    //     idDoctor:14,
+    //     doctorName:'medico',
+    //     doctorLastname:'test',   
+    //     userInstanceId :17,
+    //     userId:36,
+    //     // drug: "",
+    //     // posology: "",
+    //     // frequency: "",
+    //     // drugRoute: "",
+    //     // morning: 0,
+    //     // afternoon: 0,
+    //     // evening: 0,
+    //     // external_doctor_prescription:0,
+    //     // deleted:0, 
+    //     // acceptance:0,  
+    //     // acceptanceId:0 
+    // })
+    // },
+    // saveTherapy(){
+    // let _wm=this;
+    // var addTherapyForm = new FormData();
+    // addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
+    // if(this.newTherapies.length>0){
+    // try {
+    //     //let url=actions.ADD_THERAPIES_DATA;
+    //     //  axios.post(url,addTherapyForm).then(response => {
+    //     //      let error=response.data.errorNumber;
+    //     //      let _attempts=response.data.attempts;
+    //     //      _wm.errNum=error;
+    //     //      if(error == 0){
+    //     //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
+    //     //         // setTimeout(function(){
+    //     //         //     _wm.hideSuccess();
+    //     //         // }, 4000);
+    //     //         _wm.i2hLoader=true;
+    //     //         _wm.initTherapies();
+    //     //         _wm.getTherapies();
+    //     //      }else{
+    //     //         let _errorDescription=response.data.errorDescription
+    //     //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
+    //     //      }
+    //     //  })
+    // }catch (error) {
+    //     throw error
+    // }                             
+    // }else{
+    // eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
+    // }
+    // },
     printCollectionFormHgt: function printCollectionFormHgt(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
@@ -2364,7 +2545,8 @@ __webpack_require__.r(__webpack_exports__);
       userFullName: '',
       userInstanceId: 36,
       userId: 237,
-      showInput1: false,
+      // showInput1:false,
+
       // department:null,
       // dateStartRejection:null,
       // dateEndRejection:null,
@@ -2400,12 +2582,142 @@ __webpack_require__.r(__webpack_exports__);
       btnMcpSend: "Salva",
       total: 0,
       allMonitoringClinicalParameters: null
+
+      // therapies: [
+      // {
+      //     id: 1,
+      //     drug: "tachipirina",
+      //     posology: "2 volte al di",
+      //     frequency: "test test",
+      //     startTherapy: "2022-10-12",
+      //     endTherapy: "2023-06-10",
+      //     drugRoute: "intramuscolare",
+      //     morning: "",
+      //     afternoon: true,
+      //     evening: "",
+      //     external_doctor_prescription:0
+      // },
+      // {
+      //     id: 2,          
+      //     drug: "toradol",
+      //     posology: "2 volte al di",
+      //     frequency: "il venerdì",
+      //     startTherapy: "2023-01-01",
+      //     endTherapy: "2023-12-31",
+      //     drugRoute: "orale",
+      //     morning: true,
+      //     afternoon: true,
+      //     evening: "",
+      //     external_doctor_prescription:0
+      // },
+      // {
+      //     id: 3,        
+      //     drug: "buscopan",
+      //     posology: "unidie",
+      //     frequency: "tutti i giorni",
+      //     startTherapy: "2022-08-12",
+      //     endTherapy: "2023-07-23",
+      //     drugRoute: "intramuscolare",
+      //     morning: true,
+      //     afternoon: "",
+      //     evening: "",
+      //     external_doctor_prescription:0
+      // },
+      // ],
+
+      //     newTherapies: [
+      //     {
+      //         idDoctor:0,
+      //         doctorName:'',
+      //         doctorLastname:'',
+      //         userInstanceId:0,
+      //         userId:0,
+
+      //         cpc_date:'',
+      //         collection_pa:'',
+      //         collection_fc:'',
+      //         collection_spo2:'',
+      //         collection_tc:'',
+      //         // drug: "",
+      //         // posology: "",
+      //         // frequency: "",
+      //         // startTherapy: "",
+      //         // endTherapy: null,
+      //         // drugRoute: "",
+      //         // morning: 0,
+      //         // afternoon: 0,
+      //         // evening: 0,
+      //         // external_doctor_prescription:0,
+      //         // deleted:0,
+      //         // acceptance:0,
+      //         // acceptanceId:0 
+      //     },
+      // ],
+      // showtherapies:true,
+      // newTheraphyPnl:true,
     };
   },
+
   created: function created() {
     this.getMonitoringClinicalParametersByUserIstanceId(1);
   },
   methods: {
+    // addTherapy () {
+    //     this.newTherapies.push({
+    //         idDoctor:14,
+    //         doctorName:'medico',
+    //         doctorLastname:'test',   
+    //         userInstanceId :17,
+    //         userId:36,
+    //         // drug: "",
+    //         // posology: "",
+    //         // frequency: "",
+    //         // drugRoute: "",
+    //         // morning: 0,
+    //         // afternoon: 0,
+    //         // evening: 0,
+    //         // external_doctor_prescription:0,
+    //         // deleted:0, 
+    //         // acceptance:0,  
+    //         // acceptanceId:0 
+    //         cpc_date:'',
+    //         collection_pa:'',
+    //         collection_fc:'',
+    //         collection_spo2:'',
+    //         collection_tc:'',
+    //     })
+    // },
+    // saveTherapy(){
+    // let _wm=this;
+    // var addTherapyForm = new FormData();
+    // addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
+    // if(this.newTherapies.length>0){
+    //     try {
+    //         //let url=actions.ADD_THERAPIES_DATA;
+    //         //  axios.post(url,addTherapyForm).then(response => {
+    //         //      let error=response.data.errorNumber;
+    //         //      let _attempts=response.data.attempts;
+    //         //      _wm.errNum=error;
+    //         //      if(error == 0){
+    //         //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
+    //         //         // setTimeout(function(){
+    //         //         //     _wm.hideSuccess();
+    //         //         // }, 4000);
+    //         //         _wm.i2hLoader=true;
+    //         //         _wm.initTherapies();
+    //         //         _wm.getTherapies();
+    //         //      }else{
+    //         //         let _errorDescription=response.data.errorDescription
+    //         //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
+    //         //      }
+    //         //  })
+    //     }catch (error) {
+    //         throw error
+    //     }                             
+    // }else{
+    //     eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
+    // }
+    // },
     printMonitoringClinicalParameter: function printMonitoringClinicalParameter(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
@@ -2523,19 +2835,22 @@ __webpack_require__.r(__webpack_exports__);
               _wm.MonitoringClinicalParameter = response.data.MonitoringClinicalParameter;
               // alert(JSON.stringify(_wm.MonitoringClinicalParameter));
 
-              var _NursMcp = response.data.MonitoringClinicalParameter;
-              _wm.nursMcp.department = _NursMcp.department;
-              _wm.nursMcp.dateStartRejection = _NursMcp.date_start_rejection;
-              _wm.nursMcp.dateEndRejection = _NursMcp.date_end_rejection;
-              _wm.nursMcp.mcpDate = _NursMcp.mcp_date;
-              _wm.nursMcp.breakfast = _NursMcp.breakfast;
-              _wm.nursMcp.lunch = _NursMcp.lunch;
-              _wm.nursMcp.dinner = _NursMcp.dinner;
-              _wm.nursMcp.bodyWeight = _NursMcp.body_weight;
-              _wm.nursMcp.monitoringPa = _NursMcp.monitoring_pa;
-              _wm.nursMcp.monitoringFc = _NursMcp.monitoring_fc;
-              _wm.nursMcp.operatorSignature = _NursMcp.operator_signature;
-              _wm.allMonitoringClinicalParameters = response.data.allMonitoringClinicalParameters;
+              // let _NursMcp=response.data.MonitoringClinicalParameter;
+
+              // _wm.nursMcp.department = _NursMcp.department
+              // _wm.nursMcp.dateStartRejection = _NursMcp.date_start_rejection
+              // _wm.nursMcp.dateEndRejection = _NursMcp.date_end_rejection
+              // _wm.nursMcp.mcpDate = _NursMcp.mcp_date
+              // _wm.nursMcp.breakfast = _NursMcp.breakfast
+              // _wm.nursMcp.lunch = _NursMcp.lunch
+              // _wm.nursMcp.dinner = _NursMcp.dinner
+
+              // _wm.nursMcp.bodyWeight = _NursMcp.body_weight
+              // _wm.nursMcp.monitoringPa = _NursMcp.monitoring_pa
+              // _wm.nursMcp.monitoringFc = _NursMcp.monitoring_fc
+              // _wm.nursMcp.operatorSignature = _NursMcp.operator_signature
+
+              // _wm.allMonitoringClinicalParameters=response.data.allMonitoringClinicalParameters;
             } else {
               _wm.btnNhSend = "Salva";
             }
@@ -5065,57 +5380,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         }
       }
     },
-    addTherapy: function addTherapy() {
-      this.newTherapies.push({
-        idDoctor: 14,
-        doctorName: 'medico',
-        doctorLastname: 'test',
-        userInstanceId: 17,
-        userId: 36,
-        drug: "",
-        posology: "",
-        frequency: "",
-        drugRoute: "",
-        morning: 0,
-        afternoon: 0,
-        evening: 0,
-        external_doctor_prescription: 0,
-        deleted: 0,
-        acceptance: 0,
-        acceptanceId: 0
-      });
-    },
-    saveTherapy: function saveTherapy() {
-      var _wm = this;
-      var addTherapyForm = new FormData();
-      addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));
-      if (this.newTherapies.length > 0) {
-        try {
-          //let url=actions.ADD_THERAPIES_DATA;
-          //  axios.post(url,addTherapyForm).then(response => {
-          //      let error=response.data.errorNumber;
-          //      let _attempts=response.data.attempts;
-          //      _wm.errNum=error;
-          //      if(error == 0){
-          //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
-          //         // setTimeout(function(){
-          //         //     _wm.hideSuccess();
-          //         // }, 4000);
-          //         _wm.i2hLoader=true;
-          //         _wm.initTherapies();
-          //         _wm.getTherapies();
-          //      }else{
-          //         let _errorDescription=response.data.errorDescription
-          //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
-          //      }
-          //  })
-        } catch (error) {
-          throw error;
-        }
-      } else {
-        eventBus.$emit('errorEvent', 1000, 4, 'show', 'Aggiungi almeno una terapia');
-      }
-    },
     printTraceabilityTherapy: function printTraceabilityTherapy(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
@@ -5123,7 +5387,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       return false;
     },
     addTraceabilityTherapy: function addTraceabilityTherapy(panel) {
-      alert('yy');
+      // alert('yy')
       var _wm = this;
       var _panel = panel;
       var _errors = 0;
@@ -5142,7 +5406,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       form.append('doctorName', 'mario');
       form.append('doctorUserName', 'rossi');
       if (_panel == 'th') {
-        alert('th');
+        // alert('th')
         if (!this.tHSaved) {
           form.append('action', 'store');
         } else {
@@ -5165,8 +5429,17 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         }
         if (!this.isObjEmpty(this.refusedTreatments.checked)) {
           var _nurs2 = JSON.stringify(this.refusedTreatments);
+
+          // for (let i = 0; i < refusedTreatments.length; i++) {
+          //     const value = refusedTreatments[i];
+          //     if (value == true) {
+          //         return (`${value} is true.`);
+          //     }else {
+          //         return(`${value} è false.`);
+          //     }
+          // }
+
           form.append('RefusedTreatment', _nurs2);
-          alert(_nurs2);
         }
       }
       if (_errors == 0) {
@@ -5231,7 +5504,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_TRACEABILITYS_BY_USER_ISTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          alert(JSON.stringify(response));
+          // alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
           _wm.errNum = error;
@@ -6526,55 +6799,50 @@ var render = function render() {
         _vm.$set(_vm.nursCpc, "dateEndCollection", $event.target.value);
       }
     }
-  })])])])]), _vm._v(" "), _c("div", [_c("a", {
-    staticClass: "btn btn-info i2hBtnPrint",
-    staticStyle: {
-      "margin-left": "949px",
-      "margin-top": "20px",
-      "margin-bottom": "10px"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-print"
-  }, [_c("input", {
+  })])])])]), _vm._v(" "), _c("table", [_vm._m(5), _vm._v(" "), _c("tbody", [_c("tr", [_c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.showInput5,
-      expression: "showInput5"
-    }],
-    attrs: {
-      type: "radio",
-      value: "true"
-    },
-    domProps: {
-      checked: _vm._q(_vm.showInput5, "true")
-    },
-    on: {
-      change: function change($event) {
-        _vm.showInput5 = "true";
-      }
-    }
-  })]), _vm._v("Aggiungi Modulo")])]), _vm._v(" "), _c("table", [_vm._m(5), _vm._v(" "), _c("tr", [_c("td", [_vm._v("\r\n                                            " + _vm._s(_vm.nursCpc.cpcDate) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.nursCpc.collectionPa,
-      expression: "nursCpc.collectionPa"
+      value: _vm.nursCpc.collectionPaSystolic,
+      expression: "nursCpc.collectionPaSystolic"
     }],
     staticStyle: {
       width: "5rem"
     },
     attrs: {
       type: "text",
-      name: "collection_pa"
+      name: "collection_pa_systolic"
     },
     domProps: {
-      value: _vm.nursCpc.collectionPa
+      value: _vm.nursCpc.collectionPaSystolic
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.nursCpc, "collectionPa", $event.target.value);
+        _vm.$set(_vm.nursCpc, "collectionPaSystolic", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursCpc.collectionPaDiastolic,
+      expression: "nursCpc.collectionPaDiastolic"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "text",
+      name: "collection_pa_diastolic"
+    },
+    domProps: {
+      value: _vm.nursCpc.collectionPaDiastolic
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursCpc, "collectionPaDiastolic", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
@@ -6646,100 +6914,8 @@ var render = function render() {
         _vm.$set(_vm.nursCpc, "collectionTc", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("td", [_vm._v("\r\n                                            " + _vm._s(_vm.nursCpc.collectionOperatorSignature) + "\r\n                                        ")])]), _vm._v(" "), _vm.showInput5 ? _c("tr", [_c("td", [_vm._v("\r\n                                            " + _vm._s(_vm.nursCpc.cpcDate) + "\r\n                                        ")]), _vm._v(" "), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.nursCpc.collectionPa,
-      expression: "nursCpc.collectionPa"
-    }],
-    staticStyle: {
-      width: "5rem"
-    },
-    attrs: {
-      type: "text",
-      name: "collection_pa"
-    },
-    domProps: {
-      value: _vm.nursCpc.collectionPa
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.nursCpc, "collectionPa", $event.target.value);
-      }
-    }
-  })]), _vm._v(" "), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.nursCpc.collectionFc,
-      expression: "nursCpc.collectionFc"
-    }],
-    staticStyle: {
-      width: "5rem"
-    },
-    attrs: {
-      type: "text",
-      name: "collection_fc"
-    },
-    domProps: {
-      value: _vm.nursCpc.collectionFc
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.nursCpc, "collectionFc", $event.target.value);
-      }
-    }
-  })]), _vm._v(" "), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.nursCpc.collectionSpo2,
-      expression: "nursCpc.collectionSpo2"
-    }],
-    staticStyle: {
-      width: "5rem"
-    },
-    attrs: {
-      type: "text",
-      name: "collection_spo2"
-    },
-    domProps: {
-      value: _vm.nursCpc.collectionSpo2
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.nursCpc, "collectionSpo2", $event.target.value);
-      }
-    }
-  })]), _vm._v(" "), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.nursCpc.collectionTc,
-      expression: "nursCpc.collectionTc"
-    }],
-    staticStyle: {
-      width: "5rem"
-    },
-    attrs: {
-      type: "text",
-      name: "collection_tc"
-    },
-    domProps: {
-      value: _vm.nursCpc.collectionTc
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.nursCpc, "collectionTc", $event.target.value);
-      }
-    }
-  })]), _vm._v(" "), _c("td")]) : _vm._e()]), _vm._v(" "), _c("div", {
-    staticClass: "ln_solid mt-5"
+  })])])])]), _vm._v("\r\n\r\n                                " + _vm._s(_vm.nursCpc) + "\r\n\r\n\r\n\r\n                                "), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid mt-2"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
   }, [_c("div", {
@@ -6771,7 +6947,7 @@ var staticRenderFns = [function () {
       background: "lightgrey",
       padding: "7px",
       "border-radius": "3px",
-      "margin-top": "100px"
+      "margin-top": "50px"
     }
   }, [_c("h1", [_vm._v("Modulo di raccolta dei parametri clinici come da prescrizione")])]);
 }, function () {
@@ -6813,7 +6989,11 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("tr", [_c("td", [_vm._v("DATA")]), _vm._v(" "), _c("td", [_vm._v("P.A.")]), _vm._v(" "), _c("td", [_vm._v("F.C.")]), _vm._v(" "), _c("td", [_vm._v("SPO2")]), _vm._v(" "), _c("td", [_vm._v("T.C.")]), _vm._v(" "), _c("td", [_vm._v("FIRMA")])]);
+  return _c("thead", [_c("tr", [_c("th", {
+    attrs: {
+      colspan: "2"
+    }
+  }, [_c("strong", [_vm._v("P.A.")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("F.C.")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("SPO2")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("T.C.")])])]), _vm._v(" "), _c("tr", [_c("td", [_c("strong", [_vm._v("sistolica")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("diastolica")])]), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")])]);
 }];
 render._withStripped = true;
 
@@ -6960,75 +7140,15 @@ var render = function render() {
         _vm.$set(_vm.nursHgt, "dateEndCollectionHgt", $event.target.value);
       }
     }
-  })])])])]), _vm._v(" "), _c("div", [_c("a", {
-    staticClass: "btn btn-info i2hBtnPrint",
-    staticStyle: {
-      "margin-left": "949px",
-      "margin-top": "20px",
-      "margin-bottom": "10px"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-print"
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row mb-2 mt-3"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(5), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.showInput1,
-      expression: "showInput1"
-    }],
-    attrs: {
-      type: "radio",
-      value: "true"
-    },
-    domProps: {
-      checked: _vm._q(_vm.showInput1, "true")
-    },
-    on: {
-      change: function change($event) {
-        _vm.showInput1 = "true";
-      }
-    }
-  })]), _vm._v("Aggiungi Modulo")])]), _vm._v(" "), _c("table", [_vm._m(5), _vm._v(" "), _c("tr", [_c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.nursHgt.hgtDate,
-      expression: "nursHgt.hgtDate"
-    }],
-    attrs: {
-      type: "date",
-      name: "hgt_date"
-    },
-    domProps: {
-      value: _vm.nursHgt.hgtDate
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.nursHgt, "hgtDate", $event.target.value);
-      }
-    }
-  })]), _vm._v(" "), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.nursHgt.hours,
-      expression: "nursHgt.hours"
-    }],
-    attrs: {
-      type: "text",
-      name: "hours"
-    },
-    domProps: {
-      value: _vm.nursHgt.hours
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.nursHgt, "hours", $event.target.value);
-      }
-    }
-  })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -7048,28 +7168,8 @@ var render = function render() {
         _vm.$set(_vm.nursHgt, "hgt", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.nursHgt.hgtOperatorSignature,
-      expression: "nursHgt.hgtOperatorSignature"
-    }],
-    attrs: {
-      type: "text",
-      name: "hgt"
-    },
-    domProps: {
-      value: _vm.nursHgt.hgtOperatorSignature
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.nursHgt, "hgtOperatorSignature", $event.target.value);
-      }
-    }
-  }), _vm._v(_vm._s(_vm.nursHgt.hgtOperatorSignature) + "\n                                    ")])])]), _vm._v(" "), _c("div", {
-    staticClass: "ln_solid mt-5"
+  })])])])]), _vm._v("\n\n                            " + _vm._s(_vm.nursHgt) + "\n\n                           \n\n                    \n                                        \n                            "), _c("div", {
+    staticClass: "ln_solid mt-2"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
   }, [_c("div", {
@@ -7101,7 +7201,7 @@ var staticRenderFns = [function () {
       background: "lightgrey",
       padding: "7px",
       "border-radius": "3px",
-      "margin-top": "100px"
+      "margin-top": "50px"
     }
   }, [_c("h1", [_vm._v("Modulo di raccolta "), _c("strong", [_vm._v("HGT")])])]);
 }, function () {
@@ -7112,7 +7212,7 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "department_hgt"
     }
-  }, [_c("strong", [_c("h4", [_vm._v("Reparto/Sezione")])])]);
+  }, [_c("h4", [_vm._v("Reparto/Sezione")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7121,7 +7221,7 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "doctor_prescriber_hgt"
     }
-  }, [_c("strong", [_c("h4", [_vm._v("Medico Prescrittore")])])]);
+  }, [_c("h4", [_vm._v("Medico Prescrittore")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7130,7 +7230,7 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "date_start_collection_hgt"
     }
-  }, [_c("strong", [_c("h4", [_vm._v("Data inizio raccolta dati ")])])]);
+  }, [_c("h4", [_vm._v("Data inizio raccolta dati ")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7139,11 +7239,16 @@ var staticRenderFns = [function () {
     attrs: {
       "for": "date_end_collection_hgt"
     }
-  }, [_c("strong", [_c("h4", [_vm._v("Data fine raccolta dati")])])]);
+  }, [_c("h4", [_vm._v("Data fine raccolta dati")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("tr", [_c("td", [_vm._v("DATA")]), _vm._v(" "), _c("td", [_vm._v("ORA")]), _vm._v(" "), _c("td", [_vm._v("HGT")]), _vm._v(" "), _c("td", [_vm._v("FIRMA")])]);
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "hgt"
+    }
+  }, [_c("h4", [_c("strong", [_vm._v("HGT")])])]);
 }];
 render._withStripped = true;
 
@@ -7269,160 +7374,73 @@ var render = function render() {
         _vm.$set(_vm.nursMcp, "dateEndRejection", $event.target.value);
       }
     }
-  })])])])]), _vm._v(" "), _c("div", [_c("a", {
-    staticClass: "btn btn-info i2hBtnPrint",
-    staticStyle: {
-      "margin-left": "949px",
-      "margin-top": "20px",
-      "margin-bottom": "10px"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-print"
-  }, [_c("input", {
+  })])])])]), _vm._v(" "), _c("table", [_vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("tr", [_c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.showInput1,
-      expression: "showInput1"
+      value: _vm.nursMcp.mcpDiet,
+      expression: "nursMcp.mcpDiet"
     }],
+    staticStyle: {
+      width: "5rem"
+    },
     attrs: {
       type: "radio",
-      value: "true"
+      value: "colazione",
+      name: "mcp_diet"
     },
     domProps: {
-      checked: _vm._q(_vm.showInput1, "true")
+      checked: _vm._q(_vm.nursMcp.mcpDiet, "colazione")
     },
     on: {
       change: function change($event) {
-        _vm.showInput1 = "true";
-      }
-    }
-  })]), _vm._v("Aggiungi Modulo")])]), _vm._v(" "), _c("table", [_vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("tr", [_c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.nursMcp.mcpDate,
-      expression: "nursMcp.mcpDate"
-    }],
-    staticStyle: {
-      width: "7rem"
-    },
-    attrs: {
-      type: "date",
-      name: "mcp_date"
-    },
-    domProps: {
-      value: _vm.nursMcp.mcpDate
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.nursMcp, "mcpDate", $event.target.value);
-      }
-    }
-  })]), _vm._v(" "), _c("td"), _c("td", [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.nursMcp.breakfast,
-      expression: "nursMcp.breakfast"
-    }],
-    staticStyle: {
-      width: "5rem"
-    },
-    attrs: {
-      type: "checkbox",
-      name: "breakfast"
-    },
-    domProps: {
-      checked: Array.isArray(_vm.nursMcp.breakfast) ? _vm._i(_vm.nursMcp.breakfast, null) > -1 : _vm.nursMcp.breakfast
-    },
-    on: {
-      change: function change($event) {
-        var $$a = _vm.nursMcp.breakfast,
-          $$el = $event.target,
-          $$c = $$el.checked ? true : false;
-        if (Array.isArray($$a)) {
-          var $$v = null,
-            $$i = _vm._i($$a, $$v);
-          if ($$el.checked) {
-            $$i < 0 && _vm.$set(_vm.nursMcp, "breakfast", $$a.concat([$$v]));
-          } else {
-            $$i > -1 && _vm.$set(_vm.nursMcp, "breakfast", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.$set(_vm.nursMcp, "breakfast", $$c);
-        }
+        return _vm.$set(_vm.nursMcp, "mcpDiet", "colazione");
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.nursMcp.lunch,
-      expression: "nursMcp.lunch"
+      value: _vm.nursMcp.mcpDiet,
+      expression: "nursMcp.mcpDiet"
     }],
     staticStyle: {
       width: "5rem"
     },
     attrs: {
-      type: "checkbox",
-      name: "lunch"
+      type: "radio",
+      value: "pranzo",
+      name: "mcp_diet"
     },
     domProps: {
-      checked: Array.isArray(_vm.nursMcp.lunch) ? _vm._i(_vm.nursMcp.lunch, null) > -1 : _vm.nursMcp.lunch
+      checked: _vm._q(_vm.nursMcp.mcpDiet, "pranzo")
     },
     on: {
       change: function change($event) {
-        var $$a = _vm.nursMcp.lunch,
-          $$el = $event.target,
-          $$c = $$el.checked ? true : false;
-        if (Array.isArray($$a)) {
-          var $$v = null,
-            $$i = _vm._i($$a, $$v);
-          if ($$el.checked) {
-            $$i < 0 && _vm.$set(_vm.nursMcp, "lunch", $$a.concat([$$v]));
-          } else {
-            $$i > -1 && _vm.$set(_vm.nursMcp, "lunch", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.$set(_vm.nursMcp, "lunch", $$c);
-        }
+        return _vm.$set(_vm.nursMcp, "mcpDiet", "pranzo");
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.nursMcp.dinner,
-      expression: "nursMcp.dinner"
+      value: _vm.nursMcp.mcpDiet,
+      expression: "nursMcp.mcpDiet"
     }],
     staticStyle: {
       width: "5rem"
     },
     attrs: {
-      type: "checkbox",
-      name: "dinner"
+      type: "radio",
+      value: "cena",
+      name: "mcp_diet"
     },
     domProps: {
-      checked: Array.isArray(_vm.nursMcp.dinner) ? _vm._i(_vm.nursMcp.dinner, null) > -1 : _vm.nursMcp.dinner
+      checked: _vm._q(_vm.nursMcp.mcpDiet, "cena")
     },
     on: {
       change: function change($event) {
-        var $$a = _vm.nursMcp.dinner,
-          $$el = $event.target,
-          $$c = $$el.checked ? true : false;
-        if (Array.isArray($$a)) {
-          var $$v = null,
-            $$i = _vm._i($$a, $$v);
-          if ($$el.checked) {
-            $$i < 0 && _vm.$set(_vm.nursMcp, "dinner", $$a.concat([$$v]));
-          } else {
-            $$i > -1 && _vm.$set(_vm.nursMcp, "dinner", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.$set(_vm.nursMcp, "dinner", $$c);
-        }
+        return _vm.$set(_vm.nursMcp, "mcpDiet", "cena");
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
@@ -7452,23 +7470,46 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.nursMcp.monitoringPa,
-      expression: "nursMcp.monitoringPa"
+      value: _vm.nursMcp.monitoringPaSystolic,
+      expression: "nursMcp.monitoringPaSystolic"
     }],
     staticStyle: {
       width: "5rem"
     },
     attrs: {
       type: "text",
-      name: "monitoring_pa"
+      name: "monitoring_pa_systolic"
     },
     domProps: {
-      value: _vm.nursMcp.monitoringPa
+      value: _vm.nursMcp.monitoringPaSystolic
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.nursMcp, "monitoringPa", $event.target.value);
+        _vm.$set(_vm.nursMcp, "monitoringPaSystolic", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("td", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursMcp.monitoringPaDiastolic,
+      expression: "nursMcp.monitoringPaDiastolic"
+    }],
+    staticStyle: {
+      width: "5rem"
+    },
+    attrs: {
+      type: "text",
+      name: "monitoring_pa_diastolic"
+    },
+    domProps: {
+      value: _vm.nursMcp.monitoringPaDiastolic
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursMcp, "monitoringPaDiastolic", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("td", [_c("input", {
@@ -7494,8 +7535,8 @@ var render = function render() {
         _vm.$set(_vm.nursMcp, "monitoringFc", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("td", [_vm._v("\n                                       " + _vm._s(_vm.nursMcp.operatorSignature) + "\n                                    ")])])]), _vm._v(" "), _c("div", {
-    staticClass: "ln_solid mt-3"
+  })])])]), _vm._v(" "), _vm._v("\n\n\n\n                                " + _vm._s(_vm.nursMcp) + "\n\n\n                                "), _c("div", {
+    staticClass: "ln_solid mt-2"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
   }, [_c("div", {
@@ -7527,7 +7568,7 @@ var staticRenderFns = [function () {
       background: "lightgrey",
       padding: "7px",
       "border-radius": "3px",
-      "margin-top": "100px"
+      "margin-top": "50px"
     }
   }, [_c("h1", [_vm._v("Modulo di monitoraggio parametri clinici in caso di rifiuto della alimentazione (sia liquidi, sia solidi).")])]);
 }, function () {
@@ -7560,15 +7601,23 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("tr", [_c("th", [_vm._v("DATA")]), _vm._v(" "), _c("th", {
+  return _c("tr", [_c("th", {
     attrs: {
-      colspan: "4"
+      colspan: "3"
     }
-  }, [_vm._v("\n                                        ALIMENTAZIONE \n                                        \n                                    ")]), _vm._v(" "), _c("th", [_vm._v("PESO "), _c("br"), _vm._v(" CORPOREO")]), _vm._v(" "), _c("th", [_vm._v("P.A.")]), _vm._v(" "), _c("th", [_vm._v("F.C.")]), _vm._v(" "), _c("th", [_vm._v("FIRMA "), _c("br"), _vm._v(" OPERATORE")])]);
+  }, [_c("strong", [_vm._v("ALIMENTAZIONE")])]), _vm._v(" "), _c("th", {
+    attrs: {
+      rowspan: "1"
+    }
+  }, [_c("strong", [_vm._v(" PESO "), _c("br"), _vm._v(" CORPOREO")])]), _vm._v(" "), _c("th", {
+    attrs: {
+      colspan: "2"
+    }
+  }, [_c("strong", [_vm._v("P.A.")])]), _vm._v(" "), _c("th", [_vm._v("F.C.")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("tr", [_c("td"), _vm._v(" "), _c("td"), _c("td", [_vm._v("\n                                            colazione\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            pranzo\n                                        ")]), _vm._v(" "), _c("td", [_vm._v("\n                                            cena\n                                        ")]), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")]);
+  return _c("tr", [_c("td", [_c("strong", [_vm._v("colazione")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("pranzo")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("cena")])]), _vm._v(" "), _c("td"), _vm._v(" "), _c("td", [_c("strong", [_vm._v("sistolica")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("diastolica")])]), _vm._v(" "), _c("td")]);
 }];
 render._withStripped = true;
 
@@ -7714,6 +7763,86 @@ var render = function render() {
         _vm.$set(_vm.nursTao, "dateTao", $event.target.value);
       }
     }
+  })])])])]), _vm._v(" "), _c("hr"), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "row mt-3"
+  }, [_c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(6), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursTao.taoDosage,
+      expression: "nursTao.taoDosage"
+    }],
+    attrs: {
+      type: "text",
+      name: "tao_dosage"
+    },
+    domProps: {
+      value: _vm.nursTao.taoDosage
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursTao, "taoDosage", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(7), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursTao.taoDoctor,
+      expression: "nursTao.taoDoctor"
+    }],
+    attrs: {
+      type: "text",
+      name: "tao_doctor"
+    },
+    domProps: {
+      value: _vm.nursTao.taoDoctor
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursTao, "taoDoctor", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row mt-3"
+  }, [_c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(8), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursTao.taoCpsiSignature,
+      expression: "nursTao.taoCpsiSignature"
+    }],
+    attrs: {
+      type: "text",
+      name: "tao_cpsi_signature"
+    },
+    domProps: {
+      value: _vm.nursTao.taoCpsiSignature
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursTao, "taoCpsiSignature", $event.target.value);
+      }
+    }
   })])])])]), _vm._v(" "), _c("div", {
     staticClass: "ln_solid mt-5"
   }), _vm._v(" "), _c("div", {
@@ -7747,7 +7876,7 @@ var staticRenderFns = [function () {
       background: "lightgrey",
       padding: "7px",
       "border-radius": "3px",
-      "margin-top": "100px"
+      "margin-top": "50px"
     }
   }, [_c("h1", [_vm._v("Modulo di monitoraggio della prescrizione e della somministrazione della terapia "), _c("strong", [_vm._v("TAO")])])]);
 }, function () {
@@ -7789,6 +7918,42 @@ var staticRenderFns = [function () {
       "for": "date_tao"
     }
   }, [_c("strong", [_c("h4", [_vm._v("Data")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", {
+    staticClass: "text-center"
+  }, [_c("strong", [_vm._v("Monitoraggio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "tao_dosage"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("Dosaggio")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    staticStyle: {
+      "margin-left": "10rem"
+    },
+    attrs: {
+      "for": "tao_doctor"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("Medico")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-2 col-sm-2 label-align",
+    attrs: {
+      "for": "tao_cpsi_signature"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("Firma CPSI")])])]);
 }];
 render._withStripped = true;
 
@@ -25922,14 +26087,14 @@ var render = function render() {
           }
         }
       }
-    })]), _vm._v(" "), _c("td", [_vm.refusedTreatments.checked[therapy.drug] ? _c("input", {
+    }), _vm._v(" "), _vm.refusedTreatments.checked[therapy.drug] ? _c("input", {
       directives: [{
         name: "model",
         rawName: "v-model",
         value: _vm.refusedTreatments.descriptions[therapy.drug],
         expression: "refusedTreatments.descriptions[therapy.drug]"
       }],
-      staticClass: "form-control",
+      staticClass: "form-control mt-3",
       attrs: {
         type: "text",
         id: therapy.id,
@@ -25946,7 +26111,7 @@ var render = function render() {
         }
       }
     }) : _vm._e()])]);
-  })], 2), _vm._v(" "), _c("br"), _vm._v("\r\n                                TERAPIE RIFIUTATE: " + _vm._s(_vm.refusedTreatments) + "\r\n                                "), _c("br"), _vm._v(" "), _c("br"), _vm._v("\r\n                                nursTh: " + _vm._s(_vm.nursCardTh) + "\r\n                                "), _c("br"), _vm._v(" "), _c("div", {
+  })], 2), _vm._v(" "), _c("br"), _vm._v("\r\n                                TERAPIE RIFIUTATE: " + _vm._s(_vm.refusedTreatments) + "\r\n                                "), _c("br"), _vm._v(" "), _c("br"), _vm._v("\r\n                                nursTh: " + _vm._s(_vm.nursCardTh) + "\r\n                                "), _c("br"), _vm._v(" "), _c("hr"), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "50px"
@@ -26140,12 +26305,12 @@ var staticRenderFns = [function () {
   return _c("div", {
     staticClass: "ml-3 mt-4"
   }, [_c("h5", [_vm._v("Visto il mattinale, verificati i presenti segnalati e le relative terapie prescritte dai medici per ogni detenuto, "), _c("br"), _vm._v(" si attesta quanto segue:")]), _vm._v(" "), _c("h2", {
-    staticClass: "mt-4 mb-2"
+    staticClass: "mt-4 mb-3"
   }, [_vm._v("Terapia "), _c("strong", [_vm._v("non somministata ")]), _vm._v("al paziente:")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("tr", [_c("td", [_c("strong", [_vm._v("FARMACO")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("DAL")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("AL")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("ORA")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("FREQUENZA")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("NON "), _c("br"), _vm._v(" SOMMINISTRATO")])])]);
+  return _c("tr", [_c("th", [_c("strong", [_vm._v("FARMACO")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("DAL")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("AL")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("ORA")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("FREQUENZA")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("NON "), _c("br"), _vm._v(" SOMMINISTRATO")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -31106,7 +31271,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".labelWidth[data-v-6b142053] {\n  min-width: 190px;\n}\n.dbTitle[data-v-6b142053] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-6b142053], .item textarea[data-v-6b142053] {\n  margin-right: 10px;\n}\n.treatment[data-v-6b142053] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\ntable[data-v-6b142053] {\n  font-family: arial, sans-serif;\n  border-collapse: collapse;\n  width: 100%;\n}\ntd[data-v-6b142053], th[data-v-6b142053] {\n  border: 2px solid #dddddd;\n  text-align: center;\n  padding: 2;\n}\nul[data-v-6b142053], li[data-v-6b142053] {\n  list-style: none;\n}", ""]);
+exports.push([module.i, ".labelWidth[data-v-6b142053] {\n  min-width: 190px;\n}\n.dbTitle[data-v-6b142053] {\n  background: #184140;\n  color: white;\n  padding: 10px;\n  font-weight: bold !important;\n}\n.item input[data-v-6b142053], .item textarea[data-v-6b142053] {\n  margin-right: 10px;\n}\n.treatment[data-v-6b142053] {\n  border: 1px double #f1f1f1;\n  margin: 1.5rem 0;\n  padding: 20px 15px;\n  font-style: italic;\n  box-shadow: 1px 1px 3px 1px #ccc;\n  border-radius: 5px;\n  color: #333;\n}\ntable[data-v-6b142053] {\n  font-family: arial, sans-serif;\n  border-collapse: collapse;\n  width: 100%;\n}\ntd[data-v-6b142053], th[data-v-6b142053] {\n  border: 2px solid #dddddd;\n  text-align: center;\n  padding: 3;\n}\nul[data-v-6b142053], li[data-v-6b142053] {\n  list-style: none;\n}", ""]);
 
 // exports
 

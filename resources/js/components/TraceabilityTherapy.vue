@@ -36,18 +36,18 @@
                                 <div class="ml-3 mt-4">
                                     <h5>Visto il mattinale, verificati i presenti segnalati e le relative terapie prescritte dai medici per ogni detenuto, <br> si attesta quanto segue:</h5>
                                     
-                                    <h2 class="mt-4 mb-2">Terapia <strong>non somministata </strong>al paziente:</h2>
+                                    <h2 class="mt-4 mb-3">Terapia <strong>non somministata </strong>al paziente:</h2>
                                 </div>
 
                                 
                                 <table>
                                     <tr>
-                                        <td><strong>FARMACO</strong></td>
-                                        <td><strong>DAL</strong></td>
-                                        <td><strong>AL</strong></td>
-                                        <td><strong>ORA</strong></td>
-                                        <td><strong>FREQUENZA</strong></td>
-                                        <td><strong>NON <br> SOMMINISTRATO</strong></td>
+                                        <th><strong>FARMACO</strong></th>
+                                        <th><strong>DAL</strong></th>
+                                        <th><strong>AL</strong></th>
+                                        <th><strong>ORA</strong></th>
+                                        <th><strong>FREQUENZA</strong></th>
+                                        <th><strong>NON <br> SOMMINISTRATO</strong></th>
                                     </tr>
 
                                     <tr v-for="(therapy, index) in therapies" :key="index">
@@ -68,16 +68,10 @@
                                             {{therapy.frequency}}
                                         </td>
                                         <td>
-                                        
                                             <label  class="i2hCheckboxLabel" :for="therapy.drug">{{therapy.drug}}</label>
                                             <input type="checkbox" class="form-control i2hCheckbox" :id="therapy.drug" :name="therapy.drug" :value="therapy.drug" v-model="refusedTreatments.checked[therapy.drug]"> 
-
-                                            <!-- <input type="checkbox" :value="therapy.drug" v-model="terapieRifiutate"> -->
-                                            <!-- <input style="width: 5rem;" type="checkbox" v-model=""> -->
+                                            <input v-if="refusedTreatments.checked[therapy.drug]" type="text" class="form-control mt-3" :id="therapy.id" :name="therapy.id" placeholder="motivazione" v-model="refusedTreatments.descriptions[therapy.drug]">
                                         </td>
-                                        <td>
-                                            <input v-if="refusedTreatments.checked[therapy.drug]" type="text" class="form-control" :id="therapy.id" :name="therapy.id" placeholder="motivazione" v-model="refusedTreatments.descriptions[therapy.drug]"> 
-                                        </td>     
                                     </tr>  
                                 </table>
 
@@ -90,20 +84,7 @@
                                 <br>
 
 
-                                <!-- <div class="row">
-                                    <div  class="pull-right" style="margin-bottom:30px">
-                                        <button @click="addTherapy" :disabled="addDrugbuttonDisabled" type="button" class="btn btn-primary">Aggiungi Terapia</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12">
-                                        <div  class="" style="margin-bottom:30px">
-                                            <button style="width:20%" @click="saveTherapy" :disabled="addDrugbuttonDisabled" type="button" class="btn btn-success">Salva</button>
-                                        </div>
-                                    </div>
-                                </div> -->
-
-
+                                <hr><hr>
                                 
                                 <div class="row" style="margin-top:50px;">
                                     <div class="col-md-12 col-sm-12">
@@ -355,10 +336,14 @@ label {
     width:25px;
     height:25px;
 }
+
+
 </style>
 
 
 <script>
+
+
 
     import * as actions from "../config/ApiUrl";
     import axios from 'axios';
@@ -408,11 +393,11 @@ label {
                 
                 
                 
-                                accessData:[
-                                    id => 31,
-                                    name => 'mario',
-                                    lastname => 'rossi',   
-                                ],
+                accessData:[
+                    id => 31,
+                    name => 'mario',
+                    lastname => 'rossi',   
+                ],
                 
 
 
@@ -459,63 +444,6 @@ label {
             },
 
 
-            addTherapy () {
-
-                this.newTherapies.push({
-                    idDoctor:14,
-                    doctorName:'medico',
-                    doctorLastname:'test',   
-                    userInstanceId :17,
-                    userId:36,
-                    drug: "",
-                    posology: "",
-                    frequency: "",
-                    drugRoute: "",
-                    morning: 0,
-                    afternoon: 0,
-                    evening: 0,
-                    external_doctor_prescription:0,
-                    deleted:0, 
-                    acceptance:0,  
-                    acceptanceId:0 
-                })
-            },
-
-            saveTherapy(){
-                let _wm=this;
-                var addTherapyForm = new FormData();
-                addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
-                if(this.newTherapies.length>0){
-                    try {
-                        //let url=actions.ADD_THERAPIES_DATA;
-                        //  axios.post(url,addTherapyForm).then(response => {
-                        //      let error=response.data.errorNumber;
-                        //      let _attempts=response.data.attempts;
-                        //      _wm.errNum=error;
-                        //      if(error == 0){
-                        //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
-                        //         // setTimeout(function(){
-                        //         //     _wm.hideSuccess();
-                        //         // }, 4000);
-                        //         _wm.i2hLoader=true;
-                        //         _wm.initTherapies();
-                        //         _wm.getTherapies();
-                        //      }else{
-                        //         let _errorDescription=response.data.errorDescription
-                        //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
-                        //      }
-                        //  })
-                    }catch (error) {
-                        throw error
-                    }                             
-                }else{
-                    eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
-                }
-            },
-
-
-
-
             printTraceabilityTherapy(printPdf){
 
                 let v_myWindow
@@ -529,7 +457,7 @@ label {
                  
           
             addTraceabilityTherapy(panel){
-                alert('yy')
+                // alert('yy')
                 let _wm = this;
                 let _panel=panel;
                 let _errors=0;
@@ -549,7 +477,7 @@ label {
                 form.append('doctorUserName', 'rossi');
 
                 if(_panel=='th'){
-                    alert('th')
+                    // alert('th')
                     if(!this.tHSaved){
                         form.append('action', 'store');
                     }else{
@@ -574,11 +502,20 @@ label {
                     }
                     if(!this.isObjEmpty(this.refusedTreatments.checked)){
                         let _nurs2=JSON.stringify(this.refusedTreatments);
+                        
+                        // for (let i = 0; i < refusedTreatments.length; i++) {
+                        //     const value = refusedTreatments[i];
+                        //     if (value == true) {
+                        //         return (`${value} is true.`);
+                        //     }else {
+                        //         return(`${value} è false.`);
+                        //     }
+                        // }
+                        
                         form.append('RefusedTreatment', _nurs2);
-                        alert(_nurs2);
                     }  
                 }
-                
+
                 if(_errors==0){
                     try {
                         axios.post(actions.ADD_TRACEABILITY,form).then(response => {
@@ -656,7 +593,7 @@ label {
                 try {
                     let url=actions.GET_TRACEABILITYS_BY_USER_ISTANCE_ID+'/'+id;
                     axios.get(url).then(response => {
-                        alert(JSON.stringify(response));
+                        // alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
                         _wm.errNum=error;

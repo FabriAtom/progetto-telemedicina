@@ -7,7 +7,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-12 col-sm-12">
                     <div class="x_panel">
-                        <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:100px;">
+                        <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:50px;">
                             <h1>Modulo di raccolta dei parametri clinici come da prescrizione</h1>
                         </div>
 
@@ -49,65 +49,92 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div>
-                                    <a style="margin-left: 949px; margin-top: 20px; margin-bottom: 10px;" class="btn btn-info i2hBtnPrint"><i class="fa fa-print"><input type="radio" v-model="showInput5" value="true"></i>Aggiungi Modulo</a>
-                                </div>
 
-                               
+                        
                                 <table>
-                                    <tr>
-                                        <td>DATA</td>
-                                        <td>P.A.</td>
-                                        <td>F.C.</td>
-                                        <td>SPO2</td>
-                                        <td>T.C.</td>
-                                        <td>FIRMA</td>
-                                    </tr>
-                                    <tr>
-                                         <td>
-                                            {{nursCpc.cpcDate}}
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_pa" v-model="nursCpc.collectionPa">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_fc" v-model="nursCpc.collectionFc">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_spo2" v-model="nursCpc.collectionSpo2">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_tc" v-model="nursCpc.collectionTc">
-                                        </td>
-                                        <td>
-                                            {{nursCpc.collectionOperatorSignature}}
-                                        </td>
-                                    </tr> 
-                                    <tr v-if="showInput5">
-                                        <td>
-                                            {{nursCpc.cpcDate}}
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_pa" v-model="nursCpc.collectionPa">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_fc" v-model="nursCpc.collectionFc">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_spo2" v-model="nursCpc.collectionSpo2">
-                                        </td>
-                                        <td>
-                                            <input style="width: 5rem;" type="text" name="collection_tc" v-model="nursCpc.collectionTc">
-                                        </td>
-                                        <td>
-                                            <!-- {{nursCpc.collectionOperatorSignature}} -->
-                                        </td>
-                                    </tr>
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2"><strong>P.A.</strong></th>
+                                            <th><strong>F.C.</strong></th>
+                                            <th><strong>SPO2</strong></th>
+                                            <th><strong>T.C.</strong></th>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>sistolica</strong></td>  
+                                            <td><strong>diastolica</strong></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            
+                                                <td>
+                                                    <input style="width: 5rem;"  type="text" name="collection_pa_systolic" v-model="nursCpc.collectionPaSystolic">
+                                                </td>
+                                                <td>
+                                                    <input style="width: 5rem;"  type="text" name="collection_pa_diastolic" v-model="nursCpc.collectionPaDiastolic">
+                                                </td>
+                                            
+                                            <td>
+                                                <input style="width: 5rem;"  type="text" name="collection_fc" v-model="nursCpc.collectionFc">
+                                            </td>
+                                            <td>
+                                                <input style="width: 5rem;"  type="text" name="collection_spo2" v-model="nursCpc.collectionSpo2">
+                                            </td>
+                                            <td>
+                                                <input style="width: 5rem;"  type="text" name="collection_tc"  v-model="nursCpc.collectionTc">
+                                            </td>
+                                        </tr> 
+                                    </tbody>
+
                                 </table>
 
+                                {{nursCpc}}
+
+
+
+                                <!-- <div v-if="newTheraphyPnl">
+                                    <div v-for="(newTherapy, index) in newTherapies" :key="newTherapy.id" class="demot" >
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <input type="date"  class="autoCompResp" :id="`newTherapy1`" :name="index" v-model="newTherapy.cpc_date" maxlength="500" style="margin: 0 0; width: 7rem;"> 
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" :id="`newTherapy2`"  :name="index" v-model="newTherapy.collection_pa"  style="margin: 0 0;  width: 5rem;">
+                                                    </td>
+                                                    <td>    
+                                                        <input type="text" :id="`newTherapy3`"  :name="index" v-model="newTherapy.collection_fc"  style="margin: 0 0;  width: 5rem;">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" :id="`newTherapy4`"   :name="index" v-model="newTherapy.collection_spo2"  style="margin: 0 0;  width: 5rem;">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" :id="`newTherapy5`"  :name="index" v-model="newTherapy.collection_tc"  style="margin: 0 0;  width: 5rem;">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" :id="`newTherapy5`"  :name="index" v-model="newTherapy.collection_operator_signature"  style="margin: 0 0;  width: 5rem;">
+                                                    </td>
+                                                </tr>
+                                            </tbody> 
+                                        </table>
+                                    </div>
+                                </div> 
+
+                                <hr><hr>
+
+                                {{therapies}}
+
+                                <hr><hr>
+
+                                {{newTherapies}}-->
 
                                 
-                                <div class="ln_solid mt-5"></div>
+                                <div class="ln_solid mt-2"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addClinicalParameterCollection('cpc')">{{btnCpcSend}}</span>
@@ -196,20 +223,6 @@ ul, li{
 
                 showInput5:false,
 
-                // departmentCpc:null,
-                // dateStartCollection:null,
-                // dateEndCollection:null,
-                // doctorPrescriber:null,
-                // cpcDate:null,
-                // collectionPa:null,
-                // collectionFc:null,
-                // collectionSpo2:null,
-                // collectionTc:null,
-                // collectionOperatorSignature:null,
-                // folderPageCollection:null,
-
-
-
                 nursCpc:{},
 
                 accessData:[
@@ -220,16 +233,92 @@ ul, li{
                     
                 ],
              
+                
                 date:new Date(),
-
+                
                 mainTitle:"psy",
                 firstSave:true,
                 cPCSaved:false,
-
+                
                 
                 btnCpcSend:"Salva",
                 total:0,               
                 allClinicalParameterCollections:null,
+                
+                
+
+            //     therapies: [
+            //     {
+            //         id: 1,
+            //         drug: "tachipirina",
+            //         posology: "2 volte al di",
+            //         frequency: "test test",
+            //         startTherapy: "2022-10-12",
+            //         endTherapy: "2023-06-10",
+            //         drugRoute: "intramuscolare",
+            //         morning: "",
+            //         afternoon: true,
+            //         evening: "",
+            //         external_doctor_prescription:0
+            //     },
+            //     {
+            //         id: 2,          
+            //         drug: "toradol",
+            //         posology: "2 volte al di",
+            //         frequency: "il venerdì",
+            //         startTherapy: "2023-01-01",
+            //         endTherapy: "2023-12-31",
+            //         drugRoute: "orale",
+            //         morning: true,
+            //         afternoon: true,
+            //         evening: "",
+            //         external_doctor_prescription:0
+            //     },
+            //     {
+            //         id: 3,        
+            //         drug: "buscopan",
+            //         posology: "unidie",
+            //         frequency: "tutti i giorni",
+            //         startTherapy: "2022-08-12",
+            //         endTherapy: "2023-07-23",
+            //         drugRoute: "intramuscolare",
+            //         morning: true,
+            //         afternoon: "",
+            //         evening: "",
+            //         external_doctor_prescription:0
+            //     },
+            //     ],
+
+            //     newTherapies: [
+            //     {
+            //         idDoctor:0,
+            //         doctorName:'',
+            //         doctorLastname:'',
+            //         userInstanceId:0,
+            //         userId:0,
+
+            //         cpc_date:'',
+            //         collection_pa:'',
+            //         collection_fc:'',
+            //         collection_spo2:'',
+            //         collection_tc:'',
+            //         // drug: "",
+            //         // posology: "",
+            //         // frequency: "",
+            //         // startTherapy: "",
+            //         // endTherapy: null,
+            //         // drugRoute: "",
+            //         // morning: 0,
+            //         // afternoon: 0,
+            //         // evening: 0,
+            //         // external_doctor_prescription:0,
+            //         // deleted:0,
+            //         // acceptance:0,
+            //         // acceptanceId:0 
+            //     },
+            // ],
+            // showtherapies:true,
+            // newTheraphyPnl:true,
             }
         },
 
@@ -237,8 +326,80 @@ ul, li{
             this.getClinicalParameterCollectionsByUserIstanceId(1)
         },
 
+        computed: {
+        },
+
+        watch: {
+        },
+
 
         methods: {
+
+            // addTherapy () {
+
+            //     this.newTherapies.push({
+            //         idDoctor:14,
+            //         doctorName:'medico',
+            //         doctorLastname:'test',   
+            //         userInstanceId :17,
+            //         userId:36,
+            //         // drug: "",
+            //         // posology: "",
+            //         // frequency: "",
+            //         // drugRoute: "",
+            //         // morning: 0,
+            //         // afternoon: 0,
+            //         // evening: 0,
+            //         // external_doctor_prescription:0,
+            //         // deleted:0, 
+            //         // acceptance:0,  
+            //         // acceptanceId:0 
+            //         cpc_date:'',
+            //         collection_pa:'',
+            //         collection_fc:'',
+            //         collection_spo2:'',
+            //         collection_tc:'',
+            //     })
+            // },
+
+            // saveTherapy(){
+            // let _wm=this;
+            // var addTherapyForm = new FormData();
+            // addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
+            // if(this.newTherapies.length>0){
+            //     try {
+            //         //let url=actions.ADD_THERAPIES_DATA;
+            //         //  axios.post(url,addTherapyForm).then(response => {
+            //         //      let error=response.data.errorNumber;
+            //         //      let _attempts=response.data.attempts;
+            //         //      _wm.errNum=error;
+            //         //      if(error == 0){
+            //         //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
+            //         //         // setTimeout(function(){
+            //         //         //     _wm.hideSuccess();
+            //         //         // }, 4000);
+            //         //         _wm.i2hLoader=true;
+            //         //         _wm.initTherapies();
+            //         //         _wm.getTherapies();
+            //         //      }else{
+            //         //         let _errorDescription=response.data.errorDescription
+            //         //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
+            //         //      }
+            //         //  })
+            //     }catch (error) {
+            //         throw error
+            //     }                             
+            // }else{
+            //     eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
+            // }
+            // },
+
+
+
+
+
+
+
 
             printClinicalParameterCollection(printPdf){
 
@@ -252,7 +413,6 @@ ul, li{
             },
 
             
-                 
             
 
 
