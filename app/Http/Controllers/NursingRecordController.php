@@ -415,115 +415,145 @@ class NursingRecordController extends Controller
 //  -----------------------------------------------------------------------------------------------
     // TraceabilityTherapy
     
-    // public function printPdf(Request $request) {
+    public function printPdf(Request $request) {
 
-    //     $nursMcp = TraceabilityTherapy::where('user_instance_id',36)->first();
+        $nursMcp = TraceabilityTherapy::where('user_instance_id',36)->first();
 
-    //     $pdf = new PDFClass();
-    //     if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
-    //         header("Content-type: application/PDF");
-    //     } else {
-    //         header("Content-type: application/PDF");
-    //         header("Content-Type: a \pplication/pdf");
-    //     }
-    //     $pdf->SetAutoPageBreak(true, 30);
+        $pdf = new PDFClass();
+        if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+            header("Content-type: application/PDF");
+        } else {
+            header("Content-type: application/PDF");
+            header("Content-Type: a \pplication/pdf");
+        }
+        $pdf->SetAutoPageBreak(true, 30);
 
-    //     $pdf->SetTitle('PDF TraceabilityTherapy');
+        $pdf->SetTitle('PDF TraceabilityTherapy');
     
-    //     $pdf->AliasNbPages();
+        $pdf->AliasNbPages();
 
-    //     $pdf->AddPage();
+        $pdf->AddPage();
 
-    //     $pdf->SetFillColor(255,255,255);
-    //     $pdf->SetDrawColor(0,0,0);
-    //     $pdf->SetTextColor(0,0,0);
-    //     $pdf->Cell(0,6,'Modulo Di Monitoraggio Parametri Clinici In Caso Di Rifiuto Della Alimentazione',0,0,'C',true);
-    //     $pdf->Ln(15);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+        $pdf->Cell(0,6,'Registro Per Ogni Turno Di Tracciabilità Delle Terapie Somministrate ',0,0,'C',true);
+        $pdf->Ln(7);
+        $pdf->Cell(0,6,'E Delle Eventuali Non Somministrazioni',0,0,'C',true);
+        $pdf->Ln(15);
 
-    //     $pdf->SetLineWidth(.1);
+        $pdf->SetLineWidth(.1);
 
-    //     $pdf->SetFont('Arial','',12);
-
-
-    //     $pdf->SetDrawColor(128,0,0);
-    //     $pdf->SetFillColor(0,78,155);
-    //     $pdf->SetTextColor(255,255,255);
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,7,'Info',0,0,'L',true);
-    //     $pdf->SetFillColor(255,255,255);
-    //     $pdf->SetDrawColor(0,0,0);
-    //     $pdf->SetTextColor(0,0,0);
-    //     $pdf->Ln(12);
+        $pdf->SetFont('Arial','',12);
 
 
-    //     $pdf->Cell(37,7,'Reparto/Sezione:');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(40,7,$nursMcp->therapies);
-    //     // $pdf->Ln(5);
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(43,7,'Medico Prescrittore:');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(40,7,$nursMcp->drug);
-    //     $pdf->Ln(10);
-
+        $pdf->SetDrawColor(128,0,0);
+        $pdf->SetFillColor(0,78,155);
+        $pdf->SetTextColor(255,255,255);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0,7,'Terapia non somministata al paziente:',0,0,'L',true);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+        $pdf->Ln(12);
 
 
+        $pdf->Cell(37,7,'Farmaco non somministrato:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Ln(7);
+        $pdf->Multicell(180,7,$nursMcp->drugs_not_administered);
+        $pdf->Ln(5);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(53,7,'Data Inizio Raccolta Dati:');
-    //     $pdf->SetFillColor(255,255,255);
-    //     $pdf->SetDrawColor(0,0,0);
-    //     $pdf->SetTextColor(0,0,0);
-    //     // $pdf->Ln(10);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(60,7,$nursMcp->date_start_collection_hgt);
-    //     $pdf->Ln(10);
-
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(53,7,'Data Fine Raccolta Dati:');
-    //     $pdf->SetFillColor(255,255,255);
-    //     $pdf->SetDrawColor(0,0,0);
-    //     $pdf->SetTextColor(0,0,0);
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(60,7,$nursMcp->date_end_collection_hgt);
-    //     $pdf->Ln(15);
-
-    //     $pdf->SetDrawColor(128,0,0);
-    //     $pdf->SetFillColor(0,78,155);
-    //     $pdf->SetTextColor(255,255,255);
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(0,7,'Modulo',0,0,'L',true);
-    //     $pdf->SetFillColor(255,255,255);
-    //     $pdf->SetDrawColor(0,0,0);
-    //     $pdf->SetTextColor(0,0,0);
-    //     $pdf->Ln(12);
-
-
-    //     $pdf->Cell(12,7,'Data:');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(56,7,$nursMcp->hgt_date);
-
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(12,7,'Ora:');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(60,7,$nursMcp->hours);
         
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(12,7,'HGT:');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(45,7,$nursMcp->hgt);
-    //     $pdf->Ln(20);
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(36,7,'Firma Operatore:');
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->cell(40,7,$nursMcp->hgt_operator_signature);
 
-    //     $pdf->Output("stampa.pdf", "I");
-    //     exit();
-    // }
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(37,7,'Medico Avvisato:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->cell(20,7,$nursMcp->medical_alert);
+        $pdf->Ln(7);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(20,7,'Note:');
+        // $pdf->Ln(7);
+        $pdf->SetFont('Arial','',12);
+        $pdf->Multicell(160,7,$nursMcp->medical_alert_note);
+        $pdf->Ln(5);
+
+        
+
+        
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(85,7,'Annotazione O Prescrizione Del Medico:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->cell(20,7,$nursMcp->doctors_prescriptions);
+        $pdf->Ln(7);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(20,7,'Note:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Multicell(160,7,$nursMcp->doctors_prescriptions_note);
+        
+
+
+
+
+
+        // $pdf->SetFont('Arial', 'B', 12);
+        // $pdf->Cell(53,7,'Data Inizio Raccolta Dati:');
+        // $pdf->SetFillColor(255,255,255);
+        // $pdf->SetDrawColor(0,0,0);
+        // $pdf->SetTextColor(0,0,0);
+        // // $pdf->Ln(10);
+        // $pdf->SetFont('Arial','',12);
+        // $pdf->cell(60,7,$nursMcp->date_start_collection_hgt);
+        // $pdf->Ln(10);
+
+
+        // $pdf->SetFont('Arial', 'B', 12);
+        // $pdf->Cell(53,7,'Data Fine Raccolta Dati:');
+        // $pdf->SetFillColor(255,255,255);
+        // $pdf->SetDrawColor(0,0,0);
+        // $pdf->SetTextColor(0,0,0);
+        // $pdf->SetFont('Arial','',12);
+        // $pdf->cell(60,7,$nursMcp->);
+        // $pdf->Ln(15);
+
+        // $pdf->SetDrawColor(128,0,0);
+        // $pdf->SetFillColor(0,78,155);
+        // $pdf->SetTextColor(255,255,255);
+        // $pdf->SetFont('Arial', 'B', 12);
+        // $pdf->Cell(0,7,'Modulo',0,0,'L',true);
+        // $pdf->SetFillColor(255,255,255);
+        // $pdf->SetDrawColor(0,0,0);
+        // $pdf->SetTextColor(0,0,0);
+        // $pdf->Ln(12);
+
+
+        // $pdf->Cell(12,7,'Data:');
+        // $pdf->SetFont('Arial','',12);
+        // $pdf->cell(56,7,$nursMcp->hgt_date);
+
+        // $pdf->SetFont('Arial', 'B', 12);
+        // $pdf->Cell(12,7,'Ora:');
+        // $pdf->SetFont('Arial','',12);
+        // $pdf->cell(60,7,$nursMcp->hours);
+        
+        // $pdf->SetFont('Arial', 'B', 12);
+        // $pdf->Cell(12,7,'HGT:');
+        // $pdf->SetFont('Arial','',12);
+        // $pdf->cell(45,7,$nursMcp->hgt);
+        // $pdf->Ln(20);
+
+        // $pdf->SetFont('Arial', 'B', 12);
+        // $pdf->Cell(36,7,'Firma Operatore:');
+        // $pdf->SetFont('Arial','',12);
+        // $pdf->cell(40,7,$nursMcp->hgt_operator_signature);
+
+        $pdf->Output("stampa.pdf", "I");
+        exit();
+    }
 
 // ----------------------------------------------------------------------------------
 
@@ -1159,39 +1189,6 @@ class NursingRecordController extends Controller
         $userInstanceId=$request->input("user_instance_id",36);
         $_traceTerapy = new TraceabilityTherapy;
 
-
-        // userName: mario
-        // userLastName: rossi
-        // userInstanceId: 36
-        // userId: 237
-        // doctorId: 63
-        // doctorName: mario
-        // doctorUserName: rossi
-        // action: store
-        // section: th
-    
-        // RefusedTreatment: {"checked":{"Tachipirina":true,"Cortisone":true},"descriptions":{"Tachipirina":"test","Cortisone":"test"}}
-
-
-
-        // 'medicalAlertNote'
-        // 'medicalAlert'
-        //'doctorsPrescriptionsNote'
-        //'doctorsPrescriptions'
-        // id	
-        // id_doctor	
-        // user_instance_id	
-        // doctor_name	
-        // doctor_lastname	
-        // th_date	
-        // drugs_not_administered	
-        // medical_alert	
-        // medical_alert_note	
-        // doctors_prescriptions	
-        // doctors_prescriptions_note	
-
-
- 
         $now=date("Y-m-d H:i:s");
         $_traceTerapy->user_instance_id=$userInstanceId;
         if($request->has('doctorId')){

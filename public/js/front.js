@@ -7843,7 +7843,7 @@ var render = function render() {
         _vm.$set(_vm.nursTao, "taoCpsiSignature", $event.target.value);
       }
     }
-  })])])])]), _vm._v(" "), _c("div", {
+  })])])])]), _vm._v("\n\n\n                            " + _vm._s(_vm.nursTao) + "\n\n\n\n\n\n                            "), _c("div", {
     staticClass: "ln_solid mt-5"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
