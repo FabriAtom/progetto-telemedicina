@@ -5314,6 +5314,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
 var _methods;
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
@@ -5354,16 +5360,22 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     }, _defineProperty(_ref, "therapies", {
       check_drugs_not_administered: [],
       note_drugs_not_administered: []
-    }), _defineProperty(_ref, "terapieRifiutate", []), _defineProperty(_ref, "drug", ''), _defineProperty(_ref, "nursCardTh", {}), _defineProperty(_ref, "TraceabilityTherapy", {}), _defineProperty(_ref, "accessData", [function (id) {
+    }), _defineProperty(_ref, "traceability_therapys", []), _defineProperty(_ref, "terapieRifiutate", []), _defineProperty(_ref, "drug", ''), _defineProperty(_ref, "nursCardTh", {}), _defineProperty(_ref, "TraceabilityTherapy", {}), _defineProperty(_ref, "accessData", [function (id) {
       return 31;
     }, function (name) {
       return 'mario';
     }, function (lastname) {
       return 'rossi';
-    }]), _defineProperty(_ref, "date", new Date()), _defineProperty(_ref, "mainTitle", "psy"), _defineProperty(_ref, "firstSave", true), _defineProperty(_ref, "tHSaved", false), _defineProperty(_ref, "btnThSend", "Salva"), _defineProperty(_ref, "total", 0), _defineProperty(_ref, "allTraceabilityTherapys", null), _defineProperty(_ref, "allNursingTherapys", null), _ref;
+    }]), _defineProperty(_ref, "date", new Date()), _defineProperty(_ref, "mainTitle", "psy"), _defineProperty(_ref, "firstSave", true), _defineProperty(_ref, "tHSaved", false), _defineProperty(_ref, "btnThSend", "Salva"), _defineProperty(_ref, "total", 0), _defineProperty(_ref, "allTraceabilityTherapys", null), _defineProperty(_ref, "allNursingTherapys", null), _defineProperty(_ref, "testRefusedTherapies", []), _ref;
   },
+  // mounted() {
+  //     axios.get('/traceabilityTherapys').then(response => {
+  //     this.traceabilityTherapys = response.data;
+  //     });
+  // },
+
   created: function created() {
-    this.getTraceabilityTherapysByUserIstanceId(1);
+    this.getTraceabilityTherapysByUserIstanceId();
     this.getNursingTherapysByUserIstanceId(1);
   },
   computed: {},
@@ -5516,7 +5528,25 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
               // _wm.btnThSend="Aggiorna";
 
               _wm.TraceabilityTherapy = response.data.TraceabilityTherapy;
-              alert(JSON.stringify(_wm.TraceabilityTherapy));
+              for (var prop in _wm.TraceabilityTherapy) {
+                var _test = JSON.parse(_wm.TraceabilityTherapy[prop].drugs_not_administered);
+                var _check = _test['checked'];
+                var _description = _test['descriptions'];
+                var refusedTherapy = {};
+                var refTherapy = [];
+                for (var _i = 0, _Object$entries = Object.entries(_check); _i < _Object$entries.length; _i++) {
+                  var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+                    key = _Object$entries$_i[0],
+                    value = _Object$entries$_i[1];
+                  if (value == true) {
+                    refTherapy.push([key, _description[key]]);
+                  }
+                }
+                refusedTherapy['data'] = _wm.TraceabilityTherapy[prop].th_date;
+                refusedTherapy['fullName'] = _wm.TraceabilityTherapy[prop].doctor_name + _wm.TraceabilityTherapy[prop].doctor_lastname;
+                refusedTherapy['refusedTherapy'] = refTherapy;
+                _wm.testRefusedTherapies.push(refusedTherapy);
+              }
 
               // let _Trachterapy=response.data.TraceabilityTherapy;
 
@@ -5663,7 +5693,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
               // alert(JSON.stringify(_wm.therapies));
 
               _wm.therapies = response.data.therapies;
-              alert(JSON.stringify(_wm.therapies));
+              // alert(JSON.stringify(_wm.therapies));
 
               // alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
               //_wm.btnThSend="Aggiorna";
@@ -5699,7 +5729,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   }, _defineProperty(_methods, "isObjEmpty", function isObjEmpty(obj) {
     return Object.keys(obj).length === 0;
   }), _defineProperty(_methods, "addRefusedTreatment", function addRefusedTreatment(panel) {
-    alert('test1');
+    // alert('test1')
     var _wm = this;
     var _panel = panel;
     var _errors = 0;
@@ -7168,7 +7198,7 @@ var render = function render() {
         _vm.$set(_vm.nursHgt, "hgt", $event.target.value);
       }
     }
-  })])])])]), _vm._v("\n\n                            " + _vm._s(_vm.nursHgt) + "\n\n                           \n\n                    \n                                        \n                            "), _c("div", {
+  })])])])]), _vm._v("\n\n                            " + _vm._s(_vm.nursHgt) + "\n\n\n                            \n\n                           \n\n                    \n                                        \n                            "), _c("div", {
     staticClass: "ln_solid mt-2"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -26111,7 +26141,15 @@ var render = function render() {
         }
       }
     }) : _vm._e()])]);
-  })], 2), _vm._v(" "), _c("br"), _vm._v("\r\n                                TERAPIE RIFIUTATE: " + _vm._s(_vm.refusedTreatments) + "\r\n                                "), _c("br"), _vm._v(" "), _c("br"), _vm._v("\r\n                                nursTh: " + _vm._s(_vm.nursCardTh) + "\r\n                                "), _c("br"), _vm._v(" "), _c("hr"), _c("hr"), _vm._v(" "), _c("div", {
+  })], 2), _vm._v(" "), _c("br"), _vm._v("\r\n                                TERAPIE RIFIUTATE: " + _vm._s(_vm.refusedTreatments) + "\r\n                                "), _c("br"), _vm._v(" "), _c("br"), _vm._v("\r\n                                nursTh: " + _vm._s(_vm.nursCardTh) + "\r\n                                "), _c("br"), _vm._v(" "), _c("hr"), _c("hr"), _vm._v(" "), _c("div", [_c("h2", [_vm._v("archivio")]), _vm._v(" "), _c("ul", _vm._l(_vm.testRefusedTherapies, function (TraceabilityTherapy, index) {
+    return _c("li", {
+      key: index
+    }, [_vm._v("\r\n\r\n                                            " + _vm._s(TraceabilityTherapy.data) + " - " + _vm._s(TraceabilityTherapy.fullName) + "\r\n                                            "), _vm._l(TraceabilityTherapy.refusedTherapy, function (drug, index) {
+      return _c("div", {
+        key: index
+      }, [_vm._v("\r\n                                                " + _vm._s(drug[0]) + " " + _vm._s(drug[1]) + " \r\n                                            ")]);
+    })], 2);
+  }), 0)]), _vm._v(" "), _c("hr"), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "50px"

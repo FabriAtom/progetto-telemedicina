@@ -292,19 +292,19 @@ class PsyCardsController extends Controller
     //     $pdf->Ln(7);
 
 
-    //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(55,7,'Familiarità Psichiatrica:');
-    //     $psychiatric_familiarity = ($psy->psychiatric_familiarity==1) ? "sì" : "no";
-    //     $pdf->SetFont('Arial','',12);
-    //     $pdf->Cell(35,7,$psychiatric_familiarity);
+        // $pdf->SetFont('Arial', 'B', 12);
+        // $pdf->Cell(55,7,'Familiarità Psichiatrica:');
+        // $psychiatric_familiarity = ($psy->psychiatric_familiarity==1) ? "sì" : "no";
+        // $pdf->SetFont('Arial','',12);
+        // $pdf->Cell(35,7,$psychiatric_familiarity);
 
-    //     if(isset($psy->if_familiarity)&& $psy->if_familiarity!==""){
-    //         $pdf->SetFont('Arial', 'B', 12);
-    //         $pdf->Cell(25,7,'Se Si,Chi?');
-    //         $pdf->SetFont('Arial','',12);
-    //         $pdf->multiCell(70,7,$psy->if_familiarity);
-    //     };
-    //     $pdf->Ln(5);
+        // if(isset($psy->if_familiarity)&& $psy->if_familiarity!==""){
+        //     $pdf->SetFont('Arial', 'B', 12);
+        //     $pdf->Cell(25,7,'Se Si,Chi?');
+        //     $pdf->SetFont('Arial','',12);
+        //     $pdf->multiCell(70,7,$psy->if_familiarity);
+        // };
+        // $pdf->Ln(5);
 
     //     // $pdf->AddPage();
 

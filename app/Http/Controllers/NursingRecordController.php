@@ -12,7 +12,9 @@ use App\Models\NursingTherapy;
 
 use App\Models\monitoringClinicalParameter;
 use App\Models\ClinicalParameterCollection;
+
 use App\Models\TraceabilityTherapy;
+
 use App\Models\CollectionFormHgt;
 use App\Models\MonitoringPrescriptionTao;
 
@@ -415,145 +417,109 @@ class NursingRecordController extends Controller
 //  -----------------------------------------------------------------------------------------------
     // TraceabilityTherapy
     
-    public function printPdf(Request $request) {
+    // public function printPdf(Request $request) {
 
-        $nursMcp = TraceabilityTherapy::where('user_instance_id',36)->first();
+    //     $nursMcp = TraceabilityTherapy::where('user_instance_id',36)->first();
 
-        $pdf = new PDFClass();
-        if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
-            header("Content-type: application/PDF");
-        } else {
-            header("Content-type: application/PDF");
-            header("Content-Type: a \pplication/pdf");
-        }
-        $pdf->SetAutoPageBreak(true, 30);
+    //     $pdf = new PDFClass();
+    //     if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+    //         header("Content-type: application/PDF");
+    //     } else {
+    //         header("Content-type: application/PDF");
+    //         header("Content-Type: a \pplication/pdf");
+    //     }
+    //     $pdf->SetAutoPageBreak(true, 30);
 
-        $pdf->SetTitle('PDF TraceabilityTherapy');
+    //     $pdf->SetTitle('PDF TraceabilityTherapy');
     
-        $pdf->AliasNbPages();
+    //     $pdf->AliasNbPages();
 
-        $pdf->AddPage();
+    //     $pdf->AddPage();
 
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
-        $pdf->Cell(0,6,'Registro Per Ogni Turno Di Tracciabilità Delle Terapie Somministrate ',0,0,'C',true);
-        $pdf->Ln(7);
-        $pdf->Cell(0,6,'E Delle Eventuali Non Somministrazioni',0,0,'C',true);
-        $pdf->Ln(15);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Cell(0,6,'Registro Per Ogni Turno Di Tracciabilità Delle Terapie Somministrate ',0,0,'C',true);
+    //     $pdf->Ln(7);
+    //     $pdf->Cell(0,6,'E Delle Eventuali Non Somministrazioni',0,0,'C',true);
+    //     $pdf->Ln(15);
 
-        $pdf->SetLineWidth(.1);
+    //     $pdf->SetLineWidth(.1);
 
-        $pdf->SetFont('Arial','',12);
-
-
-        $pdf->SetDrawColor(128,0,0);
-        $pdf->SetFillColor(0,78,155);
-        $pdf->SetTextColor(255,255,255);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0,7,'Terapia non somministata al paziente:',0,0,'L',true);
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
-        $pdf->Ln(12);
+    //     $pdf->SetFont('Arial','',12);
 
 
-        $pdf->Cell(37,7,'Farmaco non somministrato:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Ln(7);
-        $pdf->Multicell(180,7,$nursMcp->drugs_not_administered);
-        $pdf->Ln(5);
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,7,'Terapia non somministata al paziente:',0,0,'L',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(12);
+
+    //     $test=json_decode($nursMcp->drugs_not_administered);
+    //     $test2=collect($test->checked);
+
+    //     $test3=collect($test->descriptions);
+
+    //     $pdf->Cell(37,7,'Farmaco non somministrato:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Ln(10);
+
+    //     foreach($test2 as $key=>$value) {
+    //         if($value==1){
+    //             $pdf->SetFont('Arial', 'B', 12);
+    //             $pdf->Multicell(180,7,$key);
+    //             $pdf->Cell(30,7,'Motivazione:');
+    //             $pdf->SetFont('Arial','',12);
+    //             $pdf->Multicell(160,7,$test3[$key]);
+    //         }
+    //       }
+    //     $pdf->Ln(15);
+
+
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,7,'Annotazioni:',0,0,'L',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(12);
 
         
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(37,7,'Medico Avvisato:');
+    //     $medical_alert = ($nursMcp->medical_alert==1) ? "sì" : "no";
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->cell(20,7,$medical_alert);
+    //     $pdf->Ln(8);
 
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(20,7,'Note:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Multicell(160,7,$nursMcp->medical_alert_note);
+    //     $pdf->Ln(5);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(37,7,'Medico Avvisato:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->cell(20,7,$nursMcp->medical_alert);
-        $pdf->Ln(7);
+    
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(85,7,'Annotazione O Prescrizione Del Medico:');
+    //     $doctors_prescriptions = ($nursMcp->doctors_prescriptions==1) ? "sì" : "no";
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->cell(20,7,$doctors_prescriptions);
+    //     $pdf->Ln(8);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(20,7,'Note:');
-        // $pdf->Ln(7);
-        $pdf->SetFont('Arial','',12);
-        $pdf->Multicell(160,7,$nursMcp->medical_alert_note);
-        $pdf->Ln(5);
-
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(20,7,'Note:');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Multicell(160,7,$nursMcp->doctors_prescriptions_note);
         
-
-        
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(85,7,'Annotazione O Prescrizione Del Medico:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->cell(20,7,$nursMcp->doctors_prescriptions);
-        $pdf->Ln(7);
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(20,7,'Note:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Multicell(160,7,$nursMcp->doctors_prescriptions_note);
-        
-
-
-
-
-
-        // $pdf->SetFont('Arial', 'B', 12);
-        // $pdf->Cell(53,7,'Data Inizio Raccolta Dati:');
-        // $pdf->SetFillColor(255,255,255);
-        // $pdf->SetDrawColor(0,0,0);
-        // $pdf->SetTextColor(0,0,0);
-        // // $pdf->Ln(10);
-        // $pdf->SetFont('Arial','',12);
-        // $pdf->cell(60,7,$nursMcp->date_start_collection_hgt);
-        // $pdf->Ln(10);
-
-
-        // $pdf->SetFont('Arial', 'B', 12);
-        // $pdf->Cell(53,7,'Data Fine Raccolta Dati:');
-        // $pdf->SetFillColor(255,255,255);
-        // $pdf->SetDrawColor(0,0,0);
-        // $pdf->SetTextColor(0,0,0);
-        // $pdf->SetFont('Arial','',12);
-        // $pdf->cell(60,7,$nursMcp->);
-        // $pdf->Ln(15);
-
-        // $pdf->SetDrawColor(128,0,0);
-        // $pdf->SetFillColor(0,78,155);
-        // $pdf->SetTextColor(255,255,255);
-        // $pdf->SetFont('Arial', 'B', 12);
-        // $pdf->Cell(0,7,'Modulo',0,0,'L',true);
-        // $pdf->SetFillColor(255,255,255);
-        // $pdf->SetDrawColor(0,0,0);
-        // $pdf->SetTextColor(0,0,0);
-        // $pdf->Ln(12);
-
-
-        // $pdf->Cell(12,7,'Data:');
-        // $pdf->SetFont('Arial','',12);
-        // $pdf->cell(56,7,$nursMcp->hgt_date);
-
-        // $pdf->SetFont('Arial', 'B', 12);
-        // $pdf->Cell(12,7,'Ora:');
-        // $pdf->SetFont('Arial','',12);
-        // $pdf->cell(60,7,$nursMcp->hours);
-        
-        // $pdf->SetFont('Arial', 'B', 12);
-        // $pdf->Cell(12,7,'HGT:');
-        // $pdf->SetFont('Arial','',12);
-        // $pdf->cell(45,7,$nursMcp->hgt);
-        // $pdf->Ln(20);
-
-        // $pdf->SetFont('Arial', 'B', 12);
-        // $pdf->Cell(36,7,'Firma Operatore:');
-        // $pdf->SetFont('Arial','',12);
-        // $pdf->cell(40,7,$nursMcp->hgt_operator_signature);
-
-        $pdf->Output("stampa.pdf", "I");
-        exit();
-    }
+    //     $pdf->Output("stampa.pdf", "I");
+    //     exit();
+    // }
 
 // ----------------------------------------------------------------------------------
 
@@ -607,7 +573,7 @@ class NursingRecordController extends Controller
     //     $pdf->cell(40,7,$nursMcp->department_tao);
 
     //     $pdf->SetFont('Arial', 'B', 12);
-    //     $pdf->Cell(40,7,'Data Prescrizione:');
+    //     $pdf->Cell(45,7,'Data Prescrizione:');
     //     $pdf->SetFont('Arial','',12);
     //     $pdf->cell(40,7,$nursMcp->date_tao);
     //     $pdf->Ln(10);
@@ -672,14 +638,15 @@ class NursingRecordController extends Controller
 
 
     public function index(Request $request){
-        $result= TraceabilityTherapy::all();
-        // $result= NursingTherapy::all();
+        $TraceabilityTherapys= TraceabilityTherapy::all();
 
-        if($result){
-            return [ "errorNumber"=>0,"message"=>"OK","remarks" => $result];
-        }else{
-            return ['errorNumber'=>'5000','descrizione'=>'no records found'];
-        }  
+        return response()->json($TraceabilityTherapys);
+
+        // if($result){
+        //     return [ "errorNumber"=>0,"message"=>"OK","remarks" => $result];
+        // }else{
+        //     return ['errorNumber'=>'5000','descrizione'=>'no records found'];
+        // }  
     }
 
 
@@ -696,17 +663,31 @@ class NursingRecordController extends Controller
         }
     }
 
-    public function getTraceabilityTherapysByUserIstanceId(Request $request){
+    // public function getTraceabilityTherapysByUserIstanceId(Request $request){
 
-        if (TraceabilityTherapy::where('user_instance_id', '=',36)->exists()) {
-            $query=TraceabilityTherapy::where('user_instance_id', '=', 36);
-            $allTraceabilityTherapys=$query->first();  
+    //     if (TraceabilityTherapy::where('user_instance_id', '=',36)->exists()) {
+    //         $query=TraceabilityTherapy::where('user_instance_id', '=', 36);
+    //         $allTraceabilityTherapys=$query->first();  
 
-            return [ "errorNumber"=>0,"message"=>"OK","TraceabilityTherapy" => $allTraceabilityTherapys,"TraceabilityTherapysId" => 36];
-        }else{
-            return ['errorNumber'=>5000,'descrizione'=>'no records found'];
-        }
-    }
+    //         return [ "errorNumber"=>0,"message"=>"OK","TraceabilityTherapy" => $allTraceabilityTherapys,"TraceabilityTherapysId" => 36];
+    //     }else{
+    //         return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+    //     }
+
+
+    //     if (TraceabilityTherapy::where('user_instance_id', '=', 36)->exists()) {
+
+    //         // $query="SELECT * FROM `therapies` WHERE (`user_instance_id`=".$request['id'].") AND (`deleted` = 0) AND (`endTherapy` > '" .$today. "' OR `endTherapy` IS NULL) ORDER BY `created_at`";
+
+    //         $query="SELECT * FROM `traceability_therapys` WHERE (`user_instance_id`=".$request['id'].") ORDER BY `created_at` ASC";
+    //         $result = DB::select(DB::raw($query));
+
+    //         return [ "errorNumber"=>0,"message"=>"OK","therapies" => $result,"userInstanceId" => $request['userInstanceId']];
+
+    //     }else{
+    //         return ['errorNumber'=>'5000','descrizione'=>'no records found'];
+    //     }
+    // }
 
     public function getCurrentTraceabilityTherapyById(Request $request){
         if (TraceabilityTherapy::where('user_instance_id', '=',36)->exists()) {
@@ -907,6 +888,17 @@ class NursingRecordController extends Controller
 
 
 
+    public function getTraceabilityTherapysByUserIstanceId(Request $request){
+
+        if (TraceabilityTherapy::where('user_instance_id', '=',36)->exists()) {
+            $query=TraceabilityTherapy::where('user_instance_id', '=', 36);
+            $allTraceabilityTherapys=$query->get();  
+
+            return [ "errorNumber"=>0,"message"=>"OK","TraceabilityTherapy" => $allTraceabilityTherapys,"TraceabilityTherapysId" => 36];
+        }else{
+            return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        }
+    }
 
 
 

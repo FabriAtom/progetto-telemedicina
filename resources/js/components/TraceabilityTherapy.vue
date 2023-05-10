@@ -82,9 +82,38 @@
                                 <br>
                                 nursTh: {{nursCardTh}}
                                 <br>
+                                <hr><hr>
+
+
+
+                                <div>
+                                    <h2>archivio</h2>
+                                    <ul>
+                                        <li v-for="(TraceabilityTherapy, index) in testRefusedTherapies" :key="index">
+
+                                            {{TraceabilityTherapy.data}} - {{ TraceabilityTherapy.fullName }}
+                                            <div v-for="(drug, index) in TraceabilityTherapy.refusedTherapy" :key="index">
+                                                {{drug[0]}} {{drug[1]}} 
+                                            </div>
+                                        
+                                        </li>
+                                    </ul>
+                                </div> 
+
+                                <!-- {{TraceabilityTherapy}} -->
+
+                                <!-- {{traceability_therapys}} -->
+
+
+
+
+
+
+
 
 
                                 <hr><hr>
+
                                 
                                 <div class="row" style="margin-top:50px;">
                                     <div class="col-md-12 col-sm-12">
@@ -384,12 +413,22 @@ label {
                     check_drugs_not_administered: [],
                     note_drugs_not_administered: [],
                 },
+
+
+                traceability_therapys:[],
+
+
+
+
+
                 terapieRifiutate:[],
                 drug:'',        
 
-                
+
+                // TraceabilityTherapys:[],
+
                 nursCardTh:{},
-                TraceabilityTherapy:{},
+               TraceabilityTherapy:{},
                 
                 
                 
@@ -412,11 +451,18 @@ label {
                 total:0,               
                 allTraceabilityTherapys:null,
                 allNursingTherapys:null,
+                testRefusedTherapies:[],
             }
         },
 
+        // mounted() {
+        //     axios.get('/traceabilityTherapys').then(response => {
+        //     this.traceabilityTherapys = response.data;
+        //     });
+        // },
+
         created: function () {
-            this.getTraceabilityTherapysByUserIstanceId(1)
+            this.getTraceabilityTherapysByUserIstanceId()
             this.getNursingTherapysByUserIstanceId(1)
         },
         
@@ -539,6 +585,7 @@ label {
                                 )
                             }
                         });
+
                     } catch (error) {
                         throw error
                     }
@@ -607,7 +654,25 @@ label {
                             // _wm.btnThSend="Aggiorna";
 
                             _wm.TraceabilityTherapy=response.data.TraceabilityTherapy;
-                            alert(JSON.stringify(_wm.TraceabilityTherapy));
+
+
+                            for (let prop in _wm.TraceabilityTherapy) {
+                                let _test= JSON.parse(_wm.TraceabilityTherapy[prop].drugs_not_administered);
+                                let _check=_test['checked'];
+                                let _description=_test['descriptions'];
+                                let refusedTherapy={};
+                                let refTherapy=[];
+                                for (const [key, value] of Object.entries(_check)) {
+
+                                    if(value==true){
+                                        refTherapy.push([key,_description[key]]);
+                                    }
+                                }
+                                refusedTherapy['data']=_wm.TraceabilityTherapy[prop].th_date;
+                                refusedTherapy['fullName']=_wm.TraceabilityTherapy[prop].doctor_name + _wm.TraceabilityTherapy[prop].doctor_lastname;
+                                refusedTherapy['refusedTherapy']=refTherapy;
+                                _wm.testRefusedTherapies.push(refusedTherapy) 
+                            }
 
                             
                             // let _Trachterapy=response.data.TraceabilityTherapy;
@@ -785,7 +850,7 @@ label {
 
 
                             _wm.therapies=response.data.therapies;
-                            alert(JSON.stringify(_wm.therapies));
+                            // alert(JSON.stringify(_wm.therapies));
 
                             // alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
                             //_wm.btnThSend="Aggiorna";
@@ -830,7 +895,7 @@ label {
 
 
             addRefusedTreatment(panel){
-                alert('test1')
+                // alert('test1')
                 let _wm = this;
                 let _panel=panel;
                 let _errors=0;

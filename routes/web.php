@@ -167,14 +167,6 @@ Route::post('/therapies/addMonitoringPrescriptionTao', [App\Http\Controllers\Nur
 
 
 
-
-
-
-
-
-
-
-
 Route::get('/therapies/getNursingTherapysByUserIstanceId/{id}', [App\Http\Controllers\NursingRecordController::class,'getNursingTherapysByUserIstanceId'])->name('getNursingTherapysByUserIstanceId');
 
 
