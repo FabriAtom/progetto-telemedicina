@@ -51,32 +51,6 @@
                                 <hr>
                                 <h2 class="text-center"><strong>Monitoraggio</strong></h2>
                                 <hr>
-                                <!-- <table>
-                                    <tr>
-                                        <th colspan="3">Lunedì</th>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Dosaggio</strong></td>
-                                        <td><strong>Medico</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="text" name="diagnosis_tao" v-model="nursTao.diagnosisTao">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="diagnosis_tao" v-model="nursTao.diagnosisTao">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="3">Somministrato Da</th>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3" style="border-top: 0;">
-                                            <input type="text" name="diagnosis_tao" v-model="nursTao.diagnosisTao">
-                                        </td>
-                                    </tr>
-                                </table> -->
-
                                 <div class="row mt-3">
                                     <span class="col-md-12 col-sm-12">
                                         <span class="item form-group">
@@ -103,9 +77,54 @@
                                         </span>
                                     </span>
                                 </div>
-
-
                                 {{nursTao}}
+
+
+
+
+
+
+
+                                <div class="mt-4">
+                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <ul style="display: flex; flex-wrap: wrap;">
+                                        <span v-for="(item, key, index) in MonitoringPrescriptionTao" :key="index" class="mr-5">
+
+                                            <div class="card text-white bg-secondary mb-3" style="max-width: 20rem; border-radius: 20px;">
+                                                <div class="card-header">
+                                                    <div style="min-width: 100px;"><strong>Nome:</strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                    <!-- <div style="min-width: 100px; color: black;"><strong>Farmaco Prescritto :</strong>{{ item['doctor_lastname'] }}</div> -->
+                                                </div>
+
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <div style="min-width: 100px;"><strong>Farmaco Prescritto:</strong>{{ (item['drug_prescribed']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Diagnosi:</strong>{{ (item['diagnosis_tao']) }} </div>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <div style="min-width: 100px;"><strong>Data:</strong> {{ i2hDateFormat(item['date_tao']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Dosaggio:</strong> {{ ((item['tao_dosage'])) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Medico:</strong> {{ (item['tao_doctor']) }} </div>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
+                                </div> 
+
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="pull-right">
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                    </div>
+                                </div>
+
+
+
+                                ::{{MonitoringPrescriptionTao}}
+
+                                <br><br>
 
 
 
@@ -224,6 +243,37 @@ ul, li{
         },
 
         methods: {
+
+
+            i2hDateFormat(date){
+
+            let current=new Date(date);
+            let year = `${current.getFullYear()}`;
+            let month = `${current.getMonth()}`;
+            let timeHours=`${current.getHours()}`;
+            let timeMinuts=`${current.getMinutes()}`;
+            let day = `${current.getDate()}`;
+            month=this.zeroFill(month);
+            day=this.zeroFill(day);
+            timeMinuts=this.zeroFill(timeMinuts);
+            timeHours=this.zeroFill(timeHours);
+            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+            return tDate;
+            },
+            zeroFill(value){
+            if(parseInt(value)<10){
+                value = '0'+value;
+            }
+            return value
+            },
+
+
+            i2hHourFormat(dataz){
+            let dataw= new Date(dataz);
+            //return date;
+            return dataw.getHours() +':'+dataw.getMinutes();
+            },
+
             printMonitoringPrescriptionTao(printPdf){
                 let v_myWindow
                 let url= 'printPdf/2';
@@ -267,8 +317,15 @@ ul, li{
                     }
                     form.append('section', 'tao');
                     if(!this.isObjEmpty(this.nursTao)){
-                        let _nurs=JSON.stringify(this.nursTao);
-                        form.append('MonitoringPrescriptionTao', _nurs);
+                        let _prescript=JSON.stringify(this.nursTao);
+
+                        form.append('drugPrescribed', this.nursTao.drugPrescribed);
+                        form.append('diagnosisTao', this.nursTao.diagnosisTao);
+                        form.append('dateTao', this.nursTao.dateTao);
+                        form.append('taoDosage', this.nursTao.taoDosage);
+                        form.append('taoDoctor', this.nursTao.taoDoctor);
+
+                        form.append('MonitoringPrescriptionTao', _prescript);
                     }
                 }
                 
@@ -360,23 +417,18 @@ ul, li{
                             if(response.data.MonitoringPrescriptionTao){
                             // _wm.hGTSaved=true;
                             // _wm.btnHgtSend="Aggiorna";
-
-                            _wm.MonitoringPrescriptionTao=response.data.MonitoringPrescriptionTao;
                             // alert(JSON.stringify(_wm.MonitoringPrescriptionTao));
 
-                            
-                            // let _nursTao=response.data.MonitoringPrescriptionTao;
-                            // _wm.departmentHgt = _nursTao.department_hgt
-                            // _wm.dateStartCollectionHgt = _nursTao.date_start_collection_hgt
-                            // _wm.dateEndCollectionHgt = _nursTao.date_end_collection_hgt
-                            // _wm.doctorPrescriberHgt = _nursTao.doctor_prescriber_hgt
-                            // _wm.hgtDate = _nursTao.hgt_date
-                            // _wm.hours = _nursTao.hours
-                            // _wm.hgt = _nursTao.hgt
-                            // _wm.hgtOperatorSignature = _nursTao.hgt_operator_signature
-                            // _wm.folderPageCollectionHgt = _nursTao.folder_page_collection_hgt
+                            _wm.MonitoringPrescriptionTao=response.data.MonitoringPrescriptionTao;
+                            console.log(_wm.MonitoringPrescriptionTao);
 
-                
+
+                            for (let prop in _wm.MonitoringPrescriptionTao) {
+
+                            }
+
+
+                            
                             // _wm.allMonitoringPrescriptionTaos=response.data.allMonitoringPrescriptionTaos;
                             }else{
                                 _wm.btnTaoSend="Salva";

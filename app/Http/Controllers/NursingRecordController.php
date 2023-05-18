@@ -638,9 +638,9 @@ class NursingRecordController extends Controller
 
 
     public function index(Request $request){
-        $TraceabilityTherapys= TraceabilityTherapy::all();
+        $MonitoringClinicalParameters= MonitoringClinicalParameter::all();
 
-        return response()->json($TraceabilityTherapys);
+        return response()->json($MonitoringClinicalParameters);
 
         // if($result){
         //     return [ "errorNumber"=>0,"message"=>"OK","remarks" => $result];
@@ -721,7 +721,7 @@ class NursingRecordController extends Controller
 
         if (MonitoringClinicalParameter::where('user_instance_id', '=', 36)->exists()) {
             $query=MonitoringClinicalParameter::where('user_instance_id', '=', 36);
-            $allMonitoringClinicalParameters=$query->first();
+            $allMonitoringClinicalParameters=$query->get();
 
             return [ "errorNumber"=>0,"message"=>"OK","MonitoringClinicalParameter" => $allMonitoringClinicalParameters,"monitoringClinicalParametersId" => 36];
         }else{
@@ -732,7 +732,7 @@ class NursingRecordController extends Controller
     public function getCurrentMonitoringClinicalParameterById(Request $request){
         if (MonitoringClinicalParameter::where('user_instance_id', '=',36)->exists()) {
             $query=MonitoringClinicalParameter::where('user_instance_id', '=',36)->orderBy('th_date', 'desc');
-            $MonitoringClinicalParameter=$query->first();
+            $MonitoringClinicalParameter=$query->get();
             return [ "errorNumber"=>0,"message"=>"OK","CurrentMonitoringClinicalParameter" => $MonitoringClinicalParameter,"MonitoringClinicalParametersId" => 36];
         }else{
             return ['errorNumber'=>7,'descrizione'=>'no records found'];
@@ -761,7 +761,7 @@ class NursingRecordController extends Controller
 
         if (ClinicalParameterCollection::where('user_instance_id', '=', 36)->exists()) {
             $query=ClinicalParameterCollection::where('user_instance_id', '=', 36);
-            $allClinicalParameterCollections=$query->first();
+            $allClinicalParameterCollections=$query->get();
 
             return [ "errorNumber"=>0,"message"=>"OK","ClinicalParameterCollection" => $allClinicalParameterCollections,"ClinicalParameterCollectionsId" => 36];
         }else{
@@ -802,7 +802,7 @@ class NursingRecordController extends Controller
 
         if (CollectionFormHgt::where('user_instance_id', '=', 36)->exists()) {
             $query=CollectionFormHgt::where('user_instance_id', '=', 36);
-            $allCollectionFormHgts=$query->first();
+            $allCollectionFormHgts=$query->get();
 
             return [ "errorNumber"=>0,"message"=>"OK","CollectionFormHgt" => $allCollectionFormHgts,"CollectionFormHgtsId" => 36];
         }else{
@@ -843,7 +843,7 @@ class NursingRecordController extends Controller
 
         if (MonitoringPrescriptionTao::where('user_instance_id', '=', 36)->exists()) {
             $query=MonitoringPrescriptionTao::where('user_instance_id', '=', 36);
-            $allMonitoringPrescriptionTaos=$query->first();
+            $allMonitoringPrescriptionTaos=$query->get();
 
             return [ "errorNumber"=>0,"message"=>"OK","MonitoringPrescriptionTao" => $allMonitoringPrescriptionTaos,"MonitoringPrescriptionTaosId" => 36];
         }else{
@@ -990,7 +990,7 @@ class NursingRecordController extends Controller
                                     return ["errorNumber"=>1,"message"=>"Dati mancanti o non validi contattare l'amministratore di sistema"];
                                 }
                                 break;
-                            case 'tao':
+                            case 'rt':
                                 $_nurs = $this->addRefusedTreatment($request);
                                 if($_nurs){
                                     $_nursId=$_nurs->id;
@@ -1215,8 +1215,8 @@ class NursingRecordController extends Controller
                 if($value==true){
                     $testValue+=$value;
                 }
-              };
-              $_traceTerapy->drugs_not_administered=$request['RefusedTreatment'];
+            };
+            $_traceTerapy->drugs_not_administered=$request['RefusedTreatment'];
         }
         if($testValue>0){
             $_traceTerapy->save();
@@ -1423,6 +1423,21 @@ class NursingRecordController extends Controller
                 $_nursingMcp->operator_signature=$nursArr['operatorSignature'];
             }
         }
+        // if($request->has('MonitoringClinicalParameter')){
+        //     $test=json_decode($request['MonitoringClinicalParameter'],true);
+
+        //     foreach ($test as $key => $value) {
+
+        //     };
+
+        //     $_nursingMcp->mcp_diet=$request['MonitoringClinicalParameter'];
+        // }else{
+        //     return ["errorNumber"=>4,"message"=>"Non ci sono dati da salvare"];
+        // }
+
+
+        // $test=json_decode($request['MonitoringClinicalParameter'],true);
+        
         $_nursingMcp->save();
         if($_nursingMcp){
             return ["errorNumber"=>0,"message"=>"ok","mcp"=>$_nursingMcp];

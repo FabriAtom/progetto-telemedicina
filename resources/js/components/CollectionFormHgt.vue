@@ -57,7 +57,53 @@
                                     </div>
                                 </div>
 
+                                <div>
+                                    <h2 class="ml-4 mb-4"><strong>Archivio</strong></h2>
+                                    <ul style="display: flex; flex-wrap: wrap;">
+                                        <span v-for="(item, key, index) in CollectionFormHgt" :key="index" class="mr-5">
+
+                                            <div class="card text-white bg-secondary mb-3" style="max-width: 20rem; border-radius: 20px;">
+                                                <div class="card-header">
+                                                    <span> 
+                                                        <div><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                    </span> 
+                                            </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <div style="min-width: 100px;"><strong>Data inizio:</strong> {{ i2hDateFormat(item['date_start_collection_hgt']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Data fine:</strong> {{ i2hDateFormat(item['date_end_collection_hgt']) }} </div>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <div style="min-width: 100px;"><strong>Data HGT:</strong> {{ i2hDateFormat(item['hgt_date']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Orario:</strong> {{ i2hHourFormat((item['hours'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>HGT:</strong> {{ (item['hgt']) }} </div>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
+                                </div> 
+
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="pull-right">
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                    </div>
+                                </div>
+
+                                <br>
+                                ::{{CollectionFormHgt}}
+                                <hr><hr>
+
+                                
+
+                                <br><br>
+                                <hr><hr>
+
                                 {{nursHgt}}
+
+                                
 
 
                                 
@@ -132,18 +178,6 @@ ul, li{
 
 
 <script>
-
-    // const table = document.getElementById('myTable');
-    // const button = document.getElementById('addRowButton');
-
-    // button.addEventListener('click', function() {
-    //     const newRow = table.insertRow(-1);
-    //     const cell1 = newRow.insertCell(0);
-    //     const cell2 = newRow.insertCell(1);
-    //     cell1.innerHTML = 'Nuova riga, colonna 1';
-    //     cell2.innerHTML = 'Nuova riga, colonna 2';
-    // }); 
-
 
     import * as actions from "../config/ApiUrl";
     import axios from 'axios';
@@ -220,6 +254,34 @@ ul, li{
 
         methods: {
 
+            i2hDateFormat(date){
+
+                let current=new Date(date);
+                let year = `${current.getFullYear()}`;
+                let month = `${current.getMonth()}`;
+                let timeHours=`${current.getHours()}`;
+                let timeMinuts=`${current.getMinutes()}`;
+                let day = `${current.getDate()}`;
+                month=this.zeroFill(month);
+                day=this.zeroFill(day);
+                timeMinuts=this.zeroFill(timeMinuts);
+                timeHours=this.zeroFill(timeHours);
+                let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+                return tDate;
+            },
+            zeroFill(value){
+                if(parseInt(value)<10){
+                    value = '0'+value;
+                }
+                return value
+            },
+
+
+            i2hHourFormat(dataz){
+                let dataw= new Date(dataz);
+                //return date;
+                return dataw.getHours() +':'+dataw.getMinutes();
+            },
 
             // addTherapy () {
 
@@ -320,8 +382,17 @@ ul, li{
                     }
                     form.append('section', 'hgt');
                     if(!this.isObjEmpty(this.nursHgt)){
-                        let _nurs=JSON.stringify(this.nursHgt);
-                        form.append('CollectionFormHgt', _nurs);
+                        let _collHgt=JSON.stringify(this.nursHgt);
+
+                        form.append('dateStartCollectionHgt', this.nursMcp.dateStartCollectionHgt);
+                        form.append('dateEndCollectionHgt', this.nursMcp.dateEndCollectionHgt);
+                        form.append('doctorPrescriberHgt', this.nursMcp.doctorPrescriberHgt);
+                        form.append('hgtDate', this.nursMcp.hgtDate);
+                        form.append('hours', this.nursMcp.hours);
+                        form.append('hgt', this.nursMcp.hgt);
+
+                        form.append('CollectionFormHgt', _collHgt);
+                    
                     }
                 }
                 
@@ -402,7 +473,7 @@ ul, li{
                 try {
                     let url=actions.GET_HGTS_BY_USER_ISTANCE_ID+'/'+id;
                     axios.get(url).then(response => {
-                        // alert(JSON.stringify(response));
+                        alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -413,9 +484,16 @@ ul, li{
                             if(response.data.CollectionFormHgt){
                             // _wm.hGTSaved=true;
                             // _wm.btnHgtSend="Aggiorna";
+                            // alert(JSON.stringify(_wm.CollectionFormHgt));
 
                             _wm.CollectionFormHgt=response.data.CollectionFormHgt;
-                            // alert(JSON.stringify(_wm.CollectionFormHgt));
+                            console.log(_wm.CollectionFormHgt);
+
+                            for (let prop in _wm.CollectionFormHgt) {
+                                
+                            }
+
+
 
                             
                             // let _NursHgt=response.data.CollectionFormHgt;

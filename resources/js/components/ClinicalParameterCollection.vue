@@ -94,44 +94,81 @@
 
                                 {{nursCpc}}
 
+<!-- 
+                                <div>
+                                    <h2>archivio</h2>
+                                    <ul>
+                                        <li v-for="(item, key, index) in ClinicalParameterCollection" :key="index">
+
+                                             {{ item['doctor_name'] }}
+                                            {{ item['doctor_lastname'] }} 
+                                            - 
+                                            <br>
+                                            {{ item['date_start_collection'] }} 
+                                            {{ item['date_end_collection'] }} 
+                                            <br>
+                                            {{ item['cpc_date'] }}
+                                            {{ item['collection_pa_systolic'] }} 
+                                            {{ item['collection_pa_diastolic'] }}
+                                            {{ item['collection_fc'] }} 
+                                            {{ item['collection_spo2'] }} 
+                                            {{ item['collection_tc'] }} 
+                                             
+                                        </li>
+                                    </ul>
+                                </div> 
+ -->
 
 
-                                <!-- <div v-if="newTheraphyPnl">
-                                    <div v-for="(newTherapy, index) in newTherapies" :key="newTherapy.id" class="demot" >
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <input type="date"  class="autoCompResp" :id="`newTherapy1`" :name="index" v-model="newTherapy.cpc_date" maxlength="500" style="margin: 0 0; width: 7rem;"> 
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" :id="`newTherapy2`"  :name="index" v-model="newTherapy.collection_pa"  style="margin: 0 0;  width: 5rem;">
-                                                    </td>
-                                                    <td>    
-                                                        <input type="text" :id="`newTherapy3`"  :name="index" v-model="newTherapy.collection_fc"  style="margin: 0 0;  width: 5rem;">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" :id="`newTherapy4`"   :name="index" v-model="newTherapy.collection_spo2"  style="margin: 0 0;  width: 5rem;">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" :id="`newTherapy5`"  :name="index" v-model="newTherapy.collection_tc"  style="margin: 0 0;  width: 5rem;">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" :id="`newTherapy5`"  :name="index" v-model="newTherapy.collection_operator_signature"  style="margin: 0 0;  width: 5rem;">
-                                                    </td>
-                                                </tr>
-                                            </tbody> 
-                                        </table>
-                                    </div>
+
+
+
+
+
+
+
+
+                                <div>
+                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <ul style="display:flex; flex-wrap: wrap;">
+                                        <span v-for="(item, key, index) in ClinicalParameterCollection" :key="index" class="mr-5">
+
+                                            <div class="card text-white bg-secondary mb-2" style="max-width: 20rem;  border-radius: 20px;">
+                                                <div class="card-header">
+                                                    <span style="min-width: 100px;"> 
+                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                    </span> 
+                                            </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['cpc_date']) }}</div>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <div style="min-width: 100px;"><strong>Sistolica:</strong> {{ (item['collection_pa_systolic']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Diastolica:</strong> {{ (item['collection_pa_diastolic']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>F.C:</strong> {{ ((item['collection_fc'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>SPO2:</strong> {{ (item['collection_spo2']) }} </div>
+                                                        <div style="min-width: 100px;"><strong>T.C:</strong> {{ (item['collection_tc']) }} </div>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
                                 </div> 
 
-                                <hr><hr>
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="pull-right">
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                    </div>
+                                </div>
 
-                                {{therapies}}
+                                <br>
+                                ::{{ClinicalParameterCollection}}
 
-                                <hr><hr>
+                                <br><br>
 
-                                {{newTherapies}}-->
 
                                 
                                 <div class="ln_solid mt-2"></div>
@@ -335,70 +372,34 @@ ul, li{
 
         methods: {
 
-            // addTherapy () {
+            i2hDateFormat(date){
 
-            //     this.newTherapies.push({
-            //         idDoctor:14,
-            //         doctorName:'medico',
-            //         doctorLastname:'test',   
-            //         userInstanceId :17,
-            //         userId:36,
-            //         // drug: "",
-            //         // posology: "",
-            //         // frequency: "",
-            //         // drugRoute: "",
-            //         // morning: 0,
-            //         // afternoon: 0,
-            //         // evening: 0,
-            //         // external_doctor_prescription:0,
-            //         // deleted:0, 
-            //         // acceptance:0,  
-            //         // acceptanceId:0 
-            //         cpc_date:'',
-            //         collection_pa:'',
-            //         collection_fc:'',
-            //         collection_spo2:'',
-            //         collection_tc:'',
-            //     })
-            // },
-
-            // saveTherapy(){
-            // let _wm=this;
-            // var addTherapyForm = new FormData();
-            // addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
-            // if(this.newTherapies.length>0){
-            //     try {
-            //         //let url=actions.ADD_THERAPIES_DATA;
-            //         //  axios.post(url,addTherapyForm).then(response => {
-            //         //      let error=response.data.errorNumber;
-            //         //      let _attempts=response.data.attempts;
-            //         //      _wm.errNum=error;
-            //         //      if(error == 0){
-            //         //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
-            //         //         // setTimeout(function(){
-            //         //         //     _wm.hideSuccess();
-            //         //         // }, 4000);
-            //         //         _wm.i2hLoader=true;
-            //         //         _wm.initTherapies();
-            //         //         _wm.getTherapies();
-            //         //      }else{
-            //         //         let _errorDescription=response.data.errorDescription
-            //         //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
-            //         //      }
-            //         //  })
-            //     }catch (error) {
-            //         throw error
-            //     }                             
-            // }else{
-            //     eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
-            // }
-            // },
+            let current=new Date(date);
+            let year = `${current.getFullYear()}`;
+            let month = `${current.getMonth()}`;
+            let timeHours=`${current.getHours()}`;
+            let timeMinuts=`${current.getMinutes()}`;
+            let day = `${current.getDate()}`;
+            month=this.zeroFill(month);
+            day=this.zeroFill(day);
+            timeMinuts=this.zeroFill(timeMinuts);
+            timeHours=this.zeroFill(timeHours);
+            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+            return tDate;
+            },
+            zeroFill(value){
+            if(parseInt(value)<10){
+                value = '0'+value;
+            }
+            return value
+            },
 
 
-
-
-
-
+            i2hHourFormat(dataz){
+            let dataw= new Date(dataz);
+            //return date;
+            return dataw.getHours() +':'+dataw.getMinutes();
+            },
 
 
             printClinicalParameterCollection(printPdf){
@@ -412,8 +413,6 @@ ul, li{
                 return false;
             },
 
-            
-            
 
 
             addClinicalParameterCollection(panel){
@@ -451,8 +450,17 @@ ul, li{
                     }
                     form.append('section', 'cpc');
                     if(!this.isObjEmpty(this.nursCpc)){
-                        let _nurs=JSON.stringify(this.nursCpc);
-                        form.append('ClinicalParameterCollection', _nurs);
+                        let _clinical=JSON.stringify(this.nursCpc);
+                        form.append('ClinicalParameterCollection', _clinical);
+                        
+                        form.append('cpcDate', this.nursCpc.cpcDate);
+                        form.append('collectionPaSystolic', this.nursCpc.collectionPaSystolic);
+                        form.append('collectionPaDiastolic', this.nursCpc.collectionPaDiastolic);
+                        form.append('collectionFc', this.nursCpc.collectionFc);
+                        form.append('collectionSpo2', this.nursCpc.collectionSpo2);
+                        form.append('collectionTc', this.nursCpc.collectionTc);
+
+                        form.append('ClinicalParameterCollection', _clinical);
                     }
                 }
                 
@@ -548,22 +556,13 @@ ul, li{
 
                             _wm.ClinicalParameterCollection=response.data.ClinicalParameterCollection;
                             // alert(JSON.stringify(_wm.ClinicalParameterCollection));
+                            // console.log(_wm.ClinicalParameterCollection);
 
-                            
-                            // let _Nursvarible=response.data.ClinicalParameterCollection;
-                                
-                            // _wm.nursCpc.departmentCpc = _Nursvarible.department_cpc
-                            // _wm.nursCpc.dateStartCollection = _Nursvarible.date_start_collection
-                            // _wm.nursCpc.dateEndCollection = _Nursvarible.date_end_collection
-                            // _wm.nursCpc.doctorPrescriber = _Nursvarible.doctor_prescriber
-                            // _wm.nursCpc.cpcDate = _Nursvarible.cpc_date
-                            // _wm.nursCpc.collectionPa = _Nursvarible.collection_pa
-                            // _wm.nursCpc.collectionFc = _Nursvarible.collection_fc
-                            // _wm.nursCpc.collectionSpo2 = _Nursvarible.collection_spo2
-                            // _wm.nursCpc.collectionTc = _Nursvarible.collection_tc
-                            // _wm.nursCpc.collectionOperatorSignature = _Nursvarible.collection_operator_signature
-                            // _wm.nursCpc.folderPageCollection = _Nursvarible.folder_page_collection
+                            for (let prop in _wm.ClinicalParameterCollection) {
 
+                            }
+
+                        
                             // _wm.nursCpc.allClinicalParameterCollections=response.data.allClinicalParameterCollections;
                             }else{
                                 _wm.btnCpcSend="Salva";

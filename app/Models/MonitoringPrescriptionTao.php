@@ -12,15 +12,12 @@ class MonitoringPrescriptionTao extends Model
         'doctor_name',
         'doctor_lastname',
         'department_tao',
-        'diagnosis_tao',
         'drug_prescribed',
+        'diagnosis_tao',
         'date_tao',
-
         'tao_dosage',
         'tao_doctor',
         'tao_cpsi_signature',
-
-
     ];
 
     protected $table = 'monitoring_prescription_tao';

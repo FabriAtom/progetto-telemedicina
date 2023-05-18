@@ -2024,62 +2024,31 @@ __webpack_require__.r(__webpack_exports__);
   computed: {},
   watch: {},
   methods: {
-    // addTherapy () {
-    //     this.newTherapies.push({
-    //         idDoctor:14,
-    //         doctorName:'medico',
-    //         doctorLastname:'test',   
-    //         userInstanceId :17,
-    //         userId:36,
-    //         // drug: "",
-    //         // posology: "",
-    //         // frequency: "",
-    //         // drugRoute: "",
-    //         // morning: 0,
-    //         // afternoon: 0,
-    //         // evening: 0,
-    //         // external_doctor_prescription:0,
-    //         // deleted:0, 
-    //         // acceptance:0,  
-    //         // acceptanceId:0 
-    //         cpc_date:'',
-    //         collection_pa:'',
-    //         collection_fc:'',
-    //         collection_spo2:'',
-    //         collection_tc:'',
-    //     })
-    // },
-    // saveTherapy(){
-    // let _wm=this;
-    // var addTherapyForm = new FormData();
-    // addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
-    // if(this.newTherapies.length>0){
-    //     try {
-    //         //let url=actions.ADD_THERAPIES_DATA;
-    //         //  axios.post(url,addTherapyForm).then(response => {
-    //         //      let error=response.data.errorNumber;
-    //         //      let _attempts=response.data.attempts;
-    //         //      _wm.errNum=error;
-    //         //      if(error == 0){
-    //         //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
-    //         //         // setTimeout(function(){
-    //         //         //     _wm.hideSuccess();
-    //         //         // }, 4000);
-    //         //         _wm.i2hLoader=true;
-    //         //         _wm.initTherapies();
-    //         //         _wm.getTherapies();
-    //         //      }else{
-    //         //         let _errorDescription=response.data.errorDescription
-    //         //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
-    //         //      }
-    //         //  })
-    //     }catch (error) {
-    //         throw error
-    //     }                             
-    // }else{
-    //     eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
-    // }
-    // },
+    i2hDateFormat: function i2hDateFormat(date) {
+      var current = new Date(date);
+      var year = "".concat(current.getFullYear());
+      var month = "".concat(current.getMonth());
+      var timeHours = "".concat(current.getHours());
+      var timeMinuts = "".concat(current.getMinutes());
+      var day = "".concat(current.getDate());
+      month = this.zeroFill(month);
+      day = this.zeroFill(day);
+      timeMinuts = this.zeroFill(timeMinuts);
+      timeHours = this.zeroFill(timeHours);
+      var tDate = day + '/' + month + '/' + year + ' - ' + timeHours + ':' + timeMinuts;
+      return tDate;
+    },
+    zeroFill: function zeroFill(value) {
+      if (parseInt(value) < 10) {
+        value = '0' + value;
+      }
+      return value;
+    },
+    i2hHourFormat: function i2hHourFormat(dataz) {
+      var dataw = new Date(dataz);
+      //return date;
+      return dataw.getHours() + ':' + dataw.getMinutes();
+    },
     printClinicalParameterCollection: function printClinicalParameterCollection(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
@@ -2119,8 +2088,15 @@ __webpack_require__.r(__webpack_exports__);
         }
         form.append('section', 'cpc');
         if (!this.isObjEmpty(this.nursCpc)) {
-          var _nurs = JSON.stringify(this.nursCpc);
-          form.append('ClinicalParameterCollection', _nurs);
+          var _clinical = JSON.stringify(this.nursCpc);
+          form.append('ClinicalParameterCollection', _clinical);
+          form.append('cpcDate', this.nursCpc.cpcDate);
+          form.append('collectionPaSystolic', this.nursCpc.collectionPaSystolic);
+          form.append('collectionPaDiastolic', this.nursCpc.collectionPaDiastolic);
+          form.append('collectionFc', this.nursCpc.collectionFc);
+          form.append('collectionSpo2', this.nursCpc.collectionSpo2);
+          form.append('collectionTc', this.nursCpc.collectionTc);
+          form.append('ClinicalParameterCollection', _clinical);
         }
       }
       if (_errors == 0) {
@@ -2198,20 +2174,9 @@ __webpack_require__.r(__webpack_exports__);
 
               _wm.ClinicalParameterCollection = response.data.ClinicalParameterCollection;
               // alert(JSON.stringify(_wm.ClinicalParameterCollection));
+              // console.log(_wm.ClinicalParameterCollection);
 
-              // let _Nursvarible=response.data.ClinicalParameterCollection;
-
-              // _wm.nursCpc.departmentCpc = _Nursvarible.department_cpc
-              // _wm.nursCpc.dateStartCollection = _Nursvarible.date_start_collection
-              // _wm.nursCpc.dateEndCollection = _Nursvarible.date_end_collection
-              // _wm.nursCpc.doctorPrescriber = _Nursvarible.doctor_prescriber
-              // _wm.nursCpc.cpcDate = _Nursvarible.cpc_date
-              // _wm.nursCpc.collectionPa = _Nursvarible.collection_pa
-              // _wm.nursCpc.collectionFc = _Nursvarible.collection_fc
-              // _wm.nursCpc.collectionSpo2 = _Nursvarible.collection_spo2
-              // _wm.nursCpc.collectionTc = _Nursvarible.collection_tc
-              // _wm.nursCpc.collectionOperatorSignature = _Nursvarible.collection_operator_signature
-              // _wm.nursCpc.folderPageCollection = _Nursvarible.folder_page_collection
+              for (var prop in _wm.ClinicalParameterCollection) {}
 
               // _wm.nursCpc.allClinicalParameterCollections=response.data.allClinicalParameterCollections;
             } else {
@@ -2251,17 +2216,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
-// const table = document.getElementById('myTable');
-// const button = document.getElementById('addRowButton');
-
-// button.addEventListener('click', function() {
-//     const newRow = table.insertRow(-1);
-//     const cell1 = newRow.insertCell(0);
-//     const cell2 = newRow.insertCell(1);
-//     cell1.innerHTML = 'Nuova riga, colonna 1';
-//     cell2.innerHTML = 'Nuova riga, colonna 2';
-// }); 
-
 
 
 
@@ -2315,6 +2269,31 @@ __webpack_require__.r(__webpack_exports__);
     this.getCollectionFormHgtsByUserIstanceId(1);
   },
   methods: {
+    i2hDateFormat: function i2hDateFormat(date) {
+      var current = new Date(date);
+      var year = "".concat(current.getFullYear());
+      var month = "".concat(current.getMonth());
+      var timeHours = "".concat(current.getHours());
+      var timeMinuts = "".concat(current.getMinutes());
+      var day = "".concat(current.getDate());
+      month = this.zeroFill(month);
+      day = this.zeroFill(day);
+      timeMinuts = this.zeroFill(timeMinuts);
+      timeHours = this.zeroFill(timeHours);
+      var tDate = day + '/' + month + '/' + year + ' - ' + timeHours + ':' + timeMinuts;
+      return tDate;
+    },
+    zeroFill: function zeroFill(value) {
+      if (parseInt(value) < 10) {
+        value = '0' + value;
+      }
+      return value;
+    },
+    i2hHourFormat: function i2hHourFormat(dataz) {
+      var dataw = new Date(dataz);
+      //return date;
+      return dataw.getHours() + ':' + dataw.getMinutes();
+    },
     // addTherapy () {
     // this.newTherapies.push({
     //     idDoctor:14,
@@ -2405,8 +2384,14 @@ __webpack_require__.r(__webpack_exports__);
         }
         form.append('section', 'hgt');
         if (!this.isObjEmpty(this.nursHgt)) {
-          var _nurs = JSON.stringify(this.nursHgt);
-          form.append('CollectionFormHgt', _nurs);
+          var _collHgt = JSON.stringify(this.nursHgt);
+          form.append('dateStartCollectionHgt', this.nursMcp.dateStartCollectionHgt);
+          form.append('dateEndCollectionHgt', this.nursMcp.dateEndCollectionHgt);
+          form.append('doctorPrescriberHgt', this.nursMcp.doctorPrescriberHgt);
+          form.append('hgtDate', this.nursMcp.hgtDate);
+          form.append('hours', this.nursMcp.hours);
+          form.append('hgt', this.nursMcp.hgt);
+          form.append('CollectionFormHgt', _collHgt);
         }
       }
       if (_errors == 0) {
@@ -2471,7 +2456,7 @@ __webpack_require__.r(__webpack_exports__);
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_HGTS_BY_USER_ISTANCE_ID"] + '/' + id;
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          // alert(JSON.stringify(response));
+          alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
           _wm.errNum = error;
@@ -2480,9 +2465,11 @@ __webpack_require__.r(__webpack_exports__);
             if (response.data.CollectionFormHgt) {
               // _wm.hGTSaved=true;
               // _wm.btnHgtSend="Aggiorna";
+              // alert(JSON.stringify(_wm.CollectionFormHgt));
 
               _wm.CollectionFormHgt = response.data.CollectionFormHgt;
-              // alert(JSON.stringify(_wm.CollectionFormHgt));
+              console.log(_wm.CollectionFormHgt);
+              for (var prop in _wm.CollectionFormHgt) {}
 
               // let _NursHgt=response.data.CollectionFormHgt;
               // _wm.departmentHgt = _NursHgt.department_hgt
@@ -2561,6 +2548,7 @@ __webpack_require__.r(__webpack_exports__);
       // lunch:null,
       // dinner:null,
 
+      nursMcp: {},
       MonitoringClinicalParameter: {},
       accessData: [function (id) {
         return 31;
@@ -2575,7 +2563,6 @@ __webpack_require__.r(__webpack_exports__);
       // psyMhDate:null,
       // psyCardId:null,
       date: new Date(),
-      nursMcp: {},
       mainTitle: "psy",
       firstSave: true,
       mCPSaved: false,
@@ -2583,78 +2570,7 @@ __webpack_require__.r(__webpack_exports__);
       total: 0,
       allMonitoringClinicalParameters: null
 
-      // therapies: [
-      // {
-      //     id: 1,
-      //     drug: "tachipirina",
-      //     posology: "2 volte al di",
-      //     frequency: "test test",
-      //     startTherapy: "2022-10-12",
-      //     endTherapy: "2023-06-10",
-      //     drugRoute: "intramuscolare",
-      //     morning: "",
-      //     afternoon: true,
-      //     evening: "",
-      //     external_doctor_prescription:0
-      // },
-      // {
-      //     id: 2,          
-      //     drug: "toradol",
-      //     posology: "2 volte al di",
-      //     frequency: "il venerdì",
-      //     startTherapy: "2023-01-01",
-      //     endTherapy: "2023-12-31",
-      //     drugRoute: "orale",
-      //     morning: true,
-      //     afternoon: true,
-      //     evening: "",
-      //     external_doctor_prescription:0
-      // },
-      // {
-      //     id: 3,        
-      //     drug: "buscopan",
-      //     posology: "unidie",
-      //     frequency: "tutti i giorni",
-      //     startTherapy: "2022-08-12",
-      //     endTherapy: "2023-07-23",
-      //     drugRoute: "intramuscolare",
-      //     morning: true,
-      //     afternoon: "",
-      //     evening: "",
-      //     external_doctor_prescription:0
-      // },
-      // ],
-
-      //     newTherapies: [
-      //     {
-      //         idDoctor:0,
-      //         doctorName:'',
-      //         doctorLastname:'',
-      //         userInstanceId:0,
-      //         userId:0,
-
-      //         cpc_date:'',
-      //         collection_pa:'',
-      //         collection_fc:'',
-      //         collection_spo2:'',
-      //         collection_tc:'',
-      //         // drug: "",
-      //         // posology: "",
-      //         // frequency: "",
-      //         // startTherapy: "",
-      //         // endTherapy: null,
-      //         // drugRoute: "",
-      //         // morning: 0,
-      //         // afternoon: 0,
-      //         // evening: 0,
-      //         // external_doctor_prescription:0,
-      //         // deleted:0,
-      //         // acceptance:0,
-      //         // acceptanceId:0 
-      //     },
-      // ],
-      // showtherapies:true,
-      // newTheraphyPnl:true,
+      // testMonitoring:[],
     };
   },
 
@@ -2662,6 +2578,31 @@ __webpack_require__.r(__webpack_exports__);
     this.getMonitoringClinicalParametersByUserIstanceId(1);
   },
   methods: {
+    i2hDateFormat: function i2hDateFormat(date) {
+      var current = new Date(date);
+      var year = "".concat(current.getFullYear());
+      var month = "".concat(current.getMonth());
+      var timeHours = "".concat(current.getHours());
+      var timeMinuts = "".concat(current.getMinutes());
+      var day = "".concat(current.getDate());
+      month = this.zeroFill(month);
+      day = this.zeroFill(day);
+      timeMinuts = this.zeroFill(timeMinuts);
+      timeHours = this.zeroFill(timeHours);
+      var tDate = day + '/' + month + '/' + year + ' - ' + timeHours + ':' + timeMinuts;
+      return tDate;
+    },
+    zeroFill: function zeroFill(value) {
+      if (parseInt(value) < 10) {
+        value = '0' + value;
+      }
+      return value;
+    },
+    i2hHourFormat: function i2hHourFormat(dataz) {
+      var dataw = new Date(dataz);
+      //return date;
+      return dataw.getHours() + ':' + dataw.getMinutes();
+    },
     // addTherapy () {
     //     this.newTherapies.push({
     //         idDoctor:14,
@@ -2758,6 +2699,11 @@ __webpack_require__.r(__webpack_exports__);
         form.append('section', 'mcp');
         if (!this.isObjEmpty(this.nursMcp)) {
           var _nurs = JSON.stringify(this.nursMcp);
+          form.append('mcpDiet', this.nursMcp.mcpDiet);
+          form.append('bodyWeight', this.nursMcp.bodyWeight);
+          form.append('monitoringPaSystolic', this.nursMcp.monitoringPaSystolic);
+          form.append('monitoringPaDiastolic', this.nursMcp.monitoringPaDiastolic);
+          form.append('monitoringFc', this.nursMcp.monitoringFc);
           form.append('MonitoringClinicalParameter', _nurs);
         }
       }
@@ -2831,9 +2777,28 @@ __webpack_require__.r(__webpack_exports__);
             _wm.mainTitle = "Aggiornamento Cartella nurs";
             if (response.data.MonitoringClinicalParameter) {
               // _wm.mCPSaved=true;
-              // _wm.btnMcpSend="Aggiorna";
-              _wm.MonitoringClinicalParameter = response.data.MonitoringClinicalParameter;
               // alert(JSON.stringify(_wm.MonitoringClinicalParameter));
+              // _wm.btnMcpSend="Aggiorna";
+
+              _wm.MonitoringClinicalParameter = response.data.MonitoringClinicalParameter;
+              // console.log(_wm.MonitoringClinicalParameter);
+
+              for (var prop in _wm.MonitoringClinicalParameter) {
+
+                // _wm.MonitoringClinicalParameter[prop];
+                // let clinicalParameter={};
+
+                // //clinicalParameter['data']=_wm.MonitoringClinicalParameter[prop];
+                // clinicalParameter['fullName']=_wm.MonitoringClinicalParameter[prop] + _wm.MonitoringClinicalParameter[prop].doctor_lastname;
+
+                // clinicalParameter['mcpDiet']=_wm.MonitoringClinicalParameter[prop].mcp_diet;
+                // clinicalParameter['bodyWeight']=_wm.MonitoringClinicalParameter[prop].body_weight;
+                // clinicalParameter['monitoringPaSystolic']=_wm.MonitoringClinicalParameter[prop].monitoring_pa_systolic;
+                // clinicalParameter['monitoringPaDiastolic']=_wm.MonitoringClinicalParameter[prop].monitoring_pa_diastolic;
+                // clinicalParameter['monitoringFc']=_wm.MonitoringClinicalParameter[prop].monitoring_fc;
+
+                // _wm.testMonitoring.push(clinicalParameter)
+              }
 
               // let _NursMcp=response.data.MonitoringClinicalParameter;
 
@@ -2852,7 +2817,7 @@ __webpack_require__.r(__webpack_exports__);
 
               // _wm.allMonitoringClinicalParameters=response.data.allMonitoringClinicalParameters;
             } else {
-              _wm.btnNhSend = "Salva";
+              _wm.btnMcpSend = "Salva";
             }
             _wm.firstSave = false;
           } else if (error == 7) {
@@ -2922,6 +2887,31 @@ __webpack_require__.r(__webpack_exports__);
     this.getMonitoringPrescriptionTaosByUserIstanceId(1);
   },
   methods: {
+    i2hDateFormat: function i2hDateFormat(date) {
+      var current = new Date(date);
+      var year = "".concat(current.getFullYear());
+      var month = "".concat(current.getMonth());
+      var timeHours = "".concat(current.getHours());
+      var timeMinuts = "".concat(current.getMinutes());
+      var day = "".concat(current.getDate());
+      month = this.zeroFill(month);
+      day = this.zeroFill(day);
+      timeMinuts = this.zeroFill(timeMinuts);
+      timeHours = this.zeroFill(timeHours);
+      var tDate = day + '/' + month + '/' + year + ' - ' + timeHours + ':' + timeMinuts;
+      return tDate;
+    },
+    zeroFill: function zeroFill(value) {
+      if (parseInt(value) < 10) {
+        value = '0' + value;
+      }
+      return value;
+    },
+    i2hHourFormat: function i2hHourFormat(dataz) {
+      var dataw = new Date(dataz);
+      //return date;
+      return dataw.getHours() + ':' + dataw.getMinutes();
+    },
     printMonitoringPrescriptionTao: function printMonitoringPrescriptionTao(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
@@ -2961,8 +2951,13 @@ __webpack_require__.r(__webpack_exports__);
         }
         form.append('section', 'tao');
         if (!this.isObjEmpty(this.nursTao)) {
-          var _nurs = JSON.stringify(this.nursTao);
-          form.append('MonitoringPrescriptionTao', _nurs);
+          var _prescript = JSON.stringify(this.nursTao);
+          form.append('drugPrescribed', this.nursTao.drugPrescribed);
+          form.append('diagnosisTao', this.nursTao.diagnosisTao);
+          form.append('dateTao', this.nursTao.dateTao);
+          form.append('taoDosage', this.nursTao.taoDosage);
+          form.append('taoDoctor', this.nursTao.taoDoctor);
+          form.append('MonitoringPrescriptionTao', _prescript);
         }
       }
       if (_errors == 0) {
@@ -3036,20 +3031,11 @@ __webpack_require__.r(__webpack_exports__);
             if (response.data.MonitoringPrescriptionTao) {
               // _wm.hGTSaved=true;
               // _wm.btnHgtSend="Aggiorna";
-
-              _wm.MonitoringPrescriptionTao = response.data.MonitoringPrescriptionTao;
               // alert(JSON.stringify(_wm.MonitoringPrescriptionTao));
 
-              // let _nursTao=response.data.MonitoringPrescriptionTao;
-              // _wm.departmentHgt = _nursTao.department_hgt
-              // _wm.dateStartCollectionHgt = _nursTao.date_start_collection_hgt
-              // _wm.dateEndCollectionHgt = _nursTao.date_end_collection_hgt
-              // _wm.doctorPrescriberHgt = _nursTao.doctor_prescriber_hgt
-              // _wm.hgtDate = _nursTao.hgt_date
-              // _wm.hours = _nursTao.hours
-              // _wm.hgt = _nursTao.hgt
-              // _wm.hgtOperatorSignature = _nursTao.hgt_operator_signature
-              // _wm.folderPageCollectionHgt = _nursTao.folder_page_collection_hgt
+              _wm.MonitoringPrescriptionTao = response.data.MonitoringPrescriptionTao;
+              console.log(_wm.MonitoringPrescriptionTao);
+              for (var prop in _wm.MonitoringPrescriptionTao) {}
 
               // _wm.allMonitoringPrescriptionTaos=response.data.allMonitoringPrescriptionTaos;
             } else {
@@ -5360,7 +5346,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     }, _defineProperty(_ref, "therapies", {
       check_drugs_not_administered: [],
       note_drugs_not_administered: []
-    }), _defineProperty(_ref, "traceability_therapys", []), _defineProperty(_ref, "terapieRifiutate", []), _defineProperty(_ref, "drug", ''), _defineProperty(_ref, "nursCardTh", {}), _defineProperty(_ref, "TraceabilityTherapy", {}), _defineProperty(_ref, "accessData", [function (id) {
+    }), _defineProperty(_ref, "traceability_therapys", []), _defineProperty(_ref, "terapieRifiutate", []), _defineProperty(_ref, "nursCardTh", {}), _defineProperty(_ref, "TraceabilityTherapy", {}), _defineProperty(_ref, "accessData", [function (id) {
       return 31;
     }, function (name) {
       return 'mario';
@@ -5368,12 +5354,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       return 'rossi';
     }]), _defineProperty(_ref, "date", new Date()), _defineProperty(_ref, "mainTitle", "psy"), _defineProperty(_ref, "firstSave", true), _defineProperty(_ref, "tHSaved", false), _defineProperty(_ref, "btnThSend", "Salva"), _defineProperty(_ref, "total", 0), _defineProperty(_ref, "allTraceabilityTherapys", null), _defineProperty(_ref, "allNursingTherapys", null), _defineProperty(_ref, "testRefusedTherapies", []), _ref;
   },
-  // mounted() {
-  //     axios.get('/traceabilityTherapys').then(response => {
-  //     this.traceabilityTherapys = response.data;
-  //     });
-  // },
-
   created: function created() {
     this.getTraceabilityTherapysByUserIstanceId();
     this.getNursingTherapysByUserIstanceId(1);
@@ -5381,6 +5361,31 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   computed: {},
   watch: {},
   methods: (_methods = {
+    i2hDateFormat: function i2hDateFormat(date) {
+      var current = new Date(date);
+      var year = "".concat(current.getFullYear());
+      var month = "".concat(current.getMonth());
+      var timeHours = "".concat(current.getHours());
+      var timeMinuts = "".concat(current.getMinutes());
+      var day = "".concat(current.getDate());
+      month = this.zeroFill(month);
+      day = this.zeroFill(day);
+      timeMinuts = this.zeroFill(timeMinuts);
+      timeHours = this.zeroFill(timeHours);
+      var tDate = day + '/' + month + '/' + year + ' - ' + timeHours + ':' + timeMinuts;
+      return tDate;
+    },
+    zeroFill: function zeroFill(value) {
+      if (parseInt(value) < 10) {
+        value = '0' + value;
+      }
+      return value;
+    },
+    i2hHourFormat: function i2hHourFormat(dataz) {
+      var dataw = new Date(dataz);
+      //return date;
+      return dataw.getHours() + ':' + dataw.getMinutes();
+    },
     saveRefusedTreatments: function saveRefusedTreatments() {
       for (var refusedTreatment in this.refusedTreatments.checked) {
         if (this.refusedTreatments.checked.hasOwnProperty(refusedTreatment)) {
@@ -6944,7 +6949,65 @@ var render = function render() {
         _vm.$set(_vm.nursCpc, "collectionTc", $event.target.value);
       }
     }
-  })])])])]), _vm._v("\r\n\r\n                                " + _vm._s(_vm.nursCpc) + "\r\n\r\n\r\n\r\n                                "), _vm._v(" "), _c("div", {
+  })])])])]), _vm._v("\r\n\r\n                                " + _vm._s(_vm.nursCpc) + "\r\n\r\n"), _vm._v(" "), _c("div", [_vm._m(6), _vm._v(" "), _c("ul", {
+    staticStyle: {
+      display: "flex",
+      "flex-wrap": "wrap"
+    }
+  }, _vm._l(_vm.ClinicalParameterCollection, function (item, key, index) {
+    return _c("span", {
+      key: index,
+      staticClass: "mr-5"
+    }, [_c("div", {
+      staticClass: "card text-white bg-secondary mb-2",
+      staticStyle: {
+        "max-width": "20rem",
+        "border-radius": "20px"
+      }
+    }, [_c("div", {
+      staticClass: "card-header"
+    }, [_c("span", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Nome: ")]), _c("h5", {
+      staticStyle: {
+        display: "inline-block"
+      }
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])])])]), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, [_c("h5", {
+      staticClass: "card-title"
+    }, [_c("div", [_c("strong", [_vm._v("Data inizio:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["cpc_date"])))])]), _vm._v(" "), _c("p", {
+      staticClass: "card-text"
+    }), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Sistolica:")]), _vm._v(" " + _vm._s(item["collection_pa_systolic"]))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Diastolica:")]), _vm._v(" " + _vm._s(item["collection_pa_diastolic"]))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("F.C:")]), _vm._v(" " + _vm._s(item["collection_fc"]) + " ")]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("SPO2:")]), _vm._v(" " + _vm._s(item["collection_spo2"]) + " ")]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("T.C:")]), _vm._v(" " + _vm._s(item["collection_tc"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _vm._m(7), _vm._v(" "), _c("br"), _vm._v("\r\n                                ::" + _vm._s(_vm.ClinicalParameterCollection) + "\r\n\r\n                                "), _c("br"), _c("br"), _vm._v(" "), _c("div", {
     staticClass: "ln_solid mt-2"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -7024,6 +7087,24 @@ var staticRenderFns = [function () {
       colspan: "2"
     }
   }, [_c("strong", [_vm._v("P.A.")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("F.C.")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("SPO2")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("T.C.")])])]), _vm._v(" "), _c("tr", [_c("td", [_c("strong", [_vm._v("sistolica")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("diastolica")])]), _vm._v(" "), _c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", {
+    staticClass: "ml-4 mb-4 mt-4"
+  }, [_c("strong", [_vm._v("Archivio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("a", {
+    staticClass: "btn bg-primary text-white i2hBtnPrint ml-4"
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa Archivio")])])]);
 }];
 render._withStripped = true;
 
@@ -7198,7 +7279,57 @@ var render = function render() {
         _vm.$set(_vm.nursHgt, "hgt", $event.target.value);
       }
     }
-  })])])])]), _vm._v("\n\n                            " + _vm._s(_vm.nursHgt) + "\n\n\n                            \n\n                           \n\n                    \n                                        \n                            "), _c("div", {
+  })])])])]), _vm._v(" "), _c("div", [_vm._m(6), _vm._v(" "), _c("ul", {
+    staticStyle: {
+      display: "flex",
+      "flex-wrap": "wrap"
+    }
+  }, _vm._l(_vm.CollectionFormHgt, function (item, key, index) {
+    return _c("span", {
+      key: index,
+      staticClass: "mr-5"
+    }, [_c("div", {
+      staticClass: "card text-white bg-secondary mb-3",
+      staticStyle: {
+        "max-width": "20rem",
+        "border-radius": "20px"
+      }
+    }, [_c("div", {
+      staticClass: "card-header"
+    }, [_c("span", [_c("div", [_c("strong", [_vm._v("Nome: ")]), _c("h5", {
+      staticStyle: {
+        display: "inline-block"
+      }
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])])])]), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, [_c("h5", {
+      staticClass: "card-title"
+    }, [_c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Data inizio:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["date_start_collection_hgt"])))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Data fine:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["date_end_collection_hgt"])) + " ")])]), _vm._v(" "), _c("p", {
+      staticClass: "card-text"
+    }), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Data HGT:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["hgt_date"])))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Orario:")]), _vm._v(" " + _vm._s(_vm.i2hHourFormat(item["hours"])) + " ")]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("HGT:")]), _vm._v(" " + _vm._s(item["hgt"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _vm._m(7), _vm._v(" "), _c("br"), _vm._v("\n                            ::" + _vm._s(_vm.CollectionFormHgt) + "\n                            "), _c("hr"), _c("hr"), _vm._v(" "), _c("br"), _c("br"), _vm._v(" "), _c("hr"), _c("hr"), _vm._v("\n\n                            " + _vm._s(_vm.nursHgt) + "\n\n                            \n\n\n                            \n\n                           \n\n                    \n                                        \n                            "), _c("div", {
     staticClass: "ln_solid mt-2"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -7279,6 +7410,24 @@ var staticRenderFns = [function () {
       "for": "hgt"
     }
   }, [_c("h4", [_c("strong", [_vm._v("HGT")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", {
+    staticClass: "ml-4 mb-4"
+  }, [_c("strong", [_vm._v("Archivio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("a", {
+    staticClass: "btn bg-primary text-white i2hBtnPrint ml-4"
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa Archivio")])])]);
 }];
 render._withStripped = true;
 
@@ -7565,7 +7714,75 @@ var render = function render() {
         _vm.$set(_vm.nursMcp, "monitoringFc", $event.target.value);
       }
     }
-  })])])]), _vm._v(" "), _vm._v("\n\n\n\n                                " + _vm._s(_vm.nursMcp) + "\n\n\n                                "), _c("div", {
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "mt-4"
+  }, [_vm._m(6), _vm._v(" "), _c("ul", {
+    staticStyle: {
+      display: "flex",
+      "flex-wrap": "wrap"
+    }
+  }, _vm._l(_vm.MonitoringClinicalParameter, function (item, key, index) {
+    return _c("span", {
+      key: index,
+      staticClass: "mr-5"
+    }, [_c("div", {
+      staticClass: "card text-white bg-secondary mb-3",
+      staticStyle: {
+        "max-width": "19rem",
+        "border-radius": "20px"
+      }
+    }, [_c("div", {
+      staticClass: "card-header"
+    }, [_c("span", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("div", [_c("strong", [_vm._v("Nome: ")]), _c("h5", {
+      staticStyle: {
+        display: "inline-block"
+      }
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])])])]), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, [_c("h5", {
+      staticClass: "card-title"
+    }, [_c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Data inizio: ")]), _vm._v(_vm._s(_vm.i2hDateFormat(item["date_start_rejection"])))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Data fine: ")]), _vm._v(_vm._s(_vm.i2hDateFormat(item["date_end_rejection"])) + " ")])]), _vm._v(" "), _c("p", {
+      staticClass: "card-text"
+    }), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Data:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["mcp_date"])))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Alimentazione:")]), _vm._v(" " + _vm._s(item["mcp_diet"]))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Peso Corporeo:")]), _vm._v(" " + _vm._s(item["body_weight"]) + " ")]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Pressione Sistolica:")]), _vm._v(" " + _vm._s(item["monitoring_pa_systolic"]))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Pressione Diastolica:")]), _vm._v(" " + _vm._s(item["monitoring_pa_diastolic"]))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("F.C:")]), _vm._v(" " + _vm._s(item["monitoring_fc"]))]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _vm._m(7), _vm._v("\n\n                            ::" + _vm._s(_vm.MonitoringClinicalParameter) + "\n                            "), _c("br"), _c("br"), _vm._v(" "), _c("div", {
     staticClass: "ln_solid mt-2"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -7648,6 +7865,24 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("tr", [_c("td", [_c("strong", [_vm._v("colazione")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("pranzo")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("cena")])]), _vm._v(" "), _c("td"), _vm._v(" "), _c("td", [_c("strong", [_vm._v("sistolica")])]), _vm._v(" "), _c("td", [_c("strong", [_vm._v("diastolica")])]), _vm._v(" "), _c("td")]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", {
+    staticClass: "ml-4 mb-4 mt-4"
+  }, [_c("strong", [_vm._v("Archivio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("a", {
+    staticClass: "btn bg-primary text-white i2hBtnPrint ml-4"
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa Archivio")])])]);
 }];
 render._withStripped = true;
 
@@ -7873,7 +8108,63 @@ var render = function render() {
         _vm.$set(_vm.nursTao, "taoCpsiSignature", $event.target.value);
       }
     }
-  })])])])]), _vm._v("\n\n\n                            " + _vm._s(_vm.nursTao) + "\n\n\n\n\n\n                            "), _c("div", {
+  })])])])]), _vm._v("\n                            " + _vm._s(_vm.nursTao) + "\n\n\n\n\n\n\n\n                            "), _c("div", {
+    staticClass: "mt-4"
+  }, [_vm._m(9), _vm._v(" "), _c("ul", {
+    staticStyle: {
+      display: "flex",
+      "flex-wrap": "wrap"
+    }
+  }, _vm._l(_vm.MonitoringPrescriptionTao, function (item, key, index) {
+    return _c("span", {
+      key: index,
+      staticClass: "mr-5"
+    }, [_c("div", {
+      staticClass: "card text-white bg-secondary mb-3",
+      staticStyle: {
+        "max-width": "20rem",
+        "border-radius": "20px"
+      }
+    }, [_c("div", {
+      staticClass: "card-header"
+    }, [_c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Nome:")]), _c("h5", {
+      staticStyle: {
+        display: "inline-block"
+      }
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])])]), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, [_c("h5", {
+      staticClass: "card-title"
+    }, [_c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Farmaco Prescritto:")]), _vm._v(_vm._s(item["drug_prescribed"]))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Diagnosi:")]), _vm._v(_vm._s(item["diagnosis_tao"]) + " ")])]), _vm._v(" "), _c("p", {
+      staticClass: "card-text"
+    }), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Data:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["date_tao"])))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Dosaggio:")]), _vm._v(" " + _vm._s(item["tao_dosage"]))]), _vm._v(" "), _c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Medico:")]), _vm._v(" " + _vm._s(item["tao_doctor"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _vm._m(10), _vm._v("\n\n\n\n                            ::" + _vm._s(_vm.MonitoringPrescriptionTao) + "\n\n                            "), _c("br"), _c("br"), _vm._v(" "), _c("div", {
     staticClass: "ln_solid mt-5"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -7984,6 +8275,24 @@ var staticRenderFns = [function () {
       "for": "tao_cpsi_signature"
     }
   }, [_c("strong", [_c("h4", [_vm._v("Firma CPSI")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", {
+    staticClass: "ml-4 mb-4 mt-4"
+  }, [_c("strong", [_vm._v("Archivio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("a", {
+    staticClass: "btn bg-primary text-white i2hBtnPrint ml-4"
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa Archivio")])])]);
 }];
 render._withStripped = true;
 
@@ -26141,15 +26450,47 @@ var render = function render() {
         }
       }
     }) : _vm._e()])]);
-  })], 2), _vm._v(" "), _c("br"), _vm._v("\r\n                                TERAPIE RIFIUTATE: " + _vm._s(_vm.refusedTreatments) + "\r\n                                "), _c("br"), _vm._v(" "), _c("br"), _vm._v("\r\n                                nursTh: " + _vm._s(_vm.nursCardTh) + "\r\n                                "), _c("br"), _vm._v(" "), _c("hr"), _c("hr"), _vm._v(" "), _c("div", [_c("h2", [_vm._v("archivio")]), _vm._v(" "), _c("ul", _vm._l(_vm.testRefusedTherapies, function (TraceabilityTherapy, index) {
-    return _c("li", {
-      key: index
-    }, [_vm._v("\r\n\r\n                                            " + _vm._s(TraceabilityTherapy.data) + " - " + _vm._s(TraceabilityTherapy.fullName) + "\r\n                                            "), _vm._l(TraceabilityTherapy.refusedTherapy, function (drug, index) {
+  })], 2), _vm._v(" "), _c("br"), _vm._v("\r\n                                TERAPIE RIFIUTATE: " + _vm._s(_vm.refusedTreatments) + "\r\n                                "), _c("br"), _vm._v(" "), _c("br"), _vm._v("\r\n                                nursTh: " + _vm._s(_vm.nursCardTh) + "\r\n                                "), _c("br"), _vm._v(" "), _c("hr"), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "mt-4"
+  }, [_vm._m(4), _vm._v(" "), _c("ul", {
+    staticStyle: {
+      display: "flex",
+      "flex-wrap": "wrap"
+    }
+  }, _vm._l(_vm.testRefusedTherapies, function (TraceabilityTherapy, index) {
+    return _c("span", {
+      key: index,
+      staticClass: "mr-5"
+    }, [_c("div", {
+      staticClass: "card text-white bg-secondary mb-3",
+      staticStyle: {
+        "max-width": "19rem",
+        "border-radius": "20px"
+      }
+    }, [_c("div", {
+      staticClass: "card-header"
+    }, [_c("span", {}, [_c("div", [_c("h5", {
+      staticStyle: {
+        display: "inline-block"
+      }
+    }, [_vm._v(_vm._s(TraceabilityTherapy.data) + " "), _c("br"), _c("strong", [_vm._v("Nome:")]), _vm._v(" " + _vm._s(TraceabilityTherapy.fullName))])])])]), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, _vm._l(TraceabilityTherapy.refusedTherapy, function (drug, index) {
       return _c("div", {
         key: index
-      }, [_vm._v("\r\n                                                " + _vm._s(drug[0]) + " " + _vm._s(drug[1]) + " \r\n                                            ")]);
-    })], 2);
-  }), 0)]), _vm._v(" "), _c("hr"), _c("hr"), _vm._v(" "), _c("div", {
+      }, [_c("div", {
+        staticStyle: {
+          "min-width": "100px"
+        }
+      }, [_c("strong", [_vm._v("Farmaco:")]), _vm._v(" " + _vm._s(drug[0]))]), _vm._v(" "), _c("div", {
+        staticStyle: {
+          "min-width": "100px"
+        }
+      }, [_c("strong", [_vm._v("Descrizione:")]), _vm._v(" " + _vm._s(drug[1]) + " ")])]);
+    }), 0)]), _vm._v(" "), _c("br"), _c("br")]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _vm._m(5), _vm._v("\r\n\r\n                                " + _vm._s(_vm.TraceabilityTherapy) + "\r\n\r\n                                "), _vm._v(" "), _c("hr"), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "50px"
@@ -26158,7 +26499,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(4), _vm._v(" "), _c("span", {
+  }, [_vm._m(6), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -26227,7 +26568,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(5), _vm._v(" "), _c("span", {
+  }, [_vm._m(7), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -26349,6 +26690,24 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("tr", [_c("th", [_c("strong", [_vm._v("FARMACO")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("DAL")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("AL")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("ORA")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("FREQUENZA")])]), _vm._v(" "), _c("th", [_c("strong", [_vm._v("NON "), _c("br"), _vm._v(" SOMMINISTRATO")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", {
+    staticClass: "ml-4 mb-4 mt-4"
+  }, [_c("strong", [_vm._v("Archivio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("a", {
+    staticClass: "btn bg-primary text-white i2hBtnPrint ml-4"
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa Archivio")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

@@ -85,7 +85,7 @@
                                 <hr><hr>
 
 
-
+<!-- 
                                 <div>
                                     <h2>archivio</h2>
                                     <ul>
@@ -99,22 +99,47 @@
                                         </li>
                                     </ul>
                                 </div> 
+ -->
 
-                                <!-- {{TraceabilityTherapy}} -->
+                                <div class="mt-4">
+                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <ul style="display: flex; flex-wrap: wrap;">
+                                        <span  v-for="(TraceabilityTherapy, index) in testRefusedTherapies" :key="index" class="mr-5">
+
+                                            <div class="card text-white bg-secondary mb-3 " style="max-width: 19rem; border-radius: 20px;">
+                                                <div class="card-header">
+                                                    <span style=""> 
+                                                        <div><h5 style="display: inline-block;">{{TraceabilityTherapy.data}} <br><strong>Nome:</strong> {{ TraceabilityTherapy.fullName }}</h5></div>
+                                                    </span> 
+                                                </div>
+                                                <div class="card-body">
+                                                    <div v-for="(drug, index) in TraceabilityTherapy.refusedTherapy" :key="index">
+                                                        
+                                                        <div style="min-width: 100px;"><strong>Farmaco:</strong> {{drug[0]}}</div>
+                                                        <div style="min-width: 100px;"><strong>Descrizione:</strong> {{drug[1]}} </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
+                                </div> 
+
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="pull-right">
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                    </div>
+                                </div>
+
+                                {{TraceabilityTherapy}}
 
                                 <!-- {{traceability_therapys}} -->
 
 
-
-
-
-
-
-
-
                                 <hr><hr>
 
-                                
                                 <div class="row" style="margin-top:50px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
@@ -416,19 +441,13 @@ label {
 
 
                 traceability_therapys:[],
-
-
-
-
-
                 terapieRifiutate:[],
-                drug:'',        
+                // drug:'',        
 
 
-                // TraceabilityTherapys:[],
 
                 nursCardTh:{},
-               TraceabilityTherapy:{},
+                TraceabilityTherapy:{},
                 
                 
                 
@@ -439,8 +458,6 @@ label {
                 ],
                 
 
-
-           
                 date:new Date(),
 
                 mainTitle:"psy",
@@ -455,12 +472,6 @@ label {
             }
         },
 
-        // mounted() {
-        //     axios.get('/traceabilityTherapys').then(response => {
-        //     this.traceabilityTherapys = response.data;
-        //     });
-        // },
-
         created: function () {
             this.getTraceabilityTherapysByUserIstanceId()
             this.getNursingTherapysByUserIstanceId(1)
@@ -474,6 +485,36 @@ label {
         },
 
         methods: {
+
+
+            i2hDateFormat(date){
+
+            let current=new Date(date);
+            let year = `${current.getFullYear()}`;
+            let month = `${current.getMonth()}`;
+            let timeHours=`${current.getHours()}`;
+            let timeMinuts=`${current.getMinutes()}`;
+            let day = `${current.getDate()}`;
+            month=this.zeroFill(month);
+            day=this.zeroFill(day);
+            timeMinuts=this.zeroFill(timeMinuts);
+            timeHours=this.zeroFill(timeHours);
+            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+            return tDate;
+            },
+            zeroFill(value){
+            if(parseInt(value)<10){
+                value = '0'+value;
+            }
+            return value
+            },
+
+
+            i2hHourFormat(dataz){
+            let dataw= new Date(dataz);
+            //return date;
+            return dataw.getHours() +':'+dataw.getMinutes();
+            },
 
 
             saveRefusedTreatments(){
