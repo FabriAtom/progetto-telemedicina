@@ -105,19 +105,17 @@
                                     <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
                                     <ul style="display: flex; flex-wrap: wrap;">
                                         <span  v-for="(TraceabilityTherapy, index) in testRefusedTherapies" :key="index" class="mr-5">
-
                                             <div class="card text-white bg-secondary mb-3 " style="max-width: 19rem; border-radius: 20px;">
                                                 <div class="card-header">
-                                                    <span style=""> 
+                                                    <span>
+                                                        <!-- <button class="btn btn-success">Apri</button> -->
                                                         <div><h5 style="display: inline-block;">{{TraceabilityTherapy.data}} <br><strong>Nome:</strong> {{ TraceabilityTherapy.fullName }}</h5></div>
                                                     </span> 
                                                 </div>
                                                 <div class="card-body">
                                                     <div v-for="(drug, index) in TraceabilityTherapy.refusedTherapy" :key="index">
-                                                        
                                                         <div style="min-width: 100px;"><strong>Farmaco:</strong> {{drug[0]}}</div>
                                                         <div style="min-width: 100px;"><strong>Descrizione:</strong> {{drug[1]}} </div>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,6 +123,28 @@
                                         </span>
                                     </ul>
                                 </div> 
+
+
+
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="nursCardTh.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="nursCardTh.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getTraceabilityTherapysByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+ 
+
 
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
@@ -416,7 +436,7 @@ label {
                 userInstanceId:36,
                 userId:237,
 
-
+                showCard:true,
 
                 refusedTreatments: {
                     checked:{},
@@ -469,11 +489,15 @@ label {
                 allTraceabilityTherapys:null,
                 allNursingTherapys:null,
                 testRefusedTherapies:[],
+
+
+                // mostra: false,
+    
             }
         },
 
         created: function () {
-            this.getTraceabilityTherapysByUserIstanceId()
+            this.getTraceabilityTherapysByUserIstanceId(36,false)
             this.getNursingTherapysByUserIstanceId(1)
         },
         
@@ -485,8 +509,6 @@ label {
         },
 
         methods: {
-
-
             i2hDateFormat(date){
 
             let current=new Date(date);
@@ -508,7 +530,6 @@ label {
             }
             return value
             },
-
 
             i2hHourFormat(dataz){
             let dataw= new Date(dataz);
@@ -675,12 +696,17 @@ label {
                 }
             },
 
-            getTraceabilityTherapysByUserIstanceId(id){
+            getTraceabilityTherapysByUserIstanceId(id,first){
                 let _wm = this;
                 id=36;
+
+                let _param;
+                _wm.testRefusedTherapies=[];
+
+
                 try {
                     let url=actions.GET_TRACEABILITYS_BY_USER_ISTANCE_ID+'/'+id;
-                    axios.get(url).then(response => {
+                    axios.get(url,{params:{first:first,startDate:this.nursCardTh.startDate,endDate:this.nursCardTh.endDate}}).then(response => {
                         // alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
@@ -973,10 +999,10 @@ label {
                     // if(!this.isObjEmpty(this.refusedTreatments)){
                         let _nurs=JSON.stringify(this.refusedTreatments);
                         form.append('RefusedTreatment', _nurs);
-                        alert('test');
+                        //alert('test');
                     //}    
                 }
-                alert(form);
+                //alert(form);
                 
                 // if(_errors==0){
                 //     try {

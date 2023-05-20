@@ -125,6 +125,9 @@ Route::get('/therapies/getTraceabilityTherapysByUserIstanceId/{id}', [App\Http\C
 Route::post('/therapies/addTraceabilityTherapy', [App\Http\Controllers\NursingRecordController::class,'addTraceabilityTherapy'])->name('addTraceabilityTherapy');
 
 
+// Route::get('/therapies/Archive', [App\Http\Controllers\NursingRecordController::class,'Archive'])->name('Archive');
+
+
 
 // Route::get('/therapies/getNursingTherapys', [App\Http\Controllers\NursingRecordController::class,'index'])->name('getNursingTherapys');
 // Route::get('/therapies/getNursingTherapyById/{id}', [App\Http\Controllers\NursingRecordController::class,'getNursingTherapyById'])->name('getNursingTherapyById');

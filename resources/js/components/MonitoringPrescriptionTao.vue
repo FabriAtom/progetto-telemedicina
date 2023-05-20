@@ -77,25 +77,21 @@
                                         </span>
                                     </span>
                                 </div>
+
+
                                 {{nursTao}}
 
 
 
-
-
-
-
                                 <div class="mt-4">
-                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <h2 class="ml-4 mb-2 mt-4"><strong>Archivio</strong></h2>
                                     <ul style="display: flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in MonitoringPrescriptionTao" :key="index" class="mr-5">
 
-                                            <div class="card text-white bg-secondary mb-3" style="max-width: 20rem; border-radius: 20px;">
+                                            <div class="card text-white bg-secondary mb-3" style="max-width:19rem; border-radius:20px;">
                                                 <div class="card-header">
                                                     <div style="min-width: 100px;"><strong>Nome:</strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
-                                                    <!-- <div style="min-width: 100px; color: black;"><strong>Farmaco Prescritto :</strong>{{ item['doctor_lastname'] }}</div> -->
                                                 </div>
-
                                                 <div class="card-body">
                                                     <h5 class="card-title">
                                                         <div style="min-width: 100px;"><strong>Farmaco Prescritto:</strong>{{ (item['drug_prescribed']) }}</div>
@@ -113,6 +109,26 @@
                                     </ul>
                                 </div> 
 
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="nursTao.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="nursTao.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getMonitoringPrescriptionTaosByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+ 
+
+
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
@@ -120,15 +136,9 @@
                                     </div>
                                 </div>
 
-
-
-                                ::{{MonitoringPrescriptionTao}}
+                                {{MonitoringPrescriptionTao}}
 
                                 <br><br>
-
-
-
-
 
                                 <div class="ln_solid mt-5"></div>
                                 <div class="item form-group">
@@ -400,12 +410,18 @@ ul, li{
                 }
             },
 
-            getMonitoringPrescriptionTaosByUserIstanceId(id){
+            getMonitoringPrescriptionTaosByUserIstanceId(id,first){
                 let _wm = this;
                 id=36;
+
+                
+                let _param;
+                _wm.MonitoringPrescriptionTao=[];
+
+
                 try {
                     let url=actions.GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID+'/'+id;
-                    axios.get(url).then(response => {
+                    axios.get(url,{params:{first:first,startDate:this.nursTao.startDate,endDate:this.nursTao.endDate}}).then(response => {
                         // alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;

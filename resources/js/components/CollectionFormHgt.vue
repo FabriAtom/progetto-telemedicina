@@ -85,6 +85,26 @@
                                     </ul>
                                 </div> 
 
+                            
+
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="nursHgt.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="nursHgt.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getCollectionFormHgtsByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+ 
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
@@ -92,8 +112,9 @@
                                     </div>
                                 </div>
 
+
                                 <br>
-                                ::{{CollectionFormHgt}}
+                                {{CollectionFormHgt}}
                                 <hr><hr>
 
                                 
@@ -102,6 +123,7 @@
                                 <hr><hr>
 
                                 {{nursHgt}}
+
 
                                 
 
@@ -467,13 +489,19 @@ ul, li{
                 }
             },
 
-            getCollectionFormHgtsByUserIstanceId(id){
+            getCollectionFormHgtsByUserIstanceId(id,first){
                 let _wm = this;
                 id=36;
+
+                
+                let _param;
+                _wm.CollectionFormHgt=[];
+
+
                 try {
                     let url=actions.GET_HGTS_BY_USER_ISTANCE_ID+'/'+id;
-                    axios.get(url).then(response => {
-                        alert(JSON.stringify(response));
+                    axios.get(url, {params:{first:first,startDate:this.nursHgt.startDate,endDate:this.nursHgt.endDate}}).then(response => {
+                        //alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
                         _wm.errNum=error;

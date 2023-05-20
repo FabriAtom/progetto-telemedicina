@@ -93,37 +93,7 @@
                                 </table>
 
                                 {{nursCpc}}
-
-<!-- 
-                                <div>
-                                    <h2>archivio</h2>
-                                    <ul>
-                                        <li v-for="(item, key, index) in ClinicalParameterCollection" :key="index">
-
-                                             {{ item['doctor_name'] }}
-                                            {{ item['doctor_lastname'] }} 
-                                            - 
-                                            <br>
-                                            {{ item['date_start_collection'] }} 
-                                            {{ item['date_end_collection'] }} 
-                                            <br>
-                                            {{ item['cpc_date'] }}
-                                            {{ item['collection_pa_systolic'] }} 
-                                            {{ item['collection_pa_diastolic'] }}
-                                            {{ item['collection_fc'] }} 
-                                            {{ item['collection_spo2'] }} 
-                                            {{ item['collection_tc'] }} 
-                                             
-                                        </li>
-                                    </ul>
-                                </div> 
- -->
-
-
-
-
-
-
+                              
 
 
 
@@ -157,6 +127,26 @@
                                     </ul>
                                 </div> 
 
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="nursCpc.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="nursCpc.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getClinicalParameterCollectionsByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+    
+
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
@@ -168,9 +158,7 @@
                                 ::{{ClinicalParameterCollection}}
 
                                 <br><br>
-
-
-                                
+ 
                                 <div class="ln_solid mt-2"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
@@ -535,12 +523,18 @@ ul, li{
                 }
             },
 
-            getClinicalParameterCollectionsByUserIstanceId(id){
+            getClinicalParameterCollectionsByUserIstanceId(id,first){
                 let _wm = this;
                 id=36;
+
+
+                let _param;
+                _wm.ClinicalParameterCollection=[];
+
+
                 try {
                     let url=actions.GET_COLLECTIONS_BY_USER_ISTANCE_ID+'/'+id;
-                    axios.get(url).then(response => {
+                    axios.get(url,{params:{first:first,startDate:this.nursCpc.startDate,endDate:this.nursCpc.endDate}}).then(response => {
                         // alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;

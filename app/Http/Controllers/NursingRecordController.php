@@ -628,9 +628,66 @@ class NursingRecordController extends Controller
     //     $pdf->Output("stampa.pdf", "I");
     //     exit();
     // }
-
 // ----------------------------------------------------------------------------------
 
+
+
+
+//              ARCHIVIO
+
+
+
+// ----------------------------------------------------------------------------------
+// printArchiveMonitoringClinicalParameter funzione
+
+// MonitoringClinicalParameter
+    
+
+
+    // public function printPdf(Request $request) {
+
+    //     $nursMcp = MonitoringClinicalParameter::where('user_instance_id',36)->first();
+
+    //     $pdf = new PDFClass();
+    //     if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+    //         header("Content-type: application/PDF");
+    //     } else {
+    //         header("Content-type: application/PDF");
+    //         header("Content-Type: a \pplication/pdf");
+    //     }
+    //     $pdf->SetAutoPageBreak(true, 30);
+
+    //     $pdf->SetTitle('PDF MonitoringClinicalParameter');
+    
+    //     $pdf->AliasNbPages();
+
+    //     $pdf->AddPage();
+
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Cell(0,6,'Modulo Di Monitoraggio Parametri Clinici In Caso Di Rifiuto Della Alimentazione.',0,0,'C',true);
+    //     $pdf->Ln(15);
+
+    //     $pdf->SetLineWidth(.1);
+
+    //     $pdf->SetFont('Arial','',12);
+
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,7,'Archivio',0,0,'L',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(12);
+
+
+    //      $pdf->Output("stampa.pdf", "I");
+    //     exit();
+    // }
+// -------------------------------------------------------------------------------------
 
 
 
@@ -663,31 +720,40 @@ class NursingRecordController extends Controller
         }
     }
 
-    // public function getTraceabilityTherapysByUserIstanceId(Request $request){
+    
+    public function getTraceabilityTherapysByUserIstanceId(Request $request){
 
-    //     if (TraceabilityTherapy::where('user_instance_id', '=',36)->exists()) {
-    //         $query=TraceabilityTherapy::where('user_instance_id', '=', 36);
-    //         $allTraceabilityTherapys=$query->first();  
+        //return $request['first'];
+        
+        $a = filter_var($request['first'], FILTER_VALIDATE_BOOLEAN); 
+        
+        $startDate=$request['startDate'];
+        $endDate=$request['endDate'];
 
-    //         return [ "errorNumber"=>0,"message"=>"OK","TraceabilityTherapy" => $allTraceabilityTherapys,"TraceabilityTherapysId" => 36];
-    //     }else{
-    //         return ['errorNumber'=>5000,'descrizione'=>'no records found'];
-    //     }
+        $query=TraceabilityTherapy::where('user_instance_id', '=', 36);
+        if($a == true){
+            $allTraceabilityTherapys=$query->whereBetween('created_at', [$startDate, $endDate])->get();
+        }else {
+            $allTraceabilityTherapys=$query->get()->slice(-10);
+        }
 
+        if( $allTraceabilityTherapys){
+            return [ "errorNumber"=>0,"message"=>"OK","TraceabilityTherapy" => $allTraceabilityTherapys,"TraceabilityTherapysId" => 36];
+        }else{
+            return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        }
+    
 
-    //     if (TraceabilityTherapy::where('user_instance_id', '=', 36)->exists()) {
+        // if (TraceabilityTherapy::where('user_instance_id', '=',36)->exists()) {
+        //     $query=TraceabilityTherapy::where('user_instance_id', '=', 36);
 
-    //         // $query="SELECT * FROM `therapies` WHERE (`user_instance_id`=".$request['id'].") AND (`deleted` = 0) AND (`endTherapy` > '" .$today. "' OR `endTherapy` IS NULL) ORDER BY `created_at`";
+        //     $allTraceabilityTherapys=$query->get()->slice(-10);
 
-    //         $query="SELECT * FROM `traceability_therapys` WHERE (`user_instance_id`=".$request['id'].") ORDER BY `created_at` ASC";
-    //         $result = DB::select(DB::raw($query));
-
-    //         return [ "errorNumber"=>0,"message"=>"OK","therapies" => $result,"userInstanceId" => $request['userInstanceId']];
-
-    //     }else{
-    //         return ['errorNumber'=>'5000','descrizione'=>'no records found'];
-    //     }
-    // }
+        //     return [ "errorNumber"=>0,"message"=>"OK","TraceabilityTherapy" => $allTraceabilityTherapys,"TraceabilityTherapysId" => 36];
+        // }else{
+        //     return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        // }
+    }
 
     public function getCurrentTraceabilityTherapyById(Request $request){
         if (TraceabilityTherapy::where('user_instance_id', '=',36)->exists()) {
@@ -719,14 +785,35 @@ class NursingRecordController extends Controller
 
     public function getMonitoringClinicalParametersByUserIstanceId(Request $request){
 
-        if (MonitoringClinicalParameter::where('user_instance_id', '=', 36)->exists()) {
-            $query=MonitoringClinicalParameter::where('user_instance_id', '=', 36);
-            $allMonitoringClinicalParameters=$query->get();
+        $a = filter_var($request['first'], FILTER_VALIDATE_BOOLEAN); 
+        
+        $startDate=$request['startDate'];
+        $endDate=$request['endDate'];
 
+        $query=MonitoringClinicalParameter::where('user_instance_id', '=', 36);
+        if($a == true){
+            $allMonitoringClinicalParameters=$query->whereBetween('created_at', [$startDate, $endDate])->get();
+        }else {
+            $allMonitoringClinicalParameters=$query->get()->slice(-10);
+        }
+
+        if( $allMonitoringClinicalParameters){
             return [ "errorNumber"=>0,"message"=>"OK","MonitoringClinicalParameter" => $allMonitoringClinicalParameters,"monitoringClinicalParametersId" => 36];
         }else{
             return ['errorNumber'=>5000,'descrizione'=>'no records found'];
         }
+
+
+
+
+        // if (MonitoringClinicalParameter::where('user_instance_id', '=', 36)->exists()) {
+        //     $query=MonitoringClinicalParameter::where('user_instance_id', '=', 36);
+        //     $allMonitoringClinicalParameters=$query->get()->slice(-10);
+
+        //     return [ "errorNumber"=>0,"message"=>"OK","MonitoringClinicalParameter" => $allMonitoringClinicalParameters,"monitoringClinicalParametersId" => 36];
+        // }else{
+        //     return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        // }
     }
     
     public function getCurrentMonitoringClinicalParameterById(Request $request){
@@ -759,14 +846,34 @@ class NursingRecordController extends Controller
 
     public function getClinicalParameterCollectionsByUserIstanceId(Request $request){
 
-        if (ClinicalParameterCollection::where('user_instance_id', '=', 36)->exists()) {
-            $query=ClinicalParameterCollection::where('user_instance_id', '=', 36);
-            $allClinicalParameterCollections=$query->get();
+        $a = filter_var($request['first'], FILTER_VALIDATE_BOOLEAN); 
+        
+        $startDate=$request['startDate'];
+        $endDate=$request['endDate'];
 
+        $query=ClinicalParameterCollection::where('user_instance_id', '=', 36);
+        if($a == true){
+            $allClinicalParameterCollections=$query->whereBetween('created_at', [$startDate, $endDate])->get();
+        }else {
+            $allClinicalParameterCollections=$query->get()->slice(-10);
+        }
+
+        if( $allClinicalParameterCollections){
             return [ "errorNumber"=>0,"message"=>"OK","ClinicalParameterCollection" => $allClinicalParameterCollections,"ClinicalParameterCollectionsId" => 36];
         }else{
             return ['errorNumber'=>5000,'descrizione'=>'no records found'];
         }
+
+
+
+        // if (ClinicalParameterCollection::where('user_instance_id', '=', 36)->exists()) {
+        //     $query=ClinicalParameterCollection::where('user_instance_id', '=', 36);
+        //     $allClinicalParameterCollections=$query->get()->slice(-10);
+
+        //     return [ "errorNumber"=>0,"message"=>"OK","ClinicalParameterCollection" => $allClinicalParameterCollections,"ClinicalParameterCollectionsId" => 36];
+        // }else{
+        //     return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        // }
     }
     
     public function getCurrentClinicalParameterCollectionById(Request $request){
@@ -800,14 +907,32 @@ class NursingRecordController extends Controller
 
     public function getCollectionFormHgtsByUserIstanceId(Request $request){
 
-        if (CollectionFormHgt::where('user_instance_id', '=', 36)->exists()) {
-            $query=CollectionFormHgt::where('user_instance_id', '=', 36);
-            $allCollectionFormHgts=$query->get();
+        $a = filter_var($request['first'], FILTER_VALIDATE_BOOLEAN); 
+        
+        $startDate=$request['startDate'];
+        $endDate=$request['endDate'];
 
+        $query=CollectionFormHgt::where('user_instance_id', '=', 36);
+        if($a == true){
+            $allCollectionFormHgts=$query->whereBetween('created_at', [$startDate, $endDate])->get();
+        }else {
+            $allCollectionFormHgts=$query->get()->slice(-10);
+        }
+
+        if( $allCollectionFormHgts){
             return [ "errorNumber"=>0,"message"=>"OK","CollectionFormHgt" => $allCollectionFormHgts,"CollectionFormHgtsId" => 36];
         }else{
             return ['errorNumber'=>5000,'descrizione'=>'no records found'];
         }
+
+        // if (CollectionFormHgt::where('user_instance_id', '=', 36)->exists()) {
+        //     $query=CollectionFormHgt::where('user_instance_id', '=', 36);
+        //     $allCollectionFormHgts=$query->get()->slice(-10);
+
+        //     return [ "errorNumber"=>0,"message"=>"OK","CollectionFormHgt" => $allCollectionFormHgts,"CollectionFormHgtsId" => 36];
+        // }else{
+        //     return ['errorNumber'=>5000,'descrizione'=>'no records found'];
+        // }
     }
     
     public function getCurrentCollectionFormHgtById(Request $request){
@@ -843,7 +968,7 @@ class NursingRecordController extends Controller
 
         if (MonitoringPrescriptionTao::where('user_instance_id', '=', 36)->exists()) {
             $query=MonitoringPrescriptionTao::where('user_instance_id', '=', 36);
-            $allMonitoringPrescriptionTaos=$query->get();
+            $allMonitoringPrescriptionTaos=$query->get()->slice(-10);
 
             return [ "errorNumber"=>0,"message"=>"OK","MonitoringPrescriptionTao" => $allMonitoringPrescriptionTaos,"MonitoringPrescriptionTaosId" => 36];
         }else{
@@ -885,24 +1010,6 @@ class NursingRecordController extends Controller
             return ['errorNumber'=>'5000','descrizione'=>'no records found'];
         }
     }
-
-
-
-    public function getTraceabilityTherapysByUserIstanceId(Request $request){
-
-        if (TraceabilityTherapy::where('user_instance_id', '=',36)->exists()) {
-            $query=TraceabilityTherapy::where('user_instance_id', '=', 36);
-            $allTraceabilityTherapys=$query->get();  
-
-            return [ "errorNumber"=>0,"message"=>"OK","TraceabilityTherapy" => $allTraceabilityTherapys,"TraceabilityTherapysId" => 36];
-        }else{
-            return ['errorNumber'=>5000,'descrizione'=>'no records found'];
-        }
-    }
-
-
-
-
 
 
 

@@ -2155,12 +2155,20 @@ __webpack_require__.r(__webpack_exports__);
         throw error;
       }
     },
-    getClinicalParameterCollectionsByUserIstanceId: function getClinicalParameterCollectionsByUserIstanceId(id) {
+    getClinicalParameterCollectionsByUserIstanceId: function getClinicalParameterCollectionsByUserIstanceId(id, first) {
       var _wm = this;
       id = 36;
+      var _param;
+      _wm.ClinicalParameterCollection = [];
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_COLLECTIONS_BY_USER_ISTANCE_ID"] + '/' + id;
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url, {
+          params: {
+            first: first,
+            startDate: this.nursCpc.startDate,
+            endDate: this.nursCpc.endDate
+          }
+        }).then(function (response) {
           // alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
@@ -2450,13 +2458,21 @@ __webpack_require__.r(__webpack_exports__);
         throw error;
       }
     },
-    getCollectionFormHgtsByUserIstanceId: function getCollectionFormHgtsByUserIstanceId(id) {
+    getCollectionFormHgtsByUserIstanceId: function getCollectionFormHgtsByUserIstanceId(id, first) {
       var _wm = this;
       id = 36;
+      var _param;
+      _wm.CollectionFormHgt = [];
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_HGTS_BY_USER_ISTANCE_ID"] + '/' + id;
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
-          alert(JSON.stringify(response));
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url, {
+          params: {
+            first: first,
+            startDate: this.nursHgt.startDate,
+            endDate: this.nursHgt.endDate
+          }
+        }).then(function (response) {
+          //alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
           _wm.errNum = error;
@@ -2665,6 +2681,12 @@ __webpack_require__.r(__webpack_exports__);
       v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
       return false;
     },
+    printArchiveMonitoringClinicalParameter: function printArchiveMonitoringClinicalParameter(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
     addMonitoringClinicalParameter: function addMonitoringClinicalParameter(panel) {
       var _wm = this;
       var _panel = panel;
@@ -2763,12 +2785,20 @@ __webpack_require__.r(__webpack_exports__);
         throw error;
       }
     },
-    getMonitoringClinicalParametersByUserIstanceId: function getMonitoringClinicalParametersByUserIstanceId(id) {
+    getMonitoringClinicalParametersByUserIstanceId: function getMonitoringClinicalParametersByUserIstanceId(id, first) {
       var _wm = this;
       id = 36;
+      var _param;
+      _wm.MonitoringClinicalParameter = [];
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_MONITORINGS_BY_USER_ISTANCE_ID"] + '/' + id;
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url, {
+          params: {
+            first: first,
+            startDate: this.nursMcp.startDate,
+            endDate: this.nursMcp.endDate
+          }
+        }).then(function (response) {
           // alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
@@ -3016,12 +3046,20 @@ __webpack_require__.r(__webpack_exports__);
         throw error;
       }
     },
-    getMonitoringPrescriptionTaosByUserIstanceId: function getMonitoringPrescriptionTaosByUserIstanceId(id) {
+    getMonitoringPrescriptionTaosByUserIstanceId: function getMonitoringPrescriptionTaosByUserIstanceId(id, first) {
       var _wm = this;
       id = 36;
+      var _param;
+      _wm.MonitoringPrescriptionTao = [];
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID"] + '/' + id;
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url, {
+          params: {
+            first: first,
+            startDate: this.nursTao.startDate,
+            endDate: this.nursTao.endDate
+          }
+        }).then(function (response) {
           // alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
@@ -5322,6 +5360,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       userFullName: '',
       userInstanceId: 36,
       userId: 237,
+      showCard: true,
       refusedTreatments: {
         checked: {},
         descriptions: {}
@@ -5355,7 +5394,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     }]), _defineProperty(_ref, "date", new Date()), _defineProperty(_ref, "mainTitle", "psy"), _defineProperty(_ref, "firstSave", true), _defineProperty(_ref, "tHSaved", false), _defineProperty(_ref, "btnThSend", "Salva"), _defineProperty(_ref, "total", 0), _defineProperty(_ref, "allTraceabilityTherapys", null), _defineProperty(_ref, "allNursingTherapys", null), _defineProperty(_ref, "testRefusedTherapies", []), _ref;
   },
   created: function created() {
-    this.getTraceabilityTherapysByUserIstanceId();
+    this.getTraceabilityTherapysByUserIstanceId(36, false);
     this.getNursingTherapysByUserIstanceId(1);
   },
   computed: {},
@@ -5515,12 +5554,20 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         throw error;
       }
     },
-    getTraceabilityTherapysByUserIstanceId: function getTraceabilityTherapysByUserIstanceId(id) {
+    getTraceabilityTherapysByUserIstanceId: function getTraceabilityTherapysByUserIstanceId(id, first) {
       var _wm = this;
       id = 36;
+      var _param;
+      _wm.testRefusedTherapies = [];
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_TRACEABILITYS_BY_USER_ISTANCE_ID"] + '/' + id;
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url, {
+          params: {
+            first: first,
+            startDate: this.nursCardTh.startDate,
+            endDate: this.nursCardTh.endDate
+          }
+        }).then(function (response) {
           // alert(JSON.stringify(response));
           var error = response.data.errorNumber;
           // let _attempts=response.data.attempts;
@@ -5769,11 +5816,10 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       // if(!this.isObjEmpty(this.refusedTreatments)){
       var _nurs = JSON.stringify(this.refusedTreatments);
       form.append('RefusedTreatment', _nurs);
-      alert('test');
+      //alert('test');
       //}    
     }
-
-    alert(form);
+    //alert(form);
 
     // if(_errors==0){
     //     try {
@@ -6949,7 +6995,7 @@ var render = function render() {
         _vm.$set(_vm.nursCpc, "collectionTc", $event.target.value);
       }
     }
-  })])])])]), _vm._v("\r\n\r\n                                " + _vm._s(_vm.nursCpc) + "\r\n\r\n"), _vm._v(" "), _c("div", [_vm._m(6), _vm._v(" "), _c("ul", {
+  })])])])]), _vm._v("\r\n\r\n                                " + _vm._s(_vm.nursCpc) + "\r\n                              \r\n\r\n\r\n\r\n\r\n                                "), _c("div", [_vm._m(6), _vm._v(" "), _c("ul", {
     staticStyle: {
       display: "flex",
       "flex-wrap": "wrap"
@@ -7006,8 +7052,67 @@ var render = function render() {
       }
     }, [_c("strong", [_vm._v("T.C:")]), _vm._v(" " + _vm._s(item["collection_tc"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "row mb-3 ml-2 mt-4"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(7), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursCpc.startDate,
+      expression: "nursCpc.startDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "start_date"
+    },
+    domProps: {
+      value: _vm.nursCpc.startDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursCpc, "startDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _vm._m(8), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursCpc.endDate,
+      expression: "nursCpc.endDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "end_date"
+    },
+    domProps: {
+      value: _vm.nursCpc.endDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursCpc, "endDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "search-bar"
+  }, [_c("a", {
+    staticClass: "search-button btn btn-success",
+    on: {
+      click: function click($event) {
+        return _vm.getClinicalParameterCollectionsByUserIstanceId(36, true);
+      }
+    }
+  }, [_vm._v("Cerca")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "ln_solid"
-  }), _vm._v(" "), _vm._m(7), _vm._v(" "), _c("br"), _vm._v("\r\n                                ::" + _vm._s(_vm.ClinicalParameterCollection) + "\r\n\r\n                                "), _c("br"), _c("br"), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _vm._m(9), _vm._v(" "), _c("br"), _vm._v("\r\n                                ::" + _vm._s(_vm.ClinicalParameterCollection) + "\r\n\r\n                                "), _c("br"), _c("br"), _vm._v(" "), _c("div", {
     staticClass: "ln_solid mt-2"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -7093,6 +7198,24 @@ var staticRenderFns = [function () {
   return _c("h2", {
     staticClass: "ml-4 mb-4 mt-4"
   }, [_c("strong", [_vm._v("Archivio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "start_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("DAL")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "end_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("AL")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7328,8 +7451,67 @@ var render = function render() {
       }
     }, [_c("strong", [_vm._v("HGT:")]), _vm._v(" " + _vm._s(item["hgt"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "row mb-3 ml-2 mt-4"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(7), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursHgt.startDate,
+      expression: "nursHgt.startDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "start_date"
+    },
+    domProps: {
+      value: _vm.nursHgt.startDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursHgt, "startDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _vm._m(8), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursHgt.endDate,
+      expression: "nursHgt.endDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "end_date"
+    },
+    domProps: {
+      value: _vm.nursHgt.endDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursHgt, "endDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "search-bar"
+  }, [_c("a", {
+    staticClass: "search-button btn btn-success",
+    on: {
+      click: function click($event) {
+        return _vm.getCollectionFormHgtsByUserIstanceId(36, true);
+      }
+    }
+  }, [_vm._v("Cerca")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "ln_solid"
-  }), _vm._v(" "), _vm._m(7), _vm._v(" "), _c("br"), _vm._v("\n                            ::" + _vm._s(_vm.CollectionFormHgt) + "\n                            "), _c("hr"), _c("hr"), _vm._v(" "), _c("br"), _c("br"), _vm._v(" "), _c("hr"), _c("hr"), _vm._v("\n\n                            " + _vm._s(_vm.nursHgt) + "\n\n                            \n\n\n                            \n\n                           \n\n                    \n                                        \n                            "), _c("div", {
+  }), _vm._v(" "), _vm._m(9), _vm._v(" "), _c("br"), _vm._v("\n                            " + _vm._s(_vm.CollectionFormHgt) + "\n                            "), _c("hr"), _c("hr"), _vm._v(" "), _c("br"), _c("br"), _vm._v(" "), _c("hr"), _c("hr"), _vm._v("\n\n                            " + _vm._s(_vm.nursHgt) + "\n\n\n                            \n\n\n                            \n\n                           \n\n                    \n                                        \n                            "), _c("div", {
     staticClass: "ln_solid mt-2"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -7416,6 +7598,24 @@ var staticRenderFns = [function () {
   return _c("h2", {
     staticClass: "ml-4 mb-4"
   }, [_c("strong", [_vm._v("Archivio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "start_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("DAL")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "end_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("AL")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7781,8 +7981,80 @@ var render = function render() {
       }
     }, [_c("strong", [_vm._v("F.C:")]), _vm._v(" " + _vm._s(item["monitoring_fc"]))]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "row mb-3 ml-2 mt-4"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(7), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursMcp.startDate,
+      expression: "nursMcp.startDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "start_date"
+    },
+    domProps: {
+      value: _vm.nursMcp.startDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursMcp, "startDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _vm._m(8), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursMcp.endDate,
+      expression: "nursMcp.endDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "end_date"
+    },
+    domProps: {
+      value: _vm.nursMcp.endDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursMcp, "endDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "search-bar"
+  }, [_c("a", {
+    staticClass: "search-button btn btn-success",
+    on: {
+      click: function click($event) {
+        return _vm.getMonitoringClinicalParametersByUserIstanceId(36, true);
+      }
+    }
+  }, [_vm._v("Cerca")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "ln_solid"
-  }), _vm._v(" "), _vm._m(7), _vm._v("\n\n                            ::" + _vm._s(_vm.MonitoringClinicalParameter) + "\n                            "), _c("br"), _c("br"), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("a", {
+    staticClass: "btn bg-primary text-white i2hBtnPrint ml-4",
+    on: {
+      click: function click($event) {
+        return _vm.printArchiveMonitoringClinicalParameter("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa Archivio")])])]), _vm._v("\n\n                            ::" + _vm._s(_vm.MonitoringClinicalParameter) + "\n                            "), _c("br"), _c("br"), _vm._v(" "), _c("div", {
     staticClass: "ln_solid mt-2"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -7874,15 +8146,21 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "item form-group"
-  }, [_c("div", {
-    staticClass: "pull-right"
-  }, [_c("a", {
-    staticClass: "btn bg-primary text-white i2hBtnPrint ml-4"
-  }, [_c("i", {
-    staticClass: "fa fa-print"
-  }), _vm._v("Stampa Archivio")])])]);
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "start_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("DAL")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "end_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("AL")])])]);
 }];
 render._withStripped = true;
 
@@ -8108,7 +8386,7 @@ var render = function render() {
         _vm.$set(_vm.nursTao, "taoCpsiSignature", $event.target.value);
       }
     }
-  })])])])]), _vm._v("\n                            " + _vm._s(_vm.nursTao) + "\n\n\n\n\n\n\n\n                            "), _c("div", {
+  })])])])]), _vm._v("\n\n\n                            " + _vm._s(_vm.nursTao) + "\n\n\n\n                            "), _c("div", {
     staticClass: "mt-4"
   }, [_vm._m(9), _vm._v(" "), _c("ul", {
     staticStyle: {
@@ -8122,7 +8400,7 @@ var render = function render() {
     }, [_c("div", {
       staticClass: "card text-white bg-secondary mb-3",
       staticStyle: {
-        "max-width": "20rem",
+        "max-width": "19rem",
         "border-radius": "20px"
       }
     }, [_c("div", {
@@ -8163,8 +8441,67 @@ var render = function render() {
       }
     }, [_c("strong", [_vm._v("Medico:")]), _vm._v(" " + _vm._s(item["tao_doctor"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "row mb-3 ml-2 mt-4"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(10), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursTao.startDate,
+      expression: "nursTao.startDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "start_date"
+    },
+    domProps: {
+      value: _vm.nursTao.startDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursTao, "startDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _vm._m(11), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursTao.endDate,
+      expression: "nursTao.endDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "end_date"
+    },
+    domProps: {
+      value: _vm.nursTao.endDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursTao, "endDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "search-bar"
+  }, [_c("a", {
+    staticClass: "search-button btn btn-success",
+    on: {
+      click: function click($event) {
+        return _vm.getMonitoringPrescriptionTaosByUserIstanceId(36, true);
+      }
+    }
+  }, [_vm._v("Cerca")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "ln_solid"
-  }), _vm._v(" "), _vm._m(10), _vm._v("\n\n\n\n                            ::" + _vm._s(_vm.MonitoringPrescriptionTao) + "\n\n                            "), _c("br"), _c("br"), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _vm._m(12), _vm._v("\n\n                            " + _vm._s(_vm.MonitoringPrescriptionTao) + "\n\n                            "), _c("br"), _c("br"), _vm._v(" "), _c("div", {
     staticClass: "ln_solid mt-5"
   }), _vm._v(" "), _c("div", {
     staticClass: "item form-group"
@@ -8279,8 +8616,26 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("h2", {
-    staticClass: "ml-4 mb-4 mt-4"
+    staticClass: "ml-4 mb-2 mt-4"
   }, [_c("strong", [_vm._v("Archivio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "start_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("DAL")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "end_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("AL")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -26469,7 +26824,7 @@ var render = function render() {
       }
     }, [_c("div", {
       staticClass: "card-header"
-    }, [_c("span", {}, [_c("div", [_c("h5", {
+    }, [_c("span", [_c("div", [_c("h5", {
       staticStyle: {
         display: "inline-block"
       }
@@ -26489,8 +26844,67 @@ var render = function render() {
       }, [_c("strong", [_vm._v("Descrizione:")]), _vm._v(" " + _vm._s(drug[1]) + " ")])]);
     }), 0)]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "row mb-3 ml-2 mt-4"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(5), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursCardTh.startDate,
+      expression: "nursCardTh.startDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "start_date"
+    },
+    domProps: {
+      value: _vm.nursCardTh.startDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursCardTh, "startDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _vm._m(6), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nursCardTh.endDate,
+      expression: "nursCardTh.endDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "end_date"
+    },
+    domProps: {
+      value: _vm.nursCardTh.endDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.nursCardTh, "endDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "search-bar"
+  }, [_c("a", {
+    staticClass: "search-button btn btn-success",
+    on: {
+      click: function click($event) {
+        return _vm.getTraceabilityTherapysByUserIstanceId(36, true);
+      }
+    }
+  }, [_vm._v("Cerca")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "ln_solid"
-  }), _vm._v(" "), _vm._m(5), _vm._v("\r\n\r\n                                " + _vm._s(_vm.TraceabilityTherapy) + "\r\n\r\n                                "), _vm._v(" "), _c("hr"), _c("hr"), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _vm._m(7), _vm._v("\r\n\r\n                                " + _vm._s(_vm.TraceabilityTherapy) + "\r\n\r\n                                "), _vm._v(" "), _c("hr"), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "row",
     staticStyle: {
       "margin-top": "50px"
@@ -26499,7 +26913,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(6), _vm._v(" "), _c("span", {
+  }, [_vm._m(8), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -26568,7 +26982,7 @@ var render = function render() {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("div", {
     staticClass: "item form-group"
-  }, [_vm._m(7), _vm._v(" "), _c("span", {
+  }, [_vm._m(9), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", [_vm._v("SI")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -26696,6 +27110,24 @@ var staticRenderFns = [function () {
   return _c("h2", {
     staticClass: "ml-4 mb-4 mt-4"
   }, [_c("strong", [_vm._v("Archivio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "start_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("DAL")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "end_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("AL")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

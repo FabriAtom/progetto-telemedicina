@@ -121,10 +121,31 @@
                                     </ul>
                                 </div> 
 
+
+
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="nursMcp.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="nursMcp.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getMonitoringClinicalParametersByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
-                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4"  @click=" printArchiveMonitoringClinicalParameter('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
                                     </div>
                                 </div>
 
@@ -383,6 +404,17 @@ ul, li{
 
                 return false;
             },
+
+            printArchiveMonitoringClinicalParameter(printPdf){
+
+            let v_myWindow
+
+            let url= 'printPdf/2';
+
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+
+            return false;
+            },
                  
             
             
@@ -507,12 +539,16 @@ ul, li{
                 }
             },
 
-            getMonitoringClinicalParametersByUserIstanceId(id){
+            getMonitoringClinicalParametersByUserIstanceId(id,first){
                 let _wm = this;
                 id=36;
+
+                let _param;
+                _wm.MonitoringClinicalParameter=[];
+
                 try {
                     let url=actions.GET_MONITORINGS_BY_USER_ISTANCE_ID+'/'+id;
-                    axios.get(url).then(response => {
+                    axios.get(url,{params:{first:first,startDate:this.nursMcp.startDate,endDate:this.nursMcp.endDate}}).then(response => {
                         // alert(JSON.stringify(response));
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
@@ -531,8 +567,6 @@ ul, li{
 
                             for (let prop in _wm.MonitoringClinicalParameter) {
 
-
-                                
                                 // _wm.MonitoringClinicalParameter[prop];
                                 // let clinicalParameter={};
 
@@ -548,10 +582,6 @@ ul, li{
 
                                 // _wm.testMonitoring.push(clinicalParameter)
                             }
-
-
-
-
 
                             // let _NursMcp=response.data.MonitoringClinicalParameter;
 
