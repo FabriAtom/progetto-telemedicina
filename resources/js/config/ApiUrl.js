@@ -33,9 +33,20 @@ export const GET_PSY_CARD_BY_ID = '/psy/getPsyCardById';
 export const GET_PSY_CARDS_BY_USER_INSTANCE_ID = '/psy/getPsyCardsByUserIstanceId';
 export const ADD_PSY_CARD= '/psy/store';
 
+
+
+
 // SuicideAssessment
 export const GET_SUICIDE_ASSESSMENT_BY_PSY_ID= '/psy/getSuicideAssessmentsByPsyId';
 export const ADD_SUICIDE_ASSESSMENT= '/psy/addSuicideAssessment';
+export const GET_SUICIDES_BY_USER_ISTANCE_ID= '/psy/getPsySuicideAssessmentsByUserInstanceId';
+
+
+
+
+
+
+
 // export const GET_PSY_SUICIDE_ASSESSMENT_BY_USER_INSTANCE_ID = '/psy/getPsySuicideAssessmentsByUserIstanceId';
 // export const ADD_PSY_SUICIDE_ASSESSMENT= '/psy/store';
 
@@ -43,6 +54,9 @@ export const ADD_SUICIDE_ASSESSMENT= '/psy/addSuicideAssessment';
 // MentalHealthDepartment
 export const GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID= '/psy/getMentalHealthDepartmentsByPsyId';
 export const ADD_MENTAL_HEALTH_DEPARTMENT= '/psy/addMentalHealthDepartment';
+// export const GET_MENTAL_HEALTH_DEPARTMENTS_BY_PSY_ID= '/psy/getMentalHealthDepartmentsByPsyId';
+// export const GET_TRACEABILITYS_BY_USER_ISTANCE_ID = '/therapies/getTraceabilityTherapysByUserIstanceId';
+
 
 
 // PsyRating

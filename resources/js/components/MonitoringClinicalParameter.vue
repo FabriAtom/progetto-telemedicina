@@ -7,7 +7,7 @@
                         <div class="x_title" style="background:lightgrey;padding:7px; border-radius:3px; margin-top:50px;">
                             <h1>Modulo di monitoraggio parametri clinici in caso di rifiuto della alimentazione (sia liquidi, sia solidi).</h1>
                         </div>
-
+                        
                         <div class="x_content">
 
                         <!-- <div class="tab-content" id="myTabContent"> -->
@@ -408,11 +408,8 @@ ul, li{
             printArchiveMonitoringClinicalParameter(printPdf){
 
             let v_myWindow
-
             let url= 'printPdf/2';
-
             v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-
             return false;
             },
                  

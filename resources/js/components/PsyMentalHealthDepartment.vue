@@ -62,6 +62,41 @@
                                 </div>
 
                                 {{ psyCardMh }}
+
+
+                                <hr><hr>
+                                
+                                <div>
+                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <ul style="display:flex; flex-wrap: wrap;">
+                                        <span v-for="(item, key, index) in PsyMentalHealthDepartment" :key="index" class="mr-5">
+
+                                            <div class="card text-white bg-secondary mb-2" style="max-width: 20rem;  border-radius: 20px;">
+                                                <div class="card-header">
+                                                    <span style="min-width: 100px;"> 
+                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                    </span> 
+                                            </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['mh_date']) }}</div>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <div style="min-width: 100px;"><strong>Colloquio psicologico</strong> {{ (item['psychologicalInterview']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Ipotesi Inquadramento Psicopatologico</strong> {{ (item['hypothesisPsychopathologicalClassification']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Progettualità/Tipologia di Intervento</strong> {{ ((item['planningTypeOfIntervention'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Test</strong> {{ (item['test']) }} </div>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
+                                </div> 
+
+
+
+
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
@@ -118,6 +153,7 @@
     import Swal from 'sweetalert2';
 
     export default {
+
         name: 'PsyMentalHealthDepartment',
 
 
@@ -126,8 +162,9 @@
                 userName: 'Andrea',
                 userLastName:'Giovanni',
                 userFullName:'',
-                userInstance:1,
+                userInstanceId:1,
                 userId:0,
+                psyCardId:1,
 
                 // selectedOption: null,
 
@@ -147,7 +184,7 @@
 
                 psyCardMh:{},
                 psyCardSa:{},
-                // psyCardTsc
+                PsyMentalHealthDepartment:{},
 
                 mainTitle:"psy",
                 firstSave:true,
@@ -194,8 +231,12 @@
                 form.append('userName', this.userName);
                 form.append('userLastName', this.userLastName);
                 form.append('userFullName', this.userFullName);
-                form.append('userInstance', this.userInstance);
+                form.append('userInstanceId', this.userInstanceId);
                 form.append('userId', this.userId);
+
+                
+                form.append('psyCardId', this.psyCardId);
+
                 // form.append('doctorId', this.accessData.id);
                 // form.append('doctorName', this.accessData.name);
                 // form.append('doctorUserName', this.accessData.lastname);
@@ -221,29 +262,35 @@
                     if(!this.isObjEmpty(this.psyCardMh)){
                         let _psyCard=JSON.stringify(this.psyCardMh);
                         form.append('PsyMentalHealthDepartment', _psyCard);
-                    }
-                }else if(_panel=='sa'){
-                    if(!this.sASaved){
-                        form.append('action', 'store');
-                    }else{
-                        form.append('action', 'update');
-                    }
 
-                    if (this.sASaved) {
-                        if(this.psyCardId){
-                            form.append('psyId',this.psyCardId);
-                        }else{
-                            _errors++;
-                            _errorTitle="Attenzione";
-                            _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
-                        }
-                        form.append('section', 'sa');
-                        if(!this.isObjEmpty(this.psyCardSa)){
-                            let _psyCard=JSON.stringify(this.psyCardSa);
-                            form.append('psyCard', _psyCard);
-                        }
+                        form.append('psychologicalInterview', this.psyCardMh.psychologicalInterview);
+                        form.append('hypothesisPsychopathologicalClassification', this.psyCardMh.hypothesisPsychopathologicalClassification);
+                        form.append('planningTypeOfIntervention', this.psyCardMh.planningTypeOfIntervention);
+                        form.append('test', this.psyCardMh.test);
                     }
                 }
+                // else if(_panel=='sa'){
+                //     if(!this.sASaved){
+                //         form.append('action', 'store');
+                //     }else{
+                //         form.append('action', 'update');
+                //     }
+
+                //     if (this.sASaved) {
+                //         if(this.psyCardId){
+                //             form.append('psyId',this.psyCardId);
+                //         }else{
+                //             _errors++;
+                //             _errorTitle="Attenzione";
+                //             _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
+                //         }
+                //         form.append('section', 'sa');
+                //         if(!this.isObjEmpty(this.psyCardSa)){
+                //             let _psyCard=JSON.stringify(this.psyCardSa);
+                //             form.append('psyCard', _psyCard);
+                //         }
+                //     }
+                // }
                 
                 if(_errors==0){
                     try {
@@ -258,7 +305,7 @@
                                     'Aggiornata correttamente',
                                     'success'
                                 )
-                                this.getPsyMentalHealthDepartmentsByUserInstanceId(this.userInstance);
+                                // this.getPsyMentalHealthDepartmentsByUserInstanceId(this.userInstance);
                             }else{
                                 // eventBus.$emit('errorEvent', error, _attempts);
                                 Swal.fire(
@@ -316,13 +363,18 @@
                 }
             }, 
 
-            getPsyMentalHealthDepartmentsByUserInstanceId(id){
+            getPsyMentalHealthDepartmentsByUserInstanceId(id,first){
                 let _wm = this;
-                // alert('xx');
+
                 
+                let _param;
+                _wm.PsyMentalHealthDepartment=[];
+
+
+
                 try {
                     let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
-                    axios.get(url).then(response => {
+                    axios.get(url,{params:{first:first,startDate:this.psyCardMh.startDate,endDate:this.psyCardMh.endDate}}).then(response => {
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -331,23 +383,35 @@
                         
                             _wm.mainTitle="Aggiornamento Cartella psy";
                             if(response.data.PsyMentalHealthDepartment){
-                            _wm.mHSaved=true;
+                            // _wm.mHSaved=true;
                             //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
-                            _wm.btnMhSend="Aggiorna";
+                            // _wm.btnMhSend="Aggiorna";
                             
-                            let _MentalInterview=response.data.PsyMentalHealthDepartment;
+                            // let _MentalInterview=response.data.PsyMentalHealthDepartment;
                             //     // _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyCardId=_MentalInterview.id;
-                            _wm.psyMhDoctorId = _MentalInterview.id_doctor;
-                            _wm.psyMhDoctorName = _MentalInterview.doctor_name;
-                            _wm.psyMhDoctorLastname = _MentalInterview.doctor_lastname;
+                            _wm.PsyMentalHealthDepartment=response.data.PsyMentalHealthDepartment;
 
-                            _wm.psyCardMh.psychologicalInterview =_MentalInterview.psychological_interview;
-                            _wm.psyCardMh.hypothesisPsychopathologicalClassification = _MentalInterview.hypothesis_psychopathological_classification 	
-                            _wm.psyCardMh.planningTypeOfIntervention = _MentalInterview.planning_type_of_intervention
-                            _wm.psyCardMh.test = _MentalInterview.test 
+                            for (let prop in _wm.PsyMentalHealthDepartment) {
+
+                            }
+
+
+
+
+
+
+
+                            // _wm.psyCardId=_MentalInterview.id;
+                            // _wm.psyMhDoctorId = _MentalInterview.id_doctor;
+                            // _wm.psyMhDoctorName = _MentalInterview.doctor_name;
+                            // _wm.psyMhDoctorLastname = _MentalInterview.doctor_lastname;
+
+                            // _wm.psyCardMh.psychologicalInterview =_MentalInterview.psychological_interview;
+                            // _wm.psyCardMh.hypothesisPsychopathologicalClassification = _MentalInterview.hypothesis_psychopathological_classification 	
+                            // _wm.psyCardMh.planningTypeOfIntervention = _MentalInterview.planning_type_of_intervention
+                            // _wm.psyCardMh.test = _MentalInterview.test 
         
-                            _wm.allPsyMentalHealthDepartments=response.data.allPsyMentalHealthDepartments;
+                            // _wm.allPsyMentalHealthDepartments=response.data.allPsyMentalHealthDepartments;
                             }else{
                                 _wm.btnMhSend="Salva";
                             }
