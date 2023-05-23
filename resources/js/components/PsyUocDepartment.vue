@@ -222,6 +222,109 @@
                                 </div>
 
                                 {{ psyCardUd }}
+
+
+
+                                <div>
+                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <ul style="display:flex; flex-wrap: wrap;">
+                                        <span v-for="(item, key, index) in PsyUocDepartment" :key="index" class="mr-5">
+
+                                            <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                                <div class="card-header">
+                                                    <span style="min-width: 100px;"> 
+                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                    </span> 
+                                            </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['ud_date']) }}</div>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <div style="min-width: 100px;"><strong>Trattamenti psichiatrici precedenti: </strong> <br>{{ (item['psychiatric_treatment']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Csm: </strong> <br> {{ (item['csm']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Spdc: </strong> <br>{{ ((item['spdc'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Rems: </strong> <br>{{ (item['rems']) }} </div> 
+
+                                                        <div style="min-width: 100px;"><strong>Carcere: </strong> <br>{{ (item['prison']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Familiarità psichiatrica: </strong> {{ (item['psychiatric_familiarity']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Se si, Chi: </strong> {{ ((item['if_familiarity'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Esordio sintomatologia psichiatrica: </strong> <br>{{ (item['on_set_of_psychiatric_symptom']) }} </div> 
+
+                                                        <div style="min-width: 100px;"><strong>Uso di sostanze: </strong> {{ (item['substance_use']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Presso Serd. : </strong> {{ (item['in_charge_at_serd_territorial']) }}</div>
+                                                        <div style="min-width: 100px;"><strong> Quale: </strong> {{ ((item['in_charge_at_serd_territorial_which'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Psicotico: </strong> {{ (item['psychotic_symptom']) }} </div> 
+                                                        
+                                                        <div style="min-width: 100px;"><strong>Affettivo-Ansioso: </strong> {{ (item['anxious_affective_symptom']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Impulsivo: </strong> {{ (item['impulsive_symptom']) }}</div>
+                                                        <div style="min-width: 100px;"><strong> D. Psicotico: </strong> {{ ((item['psychotic_diagnostic_orientation'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>D. Affettivo-Ansioso: </strong> {{ (item['anxious_affective_orientation']) }} </div> 
+                                                        
+                                                        <div style="min-width: 100px;"><strong>D. Personalità: </strong> {{ (item['personality_orientation']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Presa in carico: </strong> {{ (item['taking_charge_pdta']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Assunzione in cura: </strong> {{ ((item['care_intake_pdta'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Consulenza: </strong> {{ (item['consultancy_pdta']) }} </div> 
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
+                                </div> 
+
+
+
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="psyCardUd.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="psyCardUd.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getPsyUocDepartmentsByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+    
+
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="pull-right">
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyUocDepartment('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                 <div class="ln_solid"></div>
                                 <div class="item form-group" >
                                     <div class="pull-right">
@@ -277,7 +380,8 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default {
-    name: 'psyUocDepartment',
+
+    name: 'PsyUocDepartment',
 
     data() {
         return {
@@ -313,9 +417,9 @@ export default {
             psyCardUd:{},
             // psyCardMh:{},
 
-            panel:'ud',
+            // panel:'ud',
 
-
+            PsyUocDepartment:{},
 
             mainTitle:"psy",
             firstSave:true,
@@ -330,22 +434,64 @@ export default {
 
     created: function () {
         // this.getPermissions();
-        this.getPsyUocDepartmentsByUserInstanceId(1);
+        this.getPsyUocDepartmentsByUserIstanceId(1);
     },
 
 
     methods: {
 
+        i2hDateFormat(date){
+
+            let current=new Date(date);
+            let year = `${current.getFullYear()}`;
+            let month = `${current.getMonth()}`;
+            let timeHours=`${current.getHours()}`;
+            let timeMinuts=`${current.getMinutes()}`;
+            let day = `${current.getDate()}`;
+            month=this.zeroFill(month);
+            day=this.zeroFill(day);
+            timeMinuts=this.zeroFill(timeMinuts);
+            timeHours=this.zeroFill(timeHours);
+            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+            return tDate;
+        },
+        zeroFill(value){
+            if(parseInt(value)<10){
+                value = '0'+value;
+            }
+            return value
+        },
+
+
+        i2hHourFormat(dataz){
+            let dataw= new Date(dataz);
+            //return date;
+            return dataw.getHours() +':'+dataw.getMinutes();
+        },
+
+
+
         printPsyUocDepartment(printPdf){
 
             let v_myWindow
-
             let url= 'printPdf/2';
-
             v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-
             return false;
         },
+        
+        
+
+        printArchivePsyUocDepartment(printPdf){
+
+            let v_myWindow
+            let url= 'printPdf/2';
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
+
+
+
+
 
         
         addPsyUocDepartment(panel){
@@ -358,7 +504,7 @@ export default {
             form.append('userName', this.userName);
             form.append('userLastName', this.userLastName);
             form.append('userFullName', this.userFullName);
-            form.append('userInstance', this.userInstance);
+            form.append('userInstanceId', this.userInstanceId);
             form.append('userId', this.userId);
             // form.append('doctorId', this.accessData.id);
             // form.append('doctorName', this.accessData.name);
@@ -385,34 +531,17 @@ export default {
                 if(!this.isObjEmpty(this.psyCardUd)){
                     let _psyCardUd=JSON.stringify(this.psyCardUd);
                     // alert(JSON.stringify(this.psyCardUd))
-                    form.append('psyCardUd', _psyCardUd);
-                }
-            }else if(_panel=='mh'){
-
-                if(!this.mHSaved){
-                    form.append('action', 'store');
-                }else{
-                    form.append('action', 'update');
-                }
-                if (this.mHSaved) {
-                    if(this.psyCardId){
-                        form.append('psyId',this.psyCardId);
-                    }else{
-                        _errors++;
-                        _errorTitle="Attenzione";
-                        _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
-                    }
-                    form.append('section', 'mh');
-                    if(!this.isObjEmpty(this.psyCardMh)){
-                        let _psyCardMh=JSON.stringify(this.psyCardMh);
-                        form.append('PsyMentalHealthDepartment', _psyCardMh);
-                    }  
+                    form.append('PsyUocDepartment', _psyCardUd);
+                    
+                    form.append('psychiatricTreatment', this.psyCardUd.psychiatricTreatment);
+                    form.append('csm', this.psyCardUd.csm);
+                    form.append('spdc', this.psyCardUd.spdc);
+                    form.append('rems', this.psyCardUd.rems);
                 }
             }
-
             if(_errors==0){
                 try {
-                    axios.post(actions.ADD_PSY_CARD,form).then(response => {
+                    axios.post(actions.ADD_UOC_DEPARTMENT,form).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -423,7 +552,7 @@ export default {
                                 'Aggiornata correttamente',
                                 'success'
                             )
-                            this.getPsyUocDepartmentsByUserInstanceId(this.userInstance);
+                            // this.getPsyUocDepartmentsByUserIstanceId(this.userInstance);
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                             Swal.fire(
@@ -450,7 +579,7 @@ export default {
             //GET ALL CARDS
             let _wm = this;
             try {
-                axios.get(actions.GET_PSY_CARDS).then(response => {
+                axios.get(actions.GET_UOC_DEPARTMENTS).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -464,10 +593,10 @@ export default {
                 throw error
             }
         },
-        getPsyUocDepartmentById(id){
+        getUocDepartmentsByPsyId(id){
             let _wm = this;
             try {
-                let url=actions.GET_PSY_CARD_BY_ID+'/'+id;
+                let url=actions.GET_UOC_DEPARTMENT_BY_PSY_ID+'/'+id;
                 axios.get(url).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
@@ -482,12 +611,16 @@ export default {
                 throw error
             }
         },
-        getPsyUocDepartmentsByUserInstanceId(id){
+        getPsyUocDepartmentsByUserIstanceId(id,first){
             let _wm = this;
 
+            let _param;
+            _wm.PsyUocDepartment=[];
+
+
             try {
-                let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
-                axios.get(url).then(response => {
+                let url=actions.GET_UOC_DEPARTMENTS_BY_USER_ISTANCE_ID+'/'+id;
+                axios.get(url,{params:{first:first,startDate:this.psyCardUd.startDate,endDate:this.psyCardUd.endDate}}).then(response => {
                     let error=response.data.errorNumber;
                     // let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -496,42 +629,51 @@ export default {
                       
                         _wm.mainTitle="Aggiornamento Cartella psy";
                         if(response.data.PsyUocDepartment){
-                            _wm.uDSaved=true;
-                            _wm.btnUdSend="Aggiorna";
+                            // _wm.uDSaved=true;
+                            // _wm.btnUdSend="Aggiorna";
 
-                            let _psyDep=response.data.PsyUocDepartment;
-                            // _wm.psyCardId=response.data.psyCard.id;
-    
-                            _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyUdDoctorId = _psyDep.id_doctor;
-
-                            _wm.psyUdDoctorName = _psyDep.doctor_name;
-                            _wm.psyUdDoctorLastname = _psyDep.doctor_lastname;
+                            _wm.PsyUocDepartment=response.data.PsyUocDepartment;
 
                             
-                            _wm.psyCardUd.psychiatricTreatment =_psyDep.psychiatric_treatment;
-                            _wm.psyCardUd.csm = _psyDep.csm 	
-                            _wm.psyCardUd.spdc = _psyDep.spdc 
-                            _wm.psyCardUd.rems = _psyDep.rems
-                            _wm.psyCardUd.prison = _psyDep.prison 
-                            _wm.psyCardUd.psychiatricFamiliarity = _psyDep.psychiatric_familiarity
-                            _wm.psyCardUd.ifFamiliarity = _psyDep.if_familiarity
-                            _wm.psyCardUd.onSetOfPsychiatricSymptom = _psyDep.on_set_of_psychiatric_symptom
-                            _wm.psyCardUd.substanceUse = _psyDep.substance_use 
-                            _wm.psyCardUd.inChargeAtSerdTerritorial = _psyDep.in_charge_at_serd_territorial
-                            _wm.psyCardUd.inChargeAtSerdTerritorialWhich = _psyDep.in_charge_at_serd_territorial_which
-                            _wm.psyCardUd.psychoticDymptom = _psyDep.psychotic_symptom 
-                            _wm.psyCardUd.anxiousAffectiveSymptom = _psyDep.anxious_affective_symptom
-                            _wm.psyCardUd.impulsiveSymptom = _psyDep.impulsive_symptom 
-                            _wm.psyCardUd.psychoticDiagnosticOrientation = _psyDep.psychotic_diagnostic_orientation
-                            _wm.psyCardUd.anxiousAffectiveOrientation = _psyDep.anxious_affective_orientation
-                            _wm.psyCardUd.personalityOrientation = _psyDep.personality_orientation
-                            _wm.psyCardUd.takingChargePdta = _psyDep.taking_charge_pdta
-                            _wm.psyCardUd.careIntakePdta = _psyDep.care_intake_pdta 
 
-                            _wm.psyCardUd.consultancyPdta = _psyDep.consultancy_pdta 
 
-                            _wm.allPsyUocDepartments=response.data.allPsyUocDepartments;
+                            for (let prop in _wm.PsyUocDepartment) {
+
+                            }
+
+                            // let _psyDep=response.data.PsyUocDepartment;
+                            // // _wm.psyCardId=response.data.psyCard.id;
+    
+                            // _wm.psyCardId=response.data.psyCard.id;
+                            // _wm.psyUdDoctorId = _psyDep.id_doctor;
+
+                            // _wm.psyUdDoctorName = _psyDep.doctor_name;
+                            // _wm.psyUdDoctorLastname = _psyDep.doctor_lastname;
+
+                            
+                            // _wm.psyCardUd.psychiatricTreatment =_psyDep.psychiatric_treatment;
+                            // _wm.psyCardUd.csm = _psyDep.csm 	
+                            // _wm.psyCardUd.spdc = _psyDep.spdc 
+                            // _wm.psyCardUd.rems = _psyDep.rems
+                            // _wm.psyCardUd.prison = _psyDep.prison 
+                            // _wm.psyCardUd.psychiatricFamiliarity = _psyDep.psychiatric_familiarity
+                            // _wm.psyCardUd.ifFamiliarity = _psyDep.if_familiarity
+                            // _wm.psyCardUd.onSetOfPsychiatricSymptom = _psyDep.on_set_of_psychiatric_symptom
+                            // _wm.psyCardUd.substanceUse = _psyDep.substance_use 
+                            // _wm.psyCardUd.inChargeAtSerdTerritorial = _psyDep.in_charge_at_serd_territorial
+                            // _wm.psyCardUd.inChargeAtSerdTerritorialWhich = _psyDep.in_charge_at_serd_territorial_which
+                            // _wm.psyCardUd.psychoticDymptom = _psyDep.psychotic_symptom 
+                            // _wm.psyCardUd.anxiousAffectiveSymptom = _psyDep.anxious_affective_symptom
+                            // _wm.psyCardUd.impulsiveSymptom = _psyDep.impulsive_symptom 
+                            // _wm.psyCardUd.psychoticDiagnosticOrientation = _psyDep.psychotic_diagnostic_orientation
+                            // _wm.psyCardUd.anxiousAffectiveOrientation = _psyDep.anxious_affective_orientation
+                            // _wm.psyCardUd.personalityOrientation = _psyDep.personality_orientation
+                            // _wm.psyCardUd.takingChargePdta = _psyDep.taking_charge_pdta
+                            // _wm.psyCardUd.careIntakePdta = _psyDep.care_intake_pdta 
+
+                            // _wm.psyCardUd.consultancyPdta = _psyDep.consultancy_pdta 
+
+                            // _wm.allPsyUocDepartments=response.data.allPsyUocDepartments;
                         }else{
                             _wm.btnUdSend="Salva";
                         }

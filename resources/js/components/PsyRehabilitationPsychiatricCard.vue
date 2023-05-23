@@ -82,6 +82,73 @@
                                 </div> -->
                                 <hr>
                                 {{ psyCardRp }}
+
+
+                                <div>
+                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <ul style="display:flex; flex-wrap: wrap;">
+                                        <span v-for="(item, key, index) in PsyRehabilitationPsychiatricCard" :key="index" class="mr-5">
+
+                                            <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                                <div class="card-header">
+                                                    <span style="min-width: 100px;"> 
+                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                    </span> 
+                                            </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['rp_date']) }}</div>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <div style="min-width: 100px;"><strong>Breve Descrizione Progetto:</strong> <br>{{ (item['project_description']) }}</div>
+                                                         <div style="min-width: 100px;"><strong>Obiettivi In Cui Viene Specificata Area <br> Trattamento:</strong> <br> {{ (item['treatment_area_objective']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Responsabile Progetto:</strong> <br>{{ ((item['psychiatric_intervention'])) }} </div>
+                                                        <!-- <div style="min-width: 100px;"><strong>:</strong> <br>{{ (item['project_manager']) }} </div>
+                                                        <div style="min-width: 100px;"><strong>:</strong> <br>{{ (item['psychiatric_attachment']) }} </div> -->
+
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
+                                </div> 
+
+
+
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="psyCardRp.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="psyCardRp.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getPsyRehabilitationPsychiatricCardsByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+    
+
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="pull-right">
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyRehabilitationPsychiatricCard('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
                                 <div class="ln_solid"></div>
                                 <div class="item form-group" >
                                     <div class="pull-right">
@@ -139,8 +206,8 @@
     import Swal from 'sweetalert2';
 
     export default {
-        name: 'PsyRehabilitationPsychiatricCard',
 
+        name: 'PsyRehabilitationPsychiatricCard',
 
         data() {
             return {
@@ -149,8 +216,8 @@
                 userFullName:'',
                 userInstance:1,
                 userId:0,
+                psyCardId:1,
 
-                // selectedOption: null,
 
                 accessData:[
                    
@@ -167,9 +234,10 @@
                 date:new Date(),
 
                 psyCardRp:{},
-                psyCardSa:{},
+                // psyCardSa:{},
               
-                panel:'rp',
+                PsyRehabilitationPsychiatricCard:{},
+
 
                 mainTitle:"psy",
                 firstSave:true,
@@ -184,22 +252,57 @@
 
         created: function () {
             // this.getPermissions();
-            this.getPsyRehabilitationPsychiatricCardsByUserInstanceId(1)
+            this.getPsyRehabilitationPsychiatricCardsByUserIstanceId(1)
         },
 
         methods: {
+
+            i2hDateFormat(date){
+                let current=new Date(date);
+                let year = `${current.getFullYear()}`;
+                let month = `${current.getMonth()}`;
+                let timeHours=`${current.getHours()}`;
+                let timeMinuts=`${current.getMinutes()}`;
+                let day = `${current.getDate()}`;
+                month=this.zeroFill(month);
+                day=this.zeroFill(day);
+                timeMinuts=this.zeroFill(timeMinuts);
+                timeHours=this.zeroFill(timeHours);
+                let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+                return tDate;
+            },
+
+            zeroFill(value){
+                if(parseInt(value)<10){
+                    value = '0'+value;
+                }
+                return value
+            },
+
+            i2hHourFormat(dataz){
+                let dataw= new Date(dataz);
+                //return date;
+                return dataw.getHours() +':'+dataw.getMinutes();
+            },
 
 
             printPsyRehabilitationPsychiatricCard(printPdf){
 
             let v_myWindow
-
             let url= 'printPdf/2';
-
             v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-
             return false;
         },
+
+        printArchivePsyRehabilitationPsychiatricCard(printPdf){
+
+            let v_myWindow
+            let url= 'printPdf/2';
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
+
+
             
             addPsyRehabilitationPsychiatricCard(panel){
                 let _wm = this;
@@ -212,7 +315,7 @@
                 form.append('userName', this.userName);
                 form.append('userLastName', this.userLastName);
                 form.append('userFullName', this.userFullName);
-                form.append('userInstance', this.userInstance);
+                form.append('userInstanceId', this.userInstanceId);
                 form.append('userId', this.userId);
                 // form.append('doctorId', this.accessData.id);
                 // form.append('doctorName', this.accessData.name);
@@ -239,55 +342,19 @@
                     if(!this.isObjEmpty(this.psyCardRp)){
                         let _psyCard=JSON.stringify(this.psyCardRp);
                         form.append('PsyRehabilitationPsychiatricCard', _psyCard);
-                    }
-                }else if(_panel=='sa'){
-                    if(!this.sASaved){
-                        form.append('action', 'store');
-                    }else{
-                        form.append('action', 'update');
-                    }
 
-                    if (this.sASaved) {
-                        if(this.psyCardId){
-                            form.append('psyId',this.psyCardId);
-                        }else{
-                            _errors++;
-                            _errorTitle="Attenzione";
-                            _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
-                        }
-                        form.append('section', 'sa');
-                        if(!this.isObjEmpty(this.psyCardSa)){
-                            let _psyCard=JSON.stringify(this.psyCardSa);
-                            form.append('psyCard', _psyCard);
-                        }
+                        form.append('projectDescription', this.psyCardRp.projectDescription);
+                        form.append('treatmentAreaObjective', this.psyCardRp.treatmentAreaObjective);
+                        form.append('psychiatricIntervention', this.psyCardRp.psychiatricIntervention);
+                        form.append('projectManager', this.psyCardRp.projectManager);
+                        form.append('psychiatricAttachment', this.psyCardRp.psychiatricAttachment);
+
                     }
                 }
-                // else if(_panel=='mh'){
-                //     if(!this.mHSaved){
-                //         form.append('action', 'store');
-                //     }else{
-                //         form.append('action', 'update');
-                //     }
-
-                //     if (this.mHSaved) {
-                //         if(this.psyCardId){
-                //             form.append('psyId',this.psyCardId);
-                //         }else{
-                //             _errors++;
-                //             _errorTitle="Attenzione";
-                //             _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
-                //         }
-                //         form.append('section', 'mh');
-                //         if(!this.isObjEmpty(this.psyCardMh)){
-                //             let _psyCard=JSON.stringify(this.psyCardMh);
-                //             form.append('PsyMentalHealthDepartment', _psyCard);
-                //         }
-                //     }
-                // }
-
+                
                 if(_errors==0){
                     try {
-                        axios.post(actions.ADD_PSY_CARD,form).then(response => {
+                        axios.post(actions.ADD_REHABILITATION_PSYCHIATRIC_CARD,form).then(response => {
                             let error=response.data.errorNumber;
                             let _attempts=response.data.attempts;
                             _wm.errNum=error;
@@ -298,7 +365,7 @@
                                     'Aggiornata correttamente',
                                     'success'
                                 )
-                                this.getPsyRehabilitationPsychiatricCardsByUserInstanceId(this.userInstance);
+                                // this.getPsyRehabilitationPsychiatricCardsByUserInstanceId(this.userInstanceId);
                             }else{
                                 // eventBus.$emit('errorEvent', error, _attempts);
                                 Swal.fire(
@@ -322,7 +389,7 @@
             getPsyRehabilitationPsychiatricCards(){
                 let _wm = this;
                 try {
-                    axios.get(actions.GET_PSY_CARDS).then(response => {
+                    axios.get(actions.GET_REHABILITATION_PSYCHIATRIC_CARDS).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -336,10 +403,10 @@
                     throw error
                 }
             },
-            getPsyRehabilitationPsychiatricCardById(id){
+            getRehabilitationPsychiatricCardsByPsyId(id){
                 let _wm = this;
                 try {
-                    let url=actions.GET_PSY_CARD_BY_ID+'/'+id;
+                    let url=actions.GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID+'/'+id;
                     axios.get(url).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
@@ -355,13 +422,18 @@
                 }
             },
 
-            getPsyRehabilitationPsychiatricCardsByUserInstanceId(id){
+            
+            getPsyRehabilitationPsychiatricCardsByUserIstanceId(id,first){
                 let _wm = this;
         
                 
+                let _param;
+                _wm.PsyRehabilitationPsychiatricCard=[];
+
+                
                 try {
-                    let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
-                    axios.get(url).then(response => {
+                    let url=actions.GET_REHABILITATION_PSYCHIATRIC_CARDS_BY_USER_ISTANCE_ID+'/'+id;
+                    axios.get(url,{params:{first:first,startDate:this.psyCardRp.startDate,endDate:this.psyCardRp.endDate}}).then(response => {
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -370,26 +442,35 @@
                         
                             _wm.mainTitle="Aggiornamento Cartella psy";
                             if(response.data.PsyRehabilitationPsychiatricCard){
-                            _wm.rPSaved=true;
-                            //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
-                            _wm.btnRpSend="Aggiorna";
+                            // _wm.rPSaved=true;
+                            // _wm.btnRpSend="Aggiorna";
                                 
-                            let _RehabPsyc=response.data.PsyRehabilitationPsychiatricCard;
+                            // let _RehabPsyc=response.data.PsyRehabilitationPsychiatricCard;
                             //     // _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyCardId=_RehabPsyc.id;
-                            _wm.psyRpDoctorId = _RehabPsyc.id_doctor;
-                            _wm.psyRpDoctorName = _RehabPsyc.doctor_name;
-                            _wm.psyRpDoctorLastname = _RehabPsyc.doctor_lastname;
+                            _wm.PsyRehabilitationPsychiatricCard=response.data.PsyRehabilitationPsychiatricCard;
 
 
-                            _wm.psyCardRp.projectDescription =_RehabPsyc.project_description;
-                            _wm.psyCardRp.treatmentAreaObjective = _RehabPsyc.treatment_area_objective 	
-                            _wm.psyCardRp.psychiatricIntervention = _RehabPsyc.psychiatric_intervention
-                            _wm.psyCardRp.projectManager = _RehabPsyc.project_manager
-                            _wm.psyCardRp.psychiatricAttachment = _RehabPsyc.psychiatric_attachment 
+
+                            for (let prop in _wm.PsyRehabilitationPsychiatricCard) {
+
+                            }
+
+
+
+                            // _wm.psyCardId=_RehabPsyc.id;
+                            // _wm.psyRpDoctorId = _RehabPsyc.id_doctor;
+                            // _wm.psyRpDoctorName = _RehabPsyc.doctor_name;
+                            // _wm.psyRpDoctorLastname = _RehabPsyc.doctor_lastname;
+
+
+                            // _wm.psyCardRp.projectDescription =_RehabPsyc.project_description;
+                            // _wm.psyCardRp.treatmentAreaObjective = _RehabPsyc.treatment_area_objective 	
+                            // _wm.psyCardRp.psychiatricIntervention = _RehabPsyc.psychiatric_intervention
+                            // _wm.psyCardRp.projectManager = _RehabPsyc.project_manager
+                            // _wm.psyCardRp.psychiatricAttachment = _RehabPsyc.psychiatric_attachment 
  
         
-                            _wm.allPsyRehabilitationPsychiatricCards=response.data.allPsyRehabilitationPsychiatricCards;
+                            // _wm.allPsyRehabilitationPsychiatricCards=response.data.allPsyRehabilitationPsychiatricCards;
                             }else{
                                 _wm.btnRpSend="Salva";
                             }

@@ -12,6 +12,7 @@ class PsyMembershipCard extends Model
         'doctor_name',
         'doctor_lastname',
         'mc_date',
+        
         'communicate_italian',
         'communicate',
         'marital_status',

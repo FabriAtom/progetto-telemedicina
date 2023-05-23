@@ -474,6 +474,94 @@
                                     </div>
                                 </div>
                                 {{ psyCardSf }}
+
+
+
+                                <div>
+                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <ul style="display:flex; flex-wrap: wrap;">
+                                        <span v-for="(item, key, index) in PsySocialFolder" :key="index" class="mr-5">
+
+                                            <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                                <div class="card-header">
+                                                    <span style="min-width: 100px;"> 
+                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                    </span> 
+                                            </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['sf_date']) }}</div>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <div style="min-width: 100px;"><strong>Trattamenti psichiatrici precedenti: </strong> <br>{{ (item['citizenship']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Csm: </strong> <br> {{ (item['residency_permit']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Spdc: </strong> <br>{{ ((item['typology'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Rems: </strong> <br>{{ (item['expiration']) }} </div> 
+
+                                                        <!-- <div style="min-width: 100px;"><strong>Carcere: </strong> <br>{{ (item['prison']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Familiarità psichiatrica: </strong> {{ (item['psychiatric_familiarity']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Se si, Chi: </strong> {{ ((item['if_familiarity'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Esordio sintomatologia psichiatrica: </strong> <br>{{ (item['on_set_of_psychiatric_symptom']) }} </div> 
+
+                                                        <div style="min-width: 100px;"><strong>Uso di sostanze: </strong> {{ (item['substance_use']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Presso Serd. : </strong> {{ (item['in_charge_at_serd_territorial']) }}</div>
+                                                        <div style="min-width: 100px;"><strong> Quale: </strong> {{ ((item['in_charge_at_serd_territorial_which'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Psicotico: </strong> {{ (item['psychotic_symptom']) }} </div> 
+                                                        
+                                                        <div style="min-width: 100px;"><strong>Affettivo-Ansioso: </strong> {{ (item['anxious_affective_symptom']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Impulsivo: </strong> {{ (item['impulsive_symptom']) }}</div>
+                                                        <div style="min-width: 100px;"><strong> D. Psicotico: </strong> {{ ((item['psychotic_diagnostic_orientation'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>D. Affettivo-Ansioso: </strong> {{ (item['anxious_affective_orientation']) }} </div> 
+                                                        
+                                                        <div style="min-width: 100px;"><strong>D. Personalità: </strong> {{ (item['personality_orientation']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Presa in carico: </strong> {{ (item['taking_charge_pdta']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Assunzione in cura: </strong> {{ ((item['care_intake_pdta'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Consulenza: </strong> {{ (item['consultancy_pdta']) }} </div>  -->
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
+                                </div> 
+
+
+
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="psyCardSf.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="psyCardSf.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getPsySocialFoldersByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+    
+
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="pull-right">
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsySocialFolder('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
@@ -525,6 +613,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default {
+
     name: 'PsySocialFolder',
 
     data() {
@@ -534,6 +623,8 @@ export default {
             userFullName:'',
             userInstance:1,
             userId:0,
+            psyCardId:1,
+
 
             showInput: false,
             showInput1:false,
@@ -565,7 +656,9 @@ export default {
 
             psyCardSf:{},
 
-            panel:'sf',
+            PsySocialFolder:{},
+
+            // panel:'sf',
 
             // psyCardMh:{},
 
@@ -583,25 +676,61 @@ export default {
 
     created: function () {
         // this.getPermissions();
-        this.getPsySocialFoldersByUserInstanceId(1);
+        this.getPsySocialFoldersByUserIstanceId(1);
     },
 
     methods: {
 
+        i2hDateFormat(date){
+
+            let current=new Date(date);
+            let year = `${current.getFullYear()}`;
+            let month = `${current.getMonth()}`;
+            let timeHours=`${current.getHours()}`;
+            let timeMinuts=`${current.getMinutes()}`;
+            let day = `${current.getDate()}`;
+            month=this.zeroFill(month);
+            day=this.zeroFill(day);
+            timeMinuts=this.zeroFill(timeMinuts);
+            timeHours=this.zeroFill(timeHours);
+            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+            return tDate;
+        },
+        zeroFill(value){
+            if(parseInt(value)<10){
+                value = '0'+value;
+            }
+            return value
+        },
+
+
+        i2hHourFormat(dataz){
+            let dataw= new Date(dataz);
+            //return date;
+            return dataw.getHours() +':'+dataw.getMinutes();
+        },
+
 
         printPsySocialFolder(printPdf){
 
-        let v_myWindow
-
-        let url= 'printPdf/2';
-
-        v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-
-        return false;
+            let v_myWindow
+            let url= 'printPdf/2';
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
         },
+
+        printArchivePsySocialFolder(printPdf){
+
+            let v_myWindow
+            let url= 'printPdf/2';
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
+
  
         addPsySocialFolder(panel){
             let _wm = this;
+
             let _panel=panel;
             let _errors=0;
             let _errorTitle="Scheda"
@@ -610,7 +739,7 @@ export default {
             form.append('userName', this.userName);
             form.append('userLastName', this.userLastName);
             form.append('userFullName', this.userFullName);
-            form.append('userInstance', this.userInstance);
+            form.append('userInstanceId', this.userInstanceId);
             form.append('userId', this.userId);
             // form.append('doctorId', this.accessData.id);
             // form.append('doctorName', this.accessData.name);
@@ -636,34 +765,20 @@ export default {
                 form.append('section', 'sf');
                 if(!this.isObjEmpty(this.psyCardSf)){
                     let _psyCardSf=JSON.stringify(this.psyCardSf);
-                    alert(JSON.stringify(this.psyCardSf))
-                    form.append('psyCardSf', _psyCardSf);
-                }
-            }else if(_panel=='mh'){
+                    // alert(JSON.stringify(this.psyCardSf))
+                    form.append('PsySocialFolder', _psyCardSf);
 
-                if(!this.mHSaved){
-                    form.append('action', 'store');
-                }else{
-                    form.append('action', 'update');
-                }
-                if (this.mHSaved) {
-                    if(this.psyCardId){
-                        form.append('psyId',this.psyCardId);
-                    }else{
-                        _errors++;
-                        _errorTitle="Attenzione";
-                        _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
-                    }
-                    form.append('section', 'mh');
-                    if(!this.isObjEmpty(this.psyCardMh)){
-                        let _psyCardMh=JSON.stringify(this.psyCardMh);
-                        form.append('PsyMentalHealthDepartment', _psyCardMh);
-                    }    
+                    form.append('citizenship', this.psyCardSf.citizenship);
+                    form.append('residencyPermit', this.psyCardSf.residencyPermit);
+                    form.append('typology', this.psyCardSf.typology);
+                    form.append('expiration', this.psyCardSf.expiration);
+
                 }
             }
+           
             if(_errors==0){
                 try {
-                    axios.post(actions.ADD_PSY_CARD,form).then(response => {
+                    axios.post(actions.ADD_SOCIAL_FOLDER,form).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -674,7 +789,7 @@ export default {
                                 'Aggiornata correttamente',
                                 'success'
                             )
-                            this.getPsySocialFoldersByUserInstanceId(this.userInstance);
+                            // this.getPsySocialFoldersByUserInstanceId(this.userInstance);
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                             Swal.fire(
@@ -699,7 +814,7 @@ export default {
             //GET ALL CARDS
             let _wm = this;
             try {
-                axios.get(actions.GET_PSY_CARDS).then(response => {
+                axios.get(actions.GET_SOCIAL_FOLDERS).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -714,10 +829,10 @@ export default {
             }
         },
 
-        getPsySocialFolderById(id){
+        getSocialFoldersByPsyId(id){
             let _wm = this;
             try {
-                let url=actions.GET_PSY_CARD_BY_ID+'/'+id;
+                let url=actions.GET_SOCIAL_FOLDER_BY_PSY_ID+'/'+id;
                 axios.get(url).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
@@ -733,13 +848,16 @@ export default {
             }
         },
 
-        getPsySocialFoldersByUserInstanceId(id){
+        getPsySocialFoldersByUserIstanceId(id,first){
             let _wm = this;
-            // alert('yy');
+
+            let _param;
+            _wm.PsySocialFolder=[];
+
 
             try {
-                let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
-                axios.get(url).then(response => {
+                let url=actions.GET_SOCIAL_FOLDERS_BY_USER_ISTANCE_ID+'/'+id;
+                axios.get(url,{params:{first:first,startDate:this.psyCardSf.startDate,endDate:this.psyCardSf.endDate}}).then(response => {
                     let error=response.data.errorNumber;
                     // let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -748,70 +866,88 @@ export default {
                       
                         _wm.mainTitle="Aggiornamento Cartella psy";
                         if(response.data.PsySocialFolder){
-                            _wm.sFSaved=true;
-                            _wm.btnSfSend="Aggiorna";
+                            // _wm.sFSaved=true;
+                            // _wm.btnSfSend="Aggiorna";
 
-                            let _SocialFold=response.data.PsySocialFolder;
+
+
+
+
+                            _wm.PsySocialFolder=response.data.PsySocialFolder;
+
+
+
+
+                            for (let prop in _wm.PsySocialFolder) {
+
+                            }
+
+
+
+
+
+
+                            // let _SocialFold=response.data.PsySocialFolder;
                             // _wm.psyCardId=response.data.psyCard.id;
     
-                            _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psySfDoctorId = _SocialFold.id_doctor;
+                            // _wm.psyCardId=response.data.psyCard.id;
+                            // _wm.psySfDoctorId = _SocialFold.id_doctor;
 
-                            _wm.psySfDoctorName = _SocialFold.doctor_name;
-                            _wm.psySfDoctorLastname = _SocialFold.doctor_lastname;
-
-                            
-                            _wm.psyCardSf.citizenship =_SocialFold.citizenship;
-                            _wm.psyCardSf.residencyPermit = _SocialFold.residency_permit 	
-                            _wm.psyCardSf.typology = _SocialFold.typology 
-                            _wm.psyCardSf.expiration = _SocialFold.expiration
-                            _wm.psyCardSf.socialNote = _SocialFold.social_note 
-                            _wm.psyCardSf.maritalStatus = _SocialFold.marital_status
-                            _wm.psyCardSf.socialDegree = _SocialFold.social_degree
-
-                            _wm.psyCardSf.legalStatusEducator = _SocialFold.legal_status_educator 
-                            _wm.psyCardSf.legalStatusLawyer = _SocialFold.legal_status_lawyer
-                            _wm.psyCardSf.legalStatusProvenance = _SocialFold.legal_status_provenance 
-                            _wm.psyCardSf.legalStatusEntered = _SocialFold.legal_status_entered
-                            _wm.psyCardSf.legalStatusEndOfSentence = _SocialFold.legal_status_end_of_sentence 
-                            _wm.psyCardSf.legalStatusSecurityMeasure = _SocialFold.legal_status_security_measure
-                            _wm.psyCardSf.legalStatusSecurityMeasureText = _SocialFold.legal_status_security_measure_text
-
-
-
-                            _wm.psyCardSf.legalStatusEndOfTheSentence = _SocialFold.legal_status_end_of_the_sentence
+                            // _wm.psySfDoctorName = _SocialFold.doctor_name;
+                            // _wm.psySfDoctorLastname = _SocialFold.doctor_lastname;
 
                             
-                            _wm.psyCardSf.legalStatusRemsOther = _SocialFold.legal_status_rems_other
-                            _wm.psyCardSf.legalStatusRemsOtherText = _SocialFold.legal_status_rems_other_text
+                            // _wm.psyCardSf.citizenship =_SocialFold.citizenship;
+                            // _wm.psyCardSf.residencyPermit = _SocialFold.residency_permit 	
+                            // _wm.psyCardSf.typology = _SocialFold.typology 
+                            // _wm.psyCardSf.expiration = _SocialFold.expiration
+                            // _wm.psyCardSf.socialNote = _SocialFold.social_note 
+                            // _wm.psyCardSf.maritalStatus = _SocialFold.marital_status
+                            // _wm.psyCardSf.socialDegree = _SocialFold.social_degree
 
-                            _wm.psyCardSf.legalStatusUncensored = _SocialFold.legal_status_uncensored 
+                            // _wm.psyCardSf.legalStatusEducator = _SocialFold.legal_status_educator 
+                            // _wm.psyCardSf.legalStatusLawyer = _SocialFold.legal_status_lawyer
+                            // _wm.psyCardSf.legalStatusProvenance = _SocialFold.legal_status_provenance 
+                            // _wm.psyCardSf.legalStatusEntered = _SocialFold.legal_status_entered
+                            // _wm.psyCardSf.legalStatusEndOfSentence = _SocialFold.legal_status_end_of_sentence 
+                            // _wm.psyCardSf.legalStatusSecurityMeasure = _SocialFold.legal_status_security_measure
+                            // _wm.psyCardSf.legalStatusSecurityMeasureText = _SocialFold.legal_status_security_measure_text
 
-                            _wm.psyCardSf.socialHealthSituationCsm = _SocialFold.social_health_situation_csm
-                            _wm.psyCardSf.socialHealthSituationSerd = _SocialFold.social_health_situation_serd 
-                            _wm.psyCardSf.socialHealthSituationAsl = _SocialFold.social_health_situation_asl 
-                            _wm.psyCardSf.socialHealthSituationCertificate = _SocialFold.social_health_situation_certificate 
+
+
+                            // _wm.psyCardSf.legalStatusEndOfTheSentence = _SocialFold.legal_status_end_of_the_sentence
 
                             
-                            _wm.psyCardSf.socialHealthSituationTherapeuticPathway = _SocialFold.social_health_situation_therapeutic_pathway 
-                            _wm.psyCardSf.socialHealthSituationDisability = _SocialFold.social_health_situation_disability
-                            _wm.psyCardSf.socialHealthSituationDisability_text = _SocialFold.social_health_situation_disability_text
+                            // _wm.psyCardSf.legalStatusRemsOther = _SocialFold.legal_status_rems_other
+                            // _wm.psyCardSf.legalStatusRemsOtherText = _SocialFold.legal_status_rems_other_text
 
-                            _wm.psyCardSf.socialHealthSituationRevision = _SocialFold.social_health_situation_revision
-                            _wm.psyCardSf.socialHealthSituationInps = _SocialFold.social_health_situation_inps 
-                            _wm.psyCardSf.socialHealthSituationAdministrator = _SocialFold.social_health_situation_administrator 
+                            // _wm.psyCardSf.legalStatusUncensored = _SocialFold.legal_status_uncensored 
 
-                            _wm.psyCardSf.environmentalAnalysisFamilyOfOrigin = _SocialFold.environmental_analysis_family_of_origin
-                            _wm.psyCardSf.environmentalAnalysisAccommodation = _SocialFold.environmental_analysis_accommodation 
-                            _wm.psyCardSf.environmentalAnalysisWork = _SocialFold.environmental_analysis_work 
-                            _wm.psyCardSf.environmentalAnalysisIncome = _SocialFold.environmental_analysis_income
-                            _wm.psyCardSf.environmentalAnalysisFormalNetwork = _SocialFold.environmental_analysis_formal_network 
+                            // _wm.psyCardSf.socialHealthSituationCsm = _SocialFold.social_health_situation_csm
+                            // _wm.psyCardSf.socialHealthSituationSerd = _SocialFold.social_health_situation_serd 
+                            // _wm.psyCardSf.socialHealthSituationAsl = _SocialFold.social_health_situation_asl 
+                            // _wm.psyCardSf.socialHealthSituationCertificate = _SocialFold.social_health_situation_certificate 
 
-                            _wm.psyCardSf.interventionHypothesisSocialProject = _SocialFold.intervention_hypothesis_project
-                            _wm.psyCardSf.interventionHypothesisSocialWorker = _SocialFold.intervention_hypothesis_social_worker
+                            
+                            // _wm.psyCardSf.socialHealthSituationTherapeuticPathway = _SocialFold.social_health_situation_therapeutic_pathway 
+                            // _wm.psyCardSf.socialHealthSituationDisability = _SocialFold.social_health_situation_disability
+                            // _wm.psyCardSf.socialHealthSituationDisability_text = _SocialFold.social_health_situation_disability_text
+
+                            // _wm.psyCardSf.socialHealthSituationRevision = _SocialFold.social_health_situation_revision
+                            // _wm.psyCardSf.socialHealthSituationInps = _SocialFold.social_health_situation_inps 
+                            // _wm.psyCardSf.socialHealthSituationAdministrator = _SocialFold.social_health_situation_administrator 
+
+                            // _wm.psyCardSf.environmentalAnalysisFamilyOfOrigin = _SocialFold.environmental_analysis_family_of_origin
+                            // _wm.psyCardSf.environmentalAnalysisAccommodation = _SocialFold.environmental_analysis_accommodation 
+                            // _wm.psyCardSf.environmentalAnalysisWork = _SocialFold.environmental_analysis_work 
+                            // _wm.psyCardSf.environmentalAnalysisIncome = _SocialFold.environmental_analysis_income
+                            // _wm.psyCardSf.environmentalAnalysisFormalNetwork = _SocialFold.environmental_analysis_formal_network 
+
+                            // _wm.psyCardSf.interventionHypothesisSocialProject = _SocialFold.intervention_hypothesis_project
+                            // _wm.psyCardSf.interventionHypothesisSocialWorker = _SocialFold.intervention_hypothesis_social_worker
 
 
-                            _wm.allPsySocialFolders=response.data.allPsySocialFolders;
+                            // _wm.allPsySocialFolders=response.data.allPsySocialFolders;
                         }else{
                             _wm.btnSfSend="Salva";
                         }

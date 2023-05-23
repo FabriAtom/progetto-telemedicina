@@ -19,7 +19,7 @@ export const GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID= '/serd/getCurrentSocialFolde
 export const ADD_SERD_CARD= '/serd/store';
 export const ADD_TOXICOLOGY_REPORT= '/serd/addToxicologyReport';
 export const ADD_PSICHOLOGICAL_ANAMNESIS= '/serd/addPsychologicalAnamnesis';
-export const ADD_SOCIAL_FOLDER= '/serd/addSocialFolder';
+// export const ADD_SOCIAL_FOLDER= '/serd/addSocialFolder';
 export const DELETE_SERD_CARD= '/serd/destroy';
 
 
@@ -43,56 +43,79 @@ export const GET_SUICIDES_BY_USER_ISTANCE_ID= '/psy/getPsySuicideAssessmentsByUs
 
 
 
-
-
-
-
 // export const GET_PSY_SUICIDE_ASSESSMENT_BY_USER_INSTANCE_ID = '/psy/getPsySuicideAssessmentsByUserIstanceId';
 // export const ADD_PSY_SUICIDE_ASSESSMENT= '/psy/store';
 
 
+
+
+
+
+
+
+
 // MentalHealthDepartment
 export const GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID= '/psy/getMentalHealthDepartmentsByPsyId';
-export const ADD_MENTAL_HEALTH_DEPARTMENT= '/psy/addMentalHealthDepartment';
-// export const GET_MENTAL_HEALTH_DEPARTMENTS_BY_PSY_ID= '/psy/getMentalHealthDepartmentsByPsyId';
-// export const GET_TRACEABILITYS_BY_USER_ISTANCE_ID = '/therapies/getTraceabilityTherapysByUserIstanceId';
+export const ADD_MENTAL_HEALTH_DEPARTMENT= '/psy/addPsyMentalHealthDepartment';
+export const GET_MENTAL_HEALTH_DEPARTMENTS_BY_USER_ISTANCE_ID = '/psy/getPsyMentalHealthDepartmentsByUserIstanceId';
+export const GET_MENTAL_HEALTH_DEPARTMENTS = '/psy/getPsyMentalHealthDepartments';
+
+
+// RehabilitationPsychiatricCard
+export const GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID= '/psy/getRehabilitationPsychiatricCardsByPsyId';
+export const ADD_REHABILITATION_PSYCHIATRIC_CARD= '/psy/addPsyRehabilitationPsychiatricCard';
+export const GET_REHABILITATION_PSYCHIATRIC_CARDS_BY_USER_ISTANCE_ID = '/psy/getPsyRehabilitationPsychiatricCardsByUserIstanceId';
+export const GET_REHABILITATION_PSYCHIATRIC_CARDS = '/psy/getPsyRehabilitationPsychiatricCards';
 
 
 
 // PsyRating
 export const GET_RATING_BY_PSY_ID= '/psy/getRatingsByPsyId';
-export const ADD_RATING= '/psy/addRating';
+export const ADD_RATING= '/psy/addPsyRating';
+export const GET_RATINGS_BY_USER_ISTANCE_ID = '/psy/getPsyRatingsByUserIstanceId';
+export const GET_RATINGS = '/psy/getPsyRatings';
+
 
 
 // PsYUocDepartment
 export const GET_UOC_DEPARTMENT_BY_PSY_ID= '/psy/getUocDepartmentsByPsyId';
-export const ADD_UOC_DEPARTMENT= '/psy/addUocDepartment';
+export const ADD_UOC_DEPARTMENT= '/psy/addPsyUocDepartment';
+export const GET_UOC_DEPARTMENTS_BY_USER_ISTANCE_ID = '/psy/getPsyUocDepartmentsByUserIstanceId';
+export const GET_UOC_DEPARTMENTS = '/psy/getPsyUocDepartments';
+
 
 
 // PsySocialFolder
-// export const GET_SOCIAL_FOLDER_BY_PSY_ID= '/psy/getSocialFoldersByPsyId';
-// export const ADD_SOCIAL_FOLDER= '/psy/addSocialFolder';
 
+export const GET_SOCIAL_FOLDER_BY_PSY_ID= '/psy/getSocialFoldersByPsyId';
+export const ADD_SOCIAL_FOLDER= '/psy/addPsySocialFolder';
+export const GET_SOCIAL_FOLDERS_BY_USER_ISTANCE_ID = '/psy/getPsySocialFoldersByUserIstanceId';
+export const GET_SOCIAL_FOLDERS = '/psy/getPsySocialFolders';
 
-
-// RehabilitationPsychiatricCard
-export const GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID= '/psy/getRehabilitationPsychiatricCardsByPsyId';
-export const ADD_REHABILITATION_PSYCHIATRIC_CARD= '/psy/addRehabilitationPsychiatricCard';
 
 
 // PsyMembershipCard
 export const GET_MEMBERSHIP_CARD_BY_PSY_ID= '/psy/getMembershipCardsByPsyId';
-export const ADD_MEMBERSHIP_CARD= '/psy/addMembershipCard';
+export const ADD_MEMBERSHIP_CARD= '/psy/addPsyMembershipCard';
+export const GE_MEMBERSHIP_CARDS_BY_USER_ISTANCE_ID = '/psy/getPsyMembershipCardsByUserIstanceId';
+export const GET_MEMBERSHIP_CARDS = '/psy/getPsyMembershipCards';
+
 
 
 // PsySurvey
 export const GET_SURVEY_BY_PSY_ID= '/psy/getSurveysByPsyId';
-export const ADD_SURVEY= '/psy/addSurvey';
+export const ADD_SURVEY= '/psy/addPsySurvey';
+export const GET_SURVEYS_BY_USER_ISTANCE_ID = '/psy/getPsySurveysByUserIstanceId';
+export const GET_SURVEYS = '/psy/getPsySurveys';
+
 
 
 // PsyJsat
 export const GET_JSAT_BY_PSY_ID= '/psy/getJsatsByPsyId';
-export const ADD_JSAT= '/psy/addJsat';
+export const ADD_JSAT= '/psy/addPsyJsat';
+export const GET_JSATS_BY_USER_ISTANCE_ID = '/psy/getPsyJsatsByUserIstanceId';
+export const GET_JSATS = '/psy/getPsyJsats';
+
 
 
 

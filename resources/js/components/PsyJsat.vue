@@ -1680,6 +1680,68 @@
 
 
                                 {{ psyCardPj }}
+
+
+                                
+                                <div>
+                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <ul style="display:flex; flex-wrap: wrap;">
+                                        <span v-for="(item, key, index) in PsyJsat" :key="index" class="mr-5">
+
+                                            <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                                <div class="card-header">
+                                                    <span style="min-width: 100px;"> 
+                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                    </span> 
+                                            </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['pj_date']) }}</div>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <div style="min-width: 100px;"><strong>Data di entrata:</strong> {{ (item['entry_date']) }}</div>
+                                                         <div style="min-width: 100px;"><strong>Data di valutazione:</strong> {{ (item['valutation_date']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Anni:</strong> {{ ((item['information_age'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Lingua:</strong> {{ (item['information_language']) }} </div> 
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
+                                </div> 
+
+
+
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="psyCardPj.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="psyCardPj.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getPsyJsatsByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+    
+
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="pull-right">
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyJsat('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                    </div>
+                                </div>
+
+
+
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
@@ -1755,6 +1817,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default {
+
     name: 'PsyJsat',
 
     data() {
@@ -1784,9 +1847,9 @@ export default {
 
 
 
-            panel:'pj',
+            // panel:'pj',
 
-
+            PsyJsat:{},
 
             mainTitle:"psy",
             firstSave:true,
@@ -1808,17 +1871,53 @@ export default {
     methods: {
 
 
+        i2hDateFormat(date){
+
+        let current=new Date(date);
+        let year = `${current.getFullYear()}`;
+        let month = `${current.getMonth()}`;
+        let timeHours=`${current.getHours()}`;
+        let timeMinuts=`${current.getMinutes()}`;
+        let day = `${current.getDate()}`;
+        month=this.zeroFill(month);
+        day=this.zeroFill(day);
+        timeMinuts=this.zeroFill(timeMinuts);
+        timeHours=this.zeroFill(timeHours);
+        let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+        return tDate;
+        },
+        zeroFill(value){
+        if(parseInt(value)<10){
+            value = '0'+value;
+        }
+        return value
+        },
+
+
+        i2hHourFormat(dataz){
+        let dataw= new Date(dataz);
+        //return date;
+        return dataw.getHours() +':'+dataw.getMinutes();
+        },
+
         printPsyJsat(printPdf){
 
             let v_myWindow
-
             let url= 'printPdf/2';
-
             v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-
             return false;
         },
- 
+
+        printArchivePsyJsat(printPdf){
+
+        let v_myWindow
+        let url= 'printPdf/2';
+        v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+        return false;
+        },
+        
+
+
         addPsyJsat(panel){
             let _wm = this;
             let _panel=panel;
@@ -1856,33 +1955,20 @@ export default {
                 if(!this.isObjEmpty(this.psyCardPj)){
                     // alert(JSON.stringify(this.psyCardPj));
                     let _psyCardPj=JSON.stringify(this.psyCardPj);
-                    form.append('psyCardPj', _psyCardPj);
-                }
-            }else if(_panel=='mh'){
+                    form.append('PsyJsat', _psyCardPj);
 
-                if(!this.mHSaved){
-                    form.append('action', 'store');
-                }else{
-                    form.append('action', 'update');
-                }
-                if (this.mHSaved) {
-                    if(this.psyCardId){
-                        form.append('psyId',this.psyCardId);
-                    }else{
-                        _errors++;
-                        _errorTitle="Attenzione";
-                        _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
-                    }
-                    form.append('section', 'mh');
-                    if(!this.isObjEmpty(this.psyCardMh)){
-                        let _psyCardMh=JSON.stringify(this.psyCardMh);
-                        form.append('PsyMentalHealthDepartment', _psyCardMh);
-                    }    
+                    form.append('entryDate', this.psyCardMh.entryDate);
+                    form.append('valutationDate', this.psyCardMh.valutationDate);
+                    form.append('informationAge', this.psyCardMh.informationAge);
+                    form.append('informationLanguage', this.psyCardMh.informationLanguage);
+                    
                 }
             }
+           
+            
             if(_errors==0){
                 try {
-                    axios.post(actions.ADD_PSY_CARD,form).then(response => {
+                    axios.post(actions.ADD_JSAT,form).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -1893,7 +1979,7 @@ export default {
                                 'Aggiornata correttamente',
                                 'success'
                             )
-                            this.getPsyJsatsByUserInstanceId(this.userInstance);
+                            // this.getPsyJsatsByUserInstanceId(this.userInstance);
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                             Swal.fire(
@@ -1919,7 +2005,7 @@ export default {
             //GET ALL CARDS
             let _wm = this;
             try {
-                axios.get(actions.GET_PSY_CARDS).then(response => {
+                axios.get(actions.GET_JSATS).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -1937,7 +2023,7 @@ export default {
         getPsyJsatById(id){
             let _wm = this;
             try {
-                let url=actions.GET_PSY_CARD_BY_ID+'/'+id;
+                let url=actions.GET_JSAT_BY_PSY_ID+'/'+id;
                 axios.get(url).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
@@ -1953,13 +2039,16 @@ export default {
             }
         },
 
-        getPsyJsatsByUserInstanceId(id){
+        getPsyJsatsByUserInstanceId(id,first){
             let _wm = this;
-            // alert('yy');
+
+            let _param;
+            _wm.PsyJsat=[];
+
 
             try {
-                let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
-                axios.get(url).then(response => {
+                let url=actions.GET_JSATS_BY_USER_ISTANCE_ID+'/'+id;
+                axios.get(url,{params:{first:first,startDate:this.psyCardPj.startDate,endDate:this.psyCardPj.endDate}}).then(response => {
                     let error=response.data.errorNumber;
                     // let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -1968,165 +2057,190 @@ export default {
                     
                         _wm.mainTitle="Aggiornamento Cartella psy";
                         if(response.data.PsyJsat){
-                            _wm.pJSaved=true;
-                            _wm.btnPjSend="Aggiorna";
+                            // _wm.pJSaved=true;
+                            // _wm.btnPjSend="Aggiorna";
 
-                            let _psyJsa=response.data.PsyJsat;
+
+                            _wm.PsyJsat=response.data.PsyJsat;
+
+                            for (let prop in _wm.PsyJsat) {
+
+                            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            // let _psyJsa=response.data.PsyJsat;
                             // _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyPjDoctorId = _psyJsa.id_doctor;
-                            _wm.psyPjDoctorName = _psyJsa.doctor_name;
-                            _wm.psyPjDoctorLastname = _psyJsa.doctor_lastname;
+                            // _wm.psyCardId=response.data.psyCard.id;
+                            // _wm.psyPjDoctorId = _psyJsa.id_doctor;
+                            // _wm.psyPjDoctorName = _psyJsa.doctor_name;
+                            // _wm.psyPjDoctorLastname = _psyJsa.doctor_lastname;
 
-                            _wm.psyCardPj.entryDate =_psyJsa.entry_date;
-                            _wm.psyCardPj.valutationDate = _psyJsa.valutation_date 	
-                            _wm.psyCardPj.informationAge = _psyJsa.information_age 
-                            _wm.psyCardPj.informationLanguage = _psyJsa.information_language
-                            _wm.psyCardPj.informationLevelLanguage = _psyJsa.information_level_language
-                            _wm.psyCardPj.informationNativeLanguage = _psyJsa.information_native_language 
+                            // _wm.psyCardPj.entryDate =_psyJsa.entry_date;
+                            // _wm.psyCardPj.valutationDate = _psyJsa.valutation_date 	
+                            // _wm.psyCardPj.informationAge = _psyJsa.information_age 
+                            // _wm.psyCardPj.informationLanguage = _psyJsa.information_language
+                            // _wm.psyCardPj.informationLevelLanguage = _psyJsa.information_level_language
+                            // _wm.psyCardPj.informationNativeLanguage = _psyJsa.information_native_language 
 
-                            _wm.psyCardPj.informationBackground = _psyJsa.information_background
-                            _wm.psyCardPj.informationBackgroundOther = _psyJsa.information_background_other
-                            _wm.psyCardPj.legalSituationNow = _psyJsa.legal_situation_now 
-                            _wm.psyCardPj.legalSituationCrimeCommitted = _psyJsa.legal_situation_crime_committed
-                            _wm.psyCardPj.legalSituationCrimeCommittedOther = _psyJsa.legal_situation_crime_committed_other 
+                            // _wm.psyCardPj.informationBackground = _psyJsa.information_background
+                            // _wm.psyCardPj.informationBackgroundOther = _psyJsa.information_background_other
+                            // _wm.psyCardPj.legalSituationNow = _psyJsa.legal_situation_now 
+                            // _wm.psyCardPj.legalSituationCrimeCommitted = _psyJsa.legal_situation_crime_committed
+                            // _wm.psyCardPj.legalSituationCrimeCommittedOther = _psyJsa.legal_situation_crime_committed_other 
 
-                            _wm.psyCardPj.legalSituationPreviousIncarceration = _psyJsa.legal_situation_previous_incarceration
-                            _wm.psyCardPj.legalSituationPreviousIncarcerationIf = _psyJsa.legal_situation_previous_incarceration_if 
-                            _wm.psyCardPj.legalSituationPreviousIncarcerationIfProminence = _psyJsa.legal_situation_previous_incarceration_if_prominence
+                            // _wm.psyCardPj.legalSituationPreviousIncarceration = _psyJsa.legal_situation_previous_incarceration
+                            // _wm.psyCardPj.legalSituationPreviousIncarcerationIf = _psyJsa.legal_situation_previous_incarceration_if 
+                            // _wm.psyCardPj.legalSituationPreviousIncarcerationIfProminence = _psyJsa.legal_situation_previous_incarceration_if_prominence
 
-                            _wm.psyCardPj.criminalRecord = _psyJsa.criminal_record
-                            _wm.psyCardPj.criminalRecordCondemnation = _psyJsa.criminal_record_condemnation
+                            // _wm.psyCardPj.criminalRecord = _psyJsa.criminal_record
+                            // _wm.psyCardPj.criminalRecordCondemnation = _psyJsa.criminal_record_condemnation
 
-                            _wm.psyCardPj.violentBehaviorActsAggression = _psyJsa.violent_behavior_acts_aggression 
-                            _wm.psyCardPj.violentBehaviorActsAggressionDesc = _psyJsa.violent_behavior_acts_aggression_desc
-                            _wm.psyCardPj.violentBehaviorViolentCrimes = _psyJsa.violent_behavior_violent_crimes 
-                            _wm.psyCardPj.violentBehaviorCrimesType = _psyJsa.violent_behavior_crimes_type 
-                            _wm.psyCardPj.violentBehaviorDuringIncarceration = _psyJsa.violent_behavior_during_incarceration 
-                            _wm.psyCardPj.violentBehaviorAggressionProceeding = _psyJsa.violent_behavior_aggression_proceeding 
-                            _wm.psyCardPj.violentBehaviorAggressionProceedingDesc = _psyJsa.violent_behavior_aggression_proceeding_desc
-                            _wm.psyCardPj.violentBehaviorLastAggression = _psyJsa.violent_behavior_last_aggression
-                            _wm.psyCardPj.violentAggressionNow = _psyJsa.violent_aggression_now 
+                            // _wm.psyCardPj.violentBehaviorActsAggression = _psyJsa.violent_behavior_acts_aggression 
+                            // _wm.psyCardPj.violentBehaviorActsAggressionDesc = _psyJsa.violent_behavior_acts_aggression_desc
+                            // _wm.psyCardPj.violentBehaviorViolentCrimes = _psyJsa.violent_behavior_violent_crimes 
+                            // _wm.psyCardPj.violentBehaviorCrimesType = _psyJsa.violent_behavior_crimes_type 
+                            // _wm.psyCardPj.violentBehaviorDuringIncarceration = _psyJsa.violent_behavior_during_incarceration 
+                            // _wm.psyCardPj.violentBehaviorAggressionProceeding = _psyJsa.violent_behavior_aggression_proceeding 
+                            // _wm.psyCardPj.violentBehaviorAggressionProceedingDesc = _psyJsa.violent_behavior_aggression_proceeding_desc
+                            // _wm.psyCardPj.violentBehaviorLastAggression = _psyJsa.violent_behavior_last_aggression
+                            // _wm.psyCardPj.violentAggressionNow = _psyJsa.violent_aggression_now 
 
-                            _wm.psyCardPj.backgroundSocialMaritalStatus = _psyJsa.background_social_marital_status 
-                            _wm.psyCardPj.backgroundSocialStabilityRelation = _psyJsa.background_social_stability_relation
-                            _wm.psyCardPj.backgroundSocialRelationProblem = _psyJsa.background_social_relation_problem 
-                            _wm.psyCardPj.backgroundSocialSons = _psyJsa.background_social_sons 
-                            _wm.psyCardPj.backgroundSocialSonsProblem = _psyJsa.background_social_sons_problem
-                            _wm.psyCardPj.backgroundSocialSituationHouse = _psyJsa.background_social_situation_house 
-                            _wm.psyCardPj.backgroundSocialSituationHouseOther = _psyJsa.background_social_situation_house_other
-                            _wm.psyCardPj.backgroundSocialSupportFamily = _psyJsa.background_social_support_family
-                            _wm.psyCardPj.backgroundSocialSupportFamilyCont = _psyJsa.background_social_support_family_cont
-                            _wm.psyCardPj.backgroundSocialSupportFamilyProblem = _psyJsa.background_social_support_family_problem
-                            _wm.psyCardPj.backgroundSocialSupport = _psyJsa.background_social_support
-                            _wm.psyCardPj.backgroundSocialSupportCont = _psyJsa.background_social_support_cont 
-                            _wm.psyCardPj.backgroundSocialSupportOther = _psyJsa.background_social_support_other 
-                            _wm.psyCardPj.backgroundSocialSupportProblem = _psyJsa.background_social_support_problem
-                            _wm.psyCardPj.backgroundSocialSchooling = _psyJsa.background_social_schooling 
-                            _wm.psyCardPj.backgroundSocialWork = _psyJsa.background_social_work
-                            _wm.psyCardPj.backgroundSocialWorkOther = _psyJsa.background_social_work_other 
-
-
-
-                            _wm.psyCardPj.substanceUse = _psyJsa.substance_use
-                            _wm.psyCardPj.substanceUseTabacco = _psyJsa.substance_use_tabacco 
-                            _wm.psyCardPj.substanceUseAlcol = _psyJsa.substance_use_alcol 
-                            _wm.psyCardPj.substanceUseMarijuana = _psyJsa.substance_use_marijuana
-                            _wm.psyCardPj.substanceUseEroin = _psyJsa.substance_use_eroin 
-                            _wm.psyCardPj.substanceUseCocaine = _psyJsa.substance_use_cocaine
-                            _wm.psyCardPj.substanceUseMetamphetamin = _psyJsa.substance_use_metamphetamin 
-                            _wm.psyCardPj.substanceUseOther = _psyJsa.substance_use_other
-
-                            _wm.psyCardPj.substanceUseDescription = _psyJsa.substance_use_description
-
-                            _wm.psyCardPj.substanceUseIntravenousMode = _psyJsa.substance_use_intravenous_mode 
-                            _wm.psyCardPj.substanceUseCurrentMethadoneTreatment = _psyJsa.substance_use_current_methadone_treatment
-                            _wm.psyCardPj.substanceUseCurrentMethadonList = _psyJsa.substance_use_current_methadon_list
-                            _wm.psyCardPj.substanceUseSubstanceAbuse = _psyJsa.substance_use_substance_abuse 
-                            _wm.psyCardPj.substanceUseSubstanceAbuseList = _psyJsa.substance_use_substance_abuse_list
-                            _wm.psyCardPj.substanceUseSubstanceAbuseOther = _psyJsa.substance_use_substance_abuse_other 
-
-                            _wm.psyCardPj.psycTreatments = _psyJsa.psyc_treatments
-                            _wm.psyCardPj.psycTreatmentsClinicalEvaluation = _psyJsa.psyc_treatments_clinical_evaluation 
-                            _wm.psyCardPj.psycTreatmentsClinicalEvaluationOrder = _psyJsa.psyc_treatments_clinical_evaluation_order 
-                            _wm.psyCardPj.psycTreatmentsInPrison = _psyJsa.psyc_treatments_in_prison
-                            _wm.psyCardPj.psycTreatmentsComunity = _psyJsa.psyc_treatments_comunity 
-                            _wm.psyCardPj.psycTreatmentsHospital = _psyJsa.psyc_treatments_hospital
-                            _wm.psyCardPj.psycTreatmentsCourtOrder = _psyJsa.psyc_treatments_court_order 
-                            _wm.psyCardPj.psycTreatmentsFarmacy = _psyJsa.psyc_treatments_farmacy
-                            _wm.psyCardPj.psycTreatmentsType = _psyJsa.psyc_treatments_type 
-                            _wm.psyCardPj.psycTreatmentsPreviousTrauma = _psyJsa.psyc_treatments_previous_trauma 
-                            _wm.psyCardPj.psycTreatmentsPreviousTraumaDesc = _psyJsa.psyc_treatments_previous_trauma_desc
-
-                            _wm.psyCardPj.suicidalRisk = _psyJsa.suicidal_risk 
-                            _wm.psyCardPj.suicidalRiskNumberAttempts = _psyJsa.suicidal_risk_number_attempts
-                            _wm.psyCardPj.suicidalRiskTimeAttempts = _psyJsa.suicidal_risk_time_attempts 
-                            _wm.psyCardPj.suicidalRiskMethodsWeapon = _psyJsa.suicidal_risk_methods_weapon 
-                            _wm.psyCardPj.suicidalRiskMethodsWeaponOther = _psyJsa.suicidal_risk_methods_weapon_other
-                            _wm.psyCardPj.suicidalRiskLevelIdeation = _psyJsa.suicidal_risk_level_ideation 
-                            _wm.psyCardPj.suicidalRiskSucideTentative = _psyJsa.suicidal_risk_sucide_tentative 
-                            _wm.psyCardPj.suicidalRiskSucideTentativeNumber = _psyJsa.suicidal_risk_sucide_tentative_number
-                            _wm.psyCardPj.suicidalRiskTentativeTime = _psyJsa.suicidal_risk_tentative_time 
-                            _wm.psyCardPj.suicidalRiskMethodsTwo = _psyJsa.suicidal_risk_methods_two 
-                            _wm.psyCardPj.suicidalRiskMethodsTwoOther = _psyJsa.suicidal_risk_methods_two_other
-                            _wm.psyCardPj.suicidalRiskActOfSelfHarm = _psyJsa.suicidal_risk_act_of_self_harm 
-                            _wm.psyCardPj.suicidalRiskActOfSelfHarmDesc = _psyJsa.suicidal_risk_act_of_self_harm_desc 
+                            // _wm.psyCardPj.backgroundSocialMaritalStatus = _psyJsa.background_social_marital_status 
+                            // _wm.psyCardPj.backgroundSocialStabilityRelation = _psyJsa.background_social_stability_relation
+                            // _wm.psyCardPj.backgroundSocialRelationProblem = _psyJsa.background_social_relation_problem 
+                            // _wm.psyCardPj.backgroundSocialSons = _psyJsa.background_social_sons 
+                            // _wm.psyCardPj.backgroundSocialSonsProblem = _psyJsa.background_social_sons_problem
+                            // _wm.psyCardPj.backgroundSocialSituationHouse = _psyJsa.background_social_situation_house 
+                            // _wm.psyCardPj.backgroundSocialSituationHouseOther = _psyJsa.background_social_situation_house_other
+                            // _wm.psyCardPj.backgroundSocialSupportFamily = _psyJsa.background_social_support_family
+                            // _wm.psyCardPj.backgroundSocialSupportFamilyCont = _psyJsa.background_social_support_family_cont
+                            // _wm.psyCardPj.backgroundSocialSupportFamilyProblem = _psyJsa.background_social_support_family_problem
+                            // _wm.psyCardPj.backgroundSocialSupport = _psyJsa.background_social_support
+                            // _wm.psyCardPj.backgroundSocialSupportCont = _psyJsa.background_social_support_cont 
+                            // _wm.psyCardPj.backgroundSocialSupportOther = _psyJsa.background_social_support_other 
+                            // _wm.psyCardPj.backgroundSocialSupportProblem = _psyJsa.background_social_support_problem
+                            // _wm.psyCardPj.backgroundSocialSchooling = _psyJsa.background_social_schooling 
+                            // _wm.psyCardPj.backgroundSocialWork = _psyJsa.background_social_work
+                            // _wm.psyCardPj.backgroundSocialWorkOther = _psyJsa.background_social_work_other 
 
 
+
+                            // _wm.psyCardPj.substanceUse = _psyJsa.substance_use
+                            // _wm.psyCardPj.substanceUseTabacco = _psyJsa.substance_use_tabacco 
+                            // _wm.psyCardPj.substanceUseAlcol = _psyJsa.substance_use_alcol 
+                            // _wm.psyCardPj.substanceUseMarijuana = _psyJsa.substance_use_marijuana
+                            // _wm.psyCardPj.substanceUseEroin = _psyJsa.substance_use_eroin 
+                            // _wm.psyCardPj.substanceUseCocaine = _psyJsa.substance_use_cocaine
+                            // _wm.psyCardPj.substanceUseMetamphetamin = _psyJsa.substance_use_metamphetamin 
+                            // _wm.psyCardPj.substanceUseOther = _psyJsa.substance_use_other
+
+                            // _wm.psyCardPj.substanceUseDescription = _psyJsa.substance_use_description
+
+                            // _wm.psyCardPj.substanceUseIntravenousMode = _psyJsa.substance_use_intravenous_mode 
+                            // _wm.psyCardPj.substanceUseCurrentMethadoneTreatment = _psyJsa.substance_use_current_methadone_treatment
+                            // _wm.psyCardPj.substanceUseCurrentMethadonList = _psyJsa.substance_use_current_methadon_list
+                            // _wm.psyCardPj.substanceUseSubstanceAbuse = _psyJsa.substance_use_substance_abuse 
+                            // _wm.psyCardPj.substanceUseSubstanceAbuseList = _psyJsa.substance_use_substance_abuse_list
+                            // _wm.psyCardPj.substanceUseSubstanceAbuseOther = _psyJsa.substance_use_substance_abuse_other 
+
+                            // _wm.psyCardPj.psycTreatments = _psyJsa.psyc_treatments
+                            // _wm.psyCardPj.psycTreatmentsClinicalEvaluation = _psyJsa.psyc_treatments_clinical_evaluation 
+                            // _wm.psyCardPj.psycTreatmentsClinicalEvaluationOrder = _psyJsa.psyc_treatments_clinical_evaluation_order 
+                            // _wm.psyCardPj.psycTreatmentsInPrison = _psyJsa.psyc_treatments_in_prison
+                            // _wm.psyCardPj.psycTreatmentsComunity = _psyJsa.psyc_treatments_comunity 
+                            // _wm.psyCardPj.psycTreatmentsHospital = _psyJsa.psyc_treatments_hospital
+                            // _wm.psyCardPj.psycTreatmentsCourtOrder = _psyJsa.psyc_treatments_court_order 
+                            // _wm.psyCardPj.psycTreatmentsFarmacy = _psyJsa.psyc_treatments_farmacy
+                            // _wm.psyCardPj.psycTreatmentsType = _psyJsa.psyc_treatments_type 
+                            // _wm.psyCardPj.psycTreatmentsPreviousTrauma = _psyJsa.psyc_treatments_previous_trauma 
+                            // _wm.psyCardPj.psycTreatmentsPreviousTraumaDesc = _psyJsa.psyc_treatments_previous_trauma_desc
+
+                            // _wm.psyCardPj.suicidalRisk = _psyJsa.suicidal_risk 
+                            // _wm.psyCardPj.suicidalRiskNumberAttempts = _psyJsa.suicidal_risk_number_attempts
+                            // _wm.psyCardPj.suicidalRiskTimeAttempts = _psyJsa.suicidal_risk_time_attempts 
+                            // _wm.psyCardPj.suicidalRiskMethodsWeapon = _psyJsa.suicidal_risk_methods_weapon 
+                            // _wm.psyCardPj.suicidalRiskMethodsWeaponOther = _psyJsa.suicidal_risk_methods_weapon_other
+                            // _wm.psyCardPj.suicidalRiskLevelIdeation = _psyJsa.suicidal_risk_level_ideation 
+                            // _wm.psyCardPj.suicidalRiskSucideTentative = _psyJsa.suicidal_risk_sucide_tentative 
+                            // _wm.psyCardPj.suicidalRiskSucideTentativeNumber = _psyJsa.suicidal_risk_sucide_tentative_number
+                            // _wm.psyCardPj.suicidalRiskTentativeTime = _psyJsa.suicidal_risk_tentative_time 
+                            // _wm.psyCardPj.suicidalRiskMethodsTwo = _psyJsa.suicidal_risk_methods_two 
+                            // _wm.psyCardPj.suicidalRiskMethodsTwoOther = _psyJsa.suicidal_risk_methods_two_other
+                            // _wm.psyCardPj.suicidalRiskActOfSelfHarm = _psyJsa.suicidal_risk_act_of_self_harm 
+                            // _wm.psyCardPj.suicidalRiskActOfSelfHarmDesc = _psyJsa.suicidal_risk_act_of_self_harm_desc 
 
 
 
 
 
-                            _wm.psyCardPj.mentalConditionsSomaticConcerns = _psyJsa.mental_conditions_somatic_concerns
-                            _wm.psyCardPj.mentalConditionsAnxiety = _psyJsa.mental_conditions_anxiety 
-                            _wm.psyCardPj.mentalConditionsDepression = _psyJsa.mental_conditions_depression 
-                            _wm.psyCardPj.mentalConditionsSuicide = _psyJsa.mental_conditions_suicide
-                            _wm.psyCardPj.mentalConditionsGuilt = _psyJsa.mental_conditions_guilt 
-                            _wm.psyCardPj.mentalConditionsHostility = _psyJsa.mental_conditions_hostility
-                            _wm.psyCardPj.mentalConditionsElevatedMood = _psyJsa.mental_conditions_elevated_mood 
-                            _wm.psyCardPj.mentalConditionsGrandeur = _psyJsa.mental_conditions_grandeur
-                            _wm.psyCardPj.mentalConditionsSuspiciousness = _psyJsa.mental_conditions_suspiciousness 
-                            _wm.psyCardPj.mentalConditionsAllucination = _psyJsa.mental_conditions_allucination 
-                            _wm.psyCardPj.mentalConditionsUnusualThought = _psyJsa.mental_conditions_unusual_thought
-
-                            _wm.psyCardPj.mentalConditionsBizarreBehavior = _psyJsa.mental_conditions_bizarre_behavior 
-                            _wm.psyCardPj.mentalConditionsNeglect = _psyJsa.mental_conditions_neglect
-                            _wm.psyCardPj.mentalConditionsDisorientation = _psyJsa.mental_conditions_disorientation 
-                            _wm.psyCardPj.mentalConditionsDisorganization = _psyJsa.mental_conditions_disorganization 
-                            _wm.psyCardPj.mentalConditionsBlankness = _psyJsa.mental_conditions_blankness
-                            _wm.psyCardPj.mentalConditionsReducedEmotion = _psyJsa.mental_conditions_reduced_emotion 
-                            _wm.psyCardPj.mentalConditionsMotorSlowdown = _psyJsa.mental_conditions_motor_slowdown 
-                            _wm.psyCardPj.mentalConditionsVoltage = _psyJsa.mental_conditions_voltage
-                            _wm.psyCardPj.mentalConditionsNotCooperation = _psyJsa.mental_conditions_not_cooperation 
-                            _wm.psyCardPj.mentalConditionsExcitement = _psyJsa.mental_conditions_excitement 
-                            _wm.psyCardPj.mentalConditionsDistractibility = _psyJsa.mental_conditions_distractibility 
-                            _wm.psyCardPj.mentalConditionsMotorHyperactivity = _psyJsa.mental_conditions_motor_hyperactivity 
-                            _wm.psyCardPj.mentalConditionsMannerisms = _psyJsa.mental_conditions_mannerisms 
 
 
+                            // _wm.psyCardPj.mentalConditionsSomaticConcerns = _psyJsa.mental_conditions_somatic_concerns
+                            // _wm.psyCardPj.mentalConditionsAnxiety = _psyJsa.mental_conditions_anxiety 
+                            // _wm.psyCardPj.mentalConditionsDepression = _psyJsa.mental_conditions_depression 
+                            // _wm.psyCardPj.mentalConditionsSuicide = _psyJsa.mental_conditions_suicide
+                            // _wm.psyCardPj.mentalConditionsGuilt = _psyJsa.mental_conditions_guilt 
+                            // _wm.psyCardPj.mentalConditionsHostility = _psyJsa.mental_conditions_hostility
+                            // _wm.psyCardPj.mentalConditionsElevatedMood = _psyJsa.mental_conditions_elevated_mood 
+                            // _wm.psyCardPj.mentalConditionsGrandeur = _psyJsa.mental_conditions_grandeur
+                            // _wm.psyCardPj.mentalConditionsSuspiciousness = _psyJsa.mental_conditions_suspiciousness 
+                            // _wm.psyCardPj.mentalConditionsAllucination = _psyJsa.mental_conditions_allucination 
+                            // _wm.psyCardPj.mentalConditionsUnusualThought = _psyJsa.mental_conditions_unusual_thought
+
+                            // _wm.psyCardPj.mentalConditionsBizarreBehavior = _psyJsa.mental_conditions_bizarre_behavior 
+                            // _wm.psyCardPj.mentalConditionsNeglect = _psyJsa.mental_conditions_neglect
+                            // _wm.psyCardPj.mentalConditionsDisorientation = _psyJsa.mental_conditions_disorientation 
+                            // _wm.psyCardPj.mentalConditionsDisorganization = _psyJsa.mental_conditions_disorganization 
+                            // _wm.psyCardPj.mentalConditionsBlankness = _psyJsa.mental_conditions_blankness
+                            // _wm.psyCardPj.mentalConditionsReducedEmotion = _psyJsa.mental_conditions_reduced_emotion 
+                            // _wm.psyCardPj.mentalConditionsMotorSlowdown = _psyJsa.mental_conditions_motor_slowdown 
+                            // _wm.psyCardPj.mentalConditionsVoltage = _psyJsa.mental_conditions_voltage
+                            // _wm.psyCardPj.mentalConditionsNotCooperation = _psyJsa.mental_conditions_not_cooperation 
+                            // _wm.psyCardPj.mentalConditionsExcitement = _psyJsa.mental_conditions_excitement 
+                            // _wm.psyCardPj.mentalConditionsDistractibility = _psyJsa.mental_conditions_distractibility 
+                            // _wm.psyCardPj.mentalConditionsMotorHyperactivity = _psyJsa.mental_conditions_motor_hyperactivity 
+                            // _wm.psyCardPj.mentalConditionsMannerisms = _psyJsa.mental_conditions_mannerisms 
 
 
 
-                            _wm.psyCardPj.psychologicalProblems = _psyJsa.psychological_problems
-                            _wm.psyCardPj.psychologicalProblemsList = _psyJsa.psychological_problems_list 
-                            _wm.psyCardPj.psychologicalProblemsOther = _psyJsa.psychological_problems_other
 
-                            _wm.psyCardPj.reports = _psyJsa.reports 
-                            _wm.psyCardPj.reportsList = _psyJsa.reports_list 
-                            _wm.psyCardPj.reportsOther = _psyJsa.reports_other
+
+                            // _wm.psyCardPj.psychologicalProblems = _psyJsa.psychological_problems
+                            // _wm.psyCardPj.psychologicalProblemsList = _psyJsa.psychological_problems_list 
+                            // _wm.psyCardPj.psychologicalProblemsOther = _psyJsa.psychological_problems_other
+
+                            // _wm.psyCardPj.reports = _psyJsa.reports 
+                            // _wm.psyCardPj.reportsList = _psyJsa.reports_list 
+                            // _wm.psyCardPj.reportsOther = _psyJsa.reports_other
                             
-                            _wm.psyCardPj.suicidalRiskSelfHarm = _psyJsa.suicidal_risk_self_harm
-                            _wm.psyCardPj.riskOfViolence = _psyJsa.risk_of_violence 
-                            _wm.psyCardPj.riskOfVictimization = _psyJsa.risk_of_victimization 
-                            _wm.psyCardPj.particularAssignment = _psyJsa.particular_assignment 
-                            _wm.psyCardPj.particularAssignmentList = _psyJsa.particular_assignment_list 
-                            _wm.psyCardPj.particularAssignmentOther = _psyJsa.particular_assignment_other
+                            // _wm.psyCardPj.suicidalRiskSelfHarm = _psyJsa.suicidal_risk_self_harm
+                            // _wm.psyCardPj.riskOfViolence = _psyJsa.risk_of_violence 
+                            // _wm.psyCardPj.riskOfVictimization = _psyJsa.risk_of_victimization 
+                            // _wm.psyCardPj.particularAssignment = _psyJsa.particular_assignment 
+                            // _wm.psyCardPj.particularAssignmentList = _psyJsa.particular_assignment_list 
+                            // _wm.psyCardPj.particularAssignmentOther = _psyJsa.particular_assignment_other
 
-                            _wm.psyCardPj.commentClarifications = _psyJsa.comment_clarifications
+                            // _wm.psyCardPj.commentClarifications = _psyJsa.comment_clarifications
 
                             
-                            _wm.allPsyJsats=response.data.allPsyJsats;
+                            // _wm.allPsyJsats=response.data.allPsyJsats;
                         }else{
                             _wm.btnPjSend="Salva";
                         }

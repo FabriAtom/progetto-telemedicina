@@ -692,6 +692,82 @@
                                     </div> 
                                     </table>
                                     {{ psyCardPr }}
+
+
+
+
+
+
+
+
+                                    <div>
+                                        <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                        <ul style="display:flex; flex-wrap: wrap;">
+                                            <span v-for="(item, key, index) in PsyRating" :key="index" class="mr-5">
+
+                                                <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                                    <div class="card-header">
+                                                        <span style="min-width: 100px;"> 
+                                                            <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        </span> 
+                                                </div>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                                                            <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['pr_date']) }}</div>
+                                                        </h5>
+                                                        <p class="card-text">
+                                                            <div style="min-width: 100px;"><strong>Preoccupazioni somatiche:</strong> {{ (item['somatic_concern']) }}</div>
+                                                            <div style="min-width: 100px;"><strong>Ansia:</strong> <br> {{ (item['anxiety']) }}</div>
+                                                            <div style="min-width: 100px;"><strong>Depressione:</strong> <br>{{ ((item['depression'])) }} </div>
+                                                            <div style="min-width: 100px;"><strong>Rischio di suicidio:</strong> <br>{{ (item['risk_of_suicide']) }} </div> 
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <br><br>
+                                            </span>
+                                        </ul>
+                                    </div> 
+
+
+
+                                    <div class="row mb-3 ml-2 mt-4">
+                                        <div class="col-md-12 col-sm-12">
+                                            <span class="item form-group">
+                                                <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                                <span class="col-md-12 col-sm-12">
+                                                    <input type="date" name="start_date" v-model="psyCardPr.startDate">
+                                                </span>
+                                                <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                                <span class="col-md-12 col-sm-12">
+                                                    <input type="date" name="end_date" v-model="psyCardPr.endDate">
+                                                </span>
+                                                <span class="search-bar">
+                                                    <a class="search-button btn btn-success"  @click="getPsyRatingsByUserIstanceId(36,true)">Cerca</a>
+                                                </span>                                               
+                                            </span>
+                                        </div>
+                                    </div>
+
+        
+
+                                    <div class="ln_solid"></div>
+                                    <div class="item form-group">
+                                        <div class="pull-right">
+                                            <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyRating('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
                                     <div class="ln_solid"></div>
                                     <div class="item form-group" >
                                         <div class="pull-right">
@@ -764,7 +840,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default {
-    name: 'psyRating',
+    name: 'PsyRating',
 
     data() {
         return {
@@ -793,17 +869,14 @@ export default {
 
             psyCardPr:{},
 
-
-            panel:'pr',
-
-            psyCardMh:{},
-
+            PsyRating:{},
 
             mainTitle:"psy",
             firstSave:true,
             pRSaved:false,
 
-            
+            scala:['non valutato','Assente','Molto lieve','lieve','Moderato','Moderatamente grave','Grave','Molto grave'],
+
             btnPrSend:"Salva",
             total:0,               
             allPsyRatings:null,
@@ -812,23 +885,59 @@ export default {
 
     created: function () {
         // this.getPermissions();
-        this.getPsyRatingsByUserInstanceId(1);
+        this.getPsyRatingsByUserIstanceId(1);
     },
 
 
     methods: {
 
 
+        i2hDateFormat(date){
+
+            let current=new Date(date);
+            let year = `${current.getFullYear()}`;
+            let month = `${current.getMonth()}`;
+            let timeHours=`${current.getHours()}`;
+            let timeMinuts=`${current.getMinutes()}`;
+            let day = `${current.getDate()}`;
+            month=this.zeroFill(month);
+            day=this.zeroFill(day);
+            timeMinuts=this.zeroFill(timeMinuts);
+            timeHours=this.zeroFill(timeHours);
+            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+            return tDate;
+        },
+        zeroFill(value){
+            if(parseInt(value)<10){
+                value = '0'+value;
+            }
+            return value
+        },
+
+
+        i2hHourFormat(dataz){
+            let dataw= new Date(dataz);
+            //return date;
+            return dataw.getHours() +':'+dataw.getMinutes();
+        },
+
         printPsyRating(printPdf){
 
             let v_myWindow
-
             let url= 'printPdf/2';
-
             v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-
             return false;
         },
+
+        printArchivePsyRating(printPdf){
+
+            let v_myWindow
+            let url= 'printPdf/2';
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
+    
+
 
         calculateSum() {
             // Calcola la somma delle opzioni selezionate
@@ -841,6 +950,8 @@ export default {
             this.sum=i;
         },
 
+
+
         
         addPsyRating(panel){
             let _wm = this;
@@ -852,7 +963,7 @@ export default {
             form.append('userName', this.userName);
             form.append('userLastName', this.userLastName);
             form.append('userFullName', this.userFullName);
-            form.append('userInstance', this.userInstance);
+            form.append('userInstanceId', this.userInstanceId);
             form.append('userId', this.userId);
             // form.append('doctorId', this.accessData.id);
             // form.append('doctorName', this.accessData.name);
@@ -876,41 +987,29 @@ export default {
                     }
                 }
                 form.append('section', 'pr');
-                if(!this.isObjEmpty(this.psyCardMh)){
-                    let _psyCardMh=JSON.stringify(this.psyCardMh);
-                    alert(JSON.stringify(this.psyCardMh))
-                    form.append('psyCardMh', _psyCardMh);
-                }
                 if(!this.isObjEmpty(this.psyCardPr)){
                     let _psyCard=JSON.stringify(this.psyCardPr);
-                    form.append('psyCard', _psyCard);
-                }
-            }else if(_panel=='mh'){
+                    alert(JSON.stringify(this.psyCard))
+                    form.append('PsyRating', _psyCard);
 
-                if(!this.mHSaved){
-                    form.append('action', 'store');
-                }else{
-                    form.append('action', 'update');
+                    form.append('somaticConcern', this.psyCardPr.somaticConcern);
+                    // form.append('hypothesisPsychopathologicalClassification', this.psyCardPr.hypothesisPsychopathologicalClassification);
+                    // form.append('planningTypeOfIntervention', this.psyCardPr.planningTypeOfIntervention);
+                    // form.append('test', this.psyCardPr.test);
+
                 }
-                if (this.mHSaved) {
-                    if(this.psyCardId){
-                        form.append('psyId',this.psyCardId);
-                    }else{
-                        _errors++;
-                        _errorTitle="Attenzione";
-                        _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
-                    }
-                    form.append('section', 'mh');
-                    if(!this.isObjEmpty(this.psyCardMh)){
-                        let _psyCardMh=JSON.stringify(this.psyCardMh);
-                        form.append('PsyMentalHealthDepartment', _psyCardMh);
-                    }  
-                }
+
+
+                // if(!this.isObjEmpty(this.psyCardPr)){
+                //     let _psyCard=JSON.stringify(this.psyCardPr);
+                //     form.append('psyCard', _psyCard);
+                // }
             }
+
 
             if(_errors==0){
                 try {
-                    axios.post(actions.ADD_PSY_CARD,form).then(response => {
+                    axios.post(actions.ADD_RATING,form).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -921,7 +1020,7 @@ export default {
                                 'Aggiornata correttamente',
                                 'success'
                             )
-                            this.getPsyRatingsByUserInstanceId(this.userInstance);
+                            // this.getPsyRatingsByUserInstanceId(this.userInstance);
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                             Swal.fire(
@@ -948,7 +1047,7 @@ export default {
             //GET ALL CARDS
             let _wm = this;
             try {
-                axios.get(actions.GET_PSY_CARDS).then(response => {
+                axios.get(actions.GET_RATINGS).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -962,10 +1061,10 @@ export default {
                 throw error
             }
         },
-        getPsyRatingById(id){
+        getRatingsByPsyId(id){
             let _wm = this;
             try {
-                let url=actions.GET_PSY_CARD_BY_ID+'/'+id;
+                let url=actions.GET_RATING_BY_PSY_ID+'/'+id;
                 axios.get(url).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
@@ -980,62 +1079,78 @@ export default {
                 throw error
             }
         },
-        getPsyRatingsByUserInstanceId(id){
+        getPsyRatingsByUserIstanceId(id, first){
             let _wm = this;
-            // alert('yy');
+            let _param;
+            _wm.PsyRating=[];
+
 
             try {
-                let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
-                axios.get(url).then(response => {
+                let url=actions.GET_RATINGS_BY_USER_ISTANCE_ID+'/'+id;
+                axios.get(url,{params:{first:first,startDate:this.psyCardPr.startDate,endDate:this.psyCardPr.endDate}}).then(response => {
                     let error=response.data.errorNumber;
                     // let _attempts=response.data.attempts;
                     _wm.errNum=error;
+
                     //alert(JSON.stringify(response.data));
                     if(error == 0){
                       
                         _wm.mainTitle="Aggiornamento Cartella psy";
                         if(response.data.PsyRating){
-                            _wm.pRSaved=true;
-                            _wm.btnPrSend="Aggiorna";
-
-                            let _PsychiatricScal=response.data.PsyRating;
+                            // _wm.pRSaved=true;
+                            // _wm.btnPrSend="Aggiorna";
+                            // let _PsychiatricScal=response.data.PsyRating;
                             // _wm.psyCardId=response.data.psyCard.id;
     
-                            _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyPrDoctorId = _PsychiatricScal.id_doctor;
 
-                            _wm.psyPrDoctorName = _PsychiatricScal.doctor_name;
-                            _wm.psyPrDoctorLastname = _PsychiatricScal.doctor_lastname;
+
+                            _wm.PsyRating=response.data.PsyRating;
 
                             
-                            _wm.psyCardPr.somaticConcern =_PsychiatricScal.somatic_concern;
-                            _wm.psyCardPr.anxiety = _PsychiatricScal.anxiety 	
-                            _wm.psyCardPr.depression = _PsychiatricScal.depression 
-                            _wm.psyCardPr.riskOfSuicide = _PsychiatricScal.risk_of_suicide
-                            _wm.psyCardPr.feelingOfGuilt = _PsychiatricScal.feeling_of_guilt 
-                            _wm.psyCardPr.hostility = _PsychiatricScal.hostility
-                            _wm.psyCardPr.moodElevation = _PsychiatricScal.mood_elevation
-                            _wm.psyCardPr.grandeur = _PsychiatricScal.grandeur 
-                            _wm.psyCardPr.suspiciousness = _PsychiatricScal.suspiciousness
-                            _wm.psyCardPr.hallucination = _PsychiatricScal.hallucination 
-                            _wm.psyCardPr.unusualContentOfThought = _PsychiatricScal.unusual_content_of_thought
-                            _wm.psyCardPr.bizarreBehavior = _PsychiatricScal.bizarre_behavior 
-                            _wm.psyCardPr.neglectOfSelfCare = _PsychiatricScal.neglect_of_self_care
-                            _wm.psyCardPr.disorientation = _PsychiatricScal.disorientation
-                            _wm.psyCardPr.conceptualDisorganization = _PsychiatricScal.conceptual_disorganization
-                            _wm.psyCardPr.emotionalFlattening = _PsychiatricScal.emotional_flattening 
-                            _wm.psyCardPr.emotionalIsolation = _PsychiatricScal.emotional_isolation 
-                            _wm.psyCardPr.motorSlowdown = _PsychiatricScal.motor_slowdown 
-                            _wm.psyCardPr.lackOfCooperation = _PsychiatricScal.lack_of_cooperation
-                            _wm.psyCardPr.excitement = _PsychiatricScal.excitement
-                            _wm.psyCardPr.distractibility = _PsychiatricScal.distractibility
-                            _wm.psyCardPr.motorHyperactivity = _PsychiatricScal.motor_hyperactivity
-                            _wm.psyCardPr.mannerismAndPosture = _PsychiatricScal.mannerism_and_posture
-                            _wm.psyCardPr.totalScotrRating = _PsychiatricScal.total_score_rating
+
+
+                            for (let prop in _wm.PsyRating) {
+
+                            }
 
 
 
-                            _wm.allPsyRatings=response.data.allPsyRatings;
+
+                            // _wm.psyCardId=response.data.psyCard.id;
+                            // _wm.psyPrDoctorId = _PsychiatricScal.id_doctor;
+
+                            // _wm.psyPrDoctorName = _PsychiatricScal.doctor_name;
+                            // _wm.psyPrDoctorLastname = _PsychiatricScal.doctor_lastname;
+
+                            
+                            // _wm.psyCardPr.somaticConcern =_PsychiatricScal.somatic_concern;
+                            // _wm.psyCardPr.anxiety = _PsychiatricScal.anxiety 	
+                            // _wm.psyCardPr.depression = _PsychiatricScal.depression 
+                            // _wm.psyCardPr.riskOfSuicide = _PsychiatricScal.risk_of_suicide
+                            // _wm.psyCardPr.feelingOfGuilt = _PsychiatricScal.feeling_of_guilt 
+                            // _wm.psyCardPr.hostility = _PsychiatricScal.hostility
+                            // _wm.psyCardPr.moodElevation = _PsychiatricScal.mood_elevation
+                            // _wm.psyCardPr.grandeur = _PsychiatricScal.grandeur 
+                            // _wm.psyCardPr.suspiciousness = _PsychiatricScal.suspiciousness
+                            // _wm.psyCardPr.hallucination = _PsychiatricScal.hallucination 
+                            // _wm.psyCardPr.unusualContentOfThought = _PsychiatricScal.unusual_content_of_thought
+                            // _wm.psyCardPr.bizarreBehavior = _PsychiatricScal.bizarre_behavior 
+                            // _wm.psyCardPr.neglectOfSelfCare = _PsychiatricScal.neglect_of_self_care
+                            // _wm.psyCardPr.disorientation = _PsychiatricScal.disorientation
+                            // _wm.psyCardPr.conceptualDisorganization = _PsychiatricScal.conceptual_disorganization
+                            // _wm.psyCardPr.emotionalFlattening = _PsychiatricScal.emotional_flattening 
+                            // _wm.psyCardPr.emotionalIsolation = _PsychiatricScal.emotional_isolation 
+                            // _wm.psyCardPr.motorSlowdown = _PsychiatricScal.motor_slowdown 
+                            // _wm.psyCardPr.lackOfCooperation = _PsychiatricScal.lack_of_cooperation
+                            // _wm.psyCardPr.excitement = _PsychiatricScal.excitement
+                            // _wm.psyCardPr.distractibility = _PsychiatricScal.distractibility
+                            // _wm.psyCardPr.motorHyperactivity = _PsychiatricScal.motor_hyperactivity
+                            // _wm.psyCardPr.mannerismAndPosture = _PsychiatricScal.mannerism_and_posture
+                            // _wm.psyCardPr.totalScotrRating = _PsychiatricScal.total_score_rating
+
+
+
+                            // _wm.allPsyRatings=response.data.allPsyRatings;
                         }else{
                             _wm.btnPrSend="Salva";
                         }

@@ -63,7 +63,6 @@
 
                                 {{ psyCardMh }}
 
-
                                 <hr><hr>
                                 
                                 <div>
@@ -71,7 +70,7 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in PsyMentalHealthDepartment" :key="index" class="mr-5">
 
-                                            <div class="card text-white bg-secondary mb-2" style="max-width: 20rem;  border-radius: 20px;">
+                                            <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
                                                         <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
@@ -82,10 +81,10 @@
                                                         <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['mh_date']) }}</div>
                                                     </h5>
                                                     <p class="card-text">
-                                                        <div style="min-width: 100px;"><strong>Colloquio psicologico</strong> {{ (item['psychologicalInterview']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Ipotesi Inquadramento Psicopatologico</strong> {{ (item['hypothesisPsychopathologicalClassification']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Progettualità/Tipologia di Intervento</strong> {{ ((item['planningTypeOfIntervention'])) }} </div>
-                                                        <div style="min-width: 100px;"><strong>Test</strong> {{ (item['test']) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Colloquio Psicologico:</strong> <br>{{ (item['psychological_interview']) }}</div>
+                                                         <div style="min-width: 100px;"><strong>Ipotesi/Inquadramento Psicopatologico:</strong> <br> {{ (item['hypothesis_psychopathological_classification']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Progettualità/Tipologia di Intervento:</strong> <br>{{ ((item['planning_type_of_intervention'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Test:</strong> <br>{{ (item['test']) }} </div> 
                                                     </p>
                                                 </div>
                                             </div>
@@ -94,6 +93,34 @@
                                     </ul>
                                 </div> 
 
+
+
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="psyCardMh.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="psyCardMh.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getPsyMentalHealthDepartmentsByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+    
+
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="pull-right">
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyMentalHealthDepartment('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                    </div>
+                                </div>
 
 
 
@@ -166,7 +193,6 @@
                 userId:0,
                 psyCardId:1,
 
-                // selectedOption: null,
 
                 accessData:[
                    
@@ -180,10 +206,11 @@
                 psyMhDoctorLastname:'',
                 psyMhDate:null,
                 psyCardId:null,
+
                 date:new Date(),
 
                 psyCardMh:{},
-                psyCardSa:{},
+                // psyCardSa:{},
                 PsyMentalHealthDepartment:{},
 
                 mainTitle:"psy",
@@ -198,25 +225,62 @@
         },
 
         created: function () {
-            // this.getPermissions();
-            //alert(JSON.stringify(this.getPsyMentalHealthDepartmentsByUserInstanceId(1)));
-            this.getPsyMentalHealthDepartmentsByUserInstanceId(1)
+            this.getPsyMentalHealthDepartmentsByUserIstanceId(1)
+
         },
 
 
         methods: {
 
+
+            i2hDateFormat(date){
+
+            let current=new Date(date);
+            let year = `${current.getFullYear()}`;
+            let month = `${current.getMonth()}`;
+            let timeHours=`${current.getHours()}`;
+            let timeMinuts=`${current.getMinutes()}`;
+            let day = `${current.getDate()}`;
+            month=this.zeroFill(month);
+            day=this.zeroFill(day);
+            timeMinuts=this.zeroFill(timeMinuts);
+            timeHours=this.zeroFill(timeHours);
+            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+            return tDate;
+            },
+            zeroFill(value){
+            if(parseInt(value)<10){
+                value = '0'+value;
+            }
+            return value
+            },
+
+
+            i2hHourFormat(dataz){
+            let dataw= new Date(dataz);
+            //return date;
+            return dataw.getHours() +':'+dataw.getMinutes();
+            },
+
+
+
             printPsyMentalHealthDepartment(printPdf){
 
                 let v_myWindow
-
                 let url= 'printPdf/2';
-
                 v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-
                 return false;
             },
-                 
+
+
+            printArchivePsyMentalHealthDepartment(printPdf){
+
+                let v_myWindow
+                let url= 'printPdf/2';
+                v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+                return false;
+            },
+                                
             
 
 
@@ -233,10 +297,6 @@
                 form.append('userFullName', this.userFullName);
                 form.append('userInstanceId', this.userInstanceId);
                 form.append('userId', this.userId);
-
-                
-                form.append('psyCardId', this.psyCardId);
-
                 // form.append('doctorId', this.accessData.id);
                 // form.append('doctorName', this.accessData.name);
                 // form.append('doctorUserName', this.accessData.lastname);
@@ -269,32 +329,10 @@
                         form.append('test', this.psyCardMh.test);
                     }
                 }
-                // else if(_panel=='sa'){
-                //     if(!this.sASaved){
-                //         form.append('action', 'store');
-                //     }else{
-                //         form.append('action', 'update');
-                //     }
-
-                //     if (this.sASaved) {
-                //         if(this.psyCardId){
-                //             form.append('psyId',this.psyCardId);
-                //         }else{
-                //             _errors++;
-                //             _errorTitle="Attenzione";
-                //             _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
-                //         }
-                //         form.append('section', 'sa');
-                //         if(!this.isObjEmpty(this.psyCardSa)){
-                //             let _psyCard=JSON.stringify(this.psyCardSa);
-                //             form.append('psyCard', _psyCard);
-                //         }
-                //     }
-                // }
                 
                 if(_errors==0){
                     try {
-                        axios.post(actions.ADD_PSY_CARD,form).then(response => {
+                        axios.post(actions.ADD_MENTAL_HEALTH_DEPARTMENT,form).then(response => {
                             let error=response.data.errorNumber;
                             let _attempts=response.data.attempts;
                             _wm.errNum=error;
@@ -305,7 +343,7 @@
                                     'Aggiornata correttamente',
                                     'success'
                                 )
-                                // this.getPsyMentalHealthDepartmentsByUserInstanceId(this.userInstance);
+                                // this.getMentalHealthDepartmentsByUserIstanceId(this.userInstanceId);
                             }else{
                                 // eventBus.$emit('errorEvent', error, _attempts);
                                 Swal.fire(
@@ -330,7 +368,7 @@
             getPsyMentalHealthDepartments(){
                 let _wm = this;
                 try {
-                    axios.get(actions.GET_PSY_CARDS).then(response => {
+                    axios.get(actions.GET_MENTAL_HEALTH_DEPARTMENTS).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -344,10 +382,10 @@
                     throw error
                 }
             },
-            getPsyMentalHealthDepartmentById(id){
+            getMentalHealthDepartmentsByPsyId(id){
                 let _wm = this;
                 try {
-                    let url=actions.GET_PSY_CARD_BY_ID+'/'+id;
+                    let url=actions.GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID+'/'+id;
                     axios.get(url).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
@@ -363,7 +401,7 @@
                 }
             }, 
 
-            getPsyMentalHealthDepartmentsByUserInstanceId(id,first){
+            getPsyMentalHealthDepartmentsByUserIstanceId(id,first){
                 let _wm = this;
 
                 
@@ -373,7 +411,7 @@
 
 
                 try {
-                    let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
+                    let url=actions.GET_MENTAL_HEALTH_DEPARTMENTS_BY_USER_ISTANCE_ID+'/'+id;
                     axios.get(url,{params:{first:first,startDate:this.psyCardMh.startDate,endDate:this.psyCardMh.endDate}}).then(response => {
                         let error=response.data.errorNumber;
                         // let _attempts=response.data.attempts;

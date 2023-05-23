@@ -674,6 +674,72 @@
                                 </table>
 
                                 {{ psyCardPs }}
+
+
+                                <div>
+                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <ul style="display:flex; flex-wrap: wrap;">
+                                        <span v-for="(item, key, index) in PsySurvey" :key="index" class="mr-5">
+
+                                            <div class="card text-white bg-secondary mb-2" style="max-width: 22rem;  border-radius: 20px;">
+                                                <div class="card-header">
+                                                    <span style="min-width: 100px;"> 
+                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                    </span> 
+                                            </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['ps_date']) }}</div>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <div style="min-width: 100px;"><strong>Mi sono sentito terribilmente solo e isolato:</strong> <br>{{ (item['survey_heard_alone']) }}</div>
+                                                         <div style="min-width: 100px;"><strong>Mi sono sentito teso, ansioso o nervoso:</strong> <br> {{ (item['survey_heard_anxious']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Ho sentito di avere qualcuno a cui rivolgermi:</strong> <br>{{ ((item['survey_support'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Mi sono sentito a posto con me stesso:</strong> <br>{{ (item['survey_okay_with_myself']) }} </div> 
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
+                                </div> 
+
+
+
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="psyCardPs.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="psyCardPs.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getPsySurveysByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+    
+
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="pull-right">
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsySurvey('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
@@ -745,6 +811,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default {
+
     name: 'PsySurvey',
 
     data() {
@@ -772,11 +839,9 @@ export default {
             psyCardPs:{},
             // psyhowFeel:{},
 
+            PsySurvey:{},
 
-
-            panel:'ps',
-
-
+            // panel:'ps',
 
             mainTitle:"psy",
             firstSave:true,
@@ -791,24 +856,59 @@ export default {
 
     created: function () {
         // this.getPermissions();
-        this.getPsySurveysByUserInstanceId(1);
+        this.getPsySurveysByUserIstanceId(1);
     },
 
     
     methods: {
 
+        i2hDateFormat(date){
+            let current=new Date(date);
+            let year = `${current.getFullYear()}`;
+            let month = `${current.getMonth()}`;
+            let timeHours=`${current.getHours()}`;
+            let timeMinuts=`${current.getMinutes()}`;
+            let day = `${current.getDate()}`;
+            month=this.zeroFill(month);
+            day=this.zeroFill(day);
+            timeMinuts=this.zeroFill(timeMinuts);
+            timeHours=this.zeroFill(timeHours);
+            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+            return tDate;
+        },
+        zeroFill(value){
+            if(parseInt(value)<10){
+                value = '0'+value;
+            }
+            return value
+        },
+
+
+        i2hHourFormat(dataz){
+            let dataw= new Date(dataz);
+            //return date;
+            return dataw.getHours() +':'+dataw.getMinutes();
+        },
+
         printPsySurvey(printPdf){
 
             let v_myWindow
-
             let url= 'printPdf/2';
-
             v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-
             return false;
         },
- 
+
+        printArchivePsySurvey(printPdf){
+
+            let v_myWindow
+            let url= 'printPdf/2';
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
+
+            
         addPsySurvey(panel){
+
             let _wm = this;
             let _panel=panel;
             let _errors=0;
@@ -845,33 +945,18 @@ export default {
                 if(!this.isObjEmpty(this.psyCardPs)){
                     // alert(JSON.stringify(this.psyCardPs));
                     let _psyCardPs=JSON.stringify(this.psyCardPs);
-                    form.append('psyCardPs', _psyCardPs);
-                }
-            }else if(_panel=='mh'){
+                    form.append('PsySurvey', _psyCardPs);
 
-                if(!this.mHSaved){
-                    form.append('action', 'store');
-                }else{
-                    form.append('action', 'update');
-                }
-                if (this.mHSaved) {
-                    if(this.psyCardId){
-                        form.append('psyId',this.psyCardId);
-                    }else{
-                        _errors++;
-                        _errorTitle="Attenzione";
-                        _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
-                    }
-                    form.append('section', 'mh');
-                    if(!this.isObjEmpty(this.psyCardMh)){
-                        let _psyCardMh=JSON.stringify(this.psyCardMh);
-                        form.append('PsyMentalHealthDepartment', _psyCardMh);
-                    }    
+                    form.append('surveyHeardAlone', this.psyCardPs.surveyHeardAlone);
+                    form.append('surveyHeardAnxious', this.psyCardPs.surveyHeardAnxious);
+                    form.append('surveySupport', this.psyCardPs.surveySupport);
+                    form.append('surveyOkayWithMyself', this.psyCardPs.surveyOkayWithMyself);
                 }
             }
+        
             if(_errors==0){
                 try {
-                    axios.post(actions.ADD_PSY_CARD,form).then(response => {
+                    axios.post(actions.ADD_SURVEY,form).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -882,7 +967,7 @@ export default {
                                 'Aggiornata correttamente',
                                 'success'
                             )
-                            this.getPsySurveysByUserInstanceId(this.userInstance);
+                            // this.getPsySurveysByUserIstanceId(this.userInstance);
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                             Swal.fire(
@@ -905,10 +990,9 @@ export default {
         },
 
         getPsySurveys(){
-            //GET ALL CARDS
             let _wm = this;
             try {
-                axios.get(actions.GET_PSY_CARDS).then(response => {
+                axios.get(actions.GET_SURVEYS).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -923,10 +1007,10 @@ export default {
             }
         },
 
-        getPsySurveyById(id){
+        getSurveysByPsyId(id){
             let _wm = this;
             try {
-                let url=actions.GET_PSY_CARD_BY_ID+'/'+id;
+                let url=actions.GET_SURVEY_BY_PSY_ID+'/'+id;
                 axios.get(url).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
@@ -942,13 +1026,17 @@ export default {
             }
         },
 
-        getPsySurveysByUserInstanceId(id){
+        getPsySurveysByUserIstanceId(id,first){
             let _wm = this;
-            // alert('yy');
+
+                
+            let _param;
+            _wm.PsySurvey=[];
+
 
             try {
-                let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
-                axios.get(url).then(response => {
+                let url=actions.GET_SURVEYS_BY_USER_ISTANCE_ID+'/'+id;
+                axios.get(url,{params:{first:first,startDate:this.psyCardPs.startDate,endDate:this.psyCardPs.endDate}}).then(response => {
                     let error=response.data.errorNumber;
                     // let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -957,57 +1045,72 @@ export default {
                     
                         _wm.mainTitle="Aggiornamento Cartella psy";
                         if(response.data.PsySurvey){
-                            _wm.pSSaved=true;
-                            _wm.btnPsSend="Aggiorna";
+                            // _wm.pSSaved=true;
+                            // _wm.btnPsSend="Aggiorna";
 
-                            let _PsySurv=response.data.PsySurvey;
+
+
+                            _wm.PsySurvey=response.data.PsySurvey;
+
+                            for (let prop in _wm.PsySurvey) {
+
+                            }
+
+
+
+
+
+
+
+
+                            // let _PsySurv=response.data.PsySurvey;
                             // _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyPsDoctorId = _PsySurv.id_doctor;
-                            _wm.psyPsDoctorName = _PsySurv.doctor_name;
-                            _wm.psyPsDoctorLastname = _PsySurv.doctor_lastname;
+                            // _wm.psyCardId=response.data.psyCard.id;
+                            // _wm.psyPsDoctorId = _PsySurv.id_doctor;
+                            // _wm.psyPsDoctorName = _PsySurv.doctor_name;
+                            // _wm.psyPsDoctorLastname = _PsySurv.doctor_lastname;
+
+
+                            // _wm.psyCardPs.surveyHeardAlone =_PsySurv.survey_heard_alone;
+                            // _wm.psyCardPs.surveyHeardAnxious = _PsySurv.survey_heard_anxious 	
+                            // _wm.psyCardPs.surveySupport = _PsySurv.survey_support 
+                            // _wm.psyCardPs.surveyOkayWithMyself = _PsySurv.survey_okay_with_myself
+                            // _wm.psyCardPs.surveyDevoidOfEnergy = _PsySurv.survey_devoid_of_energy 
+                            // _wm.psyCardPs.surveyViolentTowardsOthers = _PsySurv.survey_violent_towards_others
+                            // _wm.psyCardPs.surveyAbleToAdapt = _PsySurv.survey_able_to_adapt
+
+                            // _wm.psyCardPs.surveyDisturbed = _PsySurv.survey_disturbed 
+                            // _wm.psyCardPs.surveyHurtMe = _PsySurv.survey_hurt_me
+                            // _wm.psyCardPs.surveyNotForceToSpeak = _PsySurv.survey_not_force_to_speak 
+                            // _wm.psyCardPs.surveyTensionPrevented = _PsySurv.survey_tension_prevented
+                            // _wm.psyCardPs.surveyHappy = _PsySurv.survey_happy 
+                            // _wm.psyCardPs.surveyDisturbedByThoughts = _PsySurv.survey_disturbed_by_thoughts
+                            // _wm.psyCardPs.surveyCry = _PsySurv.survey_cry
+                            // _wm.psyCardPs.surveyFeltPanic = _PsySurv.survey_felt_panic
+                            // _wm.psyCardPs.surveyPlannedToSuicide = _PsySurv.survey_planned_to_suicide 
+                            // _wm.psyCardPs.surveyFeltOverwhelmed = _PsySurv.survey_felt_overwhelmed
+
+                            // _wm.psyCardPs.surveyDifficultyFallingAsleep = _PsySurv.survey_difficulty_falling_asleep 
+                            // _wm.psyCardPs.surveyFeltAffection = _PsySurv.survey_felt_affection 
+                            // _wm.psyCardPs.surveyImpossibleAsideProblems = _PsySurv.survey_impossible_aside_problems 
+                            // _wm.psyCardPs.surveyAbleToDoThings = _PsySurv.survey_able_to_do_things 
+                            // _wm.psyCardPs.surveyThreatenedSomeone = _PsySurv.survey_threatened_someone
+                            // _wm.psyCardPs.surveyFeltHeartbroken = _PsySurv.survey_felt_heartbroken
+                            // _wm.psyCardPs.surveyThoughtBetterToDie = _PsySurv.survey_thought_better_to_die 
+                            // _wm.psyCardPs.surveyFeltCritical = _PsySurv.survey_felt_critical 
+                            // _wm.psyCardPs.surveyThoughtHadNoFriends = _PsySurv.survey_thought_had_no_friends
+                            // _wm.psyCardPs.surveyFeltUnhappy = _PsySurv.survey_felt_unhappy 
+
+                            // _wm.psyCardPs.surveyTroubledByImages = _PsySurv.survey_troubled_by_images 
+                            // _wm.psyCardPs.surveyFeltIrritated = _PsySurv.survey_felt_irritated
+                            // _wm.psyCardPs.surveyThoughtMyFault = _PsySurv.survey_thought_my_fault 
+                            // _wm.psyCardPs.surveyOptimisticAboutTheFuture = _PsySurv.survey_optimistic_about_the_future
+                            // _wm.psyCardPs.surveyGotWhatWanted = _PsySurv.survey_got_what_wanted
+                            // _wm.psyCardPs.surveyFeltHumiliated = _PsySurv.survey_felt_humiliated
+                            // _wm.psyCardPs.surveyHurtMyself = _PsySurv.survey_hurt_myself
 
                             
-                            _wm.psyCardPs.surveyHeardAlone =_PsySurv.survey_heard_alone;
-                            _wm.psyCardPs.surveyHeardAnxious = _PsySurv.survey_heard_anxious 	
-                            _wm.psyCardPs.surveySupport = _PsySurv.survey_support 
-                            _wm.psyCardPs.surveyOkayWithMyself = _PsySurv.survey_okay_with_myself
-                            _wm.psyCardPs.surveyDevoidOfEnergy = _PsySurv.survey_devoid_of_energy 
-                            _wm.psyCardPs.surveyViolentTowardsOthers = _PsySurv.survey_violent_towards_others
-                            _wm.psyCardPs.surveyAbleToAdapt = _PsySurv.survey_able_to_adapt
-
-                            _wm.psyCardPs.surveyDisturbed = _PsySurv.survey_disturbed 
-                            _wm.psyCardPs.surveyHurtMe = _PsySurv.survey_hurt_me
-                            _wm.psyCardPs.surveyNotForceToSpeak = _PsySurv.survey_not_force_to_speak 
-                            _wm.psyCardPs.surveyTensionPrevented = _PsySurv.survey_tension_prevented
-                            _wm.psyCardPs.surveyHappy = _PsySurv.survey_happy 
-                            _wm.psyCardPs.surveyDisturbedByThoughts = _PsySurv.survey_disturbed_by_thoughts
-                            _wm.psyCardPs.surveyCry = _PsySurv.survey_cry
-                            _wm.psyCardPs.surveyFeltPanic = _PsySurv.survey_felt_panic
-                            _wm.psyCardPs.surveyPlannedToSuicide = _PsySurv.survey_planned_to_suicide 
-                            _wm.psyCardPs.surveyFeltOverwhelmed = _PsySurv.survey_felt_overwhelmed
-
-                            _wm.psyCardPs.surveyDifficultyFallingAsleep = _PsySurv.survey_difficulty_falling_asleep 
-                            _wm.psyCardPs.surveyFeltAffection = _PsySurv.survey_felt_affection 
-                            _wm.psyCardPs.surveyImpossibleAsideProblems = _PsySurv.survey_impossible_aside_problems 
-                            _wm.psyCardPs.surveyAbleToDoThings = _PsySurv.survey_able_to_do_things 
-                            _wm.psyCardPs.surveyThreatenedSomeone = _PsySurv.survey_threatened_someone
-                            _wm.psyCardPs.surveyFeltHeartbroken = _PsySurv.survey_felt_heartbroken
-                            _wm.psyCardPs.surveyThoughtBetterToDie = _PsySurv.survey_thought_better_to_die 
-                            _wm.psyCardPs.surveyFeltCritical = _PsySurv.survey_felt_critical 
-                            _wm.psyCardPs.surveyThoughtHadNoFriends = _PsySurv.survey_thought_had_no_friends
-                            _wm.psyCardPs.surveyFeltUnhappy = _PsySurv.survey_felt_unhappy 
-
-                            _wm.psyCardPs.surveyTroubledByImages = _PsySurv.survey_troubled_by_images 
-                            _wm.psyCardPs.surveyFeltIrritated = _PsySurv.survey_felt_irritated
-                            _wm.psyCardPs.surveyThoughtMyFault = _PsySurv.survey_thought_my_fault 
-                            _wm.psyCardPs.surveyOptimisticAboutTheFuture = _PsySurv.survey_optimistic_about_the_future
-                            _wm.psyCardPs.surveyGotWhatWanted = _PsySurv.survey_got_what_wanted
-                            _wm.psyCardPs.surveyFeltHumiliated = _PsySurv.survey_felt_humiliated
-                            _wm.psyCardPs.surveyHurtMyself = _PsySurv.survey_hurt_myself
-
-                            
-                            _wm.allPsySurveys=response.data.allPsySurveys;
+                            // _wm.allPsySurveys=response.data.allPsySurveys;
                         }else{
                             _wm.btnPsSend="Salva";
                         }

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('printPdf/{id}', [App\Http\Controllers\PsyCardsController::class,'printPdf'])->name('printPdf');
-Route::get('printPdf/{id}', [App\Http\Controllers\NursingRecordController::class,'printPdf'])->name('printPdf');
+// Route::get('printPdf/{id}', [App\Http\Controllers\NursingRecordController::class,'printPdf'])->name('printPdf');
 
 
 
@@ -72,40 +72,65 @@ Route::post('/psy/addSuicideAssessment', [App\Http\Controllers\PsyCardsControlle
 Route::get('/psy/getSuicideAssessmentsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getSuicideAssessmentsByPsyId'])->name('getSuicideAssessmentsByPsyId');
 
 
-Route::post('/psy/addMentalHealthDepartment', [App\Http\Controllers\PsyCardsController::class,'addMentalHealthDepartment'])->name('addMentalHealthDepartment');
+
+
+
+
+
+
+
+
+Route::get('/psy/getPsyMentalHealthDepartments', [App\Http\Controllers\PsyCardsController::class,'getPsyMentalHealthDepartments'])->name('getPsyMentalHealthDepartments');
+Route::post('/psy/addPsyMentalHealthDepartment', [App\Http\Controllers\PsyCardsController::class,'addPsyMentalHealthDepartment'])->name('addPsyMentalHealthDepartment');
 Route::get('/psy/getMentalHealthDepartmentsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getMentalHealthDepartmentsByPsyId'])->name('getMentalHealthDepartmentsByPsyId');
+Route::get('/psy/getPsyMentalHealthDepartmentsByUserIstanceId/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsyMentalHealthDepartmentsByUserIstanceId'])->name('getPsyMentalHealthDepartmentsByUserIstanceId');
 
 
-Route::post('/psy/addRehabilitationPsychiatricCard', [App\Http\Controllers\PsyCardsController::class,'addRehabilitationPsychiatricCard'])->name('addRehabilitationPsychiatricCard');
+Route::get('/psy/getPsyRehabilitationPsychiatricCards', [App\Http\Controllers\PsyCardsController::class,'getPsyRehabilitationPsychiatricCards'])->name('getPsyRehabilitationPsychiatricCards');
+Route::post('/psy/addPsyRehabilitationPsychiatricCard', [App\Http\Controllers\PsyCardsController::class,'addPsyRehabilitationPsychiatricCard'])->name('addPsyRehabilitationPsychiatricCard');
 Route::get('/psy/getRehabilitationPsychiatricCardsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getRehabilitationPsychiatricCardsByPsyId'])->name('getRehabilitationPsychiatricCardsByPsyId');
+Route::get('/psy/getPsyRehabilitationPsychiatricCardsByUserIstanceId/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsyRehabilitationPsychiatricCardsByUserIstanceId'])->name('getPsyRehabilitationPsychiatricCardsByUserIstanceId');
 
 
-Route::post('/psy/addRating', [App\Http\Controllers\PsyCardsController::class,'addRating'])->name('addRating');
-Route::get('/psy/getRatingsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getRatingsByPsyId'])->name('geRatingsByPsyId');
+Route::get('/psy/getPsyRatings', [App\Http\Controllers\PsyCardsController::class,'getPsyRatings'])->name('getPsyRatings');
+Route::post('/psy/addPsyRating', [App\Http\Controllers\PsyCardsController::class,'addPsyRating'])->name('addPsyRating');
+Route::get('/psy/getRatingsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getRatingsByPsyId'])->name('getRatingsByPsyId');
+Route::get('/psy/getPsyRatingsByUserIstanceId/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsyRatingsByUserIstanceId'])->name('getPsyRatingsByUserIstanceId');
 
 
-Route::post('/psy/addUocDepartment', [App\Http\Controllers\PsyCardsController::class,'addUocDepartment'])->name('addUocDepartment');
+Route::get('/psy/getPsyUocDepartments', [App\Http\Controllers\PsyCardsController::class,'getPsyUocDepartments'])->name('getPsyUocDepartments');
+Route::post('/psy/addPsyUocDepartment', [App\Http\Controllers\PsyCardsController::class,'addPsyUocDepartment'])->name('addPsyUocDepartment');
 Route::get('/psy/getUocDepartmentsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getUocDepartmentsByPsyId'])->name('getUocDepartmentsByPsyId');
+Route::get('/psy/getPsyUocDepartmentsByUserIstanceId/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsyUocDepartmentsByUserIstanceId'])->name('getPsyUocDepartmentsByUserIstanceId');
 
 
-
-Route::post('/psy/addSocialFolder', [App\Http\Controllers\PsyCardsController::class,'addSocialFolder'])->name('addSocialFolder');
+Route::get('/psy/getPsySocialFolders', [App\Http\Controllers\PsyCardsController::class,'getPsySocialFolders'])->name('getPsySocialFolders');
+Route::post('/psy/addPsySocialFolder', [App\Http\Controllers\PsyCardsController::class,'addPsySocialFolder'])->name('addPsySocialFolder');
 Route::get('/psy/getSocialFoldersByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getSocialFoldersByPsyId'])->name('getSocialFoldersByPsyId');
+Route::get('/psy/getPsySocialFoldersByUserIstanceId/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsySocialFoldersByUserIstanceId'])->name('getPsySocialFoldersByUserIstanceId');
 
 
+Route::get('/psy/getPsyMembershipCards', [App\Http\Controllers\PsyCardsController::class,'getPsyMembershipCards'])->name('getPsyMembershipCards');
 Route::post('/psy/addMemberShipCard', [App\Http\Controllers\PsyCardsController::class,'addMemberShipCard'])->name('addMemberShipCard');
 Route::get('/psy/getMemberShipCardsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getMemberShipCardsByPsyId'])->name('getMemberShipCardsByPsyId');
+Route::get('/psy/getPsyMembershipCardsByUserIstanceId/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsyMembershipCardsByUserIstanceId'])->name('getPsyMembershipCardsByUserIstanceId');
 
 
-Route::post('/psy/addSurvey', [App\Http\Controllers\PsyCardsController::class,'addSurvey'])->name('addSurvey');
+
+Route::get('/psy/getPsySurveys', [App\Http\Controllers\PsyCardsController::class,'getPsySurveys'])->name('getPsySurveys');
+Route::post('/psy/addPsySurvey', [App\Http\Controllers\PsyCardsController::class,'addPsySurvey'])->name('addPsySurvey');
 Route::get('/psy/getSurveysByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getSurveysByPsyId'])->name('getSurveysByPsyId');
+Route::get('/psy/getPsySurveysByUserIstanceId/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsySurveysByUserIstanceId'])->name('getPsySurveysByUserIstanceId');
 
 
+
+
+
+
+Route::get('/psy/getPsyJsats', [App\Http\Controllers\PsyCardsController::class,'getPsyJsats'])->name('getPsyJsats');
 Route::post('/psy/addJsat', [App\Http\Controllers\PsyCardsController::class,'addJsat'])->name('addJsat');
 Route::get('/psy/getJsatsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getJsatsByPsyId'])->name('getJsatsByPsyId');
-
-
-
+Route::get('/psy/getPsyJsatsByUserIstanceId/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsyJsatsByUserIstanceId'])->name('getPsyJsatsByUserIstanceId');
 
 
 

@@ -733,7 +733,6 @@ label {
                             _wm.mainTitle="Aggiornamento Cartella nurs";
                             if(response.data.TraceabilityTherapy){
                             // _wm.tHSaved=true;
-                            //alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
                             // _wm.btnThSend="Aggiorna";
 
                             _wm.TraceabilityTherapy=response.data.TraceabilityTherapy;
@@ -935,7 +934,6 @@ label {
                             _wm.therapies=response.data.therapies;
                             // alert(JSON.stringify(_wm.therapies));
 
-                            // alert(JSON.stringify(response.data.PsyMentalHealthDepartment))
                             //_wm.btnThSend="Aggiorna";
                             
                             // let _NursTherapy=response.data.NursingTherapy;

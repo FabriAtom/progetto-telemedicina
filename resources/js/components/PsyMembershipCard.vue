@@ -1660,11 +1660,67 @@
                                 </div>
                             </div>
 
-
-
-                            
-
                            psycard: {{ psyCardMc }}  psyhow:{{ psyhowFeel }}
+
+
+                            <div>
+                                <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                <ul style="display:flex; flex-wrap: wrap;">
+                                    <span v-for="(item, key, index) in PsyMembershipCard" :key="index" class="mr-5">
+
+                                        <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                            <div class="card-header">
+                                                <span style="min-width: 100px;"> 
+                                                    <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                </span> 
+                                        </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['mc_date']) }}</div>
+                                                </h5>
+                                                <p class="card-text">
+                                                    <div style="min-width: 100px;"><strong>Comunica :</strong> {{ (item['communicate_italian']) }}</div>
+                                                    <!-- <div style="min-width: 100px;"><strong>Comunica :</strong> <br> {{ (item['communicate']) }}</div> -->
+                                                    <div style="min-width: 100px;"><strong>Stato civile:</strong> {{ ((item['marital_status'])) }} </div>
+                                                    <div style="min-width: 100px;"><strong>figli:</strong> {{ (item['sons']) }} </div> 
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br><br>
+                                    </span>
+                                </ul>
+                            </div> 
+
+
+
+                            <div class="row mb-3 ml-2 mt-4">
+                                <div class="col-md-12 col-sm-12">
+                                    <span class="item form-group">
+                                        <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                        <span class="col-md-12 col-sm-12">
+                                            <input type="date" name="start_date" v-model="psyCardMc.startDate">
+                                        </span>
+                                        <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                        <span class="col-md-12 col-sm-12">
+                                            <input type="date" name="end_date" v-model="psyCardMc.endDate">
+                                        </span>
+                                        <span class="search-bar">
+                                            <a class="search-button btn btn-success"  @click="getPsyMembershipCardsByUserIstanceId(36,true)">Cerca</a>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+    
+
+                            <div class="ln_solid"></div>
+                            <div class="item form-group">
+                                <div class="pull-right">
+                                    <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyMembershipCard('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                </div>
+                            </div>
+
+
                             <div class="ln_solid"></div>
                             <div class="item form-group">
                                 <div class="pull-right">
@@ -1745,6 +1801,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default {
+
     name: 'PsyMembershipCard',
 
     data() {
@@ -1784,8 +1841,9 @@ export default {
             psyhowFeel:{},
 
 
+            PsyMembershipCard:{},
 
-            panel:'mc',
+            // panel:'mc',
 
             // psyCardMh:{},
 
@@ -1803,22 +1861,56 @@ export default {
 
     created: function () {
         // this.getPermissions();
-        this.getPsyMembershipCardsByUserInstanceId(1);
+        this.getPsyMembershipCardsByUserIstanceId(1);
     },
 
 
 
     methods: {
 
+        i2hDateFormat(date){
+
+            let current=new Date(date);
+            let year = `${current.getFullYear()}`;
+            let month = `${current.getMonth()}`;
+            let timeHours=`${current.getHours()}`;
+            let timeMinuts=`${current.getMinutes()}`;
+            let day = `${current.getDate()}`;
+            month=this.zeroFill(month);
+            day=this.zeroFill(day);
+            timeMinuts=this.zeroFill(timeMinuts);
+            timeHours=this.zeroFill(timeHours);
+            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+            return tDate;
+        },
+        zeroFill(value){
+            if(parseInt(value)<10){
+                value = '0'+value;
+            }
+            return value
+        },
+
+
+        i2hHourFormat(dataz){
+            let dataw= new Date(dataz);
+            //return date;
+            return dataw.getHours() +':'+dataw.getMinutes();
+        },
+
 
         printPsyMembershipCard(printPdf){
 
             let v_myWindow
-
             let url= 'printPdf/2';
-
             v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
 
+        printArchivePsyMembershipCard(printPdf){
+
+            let v_myWindow
+            let url= 'printPdf/2';
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
             return false;
         },
 
@@ -1848,7 +1940,7 @@ export default {
             form.append('userName', this.userName);
             form.append('userLastName', this.userLastName);
             form.append('userFullName', this.userFullName);
-            form.append('userInstance', this.userInstance);
+            form.append('userInstanceId', this.userInstanceId);
             form.append('userId', this.userId);
             // form.append('doctorId', this.accessData.id);
             // form.append('doctorName', this.accessData.name);
@@ -1872,41 +1964,26 @@ export default {
                     }
                 }
                 form.append('section', 'mc');
+                if(!this.isObjEmpty(this.psyCardMc)){
+                    // alert(JSON.stringify(this.psyCardMc));
+                    let _psyCardMc=JSON.stringify(this.psyCardMc);
+                    form.append('psyCardMc', _psyCardMc);
+
+                    form.append('communicateItalian', this.psyCardMc.communicateItalian);
+                    form.append('communicate', this.psyCardMc.communicate);
+                    form.append('maritalStatus', this.psyCardMc.maritalStatus);
+                    form.append('sons', this.psyCardMc.sons);
+                }
                 if(!this.isObjEmpty(this.psyhowFeel)){
                     let _psyhowFeel=JSON.stringify(this.psyhowFeel);
                     //alert(JSON.stringify(this.psyhowFeel))
                     form.append('psyhowFeel', _psyhowFeel);
                 }
-                if(!this.isObjEmpty(this.psyCardMc)){
-                    // alert(JSON.stringify(this.psyCardMc));
-                    let _psyCardMc=JSON.stringify(this.psyCardMc);
-                    form.append('psyCardMc', _psyCardMc);
-                }
-            }else if(_panel=='mh'){
-
-                if(!this.mHSaved){
-                    form.append('action', 'store');
-                }else{
-                    form.append('action', 'update');
-                }
-                if (this.mHSaved) {
-                    if(this.psyCardId){
-                        form.append('psyId',this.psyCardId);
-                    }else{
-                        _errors++;
-                        _errorTitle="Attenzione";
-                        _errorDescription="Dati mancanti o incompleti contattare l\'amministratore di sistema"
-                    }
-                    form.append('section', 'mh');
-                    if(!this.isObjEmpty(this.psyCardMh)){
-                        let _psyCardMh=JSON.stringify(this.psyCardMh);
-                        form.append('PsyMentalHealthDepartment', _psyCardMh);
-                    }    
-                }
             }
+           
             if(_errors==0){
                 try {
-                    axios.post(actions.ADD_PSY_CARD,form).then(response => {
+                    axios.post(actions.ADD_MEMBERSHIP_CARD,form).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -1917,7 +1994,7 @@ export default {
                                 'Aggiornata correttamente',
                                 'success'
                             )
-                            this.getPsyMembershipCardsByUserInstanceId(this.userInstance);
+                            // this.getPsyMembershipCardsByUserIstanceId(this.userInstance);
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                             Swal.fire(
@@ -1941,7 +2018,7 @@ export default {
         getPsyMembershipCards(){
             let _wm = this;
             try {
-                axios.get(actions.GET_PSY_CARDS).then(response => {
+                axios.get(actions.GET_MEMBERSHIP_CARDS).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -1956,10 +2033,10 @@ export default {
             }
         },
 
-        getPsyMembershipCardById(id){
+        getMembershipCardByPsyId(id){
             let _wm = this;
             try {
-                let url=actions.GET_PSY_CARD_BY_ID+'/'+id;
+                let url=actions.GET_MEMBERSHIP_CARD_BY_PSY_ID+'/'+id;
                 axios.get(url).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
@@ -1975,13 +2052,19 @@ export default {
             }
         },
 
-        getPsyMembershipCardsByUserInstanceId(id){
+         
+        getPsyMembershipCardsByUserIstanceId(id,first){
             let _wm = this;
-            // alert('yy');
+
+            
+            let _param;
+            _wm.PsyMembershipCard=[];
+
+
 
             try {
-                let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
-                axios.get(url).then(response => {
+                let url=actions.GE_MEMBERSHIP_CARDS_BY_USER_ISTANCE_ID+'/'+id;
+                axios.get(url,{params:{first:first,startDate:this.psyCardMc.startDate,endDate:this.psyCardMc.endDate}}).then(response => {
                     let error=response.data.errorNumber;
                     // let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -1990,160 +2073,169 @@ export default {
                     
                         _wm.mainTitle="Aggiornamento Cartella psy";
                         if(response.data.PsyMembershipCard){
-                            _wm.mCSaved=true;
-                            _wm.btnMcSend="Aggiorna";
+                            // _wm.mCSaved=true;
+                            // _wm.btnMcSend="Aggiorna";
 
-                            let _MemberShip=response.data.PsyMembershipCard;
+
+
+                            _wm.PsyMembershipCard=response.data.PsyMembershipCard;
+
+                            for (let prop in _wm.PsyMembershipCard) {
+
+                            }
+
+
+                            // let _MemberShip=response.data.PsyMembershipCard;
                             // _wm.psyCardId=response.data.psyCard.id;
 
-                            _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psyMcDoctorId = _MemberShip.id_doctor;
+                            // _wm.psyCardId=response.data.psyCard.id;
+                            // _wm.psyMcDoctorId = _MemberShip.id_doctor;
 
-                            _wm.psyMcDoctorName = _MemberShip.doctor_name;
-                            _wm.psyMcDoctorLastname = _MemberShip.doctor_lastname;
-
-                            
-                            _wm.psyCardMc.communicateItalian =_MemberShip.communicate_italian;
-                            _wm.psyCardMc.communicate = _MemberShip.communicate 	
-                            _wm.psyCardMc.maritalStatus = _MemberShip.marital_status 
-                            _wm.psyCardMc.sons = _MemberShip.sons
-                            _wm.psyCardMc.sonNumber = _MemberShip.son_number 
-                            _wm.psyCardMc.sonAge = _MemberShip.son_age
-                            _wm.psyCardMc.residenceNot = _MemberShip.residence_not
-
-                            _wm.psyCardMc.residence = _MemberShip.residence 
-                            _wm.psyCardMc.titleStudy = _MemberShip.title_study
-                            _wm.psyCardMc.situationHousing = _MemberShip.situation_housing 
-                            _wm.psyCardMc.situationWork = _MemberShip.situation_work
-                            _wm.psyCardMc.dateStartPrison = _MemberShip.date_start_prison 
-                            _wm.psyCardMc.dateStartInInstitute = _MemberShip.date_start_in_institute
-                            _wm.psyCardMc.firstExperiencePrison = _MemberShip.first_experience_prison
+                            // _wm.psyMcDoctorName = _MemberShip.doctor_name;
+                            // _wm.psyMcDoctorLastname = _MemberShip.doctor_lastname;
 
                             
-                            _wm.psyCardMc.provenience = _MemberShip.provenience
-                            _wm.psyCardMc.legalPosition = _MemberShip.legal_position 
+                            // _wm.psyCardMc.communicateItalian =_MemberShip.communicate_italian;
+                            // _wm.psyCardMc.communicate = _MemberShip.communicate 	
+                            // _wm.psyCardMc.maritalStatus = _MemberShip.marital_status 
+                            // _wm.psyCardMc.sons = _MemberShip.sons
+                            // _wm.psyCardMc.sonNumber = _MemberShip.son_number 
+                            // _wm.psyCardMc.sonAge = _MemberShip.son_age
+                            // _wm.psyCardMc.residenceNot = _MemberShip.residence_not
 
-                            _wm.psyCardMc.endOfSentence = _MemberShip.end_of_sentence
-                            _wm.psyCardMc.economicResource = _MemberShip.economic_resource 
-
-                            _wm.psyCardMc.previousTreatmentForProblem = _MemberShip.previous_treatment_for_problem 
-                            _wm.psyCardMc.previousTreatmentFarmacology = _MemberShip.previous_treatment_farmacology 
-                            _wm.psyCardMc.previousDiagnosesOfMentalDisorder = _MemberShip.previous_diagnoses_of_mental_disorder 
-                            _wm.psyCardMc.previousDiagnosisOfDrugAbuse = _MemberShip.previous_diagnosis_of_drug_abuse
-                            _wm.psyCardMc.previousHospitalizationSpdc = _MemberShip.previous_hospitalization_spdc
-                            _wm.psyCardMc.previousHospitalizationEmergency = _MemberShip.previous_hospitalization_emergency 
-                            _wm.psyCardMc.pathologicalAttemptedSuicide = _MemberShip.pathological_attempted_suicide 
-                            _wm.psyCardMc.pathologicalDesperate = _MemberShip.pathological_desperate
-                            _wm.psyCardMc.pathologicalAnxious = _MemberShip.pathological_anxious 
-                            _wm.psyCardMc.pathologicalActive = _MemberShip.pathological_active 
-                            _wm.psyCardMc.pathologicalStrangeThought = _MemberShip.pathological_strange_thought
-
-                            _wm.psyCardMc.pathologicalSleepless = _MemberShip.pathological_sleepless 
-                            _wm.psyCardMc.pathologicalNoFamily = _MemberShip.pathological_no_family
-                            _wm.psyCardMc.pathologicalThoughtSuicide = _MemberShip.pathological_thought_suicide
-                            _wm.psyCardMc.pathologicalAddictiveBehavior = _MemberShip.pathological_addictive_behavior
-                            _wm.psyCardMc.pathologicalClaimsInjuries = _MemberShip.pathological_claims_injuries
-                            _wm.psyCardMc.pathologicalShameLevel = _MemberShip.pathological_shame_level
-
-                            _wm.psyCardMc.accessToTheInterview = _MemberShip.access_to_the_interview 
-                            _wm.psyCardMc.trafficWarden = _MemberShip.traffic_warden
-                            _wm.psyCardMc.lucid = _MemberShip.lucid
-                            _wm.psyCardMc.orientatedInTheThreeParameter = _MemberShip.orientated_in_the_three_parameter
-                            _wm.psyCardMc.umor = _MemberShip.umor
-                            _wm.psyCardMc.anxiety = _MemberShip.anxiety
-                            _wm.psyCardMc.alteredPerception = _MemberShip.altered_perception
-                            _wm.psyCardMc.appetite = _MemberShip.appetite
-                            _wm.psyCardMc.alteredFormThought = _MemberShip.altered_form_thought
-                            _wm.psyCardMc.sleepWakeRhythm = _MemberShip.sleep_wake_rhythm
-                            _wm.psyCardMc.futureProject = _MemberShip.future_project
-
-
-                            _wm.psyCardMc.accessToTheInterviewNote = _MemberShip.access_to_the_interview_note
-                            _wm.psyCardMc.trafficWardenNote = _MemberShip.traffic_warden_note
-                            _wm.psyCardMc.lucidNote = _MemberShip.lucid_note
-                            _wm.psyCardMc.orientatedInTheThreeParameterNote = _MemberShip.orientated_in_the_three_parameter_note
-                            _wm.psyCardMc.umorNote = _MemberShip.umor_note
-                            _wm.psyCardMc.anxietyNote = _MemberShip.anxiety_note
-                            _wm.psyCardMc.alteredPerceptionNote = _MemberShip.altered_perception_note
-                            _wm.psyCardMc.appetiteNote = _MemberShip.appetite_note
-                            _wm.psyCardMc.alteredFormThoughtNote = _MemberShip.altered_form_thought_note
-                            _wm.psyCardMc.sleepWakeRhythmNote = _MemberShip.sleep_wake_rhythm_note
-                            _wm.psyCardMc.futureProjectNote = _MemberShip.future_project_note
-
-
-                            _wm.psyhowFeel.wellToFocus = _MemberShip.well_to_focus 
-                            _wm.psyhowFeel.wellLostSleep = _MemberShip.well_lost_sleep
-                            _wm.psyhowFeel.wellProductive = _MemberShip.well_productive
-                            _wm.psyhowFeel.wellMakeDecision = _MemberShip.well_make_decision
-                            _wm.psyhowFeel.wellPression = _MemberShip.well_pression
-                            _wm.psyhowFeel.wellNotAble = _MemberShip.well_not_able
-                            _wm.psyhowFeel.wellTimeForHimself = _MemberShip.well_time_for_himself
-                            _wm.psyhowFeel.wellProblemSolving = _MemberShip.well_problem_solving
-                            _wm.psyhowFeel.wellUnhappy = _MemberShip.well_unhappy
-                            _wm.psyhowFeel.wellLostConfidence = _MemberShip.well_lost_confidence
-                            _wm.psyhowFeel.wellLowerEsteem = _MemberShip.well_lower_esteem
-                            _wm.psyhowFeel.wellOverallHappy = _MemberShip.well_overall_happy
-                            _wm.psyhowFeel.wellTotalScore = _MemberShip.well_total_score
-
-
-                            _wm.psyCardMc.thoughtHeWasDead = _MemberShip.thought_he_was_dead 
-                            _wm.psyCardMc.wantedToGetHurt = _MemberShip.wanted_to_get_hurt
-                            _wm.psyCardMc.thoughtSuicide = _MemberShip.thought_suicide
-                            _wm.psyCardMc.thoughtHowSuicide = _MemberShip.thought_how_suicide
-                            _wm.psyCardMc.attemptedSuicide = _MemberShip.attempted_suicide
-                            _wm.psyCardMc.neverTryAttemptedSuicide = _MemberShip.never_try_attempted_suicide
-
-                            _wm.psyCardMc.gravityIdeationSuicide = _MemberShip.gravity_ideation_suicide
-
-
-                            _wm.psyCardMc.checkSpdcHospitalizations = _MemberShip.check_spdc_hospitalizations
-                            _wm.psyCardMc.checkDeclareSuicide = _MemberShip.check_declare_suicide
-                            _wm.psyCardMc.checkThougthSuicide = _MemberShip.check_thougth_suicide
-                            _wm.psyCardMc.checkUnusualLevelOfShame = _MemberShip.check_unusual_level_of_shame
-                            _wm.psyCardMc.checkConfusionalState = _MemberShip.check_confusional_state
-                            _wm.psyCardMc.checkPsychomotorAgitation = _MemberShip.check_psychomotor_agitation
-                            _wm.psyCardMc.checkBizarreBehavior = _MemberShip.check_bizarre_behavior
-                            _wm.psyCardMc.checkVerbalCommunication = _MemberShip.check_verbal_communication
-                            _wm.psyCardMc.checkLevelMini = _MemberShip.check_level_mini
-                            _wm.psyCardMc.checkGeneralWellBeing = _MemberShip.check_general_well_being
-                            _wm.psyCardMc.checkVainFormViolence = _MemberShip.check_vain_form_violence
-                            _wm.psyCardMc.checkComeFromForcedIsolation = _MemberShip.check_come_from_forced_isolation
-                            _wm.psyCardMc.checkIsolationSocialNetwork = _MemberShip.check_isolation_social_network
-                            _wm.psyCardMc.checkUncertaintyAboutFuture = _MemberShip.check_uncertainty_about_future
-                            _wm.psyCardMc.checkConclusion = _MemberShip.check_conclusion
-
-
-                            _wm.psyCardMc.riskAssessmentConclusions = _MemberShip.risk_assessment_conclusions
-
-                            _wm.psyCardMc.requestActivationOfMeasures = _MemberShip.request_activation_of_measures
-                            _wm.psyCardMc.requestActivationNormalSurveillance = _MemberShip.request_activation_normal_surveillance
-                            _wm.psyCardMc.requestActivationMultipleRoom = _MemberShip.request_activation_multiple_room
-                            _wm.psyCardMc.requestActivationBigSurveillance = _MemberShip.request_activation_big_surveillance
-                            _wm.psyCardMc.requestActivationVisualSurveillance = _MemberShip.request_activation_visual_surveillance
-
-
-
-
-
-
-
-
-                            _wm.psyCardMc.firstMedicalHistoryVisit = _MemberShip.first_medical_history_visit
-                            _wm.psyCardMc.firstStatus = _MemberShip.first_status
-                            _wm.psyCardMc.firstTerapy = _MemberShip.first_terapy
-                            _wm.psyCardMc.firstOrientation = _MemberShip.first_orientation
-
-                            // _wm.psyCardMc.interventionPlanConclusions = _MemberShip.intervention_plan_conclusions
-                            _wm.psyCardMc.interventionPlanAdvice = _MemberShip.intervention_plan_advice
-                            _wm.psyCardMc.interventionPlanTakingIntoCare = _MemberShip.intervention_plan_taking_into_care
-                            _wm.psyCardMc.interventionPlanIntegratedHandling = _MemberShip.intervention_plan_integrated_handling
-
-                            // _wm.psyCardMc.psychiatricVisitPlanConclusions = _MemberShip.psychiatric_visit_plan_conclusions 
-                            _wm.psyCardMc.psychiatricInterventionPlanAdvice = _MemberShip.psychiatric_intervention_plan_advice
-                            _wm.psyCardMc.psychiatricVisitPrescriptionSuggestions = _MemberShip.psychiatric_visit_prescription_suggestions
+                            // _wm.psyCardMc.residence = _MemberShip.residence 
+                            // _wm.psyCardMc.titleStudy = _MemberShip.title_study
+                            // _wm.psyCardMc.situationHousing = _MemberShip.situation_housing 
+                            // _wm.psyCardMc.situationWork = _MemberShip.situation_work
+                            // _wm.psyCardMc.dateStartPrison = _MemberShip.date_start_prison 
+                            // _wm.psyCardMc.dateStartInInstitute = _MemberShip.date_start_in_institute
+                            // _wm.psyCardMc.firstExperiencePrison = _MemberShip.first_experience_prison
 
                             
-                            _wm.allPsyMembershipCards=response.data.allPsyMembershipCards;
+                            // _wm.psyCardMc.provenience = _MemberShip.provenience
+                            // _wm.psyCardMc.legalPosition = _MemberShip.legal_position 
+
+                            // _wm.psyCardMc.endOfSentence = _MemberShip.end_of_sentence
+                            // _wm.psyCardMc.economicResource = _MemberShip.economic_resource 
+
+                            // _wm.psyCardMc.previousTreatmentForProblem = _MemberShip.previous_treatment_for_problem 
+                            // _wm.psyCardMc.previousTreatmentFarmacology = _MemberShip.previous_treatment_farmacology 
+                            // _wm.psyCardMc.previousDiagnosesOfMentalDisorder = _MemberShip.previous_diagnoses_of_mental_disorder 
+                            // _wm.psyCardMc.previousDiagnosisOfDrugAbuse = _MemberShip.previous_diagnosis_of_drug_abuse
+                            // _wm.psyCardMc.previousHospitalizationSpdc = _MemberShip.previous_hospitalization_spdc
+                            // _wm.psyCardMc.previousHospitalizationEmergency = _MemberShip.previous_hospitalization_emergency 
+                            // _wm.psyCardMc.pathologicalAttemptedSuicide = _MemberShip.pathological_attempted_suicide 
+                            // _wm.psyCardMc.pathologicalDesperate = _MemberShip.pathological_desperate
+                            // _wm.psyCardMc.pathologicalAnxious = _MemberShip.pathological_anxious 
+                            // _wm.psyCardMc.pathologicalActive = _MemberShip.pathological_active 
+                            // _wm.psyCardMc.pathologicalStrangeThought = _MemberShip.pathological_strange_thought
+
+                            // _wm.psyCardMc.pathologicalSleepless = _MemberShip.pathological_sleepless 
+                            // _wm.psyCardMc.pathologicalNoFamily = _MemberShip.pathological_no_family
+                            // _wm.psyCardMc.pathologicalThoughtSuicide = _MemberShip.pathological_thought_suicide
+                            // _wm.psyCardMc.pathologicalAddictiveBehavior = _MemberShip.pathological_addictive_behavior
+                            // _wm.psyCardMc.pathologicalClaimsInjuries = _MemberShip.pathological_claims_injuries
+                            // _wm.psyCardMc.pathologicalShameLevel = _MemberShip.pathological_shame_level
+
+                            // _wm.psyCardMc.accessToTheInterview = _MemberShip.access_to_the_interview 
+                            // _wm.psyCardMc.trafficWarden = _MemberShip.traffic_warden
+                            // _wm.psyCardMc.lucid = _MemberShip.lucid
+                            // _wm.psyCardMc.orientatedInTheThreeParameter = _MemberShip.orientated_in_the_three_parameter
+                            // _wm.psyCardMc.umor = _MemberShip.umor
+                            // _wm.psyCardMc.anxiety = _MemberShip.anxiety
+                            // _wm.psyCardMc.alteredPerception = _MemberShip.altered_perception
+                            // _wm.psyCardMc.appetite = _MemberShip.appetite
+                            // _wm.psyCardMc.alteredFormThought = _MemberShip.altered_form_thought
+                            // _wm.psyCardMc.sleepWakeRhythm = _MemberShip.sleep_wake_rhythm
+                            // _wm.psyCardMc.futureProject = _MemberShip.future_project
+
+
+                            // _wm.psyCardMc.accessToTheInterviewNote = _MemberShip.access_to_the_interview_note
+                            // _wm.psyCardMc.trafficWardenNote = _MemberShip.traffic_warden_note
+                            // _wm.psyCardMc.lucidNote = _MemberShip.lucid_note
+                            // _wm.psyCardMc.orientatedInTheThreeParameterNote = _MemberShip.orientated_in_the_three_parameter_note
+                            // _wm.psyCardMc.umorNote = _MemberShip.umor_note
+                            // _wm.psyCardMc.anxietyNote = _MemberShip.anxiety_note
+                            // _wm.psyCardMc.alteredPerceptionNote = _MemberShip.altered_perception_note
+                            // _wm.psyCardMc.appetiteNote = _MemberShip.appetite_note
+                            // _wm.psyCardMc.alteredFormThoughtNote = _MemberShip.altered_form_thought_note
+                            // _wm.psyCardMc.sleepWakeRhythmNote = _MemberShip.sleep_wake_rhythm_note
+                            // _wm.psyCardMc.futureProjectNote = _MemberShip.future_project_note
+
+
+                            // _wm.psyhowFeel.wellToFocus = _MemberShip.well_to_focus 
+                            // _wm.psyhowFeel.wellLostSleep = _MemberShip.well_lost_sleep
+                            // _wm.psyhowFeel.wellProductive = _MemberShip.well_productive
+                            // _wm.psyhowFeel.wellMakeDecision = _MemberShip.well_make_decision
+                            // _wm.psyhowFeel.wellPression = _MemberShip.well_pression
+                            // _wm.psyhowFeel.wellNotAble = _MemberShip.well_not_able
+                            // _wm.psyhowFeel.wellTimeForHimself = _MemberShip.well_time_for_himself
+                            // _wm.psyhowFeel.wellProblemSolving = _MemberShip.well_problem_solving
+                            // _wm.psyhowFeel.wellUnhappy = _MemberShip.well_unhappy
+                            // _wm.psyhowFeel.wellLostConfidence = _MemberShip.well_lost_confidence
+                            // _wm.psyhowFeel.wellLowerEsteem = _MemberShip.well_lower_esteem
+                            // _wm.psyhowFeel.wellOverallHappy = _MemberShip.well_overall_happy
+                            // _wm.psyhowFeel.wellTotalScore = _MemberShip.well_total_score
+
+
+                            // _wm.psyCardMc.thoughtHeWasDead = _MemberShip.thought_he_was_dead 
+                            // _wm.psyCardMc.wantedToGetHurt = _MemberShip.wanted_to_get_hurt
+                            // _wm.psyCardMc.thoughtSuicide = _MemberShip.thought_suicide
+                            // _wm.psyCardMc.thoughtHowSuicide = _MemberShip.thought_how_suicide
+                            // _wm.psyCardMc.attemptedSuicide = _MemberShip.attempted_suicide
+                            // _wm.psyCardMc.neverTryAttemptedSuicide = _MemberShip.never_try_attempted_suicide
+
+                            // _wm.psyCardMc.gravityIdeationSuicide = _MemberShip.gravity_ideation_suicide
+
+
+                            // _wm.psyCardMc.checkSpdcHospitalizations = _MemberShip.check_spdc_hospitalizations
+                            // _wm.psyCardMc.checkDeclareSuicide = _MemberShip.check_declare_suicide
+                            // _wm.psyCardMc.checkThougthSuicide = _MemberShip.check_thougth_suicide
+                            // _wm.psyCardMc.checkUnusualLevelOfShame = _MemberShip.check_unusual_level_of_shame
+                            // _wm.psyCardMc.checkConfusionalState = _MemberShip.check_confusional_state
+                            // _wm.psyCardMc.checkPsychomotorAgitation = _MemberShip.check_psychomotor_agitation
+                            // _wm.psyCardMc.checkBizarreBehavior = _MemberShip.check_bizarre_behavior
+                            // _wm.psyCardMc.checkVerbalCommunication = _MemberShip.check_verbal_communication
+                            // _wm.psyCardMc.checkLevelMini = _MemberShip.check_level_mini
+                            // _wm.psyCardMc.checkGeneralWellBeing = _MemberShip.check_general_well_being
+                            // _wm.psyCardMc.checkVainFormViolence = _MemberShip.check_vain_form_violence
+                            // _wm.psyCardMc.checkComeFromForcedIsolation = _MemberShip.check_come_from_forced_isolation
+                            // _wm.psyCardMc.checkIsolationSocialNetwork = _MemberShip.check_isolation_social_network
+                            // _wm.psyCardMc.checkUncertaintyAboutFuture = _MemberShip.check_uncertainty_about_future
+                            // _wm.psyCardMc.checkConclusion = _MemberShip.check_conclusion
+
+
+                            // _wm.psyCardMc.riskAssessmentConclusions = _MemberShip.risk_assessment_conclusions
+
+                            // _wm.psyCardMc.requestActivationOfMeasures = _MemberShip.request_activation_of_measures
+                            // _wm.psyCardMc.requestActivationNormalSurveillance = _MemberShip.request_activation_normal_surveillance
+                            // _wm.psyCardMc.requestActivationMultipleRoom = _MemberShip.request_activation_multiple_room
+                            // _wm.psyCardMc.requestActivationBigSurveillance = _MemberShip.request_activation_big_surveillance
+                            // _wm.psyCardMc.requestActivationVisualSurveillance = _MemberShip.request_activation_visual_surveillance
+
+
+
+
+
+
+
+
+                            // _wm.psyCardMc.firstMedicalHistoryVisit = _MemberShip.first_medical_history_visit
+                            // _wm.psyCardMc.firstStatus = _MemberShip.first_status
+                            // _wm.psyCardMc.firstTerapy = _MemberShip.first_terapy
+                            // _wm.psyCardMc.firstOrientation = _MemberShip.first_orientation
+
+                            // // _wm.psyCardMc.interventionPlanConclusions = _MemberShip.intervention_plan_conclusions
+                            // _wm.psyCardMc.interventionPlanAdvice = _MemberShip.intervention_plan_advice
+                            // _wm.psyCardMc.interventionPlanTakingIntoCare = _MemberShip.intervention_plan_taking_into_care
+                            // _wm.psyCardMc.interventionPlanIntegratedHandling = _MemberShip.intervention_plan_integrated_handling
+
+                            // // _wm.psyCardMc.psychiatricVisitPlanConclusions = _MemberShip.psychiatric_visit_plan_conclusions 
+                            // _wm.psyCardMc.psychiatricInterventionPlanAdvice = _MemberShip.psychiatric_intervention_plan_advice
+                            // _wm.psyCardMc.psychiatricVisitPrescriptionSuggestions = _MemberShip.psychiatric_visit_prescription_suggestions
+
+                            
+                            // _wm.allPsyMembershipCards=response.data.allPsyMembershipCards;
                         }else{
                             _wm.btnMcSend="Salva";
                         }
