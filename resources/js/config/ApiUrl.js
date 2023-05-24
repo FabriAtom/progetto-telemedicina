@@ -36,16 +36,20 @@ export const ADD_PSY_CARD= '/psy/store';
 
 
 
-// SuicideAssessment
-export const GET_SUICIDE_ASSESSMENT_BY_PSY_ID= '/psy/getSuicideAssessmentsByPsyId';
-export const ADD_SUICIDE_ASSESSMENT= '/psy/addSuicideAssessment';
-export const GET_SUICIDES_BY_USER_ISTANCE_ID= '/psy/getPsySuicideAssessmentsByUserInstanceId';
-
-
-
 // export const GET_PSY_SUICIDE_ASSESSMENT_BY_USER_INSTANCE_ID = '/psy/getPsySuicideAssessmentsByUserIstanceId';
 // export const ADD_PSY_SUICIDE_ASSESSMENT= '/psy/store';
 
+
+
+
+
+
+
+// SuicideAssessment
+export const GET_SUICIDE_ASSESSMENT_BY_PSY_ID= '/psy/getSuicideAssessmentsByPsyId';
+export const ADD_SUICIDE_ASSESSMENT= '/psy/addPsySuicideAssessment';
+export const GET_SUICIDE_ASSESSMENTS_BY_USER_ISTANCE_ID= '/psy/getPsySuicideAssessmentsByUserIstanceId';
+export const GET_SUICIDE_ASSESSMENTS = '/psy/getPsySuicideAssessments';
 
 
 
@@ -59,6 +63,8 @@ export const GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID= '/psy/getMentalHealthDepart
 export const ADD_MENTAL_HEALTH_DEPARTMENT= '/psy/addPsyMentalHealthDepartment';
 export const GET_MENTAL_HEALTH_DEPARTMENTS_BY_USER_ISTANCE_ID = '/psy/getPsyMentalHealthDepartmentsByUserIstanceId';
 export const GET_MENTAL_HEALTH_DEPARTMENTS = '/psy/getPsyMentalHealthDepartments';
+
+
 
 
 // RehabilitationPsychiatricCard
@@ -122,13 +128,6 @@ export const GET_JSATS = '/psy/getPsyJsats';
 
 
 
-// export const GET_NURSING = '/therapies/getNursingTherapiesByUserIstanceId';
-// export const ADD_NURSING= '/therapies/addtNursingTherapies';
-
-
-
-
-
 
 export const GET_TRACEABILITYS = '/therapies/getTraceabilityTherapys';
 export const GET_TRACEABILITY_BY_ID = '/therapies/getTraceabilityTherapyById';
@@ -171,13 +170,6 @@ export const GET_PRESCRIPTION_BY_ID = '/therapies/getMonitoringPrescriptionTaosB
 export const GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID = '/therapies/getMonitoringPrescriptionTaosByUserIstanceId';
 export const ADD_PRESCRIPTION= '/therapies/addMonitoringPrescriptionTao';
 
-
-
-
-
-// export const GET_REFUSEDS = '/therapies/getRefusedTreatments';
-// export const GET_REFUSED_BY_ID = '/therapies/getRefusedTreatmentsById';
-// export const GET_REFUSED_BY_USER_ISTANCE_ID = '/therapies/getRefusedTreatmentsByUserIstanceId';
 
 
 export const ADD_REFUSED = '/therapies/addRefusedTreatment';

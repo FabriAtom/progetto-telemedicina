@@ -31,35 +31,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="row" style="margin-top:20px;">
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="item form-group">
-                                            <label for="psychiatric_intervention" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2>Interventi:</h2></strong></label>                                    
-                                                <p>
-                                                    <select name="trattamenti">
-                                                        <option value="trattamento1">Trattamento 1</option>
-                                                        <option value="trattamento2">Trattamento 2</option>
-                                                        <option value="trattamento3">Trattamento 3</option>
-                                                    </select>
-    
-                                                    <label for="dataInizio">Data di inizio:</label>
-                                                    <input type="date" id="dataInizio" name="dataInizio">
-    
-                                                    <label for="dataFine">Data di fine:</label>
-                                                    <input type="date" id="dataFine" name="dataFine">
-                                                </p>
-                                                <span class="ml-3"> -Setting: 1. Individuale e/o 2. Gruppale
-                                                    <form class="ml-3" action="">
-                                                        <input type="checkbox" id="" name="" value="">
-                                                        <label for=""></label>
-                                                        <input type="checkbox" id="" name="" value="">
-                                                        <label for=""></label><br>
-                                                        <input type="submit" value="Submit">
-                                                    </form>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div> -->
+                               
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="item form-group">
@@ -70,16 +42,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="row" style="margin-top:20px;">
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="item form-group">
-                                            <label for="psychiatric_attachment" class="col-form-label col-md-6 col-sm-2 label-align"><strong><h2> Allegati:</h2></strong></label>
-                                            <div class="col-md-12 col-sm-12">
-                                                <button onclick="downloadFile()">Download file</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                                 <hr>
                                 {{ psyCardRp }}
 
@@ -89,13 +51,14 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in PsyRehabilitationPsychiatricCard" :key="index" class="mr-5">
 
-                                            <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                            <div @click="printArchivesCardPsyRehabilitationPsychiatricCard(item['id'])" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
                                                         <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['rp_date']) }}</div>
                                                     </span> 
                                             </div>
-                                                <div class="card-body">
+                                                <!-- <div class="card-body">
                                                     <h5 class="card-title">
                                                         <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['rp_date']) }}</div>
                                                     </h5>
@@ -103,11 +66,11 @@
                                                         <div style="min-width: 100px;"><strong>Breve Descrizione Progetto:</strong> <br>{{ (item['project_description']) }}</div>
                                                          <div style="min-width: 100px;"><strong>Obiettivi In Cui Viene Specificata Area <br> Trattamento:</strong> <br> {{ (item['treatment_area_objective']) }}</div>
                                                         <div style="min-width: 100px;"><strong>Responsabile Progetto:</strong> <br>{{ ((item['psychiatric_intervention'])) }} </div>
-                                                        <!-- <div style="min-width: 100px;"><strong>:</strong> <br>{{ (item['project_manager']) }} </div>
-                                                        <div style="min-width: 100px;"><strong>:</strong> <br>{{ (item['psychiatric_attachment']) }} </div> -->
+                                                        <div style="min-width: 100px;"><strong>:</strong> <br>{{ (item['project_manager']) }} </div>
+                                                        <div style="min-width: 100px;"><strong>:</strong> <br>{{ (item['psychiatric_attachment']) }} </div>
 
                                                     </p>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <br><br>
                                         </span>
@@ -298,6 +261,14 @@
 
             let v_myWindow
             let url= 'printPdf/2';
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
+
+        printArchivesCardPsyRehabilitationPsychiatricCard(id){
+
+            let v_myWindow
+            let url= 'printPdf/'+id;
             v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
             return false;
         },

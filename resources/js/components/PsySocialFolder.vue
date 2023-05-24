@@ -482,13 +482,15 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in PsySocialFolder" :key="index" class="mr-5">
 
-                                            <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                            <div @click="printArchivesCardPsySocialFolder(item['id'])" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
-                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div><strong>Data: </strong> {{ i2hDateFormat(item['sf_date']) }}</div>
+
                                                     </span> 
                                             </div>
-                                                <div class="card-body">
+                                                <!-- <div class="card-body">
                                                     <h5 class="card-title">
                                                         <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['sf_date']) }}</div>
                                                     </h5>
@@ -498,7 +500,7 @@
                                                         <div style="min-width: 100px;"><strong>Spdc: </strong> <br>{{ ((item['typology'])) }} </div>
                                                         <div style="min-width: 100px;"><strong>Rems: </strong> <br>{{ (item['expiration']) }} </div> 
 
-                                                        <!-- <div style="min-width: 100px;"><strong>Carcere: </strong> <br>{{ (item['prison']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Carcere: </strong> <br>{{ (item['prison']) }}</div>
                                                         <div style="min-width: 100px;"><strong>Familiarità psichiatrica: </strong> {{ (item['psychiatric_familiarity']) }}</div>
                                                         <div style="min-width: 100px;"><strong>Se si, Chi: </strong> {{ ((item['if_familiarity'])) }} </div>
                                                         <div style="min-width: 100px;"><strong>Esordio sintomatologia psichiatrica: </strong> <br>{{ (item['on_set_of_psychiatric_symptom']) }} </div> 
@@ -516,9 +518,9 @@
                                                         <div style="min-width: 100px;"><strong>D. Personalità: </strong> {{ (item['personality_orientation']) }}</div>
                                                         <div style="min-width: 100px;"><strong>Presa in carico: </strong> {{ (item['taking_charge_pdta']) }}</div>
                                                         <div style="min-width: 100px;"><strong>Assunzione in cura: </strong> {{ ((item['care_intake_pdta'])) }} </div>
-                                                        <div style="min-width: 100px;"><strong>Consulenza: </strong> {{ (item['consultancy_pdta']) }} </div>  -->
+                                                        <div style="min-width: 100px;"><strong>Consulenza: </strong> {{ (item['consultancy_pdta']) }} </div> 
                                                     </p>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <br><br>
                                         </span>
@@ -702,8 +704,6 @@ export default {
             }
             return value
         },
-
-
         i2hHourFormat(dataz){
             let dataw= new Date(dataz);
             //return date;
@@ -726,6 +726,16 @@ export default {
             v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
             return false;
         },
+
+        
+        printArchivesCardPsySocialFolder(id){
+
+            let v_myWindow
+            let url= 'printPdf/'+id;
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
+
 
  
         addPsySocialFolder(panel){

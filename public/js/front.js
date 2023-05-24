@@ -1954,7 +1954,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     // this.getPermissions();
-    this.getPsyJsatsByUserInstanceId(1);
+    this.getPsyJsatsByUserIstanceId(1);
   },
   methods: {
     i2hDateFormat: function i2hDateFormat(date) {
@@ -1991,6 +1991,12 @@ __webpack_require__.r(__webpack_exports__);
     printArchivePsyJsat: function printArchivePsyJsat(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    printArchivesCardPsyJsat: function printArchivesCardPsyJsat(id) {
+      var v_myWindow;
+      var url = 'printPdf/' + id;
       v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
       return false;
     },
@@ -2075,7 +2081,7 @@ __webpack_require__.r(__webpack_exports__);
         throw error;
       }
     },
-    getPsyJsatById: function getPsyJsatById(id) {
+    getJsatsByPsyId: function getJsatsByPsyId(id) {
       var _wm = this;
       try {
         var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_JSAT_BY_PSY_ID"] + '/' + id;
@@ -2093,7 +2099,7 @@ __webpack_require__.r(__webpack_exports__);
         throw error;
       }
     },
-    getPsyJsatsByUserInstanceId: function getPsyJsatsByUserInstanceId(id, first) {
+    getPsyJsatsByUserIstanceId: function getPsyJsatsByUserIstanceId(id, first) {
       var _wm = this;
       var _param;
       _wm.PsyJsat = [];
@@ -2387,6 +2393,12 @@ __webpack_require__.r(__webpack_exports__);
     printArchivePsyMembershipCard: function printArchivePsyMembershipCard(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    printArchivesCardPsyMembershipCard: function printArchivesCardPsyMembershipCard(id) {
+      var v_myWindow;
+      var url = 'printPdf/' + id;
       v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
       return false;
     },
@@ -2722,6 +2734,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       userInstanceId: 1,
       userId: 0,
       psyCardId: 1,
+      cursorType: 'default',
       accessData: [function (id) {
         return 14;
       }, function (name) {
@@ -2773,6 +2786,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     printArchivePsyMentalHealthDepartment: function printArchivePsyMentalHealthDepartment(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    printArchivesCardPsyMentalHealthDepartment: function printArchivesCardPsyMentalHealthDepartment(id) {
+      var v_myWindow;
+      var url = 'printPdf/' + id;
       v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
       return false;
     },
@@ -3026,6 +3045,12 @@ __webpack_require__.r(__webpack_exports__);
     printArchivePsyRating: function printArchivePsyRating(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    printArchivesCardPsyRating: function printArchivesCardPsyRating(id) {
+      var v_myWindow;
+      var url = 'printPdf/' + id;
       v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
       return false;
     },
@@ -3315,6 +3340,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
       return false;
     },
+    printArchivesCardPsyRehabilitationPsychiatricCard: function printArchivesCardPsyRehabilitationPsychiatricCard(id) {
+      var v_myWindow;
+      var url = 'printPdf/' + id;
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
     addPsyRehabilitationPsychiatricCard: function addPsyRehabilitationPsychiatricCard(panel) {
       var _wm = this;
       var _panel = panel;
@@ -3571,6 +3602,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
       return false;
     },
+    printArchivesCardPsySocialFolder: function printArchivesCardPsySocialFolder(id) {
+      var v_myWindow;
+      var url = 'printPdf/' + id;
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
     addPsySocialFolder: function addPsySocialFolder(panel) {
       var _wm = this;
       var _panel = panel;
@@ -3774,6 +3811,311 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySuicideAssessment.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySuicideAssessment.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/ApiUrl */ "./resources/js/config/ApiUrl.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'PsySuicideAssessment',
+  data: function data() {
+    return {
+      userName: 'Andrea',
+      userLastName: 'Giovanni',
+      userFullName: '',
+      userInstance: 1,
+      userId: 0,
+      cursorType: 'default',
+      selectedOption: null,
+      sum: 0,
+      accessData: [function (id) {
+        return 14;
+      }, function (name) {
+        return 'Alessio';
+      }, function (lastname) {
+        return 'Ortu';
+      }],
+      psySaDoctorId: 0,
+      psySaDoctorName: '',
+      psySaDoctorLastname: '',
+      psySaDate: null,
+      psyCardId: null,
+      date: new Date(),
+      psyCardSa: {},
+      psyriskFactor: {},
+      PsySuicideAssessment: {},
+      panel: 'sa',
+      mainTitle: "psy",
+      firstSave: true,
+      sASaved: false,
+      btnSaSend: "Salva",
+      total: 0,
+      allPsySuicideAssessments: null
+    };
+  },
+  created: function created() {
+    // this.getPermissions();
+    this.getPsySuicideAssessmentsByUserIstanceId(1);
+  },
+  methods: {
+    i2hDateFormat: function i2hDateFormat(date) {
+      var current = new Date(date);
+      var year = "".concat(current.getFullYear());
+      var month = "".concat(current.getMonth());
+      var timeHours = "".concat(current.getHours());
+      var timeMinuts = "".concat(current.getMinutes());
+      var day = "".concat(current.getDate());
+      month = this.zeroFill(month);
+      day = this.zeroFill(day);
+      timeMinuts = this.zeroFill(timeMinuts);
+      timeHours = this.zeroFill(timeHours);
+      var tDate = day + '/' + month + '/' + year + ' - ' + timeHours + ':' + timeMinuts;
+      return tDate;
+    },
+    zeroFill: function zeroFill(value) {
+      if (parseInt(value) < 10) {
+        value = '0' + value;
+      }
+      return value;
+    },
+    i2hHourFormat: function i2hHourFormat(dataz) {
+      var dataw = new Date(dataz);
+      //return date;
+      return dataw.getHours() + ':' + dataw.getMinutes();
+    },
+    printPsySuicideAssessment: function printPsySuicideAssessment(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    printArchivePsySuicideAssessment: function printArchivePsySuicideAssessment(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    printArchivesCardPsySuicideAssessment: function printArchivesCardPsySuicideAssessment(id) {
+      var v_myWindow;
+      var url = 'printPdf/' + id;
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    calculateSum: function calculateSum() {
+      // Calcola la somma delle opzioni selezionate
+      //this.sum = parseInt(this.selectedOption) || 0;
+
+      var i = 0;
+      for (var property in this.psyriskFactor) {
+        if (this.psyriskFactor[property] !== null) {
+          i += parseInt(this.psyriskFactor[property]);
+        }
+      }
+      this.sum = i;
+    },
+    addPsySuicideAssessment: function addPsySuicideAssessment(panel) {
+      var _wm = this;
+      var _panel = panel;
+      var _errors = 0;
+      var _errorTitle = "Scheda";
+      var _errorDescription = "Non aggiornata";
+      var form = new FormData();
+      form.append('userName', this.userName);
+      form.append('userLastName', this.userLastName);
+      form.append('userFullName', this.userFullName);
+      form.append('userInstance', this.userInstance);
+      form.append('userId', this.userId);
+      // form.append('doctorId', this.accessData.id);
+      // form.append('doctorName', this.accessData.name);
+      // form.append('doctorUserName', this.accessData.lastname);
+      form.append('doctorId', 14);
+      form.append('doctorName', 'mario');
+      form.append('doctorUserName', 'bross');
+      if (_panel == 'sa') {
+        if (!this.sASaved) {
+          form.append('action', 'store');
+        } else {
+          form.append('action', 'update');
+          if (this.psyCardId) {
+            form.append('psyId', this.psyCardId);
+          } else {
+            _errors++;
+            _errorTitle = "Attenzione";
+            _errorDescription = "Dati mancanti o incompleti contattare l\'amministratore di sistema";
+          }
+        }
+        form.append('section', 'sa');
+        if (!this.isObjEmpty(this.psyCardSa)) {
+          //alert(JSON.stringify(this.psyCardSa));
+          var _psyCard = JSON.stringify(this.psyCardSa);
+          form.append('PsySuicideAssessment', _psyCard);
+          form.append('imminentRiskOfSuicide', this.psyCardSa.imminentRiskOfSuicide);
+          form.append('monitoringRecommendation', this.psyCardSa.monitoringRecommendation);
+          form.append('frequency', this.psyCardSa.frequency);
+          form.append('referralMentalHealthService', this.psyCardSa.referralMentalHealthService);
+        }
+        if (!this.isObjEmpty(this.psyriskFactor)) {
+          var _psyriskFactor = JSON.stringify(this.psyriskFactor);
+          //alert(JSON.stringify(this.psyriskFactor))
+          form.append('psyriskFactor', _psyriskFactor);
+        }
+      }
+      if (_errors == 0) {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["ADD_SUICIDE_ASSESSMENT"], form).then(function (response) {
+            var error = response.data.errorNumber;
+            var _attempts = response.data.attempts;
+            _wm.errNum = error;
+            if (error == 0) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Aggiornata correttamente', 'success');
+              // this.getPsySuicideAssessmentsByUserIstanceId(this.userInstance);
+            } else {
+              // eventBus.$emit('errorEvent', error, _attempts);
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire('Scheda', 'Non aggiornata contattare l\'amministratore di sistema', 'warning');
+            }
+          });
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire(_errorTitle, _errorDescription, 'error');
+      }
+    },
+    getPsySuicideAssessments: function getPsySuicideAssessments() {
+      //GET ALL CARDS
+      var _wm = this;
+      try {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_SUICIDE_ASSESSMENTS"]).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getSuicideAssessmentsByPsyId: function getSuicideAssessmentsByPsyId(id) {
+      var _wm = this;
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_SUICIDE_ASSESSMENT_BY_PSY_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url).then(function (response) {
+          var error = response.data.errorNumber;
+          var _attempts = response.data.attempts;
+          _wm.errNum = error;
+          if (error == 0) {
+            //alert(JSON.stringify(response))
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    getPsySuicideAssessmentsByUserIstanceId: function getPsySuicideAssessmentsByUserIstanceId(id, first) {
+      var _wm = this;
+      var _param;
+      _wm.PsySuicideAssessment = [];
+      try {
+        var url = _config_ApiUrl__WEBPACK_IMPORTED_MODULE_0__["GET_SUICIDE_ASSESSMENTS_BY_USER_ISTANCE_ID"] + '/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url, {
+          params: {
+            first: first,
+            startDate: this.psyCardSa.startDate,
+            endDate: this.psyCardSa.endDate
+          }
+        }).then(function (response) {
+          var error = response.data.errorNumber;
+          // let _attempts=response.data.attempts;
+          _wm.errNum = error;
+          //alert(JSON.stringify(response.data));
+          if (error == 0) {
+            _wm.mainTitle = "Aggiornamento Cartella psy";
+            if (response.data.PsySuicideAssessment) {
+              // _wm.sASaved=true;
+              // _wm.btnSaSend="Aggiorna";
+
+              _wm.PsySuicideAssessment = response.data.PsySuicideAssessment;
+              for (var prop in _wm.PsySuicideAssessment) {}
+
+              // let _SuicideRep=response.data.PsySuicideAssessment;
+              // _wm.psyCardId=response.data.psyCard.id;
+
+              // _wm.psyCardId=response.data.psyCard.id;
+              // _wm.psySaDoctorId = _SuicideRep.id_doctor;
+
+              // _wm.psySaDoctorName = _SuicideRep.doctor_name;
+              // _wm.psySaDoctorLastname = _SuicideRep.doctor_lastname;
+
+              // _wm.psyriskFactor.maritalStatus =_SuicideRep.marital_status;
+              // _wm.psyriskFactor.drugAndAlcoholAbuse = _SuicideRep.drug_and_alcohol_abuse 	
+              // _wm.psyriskFactor.psychiatricAspect = _SuicideRep.psychiatric_aspect 
+              // _wm.psyriskFactor.suicideAttempt = _SuicideRep.suicide_attempt
+              // _wm.psyriskFactor.suicideAttemptInInstitution = _SuicideRep.suicide_attempt_in_institution 
+              // _wm.psyriskFactor.familySuicide = _SuicideRep.family_suicide
+              // _wm.psyriskFactor.arrestStory = _SuicideRep.arrest_story
+              // _wm.psyriskFactor.compulsiveBehavior = _SuicideRep.compulsive_behavior 
+              // _wm.psyriskFactor.highCrimeProfile = _SuicideRep.high_crime_profile
+              // _wm.psyriskFactor.currentIntoxication = _SuicideRep.current_intoxication 
+              // _wm.psyriskFactor.worryAboutLifeProblem = _SuicideRep.worry_about_life_problem
+              // _wm.psyriskFactor.feelingOfHopelessness = _SuicideRep.feeling_of_hopelessness 
+              // _wm.psyriskFactor.psychoticSymptom = _SuicideRep.psychotic_symptom
+              // _wm.psyriskFactor.depressiveSymptom = _SuicideRep.depressive_symptom
+              // _wm.psyriskFactor.stressAndCoping = _SuicideRep.stress_and_coping 
+              // _wm.psyriskFactor.socialSupport = _SuicideRep.social_support
+              // _wm.psyriskFactor.recentMajorLosse = _SuicideRep.recent_major_losse 
+              // _wm.psyriskFactor.suicidalIdeation = _SuicideRep.suicidal_ideation 
+              // _wm.psyriskFactor.suicidalIntent = _SuicideRep.suicidal_intent 
+              // _wm.psyriskFactor.suicidePlan = _SuicideRep.suicide_plan
+
+              // _wm.psyCardSa.psySuicideNote = _SuicideRep.psy_suicide_note
+              // _wm.psyCardSa.imminentRiskOfSuicide = _SuicideRep.imminent_risk_of_suicide
+              // _wm.psyCardSa.monitoringRecommendation = _SuicideRep.monitoring_recommendation
+              // _wm.psyCardSa.frequency = _SuicideRep.frequency
+              // _wm.psyCardSa.referralMentalHealthService = _SuicideRep.referral_mental_health_service
+              // _wm.psyCardSa.comment = _SuicideRep.comment
+
+              // _wm.allPsySuicideAssessments=response.data.allPsySuicideAssessments;
+            } else {
+              _wm.btnSaSend = "Salva";
+            }
+            _wm.firstSave = false;
+          } else if (error == 7) {
+            _wm.btnSaSend = "Salva";
+            _wm.firstSave = true;
+          } else {
+            // eventBus.$emit('errorEvent', error, _attempts);
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    isObjEmpty: function isObjEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySurvey.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySurvey.vue?vue&type=script&lang=js& ***!
@@ -3866,6 +4208,12 @@ __webpack_require__.r(__webpack_exports__);
     printArchivePsySurvey: function printArchivePsySurvey(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    printArchivesCardPsySurvey: function printArchivesCardPsySurvey(id) {
+      var v_myWindow;
+      var url = 'printPdf/' + id;
       v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
       return false;
     },
@@ -4161,6 +4509,12 @@ __webpack_require__.r(__webpack_exports__);
     printArchivePsyUocDepartment: function printArchivePsyUocDepartment(printPdf) {
       var v_myWindow;
       var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
+    printArchivesCardPsyUocDepartment: function printArchivesCardPsyUocDepartment(id) {
+      var v_myWindow;
+      var url = 'printPdf/' + id;
       v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
       return false;
     },
@@ -5164,17 +5518,18 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_PsyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PsyMentalHealthDepartment.vue */ "./resources/js/components/PsyMentalHealthDepartment.vue");
-/* harmony import */ var _components_PsyRehabilitationPsychiatricCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/PsyRehabilitationPsychiatricCard.vue */ "./resources/js/components/PsyRehabilitationPsychiatricCard.vue");
-/* harmony import */ var _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/PsyRating.vue */ "./resources/js/components/PsyRating.vue");
-/* harmony import */ var _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/PsyUocDepartment.vue */ "./resources/js/components/PsyUocDepartment.vue");
-/* harmony import */ var _components_PsySocialFolder_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/PsySocialFolder.vue */ "./resources/js/components/PsySocialFolder.vue");
-/* harmony import */ var _components_PsyMembershipCard_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/PsyMembershipCard.vue */ "./resources/js/components/PsyMembershipCard.vue");
-/* harmony import */ var _components_PsySurvey_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/PsySurvey.vue */ "./resources/js/components/PsySurvey.vue");
-/* harmony import */ var _components_PsyJsat_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/PsyJsat.vue */ "./resources/js/components/PsyJsat.vue");
+/* harmony import */ var _components_PsySuicideAssessment_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PsySuicideAssessment.vue */ "./resources/js/components/PsySuicideAssessment.vue");
+/* harmony import */ var _components_PsyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/PsyMentalHealthDepartment.vue */ "./resources/js/components/PsyMentalHealthDepartment.vue");
+/* harmony import */ var _components_PsyRehabilitationPsychiatricCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/PsyRehabilitationPsychiatricCard.vue */ "./resources/js/components/PsyRehabilitationPsychiatricCard.vue");
+/* harmony import */ var _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/PsyRating.vue */ "./resources/js/components/PsyRating.vue");
+/* harmony import */ var _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/PsyUocDepartment.vue */ "./resources/js/components/PsyUocDepartment.vue");
+/* harmony import */ var _components_PsySocialFolder_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/PsySocialFolder.vue */ "./resources/js/components/PsySocialFolder.vue");
+/* harmony import */ var _components_PsyMembershipCard_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/PsyMembershipCard.vue */ "./resources/js/components/PsyMembershipCard.vue");
+/* harmony import */ var _components_PsySurvey_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/PsySurvey.vue */ "./resources/js/components/PsySurvey.vue");
+/* harmony import */ var _components_PsyJsat_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/PsyJsat.vue */ "./resources/js/components/PsyJsat.vue");
 // import psyCard from '../components/psyCard.vue';
 // import serdCard from '../components/serdCard.vue';
-// import PsySuicideAssessment from '../components/PsySuicideAssessment.vue';
+
 
 
 
@@ -5195,15 +5550,15 @@ __webpack_require__.r(__webpack_exports__);
     // serdCard, 
     // Home,
     // psyCard,
-    // PsySuicideAssessment,
-    PsyMentalHealthDepartment: _components_PsyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PsyRehabilitationPsychiatricCard: _components_PsyRehabilitationPsychiatricCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    PsyRating: _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    PsyUocDepartment: _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    PsySocialFolder: _components_PsySocialFolder_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    PsyMembershipCard: _components_PsyMembershipCard_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    PsySurvey: _components_PsySurvey_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
-    PsyJsat: _components_PsyJsat_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+    PsySuicideAssessment: _components_PsySuicideAssessment_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    PsyMentalHealthDepartment: _components_PsyMentalHealthDepartment_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    PsyRehabilitationPsychiatricCard: _components_PsyRehabilitationPsychiatricCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    PsyRating: _components_PsyRating_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    PsyUocDepartment: _components_PsyUocDepartment_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    PsySocialFolder: _components_PsySocialFolder_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    PsyMembershipCard: _components_PsyMembershipCard_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    PsySurvey: _components_PsySurvey_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+    PsyJsat: _components_PsyJsat_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
 
     // TraceabilityTherapy,
     // MonitoringClinicalParameter,
@@ -5226,7 +5581,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render=function render(){var _vm=this,_c=_vm._self._c;return _c("div",{staticClass:"container"},[_c("div",{staticClass:"page-content"},[_c("div",{staticClass:"row justify-content-center"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"x_panel"},[_vm._m(0),_vm._v(" "),_c("div",{staticClass:"x_content"},[_c("form",{staticClass:"form-horizontal form-label-left align-items-center",attrs:{id:"demo-form2","data-parsley-validate":""}},[_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px",border:"1px solid black",padding:"5px","text-align":"center","max-width":"1155px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(1),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.entryDate,expression:"psyCardPj.entryDate"}],attrs:{type:"date",name:"entry_date"},domProps:{value:_vm.psyCardPj.entryDate},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"entryDate",$event.target.value);}}})])]),_vm._v(" "),_c("span",{staticClass:"item form-group"},[_vm._m(2),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.valutationDate,expression:"psyCardPj.valutationDate"}],attrs:{type:"date",name:"valutation_date"},domProps:{value:_vm.psyCardPj.valutationDate},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"valutationDate",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("span",{staticStyle:{"max-width":"50%","float":"left"}},[_c("h2",[_vm._v("Informazioni")]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_c("label",{staticClass:"col-form-label col-md-5 col-sm-2 label-align mb-3",attrs:{"for":"information_age"}}),_c("br"),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationAge,expression:"psyCardPj.informationAge"}],attrs:{type:"number",name:"information_age"},domProps:{value:_vm.psyCardPj.informationAge},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"informationAge",$event.target.value);}}}),_vm._v(" "),_c("span",[_vm._v("anni")])])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(3),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLanguage,expression:"psyCardPj.informationLanguage"}],attrs:{type:"radio",name:"information_language",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLanguage,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLanguage","1");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLanguage,expression:"psyCardPj.informationLanguage"}],attrs:{type:"radio",name:"information_language",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLanguage,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLanguage","0");}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(4),_vm._v(" "),_c("span",{staticClass:"col-md-8 col-sm-12"},[_c("span",[_vm._v("Elementare")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLevelLanguage,expression:"psyCardPj.informationLevelLanguage"}],attrs:{type:"radio",name:"information_level_language",value:"Elementare"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLevelLanguage,"Elementare")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLevelLanguage","Elementare");}}}),_vm._v(" "),_c("span",[_vm._v("Intermedio")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLevelLanguage,expression:"psyCardPj.informationLevelLanguage"}],attrs:{type:"radio",name:"information_level_language",value:"Intermedio"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLevelLanguage,"Intermedio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLevelLanguage","Intermedio");}}}),_vm._v(" "),_c("span",[_vm._v("Avanzato")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLevelLanguage,expression:"psyCardPj.informationLevelLanguage"}],attrs:{type:"radio",name:"information_level_language",value:"Avanzato"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLevelLanguage,"Avanzato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLevelLanguage","Avanzato");}}}),_vm._v(" "),_c("span",[_vm._v("Nessuno")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLevelLanguage,expression:"psyCardPj.informationLevelLanguage"}],attrs:{type:"radio",name:"information_level_language",value:"Nessuno"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLevelLanguage,"Nessuno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLevelLanguage","Nessuno");}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(5),_vm._v(" "),_c("span",{staticClass:"col-md-2 col-sm-2"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationNativeLanguage,expression:"psyCardPj.informationNativeLanguage"}],attrs:{type:"text",name:"information_native_language"},domProps:{value:_vm.psyCardPj.informationNativeLanguage},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"informationNativeLanguage",$event.target.value);}}})])])])])]),_vm._v(" "),_c("span",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(6),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("ul",{staticStyle:{"max-width":"30%"}},[_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Italiano"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Italiano")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Italiano");}}}),_vm._v(" "),_c("span",[_vm._v("Italiano")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Europeo"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Europeo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Europeo");}}}),_vm._v(" "),_c("span",[_vm._v("Europeo")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Africano"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Africano")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Africano");}}}),_vm._v(" "),_c("span",[_vm._v("Africano")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Asiatico"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Asiatico")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Asiatico");}}}),_vm._v(" "),_c("span",[_vm._v("Asiatico")])])])]),_vm._v(" "),_c("span",[_c("ul",[_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Nordamericano"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Nordamericano")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Nordamericano");}}}),_vm._v(" "),_c("span",[_vm._v("Nordamericano")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Sudamericano"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Sudamericano")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Sudamericano");}}}),_vm._v(" "),_c("span",[_vm._v("Sudamericano")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Rom-sinti/nomade"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Rom-sinti/nomade")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Rom-sinti/nomade");}}}),_vm._v(" "),_c("span",[_vm._v("Rom-sinti/nomade")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"altro"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","altro");}}}),_vm._v(" "),_c("span",[_vm._v("altro")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackgroundText,expression:"psyCardPj.informationBackgroundText"}],attrs:{type:"text",name:"information_background_text"},domProps:{value:_vm.psyCardPj.informationBackgroundText},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"informationBackgroundText",$event.target.value);}}})])])])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("h2",[_vm._v("Situazione Giuridica")]),_vm._v(" "),_c("span",{staticClass:"row float-left"},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(7),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationNow,expression:"psyCardPj.legalSituationNow"}],attrs:{type:"radio",name:"legal_situation_now",value:"Imputato"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationNow,"Imputato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationNow","Imputato");}}}),_vm._v(" "),_c("span",[_vm._v("Imputato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationNow,expression:"psyCardPj.legalSituationNow"}],attrs:{type:"radio",name:"legal_situation_now",value:"Condannato Definitiv"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationNow,"Condannato Definitiv")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationNow","Condannato Definitiv");}}}),_vm._v(" "),_c("span",[_vm._v("Condannato Definitiv.")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationNow,expression:"psyCardPj.legalSituationNow"}],attrs:{type:"radio",name:"legal_situation_now",value:"Appellante"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationNow,"Appellante")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationNow","Appellante");}}}),_vm._v(" "),_c("span",[_vm._v("Appellante")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationNow,expression:"psyCardPj.legalSituationNow"}],attrs:{type:"radio",name:"legal_situation_now",value:"In trasferimento"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationNow,"In trasferimento")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationNow","In trasferimento");}}}),_vm._v(" "),_c("span",[_vm._v("In trasferimento")])])])])]),_vm._v(" "),_c("span",{staticClass:"row",staticStyle:{"float":"left"}},[_c("span",{staticClass:"col-md-12 col-sm-12",staticStyle:{"margin-left":"4rem"}},[_c("span",{staticClass:"item form-group"},[_vm._m(8),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationCrimeCommitted,expression:"psyCardPj.legalSituationCrimeCommitted"}],attrs:{type:"radio",name:"legal_situation_crime_committed",value:"Contro la persona"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationCrimeCommitted,"Contro la persona")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationCrimeCommitted","Contro la persona");}}}),_vm._v(" "),_c("span",[_vm._v("Contro la persona")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationCrimeCommitted,expression:"psyCardPj.legalSituationCrimeCommitted"}],attrs:{type:"radio",name:"legal_situation_crime_committed",value:"Contro la proprietà"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationCrimeCommitted,"Contro la proprietà")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationCrimeCommitted","Contro la proprietà");}}}),_vm._v(" "),_c("span",[_vm._v("Contro la proprietà")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationCrimeCommitted,expression:"psyCardPj.legalSituationCrimeCommitted"}],attrs:{type:"radio",name:"legal_situation_crime_committed",value:"Contro la legge sugli stupefacenti"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationCrimeCommitted,"Contro la legge sugli stupefacenti")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationCrimeCommitted","Contro la legge sugli stupefacenti");}}}),_vm._v(" "),_c("span",[_vm._v("Contro la legge sugli stupefacenti")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationCrimeCommitted,expression:"psyCardPj.legalSituationCrimeCommitted"}],attrs:{type:"radio",name:"legal_situation_crime_committed",value:"delitto sessuale"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationCrimeCommitted,"delitto sessuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationCrimeCommitted","delitto sessuale");}}}),_vm._v(" "),_c("span",[_vm._v("delitto sessuale")]),_c("br"),_vm._v(" "),_c("input",{attrs:{type:"radio",name:"legal_situation_crime_committed"}}),_vm._v(" "),_c("span",[_vm._v("altro")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationCrimeCommittedOther,expression:"psyCardPj.legalSituationCrimeCommittedOther"}],attrs:{type:"text",name:"legal_situation_crime_committed_other",value:"altro"},domProps:{value:_vm.psyCardPj.legalSituationCrimeCommittedOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"legalSituationCrimeCommittedOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(9),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarceration,expression:"psyCardPj.legalSituationPreviousIncarceration"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarceration,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarceration","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarceration,expression:"psyCardPj.legalSituationPreviousIncarceration"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarceration,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarceration","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])]),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarcerationIf,expression:"psyCardPj.legalSituationPreviousIncarcerationIf"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration_if",value:"Nell'ultimo anno"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarcerationIf,"Nell'ultimo anno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarcerationIf","Nell'ultimo anno");}}}),_vm._v(" "),_c("span",[_vm._v("Nell'ultimo anno")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarcerationIf,expression:"psyCardPj.legalSituationPreviousIncarcerationIf"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration_if",value:"Negli ultimi 6 mesi"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarcerationIf,"Negli ultimi 6 mesi")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarcerationIf","Negli ultimi 6 mesi");}}}),_vm._v(" "),_c("span",[_vm._v("Negli ultimi 6 mesi")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarcerationIf,expression:"psyCardPj.legalSituationPreviousIncarcerationIf"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration_if",value:"Nell'ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarcerationIf,"Nell'ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarcerationIf","Nell'ultimo mese");}}}),_vm._v(" "),_c("span",[_vm._v("Nell'ultimo mese")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarcerationIf,expression:"psyCardPj.legalSituationPreviousIncarcerationIf"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration_if"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarcerationIf,null)},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarcerationIf",null);}}}),_vm._v(" "),_c("span",[_vm._v("indicare qualsiasi rilievo pertinente:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarcerationIfProminance,expression:"psyCardPj.legalSituationPreviousIncarcerationIfProminance"}],attrs:{type:"text",name:"legal_situation_previous_incarceration_if_prominence"},domProps:{value:_vm.psyCardPj.legalSituationPreviousIncarcerationIfProminance},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarcerationIfProminance",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(10),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.criminalRecord,expression:"psyCardPj.criminalRecord"}],attrs:{type:"radio",name:"criminal_record",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.criminalRecord,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"criminalRecord","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.criminalRecord,expression:"psyCardPj.criminalRecord"}],attrs:{type:"radio",name:"criminal_record",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.criminalRecord,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"criminalRecord","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.criminalRecordCondemnation,expression:"psyCardPj.criminalRecordCondemnation"}],attrs:{type:"radio",name:"criminal_record_condemnation"},domProps:{checked:_vm._q(_vm.psyCardPj.criminalRecordCondemnation,null)},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"criminalRecordCondemnation",null);}}}),_vm._v(" "),_c("span",[_vm._v("Condanna più lunga")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.criminalRecordCondemnation,expression:"psyCardPj.criminalRecordCondemnation"}],attrs:{type:"text",name:"criminal_record_condemnation"},domProps:{value:_vm.psyCardPj.criminalRecordCondemnation},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"criminalRecordCondemnation",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("span",{staticClass:"row float"},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(11),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehavior,expression:"psyCardPj.violentBehavior"}],attrs:{type:"radio",name:"violent_behavior",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehavior,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehavior","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehavior,expression:"psyCardPj.violentBehavior"}],attrs:{type:"radio",name:"violent_behavior",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehavior,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehavior","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br")])])])]),_c("br"),_vm._v(" "),_c("span",{staticClass:"row"},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(12),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorActsAggression,expression:"psyCardPj.violentBehaviorActsAggression"}],attrs:{type:"radio",name:"violent_behavior_acts_aggression",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorActsAggression,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorActsAggression","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorActsAggression,expression:"psyCardPj.violentBehaviorActsAggression"}],attrs:{type:"radio",name:"violent_behavior_acts_aggression",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorActsAggression,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorActsAggression","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("span",[_vm._v("Descrivere:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorActsAggressionDesc,expression:"psyCardPj.violentBehaviorActsAggressionDesc"}],attrs:{type:"text",name:"violent_behavior_acts_aggression_desc"},domProps:{value:_vm.psyCardPj.violentBehaviorActsAggressionDesc},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"violentBehaviorActsAggressionDesc",$event.target.value);}}})])])])]),_c("br"),_vm._v(" "),_c("span",{staticClass:"row"},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(13),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorViolentCrimes,expression:"psyCardPj.violentBehaviorViolentCrimes"}],attrs:{type:"radio",name:"violent_behavior_violent_crimes",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorViolentCrimes,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorViolentCrimes","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorViolentCrimes,expression:"psyCardPj.violentBehaviorViolentCrimes"}],attrs:{type:"radio",name:"violent_behavior_violent_crimes",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorViolentCrimes,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorViolentCrimes","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("span",[_vm._v("Tipo:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorCrimesType,expression:"psyCardPj.violentBehaviorCrimesType"}],attrs:{type:"text",name:"violent_behavior_crimes_type"},domProps:{value:_vm.psyCardPj.violentBehaviorCrimesType},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"violentBehaviorCrimesType",$event.target.value);}}})])])])]),_vm._v(" "),_c("span",{staticClass:"row"},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(14),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorDuringIncarceration,expression:"psyCardPj.violentBehaviorDuringIncarceration"}],attrs:{type:"radio",name:"violent_behavior_during_incarceration",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorDuringIncarceration,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorDuringIncarceration","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorDuringIncarceration,expression:"psyCardPj.violentBehaviorDuringIncarceration"}],attrs:{type:"radio",name:"violent_behavior_during_incarceration",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorDuringIncarceration,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorDuringIncarceration","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br")])])])]),_vm._v(" "),_c("span",{staticClass:"row",staticStyle:{"float":"right"}},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(15),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorAggressionProceeding,expression:"psyCardPj.violentBehaviorAggressionProceeding"}],attrs:{type:"radio",name:"violent_behavior_aggression_proceeding",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorAggressionProceeding,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorAggressionProceeding","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorAggressionProceeding,expression:"psyCardPj.violentBehaviorAggressionProceeding"}],attrs:{type:"radio",name:"violent_behavior_aggression_proceeding",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorAggressionProceeding,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorAggressionProceeding","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("span",[_vm._v("Descrivere:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorAggressionProceedingDesc,expression:"psyCardPj.violentBehaviorAggressionProceedingDesc"}],attrs:{type:"text",name:"violent_behavior_aggression_proceeding_desc"},domProps:{value:_vm.psyCardPj.violentBehaviorAggressionProceedingDesc},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"violentBehaviorAggressionProceedingDesc",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(16),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorLastAggression,expression:"psyCardPj.violentBehaviorLastAggression"}],attrs:{type:"text",name:"violent_behavior_last_aggression"},domProps:{value:_vm.psyCardPj.violentBehaviorLastAggression},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"violentBehaviorLastAggression",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(17),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentAggressionNow,expression:"psyCardPj.violentAggressionNow"}],attrs:{type:"radio",name:"violent_aggression_now",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentAggressionNow,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentAggressionNow","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentAggressionNow,expression:"psyCardPj.violentAggressionNow"}],attrs:{type:"radio",name:"violent_aggression_now",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentAggressionNow,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentAggressionNow","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("h2",[_vm._v("Background sociale")]),_vm._v(" "),_c("div",{staticClass:"row-column",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-9 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(18),_vm._v(" "),_c("span",{staticClass:"col-md-9 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Single"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Single")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Single");}}}),_vm._v(" "),_c("span",[_vm._v("Single")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Sposato"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Sposato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Sposato");}}}),_vm._v(" "),_c("span",[_vm._v("Sposato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Convivente"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Convivente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Convivente");}}}),_vm._v(" "),_c("span",[_vm._v("Convivente")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Fidanzato"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Fidanzato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Fidanzato");}}}),_vm._v(" "),_c("span",[_vm._v("Fidanzato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Separato/Divorziato"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Separato/Divorziato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Separato/Divorziato");}}}),_vm._v(" "),_c("span",[_vm._v("Separato/Divorziato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Vedovo"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Vedovo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Vedovo");}}}),_vm._v(" "),_c("span",[_vm._v("Vedovo")]),_c("br")])]),_vm._v(" "),_c("span",{staticClass:"item form-group"},[_vm._m(19),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialStabilityRelation,expression:"psyCardPj.backgroundSocialStabilityRelation"}],attrs:{type:"radio",name:"background_social_stability_relation",value:">1 anno"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialStabilityRelation,">1 anno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialStabilityRelation",">1 anno");}}}),_vm._v(" "),_c("span",[_vm._v(" > 1 anno")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialStabilityRelation,expression:"psyCardPj.backgroundSocialStabilityRelation"}],attrs:{type:"radio",name:"background_social_stability_relation",value:"<1 anno"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialStabilityRelation,"<1 anno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialStabilityRelation","<1 anno");}}}),_vm._v(" "),_c("span",[_vm._v("  1 anno ")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialStabilityProblem,expression:"psyCardPj.backgroundSocialStabilityProblem"}],attrs:{type:"radio",name:"background_social_stability_problem",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialStabilityProblem,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialStabilityProblem","1");}}}),_vm._v(" "),_c("span",[_vm._v("Problematiche")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialRelationProblem,expression:"psyCardPj.backgroundSocialRelationProblem"}],attrs:{type:"text",name:"background_social_relation_problem"},domProps:{value:_vm.psyCardPj.backgroundSocialRelationProblem},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialRelationProblem",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(20),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSons,expression:"psyCardPj.backgroundSocialSons"}],attrs:{type:"radio",name:"background_social_sons",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSons,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSons","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSons,expression:"psyCardPj.backgroundSocialSons"}],attrs:{type:"radio",name:"background_social_sons",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSons,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSons","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialProblem,expression:"psyCardPj.backgroundSocialProblem"}],attrs:{type:"radio",name:"background_social_problem",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialProblem,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialProblem","1");}}}),_vm._v(" "),_c("span",[_vm._v("Problematiche")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSonsProblem,expression:"psyCardPj.backgroundSocialSonsProblem"}],attrs:{type:"text",name:"background_social_sons_problem"},domProps:{value:_vm.psyCardPj.backgroundSocialSonsProblem},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialSonsProblem",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(21),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Vive in casa di proprietà"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Vive in casa di proprietà")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Vive in casa di proprietà");}}}),_vm._v(" "),_c("span",[_vm._v("Vive in casa di proprietà")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Vive in affitto"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Vive in affitto")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Vive in affitto");}}}),_vm._v(" "),_c("span",[_vm._v("Vive in affitto")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Vive con la famiglia"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Vive con la famiglia")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Vive con la famiglia");}}}),_vm._v(" "),_c("span",[_vm._v("Vive con la famiglia")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Hotel/da amici"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Hotel/da amici")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Hotel/da amici");}}}),_vm._v(" "),_c("span",[_vm._v("Hotel/da amici")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Istituzione"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Istituzione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Istituzione");}}}),_vm._v(" "),_c("span",[_vm._v("Istituzione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Senza casa"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Senza casa")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Senza casa");}}}),_vm._v(" "),_c("span",[_vm._v("Senza casa")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"In custodia"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"In custodia")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","In custodia");}}}),_vm._v(" "),_c("span",[_vm._v("In custodia")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouseOther,expression:"psyCardPj.backgroundSocialSituationHouseOther"}],attrs:{type:"text",name:"background_social_situation_house_other"},domProps:{value:_vm.psyCardPj.backgroundSocialSituationHouseOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouseOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(22),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamily,expression:"psyCardPj.backgroundSocialSupportFamily"}],attrs:{type:"radio",name:"background_social_support_family",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportFamily,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamily","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamily,expression:"psyCardPj.backgroundSocialSupportFamily"}],attrs:{type:"radio",name:"background_social_support_family",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportFamily,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamily","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamilyCont,expression:"psyCardPj.backgroundSocialSupportFamilyCont"}],attrs:{type:"radio",name:"background_social_support_family_cont",value:"Contatti frequenti"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportFamilyCont,"Contatti frequenti")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamilyCont","Contatti frequenti");}}}),_vm._v(" "),_c("span",[_vm._v("Contatti frequenti")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamilyCont,expression:"psyCardPj.backgroundSocialSupportFamilyCont"}],attrs:{type:"radio",name:"background_social_support_family_cont",value:"Contatti sporadici"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportFamilyCont,"Contatti sporadici")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamilyCont","Contatti sporadici");}}}),_vm._v(" "),_c("span",[_vm._v("Contatti sporadici")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamilyCont,expression:"psyCardPj.backgroundSocialSupportFamilyCont"}],attrs:{type:"radio",name:"background_social_support_family_cont",value:"Problematiche"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportFamilyCont,"Problematiche")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamilyCont","Problematiche");}}}),_vm._v(" "),_c("span",[_vm._v("Problematiche")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamilyProblem,expression:"psyCardPj.backgroundSocialSupportFamilyProblem"}],attrs:{type:"text",name:"background_social_support_family_problem"},domProps:{value:_vm.psyCardPj.backgroundSocialSupportFamilyProblem},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamilyProblem",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(23),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupport,expression:"psyCardPj.backgroundSocialSupport"}],attrs:{type:"radio",name:"background_social_support",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupport,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupport","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupport,expression:"psyCardPj.backgroundSocialSupport"}],attrs:{type:"radio",name:"background_social_support",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupport,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupport","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"Amici conoscenti"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"Amici conoscenti")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","Amici conoscenti");}}}),_vm._v(" "),_c("span",[_vm._v("Amici conoscenti")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"Associazioni"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"Associazioni")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","Associazioni");}}}),_vm._v(" "),_c("span",[_vm._v("Associazioni")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"Parrocchia"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"Parrocchia")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","Parrocchia");}}}),_vm._v(" "),_c("span",[_vm._v("Parrocchia")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"Associazioni sanitarie"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"Associazioni sanitarie")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","Associazioni sanitarie");}}}),_vm._v(" "),_c("span",[_vm._v("Associazioni sanitarie")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"altro"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","altro");}}}),_vm._v(" "),_c("span",[_vm._v("altro")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportOther,expression:"psyCardPj.backgroundSocialSupportOther"}],attrs:{type:"text",name:"background_social_support_other"},domProps:{value:_vm.psyCardPj.backgroundSocialSupportOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialSupportOther",$event.target.value);}}}),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"Problematiche"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"Problematiche")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","Problematiche");}}}),_vm._v(" "),_c("span",[_vm._v("Problematiche")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportProblem,expression:"psyCardPj.backgroundSocialSupportProblem"}],attrs:{type:"text",name:"background_social_support_problem"},domProps:{value:_vm.psyCardPj.backgroundSocialSupportProblem},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialSupportProblem",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(24),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSchooling,expression:"psyCardPj.backgroundSocialSchooling"}],attrs:{type:"radio",name:"background_social_schooling",value:"Analfabeta"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSchooling,"Analfabeta")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSchooling","Analfabeta");}}}),_vm._v(" "),_c("span",[_vm._v("Analfabeta")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSchooling,expression:"psyCardPj.backgroundSocialSchooling"}],attrs:{type:"radio",name:"background_social_schooling",value:"Scuola primaria"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSchooling,"Scuola primaria")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSchooling","Scuola primaria");}}}),_vm._v(" "),_c("span",[_vm._v("Scuola primaria")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSchooling,expression:"psyCardPj.backgroundSocialSchooling"}],attrs:{type:"radio",name:"background_social_schooling",value:"Scuola secondaria di primo grado"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSchooling,"Scuola secondaria di primo grado")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSchooling","Scuola secondaria di primo grado");}}}),_vm._v(" "),_c("span",[_vm._v("Scuola secondaria di primo grado")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSchooling,expression:"psyCardPj.backgroundSocialSchooling"}],attrs:{type:"radio",name:"background_social_schooling",value:"Diploma scuola secondaria di secondo grado"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSchooling,"Diploma scuola secondaria di secondo grado")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSchooling","Diploma scuola secondaria di secondo grado");}}}),_vm._v(" "),_c("span",[_vm._v("Diploma scuola secondaria di secondo grado")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSchooling,expression:"psyCardPj.backgroundSocialSchooling"}],attrs:{type:"radio",name:"background_social_schooling",value:"Laurea/post lauream"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSchooling,"Laurea/post lauream")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSchooling","Laurea/post lauream");}}}),_vm._v(" "),_c("span",[_vm._v("Laurea/post lauream")]),_c("br")])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(25),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Impiego fisso"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Impiego fisso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Impiego fisso");}}}),_vm._v(" "),_c("span",[_vm._v("Impiego fisso")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Impiego part-time"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Impiego part-time")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Impiego part-time");}}}),_vm._v(" "),_c("span",[_vm._v("Impiego part-time")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Impiego stagionale"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Impiego stagionale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Impiego stagionale");}}}),_vm._v(" "),_c("span",[_vm._v("Impiego stagionale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Diploma scuola secondaria di secondo grado"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Diploma scuola secondaria di secondo grado")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Diploma scuola secondaria di secondo grado");}}}),_vm._v(" "),_c("span",[_vm._v("Studente")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Assistente sociale"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Assistente sociale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Assistente sociale");}}}),_vm._v(" "),_c("span",[_vm._v("Assistente sociale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Disabile"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Disabile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Disabile");}}}),_vm._v(" "),_c("span",[_vm._v("Disabile")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Attività criminale"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Attività criminale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Attività criminale");}}}),_vm._v(" "),_c("span",[_vm._v("Attività criminale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Carcerazione"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Carcerazione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Carcerazione");}}}),_vm._v(" "),_c("span",[_vm._v("Carcerazione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Nessun mezzo di sostentamento"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Nessun mezzo di sostentamento")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Nessun mezzo di sostentamento");}}}),_vm._v(" "),_c("span",[_vm._v("Nessun mezzo di sostentamento")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWorkOther,expression:"psyCardPj.backgroundSocialWorkOther"}],attrs:{type:"text",name:"background_social_work_other"},domProps:{value:_vm.psyCardPj.backgroundSocialWorkOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialWorkOther",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(26),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUse,expression:"psyCardPj.substanceUse"}],attrs:{type:"radio",name:"substance_use",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUse,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUse","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUse,expression:"psyCardPj.substanceUse"}],attrs:{type:"radio",name:"substance_use",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUse,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUse","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(27),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseTabacco,expression:"psyCardPj.substanceUseTabacco"}],attrs:{type:"radio",name:"substance_use_tabacco",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseTabacco,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseTabacco","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseTabacco,expression:"psyCardPj.substanceUseTabacco"}],attrs:{type:"radio",name:"substance_use_tabacco",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseTabacco,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseTabacco","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("table",[_c("tr"),_vm._v(" "),_vm._m(28),_vm._v(" "),_c("tr",[_c("td",[_vm._v("alcol")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseAlcol,expression:"psyCardPj.substanceUseAlcol"}],attrs:{type:"radio",name:"substance_use_alcol",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseAlcol,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseAlcol","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseAlcol,expression:"psyCardPj.substanceUseAlcol"}],attrs:{type:"radio",name:"substance_use_alcol",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseAlcol,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseAlcol","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseAlcol,expression:"psyCardPj.substanceUseAlcol"}],attrs:{type:"radio",name:"substance_use_alcol",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseAlcol,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseAlcol","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseAlcol,expression:"psyCardPj.substanceUseAlcol"}],attrs:{type:"radio",name:"substance_use_alcol",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseAlcol,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseAlcol","precedente");}}})])]),_vm._v(" "),_c("tr",[_c("td",[_vm._v("Marijuana")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMarijuana,expression:"psyCardPj.substanceUseMarijuana"}],attrs:{type:"radio",name:"substance_use_marijuana",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMarijuana,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMarijuana","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMarijuana,expression:"psyCardPj.substanceUseMarijuana"}],attrs:{type:"radio",name:"substance_use_marijuana",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMarijuana,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMarijuana","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMarijuana,expression:"psyCardPj.substanceUseMarijuana"}],attrs:{type:"radio",name:"substance_use_marijuana",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMarijuana,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMarijuana","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMarijuana,expression:"psyCardPj.substanceUseMarijuana"}],attrs:{type:"radio",name:"substance_use_marijuana",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMarijuana,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMarijuana","precedente");}}})])]),_vm._v(" "),_c("tr",[_c("td",[_vm._v("Eroina")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseEroin,expression:"psyCardPj.substanceUseEroin"}],attrs:{type:"radio",name:"substance_use_eroin",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseEroin,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseEroin","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseEroin,expression:"psyCardPj.substanceUseEroin"}],attrs:{type:"radio",name:"substance_use_eroin",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseEroin,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseEroin","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseEroin,expression:"psyCardPj.substanceUseEroin"}],attrs:{type:"radio",name:"substance_use_eroin",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseEroin,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseEroin","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseEroin,expression:"psyCardPj.substanceUseEroin"}],attrs:{type:"radio",name:"substance_use_eroin",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseEroin,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseEroin","precedente");}}})])]),_vm._v(" "),_c("tr",[_c("td",[_vm._v("Cocaina")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCocaine,expression:"psyCardPj.substanceUseCocaine"}],attrs:{type:"radio",name:"substance_use_cocaine",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCocaine,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCocaine","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCocaine,expression:"psyCardPj.substanceUseCocaine"}],attrs:{type:"radio",name:"substance_use_cocaine",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCocaine,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCocaine","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCocaine,expression:"psyCardPj.substanceUseCocaine"}],attrs:{type:"radio",name:"substance_use_cocaine",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCocaine,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCocaine","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCocaine,expression:"psyCardPj.substanceUseCocaine"}],attrs:{type:"radio",name:"substance_use_cocaine",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCocaine,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCocaine","precedente");}}})])]),_vm._v(" "),_c("tr",[_c("td",[_vm._v("Metanfetamine")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMetamphetamin,expression:"psyCardPj.substanceUseMetamphetamin"}],attrs:{type:"radio",name:"substance_use_metamphetamin",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMetamphetamin,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMetamphetamin","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMetamphetamin,expression:"psyCardPj.substanceUseMetamphetamin"}],attrs:{type:"radio",name:"substance_use_metamphetamin",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMetamphetamin,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMetamphetamin","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMetamphetamin,expression:"psyCardPj.substanceUseMetamphetamin"}],attrs:{type:"radio",name:"substance_use_metamphetamin",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMetamphetamin,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMetamphetamin","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMetamphetamin,expression:"psyCardPj.substanceUseMetamphetamin"}],attrs:{type:"radio",name:"substance_use_metamphetamin",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMetamphetamin,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMetamphetamin","precedente");}}})])]),_vm._v(" "),_c("tr",[_c("td",[_vm._v("altro")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseOther,expression:"psyCardPj.substanceUseOther"}],attrs:{type:"radio",name:"substance_use_other",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseOther,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseOther","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseOther,expression:"psyCardPj.substanceUseOther"}],attrs:{type:"radio",name:"substance_use_other",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseOther,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseOther","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseOther,expression:"psyCardPj.substanceUseOther"}],attrs:{type:"radio",name:"substance_use_other",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseOther,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseOther","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseOther,expression:"psyCardPj.substanceUseOther"}],attrs:{type:"radio",name:"substance_use_other",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseOther,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseOther","precedente");}}})])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(29),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseDescription,expression:"psyCardPj.substanceUseDescription"}],attrs:{type:"text",name:"substance_use_description",value:"1"},domProps:{value:_vm.psyCardPj.substanceUseDescription},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"substanceUseDescription",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(30),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseIntravenousMode,expression:"psyCardPj.substanceUseIntravenousMode"}],attrs:{type:"radio",name:"substance_use_intravenous_mode",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseIntravenousMode,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseIntravenousMode","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseIntravenousMode,expression:"psyCardPj.substanceUseIntravenousMode"}],attrs:{type:"radio",name:"substance_use_intravenous_mode",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseIntravenousMode,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseIntravenousMode","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("div",{staticClass:"row float-left"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(31),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadoneTreatment,expression:"psyCardPj.substanceUseCurrentMethadoneTreatment"}],attrs:{type:"radio",name:"substance_use_current_methadone_treatment",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadoneTreatment,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadoneTreatment","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadoneTreatment,expression:"psyCardPj.substanceUseCurrentMethadoneTreatment"}],attrs:{type:"radio",name:"substance_use_current_methadone_treatment",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadoneTreatment,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadoneTreatment","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadonList,expression:"psyCardPj.substanceUseCurrentMethadonList"}],attrs:{type:"radio",name:"substance_use_current_methadon_list",value:"nel passato"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadonList,"nel passato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadonList","nel passato");}}}),_vm._v(" "),_c("span",[_vm._v("nel passato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadonList,expression:"psyCardPj.substanceUseCurrentMethadonList"}],attrs:{type:"radio",name:"substance_use_current_methadon_list",value:"meno 1 mese"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadonList,"meno 1 mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadonList","meno 1 mese");}}}),_vm._v(" "),_c("span",[_vm._v(" meno 1 mese ")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadonList,expression:"psyCardPj.substanceUseCurrentMethadonList"}],attrs:{type:"radio",name:"substance_use_current_methadon_list",value:"meno 1 anno"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadonList,"meno 1 anno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadonList","meno 1 anno");}}}),_vm._v(" "),_c("span",[_vm._v(" meno 1 anno ")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadonList,expression:"psyCardPj.substanceUseCurrentMethadonList"}],attrs:{type:"radio",name:"substance_use_current_methadon_list",value:"più 1 anno"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadonList,"più 1 anno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadonList","più 1 anno");}}}),_vm._v(" "),_c("span",[_vm._v(" più 1 anno ")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(32),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuse,expression:"psyCardPj.substanceUseSubstanceAbuse"}],attrs:{type:"radio",name:"substance_use_substance_abuse",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuse,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuse","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuse,expression:"psyCardPj.substanceUseSubstanceAbuse"}],attrs:{type:"radio",name:"substance_use_substance_abuse",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuse,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuse","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Alcolisti e Narcotici"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Alcolisti e Narcotici")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Alcolisti e Narcotici");}}}),_vm._v(" "),_c("span",[_vm._v("AA/NA Alcolisti e Narcotici anonimi")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Disintossicazione"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Disintossicazione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Disintossicazione");}}}),_vm._v(" "),_c("span",[_vm._v("Disintossicazione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Comunità terapeutica"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Comunità terapeutica")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Comunità terapeutica");}}}),_vm._v(" "),_c("span",[_vm._v(" Comunità terapeutica")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Trattamento in carcere"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Trattamento in carcere")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Trattamento in carcere");}}}),_vm._v(" "),_c("span",[_vm._v("Trattamento in carcere")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Counseling"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Counseling")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Counseling");}}}),_vm._v(" "),_c("span",[_vm._v("Counseling")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseOther,expression:"psyCardPj.substanceUseSubstanceAbuseOther"}],attrs:{type:"text",name:"substance_use_substance_abuse_other"},domProps:{value:_vm.psyCardPj.substanceUseSubstanceAbuseOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseOther",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(33),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatments,expression:"psyCardPj.psycTreatments"}],attrs:{type:"radio",name:"psyc_treatments",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatments,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatments","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatments,expression:"psyCardPj.psycTreatments"}],attrs:{type:"radio",name:"psyc_treatments",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatments,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatments","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("table",[_vm._m(34),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsClinicalEvaluation,expression:"psyCardPj.psycTreatmentsClinicalEvaluation"}],attrs:{type:"radio",name:"psyc_treatments_clinical_evaluation",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsClinicalEvaluation,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsClinicalEvaluation","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsClinicalEvaluation,expression:"psyCardPj.psycTreatmentsClinicalEvaluation"}],attrs:{type:"radio",name:"psyc_treatments_clinical_evaluation",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsClinicalEvaluation,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsClinicalEvaluation","Da sempre");}}})]),_vm._v(" "),_vm._m(35)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsClinicalEvaluationOrder,expression:"psyCardPj.psycTreatmentsClinicalEvaluationOrder"}],attrs:{type:"radio",name:"psyc_treatments_clinical_evaluation_order",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsClinicalEvaluationOrder,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsClinicalEvaluationOrder","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsClinicalEvaluationOrder,expression:"psyCardPj.psycTreatmentsClinicalEvaluationOrder"}],attrs:{type:"radio",name:"psyc_treatments_clinical_evaluation_order",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsClinicalEvaluationOrder,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsClinicalEvaluationOrder","Da sempre");}}})]),_vm._v(" "),_vm._m(36)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsInPrison,expression:"psyCardPj.psycTreatmentsInPrison"}],attrs:{type:"radio",name:"psyc_treatments_in_prison",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsInPrison,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsInPrison","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsInPrison,expression:"psyCardPj.psycTreatmentsInPrison"}],attrs:{type:"radio",name:"psyc_treatments_in_prison",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsInPrison,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsInPrison","Da sempre");}}})]),_vm._v(" "),_vm._m(37)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsComunity,expression:"psyCardPj.psycTreatmentsComunity"}],attrs:{type:"radio",name:"psyc_treatments_comunity",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsComunity,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsComunity","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsComunity,expression:"psyCardPj.psycTreatmentsComunity"}],attrs:{type:"radio",name:"psyc_treatments_comunity",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsComunity,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsComunity","Da sempre");}}})]),_vm._v(" "),_vm._m(38)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsHospital,expression:"psyCardPj.psycTreatmentsHospital"}],attrs:{type:"radio",name:"psyc_treatments_hospital",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsHospital,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsHospital","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsHospital,expression:"psyCardPj.psycTreatmentsHospital"}],attrs:{type:"radio",name:"psyc_treatments_hospital",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsHospital,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsHospital","Da sempre");}}})]),_vm._v(" "),_vm._m(39),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsCheckHospital,expression:"psyCardPj.psycTreatmentsCheckHospital"}],attrs:{type:"radio",name:"psyc_treatments_check_hospital",value:"> 6 mesi"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsCheckHospital,"> 6 mesi")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsCheckHospital","> 6 mesi");}}}),_vm._v(" "),_c("span",[_vm._v("> 6 mesi")])])]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsCourtOrder,expression:"psyCardPj.psycTreatmentsCourtOrder"}],attrs:{type:"radio",name:"psyc_treatments_court_order",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsCourtOrder,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsCourtOrder","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsCourtOrder,expression:"psyCardPj.psycTreatmentsCourtOrder"}],attrs:{type:"radio",name:"psyc_treatments_court_order",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsCourtOrder,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsCourtOrder","Da sempre");}}})]),_vm._v(" "),_vm._m(40),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsCheckOrder,expression:"psyCardPj.psycTreatmentsCheckOrder"}],attrs:{type:"radio",name:"psyc_treatments_check_order",value:"> 6 mesi"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsCheckOrder,"> 6 mesi")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsCheckOrder","> 6 mesi");}}}),_vm._v(" "),_c("span",[_vm._v("> 6 mesi")])])]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsFarmacy,expression:"psyCardPj.psycTreatmentsFarmacy"}],attrs:{type:"radio",name:"psyc_treatments_farmacy",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsFarmacy,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsFarmacy","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsFarmacy,expression:"psyCardPj.psycTreatmentsFarmacy"}],attrs:{type:"radio",name:"psyc_treatments_farmacy",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsFarmacy,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsFarmacy","Da sempre");}}})]),_vm._v(" "),_vm._m(41),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsCheckFarmacy,expression:"psyCardPj.psycTreatmentsCheckFarmacy"}],attrs:{type:"radio",name:"psyc_treatments_check_farmacy",value:" > 6 mesi"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsCheckFarmacy," > 6 mesi")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsCheckFarmacy"," > 6 mesi");}}}),_vm._v(" "),_c("span",[_vm._v("> 6 mesi")])])]),_vm._v(" "),_c("tr",[_c("td",{staticStyle:{border:"0"}}),_vm._v(" "),_c("td",{staticStyle:{border:"0"}}),_vm._v(" "),_c("td",[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(42),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsType,expression:"psyCardPj.psycTreatmentsType"}],attrs:{type:"text",name:"psyc_treatments_type"},domProps:{value:_vm.psyCardPj.psycTreatmentsType},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"psycTreatmentsType",$event.target.value);}}})])])])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(43),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsPreviousTrauma,expression:"psyCardPj.psycTreatmentsPreviousTrauma"}],attrs:{type:"radio",name:"psyc_treatments_previous_trauma",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsPreviousTrauma,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsPreviousTrauma","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsPreviousTrauma,expression:"psyCardPj.psycTreatmentsPreviousTrauma"}],attrs:{type:"radio",name:"psyc_treatments_previous_trauma",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsPreviousTrauma,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsPreviousTrauma","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(44),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsPreviousTraumaDesc,expression:"psyCardPj.psycTreatmentsPreviousTraumaDesc"}],attrs:{type:"text",name:"psyc_treatments_previous_trauma_desc"},domProps:{value:_vm.psyCardPj.psycTreatmentsPreviousTraumaDesc},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"psycTreatmentsPreviousTraumaDesc",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(45),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRisk,expression:"psyCardPj.suicidalRisk"}],attrs:{type:"radio",name:"suicidal_risk",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRisk,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRisk","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRisk,expression:"psyCardPj.suicidalRisk"}],attrs:{type:"radio",name:"suicidal_risk",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRisk,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRisk","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(46),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskNumberAttempts,expression:"psyCardPj.suicidalRiskNumberAttempts"}],attrs:{type:"text",name:"suicidal_risk_number_attempts"},domProps:{value:_vm.psyCardPj.suicidalRiskNumberAttempts},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskNumberAttempts",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(47),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskTimeAttempts,expression:"psyCardPj.suicidalRiskTimeAttempts"}],attrs:{type:"text",name:"suicidal_risk_time_attempts"},domProps:{value:_vm.psyCardPj.suicidalRiskTimeAttempts},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskTimeAttempts",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(48),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Arma da fuoco"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Arma da fuoco")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Arma da fuoco");}}}),_vm._v(" "),_c("span",[_vm._v("Arma da fuoco")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Salto/defenestrazione"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Salto/defenestrazione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Salto/defenestrazione");}}}),_vm._v(" "),_c("span",[_vm._v("Salto/defenestrazione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Dissanguamento"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Dissanguamento")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Dissanguamento");}}}),_vm._v(" "),_c("span",[_vm._v("Dissanguamento")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Overdose di farmaci"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Overdose di farmaci")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Overdose di farmaci");}}}),_vm._v(" "),_c("span",[_vm._v("Overdose di farmaci")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Impiccagione/asfissia"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Impiccagione/asfissia")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Impiccagione/asfissia");}}}),_vm._v(" "),_c("span",[_vm._v("Impiccagione/asfissia")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Avvelenamento monossido carbonio"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Avvelenamento monossido carbonio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Avvelenamento monossido carbonio");}}}),_vm._v(" "),_c("span",[_vm._v("Avvelenamento da monossido di carbonio")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Autoveicolo"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Autoveicolo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Autoveicolo");}}}),_vm._v(" "),_c("span",[_vm._v("Autoveicolo")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeaponOther,expression:"psyCardPj.suicidalRiskMethodsWeaponOther"}],attrs:{type:"text",name:"suicidal_risk_methods_weapon_other"},domProps:{value:_vm.psyCardPj.suicidalRiskMethodsWeaponOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeaponOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(49),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskLevelIdeation,expression:"psyCardPj.suicidalRiskLevelIdeation"}],attrs:{type:"radio",name:"suicidal_risk_level_ideation",value:"Nessun proposito"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskLevelIdeation,"Nessun proposito")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskLevelIdeation","Nessun proposito");}}}),_vm._v(" "),_c("span",[_vm._v("Nessun proposito")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskLevelIdeation,expression:"psyCardPj.suicidalRiskLevelIdeation"}],attrs:{type:"radio",name:"suicidal_risk_level_ideation",value:"Ideazione/nessun intento suicidio"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskLevelIdeation,"Ideazione/nessun intento suicidio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskLevelIdeation","Ideazione/nessun intento suicidio");}}}),_vm._v(" "),_c("span",[_vm._v("Ideazione/ma nessun intento di attuare suicidio")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskLevelIdeation,expression:"psyCardPj.suicidalRiskLevelIdeation"}],attrs:{type:"radio",name:"suicidal_risk_level_ideation",value:"Ideazione/intenzione suicidio"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskLevelIdeation,"Ideazione/intenzione suicidio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskLevelIdeation","Ideazione/intenzione suicidio");}}}),_vm._v(" "),_c("span",[_vm._v("Ideazione/qualche intenzione di attuare suicidio")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskLevelIdeation,expression:"psyCardPj.suicidalRiskLevelIdeation"}],attrs:{type:"radio",name:"suicidal_risk_level_ideation",value:"Ideazione più o meno espressa"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskLevelIdeation,"Ideazione più o meno espressa")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskLevelIdeation","Ideazione più o meno espressa");}}}),_vm._v(" "),_c("span",[_vm._v("Ideazione più o meno espressa/in osservazione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskLevelIdeation,expression:"psyCardPj.suicidalRiskLevelIdeation"}],attrs:{type:"radio",name:"suicidal_risk_level_ideation",value:"Intenzione suicidarsi durante la detenzione"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskLevelIdeation,"Intenzione suicidarsi durante la detenzione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskLevelIdeation","Intenzione suicidarsi durante la detenzione");}}}),_vm._v(" "),_c("span",[_vm._v("Intenzione di commettere atti suicidari durante la detenzione")]),_c("br")])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(50),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSucideTentative,expression:"psyCardPj.suicidalRiskSucideTentative"}],attrs:{type:"radio",name:"suicidal_risk_sucide_tentative",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskSucideTentative,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskSucideTentative","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSucideTentative,expression:"psyCardPj.suicidalRiskSucideTentative"}],attrs:{type:"radio",name:"suicidal_risk_sucide_tentative",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskSucideTentative,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskSucideTentative","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(51),_c("br"),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSucideTentativeNumber,expression:"psyCardPj.suicidalRiskSucideTentativeNumber"}],attrs:{type:"text",name:"suicidal_risk_sucide_tentative_number"},domProps:{value:_vm.psyCardPj.suicidalRiskSucideTentativeNumber},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskSucideTentativeNumber",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(52),_c("br"),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskTentativeTime,expression:"psyCardPj.suicidalRiskTentativeTime"}],attrs:{type:"text",name:"suicidal_risk_tentative_time"},domProps:{value:_vm.psyCardPj.suicidalRiskTentativeTime},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskTentativeTime",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(53),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsTwo,expression:"psyCardPj.suicidalRiskMethodsTwo"}],attrs:{type:"radio",name:"suicidal_risk_methods_two",value:"Dissanguamento"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsTwo,"Dissanguamento")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsTwo","Dissanguamento");}}}),_vm._v(" "),_c("span",[_vm._v("Dissanguamento")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsTwo,expression:"psyCardPj.suicidalRiskMethodsTwo"}],attrs:{type:"radio",name:"suicidal_risk_methods_two",value:"Overdose di farmaci"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsTwo,"Overdose di farmaci")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsTwo","Overdose di farmaci");}}}),_vm._v(" "),_c("span",[_vm._v("Overdose di farmaci")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsTwo,expression:"psyCardPj.suicidalRiskMethodsTwo"}],attrs:{type:"radio",name:"suicidal_risk_methods_two",value:"Impiccagione/asfissia"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsTwo,"Impiccagione/asfissia")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsTwo","Impiccagione/asfissia");}}}),_vm._v(" "),_c("span",[_vm._v("Impiccagione/asfissia")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsTwo,expression:"psyCardPj.suicidalRiskMethodsTwo"}],attrs:{type:"radio",name:"suicidal_risk_methods_two",value:"altro"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsTwo,"altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsTwo","altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsTwoOther,expression:"psyCardPj.suicidalRiskMethodsTwoOther"}],attrs:{type:"text",name:"suicidal_risk_methods_two_other"},domProps:{value:_vm.psyCardPj.suicidalRiskMethodsTwoOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskMethodsTwoOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(54),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskActOfSelfHarm,expression:"psyCardPj.suicidalRiskActOfSelfHarm"}],attrs:{type:"radio",name:"suicidal_risk_act_of_self_harm",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskActOfSelfHarm,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskActOfSelfHarm","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskActOfSelfHarm,expression:"psyCardPj.suicidalRiskActOfSelfHarm"}],attrs:{type:"radio",name:"suicidal_risk_act_of_self_harm",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskActOfSelfHarm,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskActOfSelfHarm","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("span",[_vm._v("descrivere:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskActOfSelfHarmDesc,expression:"psyCardPj.suicidalRiskActOfSelfHarmDesc"}],attrs:{type:"text",name:"suicidal_risk_act_of_self_harm_desc"},domProps:{value:_vm.psyCardPj.suicidalRiskActOfSelfHarmDesc},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskActOfSelfHarmDesc",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("table",[_vm._m(55),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSomaticConcerns,expression:"psyCardPj.mentalConditionsSomaticConcerns"}],attrs:{type:"radio",name:"mental_conditions_somatic_concerns",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSomaticConcerns,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSomaticConcerns","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSomaticConcerns,expression:"psyCardPj.mentalConditionsSomaticConcerns"}],attrs:{type:"radio",name:"mental_conditions_somatic_concerns",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSomaticConcerns,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSomaticConcerns","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSomaticConcerns,expression:"psyCardPj.mentalConditionsSomaticConcerns"}],attrs:{type:"radio",name:"mental_conditions_somatic_concerns",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSomaticConcerns,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSomaticConcerns","Assente");}}})]),_vm._v(" "),_vm._m(56),_vm._v(" "),_vm._m(57)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAnxiety,expression:"psyCardPj.mentalConditionsAnxiety"}],attrs:{type:"radio",name:"mental_conditions_anxiety",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAnxiety,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAnxiety","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAnxiety,expression:"psyCardPj.mentalConditionsAnxiety"}],attrs:{type:"radio",name:"mental_conditions_anxiety",value:"possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAnxiety,"possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAnxiety","possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAnxiety,expression:"psyCardPj.mentalConditionsAnxiety"}],attrs:{type:"radio",name:"mental_conditions_anxiety",value:"assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAnxiety,"assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAnxiety","assente");}}})]),_vm._v(" "),_vm._m(58),_vm._v(" "),_vm._m(59)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDepression,expression:"psyCardPj.mentalConditionsDepression"}],attrs:{type:"radio",name:"mental_conditions_depression",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDepression,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDepression","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDepression,expression:"psyCardPj.mentalConditionsDepression"}],attrs:{type:"radio",name:"mental_conditions_depression",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDepression,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDepression","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDepression,expression:"psyCardPj.mentalConditionsDepression"}],attrs:{type:"radio",name:"mental_conditions_depression",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDepression,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDepression","Assente");}}})]),_vm._v(" "),_vm._m(60),_vm._v(" "),_vm._m(61)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuicide,expression:"psyCardPj.mentalConditionsSuicide"}],attrs:{type:"radio",name:"mental_conditions_suicide",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuicide,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuicide","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuicide,expression:"psyCardPj.mentalConditionsSuicide"}],attrs:{type:"radio",name:"mental_conditions_suicide",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuicide,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuicide","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuicide,expression:"psyCardPj.mentalConditionsSuicide"}],attrs:{type:"radio",name:"mental_conditions_suicide",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuicide,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuicide","Assente");}}})]),_vm._v(" "),_vm._m(62),_vm._v(" "),_vm._m(63)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGuilt,expression:"psyCardPj.mentalConditionsGuilt"}],attrs:{type:"radio",name:"mental_conditions_guilt",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGuilt,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGuilt","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGuilt,expression:"psyCardPj.mentalConditionsGuilt"}],attrs:{type:"radio",name:"mental_conditions_guilt",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGuilt,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGuilt","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGuilt,expression:"psyCardPj.mentalConditionsGuilt"}],attrs:{type:"radio",name:"mental_conditions_guilt",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGuilt,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGuilt","Assente");}}})]),_vm._v(" "),_vm._m(64),_vm._v(" "),_vm._m(65)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsHostility,expression:"psyCardPj.mentalConditionsHostility"}],attrs:{type:"radio",name:"mental_conditions_hostility",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsHostility,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsHostility","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsHostility,expression:"psyCardPj.mentalConditionsHostility"}],attrs:{type:"radio",name:"mental_conditions_hostility",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsHostility,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsHostility","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsHostility,expression:"psyCardPj.mentalConditionsHostility"}],attrs:{type:"radio",name:"mental_conditions_hostility",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsHostility,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsHostility","Assente");}}})]),_vm._v(" "),_vm._m(66),_vm._v(" "),_vm._m(67)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsElevatedMood,expression:"psyCardPj.mentalConditionsElevatedMood"}],attrs:{type:"radio",name:"mental_conditions_elevated_mood",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsElevatedMood,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsElevatedMood","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsElevatedMood,expression:"psyCardPj.mentalConditionsElevatedMood"}],attrs:{type:"radio",name:"mental_conditions_elevated_mood",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsElevatedMood,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsElevatedMood","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsElevatedMood,expression:"psyCardPj.mentalConditionsElevatedMood"}],attrs:{type:"radio",name:"mental_conditions_elevated_mood",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsElevatedMood,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsElevatedMood","Assente");}}})]),_vm._v(" "),_vm._m(68),_vm._v(" "),_vm._m(69)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGrandeur,expression:"psyCardPj.mentalConditionsGrandeur"}],attrs:{type:"radio",name:"mental_conditions_grandeur",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGrandeur,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGrandeur","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGrandeur,expression:"psyCardPj.mentalConditionsGrandeur"}],attrs:{type:"radio",name:"mental_conditions_grandeur",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGrandeur,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGrandeur","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGrandeur,expression:"psyCardPj.mentalConditionsGrandeur"}],attrs:{type:"radio",name:"mental_conditions_grandeur",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGrandeur,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGrandeur","Assente");}}})]),_vm._v(" "),_vm._m(70),_vm._v(" "),_vm._m(71)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuspiciousness,expression:"psyCardPj.mentalConditionsSuspiciousness"}],attrs:{type:"radio",name:"mental_conditions_suspiciousness",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuspiciousness,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuspiciousness","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuspiciousness,expression:"psyCardPj.mentalConditionsSuspiciousness"}],attrs:{type:"radio",name:"mental_conditions_suspiciousness",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuspiciousness,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuspiciousness","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuspiciousness,expression:"psyCardPj.mentalConditionsSuspiciousness"}],attrs:{type:"radio",name:"mental_conditions_suspiciousness",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuspiciousness,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuspiciousness","Assente");}}})]),_vm._v(" "),_vm._m(72),_vm._v(" "),_vm._m(73)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAllucination,expression:"psyCardPj.mentalConditionsAllucination"}],attrs:{type:"radio",name:"mental_conditions_allucination",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAllucination,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAllucination","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAllucination,expression:"psyCardPj.mentalConditionsAllucination"}],attrs:{type:"radio",name:"mental_conditions_allucination",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAllucination,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAllucination","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAllucination,expression:"psyCardPj.mentalConditionsAllucination"}],attrs:{type:"radio",name:"mental_conditions_allucination",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAllucination,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAllucination","Assente");}}})]),_vm._v(" "),_vm._m(74),_vm._v(" "),_vm._m(75)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsUnusualThought,expression:"psyCardPj.mentalConditionsUnusualThought"}],attrs:{type:"radio",name:"mental_conditions_unusual_thought",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsUnusualThought,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsUnusualThought","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsUnusualThought,expression:"psyCardPj.mentalConditionsUnusualThought"}],attrs:{type:"radio",name:"mental_conditions_unusual_thought",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsUnusualThought,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsUnusualThought","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsUnusualThought,expression:"psyCardPj.mentalConditionsUnusualThought"}],attrs:{type:"radio",name:"mental_conditions_unusual_thought",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsUnusualThought,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsUnusualThought","Assente");}}})]),_vm._v(" "),_vm._m(76),_vm._v(" "),_vm._m(77)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBizarreBehavior,expression:"psyCardPj.mentalConditionsBizarreBehavior"}],attrs:{type:"radio",name:"mental_conditions_bizarre_behavior",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBizarreBehavior,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBizarreBehavior","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBizarreBehavior,expression:"psyCardPj.mentalConditionsBizarreBehavior"}],attrs:{type:"radio",name:"mental_conditions_bizarre_behavior",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBizarreBehavior,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBizarreBehavior","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBizarreBehavior,expression:"psyCardPj.mentalConditionsBizarreBehavior"}],attrs:{type:"radio",name:"mental_conditions_bizarre_behavior",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBizarreBehavior,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBizarreBehavior","Assente");}}})]),_vm._v(" "),_vm._m(78),_vm._v(" "),_vm._m(79)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNeglect,expression:"psyCardPj.mentalConditionsNeglect"}],attrs:{type:"radio",name:"mental_conditions_neglect",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNeglect,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNeglect","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNeglect,expression:"psyCardPj.mentalConditionsNeglect"}],attrs:{type:"radio",name:"mental_conditions_neglect",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNeglect,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNeglect","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNeglect,expression:"psyCardPj.mentalConditionsNeglect"}],attrs:{type:"radio",name:"mental_conditions_neglect",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNeglect,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNeglect","Assente");}}})]),_vm._v(" "),_vm._m(80),_vm._v(" "),_vm._m(81)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorientation,expression:"psyCardPj.mentalConditionsDisorientation"}],attrs:{type:"radio",name:"mental_conditions_disorientation",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorientation,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorientation","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorientation,expression:"psyCardPj.mentalConditionsDisorientation"}],attrs:{type:"radio",name:"mental_conditions_disorientation",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorientation,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorientation","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorientation,expression:"psyCardPj.mentalConditionsDisorientation"}],attrs:{type:"radio",name:"mental_conditions_disorientation",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorientation,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorientation","Assente");}}})]),_vm._v(" "),_vm._m(82),_vm._v(" "),_vm._m(83)])]),_vm._v(" "),_vm._m(84),_vm._v(" "),_c("table",[_vm._m(85),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorganization,expression:"psyCardPj.mentalConditionsDisorganization"}],attrs:{type:"radio",name:"mental_conditions_disorganization",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorganization,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorganization","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorganization,expression:"psyCardPj.mentalConditionsDisorganization"}],attrs:{type:"radio",name:"mental_conditions_disorganization",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorganization,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorganization","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorganization,expression:"psyCardPj.mentalConditionsDisorganization"}],attrs:{type:"radio",name:"mental_conditions_disorganization",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorganization,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorganization","Assente");}}})]),_vm._v(" "),_vm._m(86),_vm._v(" "),_vm._m(87)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBlankness,expression:"psyCardPj.mentalConditionsBlankness"}],attrs:{type:"radio",name:"mental_conditions_blankness",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBlankness,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBlankness","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBlankness,expression:"psyCardPj.mentalConditionsBlankness"}],attrs:{type:"radio",name:"mental_conditions_blankness",value:"possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBlankness,"possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBlankness","possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBlankness,expression:"psyCardPj.mentalConditionsBlankness"}],attrs:{type:"radio",name:"mental_conditions_blankness",value:"assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBlankness,"assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBlankness","assente");}}})]),_vm._v(" "),_vm._m(88),_vm._v(" "),_vm._m(89)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsReducedEmotion,expression:"psyCardPj.mentalConditionsReducedEmotion"}],attrs:{type:"radio",name:"mental_conditions_reduced_emotion",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsReducedEmotion,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsReducedEmotion","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsReducedEmotion,expression:"psyCardPj.mentalConditionsReducedEmotion"}],attrs:{type:"radio",name:"mental_conditions_reduced_emotion",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsReducedEmotion,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsReducedEmotion","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsReducedEmotion,expression:"psyCardPj.mentalConditionsReducedEmotion"}],attrs:{type:"radio",name:"mental_conditions_reduced_emotion",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsReducedEmotion,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsReducedEmotion","Assente");}}})]),_vm._v(" "),_vm._m(90),_vm._v(" "),_vm._m(91)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorSlowdown,expression:"psyCardPj.mentalConditionsMotorSlowdown"}],attrs:{type:"radio",name:"mental_conditions_motor_slowdown",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorSlowdown,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorSlowdown","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorSlowdown,expression:"psyCardPj.mentalConditionsMotorSlowdown"}],attrs:{type:"radio",name:"mental_conditions_motor_slowdown",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorSlowdown,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorSlowdown","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorSlowdown,expression:"psyCardPj.mentalConditionsMotorSlowdown"}],attrs:{type:"radio",name:"mental_conditions_motor_slowdown",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorSlowdown,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorSlowdown","Assente");}}})]),_vm._v(" "),_vm._m(92),_vm._v(" "),_vm._m(93)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsVoltage,expression:"psyCardPj.mentalConditionsVoltage"}],attrs:{type:"radio",name:"mental_conditions_voltage",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsVoltage,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsVoltage","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsVoltage,expression:"psyCardPj.mentalConditionsVoltage"}],attrs:{type:"radio",name:"mental_conditions_voltage",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsVoltage,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsVoltage","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsVoltage,expression:"psyCardPj.mentalConditionsVoltage"}],attrs:{type:"radio",name:"mental_conditions_voltage",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsVoltage,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsVoltage","Assente");}}})]),_vm._v(" "),_vm._m(94),_vm._v(" "),_vm._m(95)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNotCooperation,expression:"psyCardPj.mentalConditionsNotCooperation"}],attrs:{type:"radio",name:"mental_conditions_not_cooperation",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNotCooperation,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNotCooperation","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNotCooperation,expression:"psyCardPj.mentalConditionsNotCooperation"}],attrs:{type:"radio",name:"mental_conditions_not_cooperation",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNotCooperation,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNotCooperation","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNotCooperation,expression:"psyCardPj.mentalConditionsNotCooperation"}],attrs:{type:"radio",name:"mental_conditions_not_cooperation",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNotCooperation,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNotCooperation","Assente");}}})]),_vm._v(" "),_vm._m(96),_vm._v(" "),_vm._m(97)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsExcitement,expression:"psyCardPj.mentalConditionsExcitement"}],attrs:{type:"radio",name:"mental_conditions_excitement",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsExcitement,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsExcitement","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsExcitement,expression:"psyCardPj.mentalConditionsExcitement"}],attrs:{type:"radio",name:"mental_conditions_excitement",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsExcitement,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsExcitement","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsExcitement,expression:"psyCardPj.mentalConditionsExcitement"}],attrs:{type:"radio",name:"mental_conditions_excitement",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsExcitement,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsExcitement","Assente");}}})]),_vm._v(" "),_vm._m(98),_vm._v(" "),_vm._m(99)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDistractibility,expression:"psyCardPj.mentalConditionsDistractibility"}],attrs:{type:"radio",name:"mental_conditions_distractibility",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDistractibility,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDistractibility","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDistractibility,expression:"psyCardPj.mentalConditionsDistractibility"}],attrs:{type:"radio",name:"mental_conditions_distractibility",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDistractibility,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDistractibility","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDistractibility,expression:"psyCardPj.mentalConditionsDistractibility"}],attrs:{type:"radio",name:"mental_conditions_distractibility",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDistractibility,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDistractibility","Assente");}}})]),_vm._v(" "),_vm._m(100),_vm._v(" "),_vm._m(101)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorHyperactivity,expression:"psyCardPj.mentalConditionsMotorHyperactivity"}],attrs:{type:"radio",name:"mental_conditions_motor_hyperactivity",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorHyperactivity,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorHyperactivity","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorHyperactivity,expression:"psyCardPj.mentalConditionsMotorHyperactivity"}],attrs:{type:"radio",name:"mental_conditions_motor_hyperactivity",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorHyperactivity,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorHyperactivity","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorHyperactivity,expression:"psyCardPj.mentalConditionsMotorHyperactivity"}],attrs:{type:"radio",name:"mental_conditions_motor_hyperactivity",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorHyperactivity,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorHyperactivity","Assente");}}})]),_vm._v(" "),_vm._m(102),_vm._v(" "),_vm._m(103)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMannerisms,expression:"psyCardPj.mentalConditionsMannerisms"}],attrs:{type:"radio",name:"mental_conditions_mannerisms",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMannerisms,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMannerisms","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMannerisms,expression:"psyCardPj.mentalConditionsMannerisms"}],attrs:{type:"radio",name:"mental_conditions_mannerisms",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMannerisms,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMannerisms","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMannerisms,expression:"psyCardPj.mentalConditionsMannerisms"}],attrs:{type:"radio",name:"mental_conditions_mannerisms",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMannerisms,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMannerisms","Assente");}}})]),_vm._v(" "),_vm._m(104),_vm._v(" "),_vm._m(105)])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(106),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblems,expression:"psyCardPj.psychologicalProblems"}],attrs:{type:"radio",name:"psychological_problems",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblems,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblems","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblems,expression:"psyCardPj.psychologicalProblems"}],attrs:{type:"radio",name:"psychological_problems",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblems,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblems","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Stress situazione/depressione"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Stress situazione/depressione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Stress situazione/depressione");}}}),_vm._v(" "),_c("span",[_vm._v("Stress situazione/depressione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Possibile ansia/disturbi dell'umore"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Possibile ansia/disturbi dell'umore")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Possibile ansia/disturbi dell'umore");}}}),_vm._v(" "),_c("span",[_vm._v("Possibile ansia/disturbi dell'umore")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"disturbi psicotici/bipolari/paziente compensato"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"disturbi psicotici/bipolari/paziente compensato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","disturbi psicotici/bipolari/paziente compensato");}}}),_vm._v(" "),_c("span",[_vm._v("Storia di disturbi psicotici/bipolari/paziente compensato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Sintomi psicotici possibilmente ricorrenti/paziente scompensato"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Sintomi psicotici possibilmente ricorrenti/paziente scompensato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Sintomi psicotici possibilmente ricorrenti/paziente scompensato");}}}),_vm._v(" "),_c("span",[_vm._v("Sintomi psicotici possibilmente ricorrenti/paziente scompensato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Psicosi attiva attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Psicosi attiva attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Psicosi attiva attuale");}}}),_vm._v(" "),_c("span",[_vm._v("Psicosi attiva attuale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Disabilità cognitiva/danno cerebrale"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Disabilità cognitiva/danno cerebrale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Disabilità cognitiva/danno cerebrale");}}}),_vm._v(" "),_c("span",[_vm._v("Disabilità cognitiva/danno cerebrale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Tratti di disturbi di personalità"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Tratti di disturbi di personalità")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Tratti di disturbi di personalità");}}}),_vm._v(" "),_c("span",[_vm._v("Tratti di disturbi di personalità")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsOther,expression:"psyCardPj.psychologicalProblemsOther"}],attrs:{type:"text",name:"psychological_problems_other"},domProps:{value:_vm.psyCardPj.psychologicalProblemsOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"psychologicalProblemsOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row float"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(107),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reports,expression:"psyCardPj.reports"}],attrs:{type:"radio",name:"reports",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.reports,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reports","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reports,expression:"psyCardPj.reports"}],attrs:{type:"radio",name:"reports",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.reports,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reports","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Monitoraggio psicologico"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Monitoraggio psicologico")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Monitoraggio psicologico");}}}),_vm._v(" "),_c("span",[_vm._v("Monitoraggio/assessment psicologico")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Counseling"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Counseling")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Counseling");}}}),_vm._v(" "),_c("span",[_vm._v("Counseling")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Centro di salute mentale"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Centro di salute mentale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Centro di salute mentale");}}}),_vm._v(" "),_c("span",[_vm._v("Centro di salute mentale/terapia farmacologica")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Programmi di disintossicazione droga/alcol"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Programmi di disintossicazione droga/alcol")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Programmi di disintossicazione droga/alcol");}}}),_vm._v(" "),_c("span",[_vm._v("Programmi di disintossicazione per droga e alcol")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Richiesta interprete linguistico-culturale"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Richiesta interprete linguistico-culturale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Richiesta interprete linguistico-culturale");}}}),_vm._v(" "),_c("span",[_vm._v("Si richiede interprete o mediatore linguistico-culturale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsOther,expression:"psyCardPj.reportsOther"}],attrs:{type:"text",name:"reports_other"},domProps:{value:_vm.psyCardPj.reportsOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"reportsOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(108),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSelfHarm,expression:"psyCardPj.suicidalRiskSelfHarm"}],attrs:{type:"radio",name:"suicidal_risk_self_harm",value:"Nessuna evidenza"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskSelfHarm,"Nessuna evidenza")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskSelfHarm","Nessuna evidenza");}}}),_vm._v(" "),_c("span",[_vm._v("Nessuna evidenza")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSelfHarm,expression:"psyCardPj.suicidalRiskSelfHarm"}],attrs:{type:"radio",name:"suicidal_risk_self_harm",value:"Allarme"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskSelfHarm,"Allarme")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskSelfHarm","Allarme");}}}),_vm._v(" "),_c("span",[_vm._v("Allarme")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSelfHarm,expression:"psyCardPj.suicidalRiskSelfHarm"}],attrs:{type:"radio",name:"suicidal_risk_self_harm",value:"Alto rischio"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskSelfHarm,"Alto rischio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskSelfHarm","Alto rischio");}}}),_vm._v(" "),_c("span",[_vm._v("Alto rischio")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(109),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfViolence,expression:"psyCardPj.riskOfViolence"}],attrs:{type:"radio",name:"risk_of_violence",value:"Nessuna evidenza"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfViolence,"Nessuna evidenza")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfViolence","Nessuna evidenza");}}}),_vm._v(" "),_c("span",[_vm._v("Nessuna evidenza")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfViolence,expression:"psyCardPj.riskOfViolence"}],attrs:{type:"radio",name:"risk_of_violence",value:"Allarme"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfViolence,"Allarme")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfViolence","Allarme");}}}),_vm._v(" "),_c("span",[_vm._v("Allarme")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfViolence,expression:"psyCardPj.riskOfViolence"}],attrs:{type:"radio",name:"risk_of_violence",value:"Alto rischio"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfViolence,"Alto rischio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfViolence","Alto rischio");}}}),_vm._v(" "),_c("span",[_vm._v("Alto rischio")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(110),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfVictimization,expression:"psyCardPj.riskOfVictimization"}],attrs:{type:"radio",name:"risk_of_victimization",value:"Nessuna evidenza"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfVictimization,"Nessuna evidenza")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfVictimization","Nessuna evidenza");}}}),_vm._v(" "),_c("span",[_vm._v("Nessuna evidenza")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfVictimization,expression:"psyCardPj.riskOfVictimization"}],attrs:{type:"radio",name:"risk_of_victimization",value:"Allarme"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfVictimization,"Allarme")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfVictimization","Allarme");}}}),_vm._v(" "),_c("span",[_vm._v("Allarme")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfVictimization,expression:"psyCardPj.riskOfVictimization"}],attrs:{type:"radio",name:"risk_of_victimization",value:"Alto rischio"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfVictimization,"Alto rischio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfVictimization","Alto rischio");}}}),_vm._v(" "),_c("span",[_vm._v("Alto rischio")])])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(111),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignment,expression:"psyCardPj.particularAssignment"}],attrs:{type:"radio",name:"particular_assignment",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignment,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignment","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignment,expression:"psyCardPj.particularAssignment"}],attrs:{type:"radio",name:"particular_assignment",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignment,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignment","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"cella regolare/monitoraggio per i cambiamenti d'umore"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"cella regolare/monitoraggio per i cambiamenti d'umore")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","cella regolare/monitoraggio per i cambiamenti d'umore");}}}),_vm._v(" "),_c("span",[_vm._v("Cella regolare/monitoraggio per i cambiamenti d'umore")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Cella regolare/due letti"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Cella regolare/due letti")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Cella regolare/due letti");}}}),_vm._v(" "),_c("span",[_vm._v("Cella regolare/due letti")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Cella regolare/letto singolo"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Cella regolare/letto singolo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Cella regolare/letto singolo");}}}),_vm._v(" "),_c("span",[_vm._v("Cella regolare/letto singolo")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Custodia protettiva"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Custodia protettiva")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Custodia protettiva");}}}),_vm._v(" "),_c("span",[_vm._v("Custodia protettiva")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Unità per detenuti mentalmente disturbati"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Unità per detenuti mentalmente disturbati")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Unità per detenuti mentalmente disturbati");}}}),_vm._v(" "),_c("span",[_vm._v("Unità per detenuti mentalmente disturbati")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Isolamento"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Isolamento")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Isolamento");}}}),_vm._v(" "),_c("span",[_vm._v("Isolamento")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Osservazione"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Osservazione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Osservazione");}}}),_vm._v(" "),_c("span",[_vm._v("Osservazione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Cella stabile(silenziosa)"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Cella stabile(silenziosa)")},on:{change:function change($event){_vm.$set(_vm.psyCardPj,"particularAssignmentList","Cella stabile(silenziosa)");}}}),_vm._v(" "),_c("span",[_vm._v("Cella stabile(silenziosa)")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentOther,expression:"psyCardPj.particularAssignmentOther"}],attrs:{type:"text",name:"particular_assignment_other"},domProps:{value:_vm.psyCardPj.particularAssignmentOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"particularAssignmentOther",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(112),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("textarea",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.commentClarifications,expression:"psyCardPj.commentClarifications"}],attrs:{name:"comment_clarifications",cols:"100",rows:"10"},domProps:{value:_vm.psyCardPj.commentClarifications},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"commentClarifications",$event.target.value);}}})])])])])]),_vm._v("\n\n\n\n\n                            "+_vm._s(_vm.psyCardPj)+"\n\n\n                            \n                            "),_c("div",[_vm._m(113),_vm._v(" "),_c("ul",{staticStyle:{display:"flex","flex-wrap":"wrap"}},_vm._l(_vm.PsyJsat,function(item,key,index){return _c("span",{key:index,staticClass:"mr-5"},[_c("div",{staticClass:"card text-white bg-secondary mb-2",staticStyle:{"max-width":"19rem","border-radius":"20px"}},[_c("div",{staticClass:"card-header"},[_c("span",{staticStyle:{"min-width":"100px"}},[_c("div",{staticStyle:{"min-width":"100px"}},[_c("strong",[_vm._v("Nome: ")]),_c("h5",{staticStyle:{display:"inline-block"}},[_vm._v(_vm._s(item["doctor_name"])+" "+_vm._s(item["doctor_lastname"]))])])])]),_vm._v(" "),_c("div",{staticClass:"card-body"},[_c("h5",{staticClass:"card-title"},[_c("div",[_c("strong",[_vm._v("Data inizio:")]),_vm._v(" "+_vm._s(_vm.i2hDateFormat(item["pj_date"])))])]),_vm._v(" "),_c("p",{staticClass:"card-text"}),_c("div",{staticStyle:{"min-width":"100px"}},[_c("strong",[_vm._v("Data di entrata:")]),_vm._v(" "+_vm._s(item["entry_date"]))]),_vm._v(" "),_c("div",{staticStyle:{"min-width":"100px"}},[_c("strong",[_vm._v("Data di valutazione:")]),_vm._v(" "+_vm._s(item["valutation_date"]))]),_vm._v(" "),_c("div",{staticStyle:{"min-width":"100px"}},[_c("strong",[_vm._v("Anni:")]),_vm._v(" "+_vm._s(item["information_age"])+" ")]),_vm._v(" "),_c("div",{staticStyle:{"min-width":"100px"}},[_c("strong",[_vm._v("Lingua:")]),_vm._v(" "+_vm._s(item["information_language"])+" ")]),_vm._v(" "),_c("p")])]),_vm._v(" "),_c("br"),_c("br")]);}),0)]),_vm._v(" "),_c("div",{staticClass:"row mb-3 ml-2 mt-4"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(114),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.startDate,expression:"psyCardPj.startDate"}],attrs:{type:"date",name:"start_date"},domProps:{value:_vm.psyCardPj.startDate},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"startDate",$event.target.value);}}})]),_vm._v(" "),_vm._m(115),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.endDate,expression:"psyCardPj.endDate"}],attrs:{type:"date",name:"end_date"},domProps:{value:_vm.psyCardPj.endDate},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"endDate",$event.target.value);}}})]),_vm._v(" "),_c("span",{staticClass:"search-bar"},[_c("a",{staticClass:"search-button btn btn-success",on:{click:function click($event){return _vm.getPsyJsatsByUserIstanceId(36,true);}}},[_vm._v("Cerca")])])])])]),_vm._v(" "),_c("div",{staticClass:"ln_solid"}),_vm._v(" "),_c("div",{staticClass:"item form-group"},[_c("div",{staticClass:"pull-right"},[_c("a",{staticClass:"btn bg-primary text-white i2hBtnPrint ml-4",on:{click:function click($event){return _vm.printArchivePsyJsat("printPdf");}}},[_c("i",{staticClass:"fa fa-print"}),_vm._v("Stampa Archivio")])])]),_vm._v(" "),_c("div",{staticClass:"ln_solid"}),_vm._v(" "),_c("div",{staticClass:"item form-group"},[_c("div",{staticClass:"pull-right"},[_c("span",{staticClass:"btn btn-success i2hBtn ml-3",on:{click:function click($event){return _vm.addPsyJsat("pj");}}},[_vm._v(_vm._s(_vm.btnPjSend))])])]),_vm._v(" "),_c("a",{staticClass:"btn btn-success i2hBtnPrint",on:{click:function click($event){return _vm.printPsyJsat("printPdf");}}},[_c("i",{staticClass:"fa fa-print"}),_vm._v("Stampa")])])])])])])])]);};var staticRenderFns=[function(){var _vm=this,_c=_vm._self._c;return _c("div",{staticClass:"x_title",staticStyle:{background:"lightgrey",padding:"7px","border-radius":"3px","margin-top":"5px"}},[_c("h1",[_c("strong",[_vm._v(" Jail Screening Assessment Tool "),_c("strong",[_vm._v("(JSAT)")])])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"entry_date"}},[_c("strong",[_vm._v("Data di entrata:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"valutation_date"}},[_c("strong",[_vm._v("Data di valutazione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"information_language"}},[_c("strong",[_vm._v("Italiano:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"information_level_language"}},[_c("strong",[_vm._v("Livello:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"information_native_language"}},[_c("strong",[_vm._v("Lingua madre:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-5 col-sm-4 label-align",attrs:{"for":"information_background"}},[_c("strong",[_vm._v("Background Etnico/Culturale:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-3 label-align",attrs:{"for":"legal_situation_now"}},[_c("strong",[_vm._v("Attuale:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-5 col-sm-4 label-align",attrs:{"for":"legal_situation_crime_committed"}},[_c("strong",[_vm._v(" Tipo di reato Commesso:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-5 col-sm-2 label-align",attrs:{"for":"legal_situation_previous_incarceration"}},[_c("strong",[_vm._v("Precendenti Carcerazioni:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"criminal_record"}},[_c("strong",[_vm._v("Precendenti Penali:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"violent_behavior"}},[_c("h2",[_vm._v("Comportamenti Violenti")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"violent_behavior_acts_aggression"}},[_c("strong",[_vm._v("Precendenti atti di aggressione/violenza:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"violent_behavior_violent_crimes"}},[_c("strong",[_vm._v("Precendenti reati violenti:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"violent_behavior_during_incarceration"}},[_c("strong",[_vm._v("Atti di violenza durante carcerazione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"violent_behavior_aggression_proceeding"}},[_c("strong",[_vm._v("Provvedimenti disciplinari per aggressività:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"violent_behavior_last_aggression"}},[_c("strong",[_vm._v("Ultimo atto di aggressione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"violent_aggression_now"}},[_c("strong",[_vm._v("Atti di aggressione/rabbia attuale:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-3 label-align",attrs:{"for":"background_social_marital_status"}},[_c("h4",[_c("strong",[_vm._v("Stato civile:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-3 label-align",attrs:{"for":"background_social_stability_relation"}},[_c("h4",[_c("strong",[_vm._v("Stabilità della relazione:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-3 label-align",attrs:{"for":"background_social_sons"}},[_c("h4",[_c("strong",[_vm._v("Figli:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-3 label-align",attrs:{"for":"background_social_situation_house"}},[_c("h4",[_c("strong",[_vm._v("Situazione abitativa:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-3 label-align",attrs:{"for":"background_social_support_family"}},[_c("h4",[_c("strong",[_vm._v("Supporto familiare:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-3 label-align",attrs:{"for":"background_social_support"}},[_c("h4",[_c("strong",[_vm._v("Supporto sociale:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-3 label-align",attrs:{"for":""}},[_c("h4",[_c("strong",[_vm._v("Scolarità:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-3 label-align",attrs:{"for":"background_social_work"}},[_c("h4",[_c("strong",[_vm._v("Supporto lavorativo/finanziario:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"substance_use"}},[_c("h2",[_vm._v("Uso di sostanze")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"substance_use_tabacco"}},[_c("strong",[_vm._v("Tabacco:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("tr",[_c("td"),_vm._v(" "),_c("td",[_vm._v("uso")]),_vm._v(" "),_c("td",[_vm._v("attuale")]),_vm._v(" "),_c("td",[_vm._v("di lungo periodo")]),_vm._v(" "),_c("td",[_vm._v("precendente")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"substance_use_description"}},[_c("strong",[_vm._v("Descrivere:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"substance_use_intravenous_mode"}},[_c("strong",[_vm._v("Modalità intravenosa:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"substance_use_current_methadone_treatment"}},[_c("strong",[_vm._v("Attuale trattamento metadonico:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"substance_use_substance_abuse"}},[_c("strong",[_vm._v("Precedente trattamento per abuso di sostanze:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"psyc_treatments"}},[_c("h2",[_vm._v("Trattamenti Psichiatrici")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("tr",[_c("td",[_vm._v("Ultimo mese")]),_vm._v(" "),_c("td",[_vm._v("Da sempre")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("valutazione clinica")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("valutazione clinica (su ordine del tribunale o di altra autorità)")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Trattamento - in istituzione carceraria")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Trattamento - in comunità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Trattamento - ospedalizzato")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Trattamento - su ordine del tribunale o di altra autorità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Terapia farmacologica")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"psyc_treatments_type"}},[_c("strong",[_vm._v("Tipo:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"psyc_treatments_previous_trauma"}},[_c("strong",[_vm._v("Precedenti traumi cerebrali:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"psyc_treatments_previous_trauma_desc"}},[_c("strong",[_vm._v("Descrivere:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-6 col-sm-2 label-align",attrs:{"for":"suicidal_risk"}},[_c("h2",[_vm._v("Rischio Suicidario/Autolesionismo")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"suicidal_risk_number_attempts"}},[_c("strong",[_vm._v("Numero di tentativi:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"suicidal_risk_time_attempts"}},[_c("strong",[_vm._v("Tempo dall'ultimo tentativo:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"suicidal_risk_methods_weapon"}},[_c("strong",[_vm._v("Metodi utilizzati:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-5 col-sm-2 label-align",attrs:{"for":"suicidal_risk_level_ideation"}},[_c("strong",[_vm._v("Livello dell'ideazione/intento suicidario attuale:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"suicidal_risk_sucide_tentative"}},[_c("strong",[_vm._v("tentativi di suicidio durante il periodo detentivo:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"suicidal_risk_sucide_tentative_number"}},[_c("strong",[_vm._v("Numero di tentativi durante la detenzione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-5 col-sm-2 label-align",attrs:{"for":"suicidal_risk_tentative_time"}},[_c("strong",[_vm._v("Tempo dall'ultimo tentativo durante la detenzione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"suicidal_risk_methods_two"}},[_c("strong",[_vm._v("Metodi utilizzati:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"suicidal_risk_act_of_self_harm"}},[_c("strong",[_vm._v("Atti di autolesionismo:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("tr",[_c("td",[_vm._v("Presente")]),_vm._v(" "),_c("td",[_vm._v("Possibile")]),_vm._v(" "),_c("td",[_vm._v("Assente")]),_vm._v(" "),_c("td"),_vm._v(" "),_c("td")]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 1. Preoccupazioni somatiche")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Preoccupazioni realistiche o meno per la salute")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 2. Ansia")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Riporta apprensione, tensione, paura, preoccupazione eccessiva")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 3. Depressione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Tristezza, anedonia, mancanza di autostima")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 4. Suicidio")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Desiderio, intenzione o azioni dirette a danneggiare se stessi")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 5. Senso di colpa")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Rimorsi, eccesso di preoccupazioni")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 6. Ostilità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Minacce, otilità, distruzione di cose, litigi")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 7. Umore elevato")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Sentimenti pervasivi ed esagerati di benessere, euforia")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 8. Grandiosità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Opinione esagerata di sé, identificazioni grandiose")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 9. Sospettosità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Credenza che qualcuno agisca con intenti maliziosi")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 10. Allucinazioni")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Esperienze percettive in assenza di stimoli esterni")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 11. Contenuto di pensiero inusuale")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Contenuti ideativi bizzarri, strani")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 12. Comportamenti bizzarri")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Comportamenti strani, inusuali, devianti")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 13. Trascuratezza ")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Incuria nell'igiene, nell'aspetto, nel comportamento alimentare")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 14. Disorientamento")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Mancanza di comprensione delle situazioni e confusione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("h5",{staticClass:"text-center pt-4 pb-4"},[_c("strong",[_vm._v("Gli item da 15-24 vengono valutati sulla base del colloquio e del comportamento osservati durante l'intervista")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("tr",[_c("td",[_vm._v("Presente")]),_vm._v(" "),_c("td",[_vm._v("Possibile")]),_vm._v(" "),_c("td",[_vm._v("Assente")]),_vm._v(" "),_c("td"),_vm._v(" "),_c("td")]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 15. Disorganizzazione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Discorsi confusi, sconnessi, vaghi")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 16. Inespressività")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Spettro ridotto di espressività emotiva, di faccia, voce, gesti")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 17. Emotività ridotta")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Incapacità di relazionarsi emotivamente durante il colloquio")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 18. Rallentamento motorio")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Riduzione nel livello di energia, movimenti rallentati")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 19. Tensione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Nervosismo, agitazione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 20. Non collaborazione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Resistenza e mancanza di cooperazione durante l'intervista")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 21. Eccitazione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Tono emotivo aumentato, reattività all'intervistatore")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 22. Distraibilità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Eloquio e azioni interrotte da stimoli esterni al colloquio")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 23. Iperattività motoria")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Aumento del livello di energia verbale e comportamentale")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 24. Manierismi")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Movimenti stilizzati, posture inappropriate")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"psychological_problems"}},[_c("strong",[_vm._v("Problematiche psicologico/psichiatriche :")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"reports"}},[_c("strong",[_vm._v("Segnalazioni :")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"suicidal_risk_self_harm"}},[_c("strong",[_vm._v("Rischio suicidario/autolesionismo:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"risk_of_violence"}},[_c("strong",[_vm._v("Rischio di violenza:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"risk_of_victimization"}},[_c("strong",[_vm._v("Rischio di vittimizzazione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"particular_assignment"}},[_c("strong",[_vm._v("Assegnazione particolare :")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"comment_clarifications"}},[_c("strong",[_vm._v("Commenti/chiarificazioni:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("h2",{staticClass:"ml-4 mb-4 mt-4"},[_c("strong",[_vm._v("Archivio")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"start_date"}},[_c("strong",[_c("h4",[_vm._v("DAL")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"end_date"}},[_c("strong",[_c("h4",[_vm._v("AL")])])]);}];render._withStripped=true;
+var render=function render(){var _vm=this,_c=_vm._self._c;return _c("div",{staticClass:"container"},[_c("div",{staticClass:"page-content"},[_c("div",{staticClass:"row justify-content-center"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"x_panel"},[_vm._m(0),_vm._v(" "),_c("div",{staticClass:"x_content"},[_c("form",{staticClass:"form-horizontal form-label-left align-items-center",attrs:{id:"demo-form2","data-parsley-validate":""}},[_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px",border:"1px solid black",padding:"5px","text-align":"center","max-width":"1155px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(1),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.entryDate,expression:"psyCardPj.entryDate"}],attrs:{type:"date",name:"entry_date"},domProps:{value:_vm.psyCardPj.entryDate},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"entryDate",$event.target.value);}}})])]),_vm._v(" "),_c("span",{staticClass:"item form-group"},[_vm._m(2),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.valutationDate,expression:"psyCardPj.valutationDate"}],attrs:{type:"date",name:"valutation_date"},domProps:{value:_vm.psyCardPj.valutationDate},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"valutationDate",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("span",{staticStyle:{"max-width":"50%","float":"left"}},[_c("h2",[_vm._v("Informazioni")]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_c("label",{staticClass:"col-form-label col-md-5 col-sm-2 label-align mb-3",attrs:{"for":"information_age"}}),_c("br"),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationAge,expression:"psyCardPj.informationAge"}],attrs:{type:"number",name:"information_age"},domProps:{value:_vm.psyCardPj.informationAge},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"informationAge",$event.target.value);}}}),_vm._v(" "),_c("span",[_vm._v("anni")])])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(3),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLanguage,expression:"psyCardPj.informationLanguage"}],attrs:{type:"radio",name:"information_language",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLanguage,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLanguage","1");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLanguage,expression:"psyCardPj.informationLanguage"}],attrs:{type:"radio",name:"information_language",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLanguage,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLanguage","0");}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(4),_vm._v(" "),_c("span",{staticClass:"col-md-8 col-sm-12"},[_c("span",[_vm._v("Elementare")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLevelLanguage,expression:"psyCardPj.informationLevelLanguage"}],attrs:{type:"radio",name:"information_level_language",value:"Elementare"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLevelLanguage,"Elementare")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLevelLanguage","Elementare");}}}),_vm._v(" "),_c("span",[_vm._v("Intermedio")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLevelLanguage,expression:"psyCardPj.informationLevelLanguage"}],attrs:{type:"radio",name:"information_level_language",value:"Intermedio"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLevelLanguage,"Intermedio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLevelLanguage","Intermedio");}}}),_vm._v(" "),_c("span",[_vm._v("Avanzato")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLevelLanguage,expression:"psyCardPj.informationLevelLanguage"}],attrs:{type:"radio",name:"information_level_language",value:"Avanzato"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLevelLanguage,"Avanzato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLevelLanguage","Avanzato");}}}),_vm._v(" "),_c("span",[_vm._v("Nessuno")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationLevelLanguage,expression:"psyCardPj.informationLevelLanguage"}],attrs:{type:"radio",name:"information_level_language",value:"Nessuno"},domProps:{checked:_vm._q(_vm.psyCardPj.informationLevelLanguage,"Nessuno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationLevelLanguage","Nessuno");}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(5),_vm._v(" "),_c("span",{staticClass:"col-md-2 col-sm-2"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationNativeLanguage,expression:"psyCardPj.informationNativeLanguage"}],attrs:{type:"text",name:"information_native_language"},domProps:{value:_vm.psyCardPj.informationNativeLanguage},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"informationNativeLanguage",$event.target.value);}}})])])])])]),_vm._v(" "),_c("span",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(6),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("ul",{staticStyle:{"max-width":"30%"}},[_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Italiano"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Italiano")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Italiano");}}}),_vm._v(" "),_c("span",[_vm._v("Italiano")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Europeo"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Europeo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Europeo");}}}),_vm._v(" "),_c("span",[_vm._v("Europeo")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Africano"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Africano")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Africano");}}}),_vm._v(" "),_c("span",[_vm._v("Africano")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Asiatico"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Asiatico")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Asiatico");}}}),_vm._v(" "),_c("span",[_vm._v("Asiatico")])])])]),_vm._v(" "),_c("span",[_c("ul",[_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Nordamericano"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Nordamericano")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Nordamericano");}}}),_vm._v(" "),_c("span",[_vm._v("Nordamericano")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Sudamericano"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Sudamericano")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Sudamericano");}}}),_vm._v(" "),_c("span",[_vm._v("Sudamericano")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"Rom-sinti/nomade"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"Rom-sinti/nomade")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","Rom-sinti/nomade");}}}),_vm._v(" "),_c("span",[_vm._v("Rom-sinti/nomade")])]),_vm._v(" "),_c("li",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackground,expression:"psyCardPj.informationBackground"}],attrs:{type:"radio",name:"information_background",value:"altro"},domProps:{checked:_vm._q(_vm.psyCardPj.informationBackground,"altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"informationBackground","altro");}}}),_vm._v(" "),_c("span",[_vm._v("altro")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.informationBackgroundText,expression:"psyCardPj.informationBackgroundText"}],attrs:{type:"text",name:"information_background_text"},domProps:{value:_vm.psyCardPj.informationBackgroundText},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"informationBackgroundText",$event.target.value);}}})])])])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("h2",[_vm._v("Situazione Giuridica")]),_vm._v(" "),_c("span",{staticClass:"row float-left"},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(7),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationNow,expression:"psyCardPj.legalSituationNow"}],attrs:{type:"radio",name:"legal_situation_now",value:"Imputato"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationNow,"Imputato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationNow","Imputato");}}}),_vm._v(" "),_c("span",[_vm._v("Imputato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationNow,expression:"psyCardPj.legalSituationNow"}],attrs:{type:"radio",name:"legal_situation_now",value:"Condannato Definitiv"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationNow,"Condannato Definitiv")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationNow","Condannato Definitiv");}}}),_vm._v(" "),_c("span",[_vm._v("Condannato Definitiv.")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationNow,expression:"psyCardPj.legalSituationNow"}],attrs:{type:"radio",name:"legal_situation_now",value:"Appellante"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationNow,"Appellante")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationNow","Appellante");}}}),_vm._v(" "),_c("span",[_vm._v("Appellante")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationNow,expression:"psyCardPj.legalSituationNow"}],attrs:{type:"radio",name:"legal_situation_now",value:"In trasferimento"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationNow,"In trasferimento")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationNow","In trasferimento");}}}),_vm._v(" "),_c("span",[_vm._v("In trasferimento")])])])])]),_vm._v(" "),_c("span",{staticClass:"row",staticStyle:{"float":"left"}},[_c("span",{staticClass:"col-md-12 col-sm-12",staticStyle:{"margin-left":"4rem"}},[_c("span",{staticClass:"item form-group"},[_vm._m(8),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationCrimeCommitted,expression:"psyCardPj.legalSituationCrimeCommitted"}],attrs:{type:"radio",name:"legal_situation_crime_committed",value:"Contro la persona"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationCrimeCommitted,"Contro la persona")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationCrimeCommitted","Contro la persona");}}}),_vm._v(" "),_c("span",[_vm._v("Contro la persona")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationCrimeCommitted,expression:"psyCardPj.legalSituationCrimeCommitted"}],attrs:{type:"radio",name:"legal_situation_crime_committed",value:"Contro la proprietà"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationCrimeCommitted,"Contro la proprietà")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationCrimeCommitted","Contro la proprietà");}}}),_vm._v(" "),_c("span",[_vm._v("Contro la proprietà")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationCrimeCommitted,expression:"psyCardPj.legalSituationCrimeCommitted"}],attrs:{type:"radio",name:"legal_situation_crime_committed",value:"Contro la legge sugli stupefacenti"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationCrimeCommitted,"Contro la legge sugli stupefacenti")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationCrimeCommitted","Contro la legge sugli stupefacenti");}}}),_vm._v(" "),_c("span",[_vm._v("Contro la legge sugli stupefacenti")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationCrimeCommitted,expression:"psyCardPj.legalSituationCrimeCommitted"}],attrs:{type:"radio",name:"legal_situation_crime_committed",value:"delitto sessuale"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationCrimeCommitted,"delitto sessuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationCrimeCommitted","delitto sessuale");}}}),_vm._v(" "),_c("span",[_vm._v("delitto sessuale")]),_c("br"),_vm._v(" "),_c("input",{attrs:{type:"radio",name:"legal_situation_crime_committed"}}),_vm._v(" "),_c("span",[_vm._v("altro")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationCrimeCommittedOther,expression:"psyCardPj.legalSituationCrimeCommittedOther"}],attrs:{type:"text",name:"legal_situation_crime_committed_other",value:"altro"},domProps:{value:_vm.psyCardPj.legalSituationCrimeCommittedOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"legalSituationCrimeCommittedOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(9),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarceration,expression:"psyCardPj.legalSituationPreviousIncarceration"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarceration,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarceration","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarceration,expression:"psyCardPj.legalSituationPreviousIncarceration"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarceration,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarceration","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])]),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarcerationIf,expression:"psyCardPj.legalSituationPreviousIncarcerationIf"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration_if",value:"Nell'ultimo anno"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarcerationIf,"Nell'ultimo anno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarcerationIf","Nell'ultimo anno");}}}),_vm._v(" "),_c("span",[_vm._v("Nell'ultimo anno")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarcerationIf,expression:"psyCardPj.legalSituationPreviousIncarcerationIf"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration_if",value:"Negli ultimi 6 mesi"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarcerationIf,"Negli ultimi 6 mesi")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarcerationIf","Negli ultimi 6 mesi");}}}),_vm._v(" "),_c("span",[_vm._v("Negli ultimi 6 mesi")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarcerationIf,expression:"psyCardPj.legalSituationPreviousIncarcerationIf"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration_if",value:"Nell'ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarcerationIf,"Nell'ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarcerationIf","Nell'ultimo mese");}}}),_vm._v(" "),_c("span",[_vm._v("Nell'ultimo mese")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarcerationIf,expression:"psyCardPj.legalSituationPreviousIncarcerationIf"}],attrs:{type:"radio",name:"legal_situation_previous_incarceration_if"},domProps:{checked:_vm._q(_vm.psyCardPj.legalSituationPreviousIncarcerationIf,null)},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarcerationIf",null);}}}),_vm._v(" "),_c("span",[_vm._v("indicare qualsiasi rilievo pertinente:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.legalSituationPreviousIncarcerationIfProminance,expression:"psyCardPj.legalSituationPreviousIncarcerationIfProminance"}],attrs:{type:"text",name:"legal_situation_previous_incarceration_if_prominence"},domProps:{value:_vm.psyCardPj.legalSituationPreviousIncarcerationIfProminance},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"legalSituationPreviousIncarcerationIfProminance",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(10),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.criminalRecord,expression:"psyCardPj.criminalRecord"}],attrs:{type:"radio",name:"criminal_record",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.criminalRecord,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"criminalRecord","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.criminalRecord,expression:"psyCardPj.criminalRecord"}],attrs:{type:"radio",name:"criminal_record",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.criminalRecord,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"criminalRecord","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.criminalRecordCondemnation,expression:"psyCardPj.criminalRecordCondemnation"}],attrs:{type:"radio",name:"criminal_record_condemnation"},domProps:{checked:_vm._q(_vm.psyCardPj.criminalRecordCondemnation,null)},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"criminalRecordCondemnation",null);}}}),_vm._v(" "),_c("span",[_vm._v("Condanna più lunga")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.criminalRecordCondemnation,expression:"psyCardPj.criminalRecordCondemnation"}],attrs:{type:"text",name:"criminal_record_condemnation"},domProps:{value:_vm.psyCardPj.criminalRecordCondemnation},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"criminalRecordCondemnation",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("span",{staticClass:"row float"},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(11),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehavior,expression:"psyCardPj.violentBehavior"}],attrs:{type:"radio",name:"violent_behavior",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehavior,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehavior","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehavior,expression:"psyCardPj.violentBehavior"}],attrs:{type:"radio",name:"violent_behavior",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehavior,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehavior","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br")])])])]),_c("br"),_vm._v(" "),_c("span",{staticClass:"row"},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(12),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorActsAggression,expression:"psyCardPj.violentBehaviorActsAggression"}],attrs:{type:"radio",name:"violent_behavior_acts_aggression",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorActsAggression,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorActsAggression","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorActsAggression,expression:"psyCardPj.violentBehaviorActsAggression"}],attrs:{type:"radio",name:"violent_behavior_acts_aggression",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorActsAggression,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorActsAggression","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("span",[_vm._v("Descrivere:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorActsAggressionDesc,expression:"psyCardPj.violentBehaviorActsAggressionDesc"}],attrs:{type:"text",name:"violent_behavior_acts_aggression_desc"},domProps:{value:_vm.psyCardPj.violentBehaviorActsAggressionDesc},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"violentBehaviorActsAggressionDesc",$event.target.value);}}})])])])]),_c("br"),_vm._v(" "),_c("span",{staticClass:"row"},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(13),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorViolentCrimes,expression:"psyCardPj.violentBehaviorViolentCrimes"}],attrs:{type:"radio",name:"violent_behavior_violent_crimes",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorViolentCrimes,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorViolentCrimes","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorViolentCrimes,expression:"psyCardPj.violentBehaviorViolentCrimes"}],attrs:{type:"radio",name:"violent_behavior_violent_crimes",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorViolentCrimes,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorViolentCrimes","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("span",[_vm._v("Tipo:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorCrimesType,expression:"psyCardPj.violentBehaviorCrimesType"}],attrs:{type:"text",name:"violent_behavior_crimes_type"},domProps:{value:_vm.psyCardPj.violentBehaviorCrimesType},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"violentBehaviorCrimesType",$event.target.value);}}})])])])]),_vm._v(" "),_c("span",{staticClass:"row"},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(14),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorDuringIncarceration,expression:"psyCardPj.violentBehaviorDuringIncarceration"}],attrs:{type:"radio",name:"violent_behavior_during_incarceration",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorDuringIncarceration,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorDuringIncarceration","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorDuringIncarceration,expression:"psyCardPj.violentBehaviorDuringIncarceration"}],attrs:{type:"radio",name:"violent_behavior_during_incarceration",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorDuringIncarceration,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorDuringIncarceration","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br")])])])]),_vm._v(" "),_c("span",{staticClass:"row",staticStyle:{"float":"right"}},[_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(15),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorAggressionProceeding,expression:"psyCardPj.violentBehaviorAggressionProceeding"}],attrs:{type:"radio",name:"violent_behavior_aggression_proceeding",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorAggressionProceeding,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorAggressionProceeding","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorAggressionProceeding,expression:"psyCardPj.violentBehaviorAggressionProceeding"}],attrs:{type:"radio",name:"violent_behavior_aggression_proceeding",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentBehaviorAggressionProceeding,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentBehaviorAggressionProceeding","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("span",[_vm._v("Descrivere:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorAggressionProceedingDesc,expression:"psyCardPj.violentBehaviorAggressionProceedingDesc"}],attrs:{type:"text",name:"violent_behavior_aggression_proceeding_desc"},domProps:{value:_vm.psyCardPj.violentBehaviorAggressionProceedingDesc},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"violentBehaviorAggressionProceedingDesc",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(16),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentBehaviorLastAggression,expression:"psyCardPj.violentBehaviorLastAggression"}],attrs:{type:"text",name:"violent_behavior_last_aggression"},domProps:{value:_vm.psyCardPj.violentBehaviorLastAggression},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"violentBehaviorLastAggression",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(17),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentAggressionNow,expression:"psyCardPj.violentAggressionNow"}],attrs:{type:"radio",name:"violent_aggression_now",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.violentAggressionNow,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentAggressionNow","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.violentAggressionNow,expression:"psyCardPj.violentAggressionNow"}],attrs:{type:"radio",name:"violent_aggression_now",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.violentAggressionNow,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"violentAggressionNow","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("h2",[_vm._v("Background sociale")]),_vm._v(" "),_c("div",{staticClass:"row-column",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-9 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(18),_vm._v(" "),_c("span",{staticClass:"col-md-9 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Single"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Single")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Single");}}}),_vm._v(" "),_c("span",[_vm._v("Single")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Sposato"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Sposato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Sposato");}}}),_vm._v(" "),_c("span",[_vm._v("Sposato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Convivente"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Convivente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Convivente");}}}),_vm._v(" "),_c("span",[_vm._v("Convivente")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Fidanzato"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Fidanzato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Fidanzato");}}}),_vm._v(" "),_c("span",[_vm._v("Fidanzato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Separato/Divorziato"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Separato/Divorziato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Separato/Divorziato");}}}),_vm._v(" "),_c("span",[_vm._v("Separato/Divorziato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialMaritalStatus,expression:"psyCardPj.backgroundSocialMaritalStatus"}],attrs:{type:"radio",name:"background_social_marital_status",value:"Vedovo"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialMaritalStatus,"Vedovo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialMaritalStatus","Vedovo");}}}),_vm._v(" "),_c("span",[_vm._v("Vedovo")]),_c("br")])]),_vm._v(" "),_c("span",{staticClass:"item form-group"},[_vm._m(19),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialStabilityRelation,expression:"psyCardPj.backgroundSocialStabilityRelation"}],attrs:{type:"radio",name:"background_social_stability_relation",value:">1 anno"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialStabilityRelation,">1 anno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialStabilityRelation",">1 anno");}}}),_vm._v(" "),_c("span",[_vm._v(" > 1 anno")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialStabilityRelation,expression:"psyCardPj.backgroundSocialStabilityRelation"}],attrs:{type:"radio",name:"background_social_stability_relation",value:"<1 anno"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialStabilityRelation,"<1 anno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialStabilityRelation","<1 anno");}}}),_vm._v(" "),_c("span",[_vm._v("  1 anno ")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialStabilityProblem,expression:"psyCardPj.backgroundSocialStabilityProblem"}],attrs:{type:"radio",name:"background_social_stability_problem",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialStabilityProblem,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialStabilityProblem","1");}}}),_vm._v(" "),_c("span",[_vm._v("Problematiche")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialRelationProblem,expression:"psyCardPj.backgroundSocialRelationProblem"}],attrs:{type:"text",name:"background_social_relation_problem"},domProps:{value:_vm.psyCardPj.backgroundSocialRelationProblem},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialRelationProblem",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(20),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSons,expression:"psyCardPj.backgroundSocialSons"}],attrs:{type:"radio",name:"background_social_sons",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSons,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSons","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSons,expression:"psyCardPj.backgroundSocialSons"}],attrs:{type:"radio",name:"background_social_sons",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSons,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSons","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialProblem,expression:"psyCardPj.backgroundSocialProblem"}],attrs:{type:"radio",name:"background_social_problem",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialProblem,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialProblem","1");}}}),_vm._v(" "),_c("span",[_vm._v("Problematiche")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSonsProblem,expression:"psyCardPj.backgroundSocialSonsProblem"}],attrs:{type:"text",name:"background_social_sons_problem"},domProps:{value:_vm.psyCardPj.backgroundSocialSonsProblem},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialSonsProblem",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(21),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Vive in casa di proprietà"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Vive in casa di proprietà")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Vive in casa di proprietà");}}}),_vm._v(" "),_c("span",[_vm._v("Vive in casa di proprietà")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Vive in affitto"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Vive in affitto")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Vive in affitto");}}}),_vm._v(" "),_c("span",[_vm._v("Vive in affitto")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Vive con la famiglia"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Vive con la famiglia")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Vive con la famiglia");}}}),_vm._v(" "),_c("span",[_vm._v("Vive con la famiglia")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Hotel/da amici"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Hotel/da amici")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Hotel/da amici");}}}),_vm._v(" "),_c("span",[_vm._v("Hotel/da amici")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Istituzione"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Istituzione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Istituzione");}}}),_vm._v(" "),_c("span",[_vm._v("Istituzione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Senza casa"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Senza casa")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Senza casa");}}}),_vm._v(" "),_c("span",[_vm._v("Senza casa")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"In custodia"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"In custodia")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","In custodia");}}}),_vm._v(" "),_c("span",[_vm._v("In custodia")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouse,expression:"psyCardPj.backgroundSocialSituationHouse"}],attrs:{type:"radio",name:"background_social_situation_house",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSituationHouse,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouse","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSituationHouseOther,expression:"psyCardPj.backgroundSocialSituationHouseOther"}],attrs:{type:"text",name:"background_social_situation_house_other"},domProps:{value:_vm.psyCardPj.backgroundSocialSituationHouseOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialSituationHouseOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(22),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamily,expression:"psyCardPj.backgroundSocialSupportFamily"}],attrs:{type:"radio",name:"background_social_support_family",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportFamily,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamily","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamily,expression:"psyCardPj.backgroundSocialSupportFamily"}],attrs:{type:"radio",name:"background_social_support_family",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportFamily,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamily","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamilyCont,expression:"psyCardPj.backgroundSocialSupportFamilyCont"}],attrs:{type:"radio",name:"background_social_support_family_cont",value:"Contatti frequenti"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportFamilyCont,"Contatti frequenti")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamilyCont","Contatti frequenti");}}}),_vm._v(" "),_c("span",[_vm._v("Contatti frequenti")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamilyCont,expression:"psyCardPj.backgroundSocialSupportFamilyCont"}],attrs:{type:"radio",name:"background_social_support_family_cont",value:"Contatti sporadici"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportFamilyCont,"Contatti sporadici")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamilyCont","Contatti sporadici");}}}),_vm._v(" "),_c("span",[_vm._v("Contatti sporadici")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamilyCont,expression:"psyCardPj.backgroundSocialSupportFamilyCont"}],attrs:{type:"radio",name:"background_social_support_family_cont",value:"Problematiche"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportFamilyCont,"Problematiche")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamilyCont","Problematiche");}}}),_vm._v(" "),_c("span",[_vm._v("Problematiche")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportFamilyProblem,expression:"psyCardPj.backgroundSocialSupportFamilyProblem"}],attrs:{type:"text",name:"background_social_support_family_problem"},domProps:{value:_vm.psyCardPj.backgroundSocialSupportFamilyProblem},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialSupportFamilyProblem",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(23),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupport,expression:"psyCardPj.backgroundSocialSupport"}],attrs:{type:"radio",name:"background_social_support",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupport,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupport","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupport,expression:"psyCardPj.backgroundSocialSupport"}],attrs:{type:"radio",name:"background_social_support",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupport,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupport","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"Amici conoscenti"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"Amici conoscenti")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","Amici conoscenti");}}}),_vm._v(" "),_c("span",[_vm._v("Amici conoscenti")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"Associazioni"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"Associazioni")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","Associazioni");}}}),_vm._v(" "),_c("span",[_vm._v("Associazioni")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"Parrocchia"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"Parrocchia")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","Parrocchia");}}}),_vm._v(" "),_c("span",[_vm._v("Parrocchia")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"Associazioni sanitarie"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"Associazioni sanitarie")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","Associazioni sanitarie");}}}),_vm._v(" "),_c("span",[_vm._v("Associazioni sanitarie")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"altro"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","altro");}}}),_vm._v(" "),_c("span",[_vm._v("altro")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportOther,expression:"psyCardPj.backgroundSocialSupportOther"}],attrs:{type:"text",name:"background_social_support_other"},domProps:{value:_vm.psyCardPj.backgroundSocialSupportOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialSupportOther",$event.target.value);}}}),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportCont,expression:"psyCardPj.backgroundSocialSupportCont"}],attrs:{type:"radio",name:"background_social_support_cont",value:"Problematiche"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSupportCont,"Problematiche")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSupportCont","Problematiche");}}}),_vm._v(" "),_c("span",[_vm._v("Problematiche")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSupportProblem,expression:"psyCardPj.backgroundSocialSupportProblem"}],attrs:{type:"text",name:"background_social_support_problem"},domProps:{value:_vm.psyCardPj.backgroundSocialSupportProblem},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialSupportProblem",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(24),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSchooling,expression:"psyCardPj.backgroundSocialSchooling"}],attrs:{type:"radio",name:"background_social_schooling",value:"Analfabeta"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSchooling,"Analfabeta")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSchooling","Analfabeta");}}}),_vm._v(" "),_c("span",[_vm._v("Analfabeta")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSchooling,expression:"psyCardPj.backgroundSocialSchooling"}],attrs:{type:"radio",name:"background_social_schooling",value:"Scuola primaria"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSchooling,"Scuola primaria")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSchooling","Scuola primaria");}}}),_vm._v(" "),_c("span",[_vm._v("Scuola primaria")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSchooling,expression:"psyCardPj.backgroundSocialSchooling"}],attrs:{type:"radio",name:"background_social_schooling",value:"Scuola secondaria di primo grado"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSchooling,"Scuola secondaria di primo grado")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSchooling","Scuola secondaria di primo grado");}}}),_vm._v(" "),_c("span",[_vm._v("Scuola secondaria di primo grado")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSchooling,expression:"psyCardPj.backgroundSocialSchooling"}],attrs:{type:"radio",name:"background_social_schooling",value:"Diploma scuola secondaria di secondo grado"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSchooling,"Diploma scuola secondaria di secondo grado")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSchooling","Diploma scuola secondaria di secondo grado");}}}),_vm._v(" "),_c("span",[_vm._v("Diploma scuola secondaria di secondo grado")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialSchooling,expression:"psyCardPj.backgroundSocialSchooling"}],attrs:{type:"radio",name:"background_social_schooling",value:"Laurea/post lauream"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialSchooling,"Laurea/post lauream")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialSchooling","Laurea/post lauream");}}}),_vm._v(" "),_c("span",[_vm._v("Laurea/post lauream")]),_c("br")])])])]),_vm._v(" "),_c("div",{staticClass:"row",staticStyle:{"margin-top":"20px"}},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(25),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Impiego fisso"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Impiego fisso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Impiego fisso");}}}),_vm._v(" "),_c("span",[_vm._v("Impiego fisso")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Impiego part-time"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Impiego part-time")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Impiego part-time");}}}),_vm._v(" "),_c("span",[_vm._v("Impiego part-time")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Impiego stagionale"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Impiego stagionale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Impiego stagionale");}}}),_vm._v(" "),_c("span",[_vm._v("Impiego stagionale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Diploma scuola secondaria di secondo grado"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Diploma scuola secondaria di secondo grado")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Diploma scuola secondaria di secondo grado");}}}),_vm._v(" "),_c("span",[_vm._v("Studente")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Assistente sociale"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Assistente sociale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Assistente sociale");}}}),_vm._v(" "),_c("span",[_vm._v("Assistente sociale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Disabile"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Disabile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Disabile");}}}),_vm._v(" "),_c("span",[_vm._v("Disabile")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Attività criminale"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Attività criminale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Attività criminale");}}}),_vm._v(" "),_c("span",[_vm._v("Attività criminale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Carcerazione"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Carcerazione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Carcerazione");}}}),_vm._v(" "),_c("span",[_vm._v("Carcerazione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Nessun mezzo di sostentamento"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Nessun mezzo di sostentamento")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Nessun mezzo di sostentamento");}}}),_vm._v(" "),_c("span",[_vm._v("Nessun mezzo di sostentamento")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWork,expression:"psyCardPj.backgroundSocialWork"}],attrs:{type:"radio",name:"background_social_work",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.backgroundSocialWork,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"backgroundSocialWork","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.backgroundSocialWorkOther,expression:"psyCardPj.backgroundSocialWorkOther"}],attrs:{type:"text",name:"background_social_work_other"},domProps:{value:_vm.psyCardPj.backgroundSocialWorkOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"backgroundSocialWorkOther",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(26),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUse,expression:"psyCardPj.substanceUse"}],attrs:{type:"radio",name:"substance_use",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUse,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUse","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUse,expression:"psyCardPj.substanceUse"}],attrs:{type:"radio",name:"substance_use",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUse,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUse","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(27),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseTabacco,expression:"psyCardPj.substanceUseTabacco"}],attrs:{type:"radio",name:"substance_use_tabacco",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseTabacco,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseTabacco","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseTabacco,expression:"psyCardPj.substanceUseTabacco"}],attrs:{type:"radio",name:"substance_use_tabacco",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseTabacco,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseTabacco","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("table",[_c("tr"),_vm._v(" "),_vm._m(28),_vm._v(" "),_c("tr",[_c("td",[_vm._v("alcol")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseAlcol,expression:"psyCardPj.substanceUseAlcol"}],attrs:{type:"radio",name:"substance_use_alcol",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseAlcol,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseAlcol","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseAlcol,expression:"psyCardPj.substanceUseAlcol"}],attrs:{type:"radio",name:"substance_use_alcol",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseAlcol,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseAlcol","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseAlcol,expression:"psyCardPj.substanceUseAlcol"}],attrs:{type:"radio",name:"substance_use_alcol",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseAlcol,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseAlcol","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseAlcol,expression:"psyCardPj.substanceUseAlcol"}],attrs:{type:"radio",name:"substance_use_alcol",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseAlcol,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseAlcol","precedente");}}})])]),_vm._v(" "),_c("tr",[_c("td",[_vm._v("Marijuana")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMarijuana,expression:"psyCardPj.substanceUseMarijuana"}],attrs:{type:"radio",name:"substance_use_marijuana",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMarijuana,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMarijuana","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMarijuana,expression:"psyCardPj.substanceUseMarijuana"}],attrs:{type:"radio",name:"substance_use_marijuana",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMarijuana,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMarijuana","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMarijuana,expression:"psyCardPj.substanceUseMarijuana"}],attrs:{type:"radio",name:"substance_use_marijuana",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMarijuana,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMarijuana","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMarijuana,expression:"psyCardPj.substanceUseMarijuana"}],attrs:{type:"radio",name:"substance_use_marijuana",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMarijuana,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMarijuana","precedente");}}})])]),_vm._v(" "),_c("tr",[_c("td",[_vm._v("Eroina")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseEroin,expression:"psyCardPj.substanceUseEroin"}],attrs:{type:"radio",name:"substance_use_eroin",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseEroin,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseEroin","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseEroin,expression:"psyCardPj.substanceUseEroin"}],attrs:{type:"radio",name:"substance_use_eroin",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseEroin,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseEroin","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseEroin,expression:"psyCardPj.substanceUseEroin"}],attrs:{type:"radio",name:"substance_use_eroin",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseEroin,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseEroin","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseEroin,expression:"psyCardPj.substanceUseEroin"}],attrs:{type:"radio",name:"substance_use_eroin",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseEroin,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseEroin","precedente");}}})])]),_vm._v(" "),_c("tr",[_c("td",[_vm._v("Cocaina")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCocaine,expression:"psyCardPj.substanceUseCocaine"}],attrs:{type:"radio",name:"substance_use_cocaine",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCocaine,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCocaine","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCocaine,expression:"psyCardPj.substanceUseCocaine"}],attrs:{type:"radio",name:"substance_use_cocaine",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCocaine,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCocaine","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCocaine,expression:"psyCardPj.substanceUseCocaine"}],attrs:{type:"radio",name:"substance_use_cocaine",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCocaine,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCocaine","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCocaine,expression:"psyCardPj.substanceUseCocaine"}],attrs:{type:"radio",name:"substance_use_cocaine",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCocaine,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCocaine","precedente");}}})])]),_vm._v(" "),_c("tr",[_c("td",[_vm._v("Metanfetamine")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMetamphetamin,expression:"psyCardPj.substanceUseMetamphetamin"}],attrs:{type:"radio",name:"substance_use_metamphetamin",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMetamphetamin,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMetamphetamin","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMetamphetamin,expression:"psyCardPj.substanceUseMetamphetamin"}],attrs:{type:"radio",name:"substance_use_metamphetamin",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMetamphetamin,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMetamphetamin","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMetamphetamin,expression:"psyCardPj.substanceUseMetamphetamin"}],attrs:{type:"radio",name:"substance_use_metamphetamin",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMetamphetamin,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMetamphetamin","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseMetamphetamin,expression:"psyCardPj.substanceUseMetamphetamin"}],attrs:{type:"radio",name:"substance_use_metamphetamin",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseMetamphetamin,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseMetamphetamin","precedente");}}})])]),_vm._v(" "),_c("tr",[_c("td",[_vm._v("altro")]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseOther,expression:"psyCardPj.substanceUseOther"}],attrs:{type:"radio",name:"substance_use_other",value:"uso"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseOther,"uso")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseOther","uso");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseOther,expression:"psyCardPj.substanceUseOther"}],attrs:{type:"radio",name:"substance_use_other",value:"attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseOther,"attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseOther","attuale");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseOther,expression:"psyCardPj.substanceUseOther"}],attrs:{type:"radio",name:"substance_use_other",value:"di lungo periodo"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseOther,"di lungo periodo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseOther","di lungo periodo");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseOther,expression:"psyCardPj.substanceUseOther"}],attrs:{type:"radio",name:"substance_use_other",value:"precedente"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseOther,"precedente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseOther","precedente");}}})])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(29),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseDescription,expression:"psyCardPj.substanceUseDescription"}],attrs:{type:"text",name:"substance_use_description",value:"1"},domProps:{value:_vm.psyCardPj.substanceUseDescription},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"substanceUseDescription",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(30),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseIntravenousMode,expression:"psyCardPj.substanceUseIntravenousMode"}],attrs:{type:"radio",name:"substance_use_intravenous_mode",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseIntravenousMode,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseIntravenousMode","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseIntravenousMode,expression:"psyCardPj.substanceUseIntravenousMode"}],attrs:{type:"radio",name:"substance_use_intravenous_mode",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseIntravenousMode,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseIntravenousMode","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("div",{staticClass:"row float-left"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(31),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadoneTreatment,expression:"psyCardPj.substanceUseCurrentMethadoneTreatment"}],attrs:{type:"radio",name:"substance_use_current_methadone_treatment",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadoneTreatment,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadoneTreatment","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadoneTreatment,expression:"psyCardPj.substanceUseCurrentMethadoneTreatment"}],attrs:{type:"radio",name:"substance_use_current_methadone_treatment",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadoneTreatment,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadoneTreatment","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadonList,expression:"psyCardPj.substanceUseCurrentMethadonList"}],attrs:{type:"radio",name:"substance_use_current_methadon_list",value:"nel passato"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadonList,"nel passato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadonList","nel passato");}}}),_vm._v(" "),_c("span",[_vm._v("nel passato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadonList,expression:"psyCardPj.substanceUseCurrentMethadonList"}],attrs:{type:"radio",name:"substance_use_current_methadon_list",value:"meno 1 mese"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadonList,"meno 1 mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadonList","meno 1 mese");}}}),_vm._v(" "),_c("span",[_vm._v(" meno 1 mese ")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadonList,expression:"psyCardPj.substanceUseCurrentMethadonList"}],attrs:{type:"radio",name:"substance_use_current_methadon_list",value:"meno 1 anno"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadonList,"meno 1 anno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadonList","meno 1 anno");}}}),_vm._v(" "),_c("span",[_vm._v(" meno 1 anno ")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseCurrentMethadonList,expression:"psyCardPj.substanceUseCurrentMethadonList"}],attrs:{type:"radio",name:"substance_use_current_methadon_list",value:"più 1 anno"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseCurrentMethadonList,"più 1 anno")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseCurrentMethadonList","più 1 anno");}}}),_vm._v(" "),_c("span",[_vm._v(" più 1 anno ")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(32),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuse,expression:"psyCardPj.substanceUseSubstanceAbuse"}],attrs:{type:"radio",name:"substance_use_substance_abuse",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuse,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuse","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuse,expression:"psyCardPj.substanceUseSubstanceAbuse"}],attrs:{type:"radio",name:"substance_use_substance_abuse",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuse,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuse","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Alcolisti e Narcotici"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Alcolisti e Narcotici")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Alcolisti e Narcotici");}}}),_vm._v(" "),_c("span",[_vm._v("AA/NA Alcolisti e Narcotici anonimi")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Disintossicazione"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Disintossicazione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Disintossicazione");}}}),_vm._v(" "),_c("span",[_vm._v("Disintossicazione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Comunità terapeutica"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Comunità terapeutica")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Comunità terapeutica");}}}),_vm._v(" "),_c("span",[_vm._v(" Comunità terapeutica")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Trattamento in carcere"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Trattamento in carcere")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Trattamento in carcere");}}}),_vm._v(" "),_c("span",[_vm._v("Trattamento in carcere")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Counseling"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Counseling")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Counseling");}}}),_vm._v(" "),_c("span",[_vm._v("Counseling")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseList,expression:"psyCardPj.substanceUseSubstanceAbuseList"}],attrs:{type:"radio",name:"substance_use_substance_abuse_list",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.substanceUseSubstanceAbuseList,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseList","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.substanceUseSubstanceAbuseOther,expression:"psyCardPj.substanceUseSubstanceAbuseOther"}],attrs:{type:"text",name:"substance_use_substance_abuse_other"},domProps:{value:_vm.psyCardPj.substanceUseSubstanceAbuseOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"substanceUseSubstanceAbuseOther",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(33),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatments,expression:"psyCardPj.psycTreatments"}],attrs:{type:"radio",name:"psyc_treatments",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatments,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatments","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatments,expression:"psyCardPj.psycTreatments"}],attrs:{type:"radio",name:"psyc_treatments",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatments,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatments","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("table",[_vm._m(34),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsClinicalEvaluation,expression:"psyCardPj.psycTreatmentsClinicalEvaluation"}],attrs:{type:"radio",name:"psyc_treatments_clinical_evaluation",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsClinicalEvaluation,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsClinicalEvaluation","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsClinicalEvaluation,expression:"psyCardPj.psycTreatmentsClinicalEvaluation"}],attrs:{type:"radio",name:"psyc_treatments_clinical_evaluation",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsClinicalEvaluation,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsClinicalEvaluation","Da sempre");}}})]),_vm._v(" "),_vm._m(35)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsClinicalEvaluationOrder,expression:"psyCardPj.psycTreatmentsClinicalEvaluationOrder"}],attrs:{type:"radio",name:"psyc_treatments_clinical_evaluation_order",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsClinicalEvaluationOrder,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsClinicalEvaluationOrder","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsClinicalEvaluationOrder,expression:"psyCardPj.psycTreatmentsClinicalEvaluationOrder"}],attrs:{type:"radio",name:"psyc_treatments_clinical_evaluation_order",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsClinicalEvaluationOrder,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsClinicalEvaluationOrder","Da sempre");}}})]),_vm._v(" "),_vm._m(36)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsInPrison,expression:"psyCardPj.psycTreatmentsInPrison"}],attrs:{type:"radio",name:"psyc_treatments_in_prison",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsInPrison,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsInPrison","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsInPrison,expression:"psyCardPj.psycTreatmentsInPrison"}],attrs:{type:"radio",name:"psyc_treatments_in_prison",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsInPrison,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsInPrison","Da sempre");}}})]),_vm._v(" "),_vm._m(37)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsComunity,expression:"psyCardPj.psycTreatmentsComunity"}],attrs:{type:"radio",name:"psyc_treatments_comunity",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsComunity,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsComunity","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsComunity,expression:"psyCardPj.psycTreatmentsComunity"}],attrs:{type:"radio",name:"psyc_treatments_comunity",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsComunity,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsComunity","Da sempre");}}})]),_vm._v(" "),_vm._m(38)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsHospital,expression:"psyCardPj.psycTreatmentsHospital"}],attrs:{type:"radio",name:"psyc_treatments_hospital",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsHospital,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsHospital","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsHospital,expression:"psyCardPj.psycTreatmentsHospital"}],attrs:{type:"radio",name:"psyc_treatments_hospital",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsHospital,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsHospital","Da sempre");}}})]),_vm._v(" "),_vm._m(39),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsCheckHospital,expression:"psyCardPj.psycTreatmentsCheckHospital"}],attrs:{type:"radio",name:"psyc_treatments_check_hospital",value:"> 6 mesi"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsCheckHospital,"> 6 mesi")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsCheckHospital","> 6 mesi");}}}),_vm._v(" "),_c("span",[_vm._v("> 6 mesi")])])]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsCourtOrder,expression:"psyCardPj.psycTreatmentsCourtOrder"}],attrs:{type:"radio",name:"psyc_treatments_court_order",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsCourtOrder,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsCourtOrder","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsCourtOrder,expression:"psyCardPj.psycTreatmentsCourtOrder"}],attrs:{type:"radio",name:"psyc_treatments_court_order",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsCourtOrder,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsCourtOrder","Da sempre");}}})]),_vm._v(" "),_vm._m(40),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsCheckOrder,expression:"psyCardPj.psycTreatmentsCheckOrder"}],attrs:{type:"radio",name:"psyc_treatments_check_order",value:"> 6 mesi"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsCheckOrder,"> 6 mesi")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsCheckOrder","> 6 mesi");}}}),_vm._v(" "),_c("span",[_vm._v("> 6 mesi")])])]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsFarmacy,expression:"psyCardPj.psycTreatmentsFarmacy"}],attrs:{type:"radio",name:"psyc_treatments_farmacy",value:"Ultimo mese"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsFarmacy,"Ultimo mese")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsFarmacy","Ultimo mese");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsFarmacy,expression:"psyCardPj.psycTreatmentsFarmacy"}],attrs:{type:"radio",name:"psyc_treatments_farmacy",value:"Da sempre"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsFarmacy,"Da sempre")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsFarmacy","Da sempre");}}})]),_vm._v(" "),_vm._m(41),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsCheckFarmacy,expression:"psyCardPj.psycTreatmentsCheckFarmacy"}],attrs:{type:"radio",name:"psyc_treatments_check_farmacy",value:" > 6 mesi"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsCheckFarmacy," > 6 mesi")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsCheckFarmacy"," > 6 mesi");}}}),_vm._v(" "),_c("span",[_vm._v("> 6 mesi")])])]),_vm._v(" "),_c("tr",[_c("td",{staticStyle:{border:"0"}}),_vm._v(" "),_c("td",{staticStyle:{border:"0"}}),_vm._v(" "),_c("td",[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(42),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsType,expression:"psyCardPj.psycTreatmentsType"}],attrs:{type:"text",name:"psyc_treatments_type"},domProps:{value:_vm.psyCardPj.psycTreatmentsType},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"psycTreatmentsType",$event.target.value);}}})])])])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(43),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsPreviousTrauma,expression:"psyCardPj.psycTreatmentsPreviousTrauma"}],attrs:{type:"radio",name:"psyc_treatments_previous_trauma",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsPreviousTrauma,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsPreviousTrauma","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsPreviousTrauma,expression:"psyCardPj.psycTreatmentsPreviousTrauma"}],attrs:{type:"radio",name:"psyc_treatments_previous_trauma",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.psycTreatmentsPreviousTrauma,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psycTreatmentsPreviousTrauma","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(44),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psycTreatmentsPreviousTraumaDesc,expression:"psyCardPj.psycTreatmentsPreviousTraumaDesc"}],attrs:{type:"text",name:"psyc_treatments_previous_trauma_desc"},domProps:{value:_vm.psyCardPj.psycTreatmentsPreviousTraumaDesc},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"psycTreatmentsPreviousTraumaDesc",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(45),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRisk,expression:"psyCardPj.suicidalRisk"}],attrs:{type:"radio",name:"suicidal_risk",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRisk,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRisk","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRisk,expression:"psyCardPj.suicidalRisk"}],attrs:{type:"radio",name:"suicidal_risk",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRisk,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRisk","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(46),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskNumberAttempts,expression:"psyCardPj.suicidalRiskNumberAttempts"}],attrs:{type:"text",name:"suicidal_risk_number_attempts"},domProps:{value:_vm.psyCardPj.suicidalRiskNumberAttempts},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskNumberAttempts",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(47),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskTimeAttempts,expression:"psyCardPj.suicidalRiskTimeAttempts"}],attrs:{type:"text",name:"suicidal_risk_time_attempts"},domProps:{value:_vm.psyCardPj.suicidalRiskTimeAttempts},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskTimeAttempts",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(48),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Arma da fuoco"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Arma da fuoco")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Arma da fuoco");}}}),_vm._v(" "),_c("span",[_vm._v("Arma da fuoco")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Salto/defenestrazione"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Salto/defenestrazione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Salto/defenestrazione");}}}),_vm._v(" "),_c("span",[_vm._v("Salto/defenestrazione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Dissanguamento"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Dissanguamento")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Dissanguamento");}}}),_vm._v(" "),_c("span",[_vm._v("Dissanguamento")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Overdose di farmaci"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Overdose di farmaci")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Overdose di farmaci");}}}),_vm._v(" "),_c("span",[_vm._v("Overdose di farmaci")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Impiccagione/asfissia"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Impiccagione/asfissia")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Impiccagione/asfissia");}}}),_vm._v(" "),_c("span",[_vm._v("Impiccagione/asfissia")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Avvelenamento monossido carbonio"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Avvelenamento monossido carbonio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Avvelenamento monossido carbonio");}}}),_vm._v(" "),_c("span",[_vm._v("Avvelenamento da monossido di carbonio")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Autoveicolo"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Autoveicolo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Autoveicolo");}}}),_vm._v(" "),_c("span",[_vm._v("Autoveicolo")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeapon,expression:"psyCardPj.suicidalRiskMethodsWeapon"}],attrs:{type:"radio",name:"suicidal_risk_methods_weapon",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsWeapon,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeapon","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsWeaponOther,expression:"psyCardPj.suicidalRiskMethodsWeaponOther"}],attrs:{type:"text",name:"suicidal_risk_methods_weapon_other"},domProps:{value:_vm.psyCardPj.suicidalRiskMethodsWeaponOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskMethodsWeaponOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(49),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskLevelIdeation,expression:"psyCardPj.suicidalRiskLevelIdeation"}],attrs:{type:"radio",name:"suicidal_risk_level_ideation",value:"Nessun proposito"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskLevelIdeation,"Nessun proposito")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskLevelIdeation","Nessun proposito");}}}),_vm._v(" "),_c("span",[_vm._v("Nessun proposito")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskLevelIdeation,expression:"psyCardPj.suicidalRiskLevelIdeation"}],attrs:{type:"radio",name:"suicidal_risk_level_ideation",value:"Ideazione/nessun intento suicidio"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskLevelIdeation,"Ideazione/nessun intento suicidio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskLevelIdeation","Ideazione/nessun intento suicidio");}}}),_vm._v(" "),_c("span",[_vm._v("Ideazione/ma nessun intento di attuare suicidio")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskLevelIdeation,expression:"psyCardPj.suicidalRiskLevelIdeation"}],attrs:{type:"radio",name:"suicidal_risk_level_ideation",value:"Ideazione/intenzione suicidio"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskLevelIdeation,"Ideazione/intenzione suicidio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskLevelIdeation","Ideazione/intenzione suicidio");}}}),_vm._v(" "),_c("span",[_vm._v("Ideazione/qualche intenzione di attuare suicidio")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskLevelIdeation,expression:"psyCardPj.suicidalRiskLevelIdeation"}],attrs:{type:"radio",name:"suicidal_risk_level_ideation",value:"Ideazione più o meno espressa"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskLevelIdeation,"Ideazione più o meno espressa")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskLevelIdeation","Ideazione più o meno espressa");}}}),_vm._v(" "),_c("span",[_vm._v("Ideazione più o meno espressa/in osservazione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskLevelIdeation,expression:"psyCardPj.suicidalRiskLevelIdeation"}],attrs:{type:"radio",name:"suicidal_risk_level_ideation",value:"Intenzione suicidarsi durante la detenzione"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskLevelIdeation,"Intenzione suicidarsi durante la detenzione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskLevelIdeation","Intenzione suicidarsi durante la detenzione");}}}),_vm._v(" "),_c("span",[_vm._v("Intenzione di commettere atti suicidari durante la detenzione")]),_c("br")])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(50),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSucideTentative,expression:"psyCardPj.suicidalRiskSucideTentative"}],attrs:{type:"radio",name:"suicidal_risk_sucide_tentative",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskSucideTentative,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskSucideTentative","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSucideTentative,expression:"psyCardPj.suicidalRiskSucideTentative"}],attrs:{type:"radio",name:"suicidal_risk_sucide_tentative",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskSucideTentative,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskSucideTentative","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(51),_c("br"),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSucideTentativeNumber,expression:"psyCardPj.suicidalRiskSucideTentativeNumber"}],attrs:{type:"text",name:"suicidal_risk_sucide_tentative_number"},domProps:{value:_vm.psyCardPj.suicidalRiskSucideTentativeNumber},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskSucideTentativeNumber",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(52),_c("br"),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskTentativeTime,expression:"psyCardPj.suicidalRiskTentativeTime"}],attrs:{type:"text",name:"suicidal_risk_tentative_time"},domProps:{value:_vm.psyCardPj.suicidalRiskTentativeTime},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskTentativeTime",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(53),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsTwo,expression:"psyCardPj.suicidalRiskMethodsTwo"}],attrs:{type:"radio",name:"suicidal_risk_methods_two",value:"Dissanguamento"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsTwo,"Dissanguamento")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsTwo","Dissanguamento");}}}),_vm._v(" "),_c("span",[_vm._v("Dissanguamento")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsTwo,expression:"psyCardPj.suicidalRiskMethodsTwo"}],attrs:{type:"radio",name:"suicidal_risk_methods_two",value:"Overdose di farmaci"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsTwo,"Overdose di farmaci")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsTwo","Overdose di farmaci");}}}),_vm._v(" "),_c("span",[_vm._v("Overdose di farmaci")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsTwo,expression:"psyCardPj.suicidalRiskMethodsTwo"}],attrs:{type:"radio",name:"suicidal_risk_methods_two",value:"Impiccagione/asfissia"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsTwo,"Impiccagione/asfissia")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsTwo","Impiccagione/asfissia");}}}),_vm._v(" "),_c("span",[_vm._v("Impiccagione/asfissia")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsTwo,expression:"psyCardPj.suicidalRiskMethodsTwo"}],attrs:{type:"radio",name:"suicidal_risk_methods_two",value:"altro"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskMethodsTwo,"altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskMethodsTwo","altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskMethodsTwoOther,expression:"psyCardPj.suicidalRiskMethodsTwoOther"}],attrs:{type:"text",name:"suicidal_risk_methods_two_other"},domProps:{value:_vm.psyCardPj.suicidalRiskMethodsTwoOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskMethodsTwoOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(54),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskActOfSelfHarm,expression:"psyCardPj.suicidalRiskActOfSelfHarm"}],attrs:{type:"radio",name:"suicidal_risk_act_of_self_harm",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskActOfSelfHarm,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskActOfSelfHarm","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskActOfSelfHarm,expression:"psyCardPj.suicidalRiskActOfSelfHarm"}],attrs:{type:"radio",name:"suicidal_risk_act_of_self_harm",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskActOfSelfHarm,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskActOfSelfHarm","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("span",[_vm._v("descrivere:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskActOfSelfHarmDesc,expression:"psyCardPj.suicidalRiskActOfSelfHarmDesc"}],attrs:{type:"text",name:"suicidal_risk_act_of_self_harm_desc"},domProps:{value:_vm.psyCardPj.suicidalRiskActOfSelfHarmDesc},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"suicidalRiskActOfSelfHarmDesc",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("table",[_vm._m(55),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSomaticConcerns,expression:"psyCardPj.mentalConditionsSomaticConcerns"}],attrs:{type:"radio",name:"mental_conditions_somatic_concerns",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSomaticConcerns,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSomaticConcerns","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSomaticConcerns,expression:"psyCardPj.mentalConditionsSomaticConcerns"}],attrs:{type:"radio",name:"mental_conditions_somatic_concerns",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSomaticConcerns,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSomaticConcerns","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSomaticConcerns,expression:"psyCardPj.mentalConditionsSomaticConcerns"}],attrs:{type:"radio",name:"mental_conditions_somatic_concerns",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSomaticConcerns,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSomaticConcerns","Assente");}}})]),_vm._v(" "),_vm._m(56),_vm._v(" "),_vm._m(57)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAnxiety,expression:"psyCardPj.mentalConditionsAnxiety"}],attrs:{type:"radio",name:"mental_conditions_anxiety",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAnxiety,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAnxiety","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAnxiety,expression:"psyCardPj.mentalConditionsAnxiety"}],attrs:{type:"radio",name:"mental_conditions_anxiety",value:"possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAnxiety,"possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAnxiety","possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAnxiety,expression:"psyCardPj.mentalConditionsAnxiety"}],attrs:{type:"radio",name:"mental_conditions_anxiety",value:"assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAnxiety,"assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAnxiety","assente");}}})]),_vm._v(" "),_vm._m(58),_vm._v(" "),_vm._m(59)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDepression,expression:"psyCardPj.mentalConditionsDepression"}],attrs:{type:"radio",name:"mental_conditions_depression",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDepression,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDepression","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDepression,expression:"psyCardPj.mentalConditionsDepression"}],attrs:{type:"radio",name:"mental_conditions_depression",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDepression,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDepression","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDepression,expression:"psyCardPj.mentalConditionsDepression"}],attrs:{type:"radio",name:"mental_conditions_depression",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDepression,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDepression","Assente");}}})]),_vm._v(" "),_vm._m(60),_vm._v(" "),_vm._m(61)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuicide,expression:"psyCardPj.mentalConditionsSuicide"}],attrs:{type:"radio",name:"mental_conditions_suicide",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuicide,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuicide","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuicide,expression:"psyCardPj.mentalConditionsSuicide"}],attrs:{type:"radio",name:"mental_conditions_suicide",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuicide,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuicide","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuicide,expression:"psyCardPj.mentalConditionsSuicide"}],attrs:{type:"radio",name:"mental_conditions_suicide",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuicide,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuicide","Assente");}}})]),_vm._v(" "),_vm._m(62),_vm._v(" "),_vm._m(63)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGuilt,expression:"psyCardPj.mentalConditionsGuilt"}],attrs:{type:"radio",name:"mental_conditions_guilt",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGuilt,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGuilt","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGuilt,expression:"psyCardPj.mentalConditionsGuilt"}],attrs:{type:"radio",name:"mental_conditions_guilt",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGuilt,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGuilt","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGuilt,expression:"psyCardPj.mentalConditionsGuilt"}],attrs:{type:"radio",name:"mental_conditions_guilt",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGuilt,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGuilt","Assente");}}})]),_vm._v(" "),_vm._m(64),_vm._v(" "),_vm._m(65)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsHostility,expression:"psyCardPj.mentalConditionsHostility"}],attrs:{type:"radio",name:"mental_conditions_hostility",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsHostility,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsHostility","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsHostility,expression:"psyCardPj.mentalConditionsHostility"}],attrs:{type:"radio",name:"mental_conditions_hostility",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsHostility,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsHostility","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsHostility,expression:"psyCardPj.mentalConditionsHostility"}],attrs:{type:"radio",name:"mental_conditions_hostility",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsHostility,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsHostility","Assente");}}})]),_vm._v(" "),_vm._m(66),_vm._v(" "),_vm._m(67)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsElevatedMood,expression:"psyCardPj.mentalConditionsElevatedMood"}],attrs:{type:"radio",name:"mental_conditions_elevated_mood",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsElevatedMood,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsElevatedMood","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsElevatedMood,expression:"psyCardPj.mentalConditionsElevatedMood"}],attrs:{type:"radio",name:"mental_conditions_elevated_mood",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsElevatedMood,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsElevatedMood","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsElevatedMood,expression:"psyCardPj.mentalConditionsElevatedMood"}],attrs:{type:"radio",name:"mental_conditions_elevated_mood",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsElevatedMood,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsElevatedMood","Assente");}}})]),_vm._v(" "),_vm._m(68),_vm._v(" "),_vm._m(69)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGrandeur,expression:"psyCardPj.mentalConditionsGrandeur"}],attrs:{type:"radio",name:"mental_conditions_grandeur",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGrandeur,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGrandeur","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGrandeur,expression:"psyCardPj.mentalConditionsGrandeur"}],attrs:{type:"radio",name:"mental_conditions_grandeur",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGrandeur,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGrandeur","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsGrandeur,expression:"psyCardPj.mentalConditionsGrandeur"}],attrs:{type:"radio",name:"mental_conditions_grandeur",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsGrandeur,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsGrandeur","Assente");}}})]),_vm._v(" "),_vm._m(70),_vm._v(" "),_vm._m(71)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuspiciousness,expression:"psyCardPj.mentalConditionsSuspiciousness"}],attrs:{type:"radio",name:"mental_conditions_suspiciousness",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuspiciousness,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuspiciousness","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuspiciousness,expression:"psyCardPj.mentalConditionsSuspiciousness"}],attrs:{type:"radio",name:"mental_conditions_suspiciousness",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuspiciousness,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuspiciousness","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsSuspiciousness,expression:"psyCardPj.mentalConditionsSuspiciousness"}],attrs:{type:"radio",name:"mental_conditions_suspiciousness",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsSuspiciousness,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsSuspiciousness","Assente");}}})]),_vm._v(" "),_vm._m(72),_vm._v(" "),_vm._m(73)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAllucination,expression:"psyCardPj.mentalConditionsAllucination"}],attrs:{type:"radio",name:"mental_conditions_allucination",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAllucination,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAllucination","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAllucination,expression:"psyCardPj.mentalConditionsAllucination"}],attrs:{type:"radio",name:"mental_conditions_allucination",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAllucination,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAllucination","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsAllucination,expression:"psyCardPj.mentalConditionsAllucination"}],attrs:{type:"radio",name:"mental_conditions_allucination",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsAllucination,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsAllucination","Assente");}}})]),_vm._v(" "),_vm._m(74),_vm._v(" "),_vm._m(75)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsUnusualThought,expression:"psyCardPj.mentalConditionsUnusualThought"}],attrs:{type:"radio",name:"mental_conditions_unusual_thought",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsUnusualThought,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsUnusualThought","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsUnusualThought,expression:"psyCardPj.mentalConditionsUnusualThought"}],attrs:{type:"radio",name:"mental_conditions_unusual_thought",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsUnusualThought,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsUnusualThought","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsUnusualThought,expression:"psyCardPj.mentalConditionsUnusualThought"}],attrs:{type:"radio",name:"mental_conditions_unusual_thought",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsUnusualThought,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsUnusualThought","Assente");}}})]),_vm._v(" "),_vm._m(76),_vm._v(" "),_vm._m(77)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBizarreBehavior,expression:"psyCardPj.mentalConditionsBizarreBehavior"}],attrs:{type:"radio",name:"mental_conditions_bizarre_behavior",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBizarreBehavior,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBizarreBehavior","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBizarreBehavior,expression:"psyCardPj.mentalConditionsBizarreBehavior"}],attrs:{type:"radio",name:"mental_conditions_bizarre_behavior",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBizarreBehavior,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBizarreBehavior","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBizarreBehavior,expression:"psyCardPj.mentalConditionsBizarreBehavior"}],attrs:{type:"radio",name:"mental_conditions_bizarre_behavior",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBizarreBehavior,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBizarreBehavior","Assente");}}})]),_vm._v(" "),_vm._m(78),_vm._v(" "),_vm._m(79)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNeglect,expression:"psyCardPj.mentalConditionsNeglect"}],attrs:{type:"radio",name:"mental_conditions_neglect",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNeglect,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNeglect","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNeglect,expression:"psyCardPj.mentalConditionsNeglect"}],attrs:{type:"radio",name:"mental_conditions_neglect",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNeglect,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNeglect","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNeglect,expression:"psyCardPj.mentalConditionsNeglect"}],attrs:{type:"radio",name:"mental_conditions_neglect",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNeglect,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNeglect","Assente");}}})]),_vm._v(" "),_vm._m(80),_vm._v(" "),_vm._m(81)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorientation,expression:"psyCardPj.mentalConditionsDisorientation"}],attrs:{type:"radio",name:"mental_conditions_disorientation",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorientation,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorientation","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorientation,expression:"psyCardPj.mentalConditionsDisorientation"}],attrs:{type:"radio",name:"mental_conditions_disorientation",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorientation,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorientation","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorientation,expression:"psyCardPj.mentalConditionsDisorientation"}],attrs:{type:"radio",name:"mental_conditions_disorientation",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorientation,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorientation","Assente");}}})]),_vm._v(" "),_vm._m(82),_vm._v(" "),_vm._m(83)])]),_vm._v(" "),_vm._m(84),_vm._v(" "),_c("table",[_vm._m(85),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorganization,expression:"psyCardPj.mentalConditionsDisorganization"}],attrs:{type:"radio",name:"mental_conditions_disorganization",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorganization,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorganization","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorganization,expression:"psyCardPj.mentalConditionsDisorganization"}],attrs:{type:"radio",name:"mental_conditions_disorganization",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorganization,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorganization","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDisorganization,expression:"psyCardPj.mentalConditionsDisorganization"}],attrs:{type:"radio",name:"mental_conditions_disorganization",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDisorganization,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDisorganization","Assente");}}})]),_vm._v(" "),_vm._m(86),_vm._v(" "),_vm._m(87)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBlankness,expression:"psyCardPj.mentalConditionsBlankness"}],attrs:{type:"radio",name:"mental_conditions_blankness",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBlankness,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBlankness","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBlankness,expression:"psyCardPj.mentalConditionsBlankness"}],attrs:{type:"radio",name:"mental_conditions_blankness",value:"possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBlankness,"possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBlankness","possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsBlankness,expression:"psyCardPj.mentalConditionsBlankness"}],attrs:{type:"radio",name:"mental_conditions_blankness",value:"assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsBlankness,"assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsBlankness","assente");}}})]),_vm._v(" "),_vm._m(88),_vm._v(" "),_vm._m(89)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsReducedEmotion,expression:"psyCardPj.mentalConditionsReducedEmotion"}],attrs:{type:"radio",name:"mental_conditions_reduced_emotion",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsReducedEmotion,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsReducedEmotion","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsReducedEmotion,expression:"psyCardPj.mentalConditionsReducedEmotion"}],attrs:{type:"radio",name:"mental_conditions_reduced_emotion",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsReducedEmotion,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsReducedEmotion","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsReducedEmotion,expression:"psyCardPj.mentalConditionsReducedEmotion"}],attrs:{type:"radio",name:"mental_conditions_reduced_emotion",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsReducedEmotion,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsReducedEmotion","Assente");}}})]),_vm._v(" "),_vm._m(90),_vm._v(" "),_vm._m(91)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorSlowdown,expression:"psyCardPj.mentalConditionsMotorSlowdown"}],attrs:{type:"radio",name:"mental_conditions_motor_slowdown",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorSlowdown,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorSlowdown","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorSlowdown,expression:"psyCardPj.mentalConditionsMotorSlowdown"}],attrs:{type:"radio",name:"mental_conditions_motor_slowdown",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorSlowdown,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorSlowdown","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorSlowdown,expression:"psyCardPj.mentalConditionsMotorSlowdown"}],attrs:{type:"radio",name:"mental_conditions_motor_slowdown",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorSlowdown,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorSlowdown","Assente");}}})]),_vm._v(" "),_vm._m(92),_vm._v(" "),_vm._m(93)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsVoltage,expression:"psyCardPj.mentalConditionsVoltage"}],attrs:{type:"radio",name:"mental_conditions_voltage",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsVoltage,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsVoltage","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsVoltage,expression:"psyCardPj.mentalConditionsVoltage"}],attrs:{type:"radio",name:"mental_conditions_voltage",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsVoltage,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsVoltage","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsVoltage,expression:"psyCardPj.mentalConditionsVoltage"}],attrs:{type:"radio",name:"mental_conditions_voltage",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsVoltage,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsVoltage","Assente");}}})]),_vm._v(" "),_vm._m(94),_vm._v(" "),_vm._m(95)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNotCooperation,expression:"psyCardPj.mentalConditionsNotCooperation"}],attrs:{type:"radio",name:"mental_conditions_not_cooperation",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNotCooperation,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNotCooperation","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNotCooperation,expression:"psyCardPj.mentalConditionsNotCooperation"}],attrs:{type:"radio",name:"mental_conditions_not_cooperation",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNotCooperation,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNotCooperation","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsNotCooperation,expression:"psyCardPj.mentalConditionsNotCooperation"}],attrs:{type:"radio",name:"mental_conditions_not_cooperation",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsNotCooperation,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsNotCooperation","Assente");}}})]),_vm._v(" "),_vm._m(96),_vm._v(" "),_vm._m(97)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsExcitement,expression:"psyCardPj.mentalConditionsExcitement"}],attrs:{type:"radio",name:"mental_conditions_excitement",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsExcitement,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsExcitement","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsExcitement,expression:"psyCardPj.mentalConditionsExcitement"}],attrs:{type:"radio",name:"mental_conditions_excitement",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsExcitement,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsExcitement","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsExcitement,expression:"psyCardPj.mentalConditionsExcitement"}],attrs:{type:"radio",name:"mental_conditions_excitement",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsExcitement,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsExcitement","Assente");}}})]),_vm._v(" "),_vm._m(98),_vm._v(" "),_vm._m(99)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDistractibility,expression:"psyCardPj.mentalConditionsDistractibility"}],attrs:{type:"radio",name:"mental_conditions_distractibility",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDistractibility,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDistractibility","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDistractibility,expression:"psyCardPj.mentalConditionsDistractibility"}],attrs:{type:"radio",name:"mental_conditions_distractibility",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDistractibility,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDistractibility","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsDistractibility,expression:"psyCardPj.mentalConditionsDistractibility"}],attrs:{type:"radio",name:"mental_conditions_distractibility",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsDistractibility,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsDistractibility","Assente");}}})]),_vm._v(" "),_vm._m(100),_vm._v(" "),_vm._m(101)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorHyperactivity,expression:"psyCardPj.mentalConditionsMotorHyperactivity"}],attrs:{type:"radio",name:"mental_conditions_motor_hyperactivity",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorHyperactivity,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorHyperactivity","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorHyperactivity,expression:"psyCardPj.mentalConditionsMotorHyperactivity"}],attrs:{type:"radio",name:"mental_conditions_motor_hyperactivity",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorHyperactivity,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorHyperactivity","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMotorHyperactivity,expression:"psyCardPj.mentalConditionsMotorHyperactivity"}],attrs:{type:"radio",name:"mental_conditions_motor_hyperactivity",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMotorHyperactivity,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMotorHyperactivity","Assente");}}})]),_vm._v(" "),_vm._m(102),_vm._v(" "),_vm._m(103)]),_vm._v(" "),_c("tr",[_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMannerisms,expression:"psyCardPj.mentalConditionsMannerisms"}],attrs:{type:"radio",name:"mental_conditions_mannerisms",value:"Presente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMannerisms,"Presente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMannerisms","Presente");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMannerisms,expression:"psyCardPj.mentalConditionsMannerisms"}],attrs:{type:"radio",name:"mental_conditions_mannerisms",value:"Possibile"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMannerisms,"Possibile")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMannerisms","Possibile");}}})]),_vm._v(" "),_c("td",[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.mentalConditionsMannerisms,expression:"psyCardPj.mentalConditionsMannerisms"}],attrs:{type:"radio",name:"mental_conditions_mannerisms",value:"Assente"},domProps:{checked:_vm._q(_vm.psyCardPj.mentalConditionsMannerisms,"Assente")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"mentalConditionsMannerisms","Assente");}}})]),_vm._v(" "),_vm._m(104),_vm._v(" "),_vm._m(105)])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(106),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblems,expression:"psyCardPj.psychologicalProblems"}],attrs:{type:"radio",name:"psychological_problems",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblems,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblems","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblems,expression:"psyCardPj.psychologicalProblems"}],attrs:{type:"radio",name:"psychological_problems",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblems,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblems","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Stress situazione/depressione"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Stress situazione/depressione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Stress situazione/depressione");}}}),_vm._v(" "),_c("span",[_vm._v("Stress situazione/depressione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Possibile ansia/disturbi dell'umore"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Possibile ansia/disturbi dell'umore")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Possibile ansia/disturbi dell'umore");}}}),_vm._v(" "),_c("span",[_vm._v("Possibile ansia/disturbi dell'umore")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"disturbi psicotici/bipolari/paziente compensato"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"disturbi psicotici/bipolari/paziente compensato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","disturbi psicotici/bipolari/paziente compensato");}}}),_vm._v(" "),_c("span",[_vm._v("Storia di disturbi psicotici/bipolari/paziente compensato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Sintomi psicotici possibilmente ricorrenti/paziente scompensato"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Sintomi psicotici possibilmente ricorrenti/paziente scompensato")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Sintomi psicotici possibilmente ricorrenti/paziente scompensato");}}}),_vm._v(" "),_c("span",[_vm._v("Sintomi psicotici possibilmente ricorrenti/paziente scompensato")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Psicosi attiva attuale"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Psicosi attiva attuale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Psicosi attiva attuale");}}}),_vm._v(" "),_c("span",[_vm._v("Psicosi attiva attuale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Disabilità cognitiva/danno cerebrale"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Disabilità cognitiva/danno cerebrale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Disabilità cognitiva/danno cerebrale");}}}),_vm._v(" "),_c("span",[_vm._v("Disabilità cognitiva/danno cerebrale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Tratti di disturbi di personalità"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Tratti di disturbi di personalità")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Tratti di disturbi di personalità");}}}),_vm._v(" "),_c("span",[_vm._v("Tratti di disturbi di personalità")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsList,expression:"psyCardPj.psychologicalProblemsList"}],attrs:{type:"radio",name:"psychological_problems_list",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.psychologicalProblemsList,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"psychologicalProblemsList","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.psychologicalProblemsOther,expression:"psyCardPj.psychologicalProblemsOther"}],attrs:{type:"text",name:"psychological_problems_other"},domProps:{value:_vm.psyCardPj.psychologicalProblemsOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"psychologicalProblemsOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"row float"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(107),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reports,expression:"psyCardPj.reports"}],attrs:{type:"radio",name:"reports",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.reports,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reports","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reports,expression:"psyCardPj.reports"}],attrs:{type:"radio",name:"reports",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.reports,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reports","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Monitoraggio psicologico"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Monitoraggio psicologico")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Monitoraggio psicologico");}}}),_vm._v(" "),_c("span",[_vm._v("Monitoraggio/assessment psicologico")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Counseling"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Counseling")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Counseling");}}}),_vm._v(" "),_c("span",[_vm._v("Counseling")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Centro di salute mentale"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Centro di salute mentale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Centro di salute mentale");}}}),_vm._v(" "),_c("span",[_vm._v("Centro di salute mentale/terapia farmacologica")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Programmi di disintossicazione droga/alcol"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Programmi di disintossicazione droga/alcol")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Programmi di disintossicazione droga/alcol");}}}),_vm._v(" "),_c("span",[_vm._v("Programmi di disintossicazione per droga e alcol")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Richiesta interprete linguistico-culturale"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Richiesta interprete linguistico-culturale")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Richiesta interprete linguistico-culturale");}}}),_vm._v(" "),_c("span",[_vm._v("Si richiede interprete o mediatore linguistico-culturale")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsList,expression:"psyCardPj.reportsList"}],attrs:{type:"radio",name:"reports_list",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.reportsList,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"reportsList","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.reportsOther,expression:"psyCardPj.reportsOther"}],attrs:{type:"text",name:"reports_other"},domProps:{value:_vm.psyCardPj.reportsOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"reportsOther",$event.target.value);}}})])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(108),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSelfHarm,expression:"psyCardPj.suicidalRiskSelfHarm"}],attrs:{type:"radio",name:"suicidal_risk_self_harm",value:"Nessuna evidenza"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskSelfHarm,"Nessuna evidenza")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskSelfHarm","Nessuna evidenza");}}}),_vm._v(" "),_c("span",[_vm._v("Nessuna evidenza")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSelfHarm,expression:"psyCardPj.suicidalRiskSelfHarm"}],attrs:{type:"radio",name:"suicidal_risk_self_harm",value:"Allarme"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskSelfHarm,"Allarme")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskSelfHarm","Allarme");}}}),_vm._v(" "),_c("span",[_vm._v("Allarme")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.suicidalRiskSelfHarm,expression:"psyCardPj.suicidalRiskSelfHarm"}],attrs:{type:"radio",name:"suicidal_risk_self_harm",value:"Alto rischio"},domProps:{checked:_vm._q(_vm.psyCardPj.suicidalRiskSelfHarm,"Alto rischio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"suicidalRiskSelfHarm","Alto rischio");}}}),_vm._v(" "),_c("span",[_vm._v("Alto rischio")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(109),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfViolence,expression:"psyCardPj.riskOfViolence"}],attrs:{type:"radio",name:"risk_of_violence",value:"Nessuna evidenza"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfViolence,"Nessuna evidenza")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfViolence","Nessuna evidenza");}}}),_vm._v(" "),_c("span",[_vm._v("Nessuna evidenza")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfViolence,expression:"psyCardPj.riskOfViolence"}],attrs:{type:"radio",name:"risk_of_violence",value:"Allarme"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfViolence,"Allarme")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfViolence","Allarme");}}}),_vm._v(" "),_c("span",[_vm._v("Allarme")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfViolence,expression:"psyCardPj.riskOfViolence"}],attrs:{type:"radio",name:"risk_of_violence",value:"Alto rischio"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfViolence,"Alto rischio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfViolence","Alto rischio");}}}),_vm._v(" "),_c("span",[_vm._v("Alto rischio")])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(110),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfVictimization,expression:"psyCardPj.riskOfVictimization"}],attrs:{type:"radio",name:"risk_of_victimization",value:"Nessuna evidenza"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfVictimization,"Nessuna evidenza")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfVictimization","Nessuna evidenza");}}}),_vm._v(" "),_c("span",[_vm._v("Nessuna evidenza")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfVictimization,expression:"psyCardPj.riskOfVictimization"}],attrs:{type:"radio",name:"risk_of_victimization",value:"Allarme"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfVictimization,"Allarme")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfVictimization","Allarme");}}}),_vm._v(" "),_c("span",[_vm._v("Allarme")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.riskOfVictimization,expression:"psyCardPj.riskOfVictimization"}],attrs:{type:"radio",name:"risk_of_victimization",value:"Alto rischio"},domProps:{checked:_vm._q(_vm.psyCardPj.riskOfVictimization,"Alto rischio")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"riskOfVictimization","Alto rischio");}}}),_vm._v(" "),_c("span",[_vm._v("Alto rischio")])])])])])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(111),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignment,expression:"psyCardPj.particularAssignment"}],attrs:{type:"radio",name:"particular_assignment",value:"1"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignment,"1")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignment","1");}}}),_vm._v(" "),_c("span",[_vm._v("Si")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignment,expression:"psyCardPj.particularAssignment"}],attrs:{type:"radio",name:"particular_assignment",value:"0"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignment,"0")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignment","0");}}}),_vm._v(" "),_c("span",[_vm._v("No")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"cella regolare/monitoraggio per i cambiamenti d'umore"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"cella regolare/monitoraggio per i cambiamenti d'umore")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","cella regolare/monitoraggio per i cambiamenti d'umore");}}}),_vm._v(" "),_c("span",[_vm._v("Cella regolare/monitoraggio per i cambiamenti d'umore")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Cella regolare/due letti"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Cella regolare/due letti")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Cella regolare/due letti");}}}),_vm._v(" "),_c("span",[_vm._v("Cella regolare/due letti")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Cella regolare/letto singolo"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Cella regolare/letto singolo")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Cella regolare/letto singolo");}}}),_vm._v(" "),_c("span",[_vm._v("Cella regolare/letto singolo")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Custodia protettiva"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Custodia protettiva")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Custodia protettiva");}}}),_vm._v(" "),_c("span",[_vm._v("Custodia protettiva")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Unità per detenuti mentalmente disturbati"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Unità per detenuti mentalmente disturbati")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Unità per detenuti mentalmente disturbati");}}}),_vm._v(" "),_c("span",[_vm._v("Unità per detenuti mentalmente disturbati")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Isolamento"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Isolamento")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Isolamento");}}}),_vm._v(" "),_c("span",[_vm._v("Isolamento")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Osservazione"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Osservazione")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Osservazione");}}}),_vm._v(" "),_c("span",[_vm._v("Osservazione")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Cella stabile(silenziosa)"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Cella stabile(silenziosa)")},on:{change:function change($event){_vm.$set(_vm.psyCardPj,"particularAssignmentList","Cella stabile(silenziosa)");}}}),_vm._v(" "),_c("span",[_vm._v("Cella stabile(silenziosa)")]),_c("br"),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentList,expression:"psyCardPj.particularAssignmentList"}],attrs:{type:"radio",name:"particular_assignment_list",value:"Altro"},domProps:{checked:_vm._q(_vm.psyCardPj.particularAssignmentList,"Altro")},on:{change:function change($event){return _vm.$set(_vm.psyCardPj,"particularAssignmentList","Altro");}}}),_vm._v(" "),_c("span",[_vm._v("Altro:")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.particularAssignmentOther,expression:"psyCardPj.particularAssignmentOther"}],attrs:{type:"text",name:"particular_assignment_other"},domProps:{value:_vm.psyCardPj.particularAssignmentOther},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"particularAssignmentOther",$event.target.value);}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"container",staticStyle:{border:"1px solid black"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("div",{staticClass:"item form-group"},[_vm._m(112),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("br"),_vm._v(" "),_c("textarea",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.commentClarifications,expression:"psyCardPj.commentClarifications"}],attrs:{name:"comment_clarifications",cols:"100",rows:"10"},domProps:{value:_vm.psyCardPj.commentClarifications},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"commentClarifications",$event.target.value);}}})])])])])]),_vm._v("\n\n\n\n\n                            "+_vm._s(_vm.psyCardPj)+"\n\n\n                            \n                            "),_c("div",[_vm._m(113),_vm._v(" "),_c("ul",{staticStyle:{display:"flex","flex-wrap":"wrap"}},_vm._l(_vm.PsyJsat,function(item,key,index){return _c("span",{key:index,staticClass:"mr-5"},[_c("div",{staticClass:"card text-white bg-secondary mb-2",staticStyle:{"max-width":"19rem","border-radius":"20px"},on:{click:function click($event){return _vm.printArchivesCardPsyJsat(item["id"]);}}},[_c("div",{staticClass:"card-header"},[_c("span",{staticStyle:{"min-width":"100px"}},[_c("div",{staticStyle:{"min-width":"100px"}},[_c("strong",[_vm._v("Nome Medico: ")]),_c("h5",{staticStyle:{display:"inline-block"}},[_vm._v(_vm._s(item["doctor_name"])+" "+_vm._s(item["doctor_lastname"]))])]),_vm._v(" "),_c("div",[_c("strong",[_vm._v("Data: ")]),_vm._v(" "+_vm._s(_vm.i2hDateFormat(item["pj_date"])))])])])]),_vm._v(" "),_c("br"),_c("br")]);}),0)]),_vm._v(" "),_c("div",{staticClass:"row mb-3 ml-2 mt-4"},[_c("div",{staticClass:"col-md-12 col-sm-12"},[_c("span",{staticClass:"item form-group"},[_vm._m(114),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.startDate,expression:"psyCardPj.startDate"}],attrs:{type:"date",name:"start_date"},domProps:{value:_vm.psyCardPj.startDate},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"startDate",$event.target.value);}}})]),_vm._v(" "),_vm._m(115),_vm._v(" "),_c("span",{staticClass:"col-md-12 col-sm-12"},[_c("input",{directives:[{name:"model",rawName:"v-model",value:_vm.psyCardPj.endDate,expression:"psyCardPj.endDate"}],attrs:{type:"date",name:"end_date"},domProps:{value:_vm.psyCardPj.endDate},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.psyCardPj,"endDate",$event.target.value);}}})]),_vm._v(" "),_c("span",{staticClass:"search-bar"},[_c("a",{staticClass:"search-button btn btn-success",on:{click:function click($event){return _vm.getPsyJsatsByUserIstanceId(36,true);}}},[_vm._v("Cerca")])])])])]),_vm._v(" "),_c("div",{staticClass:"ln_solid"}),_vm._v(" "),_c("div",{staticClass:"item form-group"},[_c("div",{staticClass:"pull-right"},[_c("a",{staticClass:"btn bg-primary text-white i2hBtnPrint ml-4",on:{click:function click($event){return _vm.printArchivePsyJsat("printPdf");}}},[_c("i",{staticClass:"fa fa-print"}),_vm._v("Stampa Archivio")])])]),_vm._v(" "),_c("div",{staticClass:"ln_solid"}),_vm._v(" "),_c("div",{staticClass:"item form-group"},[_c("div",{staticClass:"pull-right"},[_c("span",{staticClass:"btn btn-success i2hBtn ml-3",on:{click:function click($event){return _vm.addPsyJsat("pj");}}},[_vm._v(_vm._s(_vm.btnPjSend))])])]),_vm._v(" "),_c("a",{staticClass:"btn btn-success i2hBtnPrint",on:{click:function click($event){return _vm.printPsyJsat("printPdf");}}},[_c("i",{staticClass:"fa fa-print"}),_vm._v("Stampa")])])])])])])])]);};var staticRenderFns=[function(){var _vm=this,_c=_vm._self._c;return _c("div",{staticClass:"x_title",staticStyle:{background:"lightgrey",padding:"7px","border-radius":"3px","margin-top":"5px"}},[_c("h1",[_c("strong",[_vm._v(" Jail Screening Assessment Tool "),_c("strong",[_vm._v("(JSAT)")])])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"entry_date"}},[_c("strong",[_vm._v("Data di entrata:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"valutation_date"}},[_c("strong",[_vm._v("Data di valutazione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"information_language"}},[_c("strong",[_vm._v("Italiano:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"information_level_language"}},[_c("strong",[_vm._v("Livello:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"information_native_language"}},[_c("strong",[_vm._v("Lingua madre:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-5 col-sm-4 label-align",attrs:{"for":"information_background"}},[_c("strong",[_vm._v("Background Etnico/Culturale:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-3 label-align",attrs:{"for":"legal_situation_now"}},[_c("strong",[_vm._v("Attuale:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-5 col-sm-4 label-align",attrs:{"for":"legal_situation_crime_committed"}},[_c("strong",[_vm._v(" Tipo di reato Commesso:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-5 col-sm-2 label-align",attrs:{"for":"legal_situation_previous_incarceration"}},[_c("strong",[_vm._v("Precendenti Carcerazioni:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"criminal_record"}},[_c("strong",[_vm._v("Precendenti Penali:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"violent_behavior"}},[_c("h2",[_vm._v("Comportamenti Violenti")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"violent_behavior_acts_aggression"}},[_c("strong",[_vm._v("Precendenti atti di aggressione/violenza:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"violent_behavior_violent_crimes"}},[_c("strong",[_vm._v("Precendenti reati violenti:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"violent_behavior_during_incarceration"}},[_c("strong",[_vm._v("Atti di violenza durante carcerazione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"violent_behavior_aggression_proceeding"}},[_c("strong",[_vm._v("Provvedimenti disciplinari per aggressività:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"violent_behavior_last_aggression"}},[_c("strong",[_vm._v("Ultimo atto di aggressione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"violent_aggression_now"}},[_c("strong",[_vm._v("Atti di aggressione/rabbia attuale:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-3 label-align",attrs:{"for":"background_social_marital_status"}},[_c("h4",[_c("strong",[_vm._v("Stato civile:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-3 label-align",attrs:{"for":"background_social_stability_relation"}},[_c("h4",[_c("strong",[_vm._v("Stabilità della relazione:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-3 label-align",attrs:{"for":"background_social_sons"}},[_c("h4",[_c("strong",[_vm._v("Figli:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-3 label-align",attrs:{"for":"background_social_situation_house"}},[_c("h4",[_c("strong",[_vm._v("Situazione abitativa:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-3 label-align",attrs:{"for":"background_social_support_family"}},[_c("h4",[_c("strong",[_vm._v("Supporto familiare:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-3 label-align",attrs:{"for":"background_social_support"}},[_c("h4",[_c("strong",[_vm._v("Supporto sociale:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-3 label-align",attrs:{"for":""}},[_c("h4",[_c("strong",[_vm._v("Scolarità:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-3 label-align",attrs:{"for":"background_social_work"}},[_c("h4",[_c("strong",[_vm._v("Supporto lavorativo/finanziario:")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"substance_use"}},[_c("h2",[_vm._v("Uso di sostanze")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"substance_use_tabacco"}},[_c("strong",[_vm._v("Tabacco:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("tr",[_c("td"),_vm._v(" "),_c("td",[_vm._v("uso")]),_vm._v(" "),_c("td",[_vm._v("attuale")]),_vm._v(" "),_c("td",[_vm._v("di lungo periodo")]),_vm._v(" "),_c("td",[_vm._v("precendente")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"substance_use_description"}},[_c("strong",[_vm._v("Descrivere:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"substance_use_intravenous_mode"}},[_c("strong",[_vm._v("Modalità intravenosa:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"substance_use_current_methadone_treatment"}},[_c("strong",[_vm._v("Attuale trattamento metadonico:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"substance_use_substance_abuse"}},[_c("strong",[_vm._v("Precedente trattamento per abuso di sostanze:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"psyc_treatments"}},[_c("h2",[_vm._v("Trattamenti Psichiatrici")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("tr",[_c("td",[_vm._v("Ultimo mese")]),_vm._v(" "),_c("td",[_vm._v("Da sempre")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("valutazione clinica")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("valutazione clinica (su ordine del tribunale o di altra autorità)")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Trattamento - in istituzione carceraria")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Trattamento - in comunità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Trattamento - ospedalizzato")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Trattamento - su ordine del tribunale o di altra autorità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Terapia farmacologica")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"psyc_treatments_type"}},[_c("strong",[_vm._v("Tipo:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"psyc_treatments_previous_trauma"}},[_c("strong",[_vm._v("Precedenti traumi cerebrali:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"psyc_treatments_previous_trauma_desc"}},[_c("strong",[_vm._v("Descrivere:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-6 col-sm-2 label-align",attrs:{"for":"suicidal_risk"}},[_c("h2",[_vm._v("Rischio Suicidario/Autolesionismo")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"suicidal_risk_number_attempts"}},[_c("strong",[_vm._v("Numero di tentativi:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"suicidal_risk_time_attempts"}},[_c("strong",[_vm._v("Tempo dall'ultimo tentativo:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"suicidal_risk_methods_weapon"}},[_c("strong",[_vm._v("Metodi utilizzati:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-5 col-sm-2 label-align",attrs:{"for":"suicidal_risk_level_ideation"}},[_c("strong",[_vm._v("Livello dell'ideazione/intento suicidario attuale:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"suicidal_risk_sucide_tentative"}},[_c("strong",[_vm._v("tentativi di suicidio durante il periodo detentivo:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"suicidal_risk_sucide_tentative_number"}},[_c("strong",[_vm._v("Numero di tentativi durante la detenzione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-5 col-sm-2 label-align",attrs:{"for":"suicidal_risk_tentative_time"}},[_c("strong",[_vm._v("Tempo dall'ultimo tentativo durante la detenzione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"suicidal_risk_methods_two"}},[_c("strong",[_vm._v("Metodi utilizzati:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"suicidal_risk_act_of_self_harm"}},[_c("strong",[_vm._v("Atti di autolesionismo:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("tr",[_c("td",[_vm._v("Presente")]),_vm._v(" "),_c("td",[_vm._v("Possibile")]),_vm._v(" "),_c("td",[_vm._v("Assente")]),_vm._v(" "),_c("td"),_vm._v(" "),_c("td")]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 1. Preoccupazioni somatiche")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Preoccupazioni realistiche o meno per la salute")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 2. Ansia")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Riporta apprensione, tensione, paura, preoccupazione eccessiva")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 3. Depressione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Tristezza, anedonia, mancanza di autostima")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 4. Suicidio")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Desiderio, intenzione o azioni dirette a danneggiare se stessi")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 5. Senso di colpa")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Rimorsi, eccesso di preoccupazioni")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 6. Ostilità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Minacce, otilità, distruzione di cose, litigi")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 7. Umore elevato")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Sentimenti pervasivi ed esagerati di benessere, euforia")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 8. Grandiosità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Opinione esagerata di sé, identificazioni grandiose")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 9. Sospettosità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Credenza che qualcuno agisca con intenti maliziosi")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 10. Allucinazioni")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Esperienze percettive in assenza di stimoli esterni")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 11. Contenuto di pensiero inusuale")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Contenuti ideativi bizzarri, strani")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 12. Comportamenti bizzarri")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Comportamenti strani, inusuali, devianti")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 13. Trascuratezza ")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Incuria nell'igiene, nell'aspetto, nel comportamento alimentare")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 14. Disorientamento")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Mancanza di comprensione delle situazioni e confusione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("h5",{staticClass:"text-center pt-4 pb-4"},[_c("strong",[_vm._v("Gli item da 15-24 vengono valutati sulla base del colloquio e del comportamento osservati durante l'intervista")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("tr",[_c("td",[_vm._v("Presente")]),_vm._v(" "),_c("td",[_vm._v("Possibile")]),_vm._v(" "),_c("td",[_vm._v("Assente")]),_vm._v(" "),_c("td"),_vm._v(" "),_c("td")]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 15. Disorganizzazione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Discorsi confusi, sconnessi, vaghi")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 16. Inespressività")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Spettro ridotto di espressività emotiva, di faccia, voce, gesti")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 17. Emotività ridotta")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Incapacità di relazionarsi emotivamente durante il colloquio")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 18. Rallentamento motorio")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Riduzione nel livello di energia, movimenti rallentati")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 19. Tensione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Nervosismo, agitazione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 20. Non collaborazione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Resistenza e mancanza di cooperazione durante l'intervista")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 21. Eccitazione")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Tono emotivo aumentato, reattività all'intervistatore")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 22. Distraibilità")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Eloquio e azioni interrotte da stimoli esterni al colloquio")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 23. Iperattività motoria")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Aumento del livello di energia verbale e comportamentale")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v(" 24. Manierismi")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("td",[_c("p",[_vm._v("Movimenti stilizzati, posture inappropriate")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"psychological_problems"}},[_c("strong",[_vm._v("Problematiche psicologico/psichiatriche :")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-2 col-sm-2 label-align",attrs:{"for":"reports"}},[_c("strong",[_vm._v("Segnalazioni :")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-4 col-sm-2 label-align",attrs:{"for":"suicidal_risk_self_harm"}},[_c("strong",[_vm._v("Rischio suicidario/autolesionismo:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"risk_of_violence"}},[_c("strong",[_vm._v("Rischio di violenza:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"risk_of_victimization"}},[_c("strong",[_vm._v("Rischio di vittimizzazione:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"particular_assignment"}},[_c("strong",[_vm._v("Assegnazione particolare :")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-3 col-sm-2 label-align",attrs:{"for":"comment_clarifications"}},[_c("strong",[_vm._v("Commenti/chiarificazioni:")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("h2",{staticClass:"ml-4 mb-4 mt-4"},[_c("strong",[_vm._v("Archivio")])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"start_date"}},[_c("strong",[_c("h4",[_vm._v("DAL")])])]);},function(){var _vm=this,_c=_vm._self._c;return _c("label",{staticClass:"col-form-label col-md-1 col-sm-2 label-align",attrs:{"for":"end_date"}},[_c("strong",[_c("h4",[_vm._v("AL")])])]);}];render._withStripped=true;
 
 /***/ }),
 
@@ -11306,6 +11661,11 @@ var render = function render() {
       staticStyle: {
         "max-width": "19rem",
         "border-radius": "20px"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.printArchivesCardPsyMembershipCard(item["id"]);
+        }
       }
     }, [_c("div", {
       staticClass: "card-header"
@@ -11317,29 +11677,11 @@ var render = function render() {
       staticStyle: {
         "min-width": "100px"
       }
-    }, [_c("strong", [_vm._v("Nome: ")]), _c("h5", {
+    }, [_c("strong", [_vm._v("Nome Medico: ")]), _c("h5", {
       staticStyle: {
         display: "inline-block"
       }
-    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])])])]), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
-    }, [_c("h5", {
-      staticClass: "card-title"
-    }, [_c("div", [_c("strong", [_vm._v("Data inizio:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["mc_date"])))])]), _vm._v(" "), _c("p", {
-      staticClass: "card-text"
-    }), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Comunica :")]), _vm._v(" " + _vm._s(item["communicate_italian"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Stato civile:")]), _vm._v(" " + _vm._s(item["marital_status"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("figli:")]), _vm._v(" " + _vm._s(item["sons"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])]), _vm._v(" "), _c("div", [_c("strong", [_vm._v("Data: ")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["mc_date"])))])])])]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "row mb-3 ml-2 mt-4"
   }, [_c("div", {
@@ -12148,6 +12490,20 @@ var render = function render() {
       staticStyle: {
         "max-width": "19rem",
         "border-radius": "20px"
+      },
+      style: {
+        cursor: _vm.cursorType
+      },
+      on: {
+        click: function click($event) {
+          return _vm.printArchivesCardPsyMentalHealthDepartment(item["id"]);
+        },
+        mouseover: function mouseover($event) {
+          _vm.cursorType = "pointer";
+        },
+        mouseout: function mouseout($event) {
+          _vm.cursorType = "default";
+        }
       }
     }, [_c("div", {
       staticClass: "card-header"
@@ -12159,33 +12515,11 @@ var render = function render() {
       staticStyle: {
         "min-width": "100px"
       }
-    }, [_c("strong", [_vm._v("Nome: ")]), _c("h5", {
+    }, [_c("strong", [_vm._v("Nome Medico: ")]), _c("h5", {
       staticStyle: {
         display: "inline-block"
       }
-    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])])])]), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
-    }, [_c("h5", {
-      staticClass: "card-title"
-    }, [_c("div", [_c("strong", [_vm._v("Data inizio:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["mh_date"])))])]), _vm._v(" "), _c("p", {
-      staticClass: "card-text"
-    }), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Colloquio Psicologico:")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["psychological_interview"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Ipotesi/Inquadramento Psicopatologico:")]), _vm._v(" "), _c("br"), _vm._v(" " + _vm._s(item["hypothesis_psychopathological_classification"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Progettualità/Tipologia di Intervento:")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["planning_type_of_intervention"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Test:")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["test"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])]), _vm._v(" "), _c("div", [_c("strong", [_vm._v("Data: ")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["mh_date"])))])])])]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "row mb-3 ml-2 mt-4"
   }, [_c("div", {
@@ -16471,6 +16805,11 @@ var render = function render() {
       staticStyle: {
         "max-width": "19rem",
         "border-radius": "20px"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.printArchivesCardPsyRating(item["id"]);
+        }
       }
     }, [_c("div", {
       staticClass: "card-header"
@@ -16482,33 +16821,11 @@ var render = function render() {
       staticStyle: {
         "min-width": "100px"
       }
-    }, [_c("strong", [_vm._v("Nome: ")]), _c("h5", {
+    }, [_c("strong", [_vm._v("Nome Medico: ")]), _c("h5", {
       staticStyle: {
         display: "inline-block"
       }
-    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])])])]), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
-    }, [_c("h5", {
-      staticClass: "card-title"
-    }, [_c("div", [_c("strong", [_vm._v("Data inizio:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["pr_date"])))])]), _vm._v(" "), _c("p", {
-      staticClass: "card-text"
-    }), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Preoccupazioni somatiche:")]), _vm._v(" " + _vm._s(item["somatic_concern"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Ansia:")]), _vm._v(" "), _c("br"), _vm._v(" " + _vm._s(item["anxiety"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Depressione:")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["depression"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Rischio di suicidio:")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["risk_of_suicide"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])]), _vm._v(" "), _c("div", [_c("strong", [_vm._v("Data inizio:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["pr_date"])))])])])]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "row mb-3 ml-2 mt-4"
   }, [_c("div", {
@@ -16810,6 +17127,11 @@ var render = function render() {
       staticStyle: {
         "max-width": "19rem",
         "border-radius": "20px"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.printArchivesCardPsyRehabilitationPsychiatricCard(item["id"]);
+        }
       }
     }, [_c("div", {
       staticClass: "card-header"
@@ -16825,32 +17147,14 @@ var render = function render() {
       staticStyle: {
         display: "inline-block"
       }
-    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])])])]), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
-    }, [_c("h5", {
-      staticClass: "card-title"
-    }, [_c("div", [_c("strong", [_vm._v("Data inizio:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["rp_date"])))])]), _vm._v(" "), _c("p", {
-      staticClass: "card-text"
-    }), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Breve Descrizione Progetto:")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["project_description"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_vm._m(5, true), _vm._v(" "), _c("br"), _vm._v(" " + _vm._s(item["treatment_area_objective"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Responsabile Progetto:")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["psychiatric_intervention"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])]), _vm._v(" "), _c("div", [_c("strong", [_vm._v("Data inizio:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["rp_date"])))])])])]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "row mb-3 ml-2 mt-4"
   }, [_c("div", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("span", {
     staticClass: "item form-group"
-  }, [_vm._m(6), _vm._v(" "), _c("span", {
+  }, [_vm._m(5), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -16872,7 +17176,7 @@ var render = function render() {
         _vm.$set(_vm.psyCardRp, "startDate", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _vm._m(7), _vm._v(" "), _c("span", {
+  })]), _vm._v(" "), _vm._m(6), _vm._v(" "), _c("span", {
     staticClass: "col-md-12 col-sm-12"
   }, [_c("input", {
     directives: [{
@@ -16987,10 +17291,6 @@ var staticRenderFns = [function () {
   return _c("h2", {
     staticClass: "ml-4 mb-4 mt-4"
   }, [_c("strong", [_vm._v("Archivio")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("strong", [_vm._v("Obiettivi In Cui Viene Specificata Area "), _c("br"), _vm._v(" Trattamento:")]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -18732,6 +19032,11 @@ var render = function render() {
       staticStyle: {
         "max-width": "19rem",
         "border-radius": "20px"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.printArchivesCardPsySocialFolder(item["id"]);
+        }
       }
     }, [_c("div", {
       staticClass: "card-header"
@@ -18743,33 +19048,11 @@ var render = function render() {
       staticStyle: {
         "min-width": "100px"
       }
-    }, [_c("strong", [_vm._v("Nome: ")]), _c("h5", {
+    }, [_c("strong", [_vm._v("Nome Medico: ")]), _c("h5", {
       staticStyle: {
         display: "inline-block"
       }
-    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])])])]), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
-    }, [_c("h5", {
-      staticClass: "card-title"
-    }, [_c("div", [_c("strong", [_vm._v("Data inizio:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["sf_date"])))])]), _vm._v(" "), _c("p", {
-      staticClass: "card-text"
-    }), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Trattamenti psichiatrici precedenti: ")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["citizenship"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Csm: ")]), _vm._v(" "), _c("br"), _vm._v(" " + _vm._s(item["residency_permit"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Spdc: ")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["typology"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Rems: ")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["expiration"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])]), _vm._v(" "), _c("div", [_c("strong", [_vm._v("Data: ")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["sf_date"])))])])])]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "row mb-3 ml-2 mt-4"
   }, [_c("div", {
@@ -19270,6 +19553,2184 @@ var staticRenderFns = [function () {
       "for": "intervention_hypothesis_social_worker"
     }
   }, [_c("strong", [_vm._v("Assistente sociale")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h2", {
+    staticClass: "ml-4 mb-4 mt-4"
+  }, [_c("strong", [_vm._v("Archivio")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "start_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("DAL")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-1 col-sm-2 label-align",
+    attrs: {
+      "for": "end_date"
+    }
+  }, [_c("strong", [_c("h4", [_vm._v("AL")])])]);
+}];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySuicideAssessment.vue?vue&type=template&id=7fcd9345&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySuicideAssessment.vue?vue&type=template&id=7fcd9345&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "page-content"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "x_panel"
+  }, [_vm._m(0), _vm._v(" "), _c("h3", {
+    staticClass: "text-center"
+  }, [_vm._v("Modulo di valutazione")]), _c("hr"), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "x_content"
+  }, [_c("form", {
+    staticClass: "form-horizontal form-label-left align-items-center",
+    attrs: {
+      id: "demo-form2",
+      "data-parsley-validate": ""
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "marital_status"
+    }
+  }, [_vm._v("1. Stato civile")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v(" Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.maritalStatus,
+      expression: "psyriskFactor.maritalStatus"
+    }],
+    attrs: {
+      type: "radio",
+      name: "marital_status",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.maritalStatus, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "maritalStatus", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v(" Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.maritalStatus,
+      expression: "psyriskFactor.maritalStatus"
+    }],
+    attrs: {
+      type: "radio",
+      name: "marital_status",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.maritalStatus, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "maritalStatus", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.maritalStatus,
+      expression: "psyriskFactor.maritalStatus"
+    }],
+    attrs: {
+      type: "radio",
+      name: "marital_status",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.maritalStatus, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "maritalStatus", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "drug_and_alcohol_abuse"
+    }
+  }, [_vm._v("2. Abuso di droga o alcol")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.drugAndAlcoholAbuse,
+      expression: "psyriskFactor.drugAndAlcoholAbuse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "drug_and_alcohol_abuse",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.drugAndAlcoholAbuse, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "drugAndAlcoholAbuse", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.drugAndAlcoholAbuse,
+      expression: "psyriskFactor.drugAndAlcoholAbuse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "drug_and_alcohol_abuse",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.drugAndAlcoholAbuse, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "drugAndAlcoholAbuse", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.drugAndAlcoholAbuse,
+      expression: "psyriskFactor.drugAndAlcoholAbuse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "drug_and_alcohol_abuse",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.drugAndAlcoholAbuse, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "drugAndAlcoholAbuse", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "psychiatric_aspect"
+    }
+  }, [_vm._v("3. Aspetti psichiatrici")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychiatricAspect,
+      expression: "psyriskFactor.psychiatricAspect"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychiatric_aspect",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychiatricAspect, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychiatricAspect", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychiatricAspect,
+      expression: "psyriskFactor.psychiatricAspect"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychiatric_aspect",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychiatricAspect, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychiatricAspect", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychiatricAspect,
+      expression: "psyriskFactor.psychiatricAspect"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychiatric_aspect",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychiatricAspect, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychiatricAspect", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "suicide_attempt"
+    }
+  }, [_vm._v("4. Tentativi di suicidio")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttempt,
+      expression: "psyriskFactor.suicideAttempt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttempt, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttempt", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttempt,
+      expression: "psyriskFactor.suicideAttempt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttempt, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttempt", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttempt,
+      expression: "psyriskFactor.suicideAttempt"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttempt, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttempt", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "suicide_attempt_in_institution"
+    }
+  }, [_vm._v("5. Tentativi di suicidio nelle istituzioni")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttemptInInstitution,
+      expression: "psyriskFactor.suicideAttemptInInstitution"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt_in_institution",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttemptInInstitution, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttemptInInstitution", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttemptInInstitution,
+      expression: "psyriskFactor.suicideAttemptInInstitution"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt_in_institution",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttemptInInstitution, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttemptInInstitution", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicideAttemptInInstitution,
+      expression: "psyriskFactor.suicideAttemptInInstitution"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_attempt_in_institution",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicideAttemptInInstitution, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicideAttemptInInstitution", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "family_suicide"
+    }
+  }, [_vm._v("6. Suicidi in famiglia")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.familySuicide,
+      expression: "psyriskFactor.familySuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "family_suicide",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.familySuicide, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "familySuicide", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.familySuicide,
+      expression: "psyriskFactor.familySuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "family_suicide",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.familySuicide, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "familySuicide", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.familySuicide,
+      expression: "psyriskFactor.familySuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "family_suicide",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.familySuicide, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "familySuicide", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "arrest_story"
+    }
+  }, [_vm._v("7. Storia dell'arresto")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.arrestStory,
+      expression: "psyriskFactor.arrestStory"
+    }],
+    attrs: {
+      type: "radio",
+      name: "arrest_story",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.arrestStory, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "arrestStory", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.arrestStory,
+      expression: "psyriskFactor.arrestStory"
+    }],
+    attrs: {
+      type: "radio",
+      name: "arrest_story",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.arrestStory, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "arrestStory", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.arrestStory,
+      expression: "psyriskFactor.arrestStory"
+    }],
+    attrs: {
+      type: "radio",
+      name: "arrest_story",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.arrestStory, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "arrestStory", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "compulsive_behavior"
+    }
+  }, [_vm._v("8. Comportamento impulsivo")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.compulsiveBehavior,
+      expression: "psyriskFactor.compulsiveBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "compulsive_behavior",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.compulsiveBehavior, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "compulsiveBehavior", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.compulsiveBehavior,
+      expression: "psyriskFactor.compulsiveBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "compulsive_behavior",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.compulsiveBehavior, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "compulsiveBehavior", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.compulsiveBehavior,
+      expression: "psyriskFactor.compulsiveBehavior"
+    }],
+    attrs: {
+      type: "radio",
+      name: "compulsive_behavior",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.compulsiveBehavior, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "compulsiveBehavior", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "high_crime_profile"
+    }
+  }, [_vm._v("9. Alto profilo del delitto o posizione di prestigio")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.highCrimeProfile,
+      expression: "psyriskFactor.highCrimeProfile"
+    }],
+    attrs: {
+      type: "radio",
+      name: "high_crime_profile",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.highCrimeProfile, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "highCrimeProfile", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.highCrimeProfile,
+      expression: "psyriskFactor.highCrimeProfile"
+    }],
+    attrs: {
+      type: "radio",
+      name: "high_crime_profile",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.highCrimeProfile, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "highCrimeProfile", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.highCrimeProfile,
+      expression: "psyriskFactor.highCrimeProfile"
+    }],
+    attrs: {
+      type: "radio",
+      name: "high_crime_profile",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.highCrimeProfile, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "highCrimeProfile", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "current_intoxication"
+    }
+  }, [_vm._v("10. Intossicazione attuale")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.currentIntoxication,
+      expression: "psyriskFactor.currentIntoxication"
+    }],
+    attrs: {
+      type: "radio",
+      name: "current_intoxication",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.currentIntoxication, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "currentIntoxication", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.currentIntoxication,
+      expression: "psyriskFactor.currentIntoxication"
+    }],
+    attrs: {
+      type: "radio",
+      name: "current_intoxication",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.currentIntoxication, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "currentIntoxication", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.currentIntoxication,
+      expression: "psyriskFactor.currentIntoxication"
+    }],
+    attrs: {
+      type: "radio",
+      name: "current_intoxication",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.currentIntoxication, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "currentIntoxication", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align-end",
+    attrs: {
+      "for": "worry_about_life_problem"
+    }
+  }, [_vm._v("11. Preoccupazione per i problemi della vita")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.worryAboutLifeProblem,
+      expression: "psyriskFactor.worryAboutLifeProblem"
+    }],
+    attrs: {
+      type: "radio",
+      name: "worry_about_life_problem",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.worryAboutLifeProblem, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "worryAboutLifeProblem", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.worryAboutLifeProblem,
+      expression: "psyriskFactor.worryAboutLifeProblem"
+    }],
+    attrs: {
+      type: "radio",
+      name: "worry_about_life_problem",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.worryAboutLifeProblem, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "worryAboutLifeProblem", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.worryAboutLifeProblem,
+      expression: "psyriskFactor.worryAboutLifeProblem"
+    }],
+    attrs: {
+      type: "radio",
+      name: "worry_about_life_problem",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.worryAboutLifeProblem, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "worryAboutLifeProblem", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "feeling_of_hopelessness"
+    }
+  }, [_vm._v("12. Sentimenti di disperazione o di eccessivi sensi di colpa")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.feelingOfHopelessness,
+      expression: "psyriskFactor.feelingOfHopelessness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_hopelessness",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.feelingOfHopelessness, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "feelingOfHopelessness", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.feelingOfHopelessness,
+      expression: "psyriskFactor.feelingOfHopelessness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_hopelessness",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.feelingOfHopelessness, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "feelingOfHopelessness", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.feelingOfHopelessness,
+      expression: "psyriskFactor.feelingOfHopelessness"
+    }],
+    attrs: {
+      type: "radio",
+      name: "feeling_of_hopelessness",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.feelingOfHopelessness, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "feelingOfHopelessness", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "psychotic_symptom"
+    }
+  }, [_vm._v("13. Sintomi psicotici o disturbi del pensiero")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychoticSymptom,
+      expression: "psyriskFactor.psychoticSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychotic_symptom",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychoticSymptom, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychoticSymptom", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychoticSymptom,
+      expression: "psyriskFactor.psychoticSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychotic_symptom",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychoticSymptom, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychoticSymptom", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.psychoticSymptom,
+      expression: "psyriskFactor.psychoticSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "psychotic_symptom",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.psychoticSymptom, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "psychoticSymptom", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "depressive_symptom"
+    }
+  }, [_vm._v("14. Sintomatologia depressiva")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.depressiveSymptom,
+      expression: "psyriskFactor.depressiveSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depressive_symptom",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.depressiveSymptom, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "depressiveSymptom", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.depressiveSymptom,
+      expression: "psyriskFactor.depressiveSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depressive_symptom",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.depressiveSymptom, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "depressiveSymptom", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.depressiveSymptom,
+      expression: "psyriskFactor.depressiveSymptom"
+    }],
+    attrs: {
+      type: "radio",
+      name: "depressive_symptom",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.depressiveSymptom, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "depressiveSymptom", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "stress_and_coping"
+    }
+  }, [_vm._v("15. Stress e coping")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.stressAndCoping,
+      expression: "psyriskFactor.stressAndCoping"
+    }],
+    attrs: {
+      type: "radio",
+      name: "stress_and_coping",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.stressAndCoping,
+      expression: "psyriskFactor.stressAndCoping"
+    }],
+    attrs: {
+      type: "radio",
+      name: "stress_and_coping",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.stressAndCoping,
+      expression: "psyriskFactor.stressAndCoping"
+    }],
+    attrs: {
+      type: "radio",
+      name: "stress_and_coping",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.stressAndCoping, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "stressAndCoping", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "social_support"
+    }
+  }, [_vm._v("16. Sostegno sociale")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.socialSupport,
+      expression: "psyriskFactor.socialSupport"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_support",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.socialSupport, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "socialSupport", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.socialSupport,
+      expression: "psyriskFactor.socialSupport"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_support",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.socialSupport, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "socialSupport", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.socialSupport,
+      expression: "psyriskFactor.socialSupport"
+    }],
+    attrs: {
+      type: "radio",
+      name: "social_support",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.socialSupport, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "socialSupport", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "recent_major_losse"
+    }
+  }, [_vm._v("17. Recenti perdite importanti")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.recentMajorLosse,
+      expression: "psyriskFactor.recentMajorLosse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "recent_major_losse",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.recentMajorLosse, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "recentMajorLosse", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.recentMajorLosse,
+      expression: "psyriskFactor.recentMajorLosse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "recent_major_losse",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.recentMajorLosse, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "recentMajorLosse", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.recentMajorLosse,
+      expression: "psyriskFactor.recentMajorLosse"
+    }],
+    attrs: {
+      type: "radio",
+      name: "recent_major_losse",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.recentMajorLosse, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "recentMajorLosse", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "suicidal_ideation"
+    }
+  }, [_vm._v("18. Ideazione suicidaria")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIdeation,
+      expression: "psyriskFactor.suicidalIdeation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_ideation",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIdeation, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIdeation", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIdeation,
+      expression: "psyriskFactor.suicidalIdeation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_ideation",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIdeation, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIdeation", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIdeation,
+      expression: "psyriskFactor.suicidalIdeation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_ideation",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIdeation, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIdeation", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "suicidal_intent"
+    }
+  }, [_vm._v("19. Intento suicidario")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIntent,
+      expression: "psyriskFactor.suicidalIntent"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_intent",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIntent, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIntent", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIntent,
+      expression: "psyriskFactor.suicidalIntent"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_intent",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIntent, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIntent", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidalIntent,
+      expression: "psyriskFactor.suicidalIntent"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicidal_intent",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidalIntent, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidalIntent", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "suicide_plan"
+    }
+  }, [_vm._v("20. Piano di suicidio")]), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Zero")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidePlan,
+      expression: "psyriskFactor.suicidePlan"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_plan",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidePlan, "0")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidePlan", "0");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Uno")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidePlan,
+      expression: "psyriskFactor.suicidePlan"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_plan",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidePlan, "1")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidePlan", "1");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Due")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyriskFactor.suicidePlan,
+      expression: "psyriskFactor.suicidePlan"
+    }],
+    attrs: {
+      type: "radio",
+      name: "suicide_plan",
+      value: "2"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyriskFactor.suicidePlan, "2")
+    },
+    on: {
+      change: [function ($event) {
+        return _vm.$set(_vm.psyriskFactor, "suicidePlan", "2");
+      }, function ($event) {
+        return _vm.calculateSum();
+      }]
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(2), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.sum,
+      expression: "sum"
+    }],
+    attrs: {
+      type: "text",
+      name: "punteggio"
+    },
+    domProps: {
+      value: _vm.sum
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.sum = $event.target.value;
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "psy_suicide_note"
+    }
+  }, [_vm._v("Note/altre considerazioni:")]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.psySuicideNote,
+      expression: "psyCardSa.psySuicideNote"
+    }],
+    attrs: {
+      name: "psy_suicide_note",
+      cols: "25",
+      rows: "5"
+    },
+    domProps: {
+      value: _vm.psyCardSa.psySuicideNote
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSa, "psySuicideNote", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticStyle: {
+      background: "lightgrey"
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group",
+    staticStyle: {
+      "padding-top": "2rem"
+    }
+  }, [_vm._m(3), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Alto")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.imminentRiskOfSuicide,
+      expression: "psyCardSa.imminentRiskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "imminent_risk_of_suicide",
+      value: "alto"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSa.imminentRiskOfSuicide, "alto")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSa, "imminentRiskOfSuicide", "alto");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Medio")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.imminentRiskOfSuicide,
+      expression: "psyCardSa.imminentRiskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "imminent_risk_of_suicide",
+      value: "medio"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSa.imminentRiskOfSuicide, "medio")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSa, "imminentRiskOfSuicide", "medio");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Basso")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.imminentRiskOfSuicide,
+      expression: "psyCardSa.imminentRiskOfSuicide"
+    }],
+    attrs: {
+      type: "radio",
+      name: "imminent_risk_of_suicide",
+      value: "basso"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSa.imminentRiskOfSuicide, "basso")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSa, "imminentRiskOfSuicide", "basso");
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("h1", {
+    staticStyle: {
+      "text-align": "center",
+      "margin-top": "70px",
+      "margin-bottom": "10px"
+    }
+  }, [_vm._v("Azioni da avviare")]), _vm._v(" "), _c("div", {
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px"
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(4), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Si")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.monitoringRecommendation,
+      expression: "psyCardSa.monitoringRecommendation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "monitoring_recommendation",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSa.monitoringRecommendation, "1")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSa, "monitoringRecommendation", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("No")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.monitoringRecommendation,
+      expression: "psyCardSa.monitoringRecommendation"
+    }],
+    attrs: {
+      type: "radio",
+      name: "monitoring_recommendation",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSa.monitoringRecommendation, "0")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSa, "monitoringRecommendation", "0");
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(5), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("24 ore")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.frequency,
+      expression: "psyCardSa.frequency"
+    }],
+    attrs: {
+      type: "radio",
+      name: "frequency",
+      value: "24 ore"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSa.frequency, "24 ore")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSa, "frequency", "24 ore");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("15 min.")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.frequency,
+      expression: "psyCardSa.frequency"
+    }],
+    attrs: {
+      type: "radio",
+      name: "frequency",
+      value: "15 min"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSa.frequency, "15 min")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSa, "frequency", "15 min");
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px"
+    }
+  }, [_c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_vm._m(6), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", [_vm._v("Si")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.referralMentalHealthService,
+      expression: "psyCardSa.referralMentalHealthService"
+    }],
+    attrs: {
+      type: "radio",
+      name: "referral_mental_health_service",
+      value: "1"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSa.referralMentalHealthService, "1")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSa, "referralMentalHealthService", "1");
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("No")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.referralMentalHealthService,
+      expression: "psyCardSa.referralMentalHealthService"
+    }],
+    attrs: {
+      type: "radio",
+      name: "referral_mental_health_service",
+      value: "0"
+    },
+    domProps: {
+      checked: _vm._q(_vm.psyCardSa.referralMentalHealthService, "0")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.psyCardSa, "referralMentalHealthService", "0");
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "row",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("div", {
+    staticClass: "item form-group"
+  }, [_c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "comment"
+    }
+  }, [_vm._v("Commenti/altre raccomandazioni:")]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.comment,
+      expression: "psyCardSa.comment"
+    }],
+    attrs: {
+      name: "textarea",
+      cols: "25",
+      rows: "5"
+    },
+    domProps: {
+      value: _vm.psyCardSa.comment
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSa, "comment", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v("\n                            \n\n                            psa: " + _vm._s(_vm.psyCardSa) + " psyf: " + _vm._s(_vm.psyriskFactor) + " \n\n\n\n                            "), _c("div", [_vm._m(7), _vm._v(" "), _c("ul", {
+    staticStyle: {
+      display: "flex",
+      "flex-wrap": "wrap"
+    }
+  }, _vm._l(_vm.PsySuicideAssessment, function (item, key, index) {
+    return _c("span", {
+      key: index,
+      staticClass: "mr-5"
+    }, [_c("div", {
+      staticClass: "card text-white bg-secondary mb-2",
+      staticStyle: {
+        "max-width": "19rem",
+        "border-radius": "20px"
+      },
+      style: {
+        cursor: _vm.cursorType
+      },
+      on: {
+        click: function click($event) {
+          return _vm.printArchivesCardPsySuicideAssessment(item["id"]);
+        },
+        mouseover: function mouseover($event) {
+          _vm.cursorType = "pointer";
+        },
+        mouseout: function mouseout($event) {
+          _vm.cursorType = "default";
+        }
+      }
+    }, [_c("div", {
+      staticClass: "card-header"
+    }, [_c("span", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("div", {
+      staticStyle: {
+        "min-width": "100px"
+      }
+    }, [_c("strong", [_vm._v("Nome Medico: ")]), _c("h5", {
+      staticStyle: {
+        display: "inline-block"
+      }
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])]), _vm._v(" "), _c("div", [_c("strong", [_vm._v("Data: ")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["sa_date"])))])])])]), _vm._v(" "), _c("br"), _c("br")]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "row mb-3 ml-2 mt-4"
+  }, [_c("div", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("span", {
+    staticClass: "item form-group"
+  }, [_vm._m(8), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.startDate,
+      expression: "psyCardSa.startDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "start_date"
+    },
+    domProps: {
+      value: _vm.psyCardSa.startDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSa, "startDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _vm._m(9), _vm._v(" "), _c("span", {
+    staticClass: "col-md-12 col-sm-12"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.psyCardSa.endDate,
+      expression: "psyCardSa.endDate"
+    }],
+    attrs: {
+      type: "date",
+      name: "end_date"
+    },
+    domProps: {
+      value: _vm.psyCardSa.endDate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.psyCardSa, "endDate", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "search-bar"
+  }, [_c("a", {
+    staticClass: "search-button btn btn-success",
+    on: {
+      click: function click($event) {
+        return _vm.getPsySuicideAssessmentsByUserIstanceId(36, true);
+      }
+    }
+  }, [_vm._v("Cerca")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("a", {
+    staticClass: "btn bg-primary text-white i2hBtnPrint ml-4",
+    on: {
+      click: function click($event) {
+        return _vm.printArchivePsySuicideAssessment("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa Archivio")])])]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("span", {
+    staticClass: "btn btn-success i2hBtn ml-3",
+    on: {
+      click: function click($event) {
+        return _vm.addPsySuicideAssessment("sa");
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.btnSaSend))])])]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-success i2hBtnPrint",
+    on: {
+      click: function click($event) {
+        return _vm.printPsySuicideAssessment("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa")])])])])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("h1", {
+    staticClass: "text-center"
+  }, [_c("strong", [_vm._v(" SAMI")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "x_title",
+    staticStyle: {
+      background: "lightgrey",
+      padding: "7px",
+      "border-radius": "3px",
+      "margin-top": "5px"
+    }
+  }, [_c("span", {
+    staticStyle: {
+      "margin-left": "10px"
+    }
+  }, [_c("strong", [_vm._v("Fattori di rischio")])]), _vm._v(" "), _c("span", {
+    staticStyle: {
+      "margin-left": "510px"
+    }
+  }, [_c("strong", [_vm._v("Scala (0, 1, 2)")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "total_score"
+    }
+  }, [_c("strong", [_c("h2", [_vm._v("Punteggio totale:")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "imminent_risk_of_suicide"
+    }
+  }, [_c("strong", [_vm._v("Rischio imminente di suicidio:")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "monitoring_recommendation"
+    }
+  }, [_c("strong", [_vm._v("Raccomandazione di monitoraggio:")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "frequency"
+    }
+  }, [_c("strong", [_vm._v("Frequenza:")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "col-form-label col-md-6 col-sm-2 label-align",
+    attrs: {
+      "for": "referral_mental_health_service"
+    }
+  }, [_c("strong", [_vm._v("Invio al servizio di Salute mentale:")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -22814,6 +25275,11 @@ var render = function render() {
       staticStyle: {
         "max-width": "22rem",
         "border-radius": "20px"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.printArchivesCardPsySurvey(item["id"]);
+        }
       }
     }, [_c("div", {
       staticClass: "card-header"
@@ -22825,33 +25291,11 @@ var render = function render() {
       staticStyle: {
         "min-width": "100px"
       }
-    }, [_c("strong", [_vm._v("Nome: ")]), _c("h5", {
+    }, [_c("strong", [_vm._v("Nome Medico: ")]), _c("h5", {
       staticStyle: {
         display: "inline-block"
       }
-    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])])])]), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
-    }, [_c("h5", {
-      staticClass: "card-title"
-    }, [_c("div", [_c("strong", [_vm._v("Data inizio:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["ps_date"])))])]), _vm._v(" "), _c("p", {
-      staticClass: "card-text"
-    }), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Mi sono sentito terribilmente solo e isolato:")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["survey_heard_alone"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Mi sono sentito teso, ansioso o nervoso:")]), _vm._v(" "), _c("br"), _vm._v(" " + _vm._s(item["survey_heard_anxious"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Ho sentito di avere qualcuno a cui rivolgermi:")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["survey_support"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Mi sono sentito a posto con me stesso:")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["survey_okay_with_myself"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])]), _vm._v(" "), _c("div", [_c("strong", [_vm._v("Data: ")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["ps_date"])))])])])]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "row mb-3 ml-2 mt-4"
   }, [_c("div", {
@@ -24127,6 +26571,11 @@ var render = function render() {
       staticStyle: {
         "max-width": "19rem",
         "border-radius": "20px"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.printArchivesCardPsyUocDepartment(item["id"]);
+        }
       }
     }, [_c("div", {
       staticClass: "card-header"
@@ -24138,97 +26587,11 @@ var render = function render() {
       staticStyle: {
         "min-width": "100px"
       }
-    }, [_c("strong", [_vm._v("Nome: ")]), _c("h5", {
+    }, [_c("strong", [_vm._v("Nome Medico: ")]), _c("h5", {
       staticStyle: {
         display: "inline-block"
       }
-    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])])])]), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
-    }, [_c("h5", {
-      staticClass: "card-title"
-    }, [_c("div", [_c("strong", [_vm._v("Data inizio:")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["ud_date"])))])]), _vm._v(" "), _c("p", {
-      staticClass: "card-text"
-    }), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Trattamenti psichiatrici precedenti: ")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["psychiatric_treatment"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Csm: ")]), _vm._v(" "), _c("br"), _vm._v(" " + _vm._s(item["csm"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Spdc: ")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["spdc"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Rems: ")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["rems"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Carcere: ")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["prison"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Familiarità psichiatrica: ")]), _vm._v(" " + _vm._s(item["psychiatric_familiarity"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Se si, Chi: ")]), _vm._v(" " + _vm._s(item["if_familiarity"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Esordio sintomatologia psichiatrica: ")]), _vm._v(" "), _c("br"), _vm._v(_vm._s(item["on_set_of_psychiatric_symptom"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Uso di sostanze: ")]), _vm._v(" " + _vm._s(item["substance_use"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Presso Serd. : ")]), _vm._v(" " + _vm._s(item["in_charge_at_serd_territorial"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v(" Quale: ")]), _vm._v(" " + _vm._s(item["in_charge_at_serd_territorial_which"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Psicotico: ")]), _vm._v(" " + _vm._s(item["psychotic_symptom"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Affettivo-Ansioso: ")]), _vm._v(" " + _vm._s(item["anxious_affective_symptom"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Impulsivo: ")]), _vm._v(" " + _vm._s(item["impulsive_symptom"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v(" D. Psicotico: ")]), _vm._v(" " + _vm._s(item["psychotic_diagnostic_orientation"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("D. Affettivo-Ansioso: ")]), _vm._v(" " + _vm._s(item["anxious_affective_orientation"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("D. Personalità: ")]), _vm._v(" " + _vm._s(item["personality_orientation"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Presa in carico: ")]), _vm._v(" " + _vm._s(item["taking_charge_pdta"]))]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Assunzione in cura: ")]), _vm._v(" " + _vm._s(item["care_intake_pdta"]) + " ")]), _vm._v(" "), _c("div", {
-      staticStyle: {
-        "min-width": "100px"
-      }
-    }, [_c("strong", [_vm._v("Consulenza: ")]), _vm._v(" " + _vm._s(item["consultancy_pdta"]) + " ")]), _vm._v(" "), _c("p")])]), _vm._v(" "), _c("br"), _c("br")]);
+    }, [_vm._v(_vm._s(item["doctor_name"]) + " " + _vm._s(item["doctor_lastname"]))])]), _vm._v(" "), _c("div", [_c("strong", [_vm._v("Data: ")]), _vm._v(" " + _vm._s(_vm.i2hDateFormat(item["ud_date"])))])])])]), _vm._v(" "), _c("br"), _c("br")]);
   }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "row mb-3 ml-2 mt-4"
   }, [_c("div", {
@@ -29255,7 +31618,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("PsyMentalHealthDepartment"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard"), _vm._v(" "), _c("PsySurvey"), _vm._v(" "), _c("PsyJsat")], 1)], 1);
+  return _c("div", [_c("router-view"), _vm._v(" "), _c("div", [_c("serdCard"), _vm._v(" "), _c("PsySuicideAssessment"), _vm._v(" "), _c("PsyMentalHealthDepartment"), _vm._v(" "), _c("PsyRehabilitationPsychiatricCard"), _vm._v(" "), _c("PsyRating"), _vm._v(" "), _c("PsyUocDepartment"), _vm._v(" "), _c("PsySocialFolder"), _vm._v(" "), _c("PsyMembershipCard"), _vm._v(" "), _c("PsySurvey"), _vm._v(" "), _c("PsyJsat")], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -29428,6 +31791,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "*[data-v-91ac6b5c] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.labelWidth[data-v-7fcd9345] {\r\nmin-width: 190px;\n}\n.dbTitle[data-v-7fcd9345] {\r\nbackground: #184140;\r\ncolor: white;\r\npadding: 10px;\r\nfont-weight: bold !important;\n}\n.item input[data-v-7fcd9345], .item textarea[data-v-7fcd9345] {\r\nmargin-right: 10px;\n}\n.treatment[data-v-7fcd9345]{\r\nborder:1px double #f1f1f1;\r\nmargin: 1.5rem 0;\r\npadding: 20px 15px;\r\nfont-style: italic; \r\nbox-shadow: 1px 1px 3px 1px #ccc; \r\nborder-radius: 5px;\r\ncolor: #333;\n}\r\n", ""]);
 
 // exports
 
@@ -51928,6 +54310,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=style&index=0&id=91ac6b5c&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/App.vue?vue&type=style&index=0&id=91ac6b5c&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -77135,6 +79547,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/PsySuicideAssessment.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/PsySuicideAssessment.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PsySuicideAssessment_vue_vue_type_template_id_7fcd9345_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PsySuicideAssessment.vue?vue&type=template&id=7fcd9345&scoped=true& */ "./resources/js/components/PsySuicideAssessment.vue?vue&type=template&id=7fcd9345&scoped=true&");
+/* harmony import */ var _PsySuicideAssessment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PsySuicideAssessment.vue?vue&type=script&lang=js& */ "./resources/js/components/PsySuicideAssessment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PsySuicideAssessment_vue_vue_type_style_index_0_id_7fcd9345_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css& */ "./resources/js/components/PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PsySuicideAssessment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PsySuicideAssessment_vue_vue_type_template_id_7fcd9345_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PsySuicideAssessment_vue_vue_type_template_id_7fcd9345_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "7fcd9345",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PsySuicideAssessment.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PsySuicideAssessment.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/PsySuicideAssessment.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySuicideAssessment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySuicideAssessment.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySuicideAssessment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySuicideAssessment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySuicideAssessment_vue_vue_type_style_index_0_id_7fcd9345_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySuicideAssessment.vue?vue&type=style&index=0&id=7fcd9345&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySuicideAssessment_vue_vue_type_style_index_0_id_7fcd9345_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySuicideAssessment_vue_vue_type_style_index_0_id_7fcd9345_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySuicideAssessment_vue_vue_type_style_index_0_id_7fcd9345_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySuicideAssessment_vue_vue_type_style_index_0_id_7fcd9345_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PsySuicideAssessment.vue?vue&type=template&id=7fcd9345&scoped=true&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/PsySuicideAssessment.vue?vue&type=template&id=7fcd9345&scoped=true& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySuicideAssessment_vue_vue_type_template_id_7fcd9345_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./PsySuicideAssessment.vue?vue&type=template&id=7fcd9345&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PsySuicideAssessment.vue?vue&type=template&id=7fcd9345&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySuicideAssessment_vue_vue_type_template_id_7fcd9345_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_PsySuicideAssessment_vue_vue_type_template_id_7fcd9345_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/PsySurvey.vue":
 /*!***********************************************!*\
   !*** ./resources/js/components/PsySurvey.vue ***!
@@ -77487,7 +79986,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************!*\
   !*** ./resources/js/config/ApiUrl.js ***!
   \***************************************/
-/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_SUICIDES_BY_USER_ISTANCE_ID, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_MENTAL_HEALTH_DEPARTMENTS_BY_USER_ISTANCE_ID, GET_MENTAL_HEALTH_DEPARTMENTS, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_REHABILITATION_PSYCHIATRIC_CARDS_BY_USER_ISTANCE_ID, GET_REHABILITATION_PSYCHIATRIC_CARDS, GET_RATING_BY_PSY_ID, ADD_RATING, GET_RATINGS_BY_USER_ISTANCE_ID, GET_RATINGS, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_UOC_DEPARTMENTS_BY_USER_ISTANCE_ID, GET_UOC_DEPARTMENTS, GET_SOCIAL_FOLDER_BY_PSY_ID, ADD_SOCIAL_FOLDER, GET_SOCIAL_FOLDERS_BY_USER_ISTANCE_ID, GET_SOCIAL_FOLDERS, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GE_MEMBERSHIP_CARDS_BY_USER_ISTANCE_ID, GET_MEMBERSHIP_CARDS, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_SURVEYS_BY_USER_ISTANCE_ID, GET_SURVEYS, GET_JSAT_BY_PSY_ID, ADD_JSAT, GET_JSATS_BY_USER_ISTANCE_ID, GET_JSATS, GET_TRACEABILITYS, GET_TRACEABILITY_BY_ID, GET_TRACEABILITYS_BY_USER_ISTANCE_ID, ADD_TRACEABILITY, GET_MONITORINGS, GET_MONITORING_BY_ID, GET_MONITORINGS_BY_USER_ISTANCE_ID, ADD_MONITORING, GET_COLLECTIONS, GET_COLLECTION_BY_ID, GET_COLLECTIONS_BY_USER_ISTANCE_ID, ADD_COLLECTION, GET_HGTS, GET_HGT_BY_ID, GET_HGTS_BY_USER_ISTANCE_ID, ADD_HGT, GET_NURSINGS, GET_NURSING_BY_ID, GET_NURSINGS_BY_USER_ISTANCE_ID, ADD_NURSING, GET_PRESCRIPTIONS, GET_PRESCRIPTION_BY_ID, GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID, ADD_PRESCRIPTION, ADD_REFUSED */
+/*! exports provided: GET_PERMISSIONS, GET_SERD_CARDS, GET_SERD_CARD_BY_ID, GET_SERD_CARDS_BY_USER_INSTANCE_ID, GET_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_SOCIAL_FOLDERS_BY_SERD_ID, GET_CURRENT_TOXICOLOGY_REPORTS_BY_SERD_ID, GET_CURRENT_PSYCHOLOGICAL_ANAMNESES_BY_SERD_ID, GET_CURRENT_SOCIAL_FOLDERS_BY_SERD_ID, ADD_SERD_CARD, ADD_TOXICOLOGY_REPORT, ADD_PSICHOLOGICAL_ANAMNESIS, DELETE_SERD_CARD, GET_PSY_CARDS, GET_PSY_CARD_BY_ID, GET_PSY_CARDS_BY_USER_INSTANCE_ID, ADD_PSY_CARD, GET_SUICIDE_ASSESSMENT_BY_PSY_ID, ADD_SUICIDE_ASSESSMENT, GET_SUICIDE_ASSESSMENTS_BY_USER_ISTANCE_ID, GET_SUICIDE_ASSESSMENTS, GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID, ADD_MENTAL_HEALTH_DEPARTMENT, GET_MENTAL_HEALTH_DEPARTMENTS_BY_USER_ISTANCE_ID, GET_MENTAL_HEALTH_DEPARTMENTS, GET_REHABILITATION_PSYCHIATRIC_CARD_BY_PSY_ID, ADD_REHABILITATION_PSYCHIATRIC_CARD, GET_REHABILITATION_PSYCHIATRIC_CARDS_BY_USER_ISTANCE_ID, GET_REHABILITATION_PSYCHIATRIC_CARDS, GET_RATING_BY_PSY_ID, ADD_RATING, GET_RATINGS_BY_USER_ISTANCE_ID, GET_RATINGS, GET_UOC_DEPARTMENT_BY_PSY_ID, ADD_UOC_DEPARTMENT, GET_UOC_DEPARTMENTS_BY_USER_ISTANCE_ID, GET_UOC_DEPARTMENTS, GET_SOCIAL_FOLDER_BY_PSY_ID, ADD_SOCIAL_FOLDER, GET_SOCIAL_FOLDERS_BY_USER_ISTANCE_ID, GET_SOCIAL_FOLDERS, GET_MEMBERSHIP_CARD_BY_PSY_ID, ADD_MEMBERSHIP_CARD, GE_MEMBERSHIP_CARDS_BY_USER_ISTANCE_ID, GET_MEMBERSHIP_CARDS, GET_SURVEY_BY_PSY_ID, ADD_SURVEY, GET_SURVEYS_BY_USER_ISTANCE_ID, GET_SURVEYS, GET_JSAT_BY_PSY_ID, ADD_JSAT, GET_JSATS_BY_USER_ISTANCE_ID, GET_JSATS, GET_TRACEABILITYS, GET_TRACEABILITY_BY_ID, GET_TRACEABILITYS_BY_USER_ISTANCE_ID, ADD_TRACEABILITY, GET_MONITORINGS, GET_MONITORING_BY_ID, GET_MONITORINGS_BY_USER_ISTANCE_ID, ADD_MONITORING, GET_COLLECTIONS, GET_COLLECTION_BY_ID, GET_COLLECTIONS_BY_USER_ISTANCE_ID, ADD_COLLECTION, GET_HGTS, GET_HGT_BY_ID, GET_HGTS_BY_USER_ISTANCE_ID, ADD_HGT, GET_NURSINGS, GET_NURSING_BY_ID, GET_NURSINGS_BY_USER_ISTANCE_ID, ADD_NURSING, GET_PRESCRIPTIONS, GET_PRESCRIPTION_BY_ID, GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID, ADD_PRESCRIPTION, ADD_REFUSED */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77512,7 +80011,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_PSY_CARD", function() { return ADD_PSY_CARD; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_SUICIDE_ASSESSMENT_BY_PSY_ID", function() { return GET_SUICIDE_ASSESSMENT_BY_PSY_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_SUICIDE_ASSESSMENT", function() { return ADD_SUICIDE_ASSESSMENT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_SUICIDES_BY_USER_ISTANCE_ID", function() { return GET_SUICIDES_BY_USER_ISTANCE_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_SUICIDE_ASSESSMENTS_BY_USER_ISTANCE_ID", function() { return GET_SUICIDE_ASSESSMENTS_BY_USER_ISTANCE_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_SUICIDE_ASSESSMENTS", function() { return GET_SUICIDE_ASSESSMENTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID", function() { return GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_MENTAL_HEALTH_DEPARTMENT", function() { return ADD_MENTAL_HEALTH_DEPARTMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MENTAL_HEALTH_DEPARTMENTS_BY_USER_ISTANCE_ID", function() { return GET_MENTAL_HEALTH_DEPARTMENTS_BY_USER_ISTANCE_ID; });
@@ -77590,13 +80090,14 @@ var GET_PSY_CARD_BY_ID = '/psy/getPsyCardById';
 var GET_PSY_CARDS_BY_USER_INSTANCE_ID = '/psy/getPsyCardsByUserIstanceId';
 var ADD_PSY_CARD = '/psy/store';
 
-// SuicideAssessment
-var GET_SUICIDE_ASSESSMENT_BY_PSY_ID = '/psy/getSuicideAssessmentsByPsyId';
-var ADD_SUICIDE_ASSESSMENT = '/psy/addSuicideAssessment';
-var GET_SUICIDES_BY_USER_ISTANCE_ID = '/psy/getPsySuicideAssessmentsByUserInstanceId';
-
 // export const GET_PSY_SUICIDE_ASSESSMENT_BY_USER_INSTANCE_ID = '/psy/getPsySuicideAssessmentsByUserIstanceId';
 // export const ADD_PSY_SUICIDE_ASSESSMENT= '/psy/store';
+
+// SuicideAssessment
+var GET_SUICIDE_ASSESSMENT_BY_PSY_ID = '/psy/getSuicideAssessmentsByPsyId';
+var ADD_SUICIDE_ASSESSMENT = '/psy/addPsySuicideAssessment';
+var GET_SUICIDE_ASSESSMENTS_BY_USER_ISTANCE_ID = '/psy/getPsySuicideAssessmentsByUserIstanceId';
+var GET_SUICIDE_ASSESSMENTS = '/psy/getPsySuicideAssessments';
 
 // MentalHealthDepartment
 var GET_MENTAL_HEALTH_DEPARTMENT_BY_PSY_ID = '/psy/getMentalHealthDepartmentsByPsyId';
@@ -77646,10 +80147,6 @@ var GET_JSAT_BY_PSY_ID = '/psy/getJsatsByPsyId';
 var ADD_JSAT = '/psy/addPsyJsat';
 var GET_JSATS_BY_USER_ISTANCE_ID = '/psy/getPsyJsatsByUserIstanceId';
 var GET_JSATS = '/psy/getPsyJsats';
-
-// export const GET_NURSING = '/therapies/getNursingTherapiesByUserIstanceId';
-// export const ADD_NURSING= '/therapies/addtNursingTherapies';
-
 var GET_TRACEABILITYS = '/therapies/getTraceabilityTherapys';
 var GET_TRACEABILITY_BY_ID = '/therapies/getTraceabilityTherapyById';
 var GET_TRACEABILITYS_BY_USER_ISTANCE_ID = '/therapies/getTraceabilityTherapysByUserIstanceId';
@@ -77674,11 +80171,6 @@ var GET_PRESCRIPTIONS = '/therapies/getMonitoringPrescriptionTaos';
 var GET_PRESCRIPTION_BY_ID = '/therapies/getMonitoringPrescriptionTaosById';
 var GET_PRESCRIPTIONS_BY_USER_ISTANCE_ID = '/therapies/getMonitoringPrescriptionTaosByUserIstanceId';
 var ADD_PRESCRIPTION = '/therapies/addMonitoringPrescriptionTao';
-
-// export const GET_REFUSEDS = '/therapies/getRefusedTreatments';
-// export const GET_REFUSED_BY_ID = '/therapies/getRefusedTreatmentsById';
-// export const GET_REFUSED_BY_USER_ISTANCE_ID = '/therapies/getRefusedTreatmentsByUserIstanceId';
-
 var ADD_REFUSED = '/therapies/addRefusedTreatment';
 
 /***/ }),

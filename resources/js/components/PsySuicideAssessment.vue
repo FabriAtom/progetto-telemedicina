@@ -402,14 +402,81 @@
                                 </div>
                                 
 
-                                psa:{{ psyCardSa }} psyf: {{psyriskFactor}} 
+                                psa: {{ psyCardSa }} psyf: {{psyriskFactor}} 
+
+
+
+                                <div>
+                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <ul style="display:flex; flex-wrap: wrap;">
+                                        <span v-for="(item, key, index) in PsySuicideAssessment" :key="index" class="mr-5">
+
+                                            <div @click="printArchivesCardPsySuicideAssessment(item['id'])" @mouseover="cursorType = 'pointer'" @mouseout="cursorType = 'default'"
+                                                :style="{ cursor: cursorType }" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+
+                                                <div class="card-header">
+                                                    <span style="min-width: 100px;"> 
+                                                        <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div><strong>Data: </strong> {{ i2hDateFormat(item['sa_date']) }}</div>
+                                                    </span> 
+                                                </div>
+                                                <!-- <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['sa_date']) }}</div>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <div style="min-width: 100px;"><strong>Stato civile:</strong> {{ (item['marital_status']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Rischio suicidio:</strong> {{ (item['imminent_risk_of_suicide']) }}</div>
+                                                         <div style="min-width: 100px;"><strong>Raccomandazioni:</strong> {{ (item['monitoring_recommendation']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Frequenza:</strong> {{ ((item['frequency'])) }} </div>
+                                                        <div style="min-width: 100px;"><strong>Servizio salute mentale:</strong> {{ (item['referral_mental_health_service']) }} </div> 
+                                                    </p> 
+                                                </div> -->
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
+                                </div> 
+
+
+
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="psyCardSa.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="psyCardSa.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getPsySuicideAssessmentsByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+    
+
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="pull-right">
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsySuicideAssessment('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                    </div>
+                                </div>
+
+
+
+
                                 <div class="ln_solid"></div>
                                 <div class="item form-group" >
                                     <div class="pull-right">
-                                        <span  class="btn btn-success i2hBtn ml-3" @click="addPsySucideAssessment('sa')">{{btnSaSend}}</span>
+                                        <span  class="btn btn-success i2hBtn ml-3" @click="addPsySuicideAssessment('sa')">{{btnSaSend}}</span>
                                     </div>
                                 </div>
-                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsySucideAssessment('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsySuicideAssessment('printPdf')"><i class="fa fa-print"></i>Stampa</a>
                             </form>
                         </div>
                     </div>
@@ -454,7 +521,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default {
-    name: 'PsySucideAssessment',
+    name: 'PsySuicideAssessment',
 
     data() {
         return {
@@ -463,6 +530,10 @@ export default {
             userFullName:'',
             userInstance:1,
             userId:0,
+
+
+            cursorType: 'default',
+
 
             selectedOption: null,
             sum: 0,
@@ -485,6 +556,7 @@ export default {
             psyCardSa:{},
             psyriskFactor:{},
 
+            PsySuicideAssessment:{},
 
             panel:'sa',
 
@@ -502,23 +574,73 @@ export default {
 
     created: function () {
         // this.getPermissions();
-        this.getPsySucideAssessmentsByUserInstanceId(1);
-        
-    },
+        this.getPsySuicideAssessmentsByUserIstanceId(1);
+       
+    },  
+   
 
     methods: {
 
-        printPsySucideAssessment(printPdf){
+        i2hDateFormat(date){
+
+            let current=new Date(date);
+            let year = `${current.getFullYear()}`;
+            let month = `${current.getMonth()}`;
+            let timeHours=`${current.getHours()}`;
+            let timeMinuts=`${current.getMinutes()}`;
+            let day = `${current.getDate()}`;
+            month=this.zeroFill(month);
+            day=this.zeroFill(day);
+            timeMinuts=this.zeroFill(timeMinuts);
+            timeHours=this.zeroFill(timeHours);
+            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+            return tDate;
+        },
+        zeroFill(value){
+            if(parseInt(value)<10){
+                value = '0'+value;
+            }
+            return value
+        },
+
+
+        i2hHourFormat(dataz){
+            let dataw= new Date(dataz);
+            //return date;
+            return dataw.getHours() +':'+dataw.getMinutes();
+        },
+
+
+        printPsySuicideAssessment(printPdf){
 
             let v_myWindow
-
             let url= 'printPdf/2';
-
             v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-
             return false;
         },
 
+        printArchivePsySuicideAssessment(printPdf){
+
+            let v_myWindow
+            let url= 'printPdf/2';
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
+
+         
+        printArchivesCardPsySuicideAssessment(id){
+         
+            let v_myWindow
+            let url= 'printPdf/'+id;
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
+
+
+
+
+    
+        
 
         calculateSum() {
             // Calcola la somma delle opzioni selezionate
@@ -535,7 +657,7 @@ export default {
         },
 
         
-        addPsySucideAssessment(panel){
+        addPsySuicideAssessment(panel){
             let _wm = this;
             let _panel=panel;
             let _errors=0;
@@ -569,22 +691,31 @@ export default {
                     }
                 }
                 form.append('section', 'sa');
+                
+                if(!this.isObjEmpty(this.psyCardSa)){
+                    //alert(JSON.stringify(this.psyCardSa));
+                    let _psyCard=JSON.stringify(this.psyCardSa);
+                    form.append('PsySuicideAssessment', _psyCard);
+
+                    
+                    form.append('imminentRiskOfSuicide', this.psyCardSa.imminentRiskOfSuicide);
+                    form.append('monitoringRecommendation', this.psyCardSa.monitoringRecommendation);
+                    form.append('frequency', this.psyCardSa.frequency);
+                    form.append('referralMentalHealthService', this.psyCardSa.referralMentalHealthService);
+
+                }
+
                 if(!this.isObjEmpty(this.psyriskFactor)){
                     let _psyriskFactor=JSON.stringify(this.psyriskFactor);
                     //alert(JSON.stringify(this.psyriskFactor))
                     form.append('psyriskFactor', _psyriskFactor);
-                }
-                if(!this.isObjEmpty(this.psyCardSa)){
-                    //alert(JSON.stringify(this.psyCardSa));
-                    let _psyCard=JSON.stringify(this.psyCardSa);
-                    form.append('psyCardSa', _psyCard);
                 }
             }
             
             
             if(_errors==0){
                 try {
-                    axios.post(actions.ADD_PSY_CARD,form).then(response => {
+                    axios.post(actions.ADD_SUICIDE_ASSESSMENT,form).then(response => {
                         let error=response.data.errorNumber;
                         let _attempts=response.data.attempts;
                         _wm.errNum=error;
@@ -595,7 +726,7 @@ export default {
                                 'Aggiornata correttamente',
                                 'success'
                             )
-                            this.getPsySucideAssessmentsByUserInstanceId(this.userInstance);
+                            // this.getPsySuicideAssessmentsByUserIstanceId(this.userInstance);
                         }else{
                             // eventBus.$emit('errorEvent', error, _attempts);
                             Swal.fire(
@@ -617,11 +748,11 @@ export default {
              }
         },
 
-        getPsySucideAssessments(){
+        getPsySuicideAssessments(){
             //GET ALL CARDS
             let _wm = this;
             try {
-                axios.get(actions.GET_PSY_CARDS).then(response => {
+                axios.get(actions.GET_SUICIDE_ASSESSMENTS).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -635,10 +766,10 @@ export default {
                 throw error
             }
         },
-        getPsySucideAssessmentById(id){
+        getSuicideAssessmentsByPsyId(id){
             let _wm = this;
             try {
-                let url=actions.GET_PSY_CARD_BY_ID+'/'+id;
+                let url=actions.GET_SUICIDE_ASSESSMENT_BY_PSY_ID+'/'+id;
                 axios.get(url).then(response => {
                     let error=response.data.errorNumber;
                     let _attempts=response.data.attempts;
@@ -653,13 +784,17 @@ export default {
                 throw error
             }
         }, 
-        getPsySucideAssessmentsByUserInstanceId(id){
+        getPsySuicideAssessmentsByUserIstanceId(id,first){
             let _wm = this;
-            // alert('yy');
+
+            
+            let _param;
+            _wm.PsySuicideAssessment=[];
+
 
             try {
-                let url=actions.GET_PSY_CARDS_BY_USER_INSTANCE_ID+'/'+id;
-                axios.get(url).then(response => {
+                let url=actions.GET_SUICIDE_ASSESSMENTS_BY_USER_ISTANCE_ID+'/'+id;
+                axios.get(url,{params:{first:first,startDate:this.psyCardSa.startDate,endDate:this.psyCardSa.endDate}}).then(response => {
                     let error=response.data.errorNumber;
                     // let _attempts=response.data.attempts;
                     _wm.errNum=error;
@@ -668,49 +803,62 @@ export default {
                       
                         _wm.mainTitle="Aggiornamento Cartella psy";
                         if(response.data.PsySuicideAssessment){
-                            _wm.sASaved=true;
-                            _wm.btnSaSend="Aggiorna";
+                            // _wm.sASaved=true;
+                            // _wm.btnSaSend="Aggiorna";
 
-                            let _SuicideRep=response.data.PsySuicideAssessment;
-                            // _wm.psyCardId=response.data.psyCard.id;
-    
-                            _wm.psyCardId=response.data.psyCard.id;
-                            _wm.psySaDoctorId = _SuicideRep.id_doctor;
 
-                            _wm.psySaDoctorName = _SuicideRep.doctor_name;
-                            _wm.psySaDoctorLastname = _SuicideRep.doctor_lastname;
 
                             
-                            _wm.psyriskFactor.maritalStatus =_SuicideRep.marital_status;
-                            _wm.psyriskFactor.drugAndAlcoholAbuse = _SuicideRep.drug_and_alcohol_abuse 	
-                            _wm.psyriskFactor.psychiatricAspect = _SuicideRep.psychiatric_aspect 
-                            _wm.psyriskFactor.suicideAttempt = _SuicideRep.suicide_attempt
-                            _wm.psyriskFactor.suicideAttemptInInstitution = _SuicideRep.suicide_attempt_in_institution 
-                            _wm.psyriskFactor.familySuicide = _SuicideRep.family_suicide
-                            _wm.psyriskFactor.arrestStory = _SuicideRep.arrest_story
-                            _wm.psyriskFactor.compulsiveBehavior = _SuicideRep.compulsive_behavior 
-                            _wm.psyriskFactor.highCrimeProfile = _SuicideRep.high_crime_profile
-                            _wm.psyriskFactor.currentIntoxication = _SuicideRep.current_intoxication 
-                            _wm.psyriskFactor.worryAboutLifeProblem = _SuicideRep.worry_about_life_problem
-                            _wm.psyriskFactor.feelingOfHopelessness = _SuicideRep.feeling_of_hopelessness 
-                            _wm.psyriskFactor.psychoticSymptom = _SuicideRep.psychotic_symptom
-                            _wm.psyriskFactor.depressiveSymptom = _SuicideRep.depressive_symptom
-                            _wm.psyriskFactor.stressAndCoping = _SuicideRep.stress_and_coping 
-                            _wm.psyriskFactor.socialSupport = _SuicideRep.social_support
-                            _wm.psyriskFactor.recentMajorLosse = _SuicideRep.recent_major_losse 
-                            _wm.psyriskFactor.suicidalIdeation = _SuicideRep.suicidal_ideation 
-                            _wm.psyriskFactor.suicidalIntent = _SuicideRep.suicidal_intent 
-                            _wm.psyriskFactor.suicidePlan = _SuicideRep.suicide_plan
+
+                            _wm.PsySuicideAssessment=response.data.PsySuicideAssessment;
+
+                            for (let prop in _wm.PsySuicideAssessment) {
+
+                            }
 
 
-                            _wm.psyCardSa.psySuicideNote = _SuicideRep.psy_suicide_note
-                            _wm.psyCardSa.imminentRiskOfSuicide = _SuicideRep.imminent_risk_of_suicide
-                            _wm.psyCardSa.monitoringRecommendation = _SuicideRep.monitoring_recommendation
-                            _wm.psyCardSa.frequency = _SuicideRep.frequency
-                            _wm.psyCardSa.referralMentalHealthService = _SuicideRep.referral_mental_health_service
-                            _wm.psyCardSa.comment = _SuicideRep.comment
 
-                            _wm.allPsySuicideAssessments=response.data.allPsySuicideAssessments;
+
+                            // let _SuicideRep=response.data.PsySuicideAssessment;
+                            // _wm.psyCardId=response.data.psyCard.id;
+    
+                            // _wm.psyCardId=response.data.psyCard.id;
+                            // _wm.psySaDoctorId = _SuicideRep.id_doctor;
+
+                            // _wm.psySaDoctorName = _SuicideRep.doctor_name;
+                            // _wm.psySaDoctorLastname = _SuicideRep.doctor_lastname;
+
+                            
+                            // _wm.psyriskFactor.maritalStatus =_SuicideRep.marital_status;
+                            // _wm.psyriskFactor.drugAndAlcoholAbuse = _SuicideRep.drug_and_alcohol_abuse 	
+                            // _wm.psyriskFactor.psychiatricAspect = _SuicideRep.psychiatric_aspect 
+                            // _wm.psyriskFactor.suicideAttempt = _SuicideRep.suicide_attempt
+                            // _wm.psyriskFactor.suicideAttemptInInstitution = _SuicideRep.suicide_attempt_in_institution 
+                            // _wm.psyriskFactor.familySuicide = _SuicideRep.family_suicide
+                            // _wm.psyriskFactor.arrestStory = _SuicideRep.arrest_story
+                            // _wm.psyriskFactor.compulsiveBehavior = _SuicideRep.compulsive_behavior 
+                            // _wm.psyriskFactor.highCrimeProfile = _SuicideRep.high_crime_profile
+                            // _wm.psyriskFactor.currentIntoxication = _SuicideRep.current_intoxication 
+                            // _wm.psyriskFactor.worryAboutLifeProblem = _SuicideRep.worry_about_life_problem
+                            // _wm.psyriskFactor.feelingOfHopelessness = _SuicideRep.feeling_of_hopelessness 
+                            // _wm.psyriskFactor.psychoticSymptom = _SuicideRep.psychotic_symptom
+                            // _wm.psyriskFactor.depressiveSymptom = _SuicideRep.depressive_symptom
+                            // _wm.psyriskFactor.stressAndCoping = _SuicideRep.stress_and_coping 
+                            // _wm.psyriskFactor.socialSupport = _SuicideRep.social_support
+                            // _wm.psyriskFactor.recentMajorLosse = _SuicideRep.recent_major_losse 
+                            // _wm.psyriskFactor.suicidalIdeation = _SuicideRep.suicidal_ideation 
+                            // _wm.psyriskFactor.suicidalIntent = _SuicideRep.suicidal_intent 
+                            // _wm.psyriskFactor.suicidePlan = _SuicideRep.suicide_plan
+
+
+                            // _wm.psyCardSa.psySuicideNote = _SuicideRep.psy_suicide_note
+                            // _wm.psyCardSa.imminentRiskOfSuicide = _SuicideRep.imminent_risk_of_suicide
+                            // _wm.psyCardSa.monitoringRecommendation = _SuicideRep.monitoring_recommendation
+                            // _wm.psyCardSa.frequency = _SuicideRep.frequency
+                            // _wm.psyCardSa.referralMentalHealthService = _SuicideRep.referral_mental_health_service
+                            // _wm.psyCardSa.comment = _SuicideRep.comment
+
+                            // _wm.allPsySuicideAssessments=response.data.allPsySuicideAssessments;
                         }else{
                             _wm.btnSaSend="Salva";
                         }

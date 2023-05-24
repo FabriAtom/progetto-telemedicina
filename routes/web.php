@@ -68,11 +68,17 @@ Route::get('/psy/getPsyCardsByUserIstanceId/{id}', [App\Http\Controllers\PsyCard
 
 
 
-Route::post('/psy/addSuicideAssessment', [App\Http\Controllers\PsyCardsController::class,'addSuicideAssessment'])->name('addSuicideAssessment');
+
+
+
+
+
+
+
+Route::get('/psy/getPsySuicideAssessments', [App\Http\Controllers\PsyCardsController::class,'getPsySuicideAssessments'])->name('getPsySuicideAssessments');
+Route::post('/psy/addPsySuicideAssessment', [App\Http\Controllers\PsyCardsController::class,'addPsySuicideAssessment'])->name('addPsySuicideAssessment');
 Route::get('/psy/getSuicideAssessmentsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getSuicideAssessmentsByPsyId'])->name('getSuicideAssessmentsByPsyId');
-
-
-
+Route::get('/psy/getPsySuicideAssessmentsByUserIstanceId/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsySuicideAssessmentsByUserIstanceId'])->name('getPsySuicideAssessmentsByUserIstanceId');
 
 
 
@@ -84,6 +90,8 @@ Route::get('/psy/getPsyMentalHealthDepartments', [App\Http\Controllers\PsyCardsC
 Route::post('/psy/addPsyMentalHealthDepartment', [App\Http\Controllers\PsyCardsController::class,'addPsyMentalHealthDepartment'])->name('addPsyMentalHealthDepartment');
 Route::get('/psy/getMentalHealthDepartmentsByPsyId/{id}', [App\Http\Controllers\PsyCardsController::class,'getMentalHealthDepartmentsByPsyId'])->name('getMentalHealthDepartmentsByPsyId');
 Route::get('/psy/getPsyMentalHealthDepartmentsByUserIstanceId/{id}', [App\Http\Controllers\PsyCardsController::class,'getPsyMentalHealthDepartmentsByUserIstanceId'])->name('getPsyMentalHealthDepartmentsByUserIstanceId');
+
+
 
 
 Route::get('/psy/getPsyRehabilitationPsychiatricCards', [App\Http\Controllers\PsyCardsController::class,'getPsyRehabilitationPsychiatricCards'])->name('getPsyRehabilitationPsychiatricCards');

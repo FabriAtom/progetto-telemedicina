@@ -70,23 +70,25 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in PsyMentalHealthDepartment" :key="index" class="mr-5">
 
-                                            <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                            <div @click="printArchivesCardPsyMentalHealthDepartment( item['id'])" @mouseover="cursorType = 'pointer'" @mouseout="cursorType = 'default'"
+                                                :style="{ cursor: cursorType }" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
-                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div><strong>Data: </strong> {{ i2hDateFormat(item['mh_date']) }}</div>
                                                     </span> 
                                             </div>
-                                                <div class="card-body">
+                                                <!-- <div class="card-body">
                                                     <h5 class="card-title">
                                                         <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['mh_date']) }}</div>
                                                     </h5>
                                                     <p class="card-text">
                                                         <div style="min-width: 100px;"><strong>Colloquio Psicologico:</strong> <br>{{ (item['psychological_interview']) }}</div>
-                                                         <div style="min-width: 100px;"><strong>Ipotesi/Inquadramento Psicopatologico:</strong> <br> {{ (item['hypothesis_psychopathological_classification']) }}</div>
+                                                        <div style="min-width: 100px;"><strong>Ipotesi/Inquadramento Psicopatologico:</strong> <br> {{ (item['hypothesis_psychopathological_classification']) }}</div>
                                                         <div style="min-width: 100px;"><strong>Progettualità/Tipologia di Intervento:</strong> <br>{{ ((item['planning_type_of_intervention'])) }} </div>
                                                         <div style="min-width: 100px;"><strong>Test:</strong> <br>{{ (item['test']) }} </div> 
                                                     </p>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <br><br>
                                         </span>
@@ -194,6 +196,9 @@
                 psyCardId:1,
 
 
+                cursorType: 'default',
+
+
                 accessData:[
                    
                     id => 14,
@@ -280,6 +285,15 @@
                 v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
                 return false;
             },
+
+            printArchivesCardPsyMentalHealthDepartment(id){
+                
+                let v_myWindow
+                let url= 'printPdf/'+id;
+                v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+                return false;
+            },
+
                                 
             
 

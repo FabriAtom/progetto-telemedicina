@@ -7,8 +7,8 @@
 
     <div>
       <!-- <psyCard/> -->
-      <!-- <PsySuicideAssessment/> -->
-      <!-- <serdCard/> -->
+      <serdCard/>
+      <PsySuicideAssessment/>
       <PsyMentalHealthDepartment/>
       <PsyRehabilitationPsychiatricCard/>
       <PsyRating/>
@@ -18,11 +18,11 @@
       <PsySurvey/>
       <PsyJsat/>
 
-      <!-- <TraceabilityTherapy/>  -->
-      <!-- <MonitoringClinicalParameter/>  -->
-      <!-- <ClinicalParameterCollection/> -->
-      <!-- <CollectionFormHgt/>  -->
-      <!-- <MonitoringPrescriptionTao/> -->
+      <!-- <TraceabilityTherapy/> 
+      <MonitoringClinicalParameter/> 
+      <ClinicalParameterCollection/>
+      <CollectionFormHgt/> 
+      <MonitoringPrescriptionTao/> -->
 
     </div>
     
@@ -32,7 +32,7 @@
 <script>
 // import psyCard from '../components/psyCard.vue';
 // import serdCard from '../components/serdCard.vue';
-// import PsySuicideAssessment from '../components/PsySuicideAssessment.vue';
+import PsySuicideAssessment from '../components/PsySuicideAssessment.vue';
 import PsyMentalHealthDepartment from '../components/PsyMentalHealthDepartment.vue';
 
 import PsyRehabilitationPsychiatricCard from '../components/PsyRehabilitationPsychiatricCard.vue';
@@ -58,7 +58,7 @@ export default {
     // serdCard, 
     // Home,
     // psyCard,
-    // PsySuicideAssessment,
+    PsySuicideAssessment,
     PsyMentalHealthDepartment,
     PsyRehabilitationPsychiatricCard,
     PsyRating,

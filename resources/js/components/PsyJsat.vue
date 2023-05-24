@@ -1688,13 +1688,14 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in PsyJsat" :key="index" class="mr-5">
 
-                                            <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                            <div  @click="printArchivesCardPsyJsat(item['id'])" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
-                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div><strong>Data: </strong> {{ i2hDateFormat(item['pj_date']) }}</div>
                                                     </span> 
                                             </div>
-                                                <div class="card-body">
+                                                <!-- <div class="card-body">
                                                     <h5 class="card-title">
                                                         <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['pj_date']) }}</div>
                                                     </h5>
@@ -1704,7 +1705,7 @@
                                                         <div style="min-width: 100px;"><strong>Anni:</strong> {{ ((item['information_age'])) }} </div>
                                                         <div style="min-width: 100px;"><strong>Lingua:</strong> {{ (item['information_language']) }} </div> 
                                                     </p>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <br><br>
                                         </span>
@@ -1864,7 +1865,7 @@ export default {
 
     created: function () {
         // this.getPermissions();
-        this.getPsyJsatsByUserInstanceId(1);
+        this.getPsyJsatsByUserIstanceId(1);
     },
 
 
@@ -1915,7 +1916,16 @@ export default {
         v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
         return false;
         },
+
         
+        
+        printArchivesCardPsyJsat(id){
+
+            let v_myWindow
+            let url= 'printPdf/'+id;
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
 
 
         addPsyJsat(panel){
@@ -2020,7 +2030,7 @@ export default {
             }
         },
 
-        getPsyJsatById(id){
+        getJsatsByPsyId(id){
             let _wm = this;
             try {
                 let url=actions.GET_JSAT_BY_PSY_ID+'/'+id;
@@ -2039,7 +2049,7 @@ export default {
             }
         },
 
-        getPsyJsatsByUserInstanceId(id,first){
+        getPsyJsatsByUserIstanceId(id,first){
             let _wm = this;
 
             let _param;

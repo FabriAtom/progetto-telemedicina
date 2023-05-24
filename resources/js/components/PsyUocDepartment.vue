@@ -230,13 +230,14 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in PsyUocDepartment" :key="index" class="mr-5">
 
-                                            <div class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                            <div  @click="printArchivesCardPsyUocDepartment(item['id'])" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
-                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div><strong>Data: </strong> {{ i2hDateFormat(item['ud_date']) }}</div>
                                                     </span> 
                                             </div>
-                                                <div class="card-body">
+                                                <!-- <div class="card-body">
                                                     <h5 class="card-title">
                                                         <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['ud_date']) }}</div>
                                                     </h5>
@@ -266,7 +267,7 @@
                                                         <div style="min-width: 100px;"><strong>Assunzione in cura: </strong> {{ ((item['care_intake_pdta'])) }} </div>
                                                         <div style="min-width: 100px;"><strong>Consulenza: </strong> {{ (item['consultancy_pdta']) }} </div> 
                                                     </p>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <br><br>
                                         </span>
@@ -461,8 +462,6 @@ export default {
             }
             return value
         },
-
-
         i2hHourFormat(dataz){
             let dataw= new Date(dataz);
             //return date;
@@ -489,7 +488,15 @@ export default {
             return false;
         },
 
+        
 
+        printArchivesCardPsyUocDepartment(id){
+
+            let v_myWindow
+            let url= 'printPdf/'+id;
+            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+            return false;
+        },
 
 
 
