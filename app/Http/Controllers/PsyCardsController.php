@@ -6731,7 +6731,7 @@ class PsyCardsController extends Controller
 
 //              ARCHIVIO
 
-// ----------------------------------------------
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // // printArchivePsyMentalHealthDepartment TOTALE
         
@@ -6852,6 +6852,27 @@ class PsyCardsController extends Controller
 
 //     $pdf->AddPage();
 
+//     $pdf->SetDrawColor(128,0,0);
+    // $pdf->SetFillColor(0,78,155);
+    // $pdf->SetTextColor(255,255,255);
+    // $pdf->SetFont('Arial', 'B', 12);
+    // $pdf->Cell(0,7,'Archivio',0,0,'L',true);
+    // $pdf->SetFillColor(255,255,255);
+    // $pdf->SetDrawColor(0,0,0);
+    // $pdf->SetTextColor(0,0,0);
+    // $pdf->Ln(10);
+
+    // $pdf->SetFont('Arial', 'B', 12);
+    // $pdf->Cell(15,7,'Data:');
+    // $pdf->SetFont('Arial','',12);
+    // $pdf->Cell(45,7,$psyRehab->rp_date);
+
+    // $pdf->SetFont('Arial', 'B', 12);
+    // $pdf->Cell(20,7,'Medico:');
+    // $pdf->SetFont('Arial','',12);
+    // $pdf->Cell(35,7,$psyRehab->doctor_name);
+    // $pdf->Ln(12);
+
 //     $pdf->SetFillColor(255,255,255);
 //     $pdf->SetDrawColor(0,0,0);
 //     $pdf->SetTextColor(0,0,0);
@@ -6944,6 +6965,27 @@ class PsyCardsController extends Controller
     //     $pdf->AliasNbPages();
 
     //     $pdf->AddPage();
+
+            // $pdf->SetDrawColor(128,0,0);
+            // $pdf->SetFillColor(0,78,155);
+            // $pdf->SetTextColor(255,255,255);
+            // $pdf->SetFont('Arial', 'B', 12);
+            // $pdf->Cell(0,7,'Archivio',0,0,'L',true);
+            // $pdf->SetFillColor(255,255,255);
+            // $pdf->SetDrawColor(0,0,0);
+            // $pdf->SetTextColor(0,0,0);
+            // $pdf->Ln(10);
+        
+            // $pdf->SetFont('Arial', 'B', 12);
+            // $pdf->Cell(15,7,'Data:');
+            // $pdf->SetFont('Arial','',12);
+            // $pdf->Cell(45,7,$psyRehab->rp_date);
+
+            // $pdf->SetFont('Arial', 'B', 12);
+            // $pdf->Cell(20,7,'Medico:');
+            // $pdf->SetFont('Arial','',12);
+            // $pdf->Cell(35,7,$psyRehab->doctor_name);
+            // $pdf->Ln(12);
 
     //     $pdf->SetFillColor(255,255,255);
     //     $pdf->SetDrawColor(0,0,0);

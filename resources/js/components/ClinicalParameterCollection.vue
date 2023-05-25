@@ -103,23 +103,13 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in ClinicalParameterCollection" :key="index" class="mr-5">
 
-                                            <div class="card text-white bg-secondary mb-2" style="max-width: 20rem;  border-radius: 20px;">
+                                            <div @click="printArchivesCardClinicalParameterCollection( item['id'])" class="card text-white bg-secondary mb-2 cursor" style="max-width: 19rem;  border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
-                                                        <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div><strong>Data: </strong> {{ i2hDateFormat(item['cpc_date']) }}</div>
+
                                                     </span> 
-                                            </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">
-                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['cpc_date']) }}</div>
-                                                    </h5>
-                                                    <p class="card-text">
-                                                        <div style="min-width: 100px;"><strong>Sistolica:</strong> {{ (item['collection_pa_systolic']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Diastolica:</strong> {{ (item['collection_pa_diastolic']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>F.C:</strong> {{ ((item['collection_fc'])) }} </div>
-                                                        <div style="min-width: 100px;"><strong>SPO2:</strong> {{ (item['collection_spo2']) }} </div>
-                                                        <div style="min-width: 100px;"><strong>T.C:</strong> {{ (item['collection_tc']) }} </div>
-                                                    </p>
                                                 </div>
                                             </div>
                                             <br><br>
@@ -145,25 +135,18 @@
                                     </div>
                                 </div>
 
-    
-
-                                <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="pull-right">
-                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchiveClinicalParameterCollection('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
-                                    </div>
-                                </div>
-
+<!--     
                                 <br>
                                 ::{{ClinicalParameterCollection}}
 
                                 <br><br>
- 
+  -->
                                 <div class="ln_solid mt-2"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addClinicalParameterCollection('cpc')">{{btnCpcSend}}</span>
-                                        <a  class="btn btn-success i2hBtnPrint"  @click=" printClinicalParameterCollection('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchiveClinicalParameterCollection('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+                                        <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printClinicalParameterCollection('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                                     </div>
                                 </div>
                             </form>
@@ -222,6 +205,12 @@ td, th {
 ul, li{
     list-style: none;
 }
+
+
+.cursor:hover {
+  cursor: pointer;
+}
+        
 </style>
 
 
@@ -270,80 +259,6 @@ ul, li{
                 total:0,               
                 allClinicalParameterCollections:null,
                 
-                
-
-            //     therapies: [
-            //     {
-            //         id: 1,
-            //         drug: "tachipirina",
-            //         posology: "2 volte al di",
-            //         frequency: "test test",
-            //         startTherapy: "2022-10-12",
-            //         endTherapy: "2023-06-10",
-            //         drugRoute: "intramuscolare",
-            //         morning: "",
-            //         afternoon: true,
-            //         evening: "",
-            //         external_doctor_prescription:0
-            //     },
-            //     {
-            //         id: 2,          
-            //         drug: "toradol",
-            //         posology: "2 volte al di",
-            //         frequency: "il venerdì",
-            //         startTherapy: "2023-01-01",
-            //         endTherapy: "2023-12-31",
-            //         drugRoute: "orale",
-            //         morning: true,
-            //         afternoon: true,
-            //         evening: "",
-            //         external_doctor_prescription:0
-            //     },
-            //     {
-            //         id: 3,        
-            //         drug: "buscopan",
-            //         posology: "unidie",
-            //         frequency: "tutti i giorni",
-            //         startTherapy: "2022-08-12",
-            //         endTherapy: "2023-07-23",
-            //         drugRoute: "intramuscolare",
-            //         morning: true,
-            //         afternoon: "",
-            //         evening: "",
-            //         external_doctor_prescription:0
-            //     },
-            //     ],
-
-            //     newTherapies: [
-            //     {
-            //         idDoctor:0,
-            //         doctorName:'',
-            //         doctorLastname:'',
-            //         userInstanceId:0,
-            //         userId:0,
-
-            //         cpc_date:'',
-            //         collection_pa:'',
-            //         collection_fc:'',
-            //         collection_spo2:'',
-            //         collection_tc:'',
-            //         // drug: "",
-            //         // posology: "",
-            //         // frequency: "",
-            //         // startTherapy: "",
-            //         // endTherapy: null,
-            //         // drugRoute: "",
-            //         // morning: 0,
-            //         // afternoon: 0,
-            //         // evening: 0,
-            //         // external_doctor_prescription:0,
-            //         // deleted:0,
-            //         // acceptance:0,
-            //         // acceptanceId:0 
-            //     },
-            // ],
-            // showtherapies:true,
-            // newTheraphyPnl:true,
             }
         },
 
@@ -362,31 +277,31 @@ ul, li{
 
             i2hDateFormat(date){
 
-            let current=new Date(date);
-            let year = `${current.getFullYear()}`;
-            let month = `${current.getMonth()}`;
-            let timeHours=`${current.getHours()}`;
-            let timeMinuts=`${current.getMinutes()}`;
-            let day = `${current.getDate()}`;
-            month=this.zeroFill(month);
-            day=this.zeroFill(day);
-            timeMinuts=this.zeroFill(timeMinuts);
-            timeHours=this.zeroFill(timeHours);
-            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
-            return tDate;
+                let current=new Date(date);
+                let year = `${current.getFullYear()}`;
+                let month = `${current.getMonth()}`;
+                let timeHours=`${current.getHours()}`;
+                let timeMinuts=`${current.getMinutes()}`;
+                let day = `${current.getDate()}`;
+                month=this.zeroFill(month);
+                day=this.zeroFill(day);
+                timeMinuts=this.zeroFill(timeMinuts);
+                timeHours=this.zeroFill(timeHours);
+                let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+                return tDate;
             },
+            
             zeroFill(value){
-            if(parseInt(value)<10){
-                value = '0'+value;
-            }
-            return value
+                if(parseInt(value)<10){
+                    value = '0'+value;
+                }
+                return value
             },
-
 
             i2hHourFormat(dataz){
-            let dataw= new Date(dataz);
-            //return date;
-            return dataw.getHours() +':'+dataw.getMinutes();
+                let dataw= new Date(dataz);
+                //return date;
+                return dataw.getHours() +':'+dataw.getMinutes();
             },
 
 
@@ -398,7 +313,6 @@ ul, li{
                 return false;
             },
             
-
             printArchiveClinicalParameterCollection(printPdf){
 
                 let v_myWindow
@@ -407,6 +321,13 @@ ul, li{
                 return false;
             },
 
+            printArchivesCardClinicalParameterCollection(id){
+
+                let v_myWindow
+                let url= 'printPdf/'+id;
+                v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+                return false;
+            },
 
 
             addClinicalParameterCollection(panel){

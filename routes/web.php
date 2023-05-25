@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('printPdf/{id}', [App\Http\Controllers\PsyCardsController::class,'printPdf'])->name('printPdf');
-// Route::get('printPdf/{id}', [App\Http\Controllers\NursingRecordController::class,'printPdf'])->name('printPdf');
+// Route::get('printPdf/{id}', [App\Http\Controllers\PsyCardsController::class,'printPdf'])->name('printPdf');
+Route::get('printPdf/{id}', [App\Http\Controllers\NursingRecordController::class,'printPdf'])->name('printPdf');
 
 
 

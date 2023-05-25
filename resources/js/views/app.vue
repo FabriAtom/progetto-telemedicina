@@ -8,21 +8,21 @@
     <div>
       <!-- <psyCard/> -->
       <!-- <serdCard/> -->
-      <PsySuicideAssessment/>
-      <PsyMentalHealthDepartment/>
-      <PsyRehabilitationPsychiatricCard/>
+      <!-- <PsySuicideAssessment/> -->
+      <!-- <PsyMentalHealthDepartment/> -->
+      <!-- <PsyRehabilitationPsychiatricCard/>
       <PsyRating/>
       <PsyUocDepartment/>
       <PsySocialFolder/> 
       <PsyMembershipCard/>
       <PsySurvey/>
-      <PsyJsat/>
+      <PsyJsat/> -->
 
-      <!-- <TraceabilityTherapy/> 
+      <TraceabilityTherapy/> 
       <MonitoringClinicalParameter/> 
       <ClinicalParameterCollection/>
       <CollectionFormHgt/> 
-      <MonitoringPrescriptionTao/> -->
+      <MonitoringPrescriptionTao/>
 
     </div>
     
@@ -32,25 +32,25 @@
 <script>
 // import psyCard from '../components/psyCard.vue';
 // import serdCard from '../components/serdCard.vue';
-import PsySuicideAssessment from '../components/PsySuicideAssessment.vue';
-import PsyMentalHealthDepartment from '../components/PsyMentalHealthDepartment.vue';
+// import PsySuicideAssessment from '../components/PsySuicideAssessment.vue';
+// import PsyMentalHealthDepartment from '../components/PsyMentalHealthDepartment.vue';
 
-import PsyRehabilitationPsychiatricCard from '../components/PsyRehabilitationPsychiatricCard.vue';
-import PsyRating from '../components/PsyRating.vue';
-import PsyUocDepartment from '../components/PsyUocDepartment.vue';
-import PsySocialFolder from '../components/PsySocialFolder.vue';
+// import PsyRehabilitationPsychiatricCard from '../components/PsyRehabilitationPsychiatricCard.vue';
+// import PsyRating from '../components/PsyRating.vue';
+// import PsyUocDepartment from '../components/PsyUocDepartment.vue';
+// import PsySocialFolder from '../components/PsySocialFolder.vue';
 
-import PsyMembershipCard from '../components/PsyMembershipCard.vue';
-import PsySurvey from '../components/PsySurvey.vue';
-import PsyJsat from '../components/PsyJsat.vue';
+// import PsyMembershipCard from '../components/PsyMembershipCard.vue';
+// import PsySurvey from '../components/PsySurvey.vue';
+// import PsyJsat from '../components/PsyJsat.vue';
 
 
 
-// import TraceabilityTherapy from '../components/TraceabilityTherapy.vue';
-// import MonitoringClinicalParameter from '../components/MonitoringClinicalParameter.vue';
-// import ClinicalParameterCollection from '../components/ClinicalParameterCollection.vue';
-// import CollectionFormHgt from '../components/CollectionFormHgt.vue';
-// import MonitoringPrescriptionTao from '../components/MonitoringPrescriptionTao.vue';
+import TraceabilityTherapy from '../components/TraceabilityTherapy.vue';
+import MonitoringClinicalParameter from '../components/MonitoringClinicalParameter.vue';
+import ClinicalParameterCollection from '../components/ClinicalParameterCollection.vue';
+import CollectionFormHgt from '../components/CollectionFormHgt.vue';
+import MonitoringPrescriptionTao from '../components/MonitoringPrescriptionTao.vue';
 
 
 export default {
@@ -58,22 +58,22 @@ export default {
     // serdCard, 
     // Home,
     // psyCard,
-    PsySuicideAssessment,
-    PsyMentalHealthDepartment,
-    PsyRehabilitationPsychiatricCard,
-    PsyRating,
-    PsyUocDepartment,
-    PsySocialFolder,
-    PsyMembershipCard,
-    PsySurvey,
-    PsyJsat,
+    // PsySuicideAssessment,
+    // PsyMentalHealthDepartment,
+    // PsyRehabilitationPsychiatricCard,
+    // PsyRating,
+    // PsyUocDepartment,
+    // PsySocialFolder,
+    // PsyMembershipCard,
+    // PsySurvey,
+    // PsyJsat,
 
 
-    // TraceabilityTherapy,
-    // MonitoringClinicalParameter,
-    // ClinicalParameterCollection,
-    // CollectionFormHgt,
-    // MonitoringPrescriptionTao,
+    TraceabilityTherapy,
+    MonitoringClinicalParameter,
+    ClinicalParameterCollection,
+    CollectionFormHgt,
+    MonitoringPrescriptionTao,
 }
 }
 </script>

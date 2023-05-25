@@ -88,20 +88,10 @@
                                     <ul style="display: flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in MonitoringPrescriptionTao" :key="index" class="mr-5">
 
-                                            <div class="card text-white bg-secondary mb-3" style="max-width:19rem; border-radius:20px;">
+                                            <div @click="printArchivesCardMonitoringPrescriptionTao( item['id'])" class="card text-white bg-secondary mb-3 cursor" style="max-width:19rem; border-radius:20px;">
                                                 <div class="card-header">
-                                                    <div style="min-width: 100px;"><strong>Nome:</strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">
-                                                        <div style="min-width: 100px;"><strong>Farmaco Prescritto:</strong>{{ (item['drug_prescribed']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Diagnosi:</strong>{{ (item['diagnosis_tao']) }} </div>
-                                                    </h5>
-                                                    <p class="card-text">
-                                                        <div style="min-width: 100px;"><strong>Data:</strong> {{ i2hDateFormat(item['date_tao']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Dosaggio:</strong> {{ ((item['tao_dosage'])) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Medico:</strong> {{ (item['tao_doctor']) }} </div>
-                                                    </p>
+                                                    <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                    <div style="min-width: 100px;"><strong>Data: </strong> {{ i2hDateFormat(item['date_tao']) }}</div>
                                                 </div>
                                             </div>
                                             <br><br>
@@ -127,24 +117,18 @@
                                     </div>
                                 </div>
  
-
-
-                                <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="pull-right">
-                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchiveMonitoringPrescriptionTao('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
-                                    </div>
-                                </div>
-
+<!-- 
                                 {{MonitoringPrescriptionTao}}
 
-                                <br><br>
+                                <br><br> -->
 
                                 <div class="ln_solid mt-5"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addMonitoringPrescriptionTao('tao')">{{btnTaoSend}}</span>
-                                        <a  class="btn btn-success i2hBtnPrint"  @click=" printMonitoringPrescriptionTao('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchiveMonitoringPrescriptionTao('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+
+                                        <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printMonitoringPrescriptionTao('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                                     </div>
                                 </div>
                             </form>
@@ -202,6 +186,11 @@ td, th {
 ul, li{
     list-style: none;
 }
+
+.cursor:hover {
+  cursor: pointer;
+}
+        
 </style>
 
 
@@ -300,12 +289,16 @@ ul, li{
                 v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
                 return false;
             },
-                
 
 
 
+            printArchivesCardMonitoringPrescriptionTao(id){
 
-
+                let v_myWindow
+                let url= 'printPdf/'+id;
+                v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+                return false;
+            },
 
 
 

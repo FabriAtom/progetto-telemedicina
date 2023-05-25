@@ -68,97 +68,16 @@
                                             {{therapy.frequency}}
                                         </td>
                                         <td>
-                                            <label  class="i2hCheckboxLabel" :for="therapy.drug">{{therapy.drug}}</label>
+                                            <label class="i2hCheckboxLabel" :for="therapy.drug">{{therapy.drug}}</label>
                                             <input type="checkbox" class="form-control i2hCheckbox" :id="therapy.drug" :name="therapy.drug" :value="therapy.drug" v-model="refusedTreatments.checked[therapy.drug]"> 
                                             <input v-if="refusedTreatments.checked[therapy.drug]" type="text" class="form-control mt-3" :id="therapy.id" :name="therapy.id" placeholder="motivazione" v-model="refusedTreatments.descriptions[therapy.drug]">
                                         </td>
-                                    </tr>  
+                                    </tr> 
                                 </table>
 
-                                <!-- <button @click="saveRefusedTreatments">Save</button> -->
-                                <br>
-                                TERAPIE RIFIUTATE: {{ refusedTreatments }}
-                                <br>
-                                <br>
-                                nursTh: {{nursCardTh}}
-                                <br>
-                                <hr><hr>
-
-
-<!-- 
-                                <div>
-                                    <h2>archivio</h2>
-                                    <ul>
-                                        <li v-for="(TraceabilityTherapy, index) in testRefusedTherapies" :key="index">
-
-                                            {{TraceabilityTherapy.data}} - {{ TraceabilityTherapy.fullName }}
-                                            <div v-for="(drug, index) in TraceabilityTherapy.refusedTherapy" :key="index">
-                                                {{drug[0]}} {{drug[1]}} 
-                                            </div>
-                                        
-                                        </li>
-                                    </ul>
-                                </div> 
- -->
-
-                                <div class="mt-4">
-                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
-                                    <ul style="display: flex; flex-wrap: wrap;">
-                                        <span  v-for="(TraceabilityTherapy, index) in testRefusedTherapies" :key="index" class="mr-5">
-                                            <div class="card text-white bg-secondary mb-3 " style="max-width: 19rem; border-radius: 20px;">
-                                                <div class="card-header">
-                                                    <span>
-                                                        <!-- <button class="btn btn-success">Apri</button> -->
-                                                        <div><h5 style="display: inline-block;">{{TraceabilityTherapy.data}} <br><strong>Nome:</strong> {{ TraceabilityTherapy.fullName }}</h5></div>
-                                                    </span> 
-                                                </div>
-                                                <div class="card-body">
-                                                    <div v-for="(drug, index) in TraceabilityTherapy.refusedTherapy" :key="index">
-                                                        <div style="min-width: 100px;"><strong>Farmaco:</strong> {{drug[0]}}</div>
-                                                        <div style="min-width: 100px;"><strong>Descrizione:</strong> {{drug[1]}} </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <br><br>
-                                        </span>
-                                    </ul>
-                                </div> 
 
 
 
-                                <div class="row mb-3 ml-2 mt-4">
-                                    <div class="col-md-12 col-sm-12">
-                                        <span class="item form-group">
-                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
-                                            <span class="col-md-12 col-sm-12">
-                                                <input type="date" name="start_date" v-model="nursCardTh.startDate">
-                                            </span>
-                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
-                                            <span class="col-md-12 col-sm-12">
-                                                <input type="date" name="end_date" v-model="nursCardTh.endDate">
-                                            </span>
-                                            <span class="search-bar">
-                                                <a class="search-button btn btn-success"  @click="getTraceabilityTherapysByUserIstanceId(36,true)">Cerca</a>
-                                            </span>
-                                        </span>
-                                    </div>
-                                </div>
- 
-
-
-                                <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="pull-right">
-                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchiveTraceabilityTherapy('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
-                                    </div>
-                                </div>
-
-                                {{TraceabilityTherapy}}
-
-                                <!-- {{traceability_therapys}} -->
-
-
-                                <hr><hr>
 
                                 <div class="row" style="margin-top:50px;">
                                     <div class="col-md-12 col-sm-12">
@@ -190,12 +109,69 @@
                                     </div>
                                 </div>
 
+                                <br>
+                                TERAPIE RIFIUTATE: {{ refusedTreatments }}
+                                <br>
+                                <br>
+                                nursTh: {{nursCardTh}}
+                                <br>
+                                <hr><hr>
+
+
+                                <div class="mt-4">
+                                    <h2 class="ml-4 mb-4 mt-4"><strong>Archivio</strong></h2>
+                                    <ul style="display: flex; flex-wrap: wrap;">
+
+                                        <span  v-for="(TraceabilityTherapy, index) in testRefusedTherapies" :key="index" class="mr-5">
+                                            <div @click="printArchivesCardtestRefusedTherapies( TraceabilityTherapy.id)" class="card text-white bg-secondary mb-3 cursor" style="max-width: 19rem; border-radius: 20px;">
+                                                <div class="card-header">
+                                                    <span>
+                                                        <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ TraceabilityTherapy.fullName }}</h5></div>
+                                                        <div style="min-width: 100px;"><strong>Data: </strong> {{TraceabilityTherapy.data}}</div>
+                                                    </span> 
+                                                </div>
+                                                <!-- <div class="card-body">
+                                                    <div v-for="(drug, index) in TraceabilityTherapy.refusedTherapy" :key="index">
+                                                        <div style="min-width: 100px;"><strong>Farmaco:</strong> {{drug[0]}}</div>
+                                                        <div style="min-width: 100px;"><strong>Descrizione:</strong> {{drug[1]}} </div>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                            <br><br>
+                                        </span>
+                                    </ul>
+                                </div> 
+
+                                <div class="row mb-3 ml-2 mt-4">
+                                    <div class="col-md-12 col-sm-12">
+                                        <span class="item form-group">
+                                            <label for="start_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>DAL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="start_date" v-model="nursCardTh.startDate">
+                                            </span>
+                                            <label for="end_date" class="col-form-label col-md-1 col-sm-2 label-align"><strong><h4>AL</h4></strong></label>
+                                            <span class="col-md-12 col-sm-12">
+                                                <input type="date" name="end_date" v-model="nursCardTh.endDate">
+                                            </span>
+                                            <span class="search-bar">
+                                                <a class="search-button btn btn-success"  @click="getTraceabilityTherapysByUserIstanceId(36,true)">Cerca</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+ 
+                                <!-- {{TraceabilityTherapy}} -->
+
+                                <!-- {{traceability_therapys}} -->
+                                <hr><hr>
                                 
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addTraceabilityTherapy('th')">{{btnThSend}}</span>
-                                        <a  class="btn btn-success i2hBtnPrint"  @click=" printTraceabilityTherapy('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchiveTraceabilityTherapy('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+
+                                        <!-- <a class="btn btn-success i2hBtnPrint"  @click=" printTraceabilityTherapy('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                                     </div>
                                 </div>
                             </form>
@@ -411,7 +387,9 @@ label {
     height:25px;
 }
 
-
+.cursor:hover {
+  cursor: pointer;
+}
 </style>
 
 
@@ -443,9 +421,7 @@ label {
                     descriptions:{}
                 },
 
-
                 chechedDescriptions: [],
-
 
 
                 therapies:[{id:1,drug:'tachipirina',start_date:'2022-10-12',end_date:'2023-06-10'},
@@ -462,8 +438,6 @@ label {
 
                 traceability_therapys:[],
                 terapieRifiutate:[],
-                // drug:'',        
-
 
 
                 nursCardTh:{},
@@ -488,11 +462,7 @@ label {
                 total:0,               
                 allTraceabilityTherapys:null,
                 allNursingTherapys:null,
-                testRefusedTherapies:[],
-
-
-                // mostra: false,
-    
+                testRefusedTherapies:[],  
             }
         },
 
@@ -503,38 +473,40 @@ label {
         
 
         computed: {
+            
         },
 
         watch: {
         },
 
         methods: {
+
             i2hDateFormat(date){
 
-            let current=new Date(date);
-            let year = `${current.getFullYear()}`;
-            let month = `${current.getMonth()}`;
-            let timeHours=`${current.getHours()}`;
-            let timeMinuts=`${current.getMinutes()}`;
-            let day = `${current.getDate()}`;
-            month=this.zeroFill(month);
-            day=this.zeroFill(day);
-            timeMinuts=this.zeroFill(timeMinuts);
-            timeHours=this.zeroFill(timeHours);
-            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
-            return tDate;
+                let current=new Date(date);
+                let year = `${current.getFullYear()}`;
+                let month = `${current.getMonth()}`;
+                let timeHours=`${current.getHours()}`;
+                let timeMinuts=`${current.getMinutes()}`;
+                let day = `${current.getDate()}`;
+                month=this.zeroFill(month);
+                day=this.zeroFill(day);
+                timeMinuts=this.zeroFill(timeMinuts);
+                timeHours=this.zeroFill(timeHours);
+                let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+                return tDate;
             },
             zeroFill(value){
-            if(parseInt(value)<10){
-                value = '0'+value;
-            }
-            return value
+                if(parseInt(value)<10){
+                    value = '0'+value;
+                }
+                return value;
             },
 
             i2hHourFormat(dataz){
-            let dataw= new Date(dataz);
-            //return date;
-            return dataw.getHours() +':'+dataw.getMinutes();
+                let dataw= new Date(dataz);
+                //return date;
+                return dataw.getHours() +':'+dataw.getMinutes();
             },
 
 
@@ -572,7 +544,14 @@ label {
                 return false;
             },
 
+            
+            printArchivesCardtestRefusedTherapies(id){
 
+                let v_myWindow
+                let url= 'printPdf/'+id;
+                v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+                return false;
+            },
 
 
 
@@ -750,8 +729,9 @@ label {
                                         refTherapy.push([key,_description[key]]);
                                     }
                                 }
+                                refusedTherapy['id']=_wm.TraceabilityTherapy[prop].id;
                                 refusedTherapy['data']=_wm.TraceabilityTherapy[prop].th_date;
-                                refusedTherapy['fullName']=_wm.TraceabilityTherapy[prop].doctor_name + _wm.TraceabilityTherapy[prop].doctor_lastname;
+                                refusedTherapy['fullName']=_wm.TraceabilityTherapy[prop].doctor_name +' '+ _wm.TraceabilityTherapy[prop].doctor_lastname;
                                 refusedTherapy['refusedTherapy']=refTherapy;
                                 _wm.testRefusedTherapies.push(refusedTherapy) 
                             }

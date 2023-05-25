@@ -62,22 +62,12 @@
                                     <ul style="display: flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in CollectionFormHgt" :key="index" class="mr-5">
 
-                                            <div class="card text-white bg-secondary mb-3" style="max-width: 20rem; border-radius: 20px;">
+                                            <div @click="printArchivesCardCollectionFormHgt( item['id'])" class="card text-white bg-secondary mb-2 cursor" style="max-width: 19rem; border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span> 
-                                                        <div><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div style="min-width: 100px;"><strong>Data: </strong> {{ i2hDateFormat(item['hgt_date']) }}</div>
                                                     </span> 
-                                            </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">
-                                                        <div style="min-width: 100px;"><strong>Data inizio:</strong> {{ i2hDateFormat(item['date_start_collection_hgt']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Data fine:</strong> {{ i2hDateFormat(item['date_end_collection_hgt']) }} </div>
-                                                    </h5>
-                                                    <p class="card-text">
-                                                        <div style="min-width: 100px;"><strong>Data HGT:</strong> {{ i2hDateFormat(item['hgt_date']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Orario:</strong> {{ i2hHourFormat((item['hours'])) }} </div>
-                                                        <div style="min-width: 100px;"><strong>HGT:</strong> {{ (item['hgt']) }} </div>
-                                                    </p>
                                                 </div>
                                             </div>
                                             <br><br>
@@ -105,40 +95,20 @@
                                     </div>
                                 </div>
  
-                                <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="pull-right">
-                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchiveCollectionFormHgt('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
-                                    </div>
-                                </div>
-
-
-                                <br>
+                                <!-- <br>
                                 {{CollectionFormHgt}}
                                 <hr><hr>
-
-                                
-
                                 <br><br>
-                                <hr><hr>
+                                {{nursHgt}} -->
 
-                                {{nursHgt}}
-
-
-                                
-
-
-                                
-
-                               
-
-                        
-                                            
+                                  
                                 <div class="ln_solid mt-2"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addCollectionFormHgt('hgt')">{{btnHgtSend}}</span>
-                                        <a  class="btn btn-success i2hBtnPrint"  @click=" printCollectionFormHgt('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchiveCollectionFormHgt('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+
+                                        <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printCollectionFormHgt('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                                     </div>
                                 </div>
                             </form>
@@ -196,6 +166,12 @@ td, th {
 ul, li{
     list-style: none;
 }
+
+
+.cursor:hover {
+  cursor: pointer;
+}
+     
 </style>
 
 
@@ -218,26 +194,9 @@ ul, li{
                 userInstanceId:36,
                 userId:237,
 
-
-
-
-                // departmentHgt:null,
-                // dateStartCollectionHgt:null,
-                // dateEndCollectionHgt:null,
-                // doctorPrescriberHgt:null,
-                // hgtDate:null,  
-                // hours:null,
-                // hgt:null,
-                // hgtOperatorSignature:null, 
-                // folderPageCollectionHgt:null,
-                
-
-
-
                 CollectionFormHgt:{},
 
                 nursHgt:{},
-
 
                 accessData:[
 
@@ -246,27 +205,16 @@ ul, li{
                     lastname => 'rossi',
                     
                 ],
-                // psyMhDoctorId:0,
-                // psyMhDoctorName:'',
-                // psyMhDoctorLastname:'',
-                // psyMhDate:null,
-                // psyCardId:null,
+                
                 date:new Date(),
-
-
-                // nursCardTh:{},
-                // psyCardSa:{},
-                // psyCardTsc
 
                 mainTitle:"psy",
                 firstSave:true,
                 hGTSaved:false,
 
-                
                 btnHgtSend:"Salva",
                 total:0,               
                 allCollectionFormHgts:null,
-
             }
         },
 
@@ -305,71 +253,13 @@ ul, li{
                 return dataw.getHours() +':'+dataw.getMinutes();
             },
 
-            // addTherapy () {
-
-            // this.newTherapies.push({
-            //     idDoctor:14,
-            //     doctorName:'medico',
-            //     doctorLastname:'test',   
-            //     userInstanceId :17,
-            //     userId:36,
-            //     // drug: "",
-            //     // posology: "",
-            //     // frequency: "",
-            //     // drugRoute: "",
-            //     // morning: 0,
-            //     // afternoon: 0,
-            //     // evening: 0,
-            //     // external_doctor_prescription:0,
-            //     // deleted:0, 
-            //     // acceptance:0,  
-            //     // acceptanceId:0 
-               
-            // })
-            // },
-
-            // saveTherapy(){
-            // let _wm=this;
-            // var addTherapyForm = new FormData();
-            // addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
-            // if(this.newTherapies.length>0){
-            // try {
-            //     //let url=actions.ADD_THERAPIES_DATA;
-            //     //  axios.post(url,addTherapyForm).then(response => {
-            //     //      let error=response.data.errorNumber;
-            //     //      let _attempts=response.data.attempts;
-            //     //      _wm.errNum=error;
-            //     //      if(error == 0){
-            //     //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
-            //     //         // setTimeout(function(){
-            //     //         //     _wm.hideSuccess();
-            //     //         // }, 4000);
-            //     //         _wm.i2hLoader=true;
-            //     //         _wm.initTherapies();
-            //     //         _wm.getTherapies();
-            //     //      }else{
-            //     //         let _errorDescription=response.data.errorDescription
-            //     //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
-            //     //      }
-            //     //  })
-            // }catch (error) {
-            //     throw error
-            // }                             
-            // }else{
-            // eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
-            // }
-            // },
-
-
             printCollectionFormHgt(printPdf){
                 let v_myWindow
                 let url= 'printPdf/2';
                 v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
                 return false;
             },
-
-
-            
+ 
 
             printArchiveCollectionFormHgt(printPdf){
 
@@ -379,6 +269,15 @@ ul, li{
                 return false;
             },
 
+            
+
+            printArchivesCardCollectionFormHgt(id){
+
+                let v_myWindow
+                let url= 'printPdf/'+id;
+                v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+                return false;
+            },
         
 
             addCollectionFormHgt(panel){

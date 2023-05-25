@@ -41,8 +41,6 @@
                                     </div>
                                 </div>
                                  
-                                
-                               
                                 <table>
                                     <tr>
                                         <th colspan="3"><strong>ALIMENTAZIONE</strong></th>
@@ -54,7 +52,6 @@
                                         <td><strong>colazione</strong></td>
                                         <td><strong>pranzo</strong></td>
                                         <td><strong>cena</strong></td>   
-                                        
                                         <td></td>
                                         <td><strong>sistolica</strong></td>  
                                         <td><strong>diastolica</strong></td>
@@ -70,18 +67,15 @@
                                         <td>   
                                             <input style="width: 5rem;" type="radio" value="cena" name="mcp_diet" v-model="nursMcp.mcpDiet">
                                         </td>
-                                        
                                         <td>
                                             <input style="width: 5rem;" type="text" name="body_weight" v-model="nursMcp.bodyWeight">     
                                         </td>
-
                                         <td>
                                             <input style="width: 5rem;" type="text" name="monitoring_pa_systolic" v-model="nursMcp.monitoringPaSystolic">
                                         </td>
                                         <td>
                                             <input style="width: 5rem;" type="text" name="monitoring_pa_diastolic" v-model="nursMcp.monitoringPaDiastolic">
                                         </td>
-
                                         <td>
                                             <input style="width: 5rem;" type="text" name="monitoring_fc" v-model="nursMcp.monitoringFc">  
                                         </td>
@@ -94,26 +88,12 @@
                                     <ul style="display: flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in MonitoringClinicalParameter" :key="index" class="mr-5">
 
-                                            <div class="card text-white bg-secondary mb-3" style="max-width: 19rem; border-radius: 20px;">
+                                            <div @click="printArchivesCardMonitoringClinicalParameter( item['id'])" class="card text-white bg-secondary mb-3 cursor" style="max-width: 19rem; border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;">
-                                                        <div><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
+                                                        <div style="min-width: 100px;"><strong>Data: </strong> {{ i2hDateFormat(item['mcp_date']) }}</div>
                                                     </span> 
-                                            </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">
-                                                        <div style="min-width: 100px;"><strong>Data inizio: </strong>{{ i2hDateFormat(item['date_start_rejection']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Data fine: </strong>{{ i2hDateFormat(item['date_end_rejection']) }} </div>
-                                                    </h5>
-                                                    <p class="card-text">
-                                                        <div style="min-width: 100px;"><strong>Data:</strong> {{ i2hDateFormat(item['mcp_date']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Alimentazione:</strong> {{ ((item['mcp_diet'])) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Peso Corporeo:</strong> {{ (item['body_weight']) }} </div>
-                                                        <div style="min-width: 100px;"><strong>Pressione Sistolica:</strong> {{ (item['monitoring_pa_systolic']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Pressione Diastolica:</strong> {{ (item['monitoring_pa_diastolic']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>F.C:</strong> {{ (item['monitoring_fc']) }}</div>
-
-                                                    </p>
                                                 </div>
                                             </div>
                                             <br><br>
@@ -140,23 +120,16 @@
                                         </span>
                                     </div>
                                 </div>
-
-
-                                <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="pull-right">
-                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4"  @click=" printArchiveMonitoringClinicalParameter('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
-                                    </div>
-                                </div>
-
-                                ::{{MonitoringClinicalParameter}}
-                                <br><br>
+                               
+                                 <!-- ::{{MonitoringClinicalParameter}}<br><br> -->
 
                                 <div class="ln_solid mt-2"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addMonitoringClinicalParameter('mcp')">{{btnMcpSend}}</span>
-                                        <a  class="btn btn-success i2hBtnPrint"  @click=" printMonitoringClinicalParameter('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4"  @click=" printArchiveMonitoringClinicalParameter('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+
+                                        <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printMonitoringClinicalParameter('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                                     </div>
                                 </div>
                             </form>
@@ -198,7 +171,6 @@
     color: #333; 
 } 
 
-
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -214,6 +186,10 @@ td, th {
 ul, li{
     list-style: none;
 }
+.cursor:hover {
+  cursor: pointer;
+}
+
 </style>
 
 
@@ -242,24 +218,6 @@ ul, li{
                 userId:237,
 
 
-                // showInput1:false,
-
-
-                // department:null,
-                // dateStartRejection:null,
-                // dateEndRejection:null,
-                // mcpDate:null,
-                // inmateFeed:null,
-                // bodyWeight:null,  
-                // monitoringPa:null,
-                // monitoringFc:null,
-                // operatorSignature:null, 
-                // folderPage:null,
-                // breakfast:null,
-                // lunch:null,
-                // dinner:null,
-
-
                 nursMcp:{},
                 MonitoringClinicalParameter:{},
 
@@ -272,11 +230,7 @@ ul, li{
                     lastname => 'rossi',
                     
                 ],
-                // psyMhDoctorId:0,
-                // psyMhDoctorName:'',
-                // psyMhDoctorLastname:'',
-                // psyMhDate:null,
-                // psyCardId:null,
+                
                 date:new Date(),
             
 
@@ -288,8 +242,6 @@ ul, li{
                 btnMcpSend:"Salva",
                 total:0,               
                 allMonitoringClinicalParameters:null,
-
-                // testMonitoring:[],
             }
         },
 
@@ -299,29 +251,27 @@ ul, li{
 
 
         methods: {
-
             i2hDateFormat(date){
 
-            let current=new Date(date);
-            let year = `${current.getFullYear()}`;
-            let month = `${current.getMonth()}`;
-            let timeHours=`${current.getHours()}`;
-            let timeMinuts=`${current.getMinutes()}`;
-            let day = `${current.getDate()}`;
-            month=this.zeroFill(month);
-            day=this.zeroFill(day);
-            timeMinuts=this.zeroFill(timeMinuts);
-            timeHours=this.zeroFill(timeHours);
-            let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
-            return tDate;
+                let current=new Date(date);
+                let year = `${current.getFullYear()}`;
+                let month = `${current.getMonth()}`;
+                let timeHours=`${current.getHours()}`;
+                let timeMinuts=`${current.getMinutes()}`;
+                let day = `${current.getDate()}`;
+                month=this.zeroFill(month);
+                day=this.zeroFill(day);
+                timeMinuts=this.zeroFill(timeMinuts);
+                timeHours=this.zeroFill(timeHours);
+                let tDate=day+'/'+month+'/'+year+' - '+ timeHours + ':' + timeMinuts;
+                return tDate;
             },
             zeroFill(value){
-            if(parseInt(value)<10){
-                value = '0'+value;
-            }
-            return value
+                if(parseInt(value)<10){
+                    value = '0'+value;
+                }
+                return value
             },
-
 
             i2hHourFormat(dataz){
             let dataw= new Date(dataz);
@@ -330,89 +280,32 @@ ul, li{
             },
 
 
-            // addTherapy () {
-
-            //     this.newTherapies.push({
-            //         idDoctor:14,
-            //         doctorName:'medico',
-            //         doctorLastname:'test',   
-            //         userInstanceId :17,
-            //         userId:36,
-            //         // drug: "",
-            //         // posology: "",
-            //         // frequency: "",
-            //         // drugRoute: "",
-            //         // morning: 0,
-            //         // afternoon: 0,
-            //         // evening: 0,
-            //         // external_doctor_prescription:0,
-            //         // deleted:0, 
-            //         // acceptance:0,  
-            //         // acceptanceId:0 
-            //         cpc_date:'',
-            //         collection_pa:'',
-            //         collection_fc:'',
-            //         collection_spo2:'',
-            //         collection_tc:'',
-            //     })
-            // },
-
-            // saveTherapy(){
-            // let _wm=this;
-            // var addTherapyForm = new FormData();
-            // addTherapyForm.append('therapies', JSON.stringify(this.newTherapies));  
-            // if(this.newTherapies.length>0){
-            //     try {
-            //         //let url=actions.ADD_THERAPIES_DATA;
-            //         //  axios.post(url,addTherapyForm).then(response => {
-            //         //      let error=response.data.errorNumber;
-            //         //      let _attempts=response.data.attempts;
-            //         //      _wm.errNum=error;
-            //         //      if(error == 0){
-            //         //         // eventBus.$emit('errorEvent', 0, _attempts,'show','Terapie aggiunte con successo');
-            //         //         // setTimeout(function(){
-            //         //         //     _wm.hideSuccess();
-            //         //         // }, 4000);
-            //         //         _wm.i2hLoader=true;
-            //         //         _wm.initTherapies();
-            //         //         _wm.getTherapies();
-            //         //      }else{
-            //         //         let _errorDescription=response.data.errorDescription
-            //         //          eventBus.$emit('errorEvent', error,'show',_errorDescription);
-            //         //      }
-            //         //  })
-            //     }catch (error) {
-            //         throw error
-            //     }                             
-            // }else{
-            //     eventBus.$emit('errorEvent', 1000, 4,'show','Aggiungi almeno una terapia');
-            // }
-            // },
-
-
-
-
-
 
             printMonitoringClinicalParameter(printPdf){
 
                 let v_myWindow
-
                 let url= 'printPdf/2';
-
                 v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-
                 return false;
             },
 
             printArchiveMonitoringClinicalParameter(printPdf){
 
-            let v_myWindow
-            let url= 'printPdf/2';
-            v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
-            return false;
+                let v_myWindow
+                let url= 'printPdf/2';
+                v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+                return false;
             },
-                 
+
+            
+               
+            printArchivesCardMonitoringClinicalParameter(id){
+
+                let v_myWindow
+                let url= 'printPdf/'+id;
+                v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+                return false;
+            },
             
             
 
