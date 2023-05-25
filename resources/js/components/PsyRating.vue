@@ -705,24 +705,13 @@
                                         <ul style="display:flex; flex-wrap: wrap;">
                                             <span v-for="(item, key, index) in PsyRating" :key="index" class="mr-5">
 
-                                                <div @click="printArchivesCardPsyRating(item['id'])" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                                <div @click="printArchivesCardPsyRating(item['id'])" class="card text-white bg-secondary mb-2 cursor" style="max-width: 19rem;  border-radius: 20px;">
                                                     <div class="card-header">
                                                         <span style="min-width: 100px;"> 
                                                             <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
                                                             <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['pr_date']) }}</div>
                                                         </span> 
-                                                </div>
-                                                    <!-- <div class="card-body">
-                                                        <h5 class="card-title">
-                                                            <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['pr_date']) }}</div>
-                                                        </h5>
-                                                        <p class="card-text">
-                                                            <div style="min-width: 100px;"><strong>Preoccupazioni somatiche:</strong> {{ (item['somatic_concern']) }}</div>
-                                                            <div style="min-width: 100px;"><strong>Ansia:</strong> <br> {{ (item['anxiety']) }}</div>
-                                                            <div style="min-width: 100px;"><strong>Depressione:</strong> <br>{{ ((item['depression'])) }} </div>
-                                                            <div style="min-width: 100px;"><strong>Rischio di suicidio:</strong> <br>{{ (item['risk_of_suicide']) }} </div> 
-                                                        </p>
-                                                    </div> -->
+                                                    </div>
                                                 </div>
                                                 <br><br>
                                             </span>
@@ -749,33 +738,16 @@
                                         </div>
                                     </div>
 
-        
-
-                                    <div class="ln_solid"></div>
-                                    <div class="item form-group">
-                                        <div class="pull-right">
-                                            <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyRating('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-
-
-
-
 
 
                                     <div class="ln_solid"></div>
                                     <div class="item form-group" >
                                         <div class="pull-right">
                                             <span  class="btn btn-success i2hBtn ml-3" @click="addPsyRating('pr')">{{btnPrSend}}</span>
+                                            <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyRating('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
                                         </div>
                                     </div>
-                                    <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyRating('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                    <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyRating('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                                 </form>
                             </div>
                         </div>
@@ -828,6 +800,10 @@ td, th {
   border: 2px solid #dddddd;
   text-align: left;
   padding: 8px;
+}
+
+.cursor:hover {
+  cursor: pointer;
 }
 
 </style>

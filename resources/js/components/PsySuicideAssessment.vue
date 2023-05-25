@@ -340,7 +340,6 @@
                                 
                                 
                                 
-                                
                                 <h1 style="text-align:center; margin-top: 70px; margin-bottom: 10px;">Azioni da avviare</h1>
 
                                 <div style="background:lightgrey;padding:7px; border-radius:3px; margin-top:5px;">
@@ -372,7 +371,6 @@
                                     </div>
                                 </div>
 
-
                                 <div style="background:lightgrey;padding:7px; border-radius:3px; margin-top:5px;">
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-12 col-sm-12">
@@ -388,7 +386,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <div class="row" style="margin-top:20px;">
                                     <div class="col-md-12 col-sm-12">
@@ -411,8 +408,7 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in PsySuicideAssessment" :key="index" class="mr-5">
 
-                                            <div @click="printArchivesCardPsySuicideAssessment(item['id'])" @mouseover="cursorType = 'pointer'" @mouseout="cursorType = 'default'"
-                                                :style="{ cursor: cursorType }" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                            <div @click="printArchivesCardPsySuicideAssessment(item['id'])" class="card text-white bg-secondary mb-2 cursor" style="max-width: 19rem;  border-radius: 20px;">
 
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
@@ -420,18 +416,6 @@
                                                         <div><strong>Data: </strong> {{ i2hDateFormat(item['sa_date']) }}</div>
                                                     </span> 
                                                 </div>
-                                                <!-- <div class="card-body">
-                                                    <h5 class="card-title">
-                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['sa_date']) }}</div>
-                                                    </h5>
-                                                    <p class="card-text">
-                                                        <div style="min-width: 100px;"><strong>Stato civile:</strong> {{ (item['marital_status']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Rischio suicidio:</strong> {{ (item['imminent_risk_of_suicide']) }}</div>
-                                                         <div style="min-width: 100px;"><strong>Raccomandazioni:</strong> {{ (item['monitoring_recommendation']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Frequenza:</strong> {{ ((item['frequency'])) }} </div>
-                                                        <div style="min-width: 100px;"><strong>Servizio salute mentale:</strong> {{ (item['referral_mental_health_service']) }} </div> 
-                                                    </p> 
-                                                </div> -->
                                             </div>
                                             <br><br>
                                         </span>
@@ -458,25 +442,14 @@
                                     </div>
                                 </div>
 
-    
-
-                                <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="pull-right">
-                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsySuicideAssessment('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
-                                    </div>
-                                </div>
-
-
-
-
                                 <div class="ln_solid"></div>
                                 <div class="item form-group" >
                                     <div class="pull-right">
                                         <span  class="btn btn-success i2hBtn ml-3" @click="addPsySuicideAssessment('sa')">{{btnSaSend}}</span>
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsySuicideAssessment('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
                                     </div>
                                 </div>
-                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsySuicideAssessment('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printPsySuicideAssessment('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                             </form>
                         </div>
                     </div>
@@ -509,6 +482,10 @@ font-style: italic;
 box-shadow: 1px 1px 3px 1px #ccc; 
 border-radius: 5px;
 color: #333; 
+}
+
+.cursor:hover {
+  cursor: pointer;
 }
 </style>
 

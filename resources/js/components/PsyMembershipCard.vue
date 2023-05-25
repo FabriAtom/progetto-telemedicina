@@ -1668,25 +1668,14 @@
                                 <ul style="display:flex; flex-wrap: wrap;">
                                     <span v-for="(item, key, index) in PsyMembershipCard" :key="index" class="mr-5">
 
-                                        <div @click="printArchivesCardPsyMembershipCard(item['id'])" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                        <div @click="printArchivesCardPsyMembershipCard(item['id'])" class="card text-white bg-secondary mb-2 cursor" style="max-width: 19rem;  border-radius: 20px;">
                                             <div class="card-header">
                                                 <span style="min-width: 100px;"> 
                                                     <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
                                                     <div><strong>Data: </strong> {{ i2hDateFormat(item['mc_date']) }}</div>
 
                                                 </span> 
-                                        </div>
-                                            <!-- <div class="card-body">
-                                                <h5 class="card-title">
-                                                    <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['mc_date']) }}</div>
-                                                </h5>
-                                                <p class="card-text">
-                                                    <div style="min-width: 100px;"><strong>Comunica :</strong> {{ (item['communicate_italian']) }}</div>
-                                                    <div style="min-width: 100px;"><strong>Comunica :</strong> <br> {{ (item['communicate']) }}</div>
-                                                    <div style="min-width: 100px;"><strong>Stato civile:</strong> {{ ((item['marital_status'])) }} </div>
-                                                    <div style="min-width: 100px;"><strong>figli:</strong> {{ (item['sons']) }} </div> 
-                                                </p>
-                                            </div> -->
+                                            </div>
                                         </div>
                                         <br><br>
                                     </span>
@@ -1714,21 +1703,13 @@
                             </div>
 
     
-
-                            <div class="ln_solid"></div>
-                            <div class="item form-group">
-                                <div class="pull-right">
-                                    <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyMembershipCard('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
-                                </div>
-                            </div>
-
-
                             <div class="ln_solid"></div>
                             <div class="item form-group">
                                 <div class="pull-right">
                                     <span class="btn btn-success i2hBtn ml-3" @click="addPsyMembershipCard('mc')">{{btnMcSend}}</span>
+                                    <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyMembershipCard('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
                                 </div>
-                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyMembershipCard('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyMembershipCard('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                             </div>
                         </form>
                     </div>
@@ -1792,6 +1773,9 @@ li{
     box-sizing: border-box;
 }
 
+.cursor:hover {
+  cursor: pointer;
+}
 </style>
 
 

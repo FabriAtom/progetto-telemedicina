@@ -1688,24 +1688,13 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in PsyJsat" :key="index" class="mr-5">
 
-                                            <div  @click="printArchivesCardPsyJsat(item['id'])" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                            <div  @click="printArchivesCardPsyJsat(item['id'])" class="card text-white bg-secondary mb-2 cursor" style="max-width: 19rem;  border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
                                                         <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
                                                         <div><strong>Data: </strong> {{ i2hDateFormat(item['pj_date']) }}</div>
                                                     </span> 
-                                            </div>
-                                                <!-- <div class="card-body">
-                                                    <h5 class="card-title">
-                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['pj_date']) }}</div>
-                                                    </h5>
-                                                    <p class="card-text">
-                                                        <div style="min-width: 100px;"><strong>Data di entrata:</strong> {{ (item['entry_date']) }}</div>
-                                                         <div style="min-width: 100px;"><strong>Data di valutazione:</strong> {{ (item['valutation_date']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Anni:</strong> {{ ((item['information_age'])) }} </div>
-                                                        <div style="min-width: 100px;"><strong>Lingua:</strong> {{ (item['information_language']) }} </div> 
-                                                    </p>
-                                                </div> -->
+                                                </div>
                                             </div>
                                             <br><br>
                                         </span>
@@ -1737,19 +1726,11 @@
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
+                                        <span class="btn btn-success i2hBtn ml-3" @click="addPsyJsat('pj')">{{btnPjSend}}</span>
                                         <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyJsat('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
                                     </div>
                                 </div>
-
-
-
-                                <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="pull-right">
-                                        <span class="btn btn-success i2hBtn ml-3" @click="addPsyJsat('pj')">{{btnPjSend}}</span>
-                                    </div>
-                                </div>
-                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyJsat('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyJsat('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                             </form>
                         </div> 
                     </div>
@@ -1805,6 +1786,10 @@ td, th {
 
 ul, li{
     list-style: none;
+}
+
+.cursor:hover {
+  cursor: pointer;
 }
 
 </style>

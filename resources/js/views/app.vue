@@ -7,7 +7,7 @@
 
     <div>
       <!-- <psyCard/> -->
-      <serdCard/>
+      <!-- <serdCard/> -->
       <PsySuicideAssessment/>
       <PsyMentalHealthDepartment/>
       <PsyRehabilitationPsychiatricCard/>

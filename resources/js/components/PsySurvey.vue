@@ -681,25 +681,14 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in PsySurvey" :key="index" class="mr-5">
 
-                                            <div @click="printArchivesCardPsySurvey(item['id'])" class="card text-white bg-secondary mb-2" style="max-width: 22rem;  border-radius: 20px;">
+                                            <div @click="printArchivesCardPsySurvey(item['id'])" class="card text-white bg-secondary mb-2 cursor" style="max-width: 22rem;  border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
                                                         <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
                                                         <div><strong>Data: </strong> {{ i2hDateFormat(item['ps_date']) }}</div>
 
                                                     </span> 
-                                            </div>
-                                                <!-- <div class="card-body">
-                                                    <h5 class="card-title">
-                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['ps_date']) }}</div>
-                                                    </h5>
-                                                    <p class="card-text">
-                                                        <div style="min-width: 100px;"><strong>Mi sono sentito terribilmente solo e isolato:</strong> <br>{{ (item['survey_heard_alone']) }}</div>
-                                                         <div style="min-width: 100px;"><strong>Mi sono sentito teso, ansioso o nervoso:</strong> <br> {{ (item['survey_heard_anxious']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Ho sentito di avere qualcuno a cui rivolgermi:</strong> <br>{{ ((item['survey_support'])) }} </div>
-                                                        <div style="min-width: 100px;"><strong>Mi sono sentito a posto con me stesso:</strong> <br>{{ (item['survey_okay_with_myself']) }} </div> 
-                                                    </p>
-                                                </div> -->
+                                                </div>
                                             </div>
                                             <br><br>
                                         </span>
@@ -726,29 +715,15 @@
                                     </div>
                                 </div>
 
-    
-
-                                <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="pull-right">
-                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsySurvey('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
-                                    </div>
-                                </div>
-
-
-
-
-
-
-
 
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addPsySurvey('ps')">{{btnPsSend}}</span>
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsySurvey('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
                                     </div>
                                 </div>
-                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsySurvey('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printPsySurvey('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                             </form>
                         </div>
                     </div>
@@ -802,6 +777,9 @@ td, th {
   padding: 8px;
 }
 
+.cursor:hover {
+  cursor: pointer;
+}
 </style>
 
 

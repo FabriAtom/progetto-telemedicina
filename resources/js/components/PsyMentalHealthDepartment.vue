@@ -70,8 +70,7 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in PsyMentalHealthDepartment" :key="index" class="mr-5">
 
-                                            <div @click="printArchivesCardPsyMentalHealthDepartment( item['id'])" @mouseover="cursorType = 'pointer'" @mouseout="cursorType = 'default'"
-                                                :style="{ cursor: cursorType }" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                            <div @click="printArchivesCardPsyMentalHealthDepartment( item['id'])" class="card text-white bg-secondary mb-2 cursor" style="max-width: 19rem;  border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
                                                         <div style="min-width: 100px;"><strong>Nome Medico: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
@@ -114,25 +113,16 @@
                                         </span>
                                     </div>
                                 </div>
-
-    
-
-                                <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="pull-right">
-                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyMentalHealthDepartment('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
-                                    </div>
-                                </div>
-
-
+                                
 
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="pull-right">
                                         <span class="btn btn-success i2hBtn ml-3" @click="addPsyMentalHealthDepartment('mh')">{{btnMhSend}}</span>
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyMentalHealthDepartment('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
                                     </div>
                                 </div>
-                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyMentalHealthDepartment('printPdf')"><i class="fa fa-print"></i>Stampa</a>
+                                <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyMentalHealthDepartment('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                             </form>
                         </div>
                     </div>
@@ -170,6 +160,10 @@
     box-shadow: 1px 1px 3px 1px #ccc; 
     border-radius: 5px;
     color: #333; 
+}
+
+.cursor:hover {
+  cursor: pointer;
 }
         
 </style>

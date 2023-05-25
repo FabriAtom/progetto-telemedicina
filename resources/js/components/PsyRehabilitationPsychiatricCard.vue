@@ -51,33 +51,18 @@
                                     <ul style="display:flex; flex-wrap: wrap;">
                                         <span v-for="(item, key, index) in PsyRehabilitationPsychiatricCard" :key="index" class="mr-5">
 
-                                            <div @click="printArchivesCardPsyRehabilitationPsychiatricCard(item['id'])" class="card text-white bg-secondary mb-2" style="max-width: 19rem;  border-radius: 20px;">
+                                            <div @click="printArchivesCardPsyRehabilitationPsychiatricCard(item['id'])" class="card text-white bg-secondary mb-2 cursor" style="max-width: 19rem;  border-radius: 20px;">
                                                 <div class="card-header">
                                                     <span style="min-width: 100px;"> 
                                                         <div style="min-width: 100px;"><strong>Nome: </strong><h5 style="display: inline-block;">{{ item['doctor_name'] }} {{ item['doctor_lastname'] }}</h5></div>
                                                         <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['rp_date']) }}</div>
                                                     </span> 
-                                            </div>
-                                                <!-- <div class="card-body">
-                                                    <h5 class="card-title">
-                                                        <div><strong>Data inizio:</strong> {{ i2hDateFormat(item['rp_date']) }}</div>
-                                                    </h5>
-                                                    <p class="card-text">
-                                                        <div style="min-width: 100px;"><strong>Breve Descrizione Progetto:</strong> <br>{{ (item['project_description']) }}</div>
-                                                         <div style="min-width: 100px;"><strong>Obiettivi In Cui Viene Specificata Area <br> Trattamento:</strong> <br> {{ (item['treatment_area_objective']) }}</div>
-                                                        <div style="min-width: 100px;"><strong>Responsabile Progetto:</strong> <br>{{ ((item['psychiatric_intervention'])) }} </div>
-                                                        <div style="min-width: 100px;"><strong>:</strong> <br>{{ (item['project_manager']) }} </div>
-                                                        <div style="min-width: 100px;"><strong>:</strong> <br>{{ (item['psychiatric_attachment']) }} </div>
-
-                                                    </p>
-                                                </div> -->
+                                                </div>
                                             </div>
                                             <br><br>
                                         </span>
                                     </ul>
                                 </div> 
-
-
 
                                 <div class="row mb-3 ml-2 mt-4">
                                     <div class="col-md-12 col-sm-12">
@@ -99,16 +84,6 @@
 
     
 
-                                <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="pull-right">
-                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyRehabilitationPsychiatricCard('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
-                                    </div>
-                                </div>
-
-
-
-
 
 
 
@@ -116,12 +91,12 @@
                                 <div class="item form-group" >
                                     <div class="pull-right">
                                         <span  class="btn btn-success i2hBtn ml-3" @click="addPsyRehabilitationPsychiatricCard('rp')">{{btnRpSend}}</span>
+                                        <a class="btn bg-primary text-white i2hBtnPrint ml-4" @click=" printArchivePsyRehabilitationPsychiatricCard('printPdf')"><i class="fa fa-print"></i>Stampa Archivio</a>
+
                                     </div>
                                 </div>
                                 <hr>
-                                
-                                <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyRehabilitationPsychiatricCard('printPdf')"><i class="fa fa-print"></i>Stampa</a>
-
+                                <!-- <a  class="btn btn-success i2hBtnPrint"  @click=" printPsyRehabilitationPsychiatricCard('printPdf')"><i class="fa fa-print"></i>Stampa</a> -->
                             </form>
                         </div>
                     </div>
@@ -158,6 +133,10 @@
 }
 *p{
     margin-left: 15px;
+}
+
+.cursor:hover {
+  cursor: pointer;
 }
 
 </style>
