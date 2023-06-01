@@ -2723,6 +2723,12 @@ __webpack_require__.r(__webpack_exports__);
     this.getMonitoringPrescriptionTaosByUserIstanceId(1);
   },
   methods: {
+    printAnagrafic: function printAnagrafic(printPdf) {
+      var v_myWindow;
+      var url = 'printPdf/2';
+      v_myWindow = window.open(url, 'v_myWindow', 'width=' + screen.width + ',height=' + screen.height + ', scrollbars=yes, titlebar=no, top=0, left=0');
+      return false;
+    },
     i2hDateFormat: function i2hDateFormat(date) {
       var current = new Date(date);
       var year = "".concat(current.getFullYear());
@@ -5998,6 +6004,21 @@ var render = function render() {
     on: {
       click: function click($event) {
         return _vm.printArchiveMonitoringPrescriptionTao("printPdf");
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-print"
+  }), _vm._v("Stampa Archivio")])])]), _vm._v(" "), _c("div", {
+    staticClass: "ln_solid mt-2"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "item form-group"
+  }, [_c("div", {
+    staticClass: "pull-right"
+  }, [_c("a", {
+    staticClass: "btn bg-primary text-white i2hBtnPrint ml-4",
+    on: {
+      click: function click($event) {
+        return _vm.printAnagrafic("printPdf");
       }
     }
   }, [_c("i", {

@@ -15,6 +15,11 @@ use App\Models\CollectionFormHgt;
 use App\Models\MonitoringPrescriptionTao;
 
 
+
+use App\Anagrafic;
+
+
+
 use App\Classes\PDFClass;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use Carbon\Carbon;
@@ -1178,6 +1183,9 @@ class NursingRecordController extends Controller
     //     $pdf->SetDrawColor(0,0,0);
     //     $pdf->SetTextColor(0,0,0);
     //     $pdf->Ln(10);
+
+
+
     
     //     $pdf->SetFont('Arial', 'B', 12);
     //     $pdf->Cell(15,7,'Data:');
@@ -1379,6 +1387,569 @@ class NursingRecordController extends Controller
     // }
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+public function printPdf(Request $request) {
+
+        $pdf = new PDFClass();
+        if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+            header("Content-type: application/PDF");
+        } else {
+            header("Content-type: application/PDF");
+            header("Content-Type: a \pplication/pdf");
+        }
+        $pdf->SetAutoPageBreak(true, 30);
+    
+        $pdf->SetTitle('PDF Anagrafic');
+    
+        $pdf->AliasNbPages();
+    
+        $pdf->AddPage();
+    
+        $pdf->SetLineWidth(.1);
+
+        $pdf->SetDrawColor(128,0,0);
+        $pdf->SetFillColor(0,78,155);
+        $pdf->SetTextColor(255,255,255);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0,7,'Anagrafica',0,0,'C',true);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+        $pdf->Ln(12);
+
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Nome:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxnamexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Cognome:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxlastnamexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Sesso:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxnewGenderxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Data di nascita:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxbirthDatexxc');
+        $pdf->Ln(10);
+
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Città di nascita:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxbirthplacexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Provincia:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxprovinceOfBirthxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Codice fiscale /STP/ENI:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxncodiceFiscalexxc');
+        $pdf->Ln(12);
+
+        $pdf->SetDrawColor(128,0,0);
+        $pdf->SetFillColor(0,78,155);
+        $pdf->SetTextColor(255,255,255);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0,7,'Indirizzi',0,0,'C',true);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+        $pdf->Ln(12);
+
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Città di residenza:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(50,7,'cxxcityxxc');
+        $pdf->Ln(10);
+
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Provincia:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxprovincexxc');
+        $pdf->Ln(10);
+
+
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Indirizzo di residenza:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxaddressxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Cap:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(50,7,'cxxcapxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Civico:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxhouseNumberxxc');
+        $pdf->Ln(12);
+
+        $pdf->SetDrawColor(128,0,0);
+        $pdf->SetFillColor(0,78,155);
+        $pdf->SetTextColor(255,255,255);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0,7,'Domicilio',0,0,'C',true);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+
+        $pdf->Ln(12);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Città di residenza:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(50,7,'cxxcityDxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Provincia:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxprovinceDxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Indirizzo di residenza:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxaddressDxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Cap:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(50,7,'cxxcapDxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Civico:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxhouseNumberDxxc');
+        $pdf->Ln(12);
+
+        // $pdf->AddPage();
+
+        $pdf->SetDrawColor(128,0,0);
+        $pdf->SetFillColor(0,78,155);
+        $pdf->SetTextColor(255,255,255);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0,7,'Contatti',0,0,'C',true);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+
+        $pdf->Ln(12);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Email:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(37,7,'cxxemailxxc');
+        // $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Telefono:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxmobilexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Note:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(37,7,'cxxnotexxc');
+        // $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Strutture Ocp:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(58,7,'cxxcarcerexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(60,7,'Attivo:');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxactivexxc');
+        $pdf->Ln(12);
+
+        $pdf->Output("stampa.pdf", "I");
+        exit();
+    }
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// public function printPdf(Request $request) {
+
+    
+    //     $pdf = new PDFClass();
+    //     if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+    //         header("Content-type: application/PDF");
+    //     } else {
+    //         header("Content-type: application/PDF");
+    //         header("Content-Type: a \pplication/pdf");
+    //     }
+    //     $pdf->SetAutoPageBreak(true, 30);
+    
+    //     $pdf->SetTitle('PDF Anagrafic');
+    
+    //     $pdf->AliasNbPages();
+    
+    //     $pdf->AddPage();
+    
+    //     $pdf->SetLineWidth(.1);
+
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,7,"SCORES per la valutazione (mmg) nell'arruolamento dei pazienti nel progetto AmbuCri-T",0,0,'C',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(12);
+
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Peso in kg');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(70,7,'cxxweightxxc');
+    //     $pdf->Ln(10);
+
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Altezza in centimetri');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(40,7,'cxxheightxxc');
+    //     $pdf->Ln(10);
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Bmi');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(40,7,'cxxbmixxc');
+    //     $pdf->Ln(10);
+
+
+    //     // if(isset($request->emergencyRoom)&& $request->emergencyRoom!==""){
+    //         $pdf->SetFont('Arial', 'B', 12);
+    //         $pdf->Cell(140,7,'Ricorso al pronto soccorso più di 3 volte nel corso di un anno');
+    //         $pdf->SetFont('Arial','',12);
+    //         $pdf->Cell(30,7,'cxxemergencyRoomxxc');
+    //         // };
+    //         $pdf->Ln(10);
+
+
+    //     // if(isset($request->pharmacologicalTreatment)&& $request->pharmacologicalTreatment!==""){
+    //         $pdf->SetFont('Arial', 'B', 12);
+    //         $pdf->Cell(140,7,'In trattamento farmacologico con più di 4 farmaci die*');
+    //         $pdf->SetFont('Arial','',12);
+    //         $pdf->Cell(45,7,'cxxpharmacologicalTreatmentxxc');
+    //     // };
+
+    //     $pdf->Ln(12);
+
+    //     // if(isset($request->anticoagulantDrugs)&& $request->anticoagulantDrugs!=="")
+    //     // if(isset($request->antineoplasticDrugs)&& $request->antineoplasticDrugs!=="")
+    //     // if(isset($request->antiarrhythmicDrugs)&& $request->antiarrhythmicDrugs!==""){
+    //         $pdf->SetDrawColor(128,0,0);
+    //         $pdf->SetFillColor(0,78,155);
+    //         $pdf->SetTextColor(255,255,255);
+    //         $pdf->SetFont('Arial', 'B', 12);
+    //         $pdf->Cell(0,7,'Assunzione dei seguenti farmaci: * : Anticoagulanti, Antineoplastici, Antiaritmici',0,0,'C',true);
+    //         $pdf->SetFillColor(255,255,255);
+    //         $pdf->SetDrawColor(0,0,0);
+    //         $pdf->SetTextColor(0,0,0);
+    //     // };
+
+    //     $pdf->Ln(12);
+
+    // // if(isset($request->anticoagulantDrugs)&& $request->anticoagulantDrugs!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Anticoagulanti');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(57,7,'cxxanticoagulantDrugsxxc');
+    //     $pdf->Ln(12);
+    // // };
+
+    // // if(isset($request->antineoplasticDrugs)&& $request->antineoplasticDrugs!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Antineoplastici');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(40,7,'cxxantineoplasticDrugsxxc');
+    //     $pdf->Ln(12);
+    // // };
+
+
+    // //  if(isset($request->antiarrhythmicDrugs)&& $request->antiarrhythmicDrugs!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Antiaritmici');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(57,7,'cxxantiarrhythmicDrugsxxc');
+    //     $pdf->Ln(12);
+    // // };
+
+
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,7,'Diagnosi di:',0,0,'C',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+    //     $pdf->Ln(12);
+
+    // // if(isset($request->chronicHeartFailure)&& $request->chronicHeartFailure!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Scompenso cardiaco cronico');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(62,7,'cxxchronicHeartFailurexxc');
+    //     $pdf->Ln(10);
+    //     // };
+
+
+    // // if(isset($request->diabetes)&& $request->diabetes!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Diabete');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(30,7,'cxxdiabetesxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+    // // if(isset($request->atrialFibrillation)&& $request->atrialFibrillation!==""){
+
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Fibrillazione atriale');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(60,7,'cxxatrialFibrillationxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+    // // if(isset($request->bpco)&& $request->bpco!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'BPCO');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(27,7,'cxxbpcoxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->overweightObesity)&& $request->overweightObesity!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Sovrappeso/Obesità');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(74,7,'cxxoverweightObesityxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+    // // if(isset($request->bpco)&& $request->bpco!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,"Ricovero ospedaliero nell'ultimo anno per malattia cardiovascolare");
+    //     $pdf->Ln(8);
+    //     $pdf->SetFont('Arial','',12);
+    //     // $pdf->Cell(30,7,'si');
+    //     $pdf->Cell(30,7,'cxxhospLastYearCardiovDisAcuteCerebrovaAccCancerxxc');
+    //     $pdf->Ln(12);
+    // // };
+
+    //     $pdf->AddPage();
+
+
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,7,'----------',0,0,'C',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+
+    //     $pdf->Ln(12);
+
+    // // if(isset($request->hypertension)&& $request->hypertension!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Ipertensione arteriosa');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(50,7,'cxxhypertensionxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->hypercholesterolemia)&& $request->hypercholesterolemia!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Ipercolesterolemia');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(40,7,'cxxhypercholesterolemiaxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->chronicRenalFailure)&& $request->chronicRenalFailure!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Insufficienza renale cronica');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(64,7,'cxxchronicRenalFailurexxc');
+    //     $pdf->Ln(10);
+    // // };
+
+    // // if(isset($request->dialysis)&& $request->dialysis!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Dialisi');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(40,7,'cxxdialysisxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+    // // if(isset($request->chronicNeurodegenerativeDiseases)&& $request->chronicNeurodegenerativeDiseases!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Malattie neurodegenerative croniche');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(40,7,'cxxchronicNeurodegenerativeDiseasesxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->surgeriesInLastYear)&& $request->surgeriesInLastYear!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,"Interventi chirurgici nell'ultimo anno");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(40,7,'cxxsurgeriesInLastYearxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+
+    // // if(isset($request->sociallyFragile)&& $request->sociallyFragile!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Vivi da solo* o senza fissa dimora o socialmente fragile');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(50,7,'cxxsociallyFragilexxc');
+    //     $pdf->Ln(12);
+    // // };
+
+
+    //     // $pdf->AddPage();
+
+
+    //     $pdf->SetDrawColor(128,0,0);
+    //     $pdf->SetFillColor(0,78,155);
+    //     $pdf->SetTextColor(255,255,255);
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(0,7,'Dati Obiettivi',0,0,'C',true);
+    //     $pdf->SetFillColor(255,255,255);
+    //     $pdf->SetDrawColor(0,0,0);
+    //     $pdf->SetTextColor(0,0,0);
+
+    //     $pdf->Ln(12);
+        
+    // // if(isset($request->bloodPressure)&& $request->bloodPressure!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Pressione arteriosa');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(50,7,'cxxbloodPressurexxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->oximetry)&& $request->oximetry!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Ossimetria');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(40,7,'cxxoximetryxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->heartRate)&& $request->heartRate!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Frequenza cardiaca');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(50,7,'cxxheartRatexxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->arrhythmia)&& $request->arrhythmia!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Aritmia');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(40,7,'cxxarrhythmiaxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->breathFrequency)&& $request->breathFrequency!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Frequenza respiratoria');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(40,7,'cxxbreathFrequencyxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->chestAuscultationNoises)&& $request->chestAuscultationNoises!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,"Rumori di alterzioni all'ascolazione del torace");
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(40,7,'cxxchestAuscultationNoisesxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->bodyTemperature)&& $request->bodyTemperature!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Temperatura corporea');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(50,7,'cxxbodyTemperaturexxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->breathlessnessStairs)&& $request->breathlessnessStairs!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Affanno quando salgono le scale?');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(50,7,'cxxbreathlessnessStairsxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+
+    // // if(isset($request->snoring)&& $request->snoring!==""){
+    //     $pdf->SetFont('Arial', 'B', 12);
+    //     $pdf->Cell(140,7,'Russamento durante il sonno');
+    //     $pdf->SetFont('Arial','',12);
+    //     $pdf->Cell(50,7,'cxxsnoringxxc');
+    //     $pdf->Ln(10);
+    // // };
+
+    //     $pdf->Output("stampa.pdf", "I");
+    //     exit();
+    // }
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
 
 
 
