@@ -1390,213 +1390,213 @@ class NursingRecordController extends Controller
 
 
 
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-public function printPdf(Request $request) {
+// public function printPdf(Request $request) {
 
-        $pdf = new PDFClass();
-        if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
-            header("Content-type: application/PDF");
-        } else {
-            header("Content-type: application/PDF");
-            header("Content-Type: a \pplication/pdf");
-        }
-        $pdf->SetAutoPageBreak(true, 30);
+//         $pdf = new PDFClass();
+//         if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+//             header("Content-type: application/PDF");
+//         } else {
+//             header("Content-type: application/PDF");
+//             header("Content-Type: a \pplication/pdf");
+//         }
+//         $pdf->SetAutoPageBreak(true, 30);
     
-        $pdf->SetTitle('PDF Anagrafic');
+//         $pdf->SetTitle('PDF Anagrafic');
     
-        $pdf->AliasNbPages();
+//         $pdf->AliasNbPages();
     
-        $pdf->AddPage();
+//         $pdf->AddPage();
     
-        $pdf->SetLineWidth(.1);
+//         $pdf->SetLineWidth(.1);
 
-        $pdf->SetDrawColor(128,0,0);
-        $pdf->SetFillColor(0,78,155);
-        $pdf->SetTextColor(255,255,255);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0,7,'Anagrafica',0,0,'C',true);
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
-        $pdf->Ln(12);
-
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Nome:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(45,7,'cxxnamexxc');
-        $pdf->Ln(10);
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Cognome:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(45,7,'cxxlastnamexxc');
-        $pdf->Ln(10);
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Sesso:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(45,7,'cxxnewGenderxxc');
-        $pdf->Ln(10);
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Data di nascita:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(45,7,'cxxbirthDatexxc');
-        $pdf->Ln(10);
+//         $pdf->SetDrawColor(128,0,0);
+//         $pdf->SetFillColor(0,78,155);
+//         $pdf->SetTextColor(255,255,255);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(0,7,'Anagrafica',0,0,'C',true);
+//         $pdf->SetFillColor(255,255,255);
+//         $pdf->SetDrawColor(0,0,0);
+//         $pdf->SetTextColor(0,0,0);
+//         $pdf->Ln(12);
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Città di nascita:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(45,7,'cxxbirthplacexxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Nome:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(45,7,'cxxnamexxc');
+//         $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Provincia:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(45,7,'cxxprovinceOfBirthxxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Cognome:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(45,7,'cxxlastnamexxc');
+//         $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Codice fiscale /STP/ENI:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(45,7,'cxxncodiceFiscalexxc');
-        $pdf->Ln(12);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Sesso:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(45,7,'cxxnewGenderxxc');
+//         $pdf->Ln(10);
 
-        $pdf->SetDrawColor(128,0,0);
-        $pdf->SetFillColor(0,78,155);
-        $pdf->SetTextColor(255,255,255);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0,7,'Indirizzi',0,0,'C',true);
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
-        $pdf->Ln(12);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Data di nascita:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(45,7,'cxxbirthDatexxc');
+//         $pdf->Ln(10);
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Città di residenza:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(50,7,'cxxcityxxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Città di nascita:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(45,7,'cxxbirthplacexxc');
+//         $pdf->Ln(10);
+
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Provincia:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(45,7,'cxxprovinceOfBirthxxc');
+//         $pdf->Ln(10);
+
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Codice fiscale /STP/ENI:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(45,7,'cxxncodiceFiscalexxc');
+//         $pdf->Ln(12);
+
+//         $pdf->SetDrawColor(128,0,0);
+//         $pdf->SetFillColor(0,78,155);
+//         $pdf->SetTextColor(255,255,255);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(0,7,'Indirizzi',0,0,'C',true);
+//         $pdf->SetFillColor(255,255,255);
+//         $pdf->SetDrawColor(0,0,0);
+//         $pdf->SetTextColor(0,0,0);
+//         $pdf->Ln(12);
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Provincia:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(40,7,'cxxprovincexxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Città di residenza:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(50,7,'cxxcityxxc');
+//         $pdf->Ln(10);
+
+
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Provincia:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(40,7,'cxxprovincexxc');
+//         $pdf->Ln(10);
 
 
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Indirizzo di residenza:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(40,7,'cxxaddressxxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Indirizzo di residenza:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(40,7,'cxxaddressxxc');
+//         $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Cap:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(50,7,'cxxcapxxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Cap:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(50,7,'cxxcapxxc');
+//         $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Civico:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(40,7,'cxxhouseNumberxxc');
-        $pdf->Ln(12);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Civico:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(40,7,'cxxhouseNumberxxc');
+//         $pdf->Ln(12);
 
-        $pdf->SetDrawColor(128,0,0);
-        $pdf->SetFillColor(0,78,155);
-        $pdf->SetTextColor(255,255,255);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0,7,'Domicilio',0,0,'C',true);
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
+//         $pdf->SetDrawColor(128,0,0);
+//         $pdf->SetFillColor(0,78,155);
+//         $pdf->SetTextColor(255,255,255);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(0,7,'Domicilio',0,0,'C',true);
+//         $pdf->SetFillColor(255,255,255);
+//         $pdf->SetDrawColor(0,0,0);
+//         $pdf->SetTextColor(0,0,0);
 
-        $pdf->Ln(12);
+//         $pdf->Ln(12);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Città di residenza:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(50,7,'cxxcityDxxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Città di residenza:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(50,7,'cxxcityDxxc');
+//         $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Provincia:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(40,7,'cxxprovinceDxxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Provincia:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(40,7,'cxxprovinceDxxc');
+//         $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Indirizzo di residenza:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(40,7,'cxxaddressDxxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Indirizzo di residenza:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(40,7,'cxxaddressDxxc');
+//         $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Cap:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(50,7,'cxxcapDxxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Cap:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(50,7,'cxxcapDxxc');
+//         $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(140,7,'Civico:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(40,7,'cxxhouseNumberDxxc');
-        $pdf->Ln(12);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(140,7,'Civico:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(40,7,'cxxhouseNumberDxxc');
+//         $pdf->Ln(12);
 
-        // $pdf->AddPage();
+//         // $pdf->AddPage();
 
-        $pdf->SetDrawColor(128,0,0);
-        $pdf->SetFillColor(0,78,155);
-        $pdf->SetTextColor(255,255,255);
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0,7,'Contatti',0,0,'C',true);
-        $pdf->SetFillColor(255,255,255);
-        $pdf->SetDrawColor(0,0,0);
-        $pdf->SetTextColor(0,0,0);
+//         $pdf->SetDrawColor(128,0,0);
+//         $pdf->SetFillColor(0,78,155);
+//         $pdf->SetTextColor(255,255,255);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(0,7,'Contatti',0,0,'C',true);
+//         $pdf->SetFillColor(255,255,255);
+//         $pdf->SetDrawColor(0,0,0);
+//         $pdf->SetTextColor(0,0,0);
 
-        $pdf->Ln(12);
+//         $pdf->Ln(12);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(60,7,'Email:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(37,7,'cxxemailxxc');
-        // $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(60,7,'Email:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(37,7,'cxxemailxxc');
+//         // $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(60,7,'Telefono:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(40,7,'cxxmobilexxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(60,7,'Telefono:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(40,7,'cxxmobilexxc');
+//         $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(60,7,'Note:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(37,7,'cxxnotexxc');
-        // $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(60,7,'Note:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(37,7,'cxxnotexxc');
+//         // $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(60,7,'Strutture Ocp:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(58,7,'cxxcarcerexxc');
-        $pdf->Ln(10);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(60,7,'Strutture Ocp:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(58,7,'cxxcarcerexxc');
+//         $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(60,7,'Attivo:');
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(40,7,'cxxactivexxc');
-        $pdf->Ln(12);
+//         $pdf->SetFont('Arial', 'B', 12);
+//         $pdf->Cell(60,7,'Attivo:');
+//         $pdf->SetFont('Arial','',12);
+//         $pdf->Cell(40,7,'cxxactivexxc');
+//         $pdf->Ln(12);
 
-        $pdf->Output("stampa.pdf", "I");
-        exit();
-    }
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//         $pdf->Output("stampa.pdf", "I");
+//         exit();
+//     }
+// // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -1947,6 +1947,304 @@ public function printPdf(Request $request) {
     //     exit();
     // }
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+public function printPdf(Request $request) {
+
+        $pdf = new PDFClass();
+        if (preg_match("/MSIE/i", $_SERVER["HTTP_USER_AGENT"])){
+            header("Content-type: application/PDF");
+        } else {
+            header("Content-type: application/PDF");
+            header("Content-Type: a \pplication/pdf");
+        }
+        $pdf->SetAutoPageBreak(true, 30);
+    
+        $pdf->SetTitle('PDF Scores');
+    
+        $pdf->AliasNbPages();
+    
+        $pdf->AddPage();
+    
+        $pdf->SetLineWidth(.1);
+
+        $pdf->SetDrawColor(128,0,0);
+        $pdf->SetFillColor(0,78,155);
+        $pdf->SetTextColor(255,255,255);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0,7,'DATI PRELIMINARI DA INSERIRE',0,0,'C',true);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+        $pdf->Ln(12);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Peso in kg*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxweightxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Altezza in centimetri*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxheightxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'bmi*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxnumberxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Genere*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxtypexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Età*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxagexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Diagnosi pregresse di Patologie Cardiovascolari*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxpreviousDiagnosisCardioDiseasesxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Sono in trattamento farmacologico*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxpharmacologicalTreatmentxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Specificare eventuali farmaci*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxspecifyMedicationsxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetDrawColor(128,0,0);
+        $pdf->SetFillColor(0,78,155);
+        $pdf->SetTextColor(255,255,255);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0,7,'FATTORI DI RISCHIO',0,0,'C',true);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+        $pdf->Ln(12);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Ipertensione arteriosa*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxhypertensionxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Fumo*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxsmokexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Sovrappeso/Obesità*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxoverweightObesityxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Storia familiare di malattia cardiovascolare*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxfamilyHistoryCardiovascularxxc');
+        $pdf->Ln(12);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Diabete mellito*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxdiabetesxxc');
+        $pdf->Ln(12);
+        
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Ipercolesterolemia*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxhypercholesterolemiaxxc');
+        $pdf->Ln(12);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Scompenso cardiaco noto e/o renale*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxheartFailurexxc');
+        $pdf->Ln(12);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,"Fai attività fisica almeno 30' al giorno");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxphysicalActivityxxc');
+        $pdf->Ln(12);
+        
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Mangi frutta e verdura tutti i giorni*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxeatFruitEveryxxc');
+        $pdf->Ln(12);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Vivi da solo*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(45,7,'cxxliveAlonexxc');
+        $pdf->Ln(12);
+        
+        $pdf->AddPage();
+
+        $pdf->SetDrawColor(128,0,0);
+        $pdf->SetFillColor(0,78,155);
+        $pdf->SetTextColor(255,255,255);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0,7,'DATI SCOMPENSO CARDIACO E PATOLOGIE CARDIOVASCOLARI',0,0,'C',true);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetTextColor(0,0,0);
+        $pdf->Ln(12);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Storia di scompenso cardiaco');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(50,7,'cxxhistoryHeartFailurexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Oggi la mia pressione arteriosa è*');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxBloodPressurexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,"l'apparecchio ha rilevato battiti cardiaci irregolari?");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxIrregularHeartbeatDevicexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Ho avuto un infarto Miocardico in passato?');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(50,7,'cxxheartAttackxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Ho avuto un Ictus Miocardico in passato?');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxmyocardialStrokexxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Ho avuto mai Fibrillazione Atriale?');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxatrialFibrillationxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Ho affanno quando salgo le scale?');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(50,7,'cxxbreathlessnessStairsxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Russo durante il sonno?');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxsnoringxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,"Ho difficoltà all'erezione? se uomo");
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(50,7,'cxxdifficultyErectionxxc');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(140,7,'Misura rapporto pancia/anche');
+        $pdf->SetFont('Arial','',12);
+        $pdf->Cell(40,7,'cxxmeasureBellyxxc');
+        $pdf->Ln(12);
+
+        $pdf->Output("stampa.pdf", "I");
+        exit();
+    }
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -18,11 +18,11 @@
       <PsySurvey/>
       <PsyJsat/> -->
 
-      <TraceabilityTherapy/> 
+      <!-- <TraceabilityTherapy/>  -->
       <MonitoringClinicalParameter/> 
-      <ClinicalParameterCollection/>
-      <CollectionFormHgt/> 
-      <MonitoringPrescriptionTao/>
+      <!-- <ClinicalParameterCollection/> -->
+      <!-- <CollectionFormHgt/>  -->
+      <!-- <MonitoringPrescriptionTao/> -->
 
     </div>
     
@@ -46,11 +46,11 @@
 
 
 
-import TraceabilityTherapy from '../components/TraceabilityTherapy.vue';
+// import TraceabilityTherapy from '../components/TraceabilityTherapy.vue';
 import MonitoringClinicalParameter from '../components/MonitoringClinicalParameter.vue';
-import ClinicalParameterCollection from '../components/ClinicalParameterCollection.vue';
-import CollectionFormHgt from '../components/CollectionFormHgt.vue';
-import MonitoringPrescriptionTao from '../components/MonitoringPrescriptionTao.vue';
+// import ClinicalParameterCollection from '../components/ClinicalParameterCollection.vue';
+// import CollectionFormHgt from '../components/CollectionFormHgt.vue';
+// import MonitoringPrescriptionTao from '../components/MonitoringPrescriptionTao.vue';
 
 
 export default {
@@ -69,11 +69,11 @@ export default {
     // PsyJsat,
 
 
-    TraceabilityTherapy,
+    // TraceabilityTherapy,
     MonitoringClinicalParameter,
-    ClinicalParameterCollection,
-    CollectionFormHgt,
-    MonitoringPrescriptionTao,
+    // ClinicalParameterCollection,
+    // CollectionFormHgt,
+    // MonitoringPrescriptionTao,
 }
 }
 </script>
